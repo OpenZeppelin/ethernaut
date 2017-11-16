@@ -1,0 +1,18 @@
+pragma solidity ^0.4.11;
+
+import './base/Level.sol';
+import './Force.sol';
+
+contract ForceFactory {
+
+  function createInstance(address _player) public payable returns (address) {
+    _player;
+    return new Force();
+  }
+
+  function validateInstance(address _instance, address _player) public constant returns (bool) {
+    _player;
+    Force instance = Force(_instance);
+    return instance.balance > 0;
+  }
+}

@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Build
+build/
+build_webpack/
+
+# Contract deployment backups
+gamedata/bkps/
+
+# Personal
+.todo
+scripts/testrpc_pid
+.idea/
+.DS_Store
+
+# Private stuff
+.env

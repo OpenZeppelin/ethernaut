@@ -1,0 +1,138 @@
+{
+  "ethernaut": {
+    "deployed_development": [
+      "0x7dcc8d20ff08a8cd50464544139af34abc1384fb"
+    ],
+    "deployed_ropsten": [
+      "0xc833a73d33071725143d7cf7dfd4f4bba6b5ced2"
+    ],
+    "levels": [
+      {
+        "name": "Hello Ethernaut",
+        "difficulty": "0",
+        "description": "instances.md",
+        "completedDescription": "instances_complete.md",
+        "levelContract": "InstanceFactory.sol",
+        "instanceContract": "Instance.sol",
+        "revealCode": false,
+        "deployParams": [],
+        "deployFunds": 0,
+        "deployed_development": [
+          "0x162a36c9821eadecff9669a3940b7f72d055cd1c"
+        ],
+        "deployed_ropsten": [
+          "0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c"
+        ],
+        "instanceGas": 800000
+      },
+      {
+        "name": "Fallback",
+        "difficulty": "1",
+        "description": "fallback.md",
+        "completedDescription": "fallback_complete.md",
+        "levelContract": "FallbackFactory.sol",
+        "instanceContract": "Fallback.sol",
+        "revealCode": true,
+        "deployParams": [],
+        "deployFunds": 0,
+        "deployed_development": [
+          "0x5d093a0e0328ad17469b948de7f2dfd4b5ee5544"
+        ],
+        "deployed_ropsten": [
+          "0x234094aac85628444a82dae0396c680974260be7"
+        ],
+        "instanceGas": 350000
+      },
+      {
+        "name": "Fallout",
+        "difficulty": "2",
+        "description": "fallout.md",
+        "completedDescription": "fallout_complete.md",
+        "levelContract": "FalloutFactory.sol",
+        "instanceContract": "Fallout.sol",
+        "revealCode": true,
+        "deployParams": [],
+        "deployFunds": 0,
+        "deployed_development": [
+          "0x40023eac4d2fcf91ce93b68c789ae14aaa120d0e"
+        ],
+        "deployed_ropsten": [
+          "0x220beee334f1c1f8078352d88bcc4e6165b792f6"
+        ],
+        "instanceGas": 350000
+      },
+      {
+        "name": "Token",
+        "difficulty": "3",
+        "description": "token.md",
+        "completedDescription": "token_complete.md",
+        "levelContract": "TokenFactory.sol",
+        "instanceContract": "Token.sol",
+        "revealCode": true,
+        "deployParams": [],
+        "deployFunds": 0,
+        "deployed_development": [
+          "0x1b5ccd66cc2408a0084047720167f6234dc5498a"
+        ],
+        "deployed_ropsten": [
+          "0x6545df87f57d21cb096a0bfcc53a70464d062512"
+        ],
+        "instanceGas": 300000
+      },
+      {
+        "name": "Delegation",
+        "difficulty": "4",
+        "description": "delegate.md",
+        "completedDescription": "delegate_complete.md",
+        "levelContract": "DelegationFactory.sol",
+        "instanceContract": "Delegation.sol",
+        "revealCode": true,
+        "deployParams": [],
+        "deployFunds": 0,
+        "deployed_development": [
+          "0x35623bbcb020f57f0465cce7d7ba1e8c87caee5f"
+        ],
+        "deployed_ropsten": [
+          "0x68756ad5e1039e4f3b895cfaa16a3a79a5a73c59"
+        ],
+        "instanceGas": 250000
+      },
+      {
+        "name": "Force",
+        "difficulty": "5",
+        "description": "force.md",
+        "completedDescription": "force_complete.md",
+        "levelContract": "ForceFactory.sol",
+        "instanceContract": "Force.sol",
+        "revealCode": true,
+        "deployParams": [],
+        "deployFunds": 0,
+        "deployed_development": [
+          "0x0e3c11dc1cfe82f8748363de7c58bdd4eba39a42"
+        ],
+        "deployed_ropsten": [
+          "0x24d661beb31b85a7d775272d7841f80e662c283b"
+        ],
+        "instanceGas": 150000
+      },
+      {
+        "name": "Re-entrancy",
+        "difficulty": "6",
+        "description": "reentrancy.md",
+        "completedDescription": "reentrancy_complete.md",
+        "levelContract": "ReentranceFactory.sol",
+        "instanceContract": "Reentrance.sol",
+        "revealCode": true,
+        "deployParams": [],
+        "deployFunds": 1,
+        "deployed_development": [
+          "0x3ee5283ae51ee4ccfd61bb23a5414db5abed55d6"
+        ],
+        "deployed_ropsten": [
+          "0xf70706db003e94cfe4b5e27ffd891d5c81b39488"
+        ],
+        "instanceGas": 250000
+      }
+    ]
+  }
+}

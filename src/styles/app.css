@@ -1,0 +1,111 @@
+@import "./nav.css";
+@import "./code.css";
+@import "./page.css";
+@import url(https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,700,400italic,700italic);
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.btn {
+    font-weight: 300;
+    letter-spacing: 0.75px !important;
+    border: 1px solid;
+    border-image: initial;
+    padding: 10px 23px;
+    outline: none !important;
+    margin: 5px 5px 0 0;
+}
+
+.btn-primary {
+    color: white;
+    background: rgb(74, 144, 226) none !important;
+    border-color: rgb(74, 144, 226) !important;
+}
+
+.btn-info {
+    color: white;
+    background: #5bc0de none !important;
+    border-color: #5bc0de !important;
+}
+
+.btn-default {
+    background: #e0e0e0 none !important;
+    border-color: #e0e0e0 !important;
+}
+
+.btn-warning {
+    color: white;
+    background: #eb9316 none !important;
+    border-color: #eb9316 !important;
+}
+
+.page-header {
+    margin-top: 20px;
+}
+
+.title {
+    font-weight: 600;
+    line-height: 1.5em;
+    letter-spacing: 1px;
+}
+
+.navbar {
+    font-family: "Helvetica Neue", Lato, Helvetica, Arial, sans-serif;
+    line-height: 80px;
+    font-size: 17px;
+    padding: 5px 0;
+    font-weight: 300;
+    color: rgb(74, 74, 74);
+}
+
+.navbar-brand a {
+    color: rgb(74, 74, 74) !important;
+}
+
+.navbar-nav > .active > a {
+    background-image: none !important;
+    background-color: inherit !important;
+    box-shadow: none !important;
+    color: #000 !important;
+}
+
+.levels-list-title {
+    font-weight: 500;
+    letter-spacing: 0.75px !important;
+}
+.levels-list {
+    font-weight: 400;
+    letter-spacing: 0.75px !important;
+}
+.levels-list div {
+    margin-bottom: 10px;
+}
+
+
+.footer {
+    background-color: #2e4763;
+    color: white;
+    font-weight: 300;
+    letter-spacing: 0.75px !important;
+}
+
+.footer a {
+    color: white !important;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.level-title, .difficulty {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.level-title > .title > .label {
+    font-weight: 400;
+    font-size: 10px !important;
+}
+
