@@ -1,7 +1,7 @@
 {
   "ethernaut": {
     "deployed_development": [
-      "0x7dcc8d20ff08a8cd50464544139af34abc1384fb"
+      "0xa7df1d30f6456dc72ce18fe011896105651a1f86"
     ],
     "deployed_ropsten": [
       "0xc833a73d33071725143d7cf7dfd4f4bba6b5ced2"
@@ -18,7 +18,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x162a36c9821eadecff9669a3940b7f72d055cd1c"
+          "0x9b557777be33a8a2fe6af93e017a0d139b439e5d"
         ],
         "deployed_ropsten": [
           "0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c"
@@ -36,7 +36,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x5d093a0e0328ad17469b948de7f2dfd4b5ee5544"
+          "0x232e1128a21bbffbc8d6befacb10137f37a653a0"
         ],
         "deployed_ropsten": [
           "0x234094aac85628444a82dae0396c680974260be7"
@@ -54,7 +54,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x40023eac4d2fcf91ce93b68c789ae14aaa120d0e"
+          "0x52ff2aa36438a796dba3029150802f4cc5fed96c"
         ],
         "deployed_ropsten": [
           "0x220beee334f1c1f8078352d88bcc4e6165b792f6"
@@ -72,7 +72,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x1b5ccd66cc2408a0084047720167f6234dc5498a"
+          "0x3d627fe11843ef6b3d5ec6683d53bd9822696ef6"
         ],
         "deployed_ropsten": [
           "0x6545df87f57d21cb096a0bfcc53a70464d062512"
@@ -90,7 +90,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x35623bbcb020f57f0465cce7d7ba1e8c87caee5f"
+          "0x28b291e74bce603004b52921ec9ad3ddb6f85e44"
         ],
         "deployed_ropsten": [
           "0x68756ad5e1039e4f3b895cfaa16a3a79a5a73c59"
@@ -108,12 +108,30 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x0e3c11dc1cfe82f8748363de7c58bdd4eba39a42"
+          "0x0237443359ab0b11ecdc41a7af1c90226a88c70f"
         ],
         "deployed_ropsten": [
           "0x24d661beb31b85a7d775272d7841f80e662c283b"
         ],
         "instanceGas": 150000
+      },
+      {
+        "name": "King",
+        "difficulty": "6",
+        "description": "king.md",
+        "completedDescription": "king_complete.md",
+        "levelContract": "KingFactory.sol",
+        "instanceContract": "King.sol",
+        "revealCode": true,
+        "deployParams": [],
+        "deployFunds": 1,
+        "deployed_development": [
+          "0xb12d6112d64b213880fa53f815af1f29c91cace9"
+        ],
+        "deployed_ropsten": [
+          "x"
+        ],
+        "instanceGas": 400000
       },
       {
         "name": "Re-entrancy",
@@ -126,7 +144,7 @@
         "deployParams": [],
         "deployFunds": 1,
         "deployed_development": [
-          "0x3ee5283ae51ee4ccfd61bb23a5414db5abed55d6"
+          "0xae4c9bd0f7ae5398df05043079596e2bf0079ce9"
         ],
         "deployed_ropsten": [
           "0xf70706db003e94cfe4b5e27ffd891d5c81b39488"

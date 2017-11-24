@@ -19,13 +19,14 @@ module.exports = {
       from: constants.ADDRESSES[constants.NETWORKS.ROPSTEN.name]
     },
 
-    development: {
-      host: constants.NETWORKS.DEVELOPMENT.url,
-      port: constants.NETWORKS.DEVELOPMENT.port,
-      network_id: constants.NETWORKS.DEVELOPMENT.id,
-      gas: 3000000,
-      gasPrice: 100000000000,
-      from: constants.ADDRESSES[constants.NETWORKS.DEVELOPMENT.name]
-    }
+    // development: {
+    //   host: constants.NETWORKS.DEVELOPMENT.url,
+    //   port: constants.NETWORKS.DEVELOPMENT.port,
+    //   network_id: constants.NETWORKS.DEVELOPMENT.id,
+    //   gas: 3000000,
+    //   gasPrice: 100000000000,
+    //   from: constants.ADDRESSES[constants.NETWORKS.DEVELOPMENT.name]
+    // }
+
   }
 };

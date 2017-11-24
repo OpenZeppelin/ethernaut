@@ -166,6 +166,7 @@ function initWeb3() {
       if(err) {
         console.log('error connecting web3:', err);
         reject()
+        return
       }
       console.log(colors.gray(`web3 connected: ${res}\n`));
       ethutil.setWeb3(web3)
