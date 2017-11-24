@@ -3,9 +3,11 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { Link } from 'react-router'
 import * as constants from '../constants'
+import moment from 'moment'
 
 class Sidebar extends React.Component {
   render() {
+
     return (
       <div style={{
         padding: '15px 10px'
@@ -29,12 +31,20 @@ class Sidebar extends React.Component {
             // Level completed
             const levelComplete = this.props.player.completedLevels[level.deployedAddress] > 0
 
+            // Created
+            const creationDate = moment(level.created)
+            const ago = moment.duration(moment().diff(creationDate)).asDays()
+            console.log('ago:', ago);
+
             return (
               <div key={idx}>
                 <Link to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`}>
                   <span style={linkStyle}>
                     {`${idx}. ${level.name}${levelComplete ? ' ✔' : ''}`}
                   </span>
+                  { ago < 14 &&
+                    <img style={{width: '20px', height: '20px'}} src='../../imgs/new.png' alt='new'/>
+                  }
                 </Link>
               </div>
             );

@@ -73,6 +73,7 @@
     "highlight.js": "^9.12.0",
     "lodash": "^4.17.4",
     "markdown-loader": "^2.0.1",
+    "moment": "^2.19.2",
     "prompt": "^1.0.0",
     "rainbow-color": "^2.0.0",
     "react": "^15.4.2",

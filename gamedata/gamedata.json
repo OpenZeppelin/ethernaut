@@ -9,6 +9,7 @@
     "levels": [
       {
         "name": "Hello Ethernaut",
+        "created": "2017-11-01",
         "difficulty": "0",
         "description": "instances.md",
         "completedDescription": "instances_complete.md",
@@ -27,6 +28,7 @@
       },
       {
         "name": "Fallback",
+        "created": "2017-11-01",
         "difficulty": "1",
         "description": "fallback.md",
         "completedDescription": "fallback_complete.md",
@@ -45,6 +47,7 @@
       },
       {
         "name": "Fallout",
+        "created": "2017-11-01",
         "difficulty": "2",
         "description": "fallout.md",
         "completedDescription": "fallout_complete.md",
@@ -63,6 +66,7 @@
       },
       {
         "name": "Token",
+        "created": "2017-11-01",
         "difficulty": "3",
         "description": "token.md",
         "completedDescription": "token_complete.md",
@@ -81,6 +85,7 @@
       },
       {
         "name": "Delegation",
+        "created": "2017-11-01",
         "difficulty": "4",
         "description": "delegate.md",
         "completedDescription": "delegate_complete.md",
@@ -99,6 +104,7 @@
       },
       {
         "name": "Force",
+        "created": "2017-11-01",
         "difficulty": "5",
         "description": "force.md",
         "completedDescription": "force_complete.md",
@@ -117,6 +123,7 @@
       },
       {
         "name": "King",
+        "created": "2017-11-24",
         "difficulty": "6",
         "description": "king.md",
         "completedDescription": "king_complete.md",
@@ -135,6 +142,7 @@
       },
       {
         "name": "Re-entrancy",
+        "created": "2017-11-01",
         "difficulty": "6",
         "description": "reentrancy.md",
         "completedDescription": "reentrancy_complete.md",
