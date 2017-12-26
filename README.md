@@ -18,13 +18,33 @@ You can find the DEVCON3 version (ctf contest) at:
 
 ### Running locally (development)
 
-0. `git clone ...` and `npm install` as usual.
-1. Start deterministic testrpc with `npm run rpc` (to stop `npm run killrpc`).
-2. You might want to import one of the private keys in scripts/rpc.sh to your Metamask wallet.
-2. Set target network ACTIVE_NETWORK in constants.js.
-4. Deploy contracts with `npm run deploy:contracts`.
-5. Start react client with `npm start`.
-6. To run solidity tests `truffle test`.
+1. Install
+```
+git clone git@github.com:OpenZeppelin/ethernaut.git
+npm install
+```
+2. Start deterministic testrpc
+```
+npm run rpc
+```
+3. You might want to import one of the private keys in scripts/rpc.sh to your Metamask wallet.
+4. Set target network `ACTIVE_NETWORK` in constants.js.
+5. Compile contracts
+```
+npx truffle compile
+```
+6. Deploy contracts
+```
+npm run deploy:contracts
+```
+7. Start react client
+```
+npm start
+```
+8. Run solidity tests with
+```
+npx truffle test
+```
 
 ### Level development
 
