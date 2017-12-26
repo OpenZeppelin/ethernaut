@@ -1,7 +1,7 @@
 {
   "ethernaut": {
     "deployed_development": [
-      "0xa7df1d30f6456dc72ce18fe011896105651a1f86"
+      "0x0f5ea0a652e851678ebf77b69484bfcd31f9459b"
     ],
     "deployed_ropsten": [
       "0xc833a73d33071725143d7cf7dfd4f4bba6b5ced2"
@@ -19,7 +19,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x9b557777be33a8a2fe6af93e017a0d139b439e5d"
+          "0xec8be1a5630364292e56d01129e8ee8a9578d7d8"
         ],
         "deployed_ropsten": [
           "0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c"
@@ -38,7 +38,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x232e1128a21bbffbc8d6befacb10137f37a653a0"
+          "0x85a84691547b7ccf19d7c31977a7f8c0af1fb25a"
         ],
         "deployed_ropsten": [
           "0x234094aac85628444a82dae0396c680974260be7"
@@ -57,7 +57,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x52ff2aa36438a796dba3029150802f4cc5fed96c"
+          "0x7cc4b1851c35959d34e635a470f6b5c43ba3c9c9"
         ],
         "deployed_ropsten": [
           "0x220beee334f1c1f8078352d88bcc4e6165b792f6"
@@ -76,7 +76,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x3d627fe11843ef6b3d5ec6683d53bd9822696ef6"
+          "0xc4c7497fbe1a886841a195a5d622cd60053c1376"
         ],
         "deployed_ropsten": [
           "0x6545df87f57d21cb096a0bfcc53a70464d062512"
@@ -95,7 +95,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x28b291e74bce603004b52921ec9ad3ddb6f85e44"
+          "0x9c47796bc1e469a60dcbf680273ff011e45a1327"
         ],
         "deployed_ropsten": [
           "0x68756ad5e1039e4f3b895cfaa16a3a79a5a73c59"
@@ -114,7 +114,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x0237443359ab0b11ecdc41a7af1c90226a88c70f"
+          "0x69bd17ead2202072ae4a117b036305a94ccf2e06"
         ],
         "deployed_ropsten": [
           "0x24d661beb31b85a7d775272d7841f80e662c283b"
@@ -133,7 +133,7 @@
         "deployParams": [],
         "deployFunds": 1,
         "deployed_development": [
-          "0xb12d6112d64b213880fa53f815af1f29c91cace9"
+          "0x6732c278c58fc90542cce498981844a073d693d7"
         ],
         "deployed_ropsten": [
           "0x32d25a51c4690960f1d18fadfa98111f71de5fa7"
@@ -152,7 +152,26 @@
         "deployParams": [],
         "deployFunds": 1,
         "deployed_development": [
-          "0xae4c9bd0f7ae5398df05043079596e2bf0079ce9"
+          "0x564540a26fb667306b3abdcb4ead35beb88698ab"
+        ],
+        "deployed_ropsten": [
+          "0xf70706db003e94cfe4b5e27ffd891d5c81b39488"
+        ],
+        "instanceGas": 250000
+      },
+      {
+        "name": "Elevator",
+        "created": "2017-25-01",
+        "difficulty": "4",
+        "description": "elevator.md",
+        "completedDescription": "elevator_complete.md",
+        "levelContract": "ElevatorFactory.sol",
+        "instanceContract": "Elevator.sol",
+        "revealCode": true,
+        "deployParams": [],
+        "deployFunds": 1,
+        "deployed_development": [
+          "0x564540a26fb667306b3abdcb4ead35beb88698a4"
         ],
         "deployed_ropsten": [
           "0xf70706db003e94cfe4b5e27ffd891d5c81b39488"
