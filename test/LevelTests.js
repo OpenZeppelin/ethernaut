@@ -217,7 +217,14 @@ contract('Ethernaut', function(accounts) {
       const instance = await utils.createLevelInstance(ethernaut, level.address, player, Elevator);
       const isAtTop = await instance.top()
 
-      assert.isFalse(isAtTop)
+      const completed = await utils.submitLevelInstance(
+        ethernaut,
+        level.address,
+        instance.address,
+        player
+      )
+
+      assert.isFalse(completed)
     });
 
     it('should allow the player to solve the level', async function() {
@@ -227,14 +234,14 @@ contract('Ethernaut', function(accounts) {
       const attacker = await ElevatorAttack.new()
       await attacker.attack(instance.address)
 
-      const ethCompleted = await utils.submitLevelInstance(
+      const completed = await utils.submitLevelInstance(
         ethernaut,
         level.address,
         instance.address,
         player
       )
 
-      assert.equal(ethCompleted, true)
+      assert.isTrue(completed)
     });
   });
 
