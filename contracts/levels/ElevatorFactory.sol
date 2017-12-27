@@ -15,4 +15,5 @@ contract ElevatorFactory is Level {
     Elevator elevator = Elevator(_instance);
     return elevator.top();
   }
+
 }

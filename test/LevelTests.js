@@ -224,10 +224,6 @@ contract('Ethernaut', function(accounts) {
 
       let res = await attacker.attack(instance.address)
 
-      console.log("***********************************************")
-      console.log(res)
-      console.log("***********************************************")
-
       // Check win.
       const ethCompleted = await utils.submitLevelInstance(
         ethernaut,
