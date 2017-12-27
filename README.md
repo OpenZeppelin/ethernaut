@@ -57,17 +57,17 @@ npx truffle test
 
 Let's suppose that we are creating the level "King" (which is already created and available in the game of course).
 
-0. For this repo, clone and npm install.
-1. Use the other levels as a basis, eg. duplicate DummyFactory.sol and Dummy.sol.
-2. Rename and modify the contracts to KingFactory.sol and King.sol.
-3. Implement the desired instance and factory logic in solidity. See current levels and notes to understand how the game mechanics work.
-4. Edit test/LevelTests.js and add a test. In this case, look for the "King" section.
-5. Run truffle test and once all tests pass, register the level in gamedata/gamedata.json. This file is used by the app to display data, connect to contracts, etc. It is also used by the contract deployer script in scripts/deploy_contracts.
-6. The level should now show up in the ui. To start it, set src/constants.js' ACTIVE_NETWORK to DEVELOPMENT and run npm start.
-7. Add a description markdwon file, in this case gamedata/levels/king.md (make sure gamedata.json points to it). This content will now be displayed in the ui for the level.
-8. Verify that the level is playable and winnable.
-9. Add a completed description markdown file, in this case gamedata/levels/king_complete.md (make sure gamedata.json points to it). The level will display this as additional info once the level is solved, usually to include historical information related to the level.
-8. Make a PR request so that we can re-deploy the game with the new level!
+1. For this repo, clone and npm install.
+2. Use the other levels as a basis, eg. duplicate DummyFactory.sol and Dummy.sol.
+3. Rename and modify the contracts to KingFactory.sol and King.sol.
+4. Implement the desired instance and factory logic in solidity. See current levels and notes to understand how the game mechanics work.
+5. Edit test/LevelTests.js and add a test. In this case, look for the "King" section.
+6. Run truffle test and once all tests pass, register the level in gamedata/gamedata.json. This file is used by the app to display data, connect to contracts, etc. It is also used by the contract deployer script in scripts/deploy_contracts.
+7. The level should now show up in the ui. To start it, set src/constants.js' ACTIVE_NETWORK to DEVELOPMENT and run npm start.
+8. Add a description markdwon file, in this case gamedata/levels/king.md (make sure gamedata.json points to it). This content will now be displayed in the ui for the level.
+9. Verify that the level is playable and winnable.
+10. Add a completed description markdown file, in this case gamedata/levels/king_complete.md (make sure gamedata.json points to it). The level will display this as additional info once the level is solved, usually to include historical information related to the level.
+11. Make a PR request so that we can re-deploy the game with the new level!
 
 ### Deployment
 
