@@ -221,8 +221,7 @@ contract('Ethernaut', function(accounts) {
 
       // Attack
       const attacker = await ElevatorAttack.new()
-
-      let res = await attacker.attack(instance.address)
+      await attacker.attack(instance.address)
 
       // Check win.
       const ethCompleted = await utils.submitLevelInstance(
