@@ -1,2 +1,2 @@
-Currently, the Solidity compiler does nothing to enforce that a `view` or `constant` function is not modifying state. The same applies to `pure` functions, which should not read state but they do.
+Currently, the Solidity compiler does nothing to enforce that a `view` or `constant` function is not modifying state. The same applies to `pure` functions, which should not read state but they can.
 Make sure you read [Solidity's documentation](http://solidity.readthedocs.io/en/develop/contracts.html#view-functions) and learn its caveats.
