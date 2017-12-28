@@ -1,24 +1,37 @@
 /*eslint no-undef: "off"*/
 const Ethernaut = artifacts.require('./Ethernaut.sol')
+
 const DelegationFactory = artifacts.require('./levels/DelegationFactory.sol')
 const Delegation = artifacts.require('./levels/Delegation.sol')
+
 const TokenFactory = artifacts.require('./levels/TokenFactory.sol')
 const Token = artifacts.require('./levels/Token.sol')
+
 const Reentrance = artifacts.require('./levels/Reentrance.sol')
 const ReentranceFactory = artifacts.require('./levels/ReentranceFactory.sol')
 const ReentranceAttack = artifacts.require('./attacks/ReentranceAttack.sol')
+
 const ForceFactory = artifacts.require('./levels/ForceFactory.sol')
 const ForceAttack = artifacts.require('./attacks/ForceAttack.sol')
 const Force = artifacts.require('./levels/Force.sol')
+
+const ElevatorFactory = artifacts.require('./levels/ElevatorFactory.sol')
+const ElevatorAttack = artifacts.require('./attacks/ElevatorAttack.sol')
+const Elevator = artifacts.require('./levels/Elevator.sol')
+
 const InstanceFactory = artifacts.require('./levels/InstanceFactory.sol')
 const Instance = artifacts.require('./attacks/Instance.sol')
+
 const FallbackFactory = artifacts.require('./levels/FallbackFactory.sol')
 const Fallback = artifacts.require('./attacks/Fallback.sol')
+
 const FalloutFactory = artifacts.require('./levels/FalloutFactory.sol')
 const Fallout = artifacts.require('./attacks/Fallout.sol')
+
 const KingFactory = artifacts.require('./levels/KingFactory.sol')
 const King = artifacts.require('./attacks/King.sol')
 const KingAttack = artifacts.require('./attacks/KingAttack.sol')
+
 import * as utils from './utils/TestUtils'
 import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
 import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
@@ -185,6 +198,52 @@ contract('Ethernaut', function(accounts) {
 
       })
     });
+  });
+
+  // ----------------------------------
+  // Elevator
+  // ----------------------------------
+
+  describe('Elevator', function() {
+
+    let level
+
+    before(async function() {
+      level = await ElevatorFactory.new()
+      await ethernaut.registerLevel(level.address)
+    })
+
+
+    it('should fail if the player did not solve the level', async function() {
+      const instance = await utils.createLevelInstance(ethernaut, level.address, player, Elevator)
+
+      const completed = await utils.submitLevelInstance(
+        ethernaut,
+        level.address,
+        instance.address,
+        player
+      )
+
+      assert.isFalse(completed)
+    });
+
+
+    it('should allow the player to solve the level', async function() {
+      const instance = await utils.createLevelInstance(ethernaut, level.address, player, Elevator)
+
+      const attacker = await ElevatorAttack.new()
+      await attacker.attack(instance.address)
+
+      const completed = await utils.submitLevelInstance(
+        ethernaut,
+        level.address,
+        instance.address,
+        player
+      )
+
+      assert.isTrue(completed)
+    });
+
   });
 
   // ----------------------------------
