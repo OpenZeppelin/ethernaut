@@ -20,16 +20,16 @@ const ElevatorAttack = artifacts.require('./attacks/ElevatorAttack.sol')
 const Elevator = artifacts.require('./levels/Elevator.sol')
 
 const InstanceFactory = artifacts.require('./levels/InstanceFactory.sol')
-const Instance = artifacts.require('./attacks/Instance.sol')
+const Instance = artifacts.require('./levels/Instance.sol')
 
 const FallbackFactory = artifacts.require('./levels/FallbackFactory.sol')
-const Fallback = artifacts.require('./attacks/Fallback.sol')
+const Fallback = artifacts.require('./levels/Fallback.sol')
 
 const FalloutFactory = artifacts.require('./levels/FalloutFactory.sol')
-const Fallout = artifacts.require('./attacks/Fallout.sol')
+const Fallout = artifacts.require('./levels/Fallout.sol')
 
 const KingFactory = artifacts.require('./levels/KingFactory.sol')
-const King = artifacts.require('./attacks/King.sol')
+const King = artifacts.require('./levels/King.sol')
 const KingAttack = artifacts.require('./attacks/KingAttack.sol')
 
 import * as utils from './utils/TestUtils'
