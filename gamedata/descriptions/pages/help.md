@@ -24,7 +24,7 @@ await getBalance(player)
 
 &nbsp;
 #### Beyond the console
-Some levels will require working outside of the browser console. That is, writting solidity code and deploying it in the network to attack the level's instance contract with another contract. This can be done in multiple ways, for example:
+Some levels will require working outside of the browser console. That is, writing solidity code and deploying it in the network to attack the level's instance contract with another contract. This can be done in multiple ways, for example:
 1) Use Remix to write the code and deploy it in the conrresponding network See [Remix Solidity IDE](https://ethereum.github.io/browser-solidity).
 2) Setup a local truffle project to develop and deploy the attack contracts. See [Truffle Framework](http://truffleframework.com/).
 
