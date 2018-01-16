@@ -122,6 +122,25 @@
         "instanceGas": 150000
       },
       {
+        "name": "HiJack",
+        "created": "2017-12-15",
+        "difficulty": "6",
+        "description": "hijack.md",
+        "completedDescription": "hijack_complete.md",
+        "levelContract": "HiJackFactory.sol",
+        "instanceContract": "HiJack.sol",
+        "revealCode": true,
+        "deployParams": [],
+        "deployFunds": 1,
+        "deployed_development": [
+          "0x6732c278c58fc90542cce498981844a073d693d7"
+        ],
+        "deployed_ropsten": [
+          "x"
+        ],
+        "instanceGas": 1050000
+      },
+      {
         "name": "King",
         "created": "2017-11-24",
         "difficulty": "6",
