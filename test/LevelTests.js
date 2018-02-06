@@ -1,6 +1,10 @@
 /*eslint no-undef: "off"*/
 const Ethernaut = artifacts.require('./Ethernaut.sol')
 
+const Telephone = artifacts.require('./levels/Telephone.sol')
+const TelephoneFactory = artifacts.require('./levels/TelephoneFactory.sol')
+const TelephoneAttack = artifacts.require('./attacks/TelephoneAttack.sol')
+
 const DelegationFactory = artifacts.require('./levels/DelegationFactory.sol')
 const Delegation = artifacts.require('./levels/Delegation.sol')
 
@@ -511,6 +515,52 @@ contract('Ethernaut', function(accounts) {
       console.log('completed:', completed)
       assert.equal(completed, true)
 
+    });
+
+  });
+
+  // ----------------------------------
+  // Telephone
+  // ----------------------------------
+
+  describe('Telephone', function() {
+
+    let level
+
+    before(async function() {
+      level = await TelephoneFactory.new()
+      await ethernaut.registerLevel(level.address)
+    })
+
+
+    it('should fail if the player did not solve the level', async function() {
+      const instance = await utils.createLevelInstance(ethernaut, level.address, player, Telephone)
+
+      const completed = await utils.submitLevelInstance(
+        ethernaut,
+        level.address,
+        instance.address,
+        player
+      )
+
+      assert.isFalse(completed)
+    });
+
+
+    it('should allow the player to solve the level', async function() {
+      const instance = await utils.createLevelInstance(ethernaut, level.address, player, Telephone)
+
+      const attacker = await TelephoneAttack.new()
+      await attacker.attack(instance.address, player)
+
+      const completed = await utils.submitLevelInstance(
+        ethernaut,
+        level.address,
+        instance.address,
+        player
+      )
+      
+      assert.isTrue(completed)
     });
 
   });
