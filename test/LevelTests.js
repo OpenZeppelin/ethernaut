@@ -49,7 +49,7 @@ contract('Ethernaut', function(accounts) {
   before(async function() {
     ethernaut = await Ethernaut.new();
   });
-  /*
+  
   // ----------------------------------
   // Token
   // ----------------------------------
@@ -518,7 +518,7 @@ contract('Ethernaut', function(accounts) {
     });
 
   });
-  */
+  
   // ----------------------------------
   // CoinFlip
   // ----------------------------------
@@ -552,7 +552,7 @@ contract('Ethernaut', function(accounts) {
       const attacker = await CoinFlipAttack.new()
       
       // To weaponize this attack you'd need to pole for a new block to be mined, as the contract only allows one flip per block. testrpc automatically mines blocks when transactions are sent, so no need to account for it here.
-      
+
       for (var i = 0; i < 10; i++) {
         await attacker.attack(instance.address)
       }
