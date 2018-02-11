@@ -13,9 +13,4 @@ contract CoinFlipAttack {
     coinflip.flip(side);
     return side;
   }
-
-  function check() public view returns (uint256) {
-    return uint256(block.blockhash(block.number-1)) / FACTOR;
-  }
-
 }

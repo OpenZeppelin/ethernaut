@@ -1,7 +1,7 @@
 {
   "ethernaut": {
     "deployed_development": [
-      "0x1f34366f68d45776fdb4848a55289d121899616d"
+      "0x0f5ea0a652e851678ebf77b69484bfcd31f9459b"
     ],
     "deployed_ropsten": [
       "0xc833a73d33071725143d7cf7dfd4f4bba6b5ced2"
@@ -19,7 +19,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0xdc3b181d9644cd486b2b0c44be14d55e17061136"
+          "0xec8be1a5630364292e56d01129e8ee8a9578d7d8"
         ],
         "deployed_ropsten": [
           "0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c"
@@ -38,7 +38,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x71e8f7c645bd8769f7edf91a199ed4213e25f0c1"
+          "0x85a84691547b7ccf19d7c31977a7f8c0af1fb25a"
         ],
         "deployed_ropsten": [
           "0x234094aac85628444a82dae0396c680974260be7"
@@ -57,7 +57,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x091fdf2b7ef4cec6684ce730ca8332aaf5308178"
+          "0x7cc4b1851c35959d34e635a470f6b5c43ba3c9c9"
         ],
         "deployed_ropsten": [
           "0x220beee334f1c1f8078352d88bcc4e6165b792f6"
@@ -76,7 +76,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x2f0d957c3098900fe6146f59f384e86409996391"
+          "0xc4c7497fbe1a886841a195a5d622cd60053c1376"
         ],
         "deployed_ropsten": [
           "x"
@@ -95,7 +95,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0xa3eea07d065ddb54ca6ac7fd173b59c6fbcb92eb"
+          "0x69bd17ead2202072ae4a117b036305a94ccf2e06"
         ],
         "deployed_ropsten": [
           "0x6545df87f57d21cb096a0bfcc53a70464d062512"
@@ -114,7 +114,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0xb6bbf4796a2f377c13abe85895811427fd24909f"
+          "0x9c47796bc1e469a60dcbf680273ff011e45a1327"
         ],
         "deployed_ropsten": [
           "0x68756ad5e1039e4f3b895cfaa16a3a79a5a73c59"
@@ -133,7 +133,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x36d1322d48841f99f1ea0689a5cc55ae898f5004"
+          "0x6732c278c58fc90542cce498981844a073d693d7"
         ],
         "deployed_ropsten": [
           "0x24d661beb31b85a7d775272d7841f80e662c283b"
@@ -152,7 +152,7 @@
         "deployParams": [],
         "deployFunds": 1,
         "deployed_development": [
-          "0x2c671e83b231c1dfa2ce1ace3d9b0cbad3fa9f52"
+          "0x564540a26fb667306b3abdcb4ead35beb88698ab"
         ],
         "deployed_ropsten": [
           "0x32d25a51c4690960f1d18fadfa98111f71de5fa7"
@@ -171,7 +171,7 @@
         "deployParams": [],
         "deployFunds": 1,
         "deployed_development": [
-          "0xd58fc3d2820c424949a5af64e9f1bcc8bafccfc0"
+          "0x0cdee95b0ed18fcceb4c344df4dd1c1642798a8b"
         ],
         "deployed_ropsten": [
           "0xf70706db003e94cfe4b5e27ffd891d5c81b39488"
@@ -190,7 +190,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0xac772223d1fb1e8881e29a4f55d815c8c4bbc43a"
+          "0xc61431eb6c69189f844a595234ce331b7c8a7a77"
         ],
         "deployed_ropsten": [
           "x"
