@@ -32,6 +32,10 @@ const KingFactory = artifacts.require('./levels/KingFactory.sol')
 const King = artifacts.require('./attacks/King.sol')
 const KingAttack = artifacts.require('./attacks/KingAttack.sol')
 
+const VaultFactory = artifacts.require('./levels/VaultFactory.sol')
+const Vault = artifacts.require('./attacks/Vault.sol')
+const VaultAttack = artifacts.require('./attacks/VaultAttack.sol')
+
 import * as utils from './utils/TestUtils'
 import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
 import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
@@ -45,7 +49,7 @@ contract('Ethernaut', function(accounts) {
   before(async function() {
     ethernaut = await Ethernaut.new();
   });
-
+/*
   // ----------------------------------
   // Token
   // ----------------------------------
@@ -511,6 +515,52 @@ contract('Ethernaut', function(accounts) {
       console.log('completed:', completed)
       assert.equal(completed, true)
 
+    });
+
+  });
+  */
+// ----------------------------------
+  // Vault
+  // ----------------------------------
+
+  describe('Vault', function() {
+
+    let level
+
+    before(async function() {
+      level = await VaultFactory.new()
+      await ethernaut.registerLevel(level.address)
+    })
+
+
+    it('should fail if the player did not solve the level', async function() {
+      const instance = await utils.createLevelInstance(ethernaut, level.address, player, Vault)
+
+      const completed = await utils.submitLevelInstance(
+        ethernaut,
+        level.address,
+        instance.address,
+        player
+      )
+
+      assert.isFalse(completed)
+    });
+
+
+    it('should allow the player to solve the level', async function() {
+      const instance = await utils.createLevelInstance(ethernaut, level.address, player, Vault)
+
+      const attacker = await VaultAttack.new()
+      await attacker.attack(instance.address)
+
+      const completed = await utils.submitLevelInstance(
+        ethernaut,
+        level.address,
+        instance.address,
+        player
+      )
+
+      assert.isTrue(completed)
     });
 
   });
