@@ -49,7 +49,7 @@ contract('Ethernaut', function(accounts) {
   before(async function() {
     ethernaut = await Ethernaut.new();
   });
-/*
+
   // ----------------------------------
   // Token
   // ----------------------------------
@@ -518,10 +518,10 @@ contract('Ethernaut', function(accounts) {
     });
 
   });
-  */
+  
 // ----------------------------------
-  // Vault
-  // ----------------------------------
+// Vault
+// ----------------------------------
 
   describe('Vault', function() {
 
@@ -551,7 +551,9 @@ contract('Ethernaut', function(accounts) {
       const instance = await utils.createLevelInstance(ethernaut, level.address, player, Vault)
 
       const attacker = await VaultAttack.new()
-      await attacker.attack(instance.address)
+      var password = web3.toAscii(web3.eth.getStorageAt(instance.address, 1));
+
+      await attacker.attack(instance.address, password)
 
       const completed = await utils.submitLevelInstance(
         ethernaut,
@@ -562,7 +564,5 @@ contract('Ethernaut', function(accounts) {
 
       assert.isTrue(completed)
     });
-
   });
-
 });

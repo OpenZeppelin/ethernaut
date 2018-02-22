@@ -1,17 +1,17 @@
 pragma solidity ^0.4.18;
 
 contract Vault {
-  bool public isUnlocked;
-  uint256 private pin;
+  bool public locked;
+  bytes32 private password;
 
-  function Vault(uint256 _pin) {
-    isUnlocked = false;
-    pin = _pin;
+  function Vault(bytes32 _password) {
+    locked = true;
+    password = _password;
   }
 
-  function unlock(uint256 _pin) public {
-    if (pin == _pin) {
-      isUnlocked = true;
+  function unlock(bytes32 _password) public {
+    if (password == _password) {
+      locked = false;
     }
   }
 }
