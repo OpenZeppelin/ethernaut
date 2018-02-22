@@ -124,7 +124,7 @@
       {
         "name": "Vault",
         "created": "2018-02-21",
-        "difficulty": "4",
+        "difficulty": "3",
         "description": "vault.md",
         "completedDescription": "vault_complete.md",
         "levelContract": "VaultFactory.sol",
