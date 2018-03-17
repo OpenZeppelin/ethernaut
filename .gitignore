@@ -16,3 +16,6 @@ scripts/testrpc_pid
 
 # Private stuff
 .env
+
+# Misc
+.tern-port

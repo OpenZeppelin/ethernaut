@@ -49,6 +49,6 @@ export const PATH_STATS = `${PATH_ROOT}stats`
 export const CUSTOM_LOGGING = true                              /* TRUE on production */
 export const SHOW_ALL_COMPLETE_DESCRIPTIONS = false             /* FALSE on production */
 export const SHOW_VERSION = true                                /* TRUE on production */
-export const ACTIVE_NETWORK = NETWORKS.ROPSTEN                  /* ROPSTEN on production */
+export const ACTIVE_NETWORK = NETWORKS.DEVELOPMENT                  /* ROPSTEN on production */
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------

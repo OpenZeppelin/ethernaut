@@ -1,4 +1,4 @@
-// These are required to enable ES6 on tets
+// These are required to enable ES6 on tests
 // and it's dependencies.
 require('babel-register')({
   ignore: /node_modules\/(?!zeppelin-solidity)/
