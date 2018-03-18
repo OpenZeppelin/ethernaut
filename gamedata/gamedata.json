@@ -1,7 +1,7 @@
 {
   "ethernaut": {
     "deployed_development": [
-      "0xd79b98d23cceeb36769357bbfa2ab23f5b4e5118"
+      "0x1b5ccd66cc2408a0084047720167f6234dc5498a"
     ],
     "deployed_ropsten": [
       "0xc833a73d33071725143d7cf7dfd4f4bba6b5ced2"
@@ -19,7 +19,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x1f34366f68d45776fdb4848a55289d121899616d"
+          "0x35623bbcb020f57f0465cce7d7ba1e8c87caee5f"
         ],
         "deployed_ropsten": [
           "0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c"
@@ -38,7 +38,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x60870f163dd08dac3dae195929fa3b71d867a250"
+          "0x0e3c11dc1cfe82f8748363de7c58bdd4eba39a42"
         ],
         "deployed_ropsten": [
           "0x234094aac85628444a82dae0396c680974260be7"
@@ -57,7 +57,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0xdc3b181d9644cd486b2b0c44be14d55e17061136"
+          "0x3ee5283ae51ee4ccfd61bb23a5414db5abed55d6"
         ],
         "deployed_ropsten": [
           "0x220beee334f1c1f8078352d88bcc4e6165b792f6"
@@ -114,7 +114,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x2f0d957c3098900fe6146f59f384e86409996391"
+          "0x0711b3cd383b70b42eaf6f8fc6047ebf9b99e634"
         ],
         "deployed_ropsten": [
           "0x6545df87f57d21cb096a0bfcc53a70464d062512"
@@ -133,7 +133,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x091fdf2b7ef4cec6684ce730ca8332aaf5308178"
+          "0x593b03dba3521f3a2406bc626a4f1eca2b6ee41c"
         ],
         "deployed_ropsten": [
           "0x68756ad5e1039e4f3b895cfaa16a3a79a5a73c59"
@@ -152,12 +152,31 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0xb6bbf4796a2f377c13abe85895811427fd24909f"
+          "0x05ebcdfaa3537c9b6b6c1ef501ee609601a98574"
         ],
         "deployed_ropsten": [
           "0x24d661beb31b85a7d775272d7841f80e662c283b"
         ],
         "instanceGas": 150000
+      },
+      {
+        "name": "Vault",
+        "created": "2018-02-21",
+        "difficulty": "3",
+        "description": "vault.md",
+        "completedDescription": "vault_complete.md",
+        "levelContract": "VaultFactory.sol",
+        "instanceContract": "Vault.sol",
+        "revealCode": true,
+        "deployParams": [],
+        "deployFunds": 0,
+        "deployed_development": [
+          "0x65042cf11baea10f7a90de27f93b0fea2c7dc205"
+        ],
+        "deployed_ropsten": [
+          "x"
+        ],
+        "instanceGas": 200000
       },
       {
         "name": "King",
@@ -171,7 +190,7 @@
         "deployParams": [],
         "deployFunds": 1,
         "deployed_development": [
-          "0xa3eea07d065ddb54ca6ac7fd173b59c6fbcb92eb"
+          "0x17c2921b8bac4aa178737aaebf7eb791a19f971c"
         ],
         "deployed_ropsten": [
           "0x32d25a51c4690960f1d18fadfa98111f71de5fa7"
@@ -190,7 +209,7 @@
         "deployParams": [],
         "deployFunds": 1,
         "deployed_development": [
-          "0x2c671e83b231c1dfa2ce1ace3d9b0cbad3fa9f52"
+          "0x58bde085fd9759cc29447390cfac670987642f7b"
         ],
         "deployed_ropsten": [
           "0xf70706db003e94cfe4b5e27ffd891d5c81b39488"
@@ -209,7 +228,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x36d1322d48841f99f1ea0689a5cc55ae898f5004"
+          "0xa544576e64d899fee2248a52845e3b2e50c9487a"
         ],
         "deployed_ropsten": [
           "0xcd596b3e7063b068f54054beb4fb4074c87e8ad8"
