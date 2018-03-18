@@ -66,7 +66,7 @@
       },
       {
         "name": "Coin Flip",
-        "created": "2018-02-06",
+        "created": "2018-03-18",
         "difficulty": "3",
         "description": "coinflip.md",
         "completedDescription": "coinflip_complete.md",
@@ -79,7 +79,7 @@
           "0xc4c7497fbe1a886841a195a5d622cd60053c1376"
         ],
         "deployed_ropsten": [
-          "x"
+          "0xd340de695bbc39e72df800dfde78a20d2ed94035"
         ],
         "instanceGas": 300000
       },
@@ -180,7 +180,7 @@
       },
       {
         "name": "Elevator",
-        "created": "2017-25-01",
+        "created": "2017-01-25",
         "difficulty": "4",
         "description": "elevator.md",
         "completedDescription": "elevator_complete.md",
@@ -193,7 +193,7 @@
           "0xc61431eb6c69189f844a595234ce331b7c8a7a77"
         ],
         "deployed_ropsten": [
-          "x"
+          "0xcd596b3e7063b068f54054beb4fb4074c87e8ad8"
         ],
         "instanceGas": 250000
       }

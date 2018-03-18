@@ -16,7 +16,7 @@ export const NETWORKS = {
     name: 'ropsten',
     id: '3',
     url: `http://ropsten.${process.env.ROPSTEN_HOST}`,
-    port: 8565, /* 8555 parity, 8565 geth */
+    port: 8555, /* 8555 parity, 8565 geth */
   }
 }
 
@@ -49,6 +49,6 @@ export const PATH_STATS = `${PATH_ROOT}stats`
 export const CUSTOM_LOGGING = true                              /* TRUE on production */
 export const SHOW_ALL_COMPLETE_DESCRIPTIONS = false             /* FALSE on production */
 export const SHOW_VERSION = true                                /* TRUE on production */
-export const ACTIVE_NETWORK = NETWORKS.DEVELOPMENT                  /* ROPSTEN on production */
+export const ACTIVE_NETWORK = NETWORKS.ROPSTEN/* ROPSTEN on production */
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------

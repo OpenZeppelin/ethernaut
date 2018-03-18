@@ -33,8 +33,8 @@ class Sidebar extends React.Component {
 
             // Created
             const creationDate = moment(level.created)
-            const ago = moment.duration(moment().diff(creationDate)).asDays()
-						// console.log('ago:', ago);
+            const ago = moment.duration(moment().diff(creationDate)).asDays() || 0
+						console.log(`Level ${level.name}, created days ago: ${ago}`);
 
             return (
               <div key={idx}>
