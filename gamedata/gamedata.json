@@ -65,6 +65,25 @@
         "instanceGas": 350000
       },
       {
+        "name": "Coin Flip",
+        "created": "2018-02-06",
+        "difficulty": "3",
+        "description": "coinflip.md",
+        "completedDescription": "coinflip_complete.md",
+        "levelContract": "CoinFlipFactory.sol",
+        "instanceContract": "CoinFlip.sol",
+        "revealCode": true,
+        "deployParams": [],
+        "deployFunds": 0,
+        "deployed_development": [
+          "0xc4c7497fbe1a886841a195a5d622cd60053c1376"
+        ],
+        "deployed_ropsten": [
+          "x"
+        ],
+        "instanceGas": 300000
+      },
+      {
         "name": "Token",
         "created": "2017-11-01",
         "difficulty": "3",
@@ -133,7 +152,7 @@
         "deployParams": [],
         "deployFunds": 1,
         "deployed_development": [
-          "0x6732c278c58fc90542cce498981844a073d693d7"
+          "0x564540a26fb667306b3abdcb4ead35beb88698ab"
         ],
         "deployed_ropsten": [
           "0x32d25a51c4690960f1d18fadfa98111f71de5fa7"
@@ -152,7 +171,7 @@
         "deployParams": [],
         "deployFunds": 1,
         "deployed_development": [
-          "0x564540a26fb667306b3abdcb4ead35beb88698ab"
+          "0x0cdee95b0ed18fcceb4c344df4dd1c1642798a8b"
         ],
         "deployed_ropsten": [
           "0xf70706db003e94cfe4b5e27ffd891d5c81b39488"
@@ -171,7 +190,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x0cdee95b0ed18fcceb4c344df4dd1c1642798a8b"
+          "0xc61431eb6c69189f844a595234ce331b7c8a7a77"
         ],
         "deployed_ropsten": [
           "x"
