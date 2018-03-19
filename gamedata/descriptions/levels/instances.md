@@ -38,7 +38,7 @@ Enter the following command in the console:
 ethernaut
 ```
 
-This is the game's main smart contract. You don't need to interact with it directly through the console (as this app will do that for you) but you can if you want to. Playing around with this object now is a great way to learn how to interact with the game's other smart contracts.
+This is the game's main smart contract. You don't need to interact with it directly through the console (as this app will do that for you) but you can if you want to. Playing around with this object now is a great way to learn how to interact with the other smart contracts of the game.
 
 Go ahead and expand the ethernaut object to see what's inside.
 
