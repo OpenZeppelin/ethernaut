@@ -72,6 +72,7 @@
     "ethereumjs-util": "^5.1.2",
     "highlight.js": "^9.12.0",
     "lodash": "^4.17.4",
+    "marked": "^0.3.17",
     "moment": "^2.21.0",
     "prompt": "^1.0.0",
     "rainbow-color": "^2.0.0",
