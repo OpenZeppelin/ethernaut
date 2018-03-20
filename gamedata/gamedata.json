@@ -100,7 +100,7 @@
         "deployed_ropsten": [
           "0x6b7b4a5260b67c1ee9196a42dd1ed8633231ba0a"
         ],
-        "instanceGas": 200000
+        "instanceGas": 230000
       },
       {
         "name": "Token",
