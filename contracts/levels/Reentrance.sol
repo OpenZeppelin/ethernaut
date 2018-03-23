@@ -21,5 +21,5 @@ contract Reentrance {
     }
   }
 
-  function() payable {}
+  function() public payable {}
 }

@@ -11,7 +11,7 @@ contract TelephoneFactory is Level {
     return instance;
   }
 
-  function validateInstance(address _instance, address _player) public view returns (bool) {
+  function validateInstance(address _instance, address _player) public returns (bool) {
     Telephone instance = Telephone(_instance);
     return instance.owner() == _player;
   }

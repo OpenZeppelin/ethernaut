@@ -4,11 +4,11 @@ contract Delegate {
 
   address public owner;
 
-  function Delegate(address _owner) {
+  function Delegate(address _owner) public {
     owner = _owner;
   }
 
-  function pwn() {
+  function pwn() public {
     owner = msg.sender;
   }
 }
@@ -18,12 +18,12 @@ contract Delegation {
   address public owner;
   Delegate delegate;
 
-  function Delegation(address _delegateAddress) {
+  function Delegation(address _delegateAddress) public {
     delegate = Delegate(_delegateAddress);
     owner = msg.sender;
   }
 
-  function() {
+  function() public {
     if(delegate.delegatecall(msg.data)) {
       this;
     }

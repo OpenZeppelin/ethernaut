@@ -6,7 +6,7 @@ contract Fallback is Ownable {
 
   mapping(address => uint) public contributions;
 
-  function Fallback() {
+  function Fallback() public {
     contributions[msg.sender] = 1000 * (1 ether);
   }
 
@@ -22,11 +22,11 @@ contract Fallback is Ownable {
     return contributions[msg.sender];
   }
 
-  function withdraw() onlyOwner {
+  function withdraw() public onlyOwner {
     owner.transfer(this.balance);
   }
 
-  function() payable {
+  function() payable public {
     require(msg.value > 0 && contributions[msg.sender] > 0);
     owner = msg.sender;
   }

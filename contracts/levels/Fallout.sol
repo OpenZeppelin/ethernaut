@@ -7,7 +7,7 @@ contract Fallout is Ownable {
   mapping (address => uint) allocations;
 
   /* constructor */
-  function Fal1out() payable {
+  function Fal1out() public payable {
     owner = msg.sender;
     allocations[owner] = msg.value;
   }

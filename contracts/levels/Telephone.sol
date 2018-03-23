@@ -4,7 +4,7 @@ contract Telephone {
 
   address public owner;
 
-  function Telephone() {
+  function Telephone() public {
     owner = msg.sender;
   }
 

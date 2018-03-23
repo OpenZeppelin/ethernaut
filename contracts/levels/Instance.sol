@@ -8,7 +8,7 @@ contract Instance {
   bool private cleared = false;
 
   // constructor
-  function Instance(string _password) {
+  function Instance(string _password) public {
     password = _password;
   }
 
