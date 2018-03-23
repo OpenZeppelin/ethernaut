@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "test": "truffle test",
     "deploy:contracts": "node scripts/deploy_contracts.js",
     "deploy:ui": "npm run build && rsync -avz build_webpack/ faradam3:/opt/ethernaut/",
     "rpc": "./scripts/rpc.sh",
