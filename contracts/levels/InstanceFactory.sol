@@ -10,7 +10,7 @@ contract InstanceFactory is Level {
     return new Instance('ethernaut0');
   }
 
-  function validateInstance(address _instance, address _player) public constant returns (bool) {
+  function validateInstance(address _instance, address _player) public view returns (bool) {
     _player;
     Instance instance = Instance(_instance);
     return instance.getCleared();

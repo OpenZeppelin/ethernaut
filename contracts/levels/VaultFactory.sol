@@ -12,7 +12,7 @@ contract VaultFactory is Level {
     return instance;
   }
 
-  function validateInstance(address _instance, address _player) public constant returns (bool) {
+  function validateInstance(address _instance, address _player) public view returns (bool) {
     Vault instance = Vault(_instance);
     return !instance.locked();
   }

@@ -14,7 +14,7 @@ contract TokenFactory is Level {
     return token;
   }
 
-  function validateInstance(address _instance, address _player) public constant returns (bool) {
+  function validateInstance(address _instance, address _player) public view returns (bool) {
     Token token = Token(_instance);
     return token.balanceOf(_player) > playerSupply;
   }

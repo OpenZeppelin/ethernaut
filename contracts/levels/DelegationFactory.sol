@@ -17,7 +17,7 @@ contract DelegationFactory is Level {
     return parity;
   }
 
-  function validateInstance(address _instance, address _player) public constant returns (bool) {
+  function validateInstance(address _instance, address _player) public view returns (bool) {
     Delegation parity = Delegation(_instance);
     return parity.owner() == _player;
   }

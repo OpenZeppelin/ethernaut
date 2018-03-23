@@ -11,7 +11,7 @@ contract FallbackFactory is Level {
     return instance;
   }
 
-  function validateInstance(address _instance, address _player) public constant returns (bool) {
+  function validateInstance(address _instance, address _player) public view returns (bool) {
     Fallback instance = Fallback(_instance);
     return instance.owner() == _player && instance.balance == 0;
   }

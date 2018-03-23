@@ -18,7 +18,7 @@ contract Fallback is Ownable {
     }
   }
 
-  function getContribution() public constant returns (uint) {
+  function getContribution() public view returns (uint) {
     return contributions[msg.sender];
   }
 

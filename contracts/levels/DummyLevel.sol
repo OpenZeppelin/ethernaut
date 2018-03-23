@@ -10,7 +10,7 @@ contract DummyLevel is Level {
     return new Dummy();
   }
 
-  function validateInstance(address _instance, address _player) public constant returns (bool) {
+  function validateInstance(address _instance, address _player) public view returns (bool) {
     _player;
     Dummy instance = Dummy(_instance);
     return instance.completed();

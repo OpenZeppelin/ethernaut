@@ -25,7 +25,7 @@ contract Fallout is Ownable {
     msg.sender.transfer(this.balance);
   }
 
-  function allocatorBalance(address allocator) public constant returns (uint) {
+  function allocatorBalance(address allocator) public view returns (uint) {
     return allocations[allocator];
   }
 }
