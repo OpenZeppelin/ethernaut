@@ -39,7 +39,7 @@ contract('NaughtCoin', function(accounts) {
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, NaughtCoin);
     const attacker = await NaughtCoinAttack.new();
 
-    // Allow the contract to call transferFrom on your behalf
+    // Allow the contract to call transfer tokens on your behalf, transferFrom has a different implementation to transfer, so it will be allowed
     let balance = await instance.balanceOf(player); 
     await instance.approve(attacker.address, balance);
 
