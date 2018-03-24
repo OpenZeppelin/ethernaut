@@ -1,7 +1,7 @@
 {
   "ethernaut": {
     "deployed_development": [
-      "0x1b5ccd66cc2408a0084047720167f6234dc5498a"
+      "0x0f5ea0a652e851678ebf77b69484bfcd31f9459b"
     ],
     "deployed_ropsten": [
       "0xc833a73d33071725143d7cf7dfd4f4bba6b5ced2"
@@ -19,7 +19,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x35623bbcb020f57f0465cce7d7ba1e8c87caee5f"
+          "0xc4c7497fbe1a886841a195a5d622cd60053c1376"
         ],
         "deployed_ropsten": [
           "0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c"
@@ -38,7 +38,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x0e3c11dc1cfe82f8748363de7c58bdd4eba39a42"
+          "0x85a84691547b7ccf19d7c31977a7f8c0af1fb25a"
         ],
         "deployed_ropsten": [
           "0x234094aac85628444a82dae0396c680974260be7"
@@ -57,7 +57,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x3ee5283ae51ee4ccfd61bb23a5414db5abed55d6"
+          "0x7cc4b1851c35959d34e635a470f6b5c43ba3c9c9"
         ],
         "deployed_ropsten": [
           "0x220beee334f1c1f8078352d88bcc4e6165b792f6"
@@ -76,7 +76,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0xc4c7497fbe1a886841a195a5d622cd60053c1376"
+          "0xec8be1a5630364292e56d01129e8ee8a9578d7d8"
         ],
         "deployed_ropsten": [
           "0xd340de695bbc39e72df800dfde78a20d2ed94035"
@@ -95,7 +95,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x71e8f7c645bd8769f7edf91a199ed4213e25f0c1"
+          "0x564540a26fb667306b3abdcb4ead35beb88698ab"
         ],
         "deployed_ropsten": [
           "0x6b7b4a5260b67c1ee9196a42dd1ed8633231ba0a"
@@ -114,12 +114,31 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x0711b3cd383b70b42eaf6f8fc6047ebf9b99e634"
+          "0x69bd17ead2202072ae4a117b036305a94ccf2e06"
         ],
         "deployed_ropsten": [
           "0x6545df87f57d21cb096a0bfcc53a70464d062512"
         ],
         "instanceGas": 300000
+      },
+      {
+        "name": "Naught Coin",
+        "created": "2018-03-24",
+        "difficulty": "4",
+        "description": "naughtcoin.md",
+        "completedDescription": "naughtcoin_complete.md",
+        "levelContract": "NaughtCoinFactory.sol",
+        "instanceContract": "Naught.sol",
+        "revealCode": true,
+        "deployParams": [],
+        "deployFunds": 0,
+        "deployed_development": [
+          "0x6732c278c58fc90542cce498981844a073d693d7"
+        ],
+        "deployed_ropsten": [
+          "0x6b7b4a5260b67c1ee9196a42dd1ed8633231ba0a"
+        ],
+        "instanceGas": 600000
       },
       {
         "name": "Delegation",
@@ -133,7 +152,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x593b03dba3521f3a2406bc626a4f1eca2b6ee41c"
+          "0x9c47796bc1e469a60dcbf680273ff011e45a1327"
         ],
         "deployed_ropsten": [
           "0x68756ad5e1039e4f3b895cfaa16a3a79a5a73c59"
@@ -152,7 +171,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x05ebcdfaa3537c9b6b6c1ef501ee609601a98574"
+          "0x0cdee95b0ed18fcceb4c344df4dd1c1642798a8b"
         ],
         "deployed_ropsten": [
           "0x24d661beb31b85a7d775272d7841f80e662c283b"
@@ -171,7 +190,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0x65042cf11baea10f7a90de27f93b0fea2c7dc205"
+          "0xc61431eb6c69189f844a595234ce331b7c8a7a77"
         ],
         "deployed_ropsten": [
           "0xe77b0bea3f019b1df2c9663c823a2ae65afb6a5f"
@@ -190,7 +209,7 @@
         "deployParams": [],
         "deployFunds": 1,
         "deployed_development": [
-          "0x17c2921b8bac4aa178737aaebf7eb791a19f971c"
+          "0x3435a6180fbb1baec87bdc49915282bfbc328c70"
         ],
         "deployed_ropsten": [
           "0x32d25a51c4690960f1d18fadfa98111f71de5fa7"
@@ -209,7 +228,7 @@
         "deployParams": [],
         "deployFunds": 1,
         "deployed_development": [
-          "0x58bde085fd9759cc29447390cfac670987642f7b"
+          "0xaed64948e0d09f4eb07d8b76a65cd3d517c6fb15"
         ],
         "deployed_ropsten": [
           "0xf70706db003e94cfe4b5e27ffd891d5c81b39488"
@@ -228,7 +247,7 @@
         "deployParams": [],
         "deployFunds": 0,
         "deployed_development": [
-          "0xa544576e64d899fee2248a52845e3b2e50c9487a"
+          "0x8fd73071ae9e224cfe711a7186e19d1f02feded5"
         ],
         "deployed_ropsten": [
           "0xcd596b3e7063b068f54054beb4fb4074c87e8ad8"
