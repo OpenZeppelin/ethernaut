@@ -6,8 +6,7 @@ import './NaughtCoin.sol';
 contract NaughtCoinFactory is Level {
 
   function createInstance(address _player) public payable returns (address) {
-    NaughtCoin instance = new NaughtCoin(_player);
-    return instance;
+    return new NaughtCoin(_player);
   }
 
   function validateInstance(address _instance, address _player) public returns (bool) {
