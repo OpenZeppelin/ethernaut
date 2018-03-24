@@ -26,7 +26,9 @@ contract NaughtCoin is StandardToken {
   modifier lockTokens() {
     if (msg.sender == player) {
       require(now > timeLock);
-      _;
+      if (now < timeLock) {
+        _;
+      }
     } else {
      _;
     }
