@@ -13,7 +13,7 @@ export default store => next => action => {
       const data = require(`../../gamedata/gamedata.json`)
       const deployData = require(`../../gamedata/deploy.${network}.json`)
       const levelsIn = data.levels;
-      // console.log(`LEVELS DATA:`, levelsIn)
+      // console.log(`LEVELS DATA:`, levelsIn, deployData)
       const levelsOut = [];
       for(let i = 0; i < levelsIn.length; i++) {
         const level = levelsIn[i];
@@ -23,7 +23,7 @@ export default store => next => action => {
       }
       action.ethernautAddress = deployData.ethernaut
       action.levels = levelsOut;
-      // console.log(`LEVELS DATA (out):`, levelsOut, data.ethernautAddress)
+      // console.log(`LEVELS DATA (out):`, levelsOut, action.ethernautAddress)
     } catch(e) {
       window.alert('cannot find levels data')
     }

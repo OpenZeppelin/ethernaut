@@ -100,7 +100,7 @@ async function deployContracts() {
     // console.log('level: ', level);
     return new Promise(async resolve => {
       if(needsDeploy(deployData[level.deployId])) {
-        console.log(`Deploying ${level.levelContract}...`);
+        console.log(`Deploying ${level.levelContract}, deployId: ${level.deployId}...`);
 
         // Deploy contract
         const LevelABI = require(`../build/contracts/${withoutExtension(level.levelContract)}.json`)
@@ -110,6 +110,7 @@ async function deployContracts() {
         const contract = await Contract.new(...level.deployParams, props)
         console.log(colors.yellow(`  ${level.name}: ${contract.address}`));
         deployData[level.deployId] = contract.address
+        console.log(colors.gray(`  storing deployed id: ${level.deployId} with address: ${contract.address}`));
 
         // Register level in Ethernaut contract
         console.log(`  Registering level in Ethernaut.sol...`)
@@ -125,9 +126,11 @@ async function deployContracts() {
   })
   
   // Write new deploy data to disk
-  const path = `gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`
-  console.log(colors.green(`Writing updated game data: ${path}`));
-  fs.writeFileSync(path, JSON.stringify(deployData, null, 2), 'utf8')
+  Promise.all(promises).then(() => {
+    const path = `gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`
+    console.log(colors.green(`Writing updated game data: ${path}`));
+    fs.writeFileSync(path, JSON.stringify(deployData, null, 2), 'utf8')
+  });
 }
 
 // ----------------------------------
