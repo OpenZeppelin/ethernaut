@@ -13,6 +13,7 @@ gamedata/bkps/
 scripts/testrpc_pid
 .idea/
 .DS_Store
+gamedata/deploy.development.json
 
 # Private stuff
 .env
