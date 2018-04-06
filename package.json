@@ -6,8 +6,9 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "truffle test",
-    "deploy:contracts": "node scripts/deploy_contracts.js",
-    "deploy:ui": "npm run build && rsync -avz build_webpack/ faradam3:/opt/ethernaut/",
+    "compile:contracts": "rm -rf build && npx truffle compile",
+    "deploy:contracts": "npm run compile:contracts && node scripts/deploy_contracts.js",
+    "deploy:ui": "npm rum compile:contracts && npm run build && rsync -avz build_webpack/ faradam3:/opt/ethernaut/",
     "rpc": "./scripts/rpc.sh",
     "killrpc": "kill -9 $(cat scripts/testrpc_pid)"
   },
