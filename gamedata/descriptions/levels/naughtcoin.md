@@ -1,4 +1,4 @@
-NaughtCoin is a play on words. It's an ERC20 compliant token for ether-_naut_ and the worth of these tokens after you hack them, _naught_. You hold all of the tokens, but you'll only be able to transfer them after a 10 year lockout period. Can you figure out how to get your hands on them before the lockout period finishes?
+NaughtCoin is an ERC20 token and you're already holding all of them. The catch is that you'll only be able to transfer them after a 10 year lockout period. Can you figure out how to get them out of your account so you can transfer them freely? Complete this level by getting your token balance to 0. 
 
 &nbsp;
 Things that might help
