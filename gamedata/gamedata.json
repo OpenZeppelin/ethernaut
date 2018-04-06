@@ -167,6 +167,20 @@
       "deployFunds": 0,
       "deployId": "11",
       "instanceGas": 250000
+    },
+    {
+      "name": "Privacy",
+      "created": "2018-04-06",
+      "difficulty": "8",
+      "description": "privacy.md",
+      "completedDescription": "privacy_complete.md",
+      "levelContract": "PrivacyFactory.sol",
+      "instanceContract": "Privacy.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "12",
+      "instanceGas": 250000
     }
   ]
 }
