@@ -22,7 +22,7 @@ import 'zeppelin-solidity/contracts/token/ERC20/StandardToken.sol';
     super.transfer(_to, _value);
   }
 
-  // Prevent the transfer of tokens until the time lock has passed
+  // Prevent the initial owner from transferring tokens until the timelock has passed
   modifier lockTokens() {
     if (msg.sender == player) {
       require(now > timeLock);
