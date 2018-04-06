@@ -36,12 +36,12 @@ contract('Privacy', function(accounts) {
       );
     });
 
-    it('should unlock with the proper key', async function() {
+    it.only('should unlock with the proper key', async function() {
       
       // Read storage.
-      // for(let i = 0; i < 5; i++) {
-        // console.log(web3.eth.getStorageAt(instance.address, i));
-      // }
+      for(let i = 0; i < 5; i++) {
+        console.log(web3.eth.getStorageAt(instance.address, i));
+      }
 
       // Read contract storage.
       const dataEntry = web3.eth.getStorageAt(instance.address, 3);

@@ -180,7 +180,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "12",
-      "instanceGas": 250000
+      "instanceGas": 300000
     }
   ]
 }
