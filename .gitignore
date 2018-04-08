@@ -5,9 +5,6 @@ node_modules/
 build/
 build_webpack/
 
-# Contract deployment backups
-gamedata/bkps/
-
 # Personal
 .todo
 scripts/testrpc_pid

@@ -69,9 +69,6 @@ exec()
 
 async function deployContracts() {
 
-  backupGameData()
-  // console.log(gamedata);
-
   const props = {
     gasPrice: web3.eth.gasPrice * 10,
     gas: 4500000
@@ -165,18 +162,4 @@ function initWeb3() {
       resolve()
     })
   })
-}
-
-function backupGameData() {
-
-  console.log(colors.magenta(`Backing up files...`));
-
-  // Mkdir if not present (added in .gitignore)
-  const dirPath = './gamedata/bkps/'
-  if(!fs.existsSync(dirPath)) fs.mkdirSync(dirPath)
-  // Build new filename
-  const bkpSrc = `./gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
-  const bkpName = `deploy.${constants.ACTIVE_NETWORK.name}.${new Date().getTime()}.json`
-  fs.createReadStream(bkpSrc)
-    .pipe(fs.createWriteStream(`${dirPath}${bkpName}`));
 }
