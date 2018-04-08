@@ -29,8 +29,9 @@ async function exec() {
   await initWeb3()
 
   // Retrieve deployment data for the active network.
+  const path = `./gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
   try {
-    deployData = JSON.parse(fs.readFileSync(`../gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`, 'utf8'));
+    deployData = JSON.parse(fs.readFileSync(path, 'utf8'));
   }
   catch(err){
     deployData = {};
@@ -123,7 +124,6 @@ async function deployContracts() {
   
   // Write new deploy data to disk
   Promise.all(promises).then(() => {
-    const path = `gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`
     console.log(colors.green(`Writing updated game data: ${path}`));
     fs.writeFileSync(path, JSON.stringify(deployData, null, 2), 'utf8')
   });
@@ -139,7 +139,7 @@ function withoutExtension(str) {
 
 function needsDeploy(deployAddress) {
   if(constants.ACTIVE_NETWORK === constants.NETWORKS.DEVELOPMENT) return true
-  return !deployAddress.length === 0 || deployAddress === 'x'
+  return deployAddress === undefined || deployAddress === 'x'
 }
 
 function initWeb3() {
