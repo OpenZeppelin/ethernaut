@@ -1,4 +1,4 @@
-The creator of this contract was careful enough to make its data private, so that it cannot be unlocked by anyone. Yet, you surely can overcome this protection mechanism. Right?
+The creator of this contract was careful enough to protect the sensitive areas of its storage. 
 
 Unlock this contract to beat the level.
 
