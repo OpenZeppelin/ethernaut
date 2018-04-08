@@ -30,7 +30,7 @@ async function exec() {
 
   // Retrieve deployment data for the active network.
   try {
-    deployData = require(`../gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`)
+    deployData = JSON.parse(fs.readFileSync(`../gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`, 'utf8'));
   }
   catch(err){
     deployData = {};
@@ -83,6 +83,7 @@ async function deployContracts() {
     from: constants.ADDRESSES[constants.ACTIVE_NETWORK.name]
   })
   if(needsDeploy(deployData.ethernaut)) {
+		console.log(deployData);
     console.log(`Deploying Ethernaut.sol...`);
     ethernaut = await Ethernaut.new(props)
     console.log(colors.yellow(`  Ethernaut: ${ethernaut.address}`));
@@ -93,7 +94,6 @@ async function deployContracts() {
     ethernaut = await Ethernaut.at(deployData.ethernaut)
     // console.log('ethernaut: ', ethernaut);
   }
-
 
   // Sweep levels
   const promises = gamedata.levels.map(async level => {
@@ -122,7 +122,6 @@ async function deployContracts() {
       }
       resolve(level)
     })
-
   })
   
   // Write new deploy data to disk
@@ -141,9 +140,9 @@ function withoutExtension(str) {
   return str.split('.')[0]
 }
 
-function needsDeploy(deployArray) {
+function needsDeploy(deployAddress) {
   if(constants.ACTIVE_NETWORK === constants.NETWORKS.DEVELOPMENT) return true
-  return deployArray.length === 0 || deployArray[0] === 'x'
+  return !deployAddress.length === 0 || deployAddress === 'x'
 }
 
 function initWeb3() {
