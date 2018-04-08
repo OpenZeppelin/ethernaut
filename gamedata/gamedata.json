@@ -1,240 +1,172 @@
 {
-  "ethernaut": {
-    "deployed_development": [
-      "0x1b5ccd66cc2408a0084047720167f6234dc5498a"
-    ],
-    "deployed_ropsten": [
-      "0xc833a73d33071725143d7cf7dfd4f4bba6b5ced2"
-    ],
-    "levels": [
-      {
-        "name": "Hello Ethernaut",
-        "created": "2017-11-01",
-        "difficulty": "0",
-        "description": "instances.md",
-        "completedDescription": "instances_complete.md",
-        "levelContract": "InstanceFactory.sol",
-        "instanceContract": "Instance.sol",
-        "revealCode": false,
-        "deployParams": [],
-        "deployFunds": 0,
-        "deployed_development": [
-          "0x35623bbcb020f57f0465cce7d7ba1e8c87caee5f"
-        ],
-        "deployed_ropsten": [
-          "0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c"
-        ],
-        "instanceGas": 800000
-      },
-      {
-        "name": "Fallback",
-        "created": "2017-11-01",
-        "difficulty": "1",
-        "description": "fallback.md",
-        "completedDescription": "fallback_complete.md",
-        "levelContract": "FallbackFactory.sol",
-        "instanceContract": "Fallback.sol",
-        "revealCode": true,
-        "deployParams": [],
-        "deployFunds": 0,
-        "deployed_development": [
-          "0x0e3c11dc1cfe82f8748363de7c58bdd4eba39a42"
-        ],
-        "deployed_ropsten": [
-          "0x234094aac85628444a82dae0396c680974260be7"
-        ],
-        "instanceGas": 350000
-      },
-      {
-        "name": "Fallout",
-        "created": "2017-11-01",
-        "difficulty": "2",
-        "description": "fallout.md",
-        "completedDescription": "fallout_complete.md",
-        "levelContract": "FalloutFactory.sol",
-        "instanceContract": "Fallout.sol",
-        "revealCode": true,
-        "deployParams": [],
-        "deployFunds": 0,
-        "deployed_development": [
-          "0x3ee5283ae51ee4ccfd61bb23a5414db5abed55d6"
-        ],
-        "deployed_ropsten": [
-          "0x220beee334f1c1f8078352d88bcc4e6165b792f6"
-        ],
-        "instanceGas": 350000
-      },
-      {
-        "name": "Coin Flip",
-        "created": "2018-03-18",
-        "difficulty": "3",
-        "description": "coinflip.md",
-        "completedDescription": "coinflip_complete.md",
-        "levelContract": "CoinFlipFactory.sol",
-        "instanceContract": "CoinFlip.sol",
-        "revealCode": true,
-        "deployParams": [],
-        "deployFunds": 0,
-        "deployed_development": [
-          "0xc4c7497fbe1a886841a195a5d622cd60053c1376"
-        ],
-        "deployed_ropsten": [
-          "0xd340de695bbc39e72df800dfde78a20d2ed94035"
-        ],
-        "instanceGas": 300000
-      },
-      {
-        "name": "Telephone",
-        "created": "2018-03-18",
-        "difficulty": "1",
-        "description": "telephone.md",
-        "completedDescription": "telephone_complete.md",
-        "levelContract": "TelephoneFactory.sol",
-        "instanceContract": "Telephone.sol",
-        "revealCode": true,
-        "deployParams": [],
-        "deployFunds": 0,
-        "deployed_development": [
-          "0x71e8f7c645bd8769f7edf91a199ed4213e25f0c1"
-        ],
-        "deployed_ropsten": [
-          "0x6b7b4a5260b67c1ee9196a42dd1ed8633231ba0a"
-        ],
-        "instanceGas": 230000
-      },
-      {
-        "name": "Token",
-        "created": "2017-11-01",
-        "difficulty": "3",
-        "description": "token.md",
-        "completedDescription": "token_complete.md",
-        "levelContract": "TokenFactory.sol",
-        "instanceContract": "Token.sol",
-        "revealCode": true,
-        "deployParams": [],
-        "deployFunds": 0,
-        "deployed_development": [
-          "0x0711b3cd383b70b42eaf6f8fc6047ebf9b99e634"
-        ],
-        "deployed_ropsten": [
-          "0x6545df87f57d21cb096a0bfcc53a70464d062512"
-        ],
-        "instanceGas": 300000
-      },
-      {
-        "name": "Delegation",
-        "created": "2017-11-01",
-        "difficulty": "4",
-        "description": "delegate.md",
-        "completedDescription": "delegate_complete.md",
-        "levelContract": "DelegationFactory.sol",
-        "instanceContract": "Delegation.sol",
-        "revealCode": true,
-        "deployParams": [],
-        "deployFunds": 0,
-        "deployed_development": [
-          "0x593b03dba3521f3a2406bc626a4f1eca2b6ee41c"
-        ],
-        "deployed_ropsten": [
-          "0x68756ad5e1039e4f3b895cfaa16a3a79a5a73c59"
-        ],
-        "instanceGas": 250000
-      },
-      {
-        "name": "Force",
-        "created": "2017-11-01",
-        "difficulty": "5",
-        "description": "force.md",
-        "completedDescription": "force_complete.md",
-        "levelContract": "ForceFactory.sol",
-        "instanceContract": "Force.sol",
-        "revealCode": true,
-        "deployParams": [],
-        "deployFunds": 0,
-        "deployed_development": [
-          "0x05ebcdfaa3537c9b6b6c1ef501ee609601a98574"
-        ],
-        "deployed_ropsten": [
-          "0x24d661beb31b85a7d775272d7841f80e662c283b"
-        ],
-        "instanceGas": 150000
-      },
-      {
-        "name": "Vault",
-        "created": "2018-03-18",
-        "difficulty": "3",
-        "description": "vault.md",
-        "completedDescription": "vault_complete.md",
-        "levelContract": "VaultFactory.sol",
-        "instanceContract": "Vault.sol",
-        "revealCode": true,
-        "deployParams": [],
-        "deployFunds": 0,
-        "deployed_development": [
-          "0x65042cf11baea10f7a90de27f93b0fea2c7dc205"
-        ],
-        "deployed_ropsten": [
-          "0xe77b0bea3f019b1df2c9663c823a2ae65afb6a5f"
-        ],
-        "instanceGas": 200000
-      },
-      {
-        "name": "King",
-        "created": "2017-11-24",
-        "difficulty": "6",
-        "description": "king.md",
-        "completedDescription": "king_complete.md",
-        "levelContract": "KingFactory.sol",
-        "instanceContract": "King.sol",
-        "revealCode": true,
-        "deployParams": [],
-        "deployFunds": 1,
-        "deployed_development": [
-          "0x17c2921b8bac4aa178737aaebf7eb791a19f971c"
-        ],
-        "deployed_ropsten": [
-          "0x32d25a51c4690960f1d18fadfa98111f71de5fa7"
-        ],
-        "instanceGas": 400000
-      },
-      {
-        "name": "Re-entrancy",
-        "created": "2017-11-01",
-        "difficulty": "6",
-        "description": "reentrancy.md",
-        "completedDescription": "reentrancy_complete.md",
-        "levelContract": "ReentranceFactory.sol",
-        "instanceContract": "Reentrance.sol",
-        "revealCode": true,
-        "deployParams": [],
-        "deployFunds": 1,
-        "deployed_development": [
-          "0x58bde085fd9759cc29447390cfac670987642f7b"
-        ],
-        "deployed_ropsten": [
-          "0xf70706db003e94cfe4b5e27ffd891d5c81b39488"
-        ],
-        "instanceGas": 250000
-      },
-      {
-        "name": "Elevator",
-        "created": "2017-01-25",
-        "difficulty": "4",
-        "description": "elevator.md",
-        "completedDescription": "elevator_complete.md",
-        "levelContract": "ElevatorFactory.sol",
-        "instanceContract": "Elevator.sol",
-        "revealCode": true,
-        "deployParams": [],
-        "deployFunds": 0,
-        "deployed_development": [
-          "0xa544576e64d899fee2248a52845e3b2e50c9487a"
-        ],
-        "deployed_ropsten": [
-          "0xcd596b3e7063b068f54054beb4fb4074c87e8ad8"
-        ],
-        "instanceGas": 250000
-      }
-    ]
-  }
+  "levels": [
+    {
+      "name": "Hello Ethernaut",
+      "created": "2017-11-01",
+      "difficulty": "0",
+      "description": "instances.md",
+      "completedDescription": "instances_complete.md",
+      "levelContract": "InstanceFactory.sol",
+      "instanceContract": "Instance.sol",
+      "revealCode": false,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "0",
+      "instanceGas": 800000
+    },
+    {
+      "name": "Fallback",
+      "created": "2017-11-01",
+      "difficulty": "1",
+      "description": "fallback.md",
+      "completedDescription": "fallback_complete.md",
+      "levelContract": "FallbackFactory.sol",
+      "instanceContract": "Fallback.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "1",
+      "instanceGas": 350000
+    },
+    {
+      "name": "Fallout",
+      "created": "2017-11-01",
+      "difficulty": "2",
+      "description": "fallout.md",
+      "completedDescription": "fallout_complete.md",
+      "levelContract": "FalloutFactory.sol",
+      "instanceContract": "Fallout.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "2",
+      "instanceGas": 350000
+    },
+    {
+      "name": "Coin Flip",
+      "created": "2018-03-18",
+      "difficulty": "3",
+      "description": "coinflip.md",
+      "completedDescription": "coinflip_complete.md",
+      "levelContract": "CoinFlipFactory.sol",
+      "instanceContract": "CoinFlip.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "3",
+      "instanceGas": 300000
+    },
+    {
+      "name": "Telephone",
+      "created": "2018-03-18",
+      "difficulty": "1",
+      "description": "telephone.md",
+      "completedDescription": "telephone_complete.md",
+      "levelContract": "TelephoneFactory.sol",
+      "instanceContract": "Telephone.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "4",
+      "instanceGas": 230000
+    },
+    {
+      "name": "Token",
+      "created": "2017-11-01",
+      "difficulty": "3",
+      "description": "token.md",
+      "completedDescription": "token_complete.md",
+      "levelContract": "TokenFactory.sol",
+      "instanceContract": "Token.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "5",
+      "instanceGas": 300000
+    },
+    {
+      "name": "Delegation",
+      "created": "2017-11-01",
+      "difficulty": "4",
+      "description": "delegate.md",
+      "completedDescription": "delegate_complete.md",
+      "levelContract": "DelegationFactory.sol",
+      "instanceContract": "Delegation.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "6",
+      "instanceGas": 250000
+    },
+    {
+      "name": "Force",
+      "created": "2017-11-01",
+      "difficulty": "5",
+      "description": "force.md",
+      "completedDescription": "force_complete.md",
+      "levelContract": "ForceFactory.sol",
+      "instanceContract": "Force.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "7",
+      "instanceGas": 150000
+    },
+    {
+      "name": "Vault",
+      "created": "2018-03-18",
+      "difficulty": "3",
+      "description": "vault.md",
+      "completedDescription": "vault_complete.md",
+      "levelContract": "VaultFactory.sol",
+      "instanceContract": "Vault.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "8",
+      "instanceGas": 200000
+    },
+    {
+      "name": "King",
+      "created": "2017-11-24",
+      "difficulty": "6",
+      "description": "king.md",
+      "completedDescription": "king_complete.md",
+      "levelContract": "KingFactory.sol",
+      "instanceContract": "King.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 1,
+      "deployId": "9",
+      "instanceGas": 400000
+    },
+    {
+      "name": "Re-entrancy",
+      "created": "2017-11-01",
+      "difficulty": "6",
+      "description": "reentrancy.md",
+      "completedDescription": "reentrancy_complete.md",
+      "levelContract": "ReentranceFactory.sol",
+      "instanceContract": "Reentrance.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 1,
+      "deployId": "10",
+      "instanceGas": 250000
+    },
+    {
+      "name": "Elevator",
+      "created": "2017-01-25",
+      "difficulty": "4",
+      "description": "elevator.md",
+      "completedDescription": "elevator_complete.md",
+      "levelContract": "ElevatorFactory.sol",
+      "instanceContract": "Elevator.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "11",
+      "instanceGas": 250000
+    }
+  ]
 }

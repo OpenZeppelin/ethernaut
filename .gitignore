@@ -5,14 +5,12 @@ node_modules/
 build/
 build_webpack/
 
-# Contract deployment backups
-gamedata/bkps/
-
 # Personal
 .todo
 scripts/testrpc_pid
 .idea/
 .DS_Store
+gamedata/deploy.development.json
 
 # Private stuff
 .env
