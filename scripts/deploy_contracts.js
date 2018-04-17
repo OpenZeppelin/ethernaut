@@ -18,9 +18,9 @@ const gamedata = require(`../gamedata/gamedata.json`)
 
 let web3;
 let ethernaut;
-let deployData;
 
-const PROMPT_ON_DEVELOP = true
+const PROMPT_ON_DEVELOP = false
+const DEPLOY_DATA_PATH = `./gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`
 
 async function exec() {
 
@@ -29,47 +29,27 @@ async function exec() {
   await initWeb3()
 
   // Retrieve deployment data for the active network.
-  const path = `./gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
-  try {
-    deployData = JSON.parse(fs.readFileSync(path, 'utf8'));
-  }
-  catch(err){
-    deployData = {};
-  }
+  const deployData = loadDeployData(DEPLOY_DATA_PATH)
 
   // Determine which contracts need to be deployed.
   let count = 0;
-  const deployedKey = `deployed_${constants.ACTIVE_NETWORK.name}`
   if(needsDeploy(deployData.ethernaut)) {
-    count++
-    console.log(colors.red(`(${count}) Will deploy Ethernaut.sol!`))
+    console.log(colors.red(`(${++count}) Will deploy Ethernaut.sol!`))
   }
-  gamedata.levels.map((level, key) => {
+  gamedata.levels.map(level => {
     if(needsDeploy(deployData[level.deployId])) {
-      count++
-        console.log(colors.cyan(`(${count}) Will deploy ${level.levelContract} (${level.name})`))
+      console.log(colors.cyan(`(${++count}) Will deploy ${level.levelContract} (${level.name})`))
     }
   })
 
-  // Confirm actions with user
-  if(PROMPT_ON_DEVELOP || constants.ACTIVE_NETWORK !== constants.NETWORKS.DEVELOPMENT) {
-    prompt.start()
-    prompt.get({properties: {
-      confirmDeployment: {
-        description: `Comfirm deployment? (y/n)`
-      }}}, function(err, res) {
-      if (err) return console.log(err);
-      else if (res.confirmDeployment === 'y') {
-        deployContracts()
-      }
-    })
+  if(await confirmDeployment()) {
+    await deployContracts(deployData)
+    storeDeployData(DEPLOY_DATA_PATH, deployData)
   }
-  else deployContracts()
 }
 exec()
 
-async function deployContracts() {
-
+async function deployContracts(deployData) {
   const props = {
     gasPrice: web3.eth.gasPrice * 10,
     gas: 4500000
@@ -120,12 +100,8 @@ async function deployContracts() {
       resolve(level)
     })
   })
-  
-  // Write new deploy data to disk
-  Promise.all(promises).then(() => {
-    console.log(colors.green(`Writing updated game data: ${path}`));
-    fs.writeFileSync(path, JSON.stringify(deployData, null, 2), 'utf8')
-  });
+
+  return Promise.all(promises)
 }
 
 // ----------------------------------
@@ -145,7 +121,7 @@ function initWeb3() {
   return new Promise(async (resolve, reject) => {
 
     const providerUrl = `${constants.ACTIVE_NETWORK.url}:${constants.ACTIVE_NETWORK.port}`
-    console.log(colors.gray(`conecting web3 to '${providerUrl}'...`));
+    console.log(colors.gray(`connecting web3 to '${providerUrl}'...`));
 
     const provider = new Web3.providers.HttpProvider(providerUrl);
     web3 = new Web3(provider)
@@ -160,5 +136,41 @@ function initWeb3() {
       ethutil.setWeb3(web3)
       resolve()
     })
+  })
+}
+
+function loadDeployData(path) {
+  try {
+    return JSON.parse(fs.readFileSync(path, 'utf8'))
+  }
+  catch(err){
+    return {}
+  }
+}
+
+function storeDeployData(path, deployData) {
+  console.log(colors.green(`Writing updated deploy data: ${path}`))
+  fs.writeFileSync(path, JSON.stringify(deployData, null, 2), 'utf8')
+}
+
+function confirmDeployment() {
+  return new Promise((resolve, reject) => {
+    if(PROMPT_ON_DEVELOP || constants.ACTIVE_NETWORK !== constants.NETWORKS.DEVELOPMENT) {
+      const options = {
+        properties: {
+          confirmDeployment: {
+            description: `Confirm deployment? (y/n)`
+          }
+        }
+      }
+
+      prompt.start()
+      prompt.get(options, (err, res) => {
+        if (err) return reject(err)
+        resolve(res.confirmDeployment === 'y')
+      })
+    } else {
+      resolve(true)
+    }
   })
 }
