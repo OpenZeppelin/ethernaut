@@ -35,8 +35,6 @@ export default store => next => async action => {
 
   action.completed = completed
   next(action)
-
-  store.dispatch(actions.checkAllLevelsCompleted())
 }
 
 async function submitLevelInstance(ethernaut, levelAddress, instanceAddress, player, gasPrice) {
