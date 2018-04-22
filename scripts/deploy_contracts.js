@@ -19,7 +19,7 @@ const gamedata = require(`../gamedata/gamedata.json`)
 let web3;
 let ethernaut;
 
-const PROMPT_ON_DEVELOP = false
+const PROMPT_ON_DEVELOP = true
 const DEPLOY_DATA_PATH = `./gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`
 
 async function exec() {
