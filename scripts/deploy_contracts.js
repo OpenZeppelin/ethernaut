@@ -34,11 +34,13 @@ async function exec() {
   // Determine which contracts need to be deployed.
   let count = 0;
   if(needsDeploy(deployData.ethernaut)) {
-    console.log(colors.red(`(${++count}) Will deploy Ethernaut.sol!`))
+    count++
+    console.log(colors.red(`(${count}) Will deploy Ethernaut.sol!`))
   }
   gamedata.levels.map(level => {
     if(needsDeploy(deployData[level.deployId])) {
-      console.log(colors.cyan(`(${++count}) Will deploy ${level.levelContract} (${level.name})`))
+      count++
+      console.log(colors.cyan(`(${count}) Will deploy ${level.levelContract} (${level.name})`))
     }
   })
 
