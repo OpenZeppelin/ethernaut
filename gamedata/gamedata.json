@@ -181,6 +181,34 @@
       "deployFunds": 0,
       "deployId": "12",
       "instanceGas": 300000
+    },
+    {
+      "name": "Gatekeeper One",
+      "created": "2018-04-26",
+      "difficulty": "5",
+      "description": "gatekeeper1.md",
+      "completedDescription": "gatekeeper1_complete.md",
+      "levelContract": "GatekeeperOneFactory.sol",
+      "instanceContract": "GatekeeperOne.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "12",
+      "instanceGas": 500000
+    },
+    {
+      "name": "Gatekeeper Two",
+      "created": "2018-04-26",
+      "difficulty": "6",
+      "description": "gatekeeper2.md",
+      "completedDescription": "gatekeeper2_complete.md",
+      "levelContract": "GatekeeperTwoFactory.sol",
+      "instanceContract": "GatekeeperTwo.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "13",
+      "instanceGas": 500000
     }
   ]
 }
