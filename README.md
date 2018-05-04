@@ -28,7 +28,7 @@ npm install
 npm run rpc
 ```
 3. You might want to import one of the private keys in scripts/rpc.sh to your Metamask wallet.
-4. Set target network `ACTIVE_NETWORK` in constants.js.
+4. Set target network `ACTIVE_NETWORK` in src/constants.js.
 5. Compile contracts
 ```
 npx truffle compile
