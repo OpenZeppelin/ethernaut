@@ -183,20 +183,6 @@
       "instanceGas": 300000
     },
     {
-      "name": "Naught Coin",
-      "created": "2018-03-24",
-      "difficulty": "5",
-      "description": "naughtcoin.md",
-      "completedDescription": "naughtcoin_complete.md",
-      "levelContract": "NaughtCoinFactory.sol",
-      "instanceContract": "NaughtCoin.sol",
-      "revealCode": true,
-      "deployParams": [],
-      "deployFunds": 0,
-      "deployId": "15",
-      "instanceGas": 1350000
-    },
-    {
       "name": "Gatekeeper One",
       "created": "2018-04-26",
       "difficulty": "5",
@@ -223,6 +209,20 @@
       "deployFunds": 0,
       "deployId": "14",
       "instanceGas": 500000
+    },
+    {
+      "name": "Naught Coin",
+      "created": "2018-03-24",
+      "difficulty": "5",
+      "description": "naughtcoin.md",
+      "completedDescription": "naughtcoin_complete.md",
+      "levelContract": "NaughtCoinFactory.sol",
+      "instanceContract": "NaughtCoin.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "15",
+      "instanceGas": 1350000
     }
   ]
 }
