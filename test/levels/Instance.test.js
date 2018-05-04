@@ -1,4 +1,3 @@
-
 const InstanceFactory = artifacts.require('./levels/InstanceFactory.sol')
 const Instance = artifacts.require('./attacks/Instance.sol')
 
