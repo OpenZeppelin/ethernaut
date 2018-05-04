@@ -74,12 +74,13 @@ async function deployContracts() {
     gasPrice: web3.eth.gasPrice * 10,
     gas: 4500000
   }
-  console.log(`deploy params:`, props);
+
+  let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
+  if(!from) from = web3.eth.accounts[0];
+  console.log("FROM: ", from)
 
   // Deploy/retrieve ethernaut contract
-  const Ethernaut = await ethutil.getTruffleContract(EthernautABI, {
-    from: constants.ADDRESSES[constants.ACTIVE_NETWORK.name]
-  })
+  const Ethernaut = await ethutil.getTruffleContract(EthernautABI, {from})
   if(needsDeploy(deployData.ethernaut)) {
 		console.log(deployData);
     console.log(`Deploying Ethernaut.sol...`);
@@ -102,9 +103,7 @@ async function deployContracts() {
 
         // Deploy contract
         const LevelABI = require(`../build/contracts/${withoutExtension(level.levelContract)}.json`)
-        const Contract = await ethutil.getTruffleContract(LevelABI, {
-          from: constants.ADDRESSES[constants.ACTIVE_NETWORK.name]
-        })
+        const Contract = await ethutil.getTruffleContract(LevelABI, {from})
         const contract = await Contract.new(...level.deployParams, props)
         console.log(colors.yellow(`  ${level.name}: ${contract.address}`));
         deployData[level.deployId] = contract.address

@@ -26,7 +26,7 @@ export const GOOGLE_ANALYTICS_ID = 'UA-85043059-4'
 
 // Owner addresses
 export const ADDRESSES = {
-  [NETWORKS.DEVELOPMENT.name]: '0xdf08f82de32b8d460adbe8d72043e3a7e25a3b39',
+  [NETWORKS.DEVELOPMENT.name]: undefined,
   [NETWORKS.ROPSTEN.name]: '0x1663fcb2f6566723a4c429f8ed34352726680f9a'
 }
 
@@ -49,7 +49,7 @@ export const PATH_STATS = `${PATH_ROOT}stats`
 export const CUSTOM_LOGGING = true                              /* TRUE on production */
 export const SHOW_ALL_COMPLETE_DESCRIPTIONS = false             /* FALSE on production */
 export const SHOW_VERSION = true                                /* TRUE on production */
-export const ACTIVE_NETWORK = NETWORKS.ROPSTEN
-// export const ACTIVE_NETWORK = NETWORKS.DEVELOPMENT
+// export const ACTIVE_NETWORK = NETWORKS.ROPSTEN
+export const ACTIVE_NETWORK = NETWORKS.DEVELOPMENT
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------
