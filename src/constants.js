@@ -16,7 +16,7 @@ export const NETWORKS = {
     name: 'ropsten',
     id: '3',
     url: `http://ropsten.${process.env.ROPSTEN_HOST}`,
-    port: 8555, /* 8555 parity, 8565 geth */
+    port: 8565, /* 8555 parity, 8565 geth */
   }
 }
 

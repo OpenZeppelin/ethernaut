@@ -36,7 +36,7 @@ contract('Privacy', function(accounts) {
       );
     });
 
-    it.only('should unlock with the proper key', async function() {
+    it('should unlock with the proper key', async function() {
       
       // Read storage.
       for(let i = 0; i < 5; i++) {
