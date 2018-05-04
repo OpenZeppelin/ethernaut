@@ -39,7 +39,6 @@ export default store => next => action => {
         console.log("Unexpected address in LevelCompletedLog event (skipping): ", levelAddr);
       } else {
         store.dispatch(actions.submitLevelInstance(level, true))
-          .then(() => store.dispatch(actions.checkAllLevelsCompleted()))
       }
     }
   })
