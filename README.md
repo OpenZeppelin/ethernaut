@@ -64,7 +64,7 @@ Let's suppose that we are creating the level "King" (which is already created an
 5. Edit test/LevelTests.js and add a test. In this case, look for the "King" section.
 6. Run truffle test and once all tests pass, register the level in gamedata/gamedata.json. This file is used by the app to display data, connect to contracts, etc. It is also used by the contract deployer script in scripts/deploy_contracts.
 7. The level should now show up in the ui. To start it, set src/constants.js' ACTIVE_NETWORK to DEVELOPMENT and run npm start.
-8. Add a description markdwon file, in this case gamedata/levels/king.md (make sure gamedata.json points to it). This content will now be displayed in the ui for the level.
+8. Add a description markdown file, in this case gamedata/levels/king.md (make sure gamedata.json points to it). This content will now be displayed in the ui for the level.
 9. Verify that the level is playable and winnable.
 10. Add a completed description markdown file, in this case gamedata/levels/king_complete.md (make sure gamedata.json points to it). The level will display this as additional info once the level is solved, usually to include historical information related to the level.
 11. Make a PR request so that we can re-deploy the game with the new level!
