@@ -223,6 +223,20 @@
       "deployFunds": 0,
       "deployId": "15",
       "instanceGas": 1350000
+    },
+    {
+        "name": "Recovery",
+        "created": "2017-12-15",
+        "difficulty": "6",
+        "description": "recovery.md",
+        "completedDescription": "recovery_complete.md",
+        "levelContract": "RecoveryFactory.sol",
+        "instanceContract": "Recovery.sol",
+        "revealCode": true,
+        "deployParams": [],
+        "deployFunds": 1,
+        "deployId": "16",
+        "instanceGas": 1050000
     }
   ]
 }

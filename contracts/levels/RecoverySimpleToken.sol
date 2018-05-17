@@ -1,23 +1,25 @@
 // This is used for the HiJack truffle test. 
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.23;
 
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 
-contract HiJackSimpleToken is Ownable {
-  // Some meta-data 
-  string public name;
-  uint8 public decimals;
+contract RecoverySimpleToken {
 
+  // public variables
+  string public name;
   mapping (address => uint) public balances;
 
   // constructor
-  function SimpleToken(string _name, uint8 _decimals, uint256 _initialSupply, address _owner) public {
+  constructor(string _name, address _creator, uint256 _initialSupply) public {
     name = _name;
-    decimals = _decimals;
-    balances[_owner] = _initialSupply;
-    owner = _owner; 
+    balances[_creator] = _initialSupply;
   }
- 
+
+  // collect ether in return for tokens
+  function () public payable {
+    balances[msg.sender] += msg.value*10;
+  }
+
   // allow transfers of tokens
   function transfer(address _to, uint _amount) public { 
     require(balances[msg.sender] >= _amount);
@@ -26,9 +28,8 @@ contract HiJackSimpleToken is Ownable {
   }
 
   // clean up after ourselves
-  function destroy() onlyOwner public {
-    selfdestruct(owner);
+  function destroy(address to) public {
+    selfdestruct(to);
   }
-
 }
 
