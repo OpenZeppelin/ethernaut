@@ -7,7 +7,7 @@ contract Fallout is Ownable {
   mapping (address => uint) allocations;
 
   /* constructor */
-  function Fal1out() payable {
+  function Fal1out() public payable {
     owner = msg.sender;
     allocations[owner] = msg.value;
   }
@@ -25,7 +25,7 @@ contract Fallout is Ownable {
     msg.sender.transfer(this.balance);
   }
 
-  function allocatorBalance(address allocator) public constant returns (uint) {
+  function allocatorBalance(address allocator) public view returns (uint) {
     return allocations[allocator];
   }
 }

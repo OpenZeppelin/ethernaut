@@ -8,7 +8,7 @@ contract Reentrance {
     balances[_to] += msg.value;
   }
 
-  function balanceOf(address _who) public constant returns (uint balance) {
+  function balanceOf(address _who) public view returns (uint balance) {
     return balances[_who];
   }
 
@@ -21,5 +21,5 @@ contract Reentrance {
     }
   }
 
-  function() payable {}
+  function() public payable {}
 }

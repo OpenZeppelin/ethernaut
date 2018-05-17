@@ -1,0 +1,7 @@
+language : node_js
+node_js:
+  - "9"
+# script:
+  #- if [ "$TRAVIS_BRANCH" == "master" ]; then
+  #     npm run deploy:ui;
+  # fi

@@ -5,8 +5,10 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "deploy:contracts": "node scripts/deploy_contracts.js",
-    "deploy:ui": "npm run build && rsync -avz build_webpack/ faradam3:/opt/ethernaut/",
+    "test": "truffle test",
+    "compile:contracts": "rm -rf build && npx truffle compile",
+    "deploy:contracts": "npm run compile:contracts && node scripts/deploy_contracts.js",
+    "deploy:ui": "npm rum compile:contracts && npm run build && rsync -avz build_webpack/ faradam3:/opt/ethernaut/",
     "rpc": "./scripts/rpc.sh",
     "killrpc": "kill -9 $(cat scripts/testrpc_pid)"
   },
@@ -72,8 +74,8 @@
     "ethereumjs-util": "^5.1.2",
     "highlight.js": "^9.12.0",
     "lodash": "^4.17.4",
-    "markdown-loader": "^2.0.1",
-    "moment": "^2.19.2",
+    "marked": "^0.3.17",
+    "moment": "^2.21.0",
     "prompt": "^1.0.0",
     "rainbow-color": "^2.0.0",
     "react": "^15.4.2",
@@ -95,7 +97,7 @@
     "truffle": "^4.0.0",
     "truffle-deployer": "^2.0.0",
     "web3": "^0.19.1",
-    "zeppelin-solidity": "^1.3.0"
+    "zeppelin-solidity": "^1.6.0"
   },
   "jest": {
     "collectCoverageFrom": [
