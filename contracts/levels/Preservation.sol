@@ -26,7 +26,7 @@ contract Preservation {
   }
 }
 
-// Simply library contract to set the time
+// Simple library contract to set the time
 contract LibraryContract {
 
   // stores a timestamp 
