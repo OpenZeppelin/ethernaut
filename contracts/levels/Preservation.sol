@@ -6,6 +6,7 @@ contract Preservation {
   address public timeZone1Library;
   address public timeZone2Library;
   address public owner; 
+  uint storedTime;
   // Sets the function signature for delegatecall
   bytes4 constant setTimeSignature = bytes4(keccak256("setTime(uint256)"));
 
