@@ -13,9 +13,6 @@ The game acts both as a tool for those interested in learning ethereum, and as a
 You can find the current, official version at:
 [ethernaut.zeppelin.solutions](https://ethernaut.zeppelin.solutions)
 
-You can find the DEVCON3 version (ctf contest) at:
-[ethernaut-devcon3.zeppelin.solutions](https://ethernaut-devcon3.zeppelin.solutions)
-
 ### Running locally (development)
 
 1. Install
