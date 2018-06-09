@@ -223,6 +223,20 @@
       "deployFunds": 0,
       "deployId": "15",
       "instanceGas": 1350000
+    },
+    {
+      "name": "Preservation",
+      "created": "2018-05-27",
+      "difficulty": "8",
+      "description": "preservation.md",
+      "completedDescription": "preservation_complete.md",
+      "levelContract": "PreservationFactory.sol",
+      "instanceContract": "Preservation.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "16",
+      "instanceGas": 1500000
     }
   ]
 }
