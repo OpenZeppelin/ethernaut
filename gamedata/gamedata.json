@@ -237,6 +237,20 @@
       "deployFunds": 0,
       "deployId": "16",
       "instanceGas": 1500000
+    },
+    {
+      "name": "Locked",
+      "created": "2018-05-19",
+      "difficulty": "6",
+      "description": "locked.md",
+      "completedDescription": "locked_complete.md",
+      "levelContract": "LockedFactory.sol",
+      "instanceContract": "Locked.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "17",
+      "instanceGas": 1500000
     }
   ]
 }

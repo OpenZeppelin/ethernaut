@@ -93,7 +93,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "sha3": "^1.2.2",
-    "truffle": "^4.1.8",
+    "truffle": "^4.1.11",
     "truffle-deployer": "^2.0.0",
     "web3": "^0.19.1",
     "zeppelin-solidity": "^1.6.0"
