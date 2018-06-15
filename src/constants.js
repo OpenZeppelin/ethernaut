@@ -38,7 +38,6 @@ export const STORAGE_PLAYER_DATA_KEY = `ethernaut_player_data_${VERSION}_`
 export const PATH_ROOT = '/'
 export const PATH_NOT_FOUND = '/404'
 export const PATH_HELP = '/help'
-export const PATH_ABOUT = '/about'
 export const PATH_LEVEL_ROOT = `${PATH_ROOT}level/`
 export const PATH_LEVEL = `${PATH_LEVEL_ROOT}:address`
 export const PATH_STATS = `${PATH_ROOT}stats`

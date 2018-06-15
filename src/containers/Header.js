@@ -32,7 +32,7 @@ class Header extends React.Component {
             <div className="navbar-brand" style={{paddingTop: '0', paddingBottom: '0', paddingLeft: '25px', lineHeight: '49px'}}>
               <span>
                 <a href="https://zeppelin.solutions" target="_blank" rel="noopener noreferred">
-                  <img style={{width: '40px', height: '40px'}} src='../../imgs/zeppelin-logo.svg' alt='eternauta'/>
+                  <img style={{width: '40px', height: '40px'}} src='../../imgs/zeppelin-logo.svg' alt='zeppelin'/>
                 </a>
               </span>
               &nbsp;
@@ -52,9 +52,6 @@ class Header extends React.Component {
               </li>
               <li className={currentPath === constants.PATH_HELP ? 'active' : ''}>
                 <Link to={constants.PATH_HELP} style={{fontSize: '16px'}}>Help</Link>
-              </li>
-              <li className={currentPath === constants.PATH_ABOUT ? 'active' : ''}>
-                <Link to={constants.PATH_ABOUT} style={{fontSize: '16px'}}>About</Link>
               </li>
             </ul>
 
