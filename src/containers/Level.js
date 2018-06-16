@@ -1,11 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import CodeComponent from '../components/Code'
-import MarkdownComponent from '../components/Markdown'
-import * as actions from '../actions'
-import * as constants from '../constants'
-import Difficulty from '../components/Difficulty'
+import CodeComponent from '../components/Code';
+import Author from '../components/Author';
+import MarkdownComponent from '../components/Markdown';
+import * as actions from '../actions';
+import * as constants from '../constants';
+import Difficulty from '../components/Difficulty';
 
 class Level extends React.Component {
 
@@ -45,6 +46,7 @@ class Level extends React.Component {
     try { sourcesFile = require(`../../contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
 
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels)
+    console.log(`AUTHOR ID: ${level.author}`);
 
     return (
       <div className="page-container">
@@ -118,6 +120,11 @@ class Level extends React.Component {
           <div className='page-header'><h3>Sources</h3></div>
           <CodeComponent target={sourcesFile}/>
         </div>
+        }
+
+        {/* AUTHOR */}
+        { level.author && 
+          <Author author={level.author}/>
         }
 
       </div>

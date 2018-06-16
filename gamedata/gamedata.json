@@ -12,7 +12,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "0",
-      "instanceGas": 800000
+      "instanceGas": 800000,
+      "author": "ajsantander"
     },
     {
       "name": "Fallback",
@@ -26,7 +27,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "1",
-      "instanceGas": 350000
+      "instanceGas": 350000,
+      "author": "ajsantander"
     },
     {
       "name": "Fallout",
@@ -40,7 +42,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "2",
-      "instanceGas": 350000
+      "instanceGas": 350000,
+      "author": "ajsantander"
     },
     {
       "name": "Coin Flip",
@@ -54,7 +57,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "3",
-      "instanceGas": 300000
+      "instanceGas": 300000,
+      "author": "syncikin"
     },
     {
       "name": "Telephone",
@@ -68,7 +72,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "4",
-      "instanceGas": 230000
+      "instanceGas": 230000,
+      "author": "syncikin"
     },
     {
       "name": "Token",
@@ -82,7 +87,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "5",
-      "instanceGas": 300000
+      "instanceGas": 300000,
+      "author": "ajsantander"
     },
     {
       "name": "Delegation",
@@ -96,7 +102,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "6",
-      "instanceGas": 250000
+      "instanceGas": 250000,
+      "author": "ajsantander"
     },
     {
       "name": "Force",
@@ -110,7 +117,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "7",
-      "instanceGas": 150000
+      "instanceGas": 150000,
+      "author": "ajsantander"
     },
     {
       "name": "Vault",
@@ -124,7 +132,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "8",
-      "instanceGas": 200000
+      "instanceGas": 200000,
+      "author": "syncikin"
     },
     {
       "name": "King",
@@ -138,7 +147,8 @@
       "deployParams": [],
       "deployFunds": 1,
       "deployId": "9",
-      "instanceGas": 400000
+      "instanceGas": 400000,
+      "author": "ajsantander"
     },
     {
       "name": "Re-entrancy",
@@ -152,7 +162,8 @@
       "deployParams": [],
       "deployFunds": 1,
       "deployId": "10",
-      "instanceGas": 250000
+      "instanceGas": 250000,
+      "author": "ajsantander"
     },
     {
       "name": "Elevator",
@@ -166,7 +177,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "11",
-      "instanceGas": 250000
+      "instanceGas": 250000,
+      "author": "martriay"
     },
     {
       "name": "Privacy",
@@ -180,7 +192,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "12",
-      "instanceGas": 300000
+      "instanceGas": 300000,
+      "author": "ajsantander"
     },
     {
       "name": "Gatekeeper One",
@@ -194,7 +207,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "13",
-      "instanceGas": 500000
+      "instanceGas": 500000,
+      "author": "0age"
     },
     {
       "name": "Gatekeeper Two",
@@ -208,7 +222,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "14",
-      "instanceGas": 500000
+      "instanceGas": 500000,
+      "author": "0age"
     },
     {
       "name": "Naught Coin",
@@ -222,7 +237,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "15",
-      "instanceGas": 1350000
+      "instanceGas": 1350000,
+      "author": "syncikin"
     },
     {
       "name": "Preservation",
@@ -236,7 +252,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "16",
-      "instanceGas": 1500000
+      "instanceGas": 1500000,
+      "author": "AgeManning"
     },
     {
       "name": "Locked",
@@ -250,21 +267,23 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "17",
-      "instanceGas": 1500000
+      "instanceGas": 1500000,
+      "author": "AgeManning"
     },
     {
-        "name": "Recovery",
-        "created": "2018-05-20",
-        "difficulty": "6",
-        "description": "recovery.md",
-        "completedDescription": "recovery_complete.md",
-        "levelContract": "RecoveryFactory.sol",
-        "instanceContract": "Recovery.sol",
-        "revealCode": true,
-        "deployParams": [],
-        "deployFunds": 1,
-        "deployId": "18",
-        "instanceGas": 1050000
+      "name": "Recovery",
+      "created": "2018-05-20",
+      "difficulty": "6",
+      "description": "recovery.md",
+      "completedDescription": "recovery_complete.md",
+      "levelContract": "RecoveryFactory.sol",
+      "instanceContract": "Recovery.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 1,
+      "deployId": "18",
+      "instanceGas": 1050000,
+      "author": "AgeManning"
     }
   ]
 }
