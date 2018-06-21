@@ -8,7 +8,7 @@ class Author extends React.Component {
     this.state = {
       name: undefined,
       email: undefined,
-      github: undefined
+      website: undefined
     };
   }
 
@@ -27,13 +27,13 @@ class Author extends React.Component {
     this.setState({
       name: data.name,
       email: data.email,
-      github: data.github
+      website: data.website
     });
   }
 
   render() {
-    const { name, email, github } = this.state;
-    const nodata = !name && !email && !github;
+    const { name, email, website } = this.state;
+    const nodata = !name && !email && !website;
     return (
       <div>
         <div style={{marginTop: '20px', marginBotton: '20px'}}>
@@ -53,8 +53,8 @@ class Author extends React.Component {
             <span><br/><strong>{email}</strong></span>
           }
 
-          {!nodata && github && 
-            <span><br/><strong><a href={`https://github.com/${github}`}>github.com/{github}</a></strong></span>
+          {!nodata && website && 
+            <span><br/><strong><a href={website} target='_blank'>{website}</a></strong></span>
           }
 
         </div>
