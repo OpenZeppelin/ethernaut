@@ -46,7 +46,6 @@ class Level extends React.Component {
     try { sourcesFile = require(`../../contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
 
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels)
-    console.log(`AUTHOR ID: ${level.author}`);
 
     return (
       <div className="page-container">
