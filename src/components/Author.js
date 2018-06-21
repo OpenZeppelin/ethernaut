@@ -50,7 +50,7 @@ class Author extends React.Component {
           }
 
           {!nodata && email && 
-            <span><br/><strong>{email}</strong></span>
+              <span><br/><strong><a href={`mailto:${email}`} target='_blank'>{email}</a></strong></span>
           }
 
           {!nodata && website && 
