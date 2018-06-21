@@ -21,13 +21,13 @@ class Author extends React.Component {
   }
 
   fetchAuthorData(author) {
-    let data = require(`../../gamedata/authors.json`).authors;
-    data = data[author];
-    if(!data) return;
+    const data = require(`../../gamedata/authors.json`).authors;
+    const authorData = data[author];
+    if(!authorData) return;
     this.setState({
-      name: data.name,
-      email: data.email,
-      website: data.website
+      name: authorData.name,
+      email: authorData.email,
+      website: authorData.website
     });
   }
 
