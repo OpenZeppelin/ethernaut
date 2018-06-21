@@ -38,8 +38,7 @@ class Author extends React.Component {
       <div>
         <div style={{marginTop: '20px', marginBotton: '20px'}}>
 
-          Level author:
-          <br/>
+          <h4>Level author</h4>
 
           {nodata && 
             <span>{this.props.author}</span>
