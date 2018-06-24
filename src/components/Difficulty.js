@@ -7,17 +7,8 @@ const Difficulty = ({level}) => {
 
   return (
     <div>
-      <div style={divStyle}>
-        <img style={imageStyle(0)} src='../../imgs/jerry.png' alt=''/>
-        <img style={imageStyle(1)} src='../../imgs/squanchy.jpg' alt=''/>
-        <img style={imageStyle(2)} src='../../imgs/beth.png' alt=''/>
-        <img style={imageStyle(3)} src='../../imgs/morty.png' alt=''/>
-        <img style={imageStyle(4)} src='../../imgs/bigface.png' alt=''/>
-        <img style={imageStyle(5)} src='../../imgs/rick1.png' alt=''/>
-        <img style={imageStyle(6)} src='../../imgs/pickle.png' alt=''/>
-      </div>
       <p className="no-margin text-right">
-        <small className="text-muted right">difficulty {level}/6</small>
+        <small className="text-muted right">difficulty {level}/10</small>
       </p>
     </div>
   )
