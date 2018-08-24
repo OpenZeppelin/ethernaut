@@ -15,8 +15,11 @@ contract MagicNumFactory is Level {
 
   function validateInstance(address _instance, address) public returns (bool) {
 
-    // Retrieve the instance casted as a solver.
-    Solver solver = Solver(_instance);
+    // Retrieve the instance.
+    MagicNum instance = MagicNum(_instance);
+
+    // Retrieve the solver from the instance.
+    Solver solver = Solver(instance);
     
     // Query the solver for the magic number.
     bytes32 magic = solver.whatIsTheMeaningOfLife();
