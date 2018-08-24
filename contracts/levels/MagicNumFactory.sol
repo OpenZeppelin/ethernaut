@@ -1,6 +1,11 @@
 pragma solidity ^0.4.24;
 
-import "./MagicNum";
+import "./MagicNum.sol";
+import "./base/Level.sol";
+
+contract Solver {
+  function whatIsTheMeaningOfLife() public view returns (bytes32);
+}
 
 contract MagicNumFactory is Level {
 
