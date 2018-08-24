@@ -9,7 +9,7 @@ import * as utils from "../utils/TestUtils";
 import expectThrow from "zeppelin-solidity/test/helpers/expectThrow";
 import toPromise from "zeppelin-solidity/test/helpers/toPromise";
 
-contract("MagicNum", function(accounts) {
+contract.only("MagicNum", function(accounts) {
 
   let ethernaut
   let level
@@ -59,25 +59,5 @@ contract("MagicNum", function(accounts) {
 
       assert.isTrue(completed);
     });
-
-    // it("should unlock with a non-zero first byte", async function() {
-    //   let _name = "0x0000000000000000000000000000000000000000000000000000000000000001"
-    //   let _address = "0x123"
-
-    //   // Unlock.
-    //   await instance.register(_name, _address);
-    //   assert.equal(await instance.unlocked(), true);
-
-    //   // Factory check (should pass)
-    //   const completed = await utils.submitLevelInstance(
-    //     ethernaut,
-    //     level.address,
-    //     instance.address,
-    //     player
-    //   );
-    //   assert.equal(completed, true);
-    // });
-
   });
-
 });

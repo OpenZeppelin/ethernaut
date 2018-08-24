@@ -19,7 +19,7 @@ contract MagicNumFactory is Level {
     MagicNum instance = MagicNum(_instance);
 
     // Retrieve the solver from the instance.
-    Solver solver = Solver(instance);
+    Solver solver = Solver(instance.solver());
     
     // Query the solver for the magic number.
     bytes32 magic = solver.whatIsTheMeaningOfLife();

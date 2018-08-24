@@ -4,7 +4,7 @@ contract MagicNum {
 
   address public solver;
 
-  constructor() {}
+  constructor() public {}
 
   function setSolver(address _solver) public {
     solver = _solver;
