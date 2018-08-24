@@ -284,6 +284,21 @@
       "deployId": "18",
       "instanceGas": 1050000,
       "author": "AgeManning"
+    },
+    {
+      "name": "MagicNumber",
+      "created": "2018-08-24",
+      "difficulty": "6",
+      "description": "magicnum.md",
+      "completedDescription": "magicnum_complete.md",
+      "levelContract": "MagicNumFactory.sol",
+      "instanceContract": "MagicNum.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "19",
+      "instanceGas": 200000,
+      "author": "ajsantander"
     }
   ]
 }
