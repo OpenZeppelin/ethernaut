@@ -14,8 +14,8 @@ contract Elevator {
     Building building = Building(msg.sender);
 
     if (! building.isLastFloor(_floor)) {
+      top = building.isLastFloor(_floor);
       floor = _floor;
-      top = building.isLastFloor(floor);
     }
   }
 }
