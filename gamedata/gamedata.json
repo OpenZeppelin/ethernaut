@@ -299,6 +299,21 @@
       "deployId": "19",
       "instanceGas": 200000,
       "author": "ajsantander"
+    },
+    {
+      "name": "Shop",
+      "created": "2018-09-08",
+      "difficulty": "4",
+      "description": "shop.md",
+      "completedDescription": "shop_complete.md",
+      "levelContract": "ShopFactory.sol",
+      "instanceContract": "Shop.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "20",
+      "instanceGas": 250000,
+      "author": "34x4p08"
     }
   ]
 }
