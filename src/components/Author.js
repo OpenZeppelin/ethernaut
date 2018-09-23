@@ -62,7 +62,7 @@ class Author extends React.Component {
           }
 
           {!nodata && donate && 
-              <span><br/>Donate to level author (on mainnet)? <strong>{donate}</strong></span>
+              <span><br/>Did this level teach you anything useful? Donate to the level author (on mainnet): <strong>{donate}</strong></span>
           }
 
         </div>
