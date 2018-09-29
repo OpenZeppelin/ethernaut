@@ -44,6 +44,11 @@ async function exec() {
     }
   })
 
+  if(count === 0) {
+    console.log(colors.gray(`No actions to perform, exiting.`));
+    return;
+  }
+
   if(await confirmDeployment()) {
     await deployContracts(deployData)
     storeDeployData(DEPLOY_DATA_PATH, deployData)
