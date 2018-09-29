@@ -11,23 +11,23 @@ The game acts both as a tool for those interested in learning ethereum, and as a
 You can find the current, official version at:
 [ethernaut.zeppelin.solutions](https://ethernaut.zeppelin.solutions)
 
-### Running locally (development)
+### Running locally (local network)
 
 1. Install
 ```
 git clone git@github.com:OpenZeppelin/ethernaut.git
 npm install
 ```
-2. Start deterministic testrpc
+2. Start deterministic rpc
 ```
-npm run rpc
+ganache-cli --deterministic
 ```
-3. You might want to import one of the private keys in scripts/rpc.sh to your Metamask wallet.
-4. Set target network `ACTIVE_NETWORK` in src/constants.js.
-5. Compile contracts
+3. You might want to import one of the private keys from ganache-cli to your Metamask wallet.
+4. Compile contracts
 ```
 npx truffle compile
 ```
+5. Set src/constants.js ACTIVE_NETWORK to NETWORKS.LOCAL
 6. Deploy contracts
 ```
 npm run deploy:contracts
@@ -36,7 +36,16 @@ npm run deploy:contracts
 ```
 npm start
 ```
-8. Run solidity tests with
+
+### Running locally (ropsten network)
+
+The same as using the local network but steps 2, 3 and 6 are not necessary.
+
+In this case, replace point 5 with:
+5. Set src/constants.js ACTIVE_NETWORK to NETWORKS.ROPSTEN
+
+### Running tests
+
 ```
 npx truffle test
 ```
