@@ -42,7 +42,20 @@ ReactDOM.render(
 );
 
 // Post-load actions.
-window.addEventListener('load', function() {
+window.addEventListener('load', async() => {
+
+  if (window.ethereum) {
+    window.web3 = new constants.Web3(window.ethereum)
+    try {
+      await window.ethereum.enable({mockRejection:true})
+    } catch (error) {
+      console.error(error)
+      window.web3 = null
+    }
+  } else if(window.web3) {
+    window.web3 = new constants.Web3(window.web3.currentProvider)
+  }
+
   if(window.web3) {
 
     ethutil.setWeb3(window.web3)
