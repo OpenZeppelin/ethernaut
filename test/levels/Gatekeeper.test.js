@@ -1,7 +1,9 @@
-const GateKeeperOneFactory = artifacts.require('./levels/GatekeeperOneFactory.sol')
-const GateKeeperTwoFactory = artifacts.require('./levels/GatekeeperTwoFactory.sol')
-const GatekeeperOne = artifacts.require('./attacks/GatekeeperOne.sol')
-const GatekeeperTwo = artifacts.require('./attacks/GatekeeperTwo.sol')
+const GatekeeperOneFactory = artifacts.require('./levels/GatekeeperOneFactory.sol')
+const GatekeeperTwoFactory = artifacts.require('./levels/GatekeeperTwoFactory.sol')
+const GatekeeperOne = artifacts.require('./levels/GatekeeperOne.sol')
+const GatekeeperTwo = artifacts.require('./levels/GatekeeperTwo.sol')
+const GatekeeperOneAttack = artifacts.require('./attacks/GatekeeperOneAttack.sol')
+const GatekeeperTwoAttack = artifacts.require('./attacks/GatekeeperTwoAttack.sol')
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
 
@@ -9,7 +11,7 @@ import * as utils from '../utils/TestUtils'
 import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
 import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
 
-contract('Gatekeeper', function(accounts) {
+contract('GatekeeperOne', function(accounts) {
 
   let ethernaut
   let level
@@ -18,14 +20,82 @@ contract('Gatekeeper', function(accounts) {
 
   before(async function() {
     ethernaut = await Ethernaut.new();
-    // level = await InstanceFactory.new()
-    // await ethernaut.registerLevel(level.address)
+    level = await GatekeeperOneFactory.new()
+    await ethernaut.registerLevel(level.address)
   });
 
-  it.skip('should allow the player to solve the level', async function() {
+  it('should fail if the player didnt solve the level', async function() {
+    const instance = await utils.createLevelInstance(ethernaut, level.address, player, GatekeeperOne)
+    const completed = await utils.submitLevelInstance(
+      ethernaut,
+      level.address,
+      instance.address,
+      player
+    )
 
-    // TODO: These levels are from theCyber, another game that is currently not publishing it's solutions.
-    // For the time being, no tests/solutions will be posted until theCyber's solutions are made public.
+    assert.isFalse(completed)
+  });
+
+  it('should allow the player to solve the level', async function() {
+    const instance = await utils.createLevelInstance(ethernaut, level.address, player, GatekeeperOne)
+
+    const attacker = await GatekeeperOneAttack.new(instance.address, {
+      from: player
+    })
+
+    const completed = await utils.submitLevelInstance(
+      ethernaut,
+      level.address,
+      instance.address,
+      player
+    )
+
+    assert.isTrue(completed)
+  });
+
+});
+
+contract('GatekeeperTwo', function(accounts) {
+
+  let ethernaut
+  let level
+  let owner = accounts[1]
+  let player = accounts[0]
+
+  before(async function() {
+    ethernaut = await Ethernaut.new();
+    level = await GatekeeperTwoFactory.new()
+    await ethernaut.registerLevel(level.address)
+  });
+
+  it('should fail if the player didnt solve the level', async function() {
+    const instance = await utils.createLevelInstance(ethernaut, level.address, player, GatekeeperTwo)
+    const completed = await utils.submitLevelInstance(
+      ethernaut,
+      level.address,
+      instance.address,
+      player
+    )
+
+    assert.isFalse(completed)
+  });
+
+  it('should allow the player to solve the level', async function() {
+    const instance = await utils.createLevelInstance(ethernaut, level.address, player, GatekeeperTwo)
+
+    const attacker = await GatekeeperTwoAttack.new(instance.address, {
+      from: player
+    })
+
+    const completed = await utils.submitLevelInstance(
+      ethernaut,
+      level.address,
+      instance.address,
+      player
+    )
+
+    assert.isTrue(completed)
+
   });
 
 });
