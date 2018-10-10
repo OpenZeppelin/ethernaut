@@ -301,13 +301,13 @@
       "author": "ajsantander"
     },
     {
-      "name": "Bulletin",
+      "name": "Alien Codex",
       "created": "2018-10-11",
       "difficulty": "7",
-      "description": "bulletin.md",
-      "completedDescription": "bulletin_complete.md",
-      "levelContract": "BulletinFactory.sol",
-      "instanceContract": "Bulletin.sol",
+      "description": "aliencodex.md",
+      "completedDescription": "aliencodex_complete.md",
+      "levelContract": "AlienCodexFactory.sol",
+      "instanceContract": "AlienCodex.sol",
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
