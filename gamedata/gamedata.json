@@ -299,6 +299,21 @@
       "deployId": "19",
       "instanceGas": 200000,
       "author": "ajsantander"
+    },
+    {
+      "name": "Bulletin",
+      "created": "2018-10-11",
+      "difficulty": "7",
+      "description": "bulletin.md",
+      "completedDescription": "bulletin_complete.md",
+      "levelContract": "BulletinFactory.sol",
+      "instanceContract": "Bulletin.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "20",
+      "instanceGas": 200000,
+      "author": "nczhu"
     }
   ]
 }
