@@ -28,9 +28,4 @@ contract AlienCodex is Ownable {
   function edit(uint i, bytes32 _content) contacted public {
     codex[i] = _content;
   }
-
-  // temp
-  function getlen() public view returns(uint){
-  	return codex.length;
-  }
 }
