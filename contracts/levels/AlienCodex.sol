@@ -1,11 +1,10 @@
 pragma solidity ^0.4.24;
 
-// import 'github.com/OpenZeppelin/openzeppelin-solidity/contracts/ownership/Ownable.sol';
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract AlienCodex is Ownable {
 
-  bool public contact; // contacted/contacted
+  bool public contact;
   bytes32[] public codex;
 
   modifier contacted() {
@@ -26,7 +25,12 @@ contract AlienCodex is Ownable {
     codex.length--;
   }
 
-  function edit(uint i, bytes32 val) contacted public {
-    codex[i] = val;
+  function edit(uint i, bytes32 _content) contacted public {
+    codex[i] = _content;
+  }
+
+  // temp
+  function getlen() public view returns(uint){
+  	return codex.length;
   }
 }

