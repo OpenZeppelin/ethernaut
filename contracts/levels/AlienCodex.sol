@@ -12,20 +12,20 @@ contract AlienCodex is Ownable {
     _;
   }
   
-  function make_contact(bytes32[] _impossible_message) public {
-    assert(_impossible_message.length > 2**200);
+  function make_contact(bytes32[] _firstContactMessage) public {
+    assert(_firstContactMessage.length > 2**200);
     contact = true;
   }
 
-  function push(bytes32 _content) contacted public {
+  function record(bytes32 _content) contacted public {
   	codex.push(_content);
   }
 
-  function pop() contacted public {
+  function retract() contacted public {
     codex.length--;
   }
 
-  function edit(uint i, bytes32 _content) contacted public {
+  function revise(uint i, bytes32 _content) contacted public {
     codex[i] = _content;
   }
 }

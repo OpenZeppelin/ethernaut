@@ -1,6 +1,7 @@
-Claim ownership of the Alien contract to complete this level.
+You've uncovered an Alien contract. Claim ownership of the contract to complete the level.
 
-TODO
 &nbsp;
 Things that might help
-* See [ABI specifications](https://solidity.readthedocs.io/en/v0.4.21/abi-spec.html)
+* Understanding how array storage works
+* Understanding [ABI specifications](https://solidity.readthedocs.io/en/v0.4.21/abi-spec.html)
+* Using a very `underhanded` appraoch
