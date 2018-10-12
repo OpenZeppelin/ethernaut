@@ -35,7 +35,7 @@ contract('AlienCodex', function(accounts) {
       // Player hasn't made first contact yet
       let status = await instance.contact.call();
       assert.isFalse(status);
-    }) 
+    });
 
     it('should allow the user to join AlienCodex, with arbitrary length', async function() {
       
@@ -62,7 +62,7 @@ contract('AlienCodex', function(accounts) {
 
       let _data = web3.sha3("revise(uint256,bytes32)").substring(0, 10);
       const owner_loc = '4ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30a'; // location of owner ptr, offset by array's frame of reference
-      const padding = '000000000000000000000001'; // 12byte padding for 20byte address
+      const padding = '000000000000000000000001'; // 10 bytes of padding + 0x01 'contact'
       _data = _data + owner_loc + padding + player.substr(2);
   
       await toPromise(web3.eth.sendTransaction)({
@@ -74,7 +74,6 @@ contract('AlienCodex', function(accounts) {
       // Player should own the instance now
       let ownr = await instance.owner();
       assert.equal(ownr, player);
-
-    })
+    });
   });
 });
