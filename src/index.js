@@ -77,7 +77,7 @@ window.addEventListener('load', function() {
 function checkWrongNetwork(id) {
 
   let onWrongNetwork = false
-  if(constants.ACTIVE_NETWORK.id === constants.NETWORKS.DEVELOPMENT.id) {
+  if(constants.ACTIVE_NETWORK.id === constants.NETWORKS.LOCAL.id) {
     onWrongNetwork = parseInt(id, 10) < 1000
   }
   else {

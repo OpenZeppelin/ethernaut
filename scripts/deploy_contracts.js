@@ -115,7 +115,7 @@ function withoutExtension(str) {
 }
 
 function needsDeploy(deployAddress) {
-  if(constants.ACTIVE_NETWORK === constants.NETWORKS.DEVELOPMENT) return true
+  if(constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) return true
   return deployAddress === undefined || deployAddress === 'x'
 }
 
@@ -157,7 +157,7 @@ function storeDeployData(path, deployData) {
 
 function confirmDeployment() {
   return new Promise((resolve, reject) => {
-    if(PROMPT_ON_DEVELOP || constants.ACTIVE_NETWORK !== constants.NETWORKS.DEVELOPMENT) {
+    if(PROMPT_ON_DEVELOP || constants.ACTIVE_NETWORK !== constants.NETWORKS.LOCAL) {
       const options = {
         properties: {
           confirmDeployment: {
