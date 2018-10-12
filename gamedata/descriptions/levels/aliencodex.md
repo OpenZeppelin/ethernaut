@@ -1,4 +1,4 @@
-You've uncovered an Alien contract. Claim ownership of the contract to complete the level.
+You've uncovered an Alien contract. Claim ownership to complete the level.
 
 &nbsp;
 Things that might help

@@ -40,9 +40,9 @@ contract('AlienCodex', function(accounts) {
     it('should allow the user to join AlienCodex, with arbitrary length', async function() {
       
       let _data = web3.sha3("make_contact(bytes32[])").substring(0, 10);
-      const array_loc = '0000000000000000000000000000000000000000000000000000000000000020';
-      const long_length = 'F000000000000000000000000000000000000000000000000000000000000001';
-      const arbitrary_val = '0000000000000000000000000000000000000000000000000000000000000005';
+      const array_loc = '0000000000000000000000000000000000000000000000000000000000000020';     // location of array in memory
+      const long_length = 'F000000000000000000000000000000000000000000000000000000000000001';   // arbitrary array length, starting with F000...
+      const arbitrary_val = '0000000000000000000000000000000000000000000000000000000000000005'; // arbitrary array value
       _data = _data + array_loc + long_length + arbitrary_val;
       
       await toPromise(web3.eth.sendTransaction)({
@@ -61,9 +61,8 @@ contract('AlienCodex', function(accounts) {
       await instance.retract();
 
       let _data = web3.sha3("revise(uint256,bytes32)").substring(0, 10);
-      // To retrieve owner ptr from array ptr, use: perl -Mbigint -E 'say ((2**256 - array_loc + 0)->as_hex)'
-      const owner_loc = '4ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30a';
-      const padding = '000000000000000000000001';
+      const owner_loc = '4ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30a'; // location of owner ptr, offset by array's frame of reference
+      const padding = '000000000000000000000001'; // 12byte padding for 20byte address
       _data = _data + owner_loc + padding + player.substr(2);
   
       await toPromise(web3.eth.sendTransaction)({
