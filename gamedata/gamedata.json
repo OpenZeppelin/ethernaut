@@ -312,7 +312,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "20",
-      "instanceGas": 200000,
+      "instanceGas": 500000,
       "author": "nczhu"
     }
   ]
