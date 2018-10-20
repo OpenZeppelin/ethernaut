@@ -72,6 +72,7 @@ contract('King', function(accounts) {
     )
     console.log('completed:', completed)
     assert.equal(completed, false)
+    assert.equal(await instance.king(), level.address)
 
     // Attack
     const attackerFunds = 2.01
