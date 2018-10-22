@@ -12,7 +12,7 @@ export default store => next => action => {
   }
 
   if(!action.address) {
-    console.error(`@bad No player address detected! Make sure that 1) You've installed the metamask browser extension and 2) that it's unlocked.`)
+    console.error(`@bad No player address detected! Make sure that 1) You've installed the metamask browser extension and 2) that it's unlocked. 3 optional) From November 2 you can turn ON privacy mode (OFF by default) in settings if you don't want to expose your info by default. 4 optional) If privacy mode is turn ON you have to authorized metamask to use this page. 5) then refresh.`)
     return
   }
 

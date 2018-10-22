@@ -50,6 +50,7 @@ window.addEventListener('load', async() => {
       await window.ethereum.enable()
     } catch (error) {
       console.error(error)
+      console.error(`Refresh the page to approve/reject again`)
       window.web3 = null
     }
   } else if(window.web3) {
@@ -99,6 +100,7 @@ function checkWrongNetwork(id) {
 
   if(onWrongNetwork) {
     console.error(`Heads up, you're on the wrong network!! @bad Please switch to the << ${constants.ACTIVE_NETWORK.name.toUpperCase()} >> network.`)
+    console.error(`1) From November 2 you can turn on privacy mode (off by default) in settings if you don't want to expose your info by default. 2) If privacy mode is turn on you have to authorized metamask to use this page. 3) then refresh.`)
   }
 
   return onWrongNetwork
