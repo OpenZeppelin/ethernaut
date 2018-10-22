@@ -47,7 +47,7 @@ window.addEventListener('load', async() => {
   if (window.ethereum) {
     window.web3 = new constants.Web3(window.ethereum)
     try {
-      await window.ethereum.enable({mockRejection:true})
+      await window.ethereum.enable()
     } catch (error) {
       console.error(error)
       window.web3 = null
