@@ -1,5 +1,5 @@
 pragma solidity ^0.4.24;
 
-import 'zos-lib/contracts/Initializable.sol';
+import 'openzeppelin-eth/contracts/ownership/Ownable.sol';
 
-contract LevelInstance is Initializable {}
+contract LevelInstance is Ownable {}

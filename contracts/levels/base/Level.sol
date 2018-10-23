@@ -6,10 +6,11 @@ import 'zos-lib/contracts/upgradeability/AdminUpgradeabilityProxy.sol';
 
 contract Level is Ownable {
   
-  address internal instanceImplementation;
+  address public instanceImplementation;
 
   // Will be called upon level proxy creation.
-  function initialize() public initializer {
+  function initialize(address _owner) public initializer {
+    super.initialize(_owner);
     defineInstanceImplementation();
   }
 
@@ -23,6 +24,6 @@ contract Level is Ownable {
   // -------------
 
   function createInstanceProxy(bytes _data) internal returns (AdminUpgradeabilityProxy) {
-    return new AdminUpgradeabilityProxy(instanceImplementation, _data);
+    return (new AdminUpgradeabilityProxy).value(msg.value)(instanceImplementation, _data);
   }
 }

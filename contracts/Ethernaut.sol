@@ -10,7 +10,7 @@ contract Ethernaut is Ownable {
   // Owner interaction
   // ----------------------------------
 
-  mapping(address => bool) registeredLevels;
+  mapping(address => bool) public registeredLevels;
 
   // Only registered levels will be allowed to generate and validate level instances.
   function registerLevel(Level _level) public onlyOwner {

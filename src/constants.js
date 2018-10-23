@@ -9,7 +9,7 @@ export const NETWORKS = {
   LOCAL: {
     name: 'local',
     id: '*',
-    url: 'http://localhost',
+    url: 'localhost',
     port: 8545
   },
   ROPSTEN: {
@@ -26,7 +26,7 @@ export const GOOGLE_ANALYTICS_ID = 'UA-85043059-4'
 
 // Owner addresses
 export const ADDRESSES = {
-  [NETWORKS.LOCAL.name]: undefined,
+  [NETWORKS.LOCAL.name]: '0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1', // use ganache-cli --deterministic
   [NETWORKS.ROPSTEN.name]: '0x1663fcb2f6566723a4c429f8ed34352726680f9a'
 }
 

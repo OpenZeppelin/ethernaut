@@ -9,7 +9,9 @@ contract HelloInstance is LevelInstance {
   string public theMethodName;
   bool private cleared;
 
-  function initialize(string _password) public initializer {
+  function initialize(address _owner, string _password) public initializer {
+    super.initialize(_owner);
+
     password = _password;
     infoNum = 42;
     theMethodName = 'The method name is method7123949';
