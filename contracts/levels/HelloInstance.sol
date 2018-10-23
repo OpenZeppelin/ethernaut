@@ -1,15 +1,19 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.24;
 
-contract Instance {
+import "./base/LevelInstance.sol";
+
+contract HelloInstance is LevelInstance {
 
   string public password;
-  uint8 public infoNum = 42;
-  string public theMethodName = 'The method name is method7123949.';
-  bool private cleared = false;
+  uint8 public infoNum;
+  string public theMethodName;
+  bool private cleared;
 
-  // constructor
-  function Instance(string _password) public {
+  function initialize(string _password) public initializer {
     password = _password;
+    infoNum = 42;
+    theMethodName = 'The method name is method7123949';
+    cleared = false;
   }
 
   function info() public pure returns (string) {

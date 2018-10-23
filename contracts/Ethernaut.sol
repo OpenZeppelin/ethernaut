@@ -1,7 +1,8 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.24;
 
 import './levels/base/Level.sol';
-import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
+
+import 'openzeppelin-eth/contracts/ownership/Ownable.sol';
 
 contract Ethernaut is Ownable {
 
