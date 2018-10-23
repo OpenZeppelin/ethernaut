@@ -10,7 +10,7 @@ contract Hello is Level {
   }
 
   function createInstance(address) public payable returns (address) {
-    return createInstanceProxy(abi.encode(address(this), 'ethernaut0')); 
+    return createInstanceProxy(abi.encodeWithSignature('start(address,string)', address(this), 'ethernaut0')); 
   }
 
   function validateInstance(address _instance, address) public returns (bool) {
