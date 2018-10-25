@@ -5,5 +5,13 @@
     "stage-2",
     "stage-3"
   ],
-  "plugins": ["syntax-async-functions"]
+  "plugins": [
+    "syntax-async-functions",
+    [
+      "react-intl",
+      {
+        "messagesDir": "./public/messages/"
+      }
+    ]
+  ]
 }

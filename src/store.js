@@ -17,6 +17,7 @@ import setPlayerAddress from './middlewares/setPlayerAddress'
 import setNetwork from './middlewares/setNetwork'
 import syncPlayerProgress from './middlewares/syncPlayerProgress'
 import collectStats from './middlewares/collectStats'
+import setLanguage from './middlewares/setLanguage';
 
 const middlewares = [
   loadGamedata,
@@ -28,6 +29,7 @@ const middlewares = [
   setNetwork,
   syncPlayerProgress,
   collectStats,
+  setLanguage,
   thunkMiddleware,
   routerMiddleware(browserHistory)
 ];
