@@ -16,7 +16,7 @@ contract('Shop', function(accounts) {
   let player = accounts[0]
 
   before(async function() {
-    ethernaut = await Ethernaut.new();
+    ethernaut = await Ethernaut.new()
     level = await ShopFactory.new()
     await ethernaut.registerLevel(level.address)
   });
