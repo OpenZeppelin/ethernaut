@@ -42,7 +42,21 @@ ReactDOM.render(
 );
 
 // Post-load actions.
-window.addEventListener('load', function() {
+window.addEventListener('load', async() => {
+
+  if (window.ethereum) {
+    window.web3 = new constants.Web3(window.ethereum)
+    try {
+      await window.ethereum.enable()
+    } catch (error) {
+      console.error(error)
+      console.error(`Refresh the page to approve/reject again`)
+      window.web3 = null
+    }
+  } else if(window.web3) {
+    window.web3 = new constants.Web3(window.web3.currentProvider)
+  }
+
   if(window.web3) {
 
     ethutil.setWeb3(window.web3)
@@ -77,7 +91,7 @@ window.addEventListener('load', function() {
 function checkWrongNetwork(id) {
 
   let onWrongNetwork = false
-  if(constants.ACTIVE_NETWORK.id === constants.NETWORKS.DEVELOPMENT.id) {
+  if(constants.ACTIVE_NETWORK.id === constants.NETWORKS.LOCAL.id) {
     onWrongNetwork = parseInt(id, 10) < 1000
   }
   else {
@@ -86,6 +100,7 @@ function checkWrongNetwork(id) {
 
   if(onWrongNetwork) {
     console.error(`Heads up, you're on the wrong network!! @bad Please switch to the << ${constants.ACTIVE_NETWORK.name.toUpperCase()} >> network.`)
+    console.error(`1) From November 2 you can turn on privacy mode (off by default) in settings if you don't want to expose your info by default. 2) If privacy mode is turn on you have to authorized metamask to use this page. 3) then refresh.`)
   }
 
   return onWrongNetwork

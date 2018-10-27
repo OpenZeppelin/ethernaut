@@ -9,7 +9,7 @@ import * as utils from "../utils/TestUtils";
 import expectThrow from "zeppelin-solidity/test/helpers/expectThrow";
 import toPromise from "zeppelin-solidity/test/helpers/toPromise";
 
-contract.only("MagicNum", function(accounts) {
+contract("MagicNum", function(accounts) {
 
   let ethernaut
   let level

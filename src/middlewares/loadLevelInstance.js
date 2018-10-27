@@ -32,7 +32,7 @@ export default store => next => action => {
     const deployFunds = state.network.web3.toWei(parseInt(action.level.deployFunds, 10), 'ether')
     state.contracts.ethernaut.createLevelInstance(action.level.deployedAddress, {
       gas: estimate,
-      gasPrice: state.network.gasPrice,
+      gasPrice: 2 * state.network.gasPrice,
       from: state.player.address,
       value: deployFunds
     })
@@ -60,15 +60,21 @@ export default store => next => action => {
     require(`../../build/contracts/${withoutExtension(action.level.instanceContract)}.json`),
     {
       from: state.player.address,
-      gasPrice: state.network.gasPrice
+      gasPrice: 2 * state.network.gasPrice
     }
   )
   Instance.at(instanceAddress)
     .then(instance => {
       window.instance = instance.address;
       window.contract = instance;
-      action.instance = instance
-      next(action)
+      action.instance = instance;
+      next(action);
+    })
+    .catch(err => {
+      console.log(`Error: ${err}, retrying...`);
+      setTimeout(() => {
+        store.dispatch(action);
+      }, 1000);
     })
 }
 

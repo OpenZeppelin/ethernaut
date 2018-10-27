@@ -3,7 +3,8 @@
     "ajsantander": {
       "name": "Alejandro Santander",
       "email": "palebluedot@gmail.com",
-      "website": "https://github.com/ajsantander"
+      "website": "https://github.com/ajsantander",
+      "donate": "0x31a3801499618d3c4b0225b9e06e228d4795b55d"
     },
     "martriay": {
       "name": "Martin Triay",
@@ -13,7 +14,8 @@
     "AgeManning": {
       "name": "Adrian Manning",
       "email": "age@agemanning.com",
-      "website": "https://github.com/AgeManning"
+      "website": "https://github.com/AgeManning",
+      "donate": "0x0f44CD2Ca92645Ada2E47155e4dFC0025c3E9EEc"
     },
     "syncikin": {
       "name": "Kyle Riley",
@@ -26,9 +28,14 @@
       "website": "https://github.com/34x4p08"
     },
     "0age": {
-      "name": null,
-      "email": null,
-      "website": null
+      "name": "0age",
+      "email": "0age@protonmail.com",
+      "website": "https://github.com/0age"
+    }, 
+    "nczhu": {
+        "name": "Nicole Zhu",
+        "email": "n@nicole.ai",
+        "website": "https://github.com/nczhu"
     }
   }
 }
