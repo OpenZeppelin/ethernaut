@@ -301,6 +301,7 @@
       "author": "ajsantander"
     },
     {
+
       "name": "Alien Codex",
       "created": "2018-10-11",
       "difficulty": "7",
@@ -329,6 +330,21 @@
       "deployId": "21",
       "instanceGas": 500000,
       "author": "AgeManning"
+    },
+    {
+      "name": "Shop",
+      "created": "2018-09-08",
+      "difficulty": "4",
+      "description": "shop.md",
+      "completedDescription": "shop_complete.md",
+      "levelContract": "ShopFactory.sol",
+      "instanceContract": "Shop.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "22",
+      "instanceGas": 250000,
+      "author": "34x4p08"
     }
   ]
 }
