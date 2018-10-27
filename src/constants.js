@@ -20,6 +20,9 @@ export const NETWORKS = {
   }
 }
 
+// Web3
+export const Web3 = require("web3")
+
 // Misc
 export const CLEAR_CONSOLE = !DEBUG
 export const GOOGLE_ANALYTICS_ID = 'UA-85043059-4'
