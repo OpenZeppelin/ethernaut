@@ -15,7 +15,7 @@ module.exports = {
       port: constants.NETWORKS.ROPSTEN.port,
       network_id: constants.NETWORKS.ROPSTEN.id,
       gas: 3000000,
-      gasPrice: 100000000000,
+      gasPrice: 10e9,
       from: constants.ADDRESSES[constants.NETWORKS.ROPSTEN.name]
     },
 
@@ -24,7 +24,7 @@ module.exports = {
       port: constants.NETWORKS.LOCAL.port,
       network_id: constants.NETWORKS.LOCAL.id,
       gas: 3000000,
-      gasPrice: 100000000000,
+      gasPrice: 10e9,
       from: constants.ADDRESSES[constants.NETWORKS.LOCAL.name]
     }
 

@@ -17,3 +17,7 @@ gamedata/deploy.development.json
 
 # Misc
 .tern-port
+
+# zOS
+zos.dev-*.json
+.zos.session

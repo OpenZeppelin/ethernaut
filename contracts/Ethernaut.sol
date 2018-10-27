@@ -1,7 +1,8 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.24;
 
 import './levels/base/Level.sol';
-import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
+
+import 'openzeppelin-eth/contracts/ownership/Ownable.sol';
 
 contract Ethernaut is Ownable {
 
@@ -9,7 +10,7 @@ contract Ethernaut is Ownable {
   // Owner interaction
   // ----------------------------------
 
-  mapping(address => bool) registeredLevels;
+  mapping(address => bool) public registeredLevels;
 
   // Only registered levels will be allowed to generate and validate level instances.
   function registerLevel(Level _level) public onlyOwner {

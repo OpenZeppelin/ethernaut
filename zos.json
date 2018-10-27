@@ -1,0 +1,9 @@
+{
+  "zosversion": "2",
+  "name": "ethernaut",
+  "version": "2.0.0",
+  "contracts": {
+    "Ethernaut": "Ethernaut",
+    "Hello": "Hello"
+  }
+}
