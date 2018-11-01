@@ -2,6 +2,7 @@ import * as actions from '../actions'
 
 const initialState = {
   ethernautAddress: undefined,
+  aliasAddress: undefined,
   activeLevel: undefined,
   levels: []
 }
@@ -13,7 +14,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         levels: action.levels,
-        ethernautAddress: action.ethernautAddress
+        ethernautAddress: action.ethernautAddress,
+        aliasAddress: action.aliasAddress
       }
 
     case actions.ACTIVATE_LEVEL:

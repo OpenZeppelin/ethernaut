@@ -1,4 +1,5 @@
 import * as ethutil from './ethutil'
+import * as aliasutil from './aliasutil'
 import * as constants from '../constants'
 import { createRainbow } from 'rainbow-color'
 import { rgbaString } from 'color-map'
@@ -220,6 +221,7 @@ function setupConsoleUtils() {
   window.fromWei = ethutil.fromWei
   window.version = constants.VERSION
   window.contract = `No contract set, go to a level and click 'Get new instance'`
+  window.setAlias = aliasutil.setAliasWithChecks
   window.help = function() {
     console.table({
       'player': 'current player address',
@@ -234,6 +236,7 @@ function setupConsoleUtils() {
       'getNetworkId()': 'get ethereum network id',
       'toWei(ether)': 'convert ether units to wei',
       'fromWei(wei)': 'convert wei units to ether',
+      'setAlias(alias)': 'sets your alias'
     })
   }
 }

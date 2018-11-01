@@ -9,6 +9,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import * as constants from './constants'
 
 import loadEthernautContract from './middlewares/loadEthernautContract'
+import loadAliasContract from './middlewares/loadAliasContract'
 import loadGamedata from './middlewares/loadGamedata'
 import loadLevelInstance from './middlewares/loadLevelInstance'
 import submitLevelInstance from './middlewares/submitLevelInstance'
@@ -17,10 +18,12 @@ import setPlayerAddress from './middlewares/setPlayerAddress'
 import setNetwork from './middlewares/setNetwork'
 import syncPlayerProgress from './middlewares/syncPlayerProgress'
 import collectStats from './middlewares/collectStats'
+import collectScores from './middlewares/collectScores'
 
 const middlewares = [
   loadGamedata,
   loadEthernautContract,
+  loadAliasContract,
   loadLevelInstance,
   submitLevelInstance,
   activateLevel,
@@ -28,6 +31,7 @@ const middlewares = [
   setNetwork,
   syncPlayerProgress,
   collectStats,
+  collectScores,
   thunkMiddleware,
   routerMiddleware(browserHistory)
 ];

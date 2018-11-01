@@ -5,6 +5,7 @@ import gamedataReducer from './gamedataReducer'
 import playerReducer from './playerReducer'
 import contractsReducer from './contractsReducer'
 import statsReducer from './statsReducer'
+import scoreboardReducer from './scoreboardReducer'
 
 const reducer = combineReducers({
   routing: routerReducer,
@@ -12,7 +13,8 @@ const reducer = combineReducers({
   gamedata: gamedataReducer,
   player: playerReducer,
   contracts: contractsReducer,
-  stats: statsReducer
+  stats: statsReducer,
+  scoreBoard: scoreboardReducer
 });
 
 export default reducer;
