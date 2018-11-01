@@ -11,7 +11,6 @@ export const NETWORKS = {
     id: '*',
     url: 'http://localhost',
     port: 8545
-    port: 7545
   },
   ROPSTEN: {
     name: 'ropsten',
