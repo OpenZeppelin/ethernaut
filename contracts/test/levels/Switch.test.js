@@ -38,11 +38,6 @@ contract('Switch', function(accounts) {
       assert.equal(ethCompleted, false);
     });
 
-    it('should revert when turnSwitchOn() is called', async function() {
-    // turnSwitchOn() should revert on standard call from player
-    await expectThrow(instance.turnSwitchOn({from: player}))
-    })
-
     it('it should allow the user to solve the level', async function() {
 
       // build the necessary function selectors

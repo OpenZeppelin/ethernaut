@@ -4,16 +4,17 @@ contract Switch {
   bool public switchOn; // switch is off
   bytes4 public offSelector = bytes4(keccak256("turnSwitchOff()"));
 
-  function flipSwitch(bytes _data) onlyOff public
-  {
+  function flipSwitch(bytes _data) public
+      onlyOff
+      {
       require(address(this).call(_data), "call failed :(");
   }
 
-  function turnSwitchOn() onlyThis public  {
+  function turnSwitchOn() public onlyThis {
       switchOn = true;
   }
 
-  function turnSwitchOff() onlyThis public {
+  function turnSwitchOff() public onlyThis {
      switchOn = false;
   }
 
