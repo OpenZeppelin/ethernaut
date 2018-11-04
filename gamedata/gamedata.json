@@ -301,7 +301,6 @@
       "author": "ajsantander"
     },
     {
-
       "name": "Alien Codex",
       "created": "2018-10-11",
       "difficulty": "7",
@@ -345,6 +344,21 @@
       "deployId": "22",
       "instanceGas": 250000,
       "author": "34x4p08"
+    },
+    {
+      "name": "Switch",
+      "created": "2018-11-04",
+      "difficulty": "8",
+      "description": "switch.md",
+      "completedDescription": "switch_complete.md",
+      "levelContract": "SwitchFactory.sol",
+      "instanceContract": "Switch.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "23",
+      "instanceGas": 250000,
+      "author": "AgeManning"
     }
   ]
 }
