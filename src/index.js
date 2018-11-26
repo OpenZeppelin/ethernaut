@@ -2,7 +2,6 @@ require('./utils/^^');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { IntlProvider } from 'react-intl';
 import { store } from './store';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
@@ -26,10 +25,8 @@ import './styles/app.css';
 // Initial actions
 store.dispatch(actions.loadGamedata())
 
-window.lang = (window.lang) ? window.lang : 'en';
 // View entry point.
 ReactDOM.render(
-  <IntlProvider defaultLocale={window.lang}>
     <Provider store={store}>
       <Router history={syncHistoryWithStore(browserHistory, store)}>
         <Route path={constants.PATH_ROOT} component={App}>
@@ -40,8 +37,7 @@ ReactDOM.render(
           <Route path='*' exact={true} component={NotFound404} />
         </Route>
       </Router>
-    </Provider>
-  </IntlProvider>,
+    </Provider>,
   document.getElementById('root')
 );
 
