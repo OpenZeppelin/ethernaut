@@ -5,6 +5,7 @@ export default store => next => action => {
 
     // window.lang = action.lang
     localStorage.setItem('lang', action.lang)
+    document.location.reload()
 
     next(action)
 }

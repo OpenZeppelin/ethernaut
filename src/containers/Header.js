@@ -1,10 +1,23 @@
 import React from 'react';
 import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actions from '../actions'
 import * as constants from '../constants'
 import { Link, withRouter } from 'react-router'
 import ConsoleDetect from '../components/ConsoleDetect'
 
 class Header extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      lang: localStorage.getItem('lang')
+    }
+  }
+
+  changeLanguage(e) {
+    this.props.setLang(e.target.value)
+  }
 
   render() {
     const currentPath = this.props.router.location.pathname
@@ -60,6 +73,12 @@ class Header extends React.Component {
               <li>
                 <Link style={{fontSize: '16px'}}><ConsoleDetect/></Link>
               </li>
+              <li>
+                <select onChange={this.changeLanguage.bind(this)} value={this.state.lang}>
+                  <option value="en">English</option>
+                  <option value="es">Spanish</option>
+                </select>
+              </li>
             </ul>
           </div>
         </div>
@@ -74,4 +93,9 @@ function mapStateToProps(state) {
   return { allLevelsCompleted: state.player.allLevelsCompleted }
 }
 
-export default withRouter(connect(mapStateToProps)(Header))
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    setLang: actions.setLang
+  }, dispatch);
+}
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header))
