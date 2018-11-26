@@ -6,8 +6,12 @@ import MarkdownComponent from '../components/Markdown'
 class Help extends React.Component {
   render() {
     let file = null
-    let language = window.lang || 'en'
-    try { file = require(`../../gamedata/${language}/descriptions/pages/help.md`) } catch(e){}
+    let language = localStorage.getItem('lang')
+    try { 
+      file = require(`../../gamedata/${language}/descriptions/pages/help.md`)
+    } catch(e){
+      file = require(`../../gamedata/en/descriptions/pages/help.md`)
+    }
     return (
       <div className="page-container">
         <h2 className="title">Ethernaut Help</h2>
@@ -18,7 +22,9 @@ class Help extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {}
+  return {
+    language: state.lang
+  }
 }
 
 function mapDispatchToProps(dispatch) {
