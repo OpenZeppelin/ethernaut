@@ -95,7 +95,7 @@ function checkWrongNetwork(id) {
     onWrongNetwork = parseInt(id, 10) < 1000
   }
   else {
-    onWrongNetwork = constants.ACTIVE_NETWORK.id !== id
+    onWrongNetwork = `${constants.ACTIVE_NETWORK.id}` !== `${id}`
   }
 
   if(onWrongNetwork) {

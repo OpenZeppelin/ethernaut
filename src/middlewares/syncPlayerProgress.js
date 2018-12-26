@@ -13,7 +13,7 @@ export default store => next => action => {
   ) return next(action)
 
   // Watch LevelCompletedLog
-  const log = state.contracts.ethernaut.LevelCompletedLog(
+  const log = state.contracts.ethernaut.stats.LevelCompletedLog(
     { player: state.player.address },
     { fromBlock: 0, toBlock: 'latest' }
   )

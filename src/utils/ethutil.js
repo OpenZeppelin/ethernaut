@@ -6,6 +6,13 @@ export function setWeb3(_web3) {
   web3 = _web3;
 }
 
+export function loadContract(address, abi, from) {
+  const contract = new web3.eth.Contract(abi, address, {
+    from,
+  });
+  return contract;
+}
+/*
 export function getTruffleContract(jsonABI, defaults = {}) {
   const truffleContract = TruffleContract(jsonABI);
   if(!defaults.gasPrice) defaults.gasPrice = 20000000000;
@@ -14,13 +21,17 @@ export function getTruffleContract(jsonABI, defaults = {}) {
   truffleContract.setProvider(web3.currentProvider);
   return truffleContract;
 }
+*/
 
 export function getBalance(address) {
   return new Promise(function(resolve, reject) {
-    web3.eth.getBalance(address, function(error, result) {
+    web3.eth.getBalance(address)
+    /*
+    .then()
+    , function(error, result) {
       if(error) reject(error)
       else resolve(web3.fromWei(result.toNumber(), 'ether'))
-    })
+    })*/
   })
 }
 
@@ -43,12 +54,7 @@ export function sendTransaction(options) {
 }
 
 export function getNetworkId() {
-  return new Promise((resolve, reject) => {
-    web3.version.getNetwork((err, netId) => {
-      if(err) reject();
-      else resolve(netId);
-    });
-  });
+  return web3.eth.net.getId();
 }
 
 export function toWei(ether) {
@@ -78,10 +84,11 @@ export function watchNetwork(callbacks) {
   // Gas price
   if(callbacks.gasPrice) {
     const gasPrice = function() {
-      web3.eth.getGasPrice(function(error, result) {
-        if(error) return console.log(error)
-        callbacks.gasPrice(result.toNumber())
+      web3.eth.getGasPrice()
+      .then(price => {
+        callbacks.gasPrice(Number(price));
       })
+      .catch(console.error);
     }
     gasPrice()
     setInterval(gasPrice, 30 * 60000)
@@ -90,10 +97,11 @@ export function watchNetwork(callbacks) {
   // Network id
   if(callbacks.networkId) {
     const netId = function() {
-      web3.version.getNetwork(function(error, result) {
-        if(error) return console.log(error)
-        callbacks.networkId(result)
+      getNetworkId()
+      .then(id => {
+        callbacks.networkId(id);
       })
+      .catch(console.error);
     }
     netId()
     setInterval(netId, 5 * 1000)
