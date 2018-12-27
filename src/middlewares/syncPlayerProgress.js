@@ -11,25 +11,14 @@ export default store => next => action => {
     !state.gamedata.levels ||
     !state.player.address
   ) return next(action)
-
-  // Watch LevelCompletedLog
-  const log = state.contracts.ethernaut.LevelCompletedLog(
+  
+  // Subscribe to levelCompletedLog to check if player has completed the level before
+  state.contracts.ethernaut.events.LevelCompletedLog(
     { player: state.player.address },
     { fromBlock: 0, toBlock: 'latest' }
   )
-
-  log.watch((error, result) => {
-    if (error) {
-      if (error.message && error.message.includes("TypeError: Cannot read property 'filter' of undefined")) {
-        console.error("Ouch! It seems you have run into a known Metamask issue. Try disabling and re-enabling your metamask plugin, and if that doesn't work, I'm afraid you'll need to close all Chrome processes and restart to work around it, until a fix is released. Don't worry, after restarting you should not see this message ever again.");
-      } else {
-        console.log("Error watching completion events:", error);
-      }
-      return;
-    }
-
-    // Only process if level is not known to be completed
-    const levelAddr = result.args.level;
+  .on("data", function(result){
+    const levelAddr = result.returnValues.level;
     const knownToBeCompleted = state.player.completedLevels[levelAddr];
 
     if (!knownToBeCompleted) {
@@ -41,7 +30,7 @@ export default store => next => action => {
         store.dispatch(actions.submitLevelInstance(level, true))
       }
     }
-  })
+  });
 
   next(action)
 }

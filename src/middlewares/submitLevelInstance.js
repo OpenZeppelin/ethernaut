@@ -40,24 +40,16 @@ export default store => next => async action => {
 async function submitLevelInstance(ethernaut, levelAddress, instanceAddress, player, gasPrice) {
   return new Promise(async function(resolve) {
     const data = {from: player, gasPrice}
-    // let estimate;
-    // try {
-    //   estimate = await ethernaut.submitLevelInstance.estimateGas(instanceAddress, data)
-    //   data.gas = estimate;
-    // } catch(e) {}
-    const tx = await ethernaut.submitLevelInstance(instanceAddress, data);
-    if(tx.logs.length === 0) resolve(false)
+    const tx = await ethernaut.methods.submitLevelInstance(instanceAddress).send(data);
+    if(Object.keys(tx.events).length === 0) resolve(false)
     else {
-      if(tx.logs.length === 0) resolve(false)
-      else {
-        const log = tx.logs[0].args;
-        const ethLevelAddress = log.level;
-        const ethPlayer = log.player;
-        if(player === ethPlayer && levelAddress === ethLevelAddress) {
-          resolve(true)
-        }
-        else resolve(false)
+      const log = tx.events.LevelCompletedLog.returnValues;
+      const ethLevelAddress = log.level;
+      const ethPlayer = log.player;
+      if(player === ethPlayer && levelAddress === ethLevelAddress) {
+        resolve(true)
       }
+      else resolve(false)
     }
   });
 }

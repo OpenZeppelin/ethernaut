@@ -56,30 +56,71 @@ async function exec() {
 }
 exec()
 
+async function newContract({abi, data, from, args = []}){
+  const currentGasPrice = await web3.eth.getGasPrice();
+  const suggestedGasPrice = web3.utils.toHex((web3.utils.toBN(currentGasPrice).mul(web3.utils.toBN("10"))));
+
+  const contract = new web3.eth.Contract(abi);
+  const deployment = contract.deploy({
+    from,
+    data,
+    arguments: args
+  });
+
+  // Estimate gas seem to fail here
+  // const gas = await deployment.estimateGas();
+  // console.log("Gas");
+  // console.log(gas);
+
+  const deployedContract = await deployment.send({
+    gas: 4500000,
+    gasPrice: suggestedGasPrice,
+    from
+  });
+  
+  // console.log(deployedContract);
+  
+  return deployedContract._address;
+}
+
+function loadContract(address, abi, from) {
+  const contract = new web3.eth.Contract(abi, address, {
+    from,
+  });
+  return contract;
+}
+
 async function deployContracts(deployData) {
+  let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
+  if(!from) {
+    const accounts = await web3.eth.personal.getAccounts();
+    from = accounts[0];
+    console.log(accounts);
+  }
+
+
+  const currentGasPrice = await web3.eth.getGasPrice();
+  const suggestedGasPrice = web3.utils.toHex((web3.utils.toBN(currentGasPrice).mul(web3.utils.toBN("10"))));
   const props = {
-    gasPrice: web3.eth.gasPrice * 10,
+    gasPrice: suggestedGasPrice,
     gas: 4500000
   }
 
-  let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
-  if(!from) from = web3.eth.accounts[0];
-  console.log("FROM: ", from)
-
   // Deploy/retrieve ethernaut contract
-  const Ethernaut = await ethutil.getTruffleContract(EthernautABI, {from})
+  //const Ethernaut = await ethutil.getTruffleContract(EthernautABI, {from});
   if(needsDeploy(deployData.ethernaut)) {
-		console.log(deployData);
-    console.log(`Deploying Ethernaut.sol...`);
-    ethernaut = await Ethernaut.new(props)
-    console.log(colors.yellow(`  Ethernaut: ${ethernaut.address}`));
-    deployData.ethernaut = ethernaut.address;
+    const address = await newContract({
+      abi: EthernautABI.abi,
+      data: EthernautABI.bytecode,
+      from
+    });
+    console.log(colors.yellow(`  Ethernaut: ${address}`));
+    deployData.ethernaut = address;
   }
   else {
     console.log('Using deployed Ethernaut.sol:', deployData.ethernaut);
-    ethernaut = await Ethernaut.at(deployData.ethernaut)
-    // console.log('ethernaut: ', ethernaut);
   }
+  ethernaut = loadContract(deployData.ethernaut, EthernautABI.abi, from);
 
   // Sweep levels
   const promises = gamedata.levels.map(async level => {
@@ -89,16 +130,24 @@ async function deployContracts(deployData) {
         console.log(`Deploying ${level.levelContract}, deployId: ${level.deployId}...`);
 
         // Deploy contract
-        const LevelABI = require(`../build/contracts/${withoutExtension(level.levelContract)}.json`)
-        const Contract = await ethutil.getTruffleContract(LevelABI, {from})
-        const contract = await Contract.new(...level.deployParams, props)
-        console.log(colors.yellow(`  ${level.name}: ${contract.address}`));
-        deployData[level.deployId] = contract.address
-        console.log(colors.gray(`  storing deployed id: ${level.deployId} with address: ${contract.address}`));
+        const LevelABI = require(`../build/contracts/${withoutExtension(level.levelContract)}.json`);
+
+        const address = await newContract({
+          abi: LevelABI.abi,
+          data: LevelABI.bytecode,
+          from
+        });
+        console.log(colors.yellow(`  ${level.name}: ${address}`));
+        deployData[level.deployId] = address
+        console.log(colors.gray(`  storing deployed id: ${level.deployId} with address: ${address}`));
 
         // Register level in Ethernaut contract
         console.log(`  Registering level in Ethernaut.sol...`)
-        const tx = await ethernaut.registerLevel(contract.address, props);
+        const tx = await ethernaut.methods.registerLevel(address).send({
+          gas: 4500000,
+          gasPrice: suggestedGasPrice,
+          from
+        });
         // console.log(tx)
       }
       else {
@@ -133,16 +182,22 @@ function initWeb3() {
     const provider = new Web3.providers.HttpProvider(providerUrl);
     web3 = new Web3(provider)
 
-    web3.net.getListening((err, res) => {
-      if(err) {
-        console.log('error connecting web3:', err);
-        reject()
-        return
+    if(process.env.PRIVATE_KEY){
+      console.log(`Added private key: 0x${process.env.PRIVATE_KEY}`);
+      web3.eth.accounts.wallet.add(`0x${process.env.PRIVATE_KEY}`);
+    };
+
+    web3.eth.net.isListening()
+    .then(listening => {
+      if (listening){
+        console.log(colors.gray(`web3 connected:\n`));
+        ethutil.setWeb3(web3);
+        resolve();
+      } else {
+        reject(); 
       }
-      console.log(colors.gray(`web3 connected: ${res}\n`));
-      ethutil.setWeb3(web3)
-      resolve()
     })
+    .catch(reject);
   })
 }
 

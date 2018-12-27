@@ -18,6 +18,31 @@ export default store => next => action => {
   // console.log(`GETTING ETHERNAUT...`, state.gamedata.ethernautAddress)
 
   // Get contract template
+  const instance = ethutil.loadContract(
+    state.gamedata.ethernautAddress, 
+    EthernautABI.abi,
+    state.player.address
+  );
+
+  if(!instance.address){
+    instance.address = instance._address;
+  }
+
+  console.info(`=> Ethernaut address\n${instance.address}`)
+
+  // for player interaction via the browser's console
+  window.ethernaut = instance
+
+  action.contract = instance
+  next(action)
+
+  // Get game data
+  store.dispatch(actions.syncLevelProgress())
+
+  // Auto-restore previoius instance
+  if(state.gamedata.activeLevel)
+    store.dispatch(actions.loadLevelInstance(state.gamedata.activeLevel, true))
+  /*
   const Ethernaut = ethutil.getTruffleContract(
     EthernautABI,
     {
@@ -48,4 +73,5 @@ export default store => next => action => {
     .catch(() => {
       console.error(`@bad Ethernaut contract not found in the current network. Please make sure (1) that you are using metamask, (2) that it's on the ropsten testnet, (3) that it is unlocked, (4 optional) From November 2 you can turn ON privacy mode (OFF by default) in Metamask settings if you don't want to expose your info by default. (5 optional) If privacy mode is turn ON you have to authorized metamask to use this page. and (6) then refresh.`)
     })
+  */
 }

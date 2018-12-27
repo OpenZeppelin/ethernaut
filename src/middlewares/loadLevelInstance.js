@@ -29,17 +29,18 @@ export default store => next => action => {
 
     // const estimate = await state.contracts.ethernaut.getLevelInstance.estimateGas(action.level.deployedAddress)
     const estimate = parseInt(action.level.instanceGas, 10) || 2000000
-    const deployFunds = state.network.web3.toWei(parseInt(action.level.deployFunds, 10), 'ether')
-    state.contracts.ethernaut.createLevelInstance(action.level.deployedAddress, {
-      gas: estimate,
-      gasPrice: 2 * state.network.gasPrice,
-      from: state.player.address,
-      value: deployFunds
-    })
+    const deployFunds = state.network.web3.utils.toWei(`${action.level.deployFunds}`, 'ether');
+    state.contracts.ethernaut.methods.createLevelInstance(action.level.deployedAddress)
+      .send({
+        gas: estimate,
+        gasPrice: 2 * state.network.gasPrice,
+        from: state.player.address,
+        value: deployFunds
+      })
       .then(tx => {
-        console.dir(tx)
-        instanceAddress = tx.logs[0].args.instance;
-        if(tx.logs.length > 0) {
+        console.log(tx)
+        if(tx.events.LevelInstanceCreatedLog) {
+          instanceAddress = tx.events.LevelInstanceCreatedLog.returnValues.instance;
           action.instanceAddress = instanceAddress
           store.dispatch(action)
         }
@@ -56,26 +57,20 @@ export default store => next => action => {
   // Get instance from address
   if(!instanceAddress) return
   console.info(`=> Instance address\n${instanceAddress}`)
-  const Instance = ethutil.getTruffleContract(
-    require(`../../build/contracts/${withoutExtension(action.level.instanceContract)}.json`),
-    {
-      from: state.player.address,
-      gasPrice: 2 * state.network.gasPrice
-    }
-  )
-  Instance.at(instanceAddress)
-    .then(instance => {
-      window.instance = instance.address;
-      window.contract = instance;
-      action.instance = instance;
-      next(action);
-    })
-    .catch(err => {
-      console.log(`Error: ${err}, retrying...`);
+  const instanceABI = require(`../../build/contracts/${withoutExtension(action.level.instanceContract)}.json`);
+  try{
+    const instance = ethutil.loadContract(instanceAddress, instanceABI.abi, state.player.address);
+    if(!instance.address) instance.address = instance._address;
+    window.instance = instance.address;
+    window.contract = instance;
+    action.instance = instance;
+    next(action);
+  }catch(err){
+    console.log(`Error: ${err}, retrying...`);
       setTimeout(() => {
         store.dispatch(action);
       }, 1000);
-    })
+  }
 }
 
 // ----------------------------------
