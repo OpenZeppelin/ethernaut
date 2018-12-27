@@ -1,4 +1,3 @@
-import TruffleContract from 'truffle-contract'
 import * as ethjs from 'ethereumjs-util'
 
 let web3;
@@ -12,26 +11,10 @@ export function loadContract(address, abi, from) {
   });
   return contract;
 }
-/*
-export function getTruffleContract(jsonABI, defaults = {}) {
-  const truffleContract = TruffleContract(jsonABI);
-  if(!defaults.gasPrice) defaults.gasPrice = 20000000000;
-  // if(!defaults.gas) defaults.gas = 200000;
-  truffleContract.defaults(defaults);
-  truffleContract.setProvider(web3.currentProvider);
-  return truffleContract;
-}
-*/
 
 export function getBalance(address) {
   return new Promise(function(resolve, reject) {
     web3.eth.getBalance(address)
-    /*
-    .then()
-    , function(error, result) {
-      if(error) reject(error)
-      else resolve(web3.fromWei(result.toNumber(), 'ether'))
-    })*/
   })
 }
 

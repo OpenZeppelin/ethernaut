@@ -92,7 +92,12 @@ function loadContract(address, abi, from) {
 
 async function deployContracts(deployData) {
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
-  if(!from) from = web3.eth.accounts[0];
+  if(!from) {
+    const accounts = await web3.eth.personal.getAccounts();
+    from = accounts[0];
+    console.log(accounts);
+  }
+
 
   const currentGasPrice = await web3.eth.getGasPrice();
   const suggestedGasPrice = web3.utils.toHex((web3.utils.toBN(currentGasPrice).mul(web3.utils.toBN("10"))));

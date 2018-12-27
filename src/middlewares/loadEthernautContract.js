@@ -24,6 +24,10 @@ export default store => next => action => {
     state.player.address
   );
 
+  if(!instance.address){
+    instance.address = instance._address;
+  }
+
   console.info(`=> Ethernaut address\n${instance.address}`)
 
   // for player interaction via the browser's console

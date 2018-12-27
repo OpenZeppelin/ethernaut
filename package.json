@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "c": "node scripts/deploy_contracts.js",
+    "server": "cd build_webpack && python -m SimpleHTTPServer 8080",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "truffle test",
