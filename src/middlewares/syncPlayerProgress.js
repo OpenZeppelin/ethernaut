@@ -19,6 +19,7 @@ export default store => next => action => {
   )
   .on("data", function(result){
     const levelAddr = result.returnValues.level;
+    const playerAddr = result.returnValues.player;
     const knownToBeCompleted = state.player.completedLevels[levelAddr];
 
     if (!knownToBeCompleted) {
@@ -27,7 +28,9 @@ export default store => next => action => {
       if (!level) {
         console.log("Unexpected address in LevelCompletedLog event (skipping): ", levelAddr);
       } else {
-        store.dispatch(actions.submitLevelInstance(level, true))
+        if(playerAddr === state.player.address){
+          store.dispatch(actions.submitLevelInstance(level, true))
+        }
       }
     }
   });
