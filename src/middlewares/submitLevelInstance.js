@@ -40,10 +40,7 @@ export default store => next => async action => {
 async function submitLevelInstance(ethernaut, levelAddress, instanceAddress, player, gasPrice) {
   return new Promise(async function(resolve) {
     const data = {from: player, gasPrice}
-    console.log("Tx", levelAddress, instanceAddress, player, gasPrice);
     const tx = await ethernaut.methods.submitLevelInstance(instanceAddress).send(data);
-    console.log("Tx");
-    console.log(tx);
     if(Object.keys(tx.events).length === 0) resolve(false)
     else {
       const log = tx.events.LevelCompletedLog.returnValues;
