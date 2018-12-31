@@ -2,8 +2,6 @@
 const Ethernaut = artifacts.require('./Ethernaut.sol');
 const DummyLevel = artifacts.require('./levels/DummyLevel.sol');
 const Dummy = artifacts.require('./levels/Dummy.sol');
-const FallbackFactory = artifacts.require('./levels/FallbackFactory.sol');
-const Manufactured = artifacts.require('./levels/Manufactured.sol');
 import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
 import * as utils from './utils/TestUtils'
 
@@ -23,13 +21,16 @@ contract('Ethernaut', function(accounts) {
 
   it(`should not allow a player to manufacture a solution instance`, async function() {
 
-    const level = await FallbackFactory.new()
+    const level = await DummyLevel.new()
     await ethernaut.registerLevel(level.address, {from: owner});
 
     // Instead of solving the instance, the player manufactures an instance
-    // with the desired state:
-    // const instance = await utils.createLevelInstance(ethernaut, level.address, player, Fallback)
-    const instance = await Manufactured.new()
+    // with the desired state
+    const instance = await Dummy.new();
+    await instance.setCompleted(true);
+    const completed = await instance.completed();
+    console.log(`completed:`, completed)
+    assert.equal(completed, true)
 
     await expectThrow(ethernaut.submitLevelInstance(instance.address, {from: player}))
   });
