@@ -1,31 +1,28 @@
-import * as actions from '../actions'
-import * as constants from '../constants'
+import * as actions from "../actions";
+import * as constants from "../constants";
 
-let wasOnWrongNetwork = false
+let wasOnWrongNetwork = false;
 
 export default store => next => action => {
-  if(action.type !== actions.SET_NETWORK_ID) return next(action)
+  if (action.type !== actions.SET_NETWORK_ID) return next(action);
 
   // console.log(`ID`, action.id)
-  if(checkWrongNetwork(action.id)) {
-    wasOnWrongNetwork = true
-  }
-  else if(wasOnWrongNetwork) {
-    document.location.reload()
+  if (checkWrongNetwork(action.id)) {
+    wasOnWrongNetwork = true;
+  } else if (wasOnWrongNetwork) {
+    document.location.reload();
   }
 
-  next(action)
-}
+  next(action);
+};
 
 function checkWrongNetwork(id) {
-
-  let onWrongNetwork = false
-  if(constants.ACTIVE_NETWORK.id === constants.NETWORKS.LOCAL.id) {
-    onWrongNetwork = parseInt(id, 10) < 1000
-  }
-  else {
-    onWrongNetwork = constants.ACTIVE_NETWORK.id !== id
+  let onWrongNetwork = false;
+  if (constants.ACTIVE_NETWORK.id === constants.NETWORKS.LOCAL.id) {
+    onWrongNetwork = parseInt(id, 10) < 1000;
+  } else {
+    onWrongNetwork = constants.ACTIVE_NETWORK.id !== id;
   }
 
-  return onWrongNetwork
+  return onWrongNetwork;
 }

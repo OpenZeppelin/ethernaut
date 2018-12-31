@@ -6,12 +6,11 @@ export default function load(data) {
         .then(response => response.text())
         .then(text => {
           // console.log(`file loaded`)
-          resolve(text)
-        })
+          resolve(text);
+        });
+    } catch (error) {
+      console.log(`ERROR LOADING FILE:`, error);
+      reject(error);
     }
-    catch(error) {
-      console.log(`ERROR LOADING FILE:`, error)
-      reject(error)
-    }
-  })
+  });
 }

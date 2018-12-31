@@ -1,15 +1,15 @@
 export function getBalance(web3, address) {
   return new Promise(function(resolve, reject) {
     web3.eth.getBalance(address, function(error, result) {
-      if(error) reject(error)
-      else resolve(web3.fromWei(result.toNumber(), 'ether'))
-    })
-  })
+      if (error) reject(error);
+      else resolve(web3.fromWei(result.toNumber(), "ether"));
+    });
+  });
 }
 
 export function skipBlocks(numBlocks, web3) {
   return new Promise(async resolve => {
-    for(let i = 0; i < numBlocks; i++) {
+    for (let i = 0; i < numBlocks; i++) {
       await skipBlock(web3);
     }
     resolve();
@@ -18,21 +18,30 @@ export function skipBlocks(numBlocks, web3) {
 
 export function skipBlock(web3) {
   return new Promise((resolve, reject) => {
-    web3.currentProvider.sendAsync({
-      jsonrpc: '2.0',
-      method: 'evm_mine'
-    }, (error, result) => {
-      if(error) reject();
-      else resolve(result);
-    });
+    web3.currentProvider.sendAsync(
+      {
+        jsonrpc: "2.0",
+        method: "evm_mine"
+      },
+      (error, result) => {
+        if (error) reject();
+        else resolve(result);
+      }
+    );
   });
 }
 
-export async function createLevelInstance(ethernaut, levelAddress, player, levelInstanceClass, params) {
+export async function createLevelInstance(
+  ethernaut,
+  levelAddress,
+  player,
+  levelInstanceClass,
+  params
+) {
   return new Promise(async function(resolve, reject) {
-    const data = params || {from: player}
+    const data = params || { from: player };
     const tx = await ethernaut.createLevelInstance(levelAddress, data);
-    if(tx.logs.length === 0) reject()
+    if (tx.logs.length === 0) reject();
     else {
       const instanceAddress = tx.logs[0].args.instance;
       const instance = await levelInstanceClass.at(instanceAddress);
@@ -41,19 +50,24 @@ export async function createLevelInstance(ethernaut, levelAddress, player, level
   });
 }
 
-export async function submitLevelInstance(ethernaut, levelAddress, instanceAddress, player, params) {
+export async function submitLevelInstance(
+  ethernaut,
+  levelAddress,
+  instanceAddress,
+  player,
+  params
+) {
   return new Promise(async function(resolve) {
-    const data = params || {from: player}
+    const data = params || { from: player };
     const tx = await ethernaut.submitLevelInstance(instanceAddress, data);
-    if(tx.logs.length === 0) resolve(false)
+    if (tx.logs.length === 0) resolve(false);
     else {
       const log = tx.logs[0].args;
       const ethLevelAddress = log.level;
       const ethPlayer = log.player;
-      if(player === ethPlayer && levelAddress === ethLevelAddress) {
-        resolve(true)
-      }
-      else resolve(false)
+      if (player === ethPlayer && levelAddress === ethLevelAddress) {
+        resolve(true);
+      } else resolve(false);
     }
   });
 }

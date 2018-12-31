@@ -1,14 +1,13 @@
-import * as actions from '../actions'
+import * as actions from "../actions";
 
 const initialState = {
   ethernaut: undefined,
   levels: {},
   nonce: 0
-}
+};
 
 export default function(state = initialState, action) {
-  switch(action.type) {
-
+  switch (action.type) {
     case actions.LOAD_ETHERNAUT_CONTRACT:
       return {
         ...state,
@@ -23,10 +22,10 @@ export default function(state = initialState, action) {
           [action.level.deployedAddress]: action.instance
         },
         nonce: state.nonce + 1
-      }
+      };
 
     case actions.SUBMIT_LEVEL_INSTANCE:
-      if(action.completed) {
+      if (action.completed) {
         return {
           ...state,
           levels: {
@@ -34,11 +33,10 @@ export default function(state = initialState, action) {
             [action.level.deployedAddress]: undefined
           },
           nonce: state.nonce + 1
-        }
-      }
-      else return state
+        };
+      } else return state;
 
     default:
-      return state
+      return state;
   }
 }

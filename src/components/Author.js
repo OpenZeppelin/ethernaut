@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
+import PropTypes from "prop-types";
 
 class Author extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -23,7 +23,7 @@ class Author extends React.Component {
   fetchAuthorData(author) {
     const data = require(`../../gamedata/authors.json`).authors;
     const authorData = data[author];
-    if(!authorData) return;
+    if (!authorData) return;
     this.setState({
       name: authorData.name,
       email: authorData.email,
@@ -41,34 +41,50 @@ class Author extends React.Component {
     const nodata = !name && !email && !website && !donate;
     return (
       <div>
-        <div style={{marginTop: '20px', marginBotton: '20px'}}>
-
+        <div style={{ marginTop: "20px", marginBotton: "20px" }}>
           <h4>Level author</h4>
 
-          {nodata && 
-            <span>{this.props.author}</span>
-          }
+          {nodata && <span>{this.props.author}</span>}
 
-          {!nodata && name &&
-            <span>{name}</span>
-          }
+          {!nodata && name && <span>{name}</span>}
 
-          {!nodata && email && 
-              <span><br/><strong><a href={`mailto:${email}`} target='_blank'>{email}</a></strong></span>
-          }
+          {!nodata && email && (
+            <span>
+              <br />
+              <strong>
+                <a href={`mailto:${email}`} target="_blank">
+                  {email}
+                </a>
+              </strong>
+            </span>
+          )}
 
-          {!nodata && website && 
-            <span><br/><strong><a href={website} target='_blank'>{website}</a></strong></span>
-          }
+          {!nodata && website && (
+            <span>
+              <br />
+              <strong>
+                <a href={website} target="_blank">
+                  {website}
+                </a>
+              </strong>
+            </span>
+          )}
 
-          {!nodata && donate && 
-              <span><br/>Did this level teach you anything useful? Donate to the level author (on mainnet): <strong>{donate}</strong></span>
-          }
-
+          {!nodata && donate && (
+            <span>
+              <br />
+              Did this level teach you anything useful? Donate to the level
+              author (on mainnet): <strong>{donate}</strong>
+            </span>
+          )}
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Author
+Author.propTypes = {
+  author: PropTypes.Object
+};
+
+export default Author;

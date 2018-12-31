@@ -1,5 +1,5 @@
-var path = require('path');
-var fs = require('fs');
+var path = require("path");
+var fs = require("fs");
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebookincubator/create-react-app/issues/637
@@ -23,8 +23,8 @@ function resolveApp(relativePath) {
 // Otherwise, we risk importing Node.js core modules into an app instead of Webpack shims.
 // https://github.com/facebookincubator/create-react-app/issues/1023#issuecomment-265344421
 
-var nodePaths = (process.env.NODE_PATH || '')
-  .split(process.platform === 'win32' ? ';' : ':')
+var nodePaths = (process.env.NODE_PATH || "")
+  .split(process.platform === "win32" ? ";" : ":")
   .filter(Boolean)
   .filter(folder => !path.isAbsolute(folder))
   .map(resolveApp);
@@ -32,15 +32,15 @@ var nodePaths = (process.env.NODE_PATH || '')
 // config after eject: we're in ./config/
 module.exports = {
   // Changed from build to build_webpack so smart contract compilations are not overwritten.
-  appBuild: resolveApp('build_webpack'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/index.js'),
-  appPackageJson: resolveApp('package.json'),
-  appSrc: resolveApp('src'),
-  yarnLockFile: resolveApp('yarn.lock'),
-  testsSetup: resolveApp('src/setupTests.js'),
-  appNodeModules: resolveApp('node_modules'),
-  ownNodeModules: resolveApp('node_modules'),
+  appBuild: resolveApp("build_webpack"),
+  appPublic: resolveApp("public"),
+  appHtml: resolveApp("public/index.html"),
+  appIndexJs: resolveApp("src/index.js"),
+  appPackageJson: resolveApp("package.json"),
+  appSrc: resolveApp("src"),
+  yarnLockFile: resolveApp("yarn.lock"),
+  testsSetup: resolveApp("src/setupTests.js"),
+  appNodeModules: resolveApp("node_modules"),
+  ownNodeModules: resolveApp("node_modules"),
   nodePaths: nodePaths
 };
