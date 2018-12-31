@@ -2,6 +2,7 @@
   "levels": [
     {
       "name": "Pokemon Trainer",
+      "reward": 20,
       "created": "2018-26-12",
       "difficulty": "2",
       "description": "pokemon_trainer.md",

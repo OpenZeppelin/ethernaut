@@ -13,6 +13,7 @@ const fs = require("fs");
 const ethutil = require(`../src/utils/ethutil`);
 const constants = require(`../src/constants`);
 const EthernautABI = require("../build/contracts/Ethernaut.json");
+const ScoreTrackerABI = require("../build/contracts/ScoreTracker.json");
 
 const gamedata = require(`../gamedata/gamedata.json`);
 
@@ -126,10 +127,19 @@ async function deployContracts(deployData) {
     console.log("Using deployed Ethernaut.sol:", deployData.ethernaut);
   }
   ethernaut = loadContract(deployData.ethernaut, EthernautABI.abi, from);
+  const scoreTrackerAddress = await ethernaut.methods.scoreTracker().call();
+  const scoreTracker = loadContract(
+    scoreTrackerAddress,
+    ScoreTrackerABI.abi,
+    from
+  );
+  const tokenAddress = await scoreTracker.methods.scoreToken().call();
+  console.log(colors.yellow(`  Token Address: ${tokenAddress}`));
 
   // Sweep levels
   const promises = gamedata.levels.map(async level => {
     // console.log('level: ', level);
+    const { reward = 10 } = level;
     return new Promise(async resolve => {
       if (needsDeploy(deployData[level.deployId])) {
         console.log(
@@ -146,7 +156,9 @@ async function deployContracts(deployData) {
           data: LevelABI.bytecode,
           from
         });
-        console.log(colors.yellow(`  ${level.name}: ${address}`));
+        console.log(
+          colors.yellow(`  ${level.name}: ${address} - Rewards ${reward}`)
+        );
         deployData[level.deployId] = address;
         console.log(
           colors.gray(
@@ -156,7 +168,7 @@ async function deployContracts(deployData) {
 
         // Register level in Ethernaut contract
         console.log(`  Registering level in Ethernaut.sol...`);
-        await ethernaut.methods.registerLevel(address).send({
+        await ethernaut.methods.registerLevel(address, reward).send({
           gas: 4500000,
           gasPrice: suggestedGasPrice,
           from
