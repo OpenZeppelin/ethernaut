@@ -1,6 +1,22 @@
 {
   "levels": [
     {
+      "name": "Hello",
+      "reward": 10,
+      "created": "2018-26-12",
+      "difficulty": "1",
+      "description": "hello.md",
+      "completedDescription": "hello_complete.md",
+      "levelContract": "HelloFactory.sol",
+      "instanceContract": "Hello.sol",
+      "revealCode": false,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "0",
+      "instanceGas": 800000,
+      "author": "ajsantander"
+    },
+    {
       "name": "Pokemon Trainer",
       "reward": 20,
       "created": "2018-26-12",
@@ -12,7 +28,7 @@
       "revealCode": false,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "0",
+      "deployId": "1",
       "instanceGas": 800000,
       "author": "raymondyeh"
     }
