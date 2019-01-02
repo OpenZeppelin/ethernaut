@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import * as constants from "../constants";
 import { Link, withRouter } from "react-router";
@@ -119,3 +120,7 @@ function mapStateToProps(state) {
 }
 
 export default withRouter(connect(mapStateToProps)(Header));
+
+Header.propTypes = {
+  router: PropTypes.object
+};

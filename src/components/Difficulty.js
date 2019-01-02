@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Difficulty = ({ level }) => {
   return (
@@ -11,3 +12,7 @@ const Difficulty = ({ level }) => {
 };
 
 export default Difficulty;
+
+Difficulty.propTypes = {
+  level: PropTypes.number
+};

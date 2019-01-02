@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import loadText from "../utils/textloader";
 import ReactMarkdown from "react-markdown";
 
@@ -42,3 +43,7 @@ class Markdown extends React.Component {
 }
 
 export default Markdown;
+
+Markdown.propTypes = {
+  target: PropTypes.string
+};

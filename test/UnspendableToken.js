@@ -3,7 +3,6 @@ const UnspendableToken = artifacts.require("./UnspendableToken.sol");
 import expectThrow from "zeppelin-solidity/test/helpers/expectThrow";
 
 contract("UnspendableToken", function(accounts) {
-  let owner = accounts[0];
   let acc1 = accounts[1];
   let acc2 = accounts[1];
 

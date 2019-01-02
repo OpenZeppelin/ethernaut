@@ -3,7 +3,7 @@ import * as constants from "../constants";
 
 let wasOnWrongNetwork = false;
 
-export default store => next => action => {
+export default () => next => action => {
   if (action.type !== actions.SET_NETWORK_ID) return next(action);
 
   // console.log(`ID`, action.id)

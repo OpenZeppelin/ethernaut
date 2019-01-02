@@ -13,9 +13,7 @@ export function loadContract(address, abi, from) {
 }
 
 export function getBalance(address) {
-  return new Promise(function(resolve, reject) {
-    web3.eth.getBalance(address);
-  });
+  return web3.eth.getBalance(address);
 }
 
 export function getBlockNumber() {
@@ -169,7 +167,7 @@ export function signMessageWithMetamask(addr, message, callback) {
   );
 }
 
-function logger(req, res, next, end) {
+function logger(req, res, next, _end) {
   next(cb => {
     // HACK: do not log known error when setting event log filters
     if (
