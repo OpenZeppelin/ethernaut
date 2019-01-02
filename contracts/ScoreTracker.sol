@@ -1,16 +1,16 @@
 pragma solidity ^0.5.0;
 
 import "./utils/Ownable.sol";
-import "./utils/ERC20MintableDetailed.sol";
+import "./utils/UnspendableToken.sol";
 
 // Score tracker to use token to track user's score.
 contract ScoreTracker is Ownable{
-    ERC20MintableDetailed public scoreToken; 
+    UnspendableToken public scoreToken; 
     mapping(address => mapping(address => bool)) public solved;
     mapping(address => uint256) public levelReward;
 
     constructor() public {
-      scoreToken = new ERC20MintableDetailed("ScoreToken", "STKN", 0);
+      scoreToken = new UnspendableToken("ScoreToken", "STKN", 0);
     }
 
     function registerLevel(address _level, uint256 _reward) public onlyOwner {
