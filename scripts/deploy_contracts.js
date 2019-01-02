@@ -127,18 +127,20 @@ async function deployContracts(deployData) {
     });
     console.log(colors.yellow(`  Ethernaut: ${address}`));
     deployData.ethernaut = address;
+    ethernaut = loadContract(deployData.ethernaut, EthernautABI.abi, from);
+    const scoreTrackerAddress = await ethernaut.methods.scoreTracker().call();
+    const scoreTracker = loadContract(
+      scoreTrackerAddress,
+      ScoreTrackerABI.abi,
+      from
+    );
+    const tokenAddress = await scoreTracker.methods.scoreToken().call();
+    deployData.token = tokenAddress;
+    console.log(colors.yellow(`  Token Address: ${deployData.token}`));
   } else {
     console.log("Using deployed Ethernaut.sol:", deployData.ethernaut);
+    console.log(`Using deployed token: ${deployData.token}`);
   }
-  ethernaut = loadContract(deployData.ethernaut, EthernautABI.abi, from);
-  const scoreTrackerAddress = await ethernaut.methods.scoreTracker().call();
-  const scoreTracker = loadContract(
-    scoreTrackerAddress,
-    ScoreTrackerABI.abi,
-    from
-  );
-  const tokenAddress = await scoreTracker.methods.scoreToken().call();
-  console.log(colors.yellow(`  Token Address: ${tokenAddress}`));
 
   // Sweep levels
   const promises = gamedata.levels.map(async level => {
