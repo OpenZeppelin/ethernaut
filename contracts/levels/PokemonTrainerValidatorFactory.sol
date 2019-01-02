@@ -1,7 +1,7 @@
 pragma solidity ^0.5.0;
 
-import './base/Level.sol';
-import './PokemonTrainerValidator.sol';
+import "./base/Level.sol";
+import "./PokemonTrainerValidator.sol";
 
 contract PokemonTrainerValidatorFactory is Level {
 

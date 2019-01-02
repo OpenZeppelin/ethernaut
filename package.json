@@ -9,6 +9,10 @@
     "test": "truffle test",
     "eslint": "eslint . --ext .js",
     "eslint:fix": "eslint . --ext .js --fix",
+    "solium": "solium -d contracts/",
+    "solium:fix": "solium -d contracts/ --fix",
+    "lint": "npm run eslint && npm run solium",
+    "lint:fix": "npm run eslint:fix && npm run solium:fix",
     "compile:contracts": "rm -rf build && npx truffle compile",
     "deploy:contracts": "npm run compile:contracts && node scripts/deploy_contracts.js"
   },
@@ -111,7 +115,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run eslint"
+      "pre-push": "npm run lint"
     }
   },
   "jest": {
