@@ -30,15 +30,15 @@ contract("UnspendableToken", function(accounts) {
   });
 
   it("should not allow minting by non-owners", async () => {
-    await expectThrow(token.mint(acc1, "10", {from: acc1}));
+    await expectThrow(token.mint(acc1, "10", { from: acc1 }));
   });
 
   it("should not allow transfers", async () => {
     await token.mint(acc1, "10");
-    await expectThrow(token.transfer(acc2, 10, {from: acc1}));
-    await expectThrow(token.approve(acc2, 10, {from: acc1}));
-    await expectThrow(token.transferFrom(acc1, acc2, 10, {from: acc2}));
-    await expectThrow(token.increaseAllowance(acc2, 100, {from: acc1}));
-    await expectThrow(token.decreaseAllowance(acc2, 10, {from: acc1}));
+    await expectThrow(token.transfer(acc2, 10, { from: acc1 }));
+    await expectThrow(token.approve(acc2, 10, { from: acc1 }));
+    await expectThrow(token.transferFrom(acc1, acc2, 10, { from: acc2 }));
+    await expectThrow(token.increaseAllowance(acc2, 100, { from: acc1 }));
+    await expectThrow(token.decreaseAllowance(acc2, 10, { from: acc1 }));
   });
 });
