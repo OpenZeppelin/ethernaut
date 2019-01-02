@@ -4,7 +4,7 @@ contract Hello {
 
   string public password;
   uint8 public infoNum = 42;
-  string public theMethodName = 'The method name is method7123949.';
+  string public theMethodName = "The method name is method7123949.";
   bool private cleared = false;
 
   constructor(string memory _password) public {
@@ -12,26 +12,26 @@ contract Hello {
   }
 
   function info() public pure returns (string memory) {
-    return 'You will find what you need in info1().';
+    return "You will find what you need in info1().";
   }
 
   function info1() public pure returns (string memory) {
-    return 'Try info2(), but with "hello" as a parameter.';
+    return "Try info2(), but with \"hello\" as a parameter.";
   }
 
   function info2(string memory param) public pure returns (string memory) {
-    if(keccak256(bytes(param)) == keccak256('hello')) {
-      return 'The property infoNum holds the number of the next info method to call.';
+    if(keccak256(bytes(param)) == keccak256("hello")) {
+      return "The property infoNum holds the number of the next info method to call.";
     }
-    return 'Wrong parameter.';
+    return "Wrong parameter.";
   }
 
   function info42() public pure returns (string memory) {
-    return 'theMethodName is the name of the next method.';
+    return "theMethodName is the name of the next method.";
   }
 
   function method7123949() public pure returns (string memory) {
-    return 'If you know the password, submit it to authenticate().';
+    return "If you know the password, submit it to authenticate().";
   }
 
   function authenticate(string memory passkey) public {
