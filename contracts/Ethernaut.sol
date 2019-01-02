@@ -2,34 +2,30 @@ pragma solidity ^0.5.0;
 
 import './levels/base/Level.sol';
 import './utils/Ownable.sol';
+import './ScoreTracker.sol';
 
 contract Ethernaut is Ownable {
-
-  // ----------------------------------
-  // Owner interaction
-  // ----------------------------------
-
-  mapping(address => bool) registeredLevels;
-
-  // Only registered levels will be allowed to generate and validate level instances.
-  function registerLevel(Level _level) public onlyOwner {
-    registeredLevels[address(_level)] = true;
-  }
-
-  // ----------------------------------
-  // Get/submit level instances
-  // ----------------------------------
-
   struct EmittedInstanceData {
     address player;
     Level level;
     bool completed;
   }
 
-  mapping(address => EmittedInstanceData) emittedInstances;
+  mapping(address => bool) public registeredLevels;
+  mapping(address => EmittedInstanceData) public emittedInstances;
+  ScoreTracker public scoreTracker;
 
   event LevelInstanceCreatedLog(address indexed player, address instance);
   event LevelCompletedLog(address indexed player, Level level);
+
+  constructor(string memory _tokenName, string memory _tokenSymbol) public {
+    scoreTracker = new ScoreTracker(_tokenName, _tokenSymbol);
+  }
+
+  function registerLevel(Level _level, uint256 _reward) public onlyOwner {
+    registeredLevels[address(_level)] = true;
+    scoreTracker.registerLevel(address(_level), _reward);
+  }
 
   function createLevelInstance(Level _level) public payable {
 
@@ -61,6 +57,9 @@ contract Ethernaut is Ownable {
 
       // Notify success via logs.
       emit LevelCompletedLog(msg.sender, data.level);
+
+      // Notify score tracker of completed level
+      scoreTracker.levelCompleted(msg.sender, address(data.level));
     }
   }
 }

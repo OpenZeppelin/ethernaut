@@ -15,12 +15,12 @@ contract("Ethernaut", function(accounts) {
   let ethernaut;
 
   beforeEach(async function() {
-    ethernaut = await Ethernaut.new();
+    ethernaut = await Ethernaut.new("Score Token", "STKN");
   });
 
   it(`should not allow a player to manufacture a solution instance`, async function() {
     const level = await DummyLevel.new();
-    await ethernaut.registerLevel(level.address, { from: owner });
+    await ethernaut.registerLevel(level.address, 10, { from: owner });
 
     // Instead of solving the instance, the player manufactures an instance
     // with the desired state
@@ -36,7 +36,7 @@ contract("Ethernaut", function(accounts) {
 
   it(`should not allow player A to use player's B instance to complete a level`, async function() {
     const level = await DummyLevel.new();
-    await ethernaut.registerLevel(level.address, { from: owner });
+    await ethernaut.registerLevel(level.address, 10, { from: owner });
 
     const instance = await utils.createLevelInstance(
       ethernaut,
@@ -55,7 +55,7 @@ contract("Ethernaut", function(accounts) {
 
   it(`should not allow a player to generate 2 completion logs with the same instance`, async function() {
     const level = await DummyLevel.new();
-    await ethernaut.registerLevel(level.address, { from: owner });
+    await ethernaut.registerLevel(level.address, 10, { from: owner });
 
     const instance = await utils.createLevelInstance(
       ethernaut,
@@ -81,7 +81,7 @@ contract("Ethernaut", function(accounts) {
 
   it(`should provide instances and verify completion`, async function() {
     const level = await DummyLevel.new();
-    await ethernaut.registerLevel(level.address, { from: owner });
+    await ethernaut.registerLevel(level.address, 10, { from: owner });
 
     const instance = await utils.createLevelInstance(
       ethernaut,
@@ -104,7 +104,7 @@ contract("Ethernaut", function(accounts) {
 
   it(`should provide instances and verify non-complettion`, async function() {
     const level = await DummyLevel.new();
-    await ethernaut.registerLevel(level.address, { from: owner });
+    await ethernaut.registerLevel(level.address, 10, { from: owner });
 
     const instance = await utils.createLevelInstance(
       ethernaut,
@@ -131,6 +131,8 @@ contract("Ethernaut", function(accounts) {
 
   it(`should not allow anyone but the owner to upload a level`, async function() {
     const level = await DummyLevel.new();
-    await expectThrow(ethernaut.registerLevel(level.address, { from: player }));
+    await expectThrow(
+      ethernaut.registerLevel(level.address, 10, { from: player })
+    );
   });
 });
