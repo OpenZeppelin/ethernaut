@@ -23,7 +23,7 @@ contract DenialFactory is Level {
     }
     // fix the gas limit for this call
     return
-        !instance.call.gas(500000)(bytes4(keccak256("withdraw()"))); // Must revert
+        !instance.call.gas(1000000)(bytes4(keccak256("withdraw()"))); // Must revert
   }
 
   function() external payable {}
