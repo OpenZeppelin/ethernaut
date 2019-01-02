@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions";
@@ -192,3 +193,11 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Stats);
+
+Stats.propTypes = {
+  level: PropTypes.object,
+  levels: PropTypes.array,
+  collectStats: PropTypes.func,
+  createdInstances: PropTypes.array,
+  completedLevels: PropTypes.array
+};

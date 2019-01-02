@@ -4,7 +4,6 @@ const ERC20MintableDetailed = artifacts.require("./ERC20MintableDetailed.sol");
 import expectThrow from "zeppelin-solidity/test/helpers/expectThrow";
 
 contract("ScoreTracker", function(accounts) {
-  let owner = accounts[0];
   let player = accounts[1];
   let level1 = accounts[5];
   let level2 = accounts[6];

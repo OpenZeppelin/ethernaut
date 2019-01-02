@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Sidebar from "react-sidebar";
 import Header from "./Header";
 import SidebarContent from "./Sidebar";
@@ -59,5 +60,10 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  location: PropTypes.object,
+  children: PropTypes.node
+};
 
 export default App;

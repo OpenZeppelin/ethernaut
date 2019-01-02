@@ -84,7 +84,7 @@ class Author extends React.Component {
 }
 
 Author.propTypes = {
-  author: PropTypes.Object
+  author: PropTypes.string
 };
 
 export default Author;

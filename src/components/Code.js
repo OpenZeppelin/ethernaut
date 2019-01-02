@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Highlight from "react-highlight";
 import loadText from "../utils/textloader";
 
@@ -51,3 +52,7 @@ class Code extends React.Component {
 }
 
 export default Code;
+
+Code.propTypes = {
+  target: PropTypes.string
+};

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as constants from "../constants";
@@ -110,3 +111,9 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Home);
+
+Home.propTypes = {
+  levels: PropTypes.array,
+  completedLevels: PropTypes.array,
+  router: PropTypes.object
+};

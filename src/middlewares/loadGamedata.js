@@ -1,7 +1,7 @@
 import * as actions from "../actions";
 import * as constants from "../constants";
 
-export default store => next => action => {
+export default () => next => action => {
   if (action.type !== actions.LOAD_GAME_DATA) return next(action);
 
   try {

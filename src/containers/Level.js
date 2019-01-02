@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import CodeComponent from "../components/Code";
@@ -97,7 +98,7 @@ class Level extends React.Component {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={evt => this.props.loadLevelInstance(level, false)}
+                onClick={() => this.props.loadLevelInstance(level, false)}
               >
                 Get new instance
               </button>
@@ -107,7 +108,7 @@ class Level extends React.Component {
                 <button
                   type="button"
                   className="btn btn-warning"
-                  onClick={evt => this.props.submitLevelInstance(level)}
+                  onClick={() => this.props.submitLevelInstance(level)}
                 >
                   Submit instance
                 </button>
@@ -118,7 +119,7 @@ class Level extends React.Component {
                 <button
                   type="button"
                   className="btn btn-info"
-                  onClick={evt =>
+                  onClick={() =>
                     this.props.router.push(
                       `${constants.PATH_LEVEL_ROOT}${nextLevelId}`
                     )
@@ -187,3 +188,16 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Level);
+
+Level.propTypes = {
+  routeParams: PropTypes.object,
+  activateLevel: PropTypes.func,
+  deactivateLevel: PropTypes.func,
+  loadLevelInstance: PropTypes.func,
+  submitLevelInstance: PropTypes.func,
+  router: PropTypes.object,
+  level: PropTypes.object,
+  levels: PropTypes.array,
+  levelCompleted: PropTypes.bool,
+  levelEmitted: PropTypes.bool
+};

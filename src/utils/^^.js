@@ -20,7 +20,7 @@ function interceptConsole() {
   //   defaultConsole.log(...args)
   // }
   if (!constants.DEBUG) {
-    logger.log = function(...args) {}; // KILL LOGS IN PRODUCTION
+    logger.log = function(..._args) {}; // KILL LOGS IN PRODUCTION
   }
 
   // DIR

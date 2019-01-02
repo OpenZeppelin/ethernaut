@@ -18,7 +18,7 @@ class Help extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(_state) {
   return {};
 }
 
