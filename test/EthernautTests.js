@@ -15,7 +15,7 @@ contract("Ethernaut", function(accounts) {
   let ethernaut;
 
   beforeEach(async function() {
-    ethernaut = await Ethernaut.new();
+    ethernaut = await Ethernaut.new("Score Token", "STKN");
   });
 
   it(`should not allow a player to manufacture a solution instance`, async function() {

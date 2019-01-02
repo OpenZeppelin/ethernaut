@@ -117,6 +117,10 @@ async function deployContracts(deployData) {
   //const Ethernaut = await ethutil.getTruffleContract(EthernautABI, {from});
   if (needsDeploy(deployData.ethernaut)) {
     const address = await newContract({
+      args: [
+        process.env.TOKEN_NAME || "Score Token",
+        process.env.TOKEN_SYM || "STKN"
+      ],
       abi: EthernautABI.abi,
       data: EthernautABI.bytecode,
       from

@@ -9,8 +9,8 @@ contract ScoreTracker is Ownable{
     mapping(address => mapping(address => bool)) public solved;
     mapping(address => uint256) public levelReward;
 
-    constructor() public {
-      scoreToken = new UnspendableToken("ScoreToken", "STKN", 0);
+    constructor(string memory _tokenName, string memory _tokenSymbol) public {
+      scoreToken = new UnspendableToken(_tokenName, _tokenSymbol, 0);
     }
 
     function registerLevel(address _level, uint256 _reward) public onlyOwner {

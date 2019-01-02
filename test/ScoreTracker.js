@@ -12,7 +12,7 @@ contract("ScoreTracker", function(accounts) {
   let instance;
 
   beforeEach(async function() {
-    instance = await ScoreTracker.new();
+    instance = await ScoreTracker.new("Score Token", "STKN");
   });
 
   it("should initalise a token", async () => {
@@ -22,7 +22,7 @@ contract("ScoreTracker", function(accounts) {
     const symbol = await token.symbol();
     const decimals = await token.decimals();
 
-    expect(name).equal("ScoreToken");
+    expect(name).equal("Score Token");
     expect(symbol).equal("STKN");
     expect(decimals.toString()).equal("0");
   });

@@ -18,8 +18,8 @@ contract Ethernaut is Ownable {
   event LevelInstanceCreatedLog(address indexed player, address instance);
   event LevelCompletedLog(address indexed player, Level level);
 
-  constructor() public {
-    scoreTracker = new ScoreTracker();
+  constructor(string memory _tokenName, string memory _tokenSymbol) public {
+    scoreTracker = new ScoreTracker(_tokenName, _tokenSymbol);
   }
 
   function registerLevel(Level _level, uint256 _reward) public onlyOwner {
