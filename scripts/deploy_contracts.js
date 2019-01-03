@@ -115,6 +115,8 @@ async function deployContracts(deployData) {
 
   // Deploy/retrieve ethernaut contract
   //const Ethernaut = await ethutil.getTruffleContract(EthernautABI, {from});
+  ethernaut = loadContract(deployData.ethernaut, EthernautABI.abi, from);
+
   if (needsDeploy(deployData.ethernaut)) {
     const address = await newContract({
       args: [
@@ -127,7 +129,6 @@ async function deployContracts(deployData) {
     });
     console.log(colors.yellow(`  Ethernaut: ${address}`));
     deployData.ethernaut = address;
-    ethernaut = loadContract(deployData.ethernaut, EthernautABI.abi, from);
     const scoreTrackerAddress = await ethernaut.methods.scoreTracker().call();
     const scoreTracker = loadContract(
       scoreTrackerAddress,
