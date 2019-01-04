@@ -31,6 +31,22 @@
       "deployId": "1",
       "instanceGas": 800000,
       "author": "raymondyeh"
+    },
+    {
+      "name": "FizzBuzz",
+      "reward": 60,
+      "created": "2019-03-01",
+      "difficulty": "6",
+      "description": "fizzbuzz.md",
+      "completedDescription": "fizzbuzz_complete.md",
+      "levelContract": "FizzBuzzValidatorFactory.sol",
+      "instanceContract": "FizzBuzzValidator.sol",
+      "revealCode": false,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "3",
+      "instanceGas": 800000,
+      "author": "raymondyeh"
     }
   ]
 }
