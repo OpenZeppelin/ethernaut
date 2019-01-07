@@ -33,7 +33,7 @@ class Home extends React.Component {
         <div className="col-sm-12">
           <h2 className="title">The Ethernaut</h2>
           <p>
-            c The Ethernaut is a Web3/Solidity based wargame, played on the
+            The Ethernaut is a Web3/Solidity based wargame, played on the
             Ethereum Virtual Machine (EVM). Each level is a smart contract that
             assess the developer's ability to write smart contracts.
           </p>
