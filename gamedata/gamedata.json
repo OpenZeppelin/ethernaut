@@ -17,6 +17,22 @@
       "author": "ajsantander"
     },
     {
+      "name": "One Small Step",
+      "reward": 10,
+      "created": "2018-26-12",
+      "difficulty": "1",
+      "description": "one_small_step.md",
+      "completedDescription": "one_small_step_complete.md",
+      "levelContract": "OneSmallStepValidatorFactory.sol",
+      "instanceContract": "OneSmallStepValidator.sol",
+      "revealCode": false,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "2",
+      "instanceGas": 800000,
+      "author": "raymondyeh"
+    },
+    {
       "name": "Stamp Collector",
       "reward": 20,
       "created": "2018-26-12",
