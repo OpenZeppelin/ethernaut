@@ -31,44 +31,48 @@ class Home extends React.Component {
         }}
       >
         <div className="col-sm-12">
-          {/* TITLE */}
-          <h2 className="title">
-            The Ethernaut&nbsp;
-            <small style={{ fontSize: 10 }}>by</small>
-            <a
-              href="https://zeppelin.solutions"
-              target="_blank"
-              rel="noopener noreferred"
-            >
-              <img
-                style={{ maxWidth: "120px" }}
-                src="../../imgs/zeppelin-by-logo.png"
-                alt="Zeppelin"
-              />
-            </a>
-          </h2>
-          {/* INFO */}
+          <h2 className="title">The Ethernaut</h2>
           <p>
-            The Ethernaut is a Web3/Solidity based wargame inspired on{" "}
-            <a
-              href="https://overthewire.org"
-              target="_blank"
-              rel="noopener noreferred"
-            >
-              overthewire.org
-            </a>
-            , played in the Ethereum Virtual Machine. Each level is a smart
-            contract that needs to be 'hacked'.
+            c The Ethernaut is a Web3/Solidity based wargame, played on the
+            Ethereum Virtual Machine (EVM). Each level is a smart contract that
+            assess the developer's ability to write smart contracts.
           </p>
           <p>
-            The game is 100% open source and all levels are contributions made
-            by other players. Do you have an interesting idea? PRs are welcome
-            at{" "}
-            <a href="https://github.com/OpenZeppelin/ethernaut">
-              github.com/OpenZeppelin/ethernaut
+            The DLT team at <a href="https://blog.gds-gov.tech/">GovTech GDS</a>{" "}
+            is also recruiting top scorers at the game. If you are interested in
+            Distributed Ledger Technologies (DLT) and would like to work on
+            products that improves the lives of our citzen, we are hiring. To be
+            contacted by our hiring manager, please{" "}
+            <a href="/register">
+              associate your address with your contact information
             </a>
             .
           </p>
+          <h2 className="title">The Token & Leaderboard</h2>
+          <p>
+            On completion of each level, you will be awarded the native
+            ScoreToken.
+          </p>
+          <p>
+            The token contract on Ropsten is at{" "}
+            <a href="https://ropsten.etherscan.io/token/0x08242e37b08029ca3159bf2088b34c7cf3a01970">
+              0x08242e37b08029ca3159bf2088b34c7cf3a01970
+            </a>
+            .
+          </p>
+          <p>
+            The leaderboard for the game can also be viewed on{" "}
+            <a href="https://ropsten.etherscan.io/token/0x08242e37b08029ca3159bf2088b34c7cf3a01970#balances">
+              Etherscan
+            </a>
+            .
+          </p>
+          <h2 className="title">Origin of the Game</h2>
+          <p>
+            The original game is created by Zeppelin. The source code has since
+            been upgraded to use web3 v1.0 and solidity v0.5.
+          </p>
+
           <p>
             Are you interested in smart contract development or security? Does
             securing the world’s blockchain infrastructure sound exciting to

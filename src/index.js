@@ -15,6 +15,7 @@ import App from "./containers/App";
 import Home from "./containers/Home";
 import Level from "./containers/Level";
 import Help from "./containers/Help";
+import Register from "./containers/Register";
 import Stats from "./containers/Stats";
 import NotFound404 from "./components/NotFound404";
 
@@ -32,6 +33,7 @@ ReactDOM.render(
       <Route path={constants.PATH_ROOT} component={App}>
         <IndexRoute component={Home} />
         <Route path={constants.PATH_HELP} component={Help} />
+        <Route path={constants.PATH_REGISTER} component={Register} />
         <Route path={constants.PATH_LEVEL} component={Level} />
         <Route path={constants.PATH_STATS} component={Stats} />
         <Route path="*" exact={true} component={NotFound404} />
