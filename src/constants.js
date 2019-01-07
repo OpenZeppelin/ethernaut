@@ -22,10 +22,12 @@ export const NETWORKS = {
 
 // Web3
 export const Web3 = require("web3");
-
+export const TOKEN_ADDRESS =
+  process.env.TOKEN_ADDRESS || "0x08242e37b08029ca3159bf2088b34c7cf3a01970";
+export const TOKEN_NAME = process.env.TOKEN_NAME || "ScoreToken";
 // Misc
 export const CLEAR_CONSOLE = !DEBUG;
-export const GOOGLE_ANALYTICS_ID = "";
+export const GOOGLE_ANALYTICS_ID = "UA-131801696-1";
 
 // Owner addresses
 export const ADDRESSES = {

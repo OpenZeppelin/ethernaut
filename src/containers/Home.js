@@ -50,19 +50,27 @@ class Home extends React.Component {
           </p>
           <h2 className="title">The Token & Leaderboard</h2>
           <p>
-            On completion of each level, you will be awarded the native
-            ScoreToken.
+            On completion of each level, you will be awarded the native{" "}
+            {constants.TOKEN_NAME}.
           </p>
           <p>
             The token contract on Ropsten is at{" "}
-            <a href="https://ropsten.etherscan.io/token/0x08242e37b08029ca3159bf2088b34c7cf3a01970">
-              0x08242e37b08029ca3159bf2088b34c7cf3a01970
+            <a
+              href={`https://ropsten.etherscan.io/token/${
+                constants.TOKEN_ADDRESS
+              }`}
+            >
+              {constants.TOKEN_ADDRESS}
             </a>
             .
           </p>
           <p>
             The leaderboard for the game can also be viewed on{" "}
-            <a href="https://ropsten.etherscan.io/token/0x08242e37b08029ca3159bf2088b34c7cf3a01970#balances">
+            <a
+              href={`https://ropsten.etherscan.io/token/${
+                constants.TOKEN_ADDRESS
+              }#balances`}
+            >
               Etherscan
             </a>
             .
@@ -71,21 +79,6 @@ class Home extends React.Component {
           <p>
             The original game is created by Zeppelin. The source code has since
             been upgraded to use web3 v1.0 and solidity v0.5.
-          </p>
-
-          <p>
-            Are you interested in smart contract development or security? Does
-            securing the world’s blockchain infrastructure sound exciting to
-            you?{" "}
-            <a
-              href="https://zeppelin.solutions/jobs"
-              target="_blank"
-              rel="noopener noreferred"
-            >
-              <strong style={{ color: "#eb5424", fontWeight: 600 }}>
-                We are hiring!
-              </strong>
-            </a>
           </p>
           <button
             style={{ marginTop: "10px" }}
