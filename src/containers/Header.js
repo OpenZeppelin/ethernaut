@@ -52,20 +52,6 @@ class Header extends React.Component {
                 lineHeight: "49px"
               }}
             >
-              <span>
-                <a
-                  href="https://zeppelin.solutions"
-                  target="_blank"
-                  rel="noopener noreferred"
-                >
-                  <img
-                    style={{ width: "40px", height: "40px" }}
-                    src="../../imgs/zeppelin-logo.svg"
-                    alt="zeppelin"
-                  />
-                </a>
-              </span>
-              &nbsp;
               <Link
                 to={constants.PATH_ROOT}
                 style={{ textDecoration: "none" }}
@@ -89,6 +75,15 @@ class Header extends React.Component {
               >
                 <Link to={constants.PATH_ROOT} style={{ fontSize: "16px" }}>
                   Home
+                </Link>
+              </li>
+              <li
+                className={
+                  currentPath === constants.PATH_REGISTER ? "active" : ""
+                }
+              >
+                <Link to={constants.PATH_REGISTER} style={{ fontSize: "16px" }}>
+                  Register
                 </Link>
               </li>
               <li

@@ -22,10 +22,12 @@ export const NETWORKS = {
 
 // Web3
 export const Web3 = require("web3");
-
+export const TOKEN_ADDRESS =
+  process.env.TOKEN_ADDRESS || "0x08242e37b08029ca3159bf2088b34c7cf3a01970";
+export const TOKEN_NAME = process.env.TOKEN_NAME || "ScoreToken";
 // Misc
 export const CLEAR_CONSOLE = !DEBUG;
-export const GOOGLE_ANALYTICS_ID = "";
+export const GOOGLE_ANALYTICS_ID = "UA-131801696-1";
 
 // Owner addresses
 export const ADDRESSES = {
@@ -41,6 +43,7 @@ export const STORAGE_PLAYER_DATA_KEY = `ethernaut_player_data_${VERSION}_`;
 export const PATH_ROOT = "/";
 export const PATH_NOT_FOUND = "/404";
 export const PATH_HELP = "/help";
+export const PATH_REGISTER = "/register";
 export const PATH_LEVEL_ROOT = `${PATH_ROOT}level/`;
 export const PATH_LEVEL = `${PATH_LEVEL_ROOT}:address`;
 export const PATH_STATS = `${PATH_ROOT}stats`;
