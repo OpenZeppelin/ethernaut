@@ -114,6 +114,6 @@ export default connect(
 
 Home.propTypes = {
   levels: PropTypes.array,
-  completedLevels: PropTypes.array,
+  completedLevels: PropTypes.object,
   router: PropTypes.object
 };
