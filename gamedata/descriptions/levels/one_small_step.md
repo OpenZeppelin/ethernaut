@@ -1,6 +1,6 @@
 ## Story
 
-Taking the first step can be intimidating. Here's one to help you along with writing and deploying your first smart contract. For the seasoned developer, it's a chance to relieve that moment again!
+Taking the first step can be intimidating. Here's one to help you along with writing and deploying your first smart contract. For the seasoned developer, it's a chance to relive that moment again!
 
 ## Challenge
 
