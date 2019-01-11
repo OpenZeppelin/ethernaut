@@ -60,6 +60,7 @@
     "zeppelin-solidity": "1.6.0"
   },
   "devDependencies": {
+    "solium": "^1.2.1",
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
     "babel-eslint": "^10.0.1",

@@ -32,7 +32,7 @@ export const GOOGLE_ANALYTICS_ID = "UA-131801696-1";
 // Owner addresses
 export const ADDRESSES = {
   [NETWORKS.LOCAL.name]: undefined,
-  [NETWORKS.ROPSTEN.name]: "0x3590ACA93338b0721966a8d0C96EbF2C4c87c544"
+  [NETWORKS.ROPSTEN.name]: "0xA11dEBd6A9d55b4eC58f614C993B94635cD8B87F"
 };
 
 // Storage

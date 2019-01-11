@@ -77,8 +77,10 @@ class Home extends React.Component {
           </p>
           <h2 className="title">Origin of the Game</h2>
           <p>
-            The original game is created by <a href="https://github.com/OpenZeppelin/ethernaut">OpenZeppelin</a>. The source code has since
-            been upgraded to use web3 v1.0 and solidity v0.5.
+            The original game is created by{" "}
+            <a href="https://github.com/OpenZeppelin/ethernaut">OpenZeppelin</a>
+            . The source code has since been upgraded to use web3 v1.0 and
+            solidity v0.5.
           </p>
           <button
             style={{ marginTop: "10px" }}

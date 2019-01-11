@@ -129,6 +129,7 @@ async function deployContracts(deployData) {
     });
     console.log(colors.yellow(`  Ethernaut: ${address}`));
     deployData.ethernaut = address;
+    ethernaut = loadContract(address, EthernautABI.abi, from);
     const scoreTrackerAddress = await ethernaut.methods.scoreTracker().call();
     const scoreTracker = loadContract(
       scoreTrackerAddress,
@@ -144,50 +145,45 @@ async function deployContracts(deployData) {
   }
 
   // Sweep levels
-  const promises = gamedata.levels.map(async level => {
+  for (let level of gamedata.levels) {
     // console.log('level: ', level);
     const { reward = 10 } = level;
-    return new Promise(async resolve => {
-      if (needsDeploy(deployData[level.deployId])) {
-        console.log(
-          `Deploying ${level.levelContract}, deployId: ${level.deployId}...`
-        );
+    if (needsDeploy(deployData[level.deployId])) {
+      console.log(
+        `Deploying ${level.levelContract}, deployId: ${level.deployId}...`
+      );
 
-        // Deploy contract
-        const LevelABI = require(`../build/contracts/${withoutExtension(
-          level.levelContract
-        )}.json`);
+      // Deploy contract
+      const LevelABI = require(`../build/contracts/${withoutExtension(
+        level.levelContract
+      )}.json`);
 
-        const address = await newContract({
-          abi: LevelABI.abi,
-          data: LevelABI.bytecode,
-          from
-        });
-        console.log(
-          colors.yellow(`  ${level.name}: ${address} - Rewards ${reward}`)
-        );
-        deployData[level.deployId] = address;
-        console.log(
-          colors.gray(
-            `  storing deployed id: ${level.deployId} with address: ${address}`
-          )
-        );
+      const address = await newContract({
+        abi: LevelABI.abi,
+        data: LevelABI.bytecode,
+        from
+      });
+      console.log(
+        colors.yellow(`  ${level.name}: ${address} - Rewards ${reward}`)
+      );
+      deployData[level.deployId] = address;
+      console.log(
+        colors.gray(
+          `  storing deployed id: ${level.deployId} with address: ${address}`
+        )
+      );
 
-        // Register level in Ethernaut contract
-        console.log(`  Registering level in Ethernaut.sol...`);
-        await ethernaut.methods.registerLevel(address, reward).send({
-          gas: 4500000,
-          gasPrice: suggestedGasPrice,
-          from
-        });
-      } else {
-        console.log(`Using deployed ${level.levelContract}...`);
-      }
-      resolve(level);
-    });
-  });
-
-  return Promise.all(promises);
+      // Register level in Ethernaut contract
+      console.log(`  Registering level in Ethernaut.sol...`);
+      await ethernaut.methods.registerLevel(address, reward).send({
+        gas: 4500000,
+        gasPrice: suggestedGasPrice,
+        from
+      });
+    } else {
+      console.log(`Using deployed ${level.levelContract}...`);
+    }
+  }
 }
 
 // ----------------------------------

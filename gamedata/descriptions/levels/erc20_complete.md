@@ -1,0 +1,1 @@
+Well done! Now you can go out and create your own ICOs ;-)

@@ -28,15 +28,15 @@
       "revealCode": false,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "2",
+      "deployId": "1",
       "instanceGas": 800000,
       "author": "raymondyeh"
     },
     {
       "name": "Stamp Collector",
-      "reward": 20,
+      "reward": 30,
       "created": "2018-26-12",
-      "difficulty": "2",
+      "difficulty": "3",
       "description": "stamp_collector.md",
       "completedDescription": "stamp_collector_complete.md",
       "levelContract": "StampCollectorValidatorFactory.sol",
@@ -44,9 +44,25 @@
       "revealCode": false,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "1",
+      "deployId": "2",
       "instanceGas": 800000,
       "author": "raymondyeh"
+    },
+    {
+      "name": "ERC20",
+      "reward": 30,
+      "created": "2019-11-01",
+      "difficulty": "3",
+      "description": "erc20.md",
+      "completedDescription": "erc20_complete.md",
+      "levelContract": "ERC20TokenValidatorFactory.sol",
+      "instanceContract": "ERC20TokenValidator.sol",
+      "revealCode": false,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "3",
+      "instanceGas": 3000000,
+      "author": "rjchow"
     },
     {
       "name": "FizzBuzz",
@@ -60,7 +76,7 @@
       "revealCode": false,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "3",
+      "deployId": "4",
       "instanceGas": 800000,
       "author": "raymondyeh"
     }
