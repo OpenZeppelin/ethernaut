@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import MarkdownComponent from "../components/Markdown";
 
-const netlify = { netlify: "" };
+const netlify = { "data-netlify": "true" };
 
 class Register extends React.Component {
   render() {
