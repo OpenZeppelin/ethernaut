@@ -5,7 +5,35 @@ import MarkdownComponent from "../components/Markdown";
 
 const netlify = { "data-netlify": "true" };
 
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
+
 class Register extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      address: "",
+      name: "",
+      contact: "",
+      email: "",
+      "email-signature": ""
+    };
+  }
+
+  handleSubmit = e => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "register", ...this.state })
+    });
+    e.preventDefault();
+  };
+
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
+
   render() {
     let file = null;
     try {
@@ -24,6 +52,7 @@ class Register extends React.Component {
               type="text"
               name="address"
               className="form-control"
+              onChange={this.handleChange}
               required
             />
           </div>
