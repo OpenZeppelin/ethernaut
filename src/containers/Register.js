@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import MarkdownComponent from "../components/Markdown";
 
-const netlify = { "data-netlify": "true" };
+const netlify = { netlify: "" };
 
 class Register extends React.Component {
   render() {
@@ -16,7 +16,7 @@ class Register extends React.Component {
         <h2 className="title">Register</h2>
         {file && <MarkdownComponent target={file} />}
         <h2 className="title">Registration Form</h2>
-        <form name="contact" method="POST" {...netlify}>
+        <form name="register" {...netlify}>
           <input type="hidden" name="form-name" value="contact" />
           <div className="form-group">
             <label>Ethereum Address*:</label>
