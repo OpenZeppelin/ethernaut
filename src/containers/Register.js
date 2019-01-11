@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import MarkdownComponent from "../components/Markdown";
 
-const netlify = { "data-netlify": "true" };
-
 const encode = data => {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -21,6 +19,8 @@ class Register extends React.Component {
       email: "",
       "email-signature": ""
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmit = e => {
@@ -44,7 +44,7 @@ class Register extends React.Component {
         <h2 className="title">Register</h2>
         {file && <MarkdownComponent target={file} />}
         <h2 className="title">Registration Form</h2>
-        <form name="register" method="post" {...netlify}>
+        <form onSubmit={this.handleSubmit}>
           <input type="hidden" name="form-name" value="register" />
           <div className="form-group">
             <label>Ethereum Address*:</label>
