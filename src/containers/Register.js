@@ -28,7 +28,9 @@ class Register extends React.Component {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "register", ...this.state })
-    });
+    })
+      .then(() => alert("Success!"))
+      .catch(error => alert(error));
     e.preventDefault();
   };
 
@@ -58,11 +60,22 @@ class Register extends React.Component {
           </div>
           <div className="form-group">
             <label>Name*:</label>
-            <input type="text" name="name" className="form-control" required />
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              required
+              onChange={this.handleChange}
+            />
           </div>
           <div className="form-group">
             <label>Contact Number:</label>
-            <input type="text" name="contact" className="form-control" />
+            <input
+              type="text"
+              name="contact"
+              className="form-control"
+              onChange={this.handleChange}
+            />
           </div>
           <div className="form-group">
             <label>Email*:</label>
@@ -71,6 +84,7 @@ class Register extends React.Component {
               name="email"
               className="form-control"
               required
+              onChange={this.handleChange}
             />
           </div>
           <div className="form-group">
@@ -81,6 +95,7 @@ class Register extends React.Component {
               className="form-control"
               placeholder="See instructions above on signing email address"
               required
+              onChange={this.handleChange}
             />
           </div>
           <div className="text-right">
