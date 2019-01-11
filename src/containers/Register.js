@@ -16,7 +16,7 @@ class Register extends React.Component {
         <h2 className="title">Register</h2>
         {file && <MarkdownComponent target={file} />}
         <h2 className="title">Registration Form</h2>
-        <form name="register" {...netlify}>
+        <form name="register" method="post" {...netlify}>
           <input type="hidden" name="form-name" value="register" />
           <div className="form-group">
             <label>Ethereum Address*:</label>
