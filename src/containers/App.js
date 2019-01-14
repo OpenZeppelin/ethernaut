@@ -51,9 +51,7 @@ class App extends React.Component {
         {/* FOOTER */}
         <footer className="footer navbar-fixed-bottom text-center text-muted">
           <small>
-            developed with <FontAwesome name="heart" /> and{" "}
-            <FontAwesome name="flash" /> by the{" "}
-            <a href="https://zeppelin.solutions">Zeppelin</a> team
+            Developed with <FontAwesome name="heart" /> by GDS DLT team
           </small>
         </footer>
       </div>
