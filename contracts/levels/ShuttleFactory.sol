@@ -20,7 +20,7 @@ contract ShuttleFactory is Level {
     return instance;
   }
 
-  function validateInstance(address _instance, address) public returns (bool) {
+  function validateInstance(address _instance, address _player) public returns (bool) {
     Shuttle instance = Shuttle(_instance);
     return instance.launched();
   }
