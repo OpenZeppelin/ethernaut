@@ -345,6 +345,21 @@
       "deployId": "22",
       "instanceGas": 250000,
       "author": "34x4p08"
+    },
+    {
+      "name": "Shuttle",
+      "created": "2019-03-04",
+      "difficulty": "4",
+      "description": "shuttle.md",
+      "completedDescription": "shuttle_complete.md",
+      "levelContract": "ShuttleFactory.sol",
+      "instanceContract": "Shuttle.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "23",
+      "instanceGas": 302871,
+      "author": "mkorniie"
     }
   ]
 }
