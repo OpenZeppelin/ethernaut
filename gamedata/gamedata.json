@@ -345,6 +345,21 @@
       "deployId": "22",
       "instanceGas": 250000,
       "author": "34x4p08"
+    },
+    {
+      "name": "Gatekeeper Three",
+      "created": "2019-02-02",
+      "difficulty": "6",
+      "description": "gatekeeper3.md",
+      "completedDescription": "gatekeeper3_complete.md",
+      "levelContract": "GatekeeperThreeFactory.sol",
+      "instanceContract": "GatekeeperThree.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "23",
+      "instanceGas": 1000000,
+      "author": "KStasi"
     }
   ]
 }

@@ -10,7 +10,7 @@ contract GatekeeperOneAttack {
     // To migitage, brute-force a range of possible values of gas to forward.
     // Using call (vs. an abstract interface) prevents reverts from propagating.
     bytes memory encodedParams = abi.encodeWithSelector(
-      bytes4(sha3("enter(bytes8)")),
+      bytes4(keccak256("enter(bytes8)")),
       key
     );
 
