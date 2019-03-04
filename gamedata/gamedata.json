@@ -345,6 +345,21 @@
       "deployId": "22",
       "instanceGas": 250000,
       "author": "34x4p08"
+    },
+    {
+      "name": "Door",
+      "created": "2019-03-03",
+      "difficulty": "4",
+      "description": "door.md",
+      "completedDescription": "door_complete.md",
+      "levelContract": "DoorFactory.sol",
+      "instanceContract": "Door.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "23",
+      "instanceGas": 500000,
+      "author": "555ukr"
     }
   ]
 }
