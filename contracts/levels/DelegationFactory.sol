@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
 import './base/Level.sol';
 import './Delegation.sol';
@@ -7,14 +7,15 @@ contract DelegationFactory is Level {
 
   address delegateAddress;
 
-  function DelegationFactory() public {
-    delegateAddress = new Delegate(0x0);
+  constructor() public {
+    Delegate newDelegate = new Delegate(address(0));
+    delegateAddress = address(newDelegate);
   }
 
   function createInstance(address _player) public payable returns (address) {
     _player;
     Delegation parity = new Delegation(delegateAddress);
-    return parity;
+    return address(parity);
   }
 
   function validateInstance(address _instance, address _player) public returns (bool) {

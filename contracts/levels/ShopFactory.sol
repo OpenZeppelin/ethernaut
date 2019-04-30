@@ -1,4 +1,4 @@
-pragma solidity 0.4.24;
+pragma solidity ^0.5.0;
 
 import './base/Level.sol';
 import './Shop.sol';
@@ -8,7 +8,7 @@ contract ShopFactory is Level {
   function createInstance(address _player) public payable returns (address) {
     _player;
     Shop _shop = new Shop();
-    return _shop;
+    return address(_shop);
   }
 
   function validateInstance(address _instance, address) public returns (bool) {

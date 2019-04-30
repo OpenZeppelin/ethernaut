@@ -1,9 +1,9 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.0;
 
 contract Denial {
 
     address public partner; // withdrawal partner - pay the gas, split the withdraw
-    address public constant owner = 0xA9E;
+    address payable public constant owner = 0xA9E;
     uint timeLastWithdrawn;
     mapping(address => uint) withdrawPartnerBalances; // keep track of partners balances
 
@@ -16,7 +16,7 @@ contract Denial {
         uint amountToSend = address(this).balance/100;
         // perform a call without checking return
         // The recipient can revert, the owner will still get their share
-        partner.call.value(amountToSend)();
+        partner.call.value(amountToSend)("");
         owner.transfer(amountToSend);
         // keep track of last withdrawal time
         timeLastWithdrawn = now;
@@ -24,10 +24,10 @@ contract Denial {
     }
 
     // allow deposit of funds
-    function() payable {}
+    function() external payable {}
 
     // convenience function
-    function contractBalance() view returns (uint) {
+    function contractBalance() public view returns (uint) {
         return address(this).balance;
     }
 }

@@ -1,9 +1,9 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.5.0;
 
 contract Recovery {
 
   //generate tokens
-  function generateToken(string _name, uint256 _initialSupply) public {
+  function generateToken(string memory _name, uint256 _initialSupply) public {
     new SimpleToken(_name, msg.sender, _initialSupply);
   
   }
@@ -16,13 +16,13 @@ contract SimpleToken {
   mapping (address => uint) public balances;
 
   // constructor
-  constructor(string _name, address _creator, uint256 _initialSupply) public {
+  constructor(string memory _name, address _creator, uint256 _initialSupply) public {
     name = _name;
     balances[_creator] = _initialSupply;
   }
 
   // collect ether in return for tokens
-  function() public payable {
+  function() external payable {
     balances[msg.sender] = msg.value*10;
   }
 

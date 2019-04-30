@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
 import './base/Level.sol';
 import './Privacy.sol';
@@ -11,7 +11,7 @@ contract PrivacyFactory is Level {
     data[1] = keccak256(tx.origin,"1");
     data[2] = keccak256(tx.origin,"2");
     Privacy instance = new Privacy(data);
-    return instance;
+    return address(instance);
   }
 
   function validateInstance(address _instance, address _player) public returns (bool) {

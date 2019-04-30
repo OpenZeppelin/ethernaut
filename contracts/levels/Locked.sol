@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23; 
+pragma solidity ^0.5.0;
 
 // A Locked Name Registrar
 contract Locked {
@@ -15,7 +15,7 @@ contract Locked {
     
     function register(bytes32 _name, address _mappedAddress) public {
         // set up the new NameRecord
-        NameRecord newRecord;
+        NameRecord memory newRecord;
         newRecord.name = _name;
         newRecord.mappedAddress = _mappedAddress; 
 

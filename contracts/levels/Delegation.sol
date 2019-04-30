@@ -1,10 +1,10 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
 contract Delegate {
 
   address public owner;
 
-  function Delegate(address _owner) public {
+  constructor(address _owner) public {
     owner = _owner;
   }
 
@@ -18,13 +18,14 @@ contract Delegation {
   address public owner;
   Delegate delegate;
 
-  function Delegation(address _delegateAddress) public {
+  constructor(address _delegateAddress) public {
     delegate = Delegate(_delegateAddress);
     owner = msg.sender;
   }
 
-  function() public {
-    if(delegate.delegatecall(msg.data)) {
+  function() external {
+    (bool result, bytes memory data) = address(delegate).delegatecall(msg.data);
+    if (result) {
       this;
     }
   }

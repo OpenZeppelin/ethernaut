@@ -1,13 +1,13 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
-import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
+import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract King is Ownable {
 
   address public king;
   uint public prize;
 
-  function King() public payable {
+  constructor() public payable {
     king = msg.sender;
     prize = msg.value;
   }

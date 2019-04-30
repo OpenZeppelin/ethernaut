@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
 contract Privacy {
 
@@ -9,7 +9,7 @@ contract Privacy {
   uint16 private awkwardness = uint16(now);
   bytes32[3] private data;
 
-  function Privacy(bytes32[3] _data) public {
+  constructor(bytes32[3] memory _data) public {
     data = _data;
   }
   

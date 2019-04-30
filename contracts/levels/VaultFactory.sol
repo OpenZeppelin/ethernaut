@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
 import './base/Level.sol';
 import './Vault.sol';
@@ -9,7 +9,7 @@ contract VaultFactory is Level {
     _player;
     bytes32 password = "A very strong secret password :)";
     Vault instance = new Vault(password);
-    return instance;
+    return address(instance);
   }
 
   function validateInstance(address _instance, address) public returns (bool) {

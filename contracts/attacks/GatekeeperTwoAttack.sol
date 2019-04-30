@@ -1,7 +1,7 @@
-pragma solidity ^0.4.19;
+pragma solidity ^0.5.0;
 
 interface GatekeeperTwoInterface {
-  function enter(bytes8 _gateKey) public returns (bool);
+  function enter(bytes8 _gateKey) external returns (bool);
 }
 
 contract GatekeeperTwoAttack {
