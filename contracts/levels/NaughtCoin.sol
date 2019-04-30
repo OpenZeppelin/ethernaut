@@ -3,12 +3,13 @@ pragma solidity ^0.4.18;
 import 'zeppelin-solidity/contracts/token/ERC20/StandardToken.sol';
 
  contract NaughtCoin is StandardToken {
-
+  
+  using SafeMath for uint256;
   string public constant name = 'NaughtCoin';
   string public constant symbol = '0x0';
   uint public constant decimals = 18;
   uint public timeLock = now + 10 years;
-  uint public INITIAL_SUPPLY = 1000000 * (10 ** decimals);
+  uint public INITIAL_SUPPLY = (10 ** decimals).mul(1000000);
   address public player;
 
   function NaughtCoin(address _player) public {

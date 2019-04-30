@@ -1,9 +1,11 @@
 pragma solidity ^0.4.18;
 
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
+import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
 contract Fallout is Ownable {
-
+  
+  using SafeMath for uint256;
   mapping (address => uint) allocations;
 
   /* constructor */
@@ -13,7 +15,7 @@ contract Fallout is Ownable {
   }
 
   function allocate() public payable {
-    allocations[msg.sender] += msg.value;
+    allocations[msg.sender] = allocations[msg.sender].add(msg.value);
   }
 
   function sendAllocation(address allocator) public {
