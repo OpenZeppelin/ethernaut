@@ -75,7 +75,7 @@
     "marked": "^0.3.17",
     "moment": "^2.21.0",
     "nan": "^2.10.0",
-    "openzeppelin-solidity": "^1.8.0",
+    "openzeppelin-solidity": "^2.1.0",
     "prompt": "^1.0.0",
     "rainbow-color": "^2.0.0",
     "react": "^15.4.2",
