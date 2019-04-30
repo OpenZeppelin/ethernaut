@@ -75,6 +75,7 @@
     "marked": "^0.3.17",
     "moment": "^2.21.0",
     "nan": "^2.10.0",
+    "openzeppelin-solidity": "^1.8.0",
     "prompt": "^1.0.0",
     "rainbow-color": "^2.0.0",
     "react": "^15.4.2",
@@ -91,9 +92,9 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
+    "rlp": "^2.0.0",
     "sha3": "^1.2.2",
     "truffle": "^4.1.11",
-    "rlp": "^2.0.0",
     "truffle-deployer": "^2.0.0",
     "web3": "^0.19.1",
     "zeppelin-solidity": "1.6.0"
