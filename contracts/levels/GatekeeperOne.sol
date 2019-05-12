@@ -1,7 +1,10 @@
 pragma solidity ^0.5.0;
 
+import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
+
 contract GatekeeperOne {
 
+  using SafeMath for uint256;
   address public entrant;
 
   modifier gateOne() {
@@ -10,7 +13,7 @@ contract GatekeeperOne {
   }
 
   modifier gateTwo() {
-    require(msg.gas % 8191 == 0);
+    require(msg.gas.mod(8191) == 0);
     _;
   }
 
