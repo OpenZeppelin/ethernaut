@@ -4,7 +4,7 @@ import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract King is Ownable {
 
-  address public king;
+  address payable king;
   uint public prize;
 
   constructor() public payable {
@@ -17,5 +17,9 @@ contract King is Ownable {
     king.transfer(msg.value);
     king = msg.sender;
     prize = msg.value;
+  }
+
+  function _king() public view returns (address payable) {
+    return king;
   }
 }

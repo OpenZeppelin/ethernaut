@@ -9,8 +9,8 @@ contract PreservationFactory is Level {
   address timeZone2LibraryAddress;
 
   constructor() public {
-    timeZone1LibraryAddress = new LibraryContract();
-    timeZone2LibraryAddress = new LibraryContract();
+    timeZone1LibraryAddress = address(new LibraryContract());
+    timeZone2LibraryAddress = address(new LibraryContract());
   }
 
   function createInstance(address _player) public payable returns (address) {

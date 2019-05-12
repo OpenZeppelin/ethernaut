@@ -7,9 +7,9 @@ contract PrivacyFactory is Level {
 
   function createInstance(address) public payable returns (address) {
     bytes32[3] memory data;
-    data[0] = keccak256(tx.origin,"0");
-    data[1] = keccak256(tx.origin,"1");
-    data[2] = keccak256(tx.origin,"2");
+    data[0] = keccak256(abi.encodePacked(tx.origin,"0"));
+    data[1] = keccak256(abi.encodePacked(tx.origin,"1"));
+    data[2] = keccak256(abi.encodePacked(tx.origin,"2"));
     Privacy instance = new Privacy(data);
     return address(instance);
   }

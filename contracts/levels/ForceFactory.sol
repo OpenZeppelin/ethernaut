@@ -13,6 +13,6 @@ contract ForceFactory {
   function validateInstance(address _instance, address _player) public view returns (bool) {
     _player;
     Force instance = Force(_instance);
-    return instance.balance > 0;
+    return address(instance).balance > 0;
   }
 }

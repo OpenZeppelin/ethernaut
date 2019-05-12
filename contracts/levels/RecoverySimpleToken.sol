@@ -30,7 +30,7 @@ contract RecoverySimpleToken {
   }
 
   // clean up after ourselves
-  function destroy(address to) public {
+  function destroy(address payable to) public {
     selfdestruct(to);
   }
 }

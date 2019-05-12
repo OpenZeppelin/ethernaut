@@ -37,7 +37,7 @@ contract SimpleToken {
   }
 
   // clean up after ourselves
-  function destroy(address _to) public {
+  function destroy(address payable _to) public {
     selfdestruct(_to);
   }
 }
