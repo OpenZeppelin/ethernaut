@@ -10,7 +10,7 @@ contract Solver {
 contract MagicNumFactory is Level {
 
   function createInstance(address) public payable returns (address) {
-    return new MagicNum();
+    return address(new MagicNum());
   }
 
   function validateInstance(address _instance, address) public returns (bool) {

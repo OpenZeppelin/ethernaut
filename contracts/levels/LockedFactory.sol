@@ -7,7 +7,7 @@ contract LockedFactory is Level {
 
   function createInstance(address) public payable returns (address) {
     Locked instance = new Locked();
-    return instance;
+    return address(instance);
   }
 
   function validateInstance(address _instance, address _player) public returns (bool) {
