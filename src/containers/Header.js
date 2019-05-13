@@ -73,12 +73,14 @@ class Header extends React.Component {
               <li>
                 <Link style={{fontSize: '16px'}}><ConsoleDetect/></Link>
               </li>
+              <div>
               <li>
                 <select onChange={this.changeLanguage.bind(this)} value={this.state.lang}>
                   <option value="en">English</option>
                   <option value="es">Spanish</option>
                 </select>
               </li>
+              </div>
             </ul>
           </div>
         </div>
