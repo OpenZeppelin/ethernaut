@@ -20,7 +20,7 @@ contract Fallback {
   modifier onlyOwner {
         require(
             msg.sender == _owner,
-            "Only owner can call this function."
+            "caller is not the owner"
         );
         _;
     }
