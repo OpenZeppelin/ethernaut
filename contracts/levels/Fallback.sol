@@ -1,22 +1,35 @@
 pragma solidity ^0.5.0;
 
-import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
-contract Fallback is Ownable {
+contract Fallback {
 
   using SafeMath for uint256;
   mapping(address => uint) public contributions;
+  address payable _owner;
 
   constructor() public {
+    _owner = msg.sender;
     contributions[msg.sender] = 1000 * (1 ether);
   }
+
+   function owner() public view returns (address payable) {
+        return _owner;
+    }
+
+  modifier onlyOwner {
+        require(
+            msg.sender == _owner,
+            "Only owner can call this function."
+        );
+        _;
+    }
 
   function contribute() public payable {
     require(msg.value < 0.001 ether);
     contributions[msg.sender] += msg.value;
-    if(contributions[msg.sender] > contributions[owner]) {
-      owner = msg.sender;
+    if(contributions[msg.sender] > contributions[_owner]) {
+      _owner = msg.sender;
     }
   }
 
@@ -25,11 +38,11 @@ contract Fallback is Ownable {
   }
 
   function withdraw() public onlyOwner {
-    address(uint160(owner)).transfer(address(this).balance);
+    _owner.transfer(address(this).balance);
   }
 
   function() payable external {
     require(msg.value > 0 && contributions[msg.sender] > 0);
-    owner = msg.sender;
+    _owner = msg.sender;
   }
 }
