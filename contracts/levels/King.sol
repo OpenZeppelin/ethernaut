@@ -1,13 +1,13 @@
 pragma solidity ^0.5.0;
 
-import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
-
-contract King is Ownable {
+contract King {
 
   address payable king;
   uint public prize;
+  address payable public owner;
 
   constructor() public payable {
+    owner = msg.sender;  
     king = msg.sender;
     prize = msg.value;
   }
