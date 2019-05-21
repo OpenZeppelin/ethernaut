@@ -13,14 +13,14 @@ contract GatekeeperOne {
   }
 
   modifier gateTwo() {
-    require(msg.gas.mod(8191) == 0);
+    require(gasleft().mod(8191) == 0);
     _;
   }
 
   modifier gateThree(bytes8 _gateKey) {
-    require(uint32(_gateKey) == uint16(_gateKey));
-    require(uint32(_gateKey) != uint64(_gateKey));
-    require(uint32(_gateKey) == uint16(tx.origin));
+    require(uint32(bytes4(_gateKey)) == uint16(bytes2(_gateKey)));
+    require(uint32(bytes4(_gateKey)) != uint64(_gateKey));
+    require(uint32(bytes4(_gateKey)) == uint16(tx.origin));
     _;
   }
 
