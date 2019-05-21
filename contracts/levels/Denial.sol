@@ -6,7 +6,7 @@ contract Denial {
 
     using SafeMath for uint256;
     address public partner; // withdrawal partner - pay the gas, split the withdraw
-    address payable public constant owner = 0xA9E;
+    address payable public constant owner = address(0xA9E);
     uint timeLastWithdrawn;
     mapping(address => uint) withdrawPartnerBalances; // keep track of partners balances
 

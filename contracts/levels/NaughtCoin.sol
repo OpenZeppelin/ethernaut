@@ -17,7 +17,7 @@ import 'openzeppelin-solidity/contracts/token/ERC20/ERC20.sol';
   ERC20()
   public {
     player = _player;
-    INITIAL_SUPPLY = 1000000 * (10**uint256(decimals));
+    INITIAL_SUPPLY = 1000000 * (10**uint256(decimals()));
     // _totalSupply = INITIAL_SUPPLY;
     // _balances[player] = INITIAL_SUPPLY;
     _mint(player, INITIAL_SUPPLY);
