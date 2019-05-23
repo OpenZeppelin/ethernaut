@@ -10,7 +10,7 @@ contract FalloutFactory is Level {
     return address(new Fallout());
   }
 
-  function validateInstance(address _instance, address _player) public returns (bool) {
+  function validateInstance(address payable _instance, address _player) public returns (bool) {
     Fallout instance = Fallout(_instance);
     return instance.owner() == _player;
   }

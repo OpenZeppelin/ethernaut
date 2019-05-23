@@ -11,7 +11,7 @@ contract GatekeeperOneFactory is Level {
     return address(instance);
   }
 
-  function validateInstance(address _instance, address _player) public returns (bool) {
+  function validateInstance(address payable _instance, address _player) public returns (bool) {
     GatekeeperOne instance = GatekeeperOne(_instance);
     return instance.entrant() == _player;
   }

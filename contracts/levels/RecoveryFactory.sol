@@ -21,7 +21,7 @@ contract RecoveryFactory is Level {
     return address(recoveryInstance);
   }
 
-  function validateInstance(address _instance, address _player) public returns (bool) {
+  function validateInstance(address payable _instance, address _player) public returns (bool) {
     _player;
     require(_instance != address(0)); // Suppress solidity warning. 
     if (address(lostAddress).balance == 0) {

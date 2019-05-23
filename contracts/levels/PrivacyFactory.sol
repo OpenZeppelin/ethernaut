@@ -14,7 +14,7 @@ contract PrivacyFactory is Level {
     return address(instance);
   }
 
-  function validateInstance(address _instance, address _player) public returns (bool) {
+  function validateInstance(address payable _instance, address _player) public returns (bool) {
     Privacy instance = Privacy(_instance);
     return instance.locked() == false;
   }

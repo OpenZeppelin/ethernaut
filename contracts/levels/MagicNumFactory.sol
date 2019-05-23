@@ -13,7 +13,7 @@ contract MagicNumFactory is Level {
     return address(new MagicNum());
   }
 
-  function validateInstance(address _instance, address) public returns (bool) {
+  function validateInstance(address payable _instance, address) public returns (bool) {
 
     // Retrieve the instance.
     MagicNum instance = MagicNum(_instance);

@@ -9,7 +9,7 @@ contract NaughtCoinFactory is Level {
     return address(new NaughtCoin(_player));
   }
 
-  function validateInstance(address _instance, address _player) public returns (bool) {
+  function validateInstance(address payable _instance, address _player) public returns (bool) {
     NaughtCoin instance = NaughtCoin(_instance);
     return instance.balanceOf(_player) == 0;
   }

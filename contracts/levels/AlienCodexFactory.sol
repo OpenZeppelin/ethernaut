@@ -10,7 +10,7 @@ contract AlienCodexFactory is Level {
     return address(new AlienCodex());
   }
 
-  function validateInstance(address _instance, address _player) public returns (bool) {
+  function validateInstance(address payable _instance, address _player) public returns (bool) {
     // _player;
     AlienCodex instance = AlienCodex(_instance);
     return instance.owner() ==_player;

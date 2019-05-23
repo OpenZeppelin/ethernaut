@@ -18,7 +18,7 @@ contract PreservationFactory is Level {
     return address(new Preservation(timeZone1LibraryAddress, timeZone2LibraryAddress));
   }
 
-  function validateInstance(address _instance, address _player) public returns (bool) {
+  function validateInstance(address payable _instance, address _player) public returns (bool) {
     Preservation preservation = Preservation(_instance);
     return preservation.owner() == _player;
   }

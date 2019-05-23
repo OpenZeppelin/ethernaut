@@ -11,7 +11,7 @@ contract ShopFactory is Level {
     return address(_shop);
   }
 
-  function validateInstance(address _instance, address) public returns (bool) {
+  function validateInstance(address payable _instance, address) public returns (bool) {
     Shop _shop = Shop(_instance);
     return _shop.price() < 100;
   }

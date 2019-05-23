@@ -10,7 +10,7 @@ contract LockedFactory is Level {
     return address(instance);
   }
 
-  function validateInstance(address _instance, address _player) public returns (bool) {
+  function validateInstance(address payable _instance, address _player) public returns (bool) {
     _player; // suppress warnings
     Locked instance = Locked(_instance);
     return instance.unlocked() == true;

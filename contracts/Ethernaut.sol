@@ -46,7 +46,7 @@ contract Ethernaut is Ownable {
     emit LevelInstanceCreatedLog(msg.sender, instance);
   }
 
-  function submitLevelInstance(address _instance) public {
+  function submitLevelInstance(address payable _instance) public {
 
     // Get player and level.
     EmittedInstanceData storage data = emittedInstances[_instance];

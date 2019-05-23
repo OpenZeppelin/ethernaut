@@ -11,7 +11,7 @@ contract ElevatorFactory is Level {
     return address(instance);
   }
 
-  function validateInstance(address _instance, address) public returns (bool) {
+  function validateInstance(address payable _instance, address) public returns (bool) {
     Elevator elevator = Elevator(_instance);
     return elevator.top();
   }
