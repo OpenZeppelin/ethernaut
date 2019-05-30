@@ -2,10 +2,9 @@ const Ethernaut = artifacts.require('./Ethernaut.sol')
 
 const TokenFactory = artifacts.require('./levels/TokenFactory.sol')
 const Token = artifacts.require('./levels/Token.sol')
-
+const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 import * as utils from '../utils/TestUtils'
-import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
-import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
+
 
 contract('Token', function(accounts) {
 

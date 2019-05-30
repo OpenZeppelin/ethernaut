@@ -1,12 +1,10 @@
 const CoinFlipFactory = artifacts.require('./levels/CoinFlipFactory.sol')
 const CoinFlip = artifacts.require('./levels/CoinFlip.sol')
 const CoinFlipAttack = artifacts.require('./attacks/CoinFlipAttack.sol')
-
 const Ethernaut = artifacts.require('./Ethernaut.sol')
-
+const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 import * as utils from '../utils/TestUtils'
-import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
-import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
+
 
 contract('CoinFlip', function(accounts) {
 

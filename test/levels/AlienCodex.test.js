@@ -2,10 +2,9 @@ const AlienCodex = artifacts.require('./levels/AlienCodex.sol')
 const AlienCodexFactory = artifacts.require('./levels/AlienCodexFactory.sol')
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
-
+const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 import * as utils from '../utils/TestUtils'
-import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
-import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
+
 
 contract('AlienCodex', function(accounts) {
 

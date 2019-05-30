@@ -1,8 +1,8 @@
 const RecoveryFactory = artifacts.require('./levels/RecoveryFactory.sol')
 const Recovery = artifacts.require('./levels/Recovery.sol')
 const RecoverySimpleToken = artifacts.require('./levels/RecoverySimpleToken.sol')
-const Ethernaut = artifacts.require('./Ethernaut.sol')
 
+const Ethernaut = artifacts.require('./Ethernaut.sol')
 import * as utils from '../utils/TestUtils'
 
 let rlp = require('rlp')

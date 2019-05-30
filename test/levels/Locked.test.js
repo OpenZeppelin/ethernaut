@@ -1,11 +1,10 @@
 const LockedFactory = artifacts.require('./levels/LockedFactory.sol')
 const Locked = artifacts.require('./levels/Locked.sol')
-
 const Ethernaut = artifacts.require('./Ethernaut.sol')
 
+const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 import * as utils from '../utils/TestUtils'
-import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
-import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
+
 
 contract('Locked', function(accounts) {
 
@@ -31,7 +30,7 @@ contract('Locked', function(accounts) {
     });
 
     it('should not unlock with any name', async function() {
-      await expectThrow(
+      await expectRevert(
         instance.register("0x123", "0x123") 
       );
     });
