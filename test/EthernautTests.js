@@ -17,7 +17,7 @@ contract('Ethernaut', function(accounts) {
   let player = accounts[1];
   let ethernaut;
 
-  beforeEach(async function() {
+  before(async function() {
     ethernaut = await Ethernaut.new();
   });
 
@@ -25,7 +25,6 @@ contract('Ethernaut', function(accounts) {
 
     const level = await FallbackFactory.new()
     await ethernaut.registerLevel(level.address, {from: owner});
-    console.log(level.address);
 
     // Instead of solving the instance, the player manufactures an instance
     // with the desired state:

@@ -22,14 +22,14 @@ contract('Reentrance', function(accounts) {
 
   it('should allow the player to solve the level', async function() {
 
-    const insertCoin = web3.fromWei(
-      (await level.insertCoin.call()).toNumber(), 'ether'
+    const insertCoin = web3.utils.fromWei(
+      (await level.insertCoin.call()).toString(), 'ether'
     )
     console.log(`level insertCoin:`, insertCoin)
 
     const instance = await utils.createLevelInstance(
       ethernaut, level.address, player, Reentrance,
-      {from: player, value: web3.toWei(insertCoin, 'ether')}
+      {from: player, value: web3.utils.toWei(insertCoin, 'ether')}
     )
 
     // Query contract balance (should be 0.1)
@@ -40,7 +40,7 @@ contract('Reentrance', function(accounts) {
     // Deploy attacker contract
     const attackerFunds = 0.01
     const attacker = await ReentranceAttack.new(instance.address, {
-      value: web3.toWei(attackerFunds, 'ether')
+      value: web3.utils.toWei(attackerFunds.toString(), 'ether')
     })
 
     // Check attacker balance
