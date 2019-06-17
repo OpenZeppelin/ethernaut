@@ -25,19 +25,18 @@ contract('Fallback', function(accounts) {
       {from: player}
     )
 
-    assert.e(await instance.owner(), level.address)
-    assert.equal(web3.toWei(1000, 'ether'), (await instance.getContribution({from: level.address})).toNumber())
-
-    await instance.contribute({from: player, value: web3.toWei(0.0001, 'ether')})
+    assert.equal(await instance.owner(), level.address)
+    assert.equal(web3.utils.toWei('1000', 'ether'), (await instance.getContribution({from: level.address})).toString())
+    
+    await instance.contribute({from: player, value: web3.utils.toWei('0.0001', 'ether')})
     assert.notEqual(0, (await instance.getContribution({from: player})).toNumber())
     assert.notEqual(0, await utils.getBalance(web3, instance.address))
-
-    await toPromise(web3.eth.sendTransaction)({from: player, to: instance.address, value: web3.toWei(0.001, 'ether')})
+    
+    await web3.eth.sendTransaction({from: player, to: instance.address, value: web3.utils.toWei('0.001', 'ether')})
     assert.equal(player, await instance.owner())
-
+    
     await instance.withdraw({from: player})
     assert.equal(0, await utils.getBalance(web3, instance.address))
-
     // Factory check
     const ethCompleted = await utils.submitLevelInstance(
       ethernaut,
