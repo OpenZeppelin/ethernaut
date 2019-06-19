@@ -24,22 +24,22 @@ contract('Token', function(accounts) {
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, Token);
 
     // Check init balances
-    let balance = (await instance.balanceOf(player)).toNumber();
+    let balance = new BN(await instance.balanceOf(player));
     console.log(`init player balance: ${balance}`)
     assert.equal(balance, 20)
-    const supply = (await instance.totalSupply.call()).toNumber();
+    const supply = new BN (await instance.totalSupply.call());
     console.log(`token supply: ${supply}`)
     assert.equal(supply, 21000000)
 
     // Check transfer
     await instance.transfer(accounts[2], 1, {from: player})
-    balance = (await instance.balanceOf(player)).toNumber();
+    balance = (await instance.balanceOf(player));
     console.log(`player balance: ${balance}`)
     assert.equal(balance, 19)
 
     // Overflow
     await instance.transfer(accounts[2], 20, {from: player})
-    balance = (await instance.balanceOf(player)).toNumber();
+    balance = (await instance.balanceOf(player));
     console.log(`player balance: ${balance}`)
     assert.equal(balance, 1.157920892373162e+77)
 
