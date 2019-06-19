@@ -31,11 +31,11 @@ contract('Force', function(accounts) {
     assert.equal(balance, 0)
 
     // Sending funds should not work
-    await expectRevert(
-      toPromise(web3.eth.sendTransaction)({
+    await expectRevert.unspecified(
+      (web3.eth.sendTransaction)({
         from: player,
         to: instance.address,
-        value: web3.toWei(0.01, 'ether')
+        value: web3.utils.toWei('0.01', 'ether')
       }) 
     )
       
@@ -46,7 +46,7 @@ contract('Force', function(accounts) {
     // Attack
     const attacker = await ForceAttack.new({
       from: player,
-      value: web3.toWei(0.01, 'ether')
+      value: web3.utils.toWei('0.01', 'ether')
     })
     await attacker.attack(instance.address)
 
