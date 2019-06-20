@@ -38,8 +38,9 @@ contract('Vault', function(accounts) {
   it('should allow the player to solve the level', async function() {
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, Vault)
 
-    const attacker = await VaultAttack.new()
-    var password = web3.toAscii(web3.eth.getStorageAt(instance.address, 1));
+    const attacker = await VaultAttack.new();
+    var hexStr = web3.utils.utf8ToHex(await web3.eth.getStorageAt(instance.address, 1));
+    var password = web3.utils.hexToAscii(hexStr);
 
     await attacker.attack(instance.address, password)
 
