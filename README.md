@@ -4,7 +4,7 @@
 
 The game acts both as a tool for those interested in learning ethereum, and as a way to catalogue historical hacks in levels. Levels can be infinite and the game does not require to be played in any particular order.
 
-*Level PR's are welcome!*
+_Level PR's are welcome!_
 
 ### Deployed Versions
 
@@ -14,25 +14,34 @@ You can find the current, official version at:
 ### Running locally (local network)
 
 1. Install
+
 ```
 git clone git@github.com:OpenZeppelin/ethernaut.git
 npm install
 ```
+
 2. Start deterministic rpc
+
 ```
 ganache-cli --deterministic
 ```
+
 3. You might want to import one of the private keys from ganache-cli to your Metamask wallet.
 4. Compile contracts
+
 ```
 npx truffle compile
 ```
+
 5. Set src/constants.js ACTIVE_NETWORK to NETWORKS.LOCAL
 6. Deploy contracts
+
 ```
 npm run deploy:contracts
 ```
+
 7. Start react client
+
 ```
 npm start
 ```
@@ -42,6 +51,7 @@ npm start
 The same as using the local network but steps 2, 3 and 6 are not necessary.
 
 In this case, replace point 5 with:
+
 5. Set src/constants.js ACTIVE_NETWORK to NETWORKS.ROPSTEN
 
 ### Running tests
@@ -52,15 +62,15 @@ npx truffle test
 
 ### Level development
 
-*A level is composed of the following elements:*
+_A level is composed of the following elements:_
 
-* A `level factory` contract that needs to extend Level.sol. This factory contract will be deployed only once and registered on Ethernaut.sol by Ethernaut's owner. Players never interact with the factory directly. The factory is in charge of creating level instances for players to use (1 instance per player) and to check these instances to verify if the player has beat the level. Factories should not have state that can be changed by the player.
-* A `level instance` contract that is emitted by the factory for each player that requests it. Instances need to be completely decouppled from Ethernaut's architecture. Factories will emit them and verify them. That is, level instances don't know anything about their factories or Ethernaut. An instance's state can be completely demolished by players and even destroyed since they are not really part of the architecture, just a challenge for a player to use at will.
-* A `description file` in gamedata/descriptions that the UI presents to the player and describes the level's objectives with some narrative and tips.
-* A `description completion file` also in gamedata/descriptions that the UI presents to the player when the level is beaten, that presents further information about the player, historical insights, further explanations or just a congrats message.
-* A `tests file` in test/levels that performs unit tests on the level.
-* A `json entry` for the level in gamedata/gamedata.json that appends metadata to the level. The UI uses this metadata to display the level's title, difficulty, etc, but also to determine if sources are shown, the default gas for the creation of an instance, etc. NOTE: "deployId" must be unique and is also used by the deployment script.
-* Optionally, an `author entry` at gamedata/authors.json. You can specify opt-in information about yourself in this file.
+- A `level factory` contract that needs to extend Level.sol. This factory contract will be deployed only once and registered on Ethernaut.sol by Ethernaut's owner. Players never interact with the factory directly. The factory is in charge of creating level instances for players to use (1 instance per player) and to check these instances to verify if the player has beat the level. Factories should not have state that can be changed by the player.
+- A `level instance` contract that is emitted by the factory for each player that requests it. Instances need to be completely decouppled from Ethernaut's architecture. Factories will emit them and verify them. That is, level instances don't know anything about their factories or Ethernaut. An instance's state can be completely demolished by players and even destroyed since they are not really part of the architecture, just a challenge for a player to use at will.
+- A `description file` in gamedata/descriptions that the UI presents to the player and describes the level's objectives with some narrative and tips.
+- A `description completion file` also in gamedata/descriptions that the UI presents to the player when the level is beaten, that presents further information about the player, historical insights, further explanations or just a congrats message.
+- A `tests file` in test/levels that performs unit tests on the level.
+- A `json entry` for the level in gamedata/gamedata.json that appends metadata to the level. The UI uses this metadata to display the level's title, difficulty, etc, but also to determine if sources are shown, the default gas for the creation of an instance, etc. NOTE: "deployId" must be unique and is also used by the deployment script.
+- Optionally, an `author entry` at gamedata/authors.json. You can specify opt-in information about yourself in this file.
 
 #### Example level development: King
 

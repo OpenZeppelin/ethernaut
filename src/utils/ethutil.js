@@ -176,7 +176,7 @@ export function signMessageWithMetamask(addr, message, callback) {
 function logger(req, res, next, end) {
   next((cb) => {
     // HACK: do not log known error when setting event log filters
-    if (res.error && !res.error.message.includes("TypeError: Cannot read property 'filter' of undefined")) {
+    if (res.error && !res.error.message.includes("TypeError: Cannot read property 'filter' of null")) {
       console.error('Error in RPC response:\n', res.error.message);
     } else if (req.method === 'eth_sendTransaction') {
       console.mineInfo('Sent transaction', res.result);

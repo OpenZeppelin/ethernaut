@@ -1,34 +1,33 @@
-import * as actions from '../actions'
+import * as actions from '../actions';
 
 const initialState = {
-  ethernautAddress: undefined,
-  activeLevel: undefined,
-  levels: []
-}
+  ethernautAddress: null,
+  activeLevel: null,
+  levels: [],
+};
 
-export default function(state = initialState, action) {
-  switch(action.type) {
-
+export default function(state = initialState, action = {}) {
+  switch (action.type) {
     case actions.LOAD_GAME_DATA:
       return {
         ...state,
         levels: action.levels,
-        ethernautAddress: action.ethernautAddress
-      }
+        ethernautAddress: action.ethernautAddress,
+      };
 
     case actions.ACTIVATE_LEVEL:
       return {
         ...state,
-        activeLevel: action.activeLevel
-      }
+        activeLevel: action.activeLevel,
+      };
 
     case actions.DEACTIVATE_LEVEL:
       return {
         ...state,
-        activeLevel: undefined
-      }
+        activeLevel: null,
+      };
 
     default:
-      return state
+      return state;
   }
 }

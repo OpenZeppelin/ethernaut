@@ -1,10 +1,10 @@
 import * as actions from '../actions'
 
 const initialState = {
-  web3: undefined,
+  web3: null,
   gasPrice: 20000000,
-  blockNum: undefined,
-  networkId: undefined
+  blockNum: null,
+  networkId: null
 }
 
 export default function(state = initialState, action) {

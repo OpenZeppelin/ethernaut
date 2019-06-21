@@ -20,7 +20,7 @@ export default store => next => action => {
 
   log.watch((error, result) => {
     if (error) {
-      if (error.message && error.message.includes("TypeError: Cannot read property 'filter' of undefined")) {
+      if (error.message && error.message.includes("TypeError: Cannot read property 'filter' of null")) {
         console.error("Ouch! It seems you have run into a known Metamask issue. Try disabling and re-enabling your metamask plugin, and if that doesn't work, I'm afraid you'll need to close all Chrome processes and restart to work around it, until a fix is released. Don't worry, after restarting you should not see this message ever again.");
       } else {
         console.log("Error watching completion events:", error);

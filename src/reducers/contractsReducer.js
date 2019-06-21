@@ -1,18 +1,17 @@
-import * as actions from '../actions'
+import * as actions from '../actions';
 
 const initialState = {
-  ethernaut: undefined,
+  ethernaut: null,
   levels: {},
-  nonce: 0
-}
+  nonce: 0,
+};
 
 export default function(state = initialState, action) {
-  switch(action.type) {
-
+  switch (action.type) {
     case actions.LOAD_ETHERNAUT_CONTRACT:
       return {
         ...state,
-        ethernaut: action.contract
+        ethernaut: action.contract,
       };
 
     case actions.LOAD_LEVEL_INSTANCE:
@@ -20,25 +19,24 @@ export default function(state = initialState, action) {
         ...state,
         levels: {
           ...state,
-          [action.level.deployedAddress]: action.instance
+          [action.level.deployedAddress]: action.instance,
         },
-        nonce: state.nonce + 1
-      }
+        nonce: state.nonce + 1,
+      };
 
     case actions.SUBMIT_LEVEL_INSTANCE:
-      if(action.completed) {
+      if (action.completed) {
         return {
           ...state,
           levels: {
             ...state,
-            [action.level.deployedAddress]: undefined
+            [action.level.deployedAddress]: null,
           },
-          nonce: state.nonce + 1
-        }
-      }
-      else return state
+          nonce: state.nonce + 1,
+        };
+      } else return state;
 
     default:
-      return state
+      return state;
   }
 }

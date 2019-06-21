@@ -15,7 +15,7 @@ export default store => next => action => {
   }
 
   const state = store.getState()
-  // console.log(`TRY COLLECT_STATS >`, state.contracts.ethernaut !== undefined)
+  // console.log(`TRY COLLECT_STATS >`, state.contracts.ethernaut !== null)
   if(
     !state.network.web3 ||
     !state.contracts.ethernaut
