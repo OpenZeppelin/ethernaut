@@ -30,14 +30,14 @@ contract('Locked', function(accounts) {
     });
 
     it('should not unlock with any name', async function() {
-      await expectRevert(
-        instance.register("0x123", "0x123") 
+      await expectRevert.unspecified(
+        instance.register("0x123", "0x1230000000000000000000000000000000000000") 
       );
     });
 
     it('should unlock with a non-zero first byte', async function() {
       let _name = "0x0000000000000000000000000000000000000000000000000000000000000001"
-      let _address = "0x123"
+      let _address = "0x1230000000000000000000000000000000000000"
 
       // Unlock.
       await instance.register(_name, _address);
