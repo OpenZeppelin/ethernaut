@@ -30,8 +30,8 @@ contract('Delegation', function(accounts) {
     assert.equal(owner, level.address)
 
     // Use the fallback method to call the delegate's pwn()
-    const pwner = web3.sha3("pwn()").substring(0, 10)
-    await toPromise(web3.eth.sendTransaction)({
+    const pwner = web3.utils.sha3("pwn()").substring(0, 10)
+    await (web3.eth.sendTransaction)({
       from: player,
       to: instance.address,
       data: pwner
