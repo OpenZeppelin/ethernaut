@@ -35,10 +35,9 @@ contract('Preservation', function(accounts) {
   });
 
   it('the second function should always be able to modify state, regardless of user input', async function() {
-
     // send some random times
     await instance.setFirstTime(26)
-    await instance.setSecondTime(1e20)
+    await instance.setSecondTime(1e20.toString())
 
     // the second should be fine 
     let firstLibraryAddress = await instance.timeZone1Library.call()
