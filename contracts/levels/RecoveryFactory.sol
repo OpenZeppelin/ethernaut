@@ -13,7 +13,7 @@ contract RecoveryFactory is Level {
     // create a simple token 
     recoveryInstance.generateToken("InitialToken", uint(100000));
     // the lost address
-    lostAddress = address(uint160(bytes20(keccak256(abi.encodePacked(uint8(0xd6), uint8(0x94), recoveryInstance, uint8(0x01))))));
+    lostAddress = address(uint160(uint256(keccak256(abi.encodePacked(uint8(0xd6), uint8(0x94), recoveryInstance, uint8(0x01))))));
     // Send it some ether
     (bool result, bytes memory data) = lostAddress.call.value(0.5 ether)("");
     require(result);
