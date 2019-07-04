@@ -32,12 +32,13 @@ contract('Denial', function(accounts) {
 
       // The owner can withdraw funds
       let owner = await instance.owner();
-
+    
       // Anyone can call withdraw
       await instance.withdraw();
+  
       // ensure the owner got credited some funds
-      assert.isTrue(web3.eth.getBalance(owner) > 0);
-
+      assert.isTrue(await web3.eth.getBalance(owner) > 0);
+      
       // make sure the factory fails
       const ethCompleted = await utils.submitLevelInstance(
         ethernaut,
