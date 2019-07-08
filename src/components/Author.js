@@ -1,14 +1,22 @@
-import React from 'react'
+import {
+  AuthorBox,
+  AuthorItem,
+  Description,
+  Donate,
+  Headline,
+  Root,
+} from './Author.css.js';
+
+import React from 'react';
 
 class Author extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       name: undefined,
       email: undefined,
-      website: undefined
+      website: undefined,
     };
   }
 
@@ -23,12 +31,12 @@ class Author extends React.Component {
   fetchAuthorData(author) {
     const data = require(`../../gamedata/authors.json`).authors;
     const authorData = data[author];
-    if(!authorData) return;
+    if (!authorData) return;
     this.setState({
       name: authorData.name,
       email: authorData.email,
       website: authorData.website,
-      donate: authorData.donate
+      donate: authorData.donate,
     });
   }
 
@@ -40,35 +48,46 @@ class Author extends React.Component {
     const { name, email, website, donate } = this.state;
     const nodata = !name && !email && !website && !donate;
     return (
-      <div>
-        <div style={{marginTop: '20px', marginBotton: '20px'}}>
+      <Root>
+        <Headline>Level author</Headline>
+        <AuthorBox>
+          {nodata && <AuthorItem>{this.props.author}</AuthorItem>}
+          {!nodata && name && <AuthorItem>{name}</AuthorItem>}
+          {!nodata && email && (
+            <AuthorItem>
+              <a
+                href={`mailto:${email}`}
+                target="_blank"
+                without="true"
+                rel="noopener noreferrer"
+              >
+                {email}
+              </a>
+            </AuthorItem>
+          )}
+          {!nodata && website && (
+            <AuthorItem>
+              <a
+                href={website}
+                target="_blank"
+                without="true"
+                rel="noopener noreferrer"
+              >
+                {website}
+              </a>
+            </AuthorItem>
+          )}
+        </AuthorBox>
 
-          <h4>Level author</h4>
-
-          {nodata && 
-            <span>{this.props.author}</span>
-          }
-
-          {!nodata && name &&
-            <span>{name}</span>
-          }
-
-          {!nodata && email && 
-              <span><br/><strong><a href={`mailto:${email}`} target='_blank'>{email}</a></strong></span>
-          }
-
-          {!nodata && website && 
-            <span><br/><strong><a href={website} target='_blank'>{website}</a></strong></span>
-          }
-
-          {!nodata && donate && 
-              <span><br/>Did this level teach you anything useful? Donate to the level author (on mainnet): <strong>{donate}</strong></span>
-          }
-
-        </div>
-      </div>
-    )
+        {!nodata && donate && (
+          <Description>
+            Did this level teach you anything useful? Donate to the level author
+            (on mainnet): <Donate>{donate}</Donate>
+          </Description>
+        )}
+      </Root>
+    );
   }
 }
 
-export default Author
+export default Author;

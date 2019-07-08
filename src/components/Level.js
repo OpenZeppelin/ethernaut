@@ -1,26 +1,21 @@
-import * as actions from '../actions';
-import * as constants from '../constants';
+import * as actions from '../../actions';
+import * as constants from '../../constants';
 
-import {
-  Button,
-  Label,
-  LevelContract,
-  PageHeader,
-  Title,
-} from '../components/Level.css';
+import { Button, Label, LevelContract, PageHeader, Title } from './Level.css';
 
-import Author from '../components/Author';
-import CodeComponent from '../components/Code';
-import Difficulty from '../components/Difficulty';
-import MarkdownComponent from '../components/Markdown';
-import { Page } from '../components/ui';
+import Author from './Author';
+import CodeComponent from './Code';
+import Difficulty from './Difficulty';
+import MarkdownComponent from './Markdown';
+import { Page } from '../ui';
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 class Level extends React.Component {
   componentWillMount() {
-    this.props.activateLevel(this.props.routeParams.address);
+    if (this.props.match.params.address)
+      this.props.activateLevel(this.props.match.params.address);
   }
 
   componentWillUnmount() {
@@ -30,12 +25,14 @@ class Level extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.level.deployedAddress !== nextProps.routeParams.address)
-      this.props.activateLevel(nextProps.routeParams.address);
+    if (nextProps.level) {
+      if (nextProps.level.deployedAddress !== nextProps.match.params.address)
+        this.props.activateLevel(nextProps.match.params.address);
+    }
   }
 
   render() {
-    const { level, levelCompleted } = this.props;
+    const { level = {}, levelCompleted } = this.props;
 
     if (!level) return null;
     const showCode = levelCompleted || level.revealCode;
@@ -72,36 +69,28 @@ class Level extends React.Component {
     return (
       <Page>
         <PageHeader>
-          <Title>{level.name}</Title>
-          {levelCompleted === true && <Label>Level completed!</Label>}
+          <Title>
+            {level.name}{' '}
+            {levelCompleted === true && <Label>Level completed!</Label>}
+          </Title>
           <Difficulty level={parseInt(level.difficulty, 10)} />
         </PageHeader>
 
-        {/* DESCRIPTION */}
         {description && <MarkdownComponent target={description} />}
 
-        {/* COMPLETED DESCRIPTION */}
-        {showCompletedDescription && (
-          <div style={{ marginTop: '40px', marginBottom: '40px' }}>
-            {completedDescription && (
-              <div className="well">
-                <MarkdownComponent target={completedDescription} />
-              </div>
-            )}
-          </div>
+        {showCompletedDescription && completedDescription && (
+          <MarkdownComponent target={completedDescription} />
         )}
 
         <LevelContract>
           {level.levelContract && (
-            <div className="">
-              {/* CREATE */}
+            <div>
               <Button
-                onClick={(evt) => this.props.loadLevelInstance(level, false)}
+                onClick={() => this.props.loadLevelInstance(level, false)}
               >
                 Get new instance
               </Button>
 
-              {/* SUBMIT */}
               {this.props.levelEmitted && (
                 <Button
                   onClick={(evt) => this.props.submitLevelInstance(level)}
@@ -110,7 +99,6 @@ class Level extends React.Component {
                 </Button>
               )}
 
-              {/* NEXT LEVEL */}
               {levelCompleted && nextLevelId && (
                 <Button
                   onClick={(evt) =>
@@ -126,7 +114,6 @@ class Level extends React.Component {
           )}
         </LevelContract>
 
-        {/* CODE */}
         {showCode && sourcesFile && (
           <div style={{ marginTop: '50px' }}>
             <div className="page-header">
@@ -161,7 +148,7 @@ function mapStateToProps(state) {
     levelCompleted:
       level && state.player.completedLevels[level.deployedAddress] > 0,
     levelEmitted:
-      level && state.contracts.levels[level.deployedAddress] !== undefined,
+      level && state.contracts.levels[level.deployedAddress] !== null,
   };
 }
 

@@ -1,16 +1,6 @@
 import React from 'react';
+import { Root } from './Difficulty.css';
 
-const Difficulty = ({ level }) => {
-  // const divStyle = {textAlign: 'right'}
-  // const imageStyle = difficulty => Object.assign({}, {width: '25px', height: '25px', marginRight: 5}, {opacity: level >= difficulty ? 1 : 0.2})
-
-  return (
-    <div>
-      <p className="no-margin text-right">
-        <small className="text-muted right">difficulty {level}/10</small>
-      </p>
-    </div>
-  );
-};
+const Difficulty = ({ level }) => <Root>difficulty {level}/10</Root>;
 
 export default Difficulty;

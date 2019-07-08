@@ -1,4 +1,4 @@
-import { Hamburger } from './Hamburger';
+import { Hamburger } from './ui';
 import { Link } from 'react-router';
 import React from 'react';
 import styled from 'styled-components';

@@ -1,6 +1,5 @@
-import * as actions from '../actions';
+import * as actions from '../../actions';
 
-import { Button } from '../components/ui';
 import React from 'react';
 import _ from 'lodash';
 import { bindActionCreators } from 'redux';
