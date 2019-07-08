@@ -94,6 +94,7 @@
     "redux-thunk": "^2.2.0",
     "rlp": "^2.0.0",
     "sha3": "^1.2.2",
+    "styled-components": "^3.4.10",
     "truffle": "^4.1.11",
     "truffle-deployer": "^2.0.0",
     "web3": "^0.19.1",
