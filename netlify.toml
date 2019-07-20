@@ -5,18 +5,18 @@
 
 [[redirects]]
   from = "https://ethernaut.zeppelin.solutions/*"
-  to = "https://ethernaut.openzeppelin.com/:splat "
+  to = "https://ethernaut.openzeppelin.com/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://ethernaut-devcon3.zeppelin.solutions/*"
-  to = "https://ethernaut.openzeppelin.com/:splat "
+  to = "https://ethernaut.openzeppelin.com/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://ethernaut-ethuoft.zeppelin.solutions/*"
-  to = "https://ethernaut.openzeppelin.com/:splat "
+  to = "https://ethernaut.openzeppelin.com/:splat"
   status = 301
   force = true
