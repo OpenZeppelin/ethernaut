@@ -1,9 +1,4 @@
 [[redirects]]
-  from = "/*"
-  to = "/"
-  status = 200
-
-[[redirects]]
   from = "https://ethernaut.zeppelin.solutions/*"
   to = "https://ethernaut.openzeppelin.com/:splat"
   status = 301
@@ -20,3 +15,8 @@
   to = "https://ethernaut.openzeppelin.com/:splat"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 200
