@@ -1,10 +1,11 @@
-import * as constants from '../constants';
+import * as constants from '../../constants';
 
-import { Button, Page, PageTitle, Paragraph } from '../components/ui';
+import { Button, Page, PageTitle, Paragraph } from '../ui';
 
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 class Home extends React.Component {
   navigateToFirstIncompleteLevel() {
@@ -20,7 +21,7 @@ class Home extends React.Component {
     }
 
     // Navigate to first incomplete level
-    this.props.router.push(`${constants.PATH_LEVEL_ROOT}${target}`);
+    this.props.history.push(`${constants.PATH_LEVEL_ROOT}${target}`);
   }
 
   render() {
@@ -88,4 +89,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(withRouter(Home));

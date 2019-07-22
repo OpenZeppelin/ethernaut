@@ -1,0 +1,110 @@
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', 'Helvetica', -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #282846;
+  background-color: white;
+  font-size: 15px;
+  overflow-x: hidden;
+}
+
+html,
+body,
+#root {
+  font-size: 15px;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+a {
+  color: #4e5ee4;
+  text-decoration: none;
+}
+
+/** -------- Markdown Output -------- **/
+
+/*
+#markdown-output {
+  margin-bottom: 120px;
+} */
+
+#markdown-output p {
+  opacity: 0.8;
+  font-size: 1rem;
+  color: #282846;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+}
+
+#markdown-output h4 {
+  /* opacity: 0.9; */
+  font-size: 1.4rem;
+  color: #292964;
+  line-height: 1.6rem;
+  font-weight: 500;
+}
+
+#markdown-output pre {
+  font-size: 1rem;
+  color: #282846;
+  background: #f8f8fa;
+  border: 1px solid rgba(40, 40, 70, 0.2);
+  border-radius: 3px;
+  padding: 10px 15px;
+  width: 100%;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+#markdown-output pre code {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 3px;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: inherit;
+}
+
+#markdown-output pre > code {
+  font-family: monospace;
+  background-color: transparent;
+}
+
+#markdown-output code {
+  background-color: #f5f6fd;
+  color: #5969e8;
+  padding: 3px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+
+#markdown-output h6 {
+  font-size: 0.9rem;
+}
+
+pre > code.solidity {
+  border-radius: 3px;
+  padding: 20px;
+}

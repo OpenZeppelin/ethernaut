@@ -1,14 +1,15 @@
-import * as constants from '../constants';
+import * as constants from '../../constants';
 
 import {
   Content,
+  Icon,
   LevelItem,
   LevelList,
   LevelName,
   NewLabel,
   Root,
   Title,
-} from '../components/Sidebar.css';
+} from './Sidebar.css';
 
 import React from 'react';
 import { bindActionCreators } from 'redux';
@@ -17,10 +18,11 @@ import moment from 'moment';
 
 class Sidebar extends React.Component {
   render() {
-    const { activeLevel, player } = this.props;
+    const { activeLevel, player, onShowMenu, showMenu } = this.props;
     return (
-      <Root>
-        <Content>
+      <Root showMenu={showMenu}>
+        <Icon show={showMenu} onShowMenu={onShowMenu} />
+        <Content show={showMenu}>
           <Title>Levels</Title>
           <LevelList>
             {this.props.levels.map((level, idx) => {

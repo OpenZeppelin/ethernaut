@@ -1,15 +1,16 @@
-import React from 'react';
-import Sidebar from 'react-sidebar';
+import * as constants from '../constants';
+
+import { Main, Root, Wrapper } from '../components/Ethernaut.css';
+
+import { Footer } from '../components/ui';
 import Header from './Header';
-import SidebarContent from './Sidebar';
-import FontAwesome from 'react-fontawesome';
-import ReactGA from 'react-ga'
-import * as constants from '../constants'
+import React from 'react';
+import ReactGA from 'react-ga';
+import Sidebar from './Sidebar';
 
 class App extends React.Component {
-
   constructor() {
-    super()
+    super();
 
     // Analytics
     ReactGA.initialize(constants.GOOGLE_ANALYTICS_ID);
@@ -17,35 +18,23 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.location !== prevProps.location) {
-      this.childrenElement.parentElement.scrollTop = 0
+    if (this.props.location !== prevProps.location) {
+      this.childrenElement.parentElement.scrollTop = 0;
     }
   }
 
   render() {
     return (
-      <div style={{ fontFamily: '"Helvetica Neue", Lato, sans-serif'}}>
-        <Header/>
-
-        {/* SPLIT VIEW */}
-        <Sidebar
-          sidebar={<div style={{ width: '170px' }}><SidebarContent/></div>}
-          transitions={false}
-          docked={true}
-          shadow={false}
-          styles={{ root: { top: 62, bottom: 20 }, sidebar: { backgroundColor: '#e5f2fb', boxShadow: 'none' }, content: { overflowX: 'hidden' }}}
-        >
-          <div ref={el => this.childrenElement = el}>
+      <Root>
+        <Wrapper>
+          <Sidebar />
+          <Main ref={(el) => (this.childrenElement = el)}>
+            <Header />
             {this.props.children}
-          </div>
-        </Sidebar>
-
-        {/* FOOTER */}
-        <footer className="footer navbar-fixed-bottom text-center text-muted">
-          <small>developed with <FontAwesome name="heart"/> and <FontAwesome name="flash"/> by the <a href="https://zeppelin.solutions">Zeppelin</a> team</small>
-        </footer>
-
-      </div>
+          </Main>
+        </Wrapper>
+        <Footer />
+      </Root>
     );
   }
 }
