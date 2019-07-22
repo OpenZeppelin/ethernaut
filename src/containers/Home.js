@@ -37,14 +37,14 @@ class Home extends React.Component {
           <h2 className="title">
             The Ethernaut&nbsp;
             <small style={{ fontSize: 10 }}>by</small>
-            <a href='https://zeppelin.solutions' target="_blank" rel="noopener noreferred">
-              <img style={{ maxWidth: '120px' }} src='../../imgs/zeppelin-by-logo.png' alt='Zeppelin'/>
+            <a href='https://openzeppelin.com' target="_blank" rel="noopener noreferred">
+              <img style={{ maxWidth: '120px' }} src='../../imgs/openzeppelin-by-logo.png' alt='OpenZeppelin'/>
             </a>
           </h2>
           {/* INFO */}
           <p>The Ethernaut is a Web3/Solidity based wargame inspired on <a href="https://overthewire.org" target="_blank" rel="noopener noreferred">overthewire.org</a>, played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'.</p>
           <p>The game is 100% open source and all levels are contributions made by other players. Do you have an interesting idea? PRs are welcome at <a href="https://github.com/OpenZeppelin/ethernaut">github.com/OpenZeppelin/ethernaut</a>.</p>
-          <p>Are you interested in smart contract development or security? Does securing the world’s blockchain infrastructure sound exciting to you? <a href="https://zeppelin.solutions/jobs" target="_blank" rel="noopener noreferred"><strong style={{ color: '#eb5424', fontWeight: 600 }}>We are hiring!</strong></a></p>
+          <p>Are you interested in smart contract development or security? Does securing the world’s blockchain infrastructure sound exciting to you? <a href="https://openzeppelin.com/jobs" target="_blank" rel="noopener noreferred"><strong style={{ color: '#eb5424', fontWeight: 600 }}>We are hiring!</strong></a></p>
           <button
             style={{marginTop: '10px'}}
             className="btn btn-primary"
