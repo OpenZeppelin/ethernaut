@@ -9,7 +9,7 @@ The game acts both as a tool for those interested in learning ethereum, and as a
 ### Deployed Versions
 
 You can find the current, official version at:
-[ethernaut.zeppelin.solutions](https://ethernaut.zeppelin.solutions)
+[ethernaut.openzeppelin.com](https://ethernaut.openzeppelin.com)
 
 ### Running locally (local network)
 

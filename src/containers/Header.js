@@ -31,8 +31,8 @@ class Header extends React.Component {
             </button>
             <div className="navbar-brand" style={{paddingTop: '0', paddingBottom: '0', paddingLeft: '25px', lineHeight: '49px'}}>
               <span>
-                <a href="https://zeppelin.solutions" target="_blank" rel="noopener noreferred">
-                  <img style={{width: '40px', height: '40px'}} src='../../imgs/zeppelin-logo.svg' alt='zeppelin'/>
+                <a href="https://openzeppelin.com" target="_blank" rel="noopener noreferred">
+                  <img style={{width: '40px', height: '40px'}} src='../../imgs/openzeppelin-logo.svg' alt='OpenZeppelin'/>
                 </a>
               </span>
               &nbsp;
