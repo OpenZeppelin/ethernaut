@@ -7,4 +7,4 @@ Re-entrancy is a common attack. You should always be prepared for it!
 &nbsp;
 #### The DAO Hack
 
-The famous DAO hack used reentrancy to extract a huge amount of ether from the victim contract. See [15 lines of code that could have prevented TheDAO Hack](https://blog.zeppelin.solutions/15-lines-of-code-that-could-have-prevented-thedao-hack-782499e00942).
+The famous DAO hack used reentrancy to extract a huge amount of ether from the victim contract. See [15 lines of code that could have prevented TheDAO Hack](https://blog.openzeppelin.com/15-lines-of-code-that-could-have-prevented-thedao-hack-782499e00942).
