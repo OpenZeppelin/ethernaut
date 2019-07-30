@@ -16,6 +16,7 @@ contract('Fallout', function(accounts) {
     ethernaut = await Ethernaut.new();
     level = await FalloutFactory.new()
     await ethernaut.registerLevel(level.address)
+    console.log(ethernaut.address, level.address)
   });
 
   it('should allow the player to solve the level', async function() {
@@ -25,7 +26,7 @@ contract('Fallout', function(accounts) {
       {from: player}
     )
 
-    assert.equal(await instance.owner(), level.address)
+    assert.equal(await instance.owner(), 0x0)
 
     await instance.Fal1out()
     assert.equal(await instance.owner(), player)

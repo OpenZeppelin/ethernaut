@@ -7,7 +7,8 @@ contract FalloutFactory is Level {
 
   function createInstance(address _player) public payable returns (address) {
     _player;
-    return address(new Fallout());
+    Fallout instance = new Fallout();
+    return address(instance);
   }
 
   function validateInstance(address payable _instance, address _player) public returns (bool) {
