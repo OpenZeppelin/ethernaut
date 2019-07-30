@@ -2,7 +2,7 @@ pragma solidity ^0.5.0;
 
 
 interface Building {
-  function isLastFloor(uint) view external returns (bool);
+  function isLastFloor(uint) external returns (bool);
 }
 
 
