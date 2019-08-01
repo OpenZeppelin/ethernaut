@@ -12,8 +12,7 @@ contract AlienCodex is Ownable {
     _;
   }
   
-  function make_contact(bytes32[] memory _firstContactMessage) public {
-    assert(_firstContactMessage.length > 2**200);
+  function make_contact() public {
     contact = true;
   }
 
