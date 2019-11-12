@@ -58,12 +58,12 @@ exec()
 
 async function deployContracts(deployData) {
   const props = {
-    gasPrice: web3.eth.gasPrice * 10,
+    gasPrice: (await web3.eth.getGasPrice()) * 10,
     gas: 4500000
   }
 
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
-  if(!from) from = web3.eth.accounts[0];
+  if(!from) from = (await web3.eth.getAccounts())[0];
   console.log("FROM: ", from)
 
   // Deploy/retrieve ethernaut contract
@@ -133,7 +133,7 @@ function initWeb3() {
     const provider = new Web3.providers.HttpProvider(providerUrl);
     web3 = new Web3(provider)
 
-    web3.net.getListening((err, res) => {
+    web3.eth.net.isListening((err, res) => {
       if(err) {
         console.log('error connecting web3:', err);
         reject()

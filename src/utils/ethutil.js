@@ -1,4 +1,4 @@
-import TruffleContract from 'truffle-contract'
+import TruffleContract from '@truffle/contract'
 import * as ethjs from 'ethereumjs-util'
 
 let web3;
