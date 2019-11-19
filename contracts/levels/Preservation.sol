@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.5.0;
 
 contract Preservation {
 
@@ -18,12 +18,12 @@ contract Preservation {
  
   // set the time for timezone 1
   function setFirstTime(uint _timeStamp) public {
-    timeZone1Library.delegatecall(setTimeSignature, _timeStamp);
+    timeZone1Library.delegatecall(abi.encodePacked(setTimeSignature, _timeStamp));
   }
 
   // set the time for timezone 2
   function setSecondTime(uint _timeStamp) public {
-    timeZone2Library.delegatecall(setTimeSignature, _timeStamp);
+    timeZone2Library.delegatecall(abi.encodePacked(setTimeSignature, _timeStamp));
   }
 }
 

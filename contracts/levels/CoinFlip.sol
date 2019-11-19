@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
@@ -9,12 +9,12 @@ contract CoinFlip {
   uint256 lastHash;
   uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
 
-  function CoinFlip() public {
+  constructor() public {
     consecutiveWins = 0;
   }
 
   function flip(bool _guess) public returns (bool) {
-    uint256 blockValue = uint256(block.blockhash(block.number.sub(1)));
+    uint256 blockValue = uint256(blockhash(block.number.sub(1)));
 
     if (lastHash == blockValue) {
       revert();

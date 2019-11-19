@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.0;
 
 import "./MagicNum.sol";
 import "./base/Level.sol";
@@ -10,10 +10,10 @@ contract Solver {
 contract MagicNumFactory is Level {
 
   function createInstance(address) public payable returns (address) {
-    return new MagicNum();
+    return address(new MagicNum());
   }
 
-  function validateInstance(address _instance, address) public returns (bool) {
+  function validateInstance(address payable _instance, address) public returns (bool) {
 
     // Retrieve the instance.
     MagicNum instance = MagicNum(_instance);

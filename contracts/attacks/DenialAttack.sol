@@ -1,8 +1,8 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.0;
 
 contract DenialAttack {
 
-  function () payable {
+  function () external payable {
       // consume all the gas
       assert(1==2);
   }

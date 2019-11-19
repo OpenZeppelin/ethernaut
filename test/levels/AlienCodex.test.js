@@ -2,10 +2,8 @@ const AlienCodex = artifacts.require('./levels/AlienCodex.sol')
 const AlienCodexFactory = artifacts.require('./levels/AlienCodexFactory.sol')
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
-
 import * as utils from '../utils/TestUtils'
-import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
-import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
+
 
 contract('AlienCodex', function(accounts) {
 
@@ -28,7 +26,6 @@ contract('AlienCodex', function(accounts) {
   describe('instance', function() {
 
     it('should not be immediately solvable', async function() {
-
       // Player is not owner yet
       assert.notEqual(player, owner);
 
@@ -37,19 +34,9 @@ contract('AlienCodex', function(accounts) {
       assert.isFalse(status);
     });
 
-    it('should allow the user to join AlienCodex, with arbitrary length', async function() {
+    it('should allow the user to join AlienCodex', async function() {
       
-      let _data = web3.sha3("make_contact(bytes32[])").substring(0, 10);
-      const array_loc = '0000000000000000000000000000000000000000000000000000000000000020';     // location of array in memory
-      const long_length = 'F000000000000000000000000000000000000000000000000000000000000001';   // arbitrary array length, starting with F000...
-      const arbitrary_val = '0000000000000000000000000000000000000000000000000000000000000005'; // arbitrary array value
-      _data = _data + array_loc + long_length + arbitrary_val;
-      
-      await toPromise(web3.eth.sendTransaction)({
-        from: player,
-        to: instance.address,
-        data: _data
-      })
+      await instance.make_contact();
       
       // Player should have successfully made first contact
       let status = await instance.contact.call();
@@ -60,17 +47,12 @@ contract('AlienCodex', function(accounts) {
       
       await instance.retract();
 
-      let _data = web3.sha3("revise(uint256,bytes32)").substring(0, 10);
-      const owner_loc = '4ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30a'; // location of owner ptr, offset by array's frame of reference
-      const padding = '000000000000000000000001'; // 10 bytes of padding + 0x01 'contact'
-      _data = _data + owner_loc + padding + player.substr(2);
-  
-      await toPromise(web3.eth.sendTransaction)({
-        from: player,
-        to: instance.address,
-        data: _data
-      })
-    
+      const owner_loc = '0x4ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30a'; // location of owner ptr, offset by array's frame of reference
+      const padding = '0x000000000000000000000000';
+      let _data = padding + player.substr(2);
+
+      await instance.revise(owner_loc, _data, {from:player});
+
       // Player should own the instance now
       let ownr = await instance.owner();
       assert.equal(ownr, player);

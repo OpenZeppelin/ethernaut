@@ -1,7 +1,7 @@
 // This is used for the HiJack truffle test. 
-pragma solidity ^0.4.23;
+pragma solidity ^0.5.0;
 
-import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
+import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
 contract RecoverySimpleToken {
@@ -12,14 +12,14 @@ contract RecoverySimpleToken {
   mapping (address => uint) public balances;
 
   // constructor
-  constructor(string _name, address _creator, uint256 _initialSupply) public {
+  constructor(string memory _name, address _creator, uint256 _initialSupply) public {
     name = _name;
     balances[_creator] = _initialSupply;
   }
 
   // collect ether in return for tokens
-  function () public payable {
-    balances[msg.sender] = balances[msg.sender].add(msg.value.mul(10));
+  function () external payable {
+    balances[msg.sender] += msg.value.mul(10);
   }
 
   // allow transfers of tokens
@@ -30,7 +30,7 @@ contract RecoverySimpleToken {
   }
 
   // clean up after ourselves
-  function destroy(address to) public {
+  function destroy(address payable to) public {
     selfdestruct(to);
   }
 }

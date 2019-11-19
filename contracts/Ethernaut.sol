@@ -1,7 +1,7 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
 import './levels/base/Level.sol';
-import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
+import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract Ethernaut is Ownable {
 
@@ -13,7 +13,7 @@ contract Ethernaut is Ownable {
 
   // Only registered levels will be allowed to generate and validate level instances.
   function registerLevel(Level _level) public onlyOwner {
-    registeredLevels[_level] = true;
+    registeredLevels[address(_level)] = true;
   }
 
   // ----------------------------------
@@ -34,7 +34,7 @@ contract Ethernaut is Ownable {
   function createLevelInstance(Level _level) public payable {
 
     // Ensure level is registered.
-    require(registeredLevels[_level]);
+    require(registeredLevels[address(_level)]);
 
     // Get level factory to create an instance.
     address instance = _level.createInstance.value(msg.value)(msg.sender);
@@ -43,10 +43,10 @@ contract Ethernaut is Ownable {
     emittedInstances[instance] = EmittedInstanceData(msg.sender, _level, false);
 
     // Retrieve created instance via logs.
-    LevelInstanceCreatedLog(msg.sender, instance);
+    emit LevelInstanceCreatedLog(msg.sender, instance);
   }
 
-  function submitLevelInstance(address _instance) public {
+  function submitLevelInstance(address payable _instance) public {
 
     // Get player and level.
     EmittedInstanceData storage data = emittedInstances[_instance];
@@ -60,7 +60,7 @@ contract Ethernaut is Ownable {
       data.completed = true;
 
       // Notify success via logs.
-      LevelCompletedLog(msg.sender, data.level);
+      emit LevelCompletedLog(msg.sender, data.level);
     }
   }
 }

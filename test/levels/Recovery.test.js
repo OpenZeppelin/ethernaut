@@ -1,8 +1,8 @@
 const RecoveryFactory = artifacts.require('./levels/RecoveryFactory.sol')
 const Recovery = artifacts.require('./levels/Recovery.sol')
 const RecoverySimpleToken = artifacts.require('./levels/RecoverySimpleToken.sol')
-const Ethernaut = artifacts.require('./Ethernaut.sol')
 
+const Ethernaut = artifacts.require('./Ethernaut.sol')
 import * as utils from '../utils/TestUtils'
 
 let rlp = require('rlp')
@@ -34,7 +34,7 @@ contract('Recovery', function(accounts) {
 
     instance = await utils.createLevelInstance(
       ethernaut, level.address, player, Recovery,
-      {from: player, value: web3.toWei(1, 'ether')}
+      {from: player, value: web3.utils.toWei('1', 'ether')}
     )
   })
 

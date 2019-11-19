@@ -1,6 +1,6 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.0;
 
-import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
+import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract AlienCodex is Ownable {
 
@@ -12,8 +12,7 @@ contract AlienCodex is Ownable {
     _;
   }
   
-  function make_contact(bytes32[] _firstContactMessage) public {
-    assert(_firstContactMessage.length > 2**200);
+  function make_contact() public {
     contact = true;
   }
 

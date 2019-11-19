@@ -1,9 +1,7 @@
 {
   "presets": [
     "react",
-    "es2015",
-    "stage-2",
-    "stage-3"
+    "env"
   ],
-  "plugins": ["syntax-async-functions"]
+  "plugins": ["syntax-async-functions", "transform-object-rest-spread"]
 }

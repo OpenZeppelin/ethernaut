@@ -2,10 +2,9 @@ const PrivacyFactory = artifacts.require('./levels/PrivacyFactory.sol')
 const Privacy = artifacts.require('./attacks/Privacy.sol')
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
-
+const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 import * as utils from '../utils/TestUtils'
-import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
-import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
+
 
 contract('Privacy', function(accounts) {
 
@@ -20,7 +19,7 @@ contract('Privacy', function(accounts) {
     await ethernaut.registerLevel(level.address)
     instance = await utils.createLevelInstance(
       ethernaut, level.address, player, Privacy,
-      {from: player, value: web3.toWei(1, 'ether')}
+      {from: player, value: web3.utils.toWei('1', 'ether')}
     )
   });
 
@@ -31,7 +30,7 @@ contract('Privacy', function(accounts) {
     });
 
     it('should not unlock with any key', async function() {
-      await expectThrow(
+      await expectRevert.unspecified(
         instance.unlock("0x123")
       );
     });
@@ -39,14 +38,14 @@ contract('Privacy', function(accounts) {
     it('should unlock with the proper key', async function() {
       
       // Read storage.
-      for(let i = 0; i < 5; i++) {
-        console.log(web3.eth.getStorageAt(instance.address, i));
+      for(let i = 0; i < 6; i++) {
+        console.log(await web3.eth.getStorageAt(instance.address, i));
       }
 
       // Read contract storage.
-      const dataEntry = web3.eth.getStorageAt(instance.address, 3);
+      const dataEntry = await web3.eth.getStorageAt(instance.address, 5);
+      console.log("data entry " + dataEntry)
       const key = '0x' + dataEntry.substring(2, 34);
-      // console.log(key);
 
       // Unlock.
       await instance.unlock(key);

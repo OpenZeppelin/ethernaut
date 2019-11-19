@@ -1,11 +1,10 @@
-const Ethernaut = artifacts.require('./Ethernaut.sol')
-
 const DelegationFactory = artifacts.require('./levels/DelegationFactory.sol')
 const Delegation = artifacts.require('./levels/Delegation.sol')
 
+const Ethernaut = artifacts.require('./Ethernaut.sol')
+const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 import * as utils from '../utils/TestUtils'
-import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
-import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
+
 
 contract('Delegation', function(accounts) {
 
@@ -31,8 +30,8 @@ contract('Delegation', function(accounts) {
     assert.equal(owner, level.address)
 
     // Use the fallback method to call the delegate's pwn()
-    const pwner = web3.sha3("pwn()").substring(0, 10)
-    await toPromise(web3.eth.sendTransaction)({
+    const pwner = web3.utils.sha3("pwn()").substring(0, 10)
+    await (web3.eth.sendTransaction)({
       from: player,
       to: instance.address,
       data: pwner
