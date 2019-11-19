@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
@@ -13,14 +13,14 @@ contract GatekeeperOne {
   }
 
   modifier gateTwo() {
-    require(msg.gas.mod(8191) == 0);
+    require(gasleft().mod(8191) == 0);
     _;
   }
 
   modifier gateThree(bytes8 _gateKey) {
-    require(uint32(_gateKey) == uint16(_gateKey));
-    require(uint32(_gateKey) != uint64(_gateKey));
-    require(uint32(_gateKey) == uint16(tx.origin));
+      require(uint32(uint64(_gateKey)) == uint16(uint64(_gateKey)), "GatekeeperOne: invalid gateThree part one");
+      require(uint32(uint64(_gateKey)) != uint64(_gateKey), "GatekeeperOne: invalid gateThree part two");
+      require(uint32(uint64(_gateKey)) == uint16(tx.origin), "GatekeeperOne: invalid gateThree part three");
     _;
   }
 

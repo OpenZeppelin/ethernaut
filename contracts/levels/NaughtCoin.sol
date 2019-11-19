@@ -1,22 +1,27 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
-import 'zeppelin-solidity/contracts/token/ERC20/StandardToken.sol';
+import 'openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol';
+import 'openzeppelin-solidity/contracts/token/ERC20/ERC20.sol';
 
- contract NaughtCoin is StandardToken {
-  
-  using SafeMath for uint256;
-  string public constant name = 'NaughtCoin';
-  string public constant symbol = '0x0';
-  uint public constant decimals = 18;
-  uint public timeLock = now + 10 years;
-  uint public INITIAL_SUPPLY = (10 ** decimals).mul(1000000);
+ contract NaughtCoin is ERC20, ERC20Detailed {
+
+  // string public constant name = 'NaughtCoin';
+  // string public constant symbol = '0x0';
+  // uint public constant decimals = 18;
+  uint public timeLock = now + 10 * 365 days;
+  uint256 public INITIAL_SUPPLY;
   address public player;
 
-  function NaughtCoin(address _player) public {
+  constructor(address _player) 
+  ERC20Detailed('NaughtCoin', '0x0', 18)
+  ERC20()
+  public {
     player = _player;
-    totalSupply_ = INITIAL_SUPPLY;
-    balances[player] = INITIAL_SUPPLY;
-    Transfer(0x0, player, INITIAL_SUPPLY);
+    INITIAL_SUPPLY = 1000000 * (10**uint256(decimals()));
+    // _totalSupply = INITIAL_SUPPLY;
+    // _balances[player] = INITIAL_SUPPLY;
+    _mint(player, INITIAL_SUPPLY);
+    emit Transfer(address(0), player, INITIAL_SUPPLY);
   }
   
   function transfer(address _to, uint256 _value) lockTokens public returns(bool) {

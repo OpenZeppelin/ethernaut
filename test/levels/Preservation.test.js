@@ -1,14 +1,11 @@
-const Ethernaut = artifacts.require('./Ethernaut.sol')
-
 const PreservationFactory = artifacts.require('./levels/PreservationFactory.sol')
 const Preservation = artifacts.require('./levels/Preservation.sol')
 const PreservationAttack = artifacts.require('./attacks/PreservationAttack.sol')
 
+const Ethernaut = artifacts.require('./Ethernaut.sol')
+const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 import * as utils from '../utils/TestUtils'
-import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
-import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
 
-const BN = require("bignumber.js")
 
 contract('Preservation', function(accounts) {
 
@@ -38,10 +35,9 @@ contract('Preservation', function(accounts) {
   });
 
   it('the second function should always be able to modify state, regardless of user input', async function() {
-
     // send some random times
     await instance.setFirstTime(26)
-    await instance.setSecondTime(1e20)
+    await instance.setSecondTime(1e20.toString())
 
     // the second should be fine 
     let firstLibraryAddress = await instance.timeZone1Library.call()

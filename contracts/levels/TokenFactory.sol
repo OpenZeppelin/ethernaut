@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
 import './base/Level.sol';
 import './Token.sol';
@@ -11,10 +11,10 @@ contract TokenFactory is Level {
   function createInstance(address _player) public payable returns (address) {
     Token token = new Token(supply);
     token.transfer(_player, playerSupply);
-    return token;
+    return address(token);
   }
 
-  function validateInstance(address _instance, address _player) public returns (bool) {
+  function validateInstance(address payable _instance, address _player) public returns (bool) {
     Token token = Token(_instance);
     return token.balanceOf(_player) > playerSupply;
   }

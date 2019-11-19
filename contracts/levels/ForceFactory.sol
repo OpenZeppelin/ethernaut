@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
 import './base/Level.sol';
 import './Force.sol';
@@ -7,12 +7,12 @@ contract ForceFactory {
 
   function createInstance(address _player) public payable returns (address) {
     _player;
-    return new Force();
+    return address(new Force());
   }
 
-  function validateInstance(address _instance, address _player) public view returns (bool) {
+  function validateInstance(address payable _instance, address _player) public view returns (bool) {
     _player;
     Force instance = Force(_instance);
-    return instance.balance > 0;
+    return address(instance).balance > 0;
   }
 }

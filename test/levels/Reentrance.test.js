@@ -3,10 +3,9 @@ const ReentranceFactory = artifacts.require('./levels/ReentranceFactory.sol')
 const ReentranceAttack = artifacts.require('./attacks/ReentranceAttack.sol')
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
-
+const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 import * as utils from '../utils/TestUtils'
-import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
-import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
+
 
 contract('Reentrance', function(accounts) {
 
@@ -23,14 +22,14 @@ contract('Reentrance', function(accounts) {
 
   it('should allow the player to solve the level', async function() {
 
-    const insertCoin = web3.fromWei(
-      (await level.insertCoin.call()).toNumber(), 'ether'
+    const insertCoin = web3.utils.fromWei(
+      (await level.insertCoin.call()).toString(), 'ether'
     )
     console.log(`level insertCoin:`, insertCoin)
 
     const instance = await utils.createLevelInstance(
       ethernaut, level.address, player, Reentrance,
-      {from: player, value: web3.toWei(insertCoin, 'ether')}
+      {from: player, value: web3.utils.toWei(insertCoin, 'ether')}
     )
 
     // Query contract balance (should be 0.1)
@@ -41,7 +40,7 @@ contract('Reentrance', function(accounts) {
     // Deploy attacker contract
     const attackerFunds = 0.01
     const attacker = await ReentranceAttack.new(instance.address, {
-      value: web3.toWei(attackerFunds, 'ether')
+      value: web3.utils.toWei(attackerFunds.toString(), 'ether')
     })
 
     // Check attacker balance

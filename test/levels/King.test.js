@@ -3,10 +3,9 @@ const King = artifacts.require('./attacks/King.sol')
 const KingAttack = artifacts.require('./attacks/KingAttack.sol')
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
-
+const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 import * as utils from '../utils/TestUtils'
-import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
-import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
+
 
 contract('King', function(accounts) {
 
@@ -25,40 +24,40 @@ contract('King', function(accounts) {
 
     const instance = await utils.createLevelInstance(
       ethernaut, level.address, player, King,
-      {from: player, value: web3.toWei(1, 'ether')}
+      {from: player, value: web3.utils.toWei('1', 'ether')}
     )
 
     // Init checks
-    assert.equal(await instance.king(), level.address)
-    assert.equal(web3.fromWei(await instance.prize()).toNumber(), 1)
-    console.log('king:', await instance.king())
-    console.log('prize:', web3.fromWei(await instance.prize()).toNumber())
+    assert.equal(await instance._king(), level.address)
+    assert.equal(web3.utils.fromWei(await instance.prize()).toString(), '1')
+    console.log('king:', await instance._king())
+    console.log('prize:', web3.utils.fromWei(await instance.prize()).toString())
 
     // Ensure that players can become king
     console.log('new king...')
-    await toPromise(web3.eth.sendTransaction)({
+    await (web3.eth.sendTransaction)({
       from: accounts[1],
       to: instance.address,
-      value: web3.toWei(2, 'ether')
+      value: web3.utils.toWei('2', 'ether')
     })
-    console.log('king:', await instance.king());
-    console.log('prize:', web3.fromWei(await instance.prize()).toNumber())
-    assert.equal(web3.fromWei(await instance.prize()).toNumber(), 2)
-    assert.equal(await instance.king(), accounts[1])
+    console.log('king:', await instance._king());
+    console.log('prize:', web3.utils.fromWei(await instance.prize()).toString())
+    assert.equal(web3.utils.fromWei(await instance.prize()).toString(), '2')
+    assert.equal(await instance._king(), accounts[1])
 
     // Ensure that players dont become king if they dont meet the prize
     console.log('failed claim...')
-    await expectThrow(
-      toPromise(web3.eth.sendTransaction)({
+    await expectRevert.unspecified(
+      (web3.eth.sendTransaction)({
         from: accounts[2],
         to: instance.address,
-        value: web3.toWei(0.1, 'ether')
+        value: web3.utils.toWei('0.1', 'ether')
       })
     )
-    console.log('king:', await instance.king());
-    console.log('prize:', web3.fromWei(await instance.prize()).toNumber())
-    assert.equal(web3.fromWei(await instance.prize()).toNumber(), 2)
-    assert.equal(await instance.king(), accounts[1])
+    console.log('king:', await instance._king());
+    console.log('prize:', web3.utils.fromWei(await instance.prize()).toString())
+    assert.equal(web3.utils.fromWei(await instance.prize()).toString(), '2')
+    assert.equal(await instance._king(), accounts[1])
 
     // Factory check (should fail)
     // NOTE: Factory check makes the level become the king,
@@ -72,13 +71,13 @@ contract('King', function(accounts) {
     )
     console.log('completed:', completed)
     assert.equal(completed, false)
-    assert.equal(await instance.king(), level.address)
+    assert.equal(await instance._king(), level.address)
 
     // Attack
-    const attackerFunds = 2.01
+    const attackerFunds = '2.01'
     const attacker = await KingAttack.new();
     await attacker.doYourThing(instance.address, {
-      value: web3.toWei(attackerFunds, 'ether')
+      value: web3.utils.toWei(attackerFunds, 'ether')
     })
 
     // Factory check (should pass)

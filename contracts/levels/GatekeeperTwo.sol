@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.0;
 
 contract GatekeeperTwo {
 
@@ -17,7 +17,7 @@ contract GatekeeperTwo {
   }
 
   modifier gateThree(bytes8 _gateKey) {
-    require(uint64(keccak256(msg.sender)) ^ uint64(_gateKey) == uint64(0) - 1);
+    require(uint64(bytes8(keccak256(abi.encodePacked(msg.sender)))) ^ uint64(_gateKey) == uint64(0) - 1);
     _;
   }
 
