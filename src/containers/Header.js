@@ -53,6 +53,9 @@ class Header extends React.Component {
               <li className={currentPath === constants.PATH_HELP ? 'active' : ''}>
                 <Link to={constants.PATH_HELP} style={{fontSize: '16px'}}>Help</Link>
               </li>
+              <li className="new">
+                <Link to="https://solidity-05.ethernaut.openzeppelin.com" style={{fontSize: '16px'}}>Try out the Solidity 0.5 version!</Link>
+              </li>
             </ul>
 
             {/* RIGHT */}
