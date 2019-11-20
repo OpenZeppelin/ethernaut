@@ -70,6 +70,15 @@
     color: #000 !important;
 }
 
+.navbar-nav > li.new > a {
+    background-image: url(/imgs/new.png);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    padding-left: 35px;
+    background-position: left;
+    font-weight: bold;
+}
+
 .levels-list-title {
     font-weight: 500;
     letter-spacing: 0.75px !important;
