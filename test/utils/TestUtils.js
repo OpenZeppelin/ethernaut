@@ -48,9 +48,9 @@ export async function submitLevelInstance(ethernaut, levelAddress, instanceAddre
     const tx = await ethernaut.submitLevelInstance(instanceAddress, data);
     if(tx.logs.length === 0) resolve(false)
     else {
-      const log = tx.logs[0].args;
-      const ethLevelAddress = log.level;
-      const ethPlayer = log.player;
+      const events = tx.logs.filter(e => e.event === "LevelCompletedLog");
+      const ethLevelAddress = events[0].args.level;
+      const ethPlayer = events[0].args.player;
       if(player === ethPlayer && levelAddress === ethLevelAddress) {
         resolve(true)
       }
