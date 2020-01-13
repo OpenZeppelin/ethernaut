@@ -13,9 +13,9 @@ export default store => next => action => {
   ) return next(action)
 
   // Watch LevelCompletedLog
-  const log = state.contracts.ethernaut.LevelCompletedLog(
-    { player: state.player.address }
-  );
+  const log = state.contracts.ethernaut.LevelCompletedLog({
+    filter: { player: state.player.address }
+  });
 
   log.on('error', (error) => {
     if (error) {
