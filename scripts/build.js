@@ -209,7 +209,7 @@ function build(previousSizeMap) {
       } else {
         console.log('  ' + chalk.cyan('npm') +  ' install -g pushstate-server');
       }
-      console.log('  ' + chalk.cyan('pushstate-server') + ' build');
+      console.log('  ' + chalk.cyan('pushstate-server') + ' -d build_webpack');
       console.log('  ' + chalk.cyan(openCommand) + ' http://localhost:9000');
       console.log();
     }
