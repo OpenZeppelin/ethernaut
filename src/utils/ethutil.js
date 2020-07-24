@@ -188,5 +188,5 @@ function logger(req, res, next, end) {
 }
 
 export function attachLogger() {
-  web3.currentProvider.rpcEngine._middleware.unshift(logger);
+  web3.currentProvider._rpcEngine._middleware.unshift(logger);
 }
