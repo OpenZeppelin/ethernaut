@@ -33,7 +33,7 @@ class App extends React.Component {
           transitions={false}
           docked={true}
           shadow={false}
-          styles={{ root: { top: 82, bottom: 20 }, sidebar: { backgroundColor: '#e5f2fb', boxShadow: 'none' }, content: { overflowX: 'hidden' }}}
+          styles={{ root: { top: 62, bottom: 20 }, sidebar: { backgroundColor: '#e5f2fb', boxShadow: 'none' }, content: { overflowX: 'hidden' }}}
         >
           <div ref={el => this.childrenElement = el}>
             {this.props.children}
