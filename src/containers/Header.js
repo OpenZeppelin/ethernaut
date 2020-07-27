@@ -15,6 +15,9 @@ class Header extends React.Component {
         backgroundColor: 'red',
         zIndex: 10000
       }}>
+        <div style={{ marginLeft: '25px', lineHeight: '1.4', color: 'darkred', fontWeight: 'bold' }}>
+          Ethernaut is not working properly due to recent breaking changes on Metamask. We are working to get the site updated to fix this. Please follow <a target="_blank" href="https://github.com/OpenZeppelin/ethernaut/issues/170">this issue</a> for news. We apologize for the inconvenience!
+        </div>
         <div>
 
           {/* VERSIONS */}
