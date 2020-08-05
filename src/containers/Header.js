@@ -50,6 +50,9 @@ class Header extends React.Component {
               <li className={currentPath === constants.PATH_ROOT ? 'active' : ''}>
                 <Link to={constants.PATH_ROOT} style={{fontSize: '16px'}}>Home</Link>
               </li>
+              <li className={currentPath === constants.PATH_SCOREBOARD ? 'active' : ''}>
+                <Link to={constants.PATH_SCOREBOARD} style={{fontSize: '16px'}}>Scoreboard</Link>
+              </li>
               <li className={currentPath === constants.PATH_HELP ? 'active' : ''}>
                 <Link to={constants.PATH_HELP} style={{fontSize: '16px'}}>Help</Link>
               </li>

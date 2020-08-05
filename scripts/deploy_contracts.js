@@ -13,6 +13,7 @@ const fs = require('fs')
 const ethutil = require(`../src/utils/ethutil`)
 const constants = require(`../src/constants`)
 const EthernautABI = require('../build/contracts/Ethernaut.json')
+const AliasABI = require('../build/contracts/Alias.json')
 
 const gamedata = require(`../gamedata/gamedata.json`)
 
@@ -44,6 +45,11 @@ async function exec() {
     }
   })
 
+  if(needsDeploy(deployData.alias)) {
+    count++
+    console.log(colors.red(`(${count}) Will deploy Alias.sol!`))
+  }
+
   if(count === 0) {
     console.log(colors.gray(`No actions to perform, exiting.`));
     return;
@@ -65,6 +71,18 @@ async function deployContracts(deployData) {
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
   if(!from) from = web3.eth.accounts[0];
   console.log("FROM: ", from)
+
+  // deploy/retrieve alias contract
+  const Alias = await ethutil.getTruffleContract(AliasABI, {from});
+  if (needsDeploy(deployData.alias)) {
+    console.log(deployData);
+    console.log(`Deploying Alias.sol...`);
+    const alias = await Alias.new(props);
+    console.log(colors.yellow(`  Alias: ${alias.address}`));
+    deployData.alias = alias.address;
+  } else {
+    console.log('Using deployed Alias.sol:', deployData.alias);
+  }
 
   // Deploy/retrieve ethernaut contract
   const Ethernaut = await ethutil.getTruffleContract(EthernautABI, {from})

@@ -39,7 +39,8 @@ export default store => next => action => {
       next(action)
 
       // Get game data
-      store.dispatch(actions.syncLevelProgress())
+      store.dispatch(actions.syncLevelProgress());
+      store.dispatch(actions.loadAliasContract());
 
       // Auto-restore previoius instance
       if(state.gamedata.activeLevel)

@@ -18,7 +18,9 @@ export default store => next => action => {
         level.idx = i;
         levelsOut.push(level);
       }
-      action.ethernautAddress = deployData.ethernaut
+
+      action.ethernautAddress = deployData.ethernaut;
+      action.aliasAddress = deployData.alias;
       action.levels = levelsOut;
     } catch(e) {
       window.alert('cannot find levels data')

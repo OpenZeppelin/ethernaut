@@ -16,6 +16,9 @@ export const loadGamedata = () => ({ type: LOAD_GAME_DATA, levels: undefined })
 export const LOAD_ETHERNAUT_CONTRACT = "LOAD_ETHERNAUT_CONTRACT";
 export const loadEthernautContract = () => ({ type: LOAD_ETHERNAUT_CONTRACT, contract: undefined })
 
+export const LOAD_ALIAS_CONTRACT = "LOAD_ALIAS_CONTRACT";
+export const loadAliasContract = () => ({ type: LOAD_ALIAS_CONTRACT, alias: undefined })
+
 export const ACTIVATE_LEVEL = "ACTIVATE_LEVEL";
 export const activateLevel = address => ({ type: ACTIVATE_LEVEL, address })
 
@@ -33,6 +36,9 @@ export const syncLevelProgress = () => ({ type: SYNC_PLAYER_PROGRESS })
 
 export const COLLECT_STATS = "COLLECT_STATS";
 export const collectStats = () => ({ type: COLLECT_STATS })
+
+export const COLLECT_SCOREBOARD = "COLLECT_SCOREBOARD";
+export const collectScoreboard = () => ({ type: COLLECT_SCOREBOARD })
 
 export const SET_BLOCK_NUM = "SET_BLOCK_NUM";
 export const setBlockNum = num => ({ type: SET_BLOCK_NUM, blockNum: num })

@@ -2,6 +2,7 @@ import * as actions from '../actions'
 
 const initialState = {
   ethernaut: undefined,
+  alias: undefined,
   levels: {},
   nonce: 0
 }
@@ -14,6 +15,12 @@ export default function(state = initialState, action) {
         ...state,
         ethernaut: action.contract
       };
+
+    case actions.LOAD_ALIAS_CONTRACT:
+    return {
+      ...state,
+      alias: action.alias
+    };
 
     case actions.LOAD_LEVEL_INSTANCE:
       return {
