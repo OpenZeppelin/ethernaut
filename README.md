@@ -20,7 +20,7 @@ npm install
 ```
 2. Start deterministic rpc
 ```
-ganache-cli --deterministic
+npm run ganache
 ```
 3. You might want to import one of the private keys from ganache-cli to your Metamask wallet.
 4. Compile contracts
