@@ -133,7 +133,9 @@ module.exports = {
         test: /\.(js|jsx)$/,
         include: [
           paths.appSrc,
-          path.join(paths.appNodeModules, '@truffle/contract/lib')
+          path.join(paths.appNodeModules, '@truffle/contract/lib'),
+          path.join(paths.appNodeModules, 'web3-core-method'),
+          path.join(paths.appNodeModules, 'web3/node_modules/web3-eth-ens'),
         ],
         loader: 'babel',
       },
