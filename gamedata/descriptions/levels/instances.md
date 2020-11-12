@@ -3,7 +3,7 @@ This level walks you through the very basics of how to play the game.
 &nbsp;
 #### 1. Set up MetaMask
 If you don't have it already, install the [MetaMask browser extension](https://metamask.io/) (in Chrome, Firefox, Brave or Opera on your desktop machine).
-Set up the extension's wallet and use the network selector to point to the 'Ropsten test network' in the top left of the extension's interface.
+Set up the extension's wallet and use the network selector to point to the 'Rinkeby test network' in the top left of the extension's interface.
 
 &nbsp;
 #### 2. Open the browser's console
@@ -55,7 +55,7 @@ You can see who the owner of the ethernaut contract is, which is not you of cour
 
 &nbsp;
 #### 6. Get test ether
-To play the game, you will need test ether. The easiest way to get some testnet ether is via [the MetaMask faucet](https://faucet.metamask.io/).
+To play the game, you will need test ether. The easiest way to get some testnet ether is via [this faucet](https://faucet.rinkeby.io/).
 
 Once you see some ether in your balance, move on to the next step.
 
