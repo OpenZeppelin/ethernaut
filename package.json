@@ -6,11 +6,13 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "truffle test",
+    "ganache": "ganache-cli --deterministic",
     "compile:contracts": "rm -rf build && npx truffle compile",
     "deploy:contracts": "npm run compile:contracts && node scripts/deploy_contracts.js",
     "deploy:ui": "npm rum compile:contracts && npm run build && rsync -avz build_webpack/ faradam3:/opt/ethernaut/"
   },
   "devDependencies": {
+    "@truffle/hdwallet-provider": "1.2.0",
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
     "babel-eslint": "7.1.1",
@@ -42,6 +44,7 @@
     "file-loader": "0.9.0",
     "filesize": "3.3.0",
     "fs-extra": "0.30.0",
+    "ganache-cli": "6.12.1",
     "gzip-size": "3.0.0",
     "html-webpack-plugin": "2.24.0",
     "http-proxy-middleware": "0.17.2",
@@ -64,6 +67,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "@truffle/contract": "^4.0.0",
     "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
     "bignumber": "^1.1.0",
@@ -99,8 +103,7 @@
     "redux-thunk": "^2.2.0",
     "rlp": "^2.0.0",
     "sha3": "^1.2.2",
-    "@truffle/contract": "^4.0.0",
-    "web3": "1.2.2"
+    "web3": "1.2.7"
   },
   "jest": {
     "collectCoverageFrom": [
