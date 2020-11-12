@@ -72,13 +72,9 @@ async function deployContracts(deployData) {
   if(needsDeploy(deployData.ethernaut)) {
 		console.log(deployData);
     console.log(`Deploying Ethernaut.sol...`);
-    try {
-      ethernaut = await Ethernaut.new(props)
-      console.log(colors.yellow(`  Ethernaut: ${ethernaut.address}`));
-      deployData.ethernaut = ethernaut.address;
-    } catch (err) {
-      console.log('Error deploying Ethernaut: ' + err)
-    }
+    ethernaut = await Ethernaut.new(props)
+    console.log(colors.yellow(`  Ethernaut: ${ethernaut.address}`));
+    deployData.ethernaut = ethernaut.address;
   }
   else {
     console.log('Using deployed Ethernaut.sol:', deployData.ethernaut);
