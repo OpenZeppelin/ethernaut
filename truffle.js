@@ -12,11 +12,18 @@ module.exports = {
 
     ropsten: {
       host: constants.NETWORKS.ROPSTEN.url,
-      port: constants.NETWORKS.ROPSTEN.port,
       network_id: constants.NETWORKS.ROPSTEN.id,
       gas: 3000000,
       gasPrice: 100000000000,
       from: constants.ADDRESSES[constants.NETWORKS.ROPSTEN.name]
+    },
+
+    rinkeby: {
+      host: constants.NETWORKS.RINKEBY.url,
+      network_id: constants.NETWORKS.RINKEBY.id,
+      gas: 3000000,
+      gasPrice: 100000000000,
+      from: constants.ADDRESSES[constants.NETWORKS.RINKEBY.name]
     },
 
     local: {

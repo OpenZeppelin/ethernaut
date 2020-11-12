@@ -13,6 +13,7 @@ const fs = require('fs')
 const ethutil = require(`../src/utils/ethutil`)
 const constants = require(`../src/constants`)
 const EthernautABI = require('../build/contracts/Ethernaut.json')
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 const gamedata = require(`../gamedata/gamedata.json`)
 
@@ -127,10 +128,18 @@ function needsDeploy(deployAddress) {
 function initWeb3() {
   return new Promise(async (resolve, reject) => {
 
-    const providerUrl = `${constants.ACTIVE_NETWORK.url}:${constants.ACTIVE_NETWORK.port}`
-    console.log(colors.gray(`connecting web3 to '${providerUrl}'...`));
+    let provider
+    if(constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) {
+      const providerUrl = `${constants.ACTIVE_NETWORK.url}:${constants.ACTIVE_NETWORK.port}`
+      console.log(colors.gray(`connecting web3 to '${providerUrl}'...`));
+      provider = new Web3.providers.HttpProvider(providerUrl);
+    } else {
+      provider = new HDWalletProvider(
+        constants.ACTIVE_NETWORK.privKey,
+        constants.ACTIVE_NETWORK.url
+      )
+    }
 
-    const provider = new Web3.providers.HttpProvider(providerUrl);
     web3 = new Web3(provider)
 
     web3.eth.net.isListening((err, res) => {
