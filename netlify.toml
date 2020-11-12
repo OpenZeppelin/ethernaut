@@ -1,4 +1,10 @@
 [[redirects]]
+  from = "https://solidity-05.ethernaut.openzeppelin.com/*"
+  to = "https://ethernaut.openzeppelin.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "https://ethernaut.zeppelin.solutions/*"
   to = "https://ethernaut.openzeppelin.com/:splat"
   status = 301
