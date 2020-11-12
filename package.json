@@ -12,6 +12,7 @@
     "deploy:ui": "npm rum compile:contracts && npm run build && rsync -avz build_webpack/ faradam3:/opt/ethernaut/"
   },
   "devDependencies": {
+    "@truffle/hdwallet-provider": "1.2.0",
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
     "babel-eslint": "7.1.1",
