@@ -7,7 +7,7 @@ contract RecoveryFactory is Level {
 
   address lostAddress;
 
-  function createInstance(address _player) public payable returns (address) {
+  function createInstance(address _player) override public payable returns (address) {
     Recovery recoveryInstance;
     recoveryInstance = new Recovery();
     // create a simple token 
@@ -21,7 +21,7 @@ contract RecoveryFactory is Level {
     return address(recoveryInstance);
   }
 
-  function validateInstance(address payable _instance, address _player) public returns (bool) {
+  function validateInstance(address payable _instance, address _player) override public returns (bool) {
     _player;
     require(_instance != address(0)); // Suppress solidity warning. 
     if (address(lostAddress).balance == 0) {

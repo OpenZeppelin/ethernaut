@@ -27,7 +27,7 @@ contract Denial {
     }
 
     // allow deposit of funds
-    function() external payable {}
+    fallback() external payable {}
 
     // convenience function
     function contractBalance() public view returns (uint) {

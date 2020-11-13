@@ -25,5 +25,5 @@ contract Reentrance {
     }
   }
 
-  function() external payable {}
+  fallback() external payable {}
 }

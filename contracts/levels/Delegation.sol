@@ -23,7 +23,7 @@ contract Delegation {
     owner = msg.sender;
   }
 
-  function() external {
+  fallback() external {
     (bool result, bytes memory data) = address(delegate).delegatecall(msg.data);
     if (result) {
       this;
