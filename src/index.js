@@ -102,7 +102,7 @@ function checkWrongNetwork(id) {
     console.error(`1) From November 2 you can turn on privacy mode (off by default) in settings if you don't want to expose your info by default. 2) If privacy mode is turn on you have to authorized metamask to use this page. 3) then refresh.`)
     
     if(id == constants.NETWORKS.ROPSTEN.id) {
-      console.error(`If you want to play on Ropsten, check out https://ropsten.ethernaut.openzeppelin.com/`)
+      console.error(`If you want to play on Ropsten, check out https://ropsten--openzeppelin-ethernaut.netlify.app/`)
     }
   }
 
