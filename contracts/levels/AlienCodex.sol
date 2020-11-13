@@ -1,6 +1,6 @@
-pragma solidity ^0.6.0;
+pragma solidity ^0.5.0;
 
-import '@openzeppelin/contracts/access/Ownable.sol';
+import '../helpers/Ownable-05.sol';
 
 contract AlienCodex is Ownable {
 
@@ -21,7 +21,7 @@ contract AlienCodex is Ownable {
   }
 
   function retract() contacted public {
-    // codex.length--;
+    codex.length--;
   }
 
   function revise(uint i, bytes32 _content) contacted public {
