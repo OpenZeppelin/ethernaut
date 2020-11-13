@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
 interface GatekeeperTwoInterface {
   function enter(bytes8 _gateKey) external returns (bool);

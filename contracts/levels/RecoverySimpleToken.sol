@@ -1,8 +1,8 @@
 // This is used for the HiJack truffle test. 
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
-import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
-import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
+import '@openzeppelin/contracts/access/Ownable.sol';
+import '@openzeppelin/contracts/math/SafeMath.sol';
 
 contract RecoverySimpleToken {
 
