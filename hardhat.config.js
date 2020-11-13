@@ -13,6 +13,6 @@ module.exports = {
     ]
   },
   paths: {
-    artifacts: './artifacts'
+    artifacts: './build'
   }
 };
