@@ -27,7 +27,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "1",
-      "instanceGas": 350000,
+      "instanceGas": 450000,
       "author": "ajsantander"
     },
     {
@@ -42,7 +42,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "2",
-      "instanceGas": 350000,
+      "instanceGas": 450000,
       "author": "ajsantander"
     },
     {
@@ -57,7 +57,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "3",
-      "instanceGas": 300000,
+      "instanceGas": 320000,
       "author": "syncikin"
     },
     {
@@ -87,7 +87,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "5",
-      "instanceGas": 300000,
+      "instanceGas": 330000,
       "author": "ajsantander"
     },
     {
@@ -147,7 +147,7 @@
       "deployParams": [],
       "deployFunds": 1,
       "deployId": "9",
-      "instanceGas": 400000,
+      "instanceGas": 350000,
       "author": "ajsantander"
     },
     {
@@ -162,7 +162,7 @@
       "deployParams": [],
       "deployFunds": 1,
       "deployId": "10",
-      "instanceGas": 250000,
+      "instanceGas": 350000,
       "author": "ajsantander"
     },
     {
@@ -192,7 +192,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "12",
-      "instanceGas": 300000,
+      "instanceGas": 320000,
       "author": "ajsantander"
     },
     {
@@ -207,7 +207,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "13",
-      "instanceGas": 500000,
+      "instanceGas": 400000,
       "author": "0age"
     },
     {
@@ -222,7 +222,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "14",
-      "instanceGas": 500000,
+      "instanceGas": 250000,
       "author": "0age"
     },
     {
@@ -237,7 +237,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "15",
-      "instanceGas": 1350000,
+      "instanceGas": 1300000,
       "author": "syncikin"
     },
     {
@@ -252,7 +252,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "16",
-      "instanceGas": 1500000,
+      "instanceGas": 500000,
       "author": "AgeManning"
     },
     {
@@ -267,7 +267,7 @@
       "deployParams": [],
       "deployFunds": 1,
       "deployId": "18",
-      "instanceGas": 1050000,
+      "instanceGas": 1100000,
       "author": "AgeManning"
     },
     {
@@ -298,7 +298,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "20",
-      "instanceGas": 500000,
+      "instanceGas": 520000,
       "author": "nczhu"
     },
     {
@@ -313,7 +313,7 @@
       "deployParams": [],
       "deployFunds": 1,
       "deployId": "21",
-      "instanceGas": 500000,
+      "instanceGas": 450000,
       "author": "AgeManning"
     },
     {
