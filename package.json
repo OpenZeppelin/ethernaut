@@ -12,6 +12,8 @@
     "deploy:ui": "npm rum compile:contracts && npm run build && rsync -avz build_webpack/ faradam3:/opt/ethernaut/"
   },
   "devDependencies": {
+    "@nomiclabs/hardhat-truffle5": "^2.0.0",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
     "@truffle/hdwallet-provider": "1.2.0",
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",

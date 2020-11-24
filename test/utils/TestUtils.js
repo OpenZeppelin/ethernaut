@@ -1,4 +1,4 @@
-export function getBalance(web3, address) {
+exports.getBalance = (web3, address) => {
   return new Promise(function(resolve, reject) {
     web3.eth.getBalance(address, function(error, result) {
       if(error) reject(error)
@@ -7,7 +7,7 @@ export function getBalance(web3, address) {
   })
 }
 
-export function skipBlocks(numBlocks, web3) {
+exports.skipBlocks = (numBlocks, web3) => {
   return new Promise(async resolve => {
     for(let i = 0; i < numBlocks; i++) {
       await skipBlock(web3);
@@ -16,7 +16,7 @@ export function skipBlocks(numBlocks, web3) {
   });
 }
 
-export function skipBlock(web3) {
+exports.skipBlock = (web3) => {
   return new Promise((resolve, reject) => {
     web3.currentProvider.sendAsync({
       jsonrpc: '2.0',
@@ -28,7 +28,7 @@ export function skipBlock(web3) {
   });
 }
 
-export async function createLevelInstance(ethernaut, levelAddress, player, levelInstanceClass, params) {
+exports.createLevelInstance = async (ethernaut, levelAddress, player, levelInstanceClass, params) => {
   return new Promise(async function(resolve, reject) {
     const data = params || {from: player}
     const tx = await ethernaut.createLevelInstance(levelAddress, data);
@@ -42,7 +42,7 @@ export async function createLevelInstance(ethernaut, levelAddress, player, level
   });
 }
 
-export async function submitLevelInstance(ethernaut, levelAddress, instanceAddress, player, params) {
+exports.submitLevelInstance = async (ethernaut, levelAddress, instanceAddress, player, params) => {
   return new Promise(async function(resolve) {
     const data = params || {from: player}
     const tx = await ethernaut.submitLevelInstance(instanceAddress, data);

@@ -3,7 +3,7 @@ const Fallback = artifacts.require('./attacks/Fallback.sol')
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
 const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
-import * as utils from '../utils/TestUtils'
+const utils = require('../utils/TestUtils')
 
 contract('Fallback', function(accounts) {
 

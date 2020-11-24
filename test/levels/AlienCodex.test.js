@@ -2,7 +2,7 @@ const AlienCodex = artifacts.require('./levels/AlienCodex.sol')
 const AlienCodexFactory = artifacts.require('./levels/AlienCodexFactory.sol')
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
-import * as utils from '../utils/TestUtils'
+const utils = require('../utils/TestUtils')
 
 
 contract('AlienCodex', function(accounts) {
