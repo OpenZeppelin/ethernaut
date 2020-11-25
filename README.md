@@ -25,7 +25,7 @@ npm run ganache
 3. You might want to import one of the private keys from ganache-cli to your Metamask wallet.
 4. Compile contracts
 ```
-npx truffle compile
+npm run compile:contracts
 ```
 5. Set src/constants.js ACTIVE_NETWORK to NETWORKS.LOCAL
 6. Deploy contracts
@@ -47,7 +47,7 @@ In this case, replace point 5 with:
 ### Running tests
 
 ```
-npx truffle test
+npm run test
 ```
 
 ### Level development
@@ -71,7 +71,7 @@ Let's suppose that we are creating the level "King" (which is already created an
 3. Rename and modify the contracts to KingFactory.sol and King.sol.
 4. Implement the desired instance and factory logic in solidity. See current levels and notes to understand how the game mechanics work.
 5. Add test/levels/King.test.js file. Use other tests files as reference to see how tests might work.
-6. Run truffle test and once all tests pass, register the level in gamedata/gamedata.json.
+6. Run `npm run test` and once all tests pass, register the level in gamedata/gamedata.json.
 7. The level should now show up in the ui. To start the UI, set src/constants.js' ACTIVE_NETWORK to DEVELOPMENT and run npm start.
 8. Add a description markdown file, in this case gamedata/levels/king.md (make sure gamedata.json points to it). This content will now be displayed in the ui for the level.
 9. Verify that the level is playable and winnable via UI. It is common for levels to be beatable in some way in tests that doesn't work using the UI, so it is important to test it manually as well.
