@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
 import './base/Level.sol';
 import './Denial.sol';
@@ -7,7 +7,7 @@ contract DenialFactory is Level {
 
   uint public initialDeposit = 1 ether;
 
-  function createInstance(address _player) public payable returns (address) {
+  function createInstance(address _player) override public payable returns (address) {
     _player;
     require(msg.value >= initialDeposit);
     Denial instance = new Denial();
@@ -16,7 +16,7 @@ contract DenialFactory is Level {
     return address(instance);
   }
 
-  function validateInstance(address payable _instance, address _player) public returns (bool) {
+  function validateInstance(address payable _instance, address _player) override public returns (bool) {
     _player;
     Denial instance = Denial(_instance);
     if (address(instance).balance <= 100 wei) { // cheating otherwise
@@ -27,6 +27,6 @@ contract DenialFactory is Level {
     return !result;
   }
 
-  function() external payable {}
+  fallback() external payable {}
 
 }

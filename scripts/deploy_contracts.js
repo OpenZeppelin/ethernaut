@@ -12,7 +12,7 @@ const colors = require('colors')
 const fs = require('fs')
 const ethutil = require(`../src/utils/ethutil`)
 const constants = require(`../src/constants`)
-const EthernautABI = require('../build/contracts/Ethernaut.json')
+const EthernautABI = require('../build/contracts/Ethernaut.sol/Ethernaut.json')
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 const gamedata = require(`../gamedata/gamedata.json`)
@@ -90,7 +90,7 @@ async function deployContracts(deployData) {
         console.log(`Deploying ${level.levelContract}, deployId: ${level.deployId}...`);
 
         // Deploy contract
-        const LevelABI = require(`../build/contracts/${withoutExtension(level.levelContract)}.json`)
+        const LevelABI = require(`../build/contracts/levels/${level.levelContract}/${withoutExtension(level.levelContract)}.json`)
         const Contract = await ethutil.getTruffleContract(LevelABI, {from})
         const contract = await Contract.new(...level.deployParams, props)
         console.log(colors.yellow(`  ${level.name}: ${contract.address}`));
@@ -98,8 +98,9 @@ async function deployContracts(deployData) {
         console.log(colors.gray(`  storing deployed id: ${level.deployId} with address: ${contract.address}`));
 
         // Register level in Ethernaut contract
-        console.log(`  Registering level in Ethernaut.sol...`)
+        console.log(`  Registering level ${level.levelContract} in Ethernaut.sol...`)
         const tx = await ethernaut.registerLevel(contract.address, props);
+        console.log(`Registered ${level.levelContract}!`)
         // console.log(tx)
       }
       else {

@@ -1,6 +1,6 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
-import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
+import '@openzeppelin/contracts/math/SafeMath.sol';
 
 contract Recovery {
 
@@ -25,7 +25,7 @@ contract SimpleToken {
   }
 
   // collect ether in return for tokens
-  function() external payable {
+  fallback() external payable {
     balances[msg.sender] = msg.value.mul(10);
   }
 

@@ -1,19 +1,19 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
 import "./MagicNum.sol";
 import "./base/Level.sol";
 
-contract Solver {
-  function whatIsTheMeaningOfLife() public view returns (bytes32);
+interface Solver {
+  function whatIsTheMeaningOfLife() external view returns (bytes32);
 }
 
 contract MagicNumFactory is Level {
 
-  function createInstance(address) public payable returns (address) {
+  function createInstance(address) override public payable returns (address) {
     return address(new MagicNum());
   }
 
-  function validateInstance(address payable _instance, address) public returns (bool) {
+  function validateInstance(address payable _instance, address) override public returns (bool) {
 
     // Retrieve the instance.
     MagicNum instance = MagicNum(_instance);

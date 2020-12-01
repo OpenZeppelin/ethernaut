@@ -1,9 +1,8 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
-import 'openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol';
-import 'openzeppelin-solidity/contracts/token/ERC20/ERC20.sol';
+import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 
- contract NaughtCoin is ERC20, ERC20Detailed {
+ contract NaughtCoin is ERC20 {
 
   // string public constant name = 'NaughtCoin';
   // string public constant symbol = '0x0';
@@ -13,8 +12,7 @@ import 'openzeppelin-solidity/contracts/token/ERC20/ERC20.sol';
   address public player;
 
   constructor(address _player) 
-  ERC20Detailed('NaughtCoin', '0x0', 18)
-  ERC20()
+  ERC20('NaughtCoin', '0x0')
   public {
     player = _player;
     INITIAL_SUPPLY = 1000000 * (10**uint256(decimals()));
@@ -24,7 +22,7 @@ import 'openzeppelin-solidity/contracts/token/ERC20/ERC20.sol';
     emit Transfer(address(0), player, INITIAL_SUPPLY);
   }
   
-  function transfer(address _to, uint256 _value) lockTokens public returns(bool) {
+  function transfer(address _to, uint256 _value) override public lockTokens returns(bool) {
     super.transfer(_to, _value);
   }
 

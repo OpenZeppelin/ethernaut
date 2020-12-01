@@ -1,6 +1,6 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
-import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
+import '@openzeppelin/contracts/math/SafeMath.sol';
 
 contract Reentrance {
   
@@ -25,5 +25,5 @@ contract Reentrance {
     }
   }
 
-  function() external payable {}
+  fallback() external payable {}
 }
