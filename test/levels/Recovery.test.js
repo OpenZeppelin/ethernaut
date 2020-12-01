@@ -3,7 +3,7 @@ const Recovery = artifacts.require('./levels/Recovery.sol')
 const RecoverySimpleToken = artifacts.require('./levels/RecoverySimpleToken.sol')
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
-import * as utils from '../utils/TestUtils'
+const utils = require('../utils/TestUtils')
 
 let rlp = require('rlp')
 let sha3 = require('sha3')

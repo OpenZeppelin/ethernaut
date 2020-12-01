@@ -1,6 +1,6 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
-import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
+import '@openzeppelin/contracts/math/SafeMath.sol';
 
 contract Denial {
 
@@ -27,7 +27,7 @@ contract Denial {
     }
 
     // allow deposit of funds
-    function() external payable {}
+    fallback() external payable {}
 
     // convenience function
     function contractBalance() public view returns (uint) {

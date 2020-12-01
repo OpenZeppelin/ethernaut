@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
 contract King {
 
@@ -12,7 +12,7 @@ contract King {
     prize = msg.value;
   }
 
-  function() external payable {
+  fallback() external payable {
     require(msg.value >= prize || msg.sender == owner);
     king.transfer(msg.value);
     king = msg.sender;

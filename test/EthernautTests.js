@@ -5,7 +5,7 @@ const Dummy = artifacts.require('./levels/Dummy.sol');
 const FallbackFactory = artifacts.require('./levels/FallbackFactory.sol');
 const Manufactured = artifacts.require('./levels/Manufactured.sol');
 const { expectRevert } = require('openzeppelin-test-helpers')
-import * as utils from './utils/TestUtils'
+const utils = require('./utils/TestUtils')
 
 contract('Ethernaut', function(accounts) {
 

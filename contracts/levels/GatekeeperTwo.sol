@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
 contract GatekeeperTwo {
 
@@ -11,7 +11,7 @@ contract GatekeeperTwo {
 
   modifier gateTwo() {
     uint x;
-    assembly { x := extcodesize(caller) }
+    assembly { x := extcodesize(caller()) }
     require(x == 0);
     _;
   }

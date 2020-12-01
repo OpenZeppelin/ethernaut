@@ -1,3 +1,7 @@
+[build]
+  command = "npm run compile:contracts && npm run build"
+  publish = "build_webpack"
+
 [[redirects]]
   from = "https://solidity-05.ethernaut.openzeppelin.com/*"
   to = "https://ethernaut.openzeppelin.com/:splat"

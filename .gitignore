@@ -4,6 +4,8 @@ node_modules/
 # Build
 build/
 build_webpack/
+artifacts/
+cache/
 
 # Personal
 .todo

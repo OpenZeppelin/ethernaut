@@ -57,7 +57,7 @@ export default store => next => action => {
   if(!instanceAddress) return
   console.info(`=> Instance address\n${instanceAddress}`)
   const Instance = ethutil.getTruffleContract(
-    require(`../../build/contracts/${withoutExtension(action.level.instanceContract)}.json`),
+    require(`../../build/contracts/levels/${action.level.instanceContract}/${withoutExtension(action.level.instanceContract)}.json`),
     {
       from: state.player.address,
       gasPrice: 2 * state.network.gasPrice

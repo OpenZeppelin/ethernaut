@@ -7,7 +7,7 @@ const GatekeeperTwoAttack = artifacts.require('./attacks/GatekeeperTwoAttack.sol
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
 const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
-import * as utils from '../utils/TestUtils'
+const utils = require('../utils/TestUtils')
 
 
 contract('GatekeeperOne', function(accounts) {

@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-import './base/Level.sol';
+import './base/Level-05.sol';
 import './AlienCodex.sol';
 
 contract AlienCodexFactory is Level {
