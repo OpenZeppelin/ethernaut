@@ -1,4 +1,4 @@
-pragma solidity ^0.6.0;
+pragma solidity >=0.6.4 <0.8.0;
 
 import './base/Level.sol';
 import './Recovery.sol';
@@ -15,7 +15,7 @@ contract RecoveryFactory is Level {
     // the lost address
     lostAddress = address(uint160(uint256(keccak256(abi.encodePacked(uint8(0xd6), uint8(0x94), recoveryInstance, uint8(0x01))))));
     // Send it some ether
-    (bool result, bytes memory data) = lostAddress.call.value(0.5 ether)("");
+    (bool result, bytes memory data) = lostAddress.call{value: 0.5 ether}("");
     require(result);
 
     return address(recoveryInstance);

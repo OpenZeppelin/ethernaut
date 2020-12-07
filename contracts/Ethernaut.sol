@@ -1,4 +1,4 @@
-pragma solidity ^0.6.0;
+pragma solidity >=0.6.4 <0.8.0;
 
 import './levels/base/Level.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
@@ -37,7 +37,7 @@ contract Ethernaut is Ownable {
     require(registeredLevels[address(_level)]);
 
     // Get level factory to create an instance.
-    address instance = _level.createInstance.value(msg.value)(msg.sender);
+    address instance = _level.createInstance{value: msg.value}(msg.sender);
 
     // Store emitted instance relationship with player and level.
     emittedInstances[instance] = EmittedInstanceData(msg.sender, _level, false);

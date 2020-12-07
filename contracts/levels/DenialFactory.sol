@@ -1,4 +1,4 @@
-pragma solidity ^0.6.0;
+pragma solidity >=0.6.4 <0.8.0;
 
 import './base/Level.sol';
 import './Denial.sol';
@@ -11,7 +11,7 @@ contract DenialFactory is Level {
     _player;
     require(msg.value >= initialDeposit);
     Denial instance = new Denial();
-    (bool result, bytes memory data) = address(instance).call.value(msg.value)("");
+    (bool result, bytes memory data) = address(instance).call{value: msg.value}("");
     require(result);
     return address(instance);
   }
@@ -23,7 +23,7 @@ contract DenialFactory is Level {
         return false;
     }
     // fix the gas limit for this call
-    (bool result, bytes memory data) = address(instance).call.gas(500000)(abi.encodeWithSignature("withdraw()")); // Must revert
+    (bool result, bytes memory data) = address(instance).call{gas: 500000}(abi.encodeWithSignature("withdraw()")); // Must revert
     return !result;
   }
 

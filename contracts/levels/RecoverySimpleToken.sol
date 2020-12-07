@@ -1,5 +1,5 @@
 // This is used for the HiJack truffle test. 
-pragma solidity ^0.6.0;
+pragma solidity >=0.6.4 <0.8.0;
 
 import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/math/SafeMath.sol';

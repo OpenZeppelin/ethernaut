@@ -1,4 +1,4 @@
-pragma solidity ^0.6.0;
+pragma solidity >=0.6.4 <0.8.0;
 
 import '../levels/CoinFlip.sol';
 import '@openzeppelin/contracts/math/SafeMath.sol';
