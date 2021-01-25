@@ -1,4 +1,4 @@
-pragma solidity ^0.6.0;
+pragma solidity >=0.6.4 <0.8.0;
 
 import "./MagicNum.sol";
 import "./base/Level.sol";
