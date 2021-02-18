@@ -1,4 +1,3 @@
-import TruffleContract from '@truffle/contract'
 import * as ethjs from 'ethereumjs-util'
 
 let web3;
@@ -7,6 +6,11 @@ export function setWeb3(_web3) {
 }
 
 export function getTruffleContract(jsonABI, defaults = {}) {
+  //Doing this here instead of `import` so that the project uses the project version of Web3Js
+  //defined in package.json instead of relying on Truffle dependencies (that uses an old version)
+  //With this we silence some deprecation warnings of MetaMask v9.0.0
+  const TruffleContract = require('@truffle/contract');
+  
   const truffleContract = TruffleContract(jsonABI);
   if(!defaults.gasPrice) defaults.gasPrice = 20000000000;
   // if(!defaults.gas) defaults.gas = 200000;
