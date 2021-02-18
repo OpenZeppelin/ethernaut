@@ -145,7 +145,7 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
-          user: [
+          use: [
             'style-loader',
             'css-loader?importLoaders=1',
             'postcss-loader'
