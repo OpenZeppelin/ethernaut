@@ -145,8 +145,8 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
           use: [
-            'style-loader',
             'css-loader?importLoaders=1',
             'postcss-loader'
           ]  
