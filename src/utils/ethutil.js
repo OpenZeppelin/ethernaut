@@ -6,9 +6,9 @@ export function setWeb3(_web3) {
 }
 
 export function getTruffleContract(jsonABI, defaults = {}) {
-  //Doing this here instead of `import` so that the project uses the project version of Web3Js
-  //defined in package.json instead of relying on Truffle dependencies (that uses an old version)
-  //With this we silence some deprecation warnings of MetaMask v9.0.0
+  // HACK: Doing this here instead of `import` so that the project uses the web3.js version
+  // defined in `package.json` instead of relying on Truffle dependencies (that use an old version).
+  // With this, MetaMask v9 deprecation warnings are removed. 
   const TruffleContract = require('@truffle/contract');
   
   const truffleContract = TruffleContract(jsonABI);
