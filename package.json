@@ -40,7 +40,7 @@
     "eslint-plugin-import": "2.0.1",
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "6.4.1",
-    "extract-text-webpack-plugin": "1.0.1",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "0.9.0",
     "filesize": "3.3.0",
     "fs-extra": "0.30.0",
@@ -54,6 +54,7 @@
     "object-assign": "4.1.0",
     "openzeppelin-test-helpers": "^0.5.0",
     "path-exists": "2.1.0",
+    "postcss": "^8.2.6",
     "postcss-loader": "1.0.0",
     "promise": "7.1.1",
     "react-dev-utils": "^0.4.2",
@@ -61,12 +62,13 @@
     "strip-ansi": "3.0.1",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
-    "webpack": "1.14.0",
+    "webpack": "^3.11.0",
     "webpack-dev-server": "1.16.2",
     "webpack-manifest-plugin": "1.1.0",
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "3.2.0",
     "@truffle/contract": "^4.0.0",
     "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
@@ -84,7 +86,6 @@
     "marked": "^0.3.17",
     "moment": "^2.21.0",
     "nan": "^2.10.0",
-    "@openzeppelin/contracts": "3.2.0",
     "prompt": "^1.0.0",
     "rainbow-color": "^2.0.0",
     "react": "^15.4.2",
@@ -102,8 +103,8 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "rlp": "^2.0.0",
-    "sha3": "^1.2.2",
-    "web3": "1.2.7"
+    "sha3": "^1.2.3",
+    "web3": "1.3.3"
   },
   "jest": {
     "collectCoverageFrom": [
