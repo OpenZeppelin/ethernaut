@@ -330,6 +330,21 @@
       "deployId": "22",
       "instanceGas": 250000,
       "author": "34x4p08"
+    },
+    {
+      "name": "SafeToken",
+      "created": "2020-11-20",
+      "difficulty": "6",
+      "description": "safetoken.md",
+      "completedDescription": "safetoken_complete.md",
+      "levelContract": "SafeTokenFactory.sol",
+      "instanceContract": "SafeToken.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "23",
+      "instanceGas": 2000000,
+      "author": "AshiqAmien"
     }
   ]
 }
