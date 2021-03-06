@@ -91,6 +91,21 @@
       "author": "ajsantander"
     },
     {
+      "name": "Dex",
+      "created": "2021-03-06",
+      "difficulty": "2",
+      "description": "dex.md",
+      "completedDescription": "dex_complete.md",
+      "levelContract": "DexFactory.sol",
+      "instanceContract": "Dex.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "6",
+      "instanceGas": 330000,
+      "author": "patrickalphac"
+    },
+    {
       "name": "Delegation",
       "created": "2017-11-01",
       "difficulty": "4",
@@ -101,7 +116,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "6",
+      "deployId": "7",
       "instanceGas": 250000,
       "author": "ajsantander"
     },
@@ -116,7 +131,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "7",
+      "deployId": "8",
       "instanceGas": 150000,
       "author": "ajsantander"
     },
@@ -131,7 +146,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "8",
+      "deployId": "9",
       "instanceGas": 200000,
       "author": "syncikin"
     },
@@ -146,7 +161,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 1,
-      "deployId": "9",
+      "deployId": "10",
       "instanceGas": 350000,
       "author": "ajsantander"
     },
@@ -161,7 +176,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 1,
-      "deployId": "10",
+      "deployId": "11",
       "instanceGas": 350000,
       "author": "ajsantander"
     },
@@ -176,7 +191,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "11",
+      "deployId": "12",
       "instanceGas": 250000,
       "author": "martriay"
     },
@@ -191,7 +206,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "12",
+      "deployId": "13",
       "instanceGas": 320000,
       "author": "ajsantander"
     },
@@ -206,7 +221,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "13",
+      "deployId": "14",
       "instanceGas": 400000,
       "author": "0age"
     },
@@ -221,7 +236,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "14",
+      "deployId": "15",
       "instanceGas": 250000,
       "author": "0age"
     },
@@ -236,7 +251,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "15",
+      "deployId": "16",
       "instanceGas": 1300000,
       "author": "syncikin"
     },
@@ -251,7 +266,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "16",
+      "deployId": "17",
       "instanceGas": 500000,
       "author": "AgeManning"
     },
@@ -286,7 +301,6 @@
       "author": "ajsantander"
     },
     {
-
       "name": "Alien Codex",
       "created": "2018-10-11",
       "difficulty": "7",

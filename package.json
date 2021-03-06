@@ -68,6 +68,8 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.1",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@openzeppelin/contracts": "3.2.0",
     "@truffle/contract": "^4.0.0",
     "babel-polyfill": "^6.26.0",

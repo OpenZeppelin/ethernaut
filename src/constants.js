@@ -1,4 +1,4 @@
-require('dotenv').config({silent: true});
+require('dotenv').config({ silent: true })
 
 export const DEBUG = process.env.NODE_ENV !== 'production'
 export const DEBUG_REDUX = DEBUG
@@ -10,7 +10,7 @@ export const NETWORKS = {
     name: 'local',
     id: '*',
     url: 'http://localhost',
-    port: 8545
+    port: 8544
   },
   ROPSTEN: {
     name: 'ropsten',
@@ -59,7 +59,7 @@ export const CUSTOM_LOGGING = true                              /* TRUE on produ
 export const SHOW_ALL_COMPLETE_DESCRIPTIONS = false             /* FALSE on production */
 export const SHOW_VERSION = true                                /* TRUE on production */
 // export const ACTIVE_NETWORK = NETWORKS.ROPSTEN
-export const ACTIVE_NETWORK = NETWORKS.RINKEBY
-// export const ACTIVE_NETWORK = NETWORKS.LOCAL
+// export const ACTIVE_NETWORK = NETWORKS.RINKEBY
+export const ACTIVE_NETWORK = NETWORKS.LOCAL
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------
