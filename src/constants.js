@@ -10,7 +10,7 @@ export const NETWORKS = {
     name: 'local',
     id: '*',
     url: 'http://localhost',
-    port: 8544
+    port: 8545
   },
   ROPSTEN: {
     name: 'ropsten',
@@ -23,6 +23,12 @@ export const NETWORKS = {
     id: '4',
     url: `${process.env.RINKEBY_HOST}`,
     privKey: `${process.env.RINKEBY_PRIV_KEY}`
+  },
+  KOVAN: {
+    name: 'kovan',
+    id: '42',
+    url: `${process.env.KOVAN_HOST}`,
+    privKey: `${process.env.KOVAN_PRIV_KEY}`
   }
 }
 
@@ -59,7 +65,8 @@ export const CUSTOM_LOGGING = true                              /* TRUE on produ
 export const SHOW_ALL_COMPLETE_DESCRIPTIONS = false             /* FALSE on production */
 export const SHOW_VERSION = true                                /* TRUE on production */
 // export const ACTIVE_NETWORK = NETWORKS.ROPSTEN
-// export const ACTIVE_NETWORK = NETWORKS.RINKEBY
-export const ACTIVE_NETWORK = NETWORKS.LOCAL
+export const ACTIVE_NETWORK = NETWORKS.RINKEBY
+// export const ACTIVE_NETWORK = NETWORKS.LOCAL
+// export const ACTIVE_NETWORK = NETWORKS.KOVAN
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------

@@ -93,7 +93,7 @@
     {
       "name": "Dex",
       "created": "2021-03-06",
-      "difficulty": "2",
+      "difficulty": "3",
       "description": "dex.md",
       "completedDescription": "dex_complete.md",
       "levelContract": "DexFactory.sol",
@@ -102,7 +102,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "6",
-      "instanceGas": 330000,
+      "instanceGas": 3600000,
       "author": "patrickalphac"
     },
     {

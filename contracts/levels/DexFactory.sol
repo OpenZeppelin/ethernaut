@@ -11,12 +11,12 @@ contract DexFactory is Level {
   address public dex_address;
 
   function createInstance(address _player) override public payable returns (address) {
-    Dex instance = new Dex();
-    dex_address = address(instance);
     SwappableToken token_instance = new SwappableToken("Token 1", "TKN1", 110);
     SwappableToken token_instance_two = new SwappableToken("Token 2", "TKN2", 110);
     token_instance_address = address(token_instance);
     token_instance_two_address = address(token_instance_two);
+    Dex instance = new Dex(token_instance_address, token_instance_two_address);
+    dex_address = address(instance);
     
     token_instance.approve(address(instance), 100);
     token_instance_two.approve(address(instance), 100);
