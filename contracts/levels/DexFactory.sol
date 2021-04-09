@@ -6,17 +6,13 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 
 contract DexFactory is Level {
-  address public token_instance_address;
-  address public token_instance_two_address;
-  address public dex_address;
 
   function createInstance(address _player) override public payable returns (address) {
     SwappableToken token_instance = new SwappableToken("Token 1", "TKN1", 110);
     SwappableToken token_instance_two = new SwappableToken("Token 2", "TKN2", 110);
-    token_instance_address = address(token_instance);
-    token_instance_two_address = address(token_instance_two);
+    address token_instance_address = address(token_instance);
+    address token_instance_two_address = address(token_instance_two);
     Dex instance = new Dex(token_instance_address, token_instance_two_address);
-    dex_address = address(instance);
     
     token_instance.approve(address(instance), 100);
     token_instance_two.approve(address(instance), 100);
@@ -27,8 +23,9 @@ contract DexFactory is Level {
     return address(instance);
   }
 
-  function validateInstance(address payable _instance, address _player) override public returns (bool) {
-    Dex instance = Dex(_instance);
-    return ERC20(token_instance_address).balanceOf(dex_address) == 0 || ERC20(token_instance_two_address).balanceOf(dex_address) == 0;
+  function validateInstance(address payable _instance, address _) override public returns (bool) {
+    address token1 = Dex(_instance).token1();
+    address token2 = Dex(_instance).token2();
+    return IERC20(token1).balanceOf(_instance) == 0 || ERC20(token2).balanceOf(_instance) == 0;
   }
 }

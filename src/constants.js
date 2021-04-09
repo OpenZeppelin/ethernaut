@@ -23,12 +23,6 @@ export const NETWORKS = {
     id: '4',
     url: `${process.env.RINKEBY_HOST}`,
     privKey: `${process.env.RINKEBY_PRIV_KEY}`
-  },
-  KOVAN: {
-    name: 'kovan',
-    id: '42',
-    url: `${process.env.KOVAN_HOST}`,
-    privKey: `${process.env.KOVAN_PRIV_KEY}`
   }
 }
 
@@ -67,6 +61,5 @@ export const SHOW_VERSION = true                                /* TRUE on produ
 // export const ACTIVE_NETWORK = NETWORKS.ROPSTEN
 export const ACTIVE_NETWORK = NETWORKS.RINKEBY
 // export const ACTIVE_NETWORK = NETWORKS.LOCAL
-// export const ACTIVE_NETWORK = NETWORKS.KOVAN
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------
