@@ -6,7 +6,7 @@ The exchange itself is decentralized, but the price of the asset is centralized,
 
 [Chainlink Data Feeds](https://docs.chain.link/docs/get-the-latest-price) are a secure, reliable, way to get decentralized data into your smart contracts. They have a vast library of many different sources, and also offer [secure randomness](https://docs.chain.link/docs/chainlink-vrf), ability to make [any API call](https://docs.chain.link/docs/make-a-http-get-request), [modular oracle network creation](https://docs.chain.link/docs/architecture-decentralized-model), [upkeep, actions, and maintainance](https://docs.chain.link/docs/kovan-keeper-network-beta), and unlimited customization. 
 
-[Uniswap TWAP Oracles](https://uniswap.org/docs/v2/core-concepts/oracles/) rely on [TWAP](https://en.wikipedia.org/wiki/Time-weighted_average_price#) and rely solely on the liquidity of the DEX protocol. 
+[Uniswap TWAP Oracles](https://uniswap.org/docs/v2/core-concepts/oracles/) relies on a time weighted price model called [TWAP](https://en.wikipedia.org/wiki/Time-weighted_average_price#). While the design can be attractive, this protocol heavily depends on the liquidity of the DEX protocol, and if this is too low, prices can be easily manipulated. 
 
 
 Here is an example of getting data from a Chainlink data feed (on the kovan testnet):
