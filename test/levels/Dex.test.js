@@ -1,6 +1,6 @@
 const Ethernaut = artifacts.require('./Ethernaut.sol')
 const DexFactory = artifacts.require('./levels/DexFactory.sol')
-const SwappableTokenABI = require('../../build/contracts/levels/Dex.sol/SwappableToken.json')
+const SwappableToken = artifacts.require('SwappableToken');
 const Dex = artifacts.require('./levels/Dex.sol')
 const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 const utils = require('../utils/TestUtils')
@@ -27,9 +27,8 @@ contract('Dex', function (accounts) {
         // Check init balances
         let token_one_address = await instance.token1()
         let token_two_address = await instance.token2()
-        const [owner] = await ethers.getSigners()
-        const token1 = new ethers.Contract(token_one_address, SwappableTokenABI.abi, owner)
-        const token2 = new ethers.Contract(token_two_address, SwappableTokenABI.abi, owner)
+        const token1 = new SwappableToken(token_one_address)
+        const token2 = new SwappableToken(token_two_address)
         let token_one_balance = await token1.balanceOf(instance.address)
         let token_two_balance = await token2.balanceOf(instance.address)
         console.log(`init token balances are: ${token_one_balance} for token1 and ${token_two_balance} for token2`)

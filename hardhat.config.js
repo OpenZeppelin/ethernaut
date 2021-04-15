@@ -1,5 +1,4 @@
 require("@nomiclabs/hardhat-truffle5")
-require("@nomiclabs/hardhat-waffle")
 
 
 /**
