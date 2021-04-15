@@ -331,19 +331,19 @@
       "author": "34x4p08"
     },
     {
-      "name": "Switch",
-      "created": "2018-11-04",
-      "difficulty": "8",
-      "description": "switch.md",
-      "completedDescription": "switch_complete.md",
-      "levelContract": "SwitchFactory.sol",
-      "instanceContract": "Switch.sol",
+      "name": "Dex",
+      "created": "2021-03-06",
+      "difficulty": "3",
+      "description": "dex.md",
+      "completedDescription": "dex_complete.md",
+      "levelContract": "DexFactory.sol",
+      "instanceContract": "Dex.sol",
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "23",
-      "instanceGas": 250000,
-      "author": "AgeManning"
+      "instanceGas": 3600000,
+      "author": "patrickalphac"
     }
   ]
 }

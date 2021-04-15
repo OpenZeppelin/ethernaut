@@ -1,4 +1,4 @@
-require('dotenv').config({silent: true});
+require('dotenv').config({ silent: true })
 
 export const DEBUG = process.env.NODE_ENV !== 'production'
 export const DEBUG_REDUX = DEBUG
