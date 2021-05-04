@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { store, history } from './store';
@@ -6,14 +6,16 @@ import { syncHistoryWithStore } from 'react-router-redux';
 //import { browserHistory } from 'react-router';
 import { Router, Route } from 'react-router';
 import * as ethutil from './utils/ethutil'
-import App from './containers/App';
-import Home from './containers/Home';
-import Level from './containers/Level';
-import Help from './containers/Help';
-import Stats from './containers/Stats';
-//import NotFound404 from './components/NotFound404';
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles/app.css';
+
+const App = lazy(() => import('./containers/App'));
+const Home = lazy(() => import('./containers/Home'));
+const Level = lazy(() => import('./containers/Level'));
+const Help = lazy(() => import('./containers/Help'));
+const Stats = lazy(() => import('./containers/Stats'));
+
+//import NotFound404 from './components/NotFound404';
 
 require('./utils/^^');
 const actions = require(`../src/actions`)
@@ -25,12 +27,14 @@ store.dispatch(actions.loadGamedata())
 ReactDOM.render(
   <Provider store={store}>
     <Router history={syncHistoryWithStore(history, store)}>
+    <Suspense fallback={<div>Loading...</div>}>
       <Route exact path={constants.PATH_ROOT} component={App}/>
       <Route component={Home}/>
       <Route path={constants.PATH_HELP} component={Help}/>
       <Route path={constants.PATH_LEVEL} component={Level}/>
       <Route path={constants.PATH_STATS} component={Stats}/>
         {/* <Route path='*' exact={true} component={NotFound404}/> */}
+    </Suspense>
     </Router>
   </Provider>,
   document.getElementById('root')

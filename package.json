@@ -21,7 +21,9 @@
     "test": "hardhat test",
     "compile:contracts": "hardhat clean && npx hardhat compile && cp -rf build client/src/  && cp -rf contracts client/src/",
     "deploy:contracts": "npm run compile:contracts && node client/scripts/deploy_contracts.js",
-    "network": "hardhat node"
+    "network": "hardhat node",
+    "build:ethernaut": "npm run compile:contracts && cd client && npm run build",
+    "start:ethernaut": "npm run compile:contracts && cd client && npm run start"
   },
   "eslintConfig": {
     "extends": "react-app"
