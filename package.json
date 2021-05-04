@@ -7,7 +7,6 @@
     "@truffle/hdwallet-provider": "^1.3.0",
     "colors": "^1.4.0",
     "ethereumjs-util": "^7.0.10",
-    "ganache-cli": "^6.12.2",
     "openzeppelin-test-helpers": "^0.5.1",
     "prompt": "^1.1.0",
     "sha3": "^2.1.4",
@@ -20,9 +19,9 @@
   },
   "scripts": {
     "test": "hardhat test",
-    "compile:contracts": "rm -rf build && npx hardhat compile && cp -rf build client/src/  && cp -rf contracts client/src/",
+    "compile:contracts": "hardhat clean && npx hardhat compile && cp -rf build client/src/  && cp -rf contracts client/src/",
     "deploy:contracts": "npm run compile:contracts && node client/scripts/deploy_contracts.js",
-    "ganache": "ganache-cli --deterministic"
+    "network": "hardhat node"
   },
   "eslintConfig": {
     "extends": "react-app"
