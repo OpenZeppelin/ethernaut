@@ -1,5 +1,4 @@
-require("@nomiclabs/hardhat-truffle5")
-
+require("@nomiclabs/hardhat-truffle5");
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -18,4 +17,4 @@ module.exports = {
   paths: {
     artifacts: './build'
   }
-}
+};
