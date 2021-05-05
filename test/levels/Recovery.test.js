@@ -6,15 +6,12 @@ const Ethernaut = artifacts.require('./Ethernaut.sol')
 const utils = require('../utils/TestUtils')
 
 let rlp = require('rlp')
-let sha3 = require('sha3')
 
 // A function to calculate generated addresses.
 let targetAddress = function(instanceAddress,nonce) {
     let bufferAddress = Buffer.from(instanceAddress.slice(2),'hex');
     let data = rlp.encode([bufferAddress,nonce])
-    let d = new sha3.SHA3Hash(256);
-    d.update(data);
-    return '0x' + d.digest('hex').slice(24);
+    return '0x' + web3.utils.sha3(data).slice(26);
 }
 
 contract('Recovery', function(accounts) {
