@@ -1,5 +1,5 @@
 import * as ethutil from '../utils/ethutil'
-const actions = require(`../actions`)
+import * as actions from '../actions';
 
 export default store => next => action => {
   if(action.type !== actions.LOAD_LEVEL_INSTANCE) return next(action)
@@ -57,7 +57,7 @@ export default store => next => action => {
   if(!instanceAddress) return
   console.info(`=> Instance address\n${instanceAddress}`)
   const Instance = ethutil.getTruffleContract(
-    require(`../build/contracts/levels/${action.level.instanceContract}/${withoutExtension(action.level.instanceContract)}.json`),
+    require(`contracts/build/contracts/levels/${action.level.instanceContract}/${withoutExtension(action.level.instanceContract)}.json`),
     {
       from: state.player.address,
       gasPrice: 2 * state.network.gasPrice

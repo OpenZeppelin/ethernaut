@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { push } from 'react-router-redux'
-const actions = require(`../actions`)
-const constants = require(`../constants`)
+import * as actions from '../actions';
+import * as constants from '../constants';
 
 export default store => next => action => {
   if(action.type !== actions.ACTIVATE_LEVEL) return next(action)

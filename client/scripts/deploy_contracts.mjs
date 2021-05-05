@@ -1,14 +1,12 @@
-// const Ethernaut = artifacts.require("./Ethernaut.sol");
-const prompt = require('prompt')
-const Web3 = require("web3")
-const colors = require('colors')
-const fs = require('fs')
-const ethutil = require(`../src/utils/ethutil`)
-const constants = require(`../src/constants`)
-const EthernautABI = require('../../build/contracts/Ethernaut.sol/Ethernaut.json')
-const HDWalletProvider = require('@truffle/hdwallet-provider');
-
-const gamedata = require(`../src/gamedata/gamedata.json`)
+import prompt from 'prompt';
+import colors from 'colors';
+import Web3 from 'web3';
+import fs from 'fs';
+import * as ethutil from '../src/utils/ethutil.js';
+import * as constants from '../src/constants.js';
+import HDWalletProvider from '@truffle/hdwallet-provider';
+import * as gamedata from '../src/gamedata/gamedata.json';
+import * as EthernautABI from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json';
 
 let web3;
 let ethernaut;
@@ -31,7 +29,7 @@ async function exec() {
     count++
     console.log(colors.red(`(${count}) Will deploy Ethernaut.sol!`))
   }
-  gamedata.levels.map(level => {
+  gamedata.default.levels.map(level => {
     if(needsDeploy(deployData[level.deployId])) {
       count++
       console.log(colors.cyan(`(${count}) Will deploy ${level.levelContract} (${level.name})`))
@@ -64,7 +62,7 @@ async function deployContracts(deployData) {
   console.log("FROM: ", from)
 
   // Deploy/retrieve ethernaut contract
-  const Ethernaut = await ethutil.getTruffleContract(EthernautABI, {from})
+  const Ethernaut = await ethutil.getTruffleContract(EthernautABI.default, {from})
   if(needsDeploy(deployData.ethernaut)) {
 		console.log(deployData);
     console.log(`Deploying Ethernaut.sol...`);
@@ -79,14 +77,14 @@ async function deployContracts(deployData) {
   }
 
   // Sweep levels
-  const promises = gamedata.levels.map(async level => {
+  const promises = gamedata.default.levels.map(async level => {
     // console.log('level: ', level);
     return new Promise(async resolve => {
       if(needsDeploy(deployData[level.deployId])) {
         console.log(`Deploying ${level.levelContract}, deployId: ${level.deployId}...`);
 
         // Deploy contract
-        const LevelABI = require(`../../build/contracts/levels/${level.levelContract}/${withoutExtension(level.levelContract)}.json`)
+        const LevelABI = JSON.parse(fs.readFileSync(`contracts/build/contracts/levels/${level.levelContract}/${withoutExtension(level.levelContract)}.json`, 'utf-8'))
         const Contract = await ethutil.getTruffleContract(LevelABI, {from})
         const contract = await Contract.new(...level.deployParams, props)
         console.log(colors.yellow(`  ${level.name}: ${contract.address}`));

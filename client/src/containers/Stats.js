@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import _ from 'lodash'
 import '../styles/page.css'
-const actions = require(`../actions`)
+import * as actions from '../actions';
 
 class Stats extends React.Component {
 

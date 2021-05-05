@@ -1,4 +1,4 @@
-const actions = require(`../actions`)
+import * as actions from '../actions';
 
 let queuedAction;
 

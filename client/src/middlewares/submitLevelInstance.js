@@ -1,4 +1,4 @@
-const actions = require(`../actions`)
+import * as actions from '../actions';
 
 export default store => next => async action => {
   if(action.type !== actions.SUBMIT_LEVEL_INSTANCE) return next(action)

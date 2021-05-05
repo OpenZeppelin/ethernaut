@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-const constants = require(`../constants`)
+import * as constants from '../constants';
 
 class Home extends React.Component {
 

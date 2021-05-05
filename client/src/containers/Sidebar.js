@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { Link } from 'react-router-dom'
 import moment from 'moment'
-const constants = require(`../constants`)
+import * as constants from '../constants';
 
 class Sidebar extends React.Component {
   render() {

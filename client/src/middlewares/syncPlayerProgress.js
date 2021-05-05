@@ -1,5 +1,5 @@
 import _ from 'lodash'
-const actions = require(`../actions`)
+import * as actions from '../actions';
 
 export default store => next => action => {
   if(action.type !== actions.SYNC_PLAYER_PROGRESS) return next(action)

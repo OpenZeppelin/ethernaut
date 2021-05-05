@@ -4,7 +4,7 @@ import Header from './Header';
 import SidebarContent from './Sidebar';
 import FontAwesome from 'react-fontawesome';
 import ReactGA from 'react-ga'
-const constants = require(`../constants`)
+import * as constants from '../constants';
 
 class App extends React.Component {
 

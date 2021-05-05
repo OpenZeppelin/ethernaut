@@ -1,5 +1,5 @@
 import * as ethutil from '../utils/ethutil'
-const actions = require(`../actions`)
+import * as actions from '../actions';
 
 export default store => next => action => {
   if(action.type !== actions.SET_PLAYER_ADDRESS) return next(action)

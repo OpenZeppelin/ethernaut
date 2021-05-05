@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 import ConsoleDetect from '../components/ConsoleDetect'
-const constants = require(`../constants`)
+import * as constants from '../constants';
 
 class Header extends React.Component {
 

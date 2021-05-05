@@ -1,4 +1,4 @@
-const actions = require(`../actions`)
+import * as actions from '../actions';
 
 const initialState = {
   ethernaut: undefined,

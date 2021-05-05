@@ -1,6 +1,6 @@
 import * as ethutil from '../utils/ethutil'
-import EthernautABI from '../build/contracts/Ethernaut.sol/Ethernaut.json'
-const actions = require(`../actions`)
+import EthernautABI from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json'
+import * as actions from '../actions';
 
 export default store => next => action => {
   if(action.type !== actions.LOAD_ETHERNAUT_CONTRACT) return next(action)

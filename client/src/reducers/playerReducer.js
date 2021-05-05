@@ -1,5 +1,5 @@
-const actions = require(`../actions`)
-const constants = require(`../constants`)
+import * as actions from '../actions';
+import * as constants from '../constants';
 
 const initialState = {
   address: undefined,

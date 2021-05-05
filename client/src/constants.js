@@ -1,10 +1,13 @@
-require('dotenv').config({ silent: true })
+import dotenv from 'dotenv';
+import pkg from 'web3';
 
-exports.DEBUG = process.env.NODE_ENV !== 'production'
-exports.DEBUG_REDUX = this.DEBUG
+dotenv.config()
+
+export const DEBUG = process.env.NODE_ENV !== 'production'
+export const DEBUG_REDUX = DEBUG
 
 // Networks
-exports.NETWORKS = {
+export const NETWORKS = {
   UNDEFINED: undefined,
   LOCAL: {
     name: 'local',
@@ -27,39 +30,39 @@ exports.NETWORKS = {
 }
 
 // Web3
-exports.Web3 = require("web3")
+export const Web3 = pkg;
 
 // Misc
-exports.CLEAR_CONSOLE = !this.DEBUG
-exports.GOOGLE_ANALYTICS_ID = 'UA-85043059-4'
+export const CLEAR_CONSOLE = !DEBUG
+export const GOOGLE_ANALYTICS_ID = 'UA-85043059-4'
 
 // Owner addresses
-exports.ADDRESSES = {
-  [this.NETWORKS.LOCAL.name]: undefined,
-  [this.NETWORKS.ROPSTEN.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
-  [this.NETWORKS.RINKEBY.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820'
+export const ADDRESSES = {
+  [NETWORKS.LOCAL.name]: undefined,
+  [NETWORKS.ROPSTEN.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
+  [NETWORKS.RINKEBY.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820'
 }
 
 // Storage
-exports.VERSION = require('../package.json').version
-exports.STORAGE_PLAYER_DATA_KEY = `ethernaut_player_data_${this.VERSION}_`
+export const VERSION = process.env.npm_package_version
+export const STORAGE_PLAYER_DATA_KEY = `ethernaut_player_data_${VERSION}_`
 
 // Paths
-exports.PATH_ROOT = '/'
-exports.PATH_NOT_FOUND = '/404'
-exports.PATH_HELP = '/help'
-exports.PATH_LEVEL_ROOT = `${this.PATH_ROOT}level/`
-exports.PATH_LEVEL = `${this.PATH_LEVEL_ROOT}:address`
-exports.PATH_STATS = `${this.PATH_ROOT}stats`
+export const PATH_ROOT = '/'
+export const PATH_NOT_FOUND = '/404'
+export const PATH_HELP = '/help'
+export const PATH_LEVEL_ROOT = `${PATH_ROOT}level/`
+export const PATH_LEVEL = `${PATH_LEVEL_ROOT}:address`
+export const PATH_STATS = `${PATH_ROOT}stats`
 
 // RELEASE SENSITIVE
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------
-exports.CUSTOM_LOGGING = true                              /* TRUE on production */
-exports.SHOW_ALL_COMPLETE_DESCRIPTIONS = false             /* FALSE on production */
-exports.SHOW_VERSION = true                                /* TRUE on production */
-//    exports.ACTIVE_NETWORK = NETWORKS.ROPSTEN
-//    exports.ACTIVE_NETWORK = NETWORKS.RINKEBY
-exports.ACTIVE_NETWORK = this.NETWORKS.LOCAL
+export const CUSTOM_LOGGING = true                              /* TRUE on production */
+export const SHOW_ALL_COMPLETE_DESCRIPTIONS = false             /* FALSE on production */
+export const SHOW_VERSION = true                                /* TRUE on production */
+//    export constACTIVE_NETWORK = NETWORKS.ROPSTEN
+//    export constACTIVE_NETWORK = NETWORKS.RINKEBY
+export const ACTIVE_NETWORK = NETWORKS.LOCAL
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------

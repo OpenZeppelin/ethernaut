@@ -5,9 +5,8 @@ import CodeComponent from '../components/Code';
 import Author from '../components/Author';
 import MarkdownComponent from '../components/Markdown';
 import Difficulty from '../components/Difficulty';
-
-const actions = require(`../actions`);
-const constants = require(`../constants`);
+import * as actions from '../actions';
+import * as constants from '../constants';
 
 class Level extends React.Component {
 
@@ -44,7 +43,7 @@ class Level extends React.Component {
       try { completedDescription = require(`../gamedata/descriptions/levels/${level.completedDescription}`) } catch(e){ console.log(e) }
     }
     let sourcesFile = null
-    try { sourcesFile = require(`../contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
+    try { sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
 
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels)
 

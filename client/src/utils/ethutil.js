@@ -1,16 +1,17 @@
-let ethjs = require('ethereumjs-util');
+import * as ethjs from 'ethereumjs-util';
+import TruffleContract from '@truffle/contract';
 
 let web3;
 
-exports.setWeb3 = (_web3) => {
+export const setWeb3 = (_web3) => {
   web3 = _web3;
 }
 
-exports.getTruffleContract = (jsonABI, defaults = {}) => {
-  // HACK: Doing this here instead of `import` so that the project uses the web3.js version
-  // defined in `package.json` instead of relying on Truffle dependencies (that use an old version).
-  // With this, MetaMask v9 deprecation warnings are removed. 
-  const TruffleContract = require('@truffle/contract');
+export const getTruffleContract = (jsonABI, defaults = {}) => {
+  // // HACK: Doing this here instead of `import` so that the project uses the web3.js version
+  // // defined in `package.json` instead of relying on Truffle dependencies (that use an old version).
+  // // With this, MetaMask v9 deprecation warnings are removed. 
+  // const TruffleContract = require('@truffle/contract');
   
   const truffleContract = TruffleContract(jsonABI);
   if(!defaults.gasPrice) defaults.gasPrice = 20000000000;
@@ -20,7 +21,7 @@ exports.getTruffleContract = (jsonABI, defaults = {}) => {
   return truffleContract;
 }
 
-exports.getBalance = (address) => {
+export const getBalance = (address) => {
   return new Promise(function(resolve, reject) {
     web3.eth.getBalance(address, function(error, result) {
       if(error) reject(error)
@@ -29,7 +30,7 @@ exports.getBalance = (address) => {
   })
 }
 
-exports.getBlockNumber = () => {
+export const getBlockNumber = () => {
   return new Promise((resolve, reject) => {
     web3.eth.getBlockNumber((err, blockNumber) => {
       if(err) reject(err)
@@ -38,7 +39,7 @@ exports.getBlockNumber = () => {
   });
 }
 
-exports.sendTransaction = (options) => {
+export const sendTransaction = (options) => {
   return new Promise((resolve, reject) => {
     web3.eth.sendTransaction(options, (err, res) => {
       if(err) reject(err)
@@ -47,7 +48,7 @@ exports.sendTransaction = (options) => {
   })
 }
 
-exports.getNetworkId = () => {
+export const getNetworkId = () => {
   return new Promise((resolve, reject) => {
     web3.eth.net.getId((err, netId) => {
       if(err) reject();
@@ -56,15 +57,15 @@ exports.getNetworkId = () => {
   });
 }
 
-exports.toWei = (ether) => {
+export const toWei = (ether) => {
   return web3.utils.toWei(ether, 'ether')
 }
 
-exports.fromWei = (wei) => {
+export const fromWei = (wei) => {
   return web3.utils.fromWei(wei, 'ether')
 }
 
-exports.watchAccountChanges = (callback, lastKnownAccount) => {
+export const watchAccountChanges = (callback, lastKnownAccount) => {
   let interval = setInterval(function() {
     web3.eth.getAccounts(function (error, accounts) {
       if(error) return console.log(error)
@@ -78,7 +79,7 @@ exports.watchAccountChanges = (callback, lastKnownAccount) => {
   }, 1000)
 }
 
-exports.watchNetwork = (callbacks) => {
+export const watchNetwork = (callbacks) => {
 
   // Gas price
   if(callbacks.gasPrice) {
@@ -118,7 +119,7 @@ exports.watchNetwork = (callbacks) => {
 
 }
 
-exports.validateAddress = (address) => {
+export const validateAddress = (address) => {
   if(!address) return false;
   if(address === '0x0000000000000000000000000000000000000000') return false;
   if(address.substring(0, 2) !== "0x") return false;
@@ -141,7 +142,7 @@ exports.validateAddress = (address) => {
   return true;
 }
 
-exports.addressHasChecksum = (address) => {
+export const addressHasChecksum = (address) => {
   if(!module.exports.isValidAddress(address)) return false;
   const raw = address.replace('0x','');
   const allLowerCase = raw.toLowerCase() === raw;
@@ -149,7 +150,7 @@ exports.addressHasChecksum = (address) => {
   return !(allLowerCase || allUppercase);
 }
 
-exports.verifySignature = (json) => {
+export const verifySignature = (json) => {
   try {
     const messageHash = ethjs.hashPersonalMessage(ethjs.toBuffer(json.msg));
     const signedMessageDecoded = ethjs.fromRpcSig(json.sig);
@@ -163,7 +164,7 @@ exports.verifySignature = (json) => {
   }
 }
 
-exports.signMessageWithMetamask = (addr, message, callback) => {
+export const signMessageWithMetamask = (addr, message, callback) => {
   const msg = ethjs.bufferToHex(new Buffer(message, 'utf8'));
   web3.currentProvider.sendAsync({
     method: 'personal_sign',
@@ -179,7 +180,7 @@ exports.signMessageWithMetamask = (addr, message, callback) => {
   });
 }
 
-exports.logger = (req, res, next, end) => {
+export const logger = (req, res, next, end) => {
   next((cb) => {
     // HACK: do not log known error when setting event log filters
     if (res.error && !res.error.message.includes("TypeError: Cannot read property 'filter' of undefined")) {
@@ -193,6 +194,6 @@ exports.logger = (req, res, next, end) => {
   })
 }
 
-exports.attachLogger = () => {
-  web3.currentProvider._rpcEngine._middleware.unshift(this.logger);
+export const attachLogger = () => {
+  web3.currentProvider._rpcEngine._middleware.unshift(logger);
 }

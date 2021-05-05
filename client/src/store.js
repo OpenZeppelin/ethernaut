@@ -17,10 +17,9 @@ import setNetwork from './middlewares/setNetwork'
 import syncPlayerProgress from './middlewares/syncPlayerProgress'
 import collectStats from './middlewares/collectStats'
 import { createBrowserHistory } from 'history';
+import * as constants from '../src/constants';
 
-const _history = createBrowserHistory();
-const constants = require(`../src/constants`)
-export const history = _history;
+export const history = createBrowserHistory();
 
 const middlewares = [
   loadGamedata,
@@ -33,7 +32,7 @@ const middlewares = [
   syncPlayerProgress,
   collectStats,
   thunkMiddleware,
-  routerMiddleware(_history)
+  routerMiddleware(history)
 ];
 if(constants.DEBUG_REDUX) {
   middlewares.splice( 0, 0, createLogger({collapsed: true}) )

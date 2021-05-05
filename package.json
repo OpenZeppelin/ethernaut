@@ -1,42 +1,13 @@
 {
-  "name": "client",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@openzeppelin/contracts": "3.2.0",
-    "@truffle/hdwallet-provider": "^1.3.0",
-    "colors": "^1.4.0",
-    "ethereumjs-util": "^7.0.10",
-    "openzeppelin-test-helpers": "^0.5.1",
-    "prompt": "^1.1.0",
-    "web3": "^1.3.5"
-  },
-  "devDependencies": {
-    "@nomiclabs/hardhat-truffle5": "^2.0.0",
-    "@nomiclabs/hardhat-web3": "^2.0.0",
-    "hardhat": "^2.0.3"
-  },
-  "scripts": {
-    "test": "hardhat test",
-    "compile:contracts": "hardhat clean && npx hardhat compile && cp -rf build client/src/  && cp -rf contracts client/src/",
-    "deploy:contracts": "npm run compile:contracts && node client/scripts/deploy_contracts.js",
-    "network": "hardhat node",
-    "build:ethernaut": "npm run compile:contracts && cd client && npm run build",
-    "start:ethernaut": "npm run compile:contracts && cd client && npm run start"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "private": true,
+    "workspaces": ["contracts", "client"],
+    "scripts": {
+        "test": "cd contracts && hardhat test",
+        "compile:contracts": "cd contracts && hardhat clean && npx hardhat compile",
+        "deploy:contracts": "yarn compile:contracts && node --experimental-json-modules client/scripts/deploy_contracts.mjs",
+        "network": "cd contracts && hardhat node",
+        "build:ethernaut": "cd client && yarn build",
+        "start:ethernaut": "cd client && yarn start"
+      }
 }
+  

@@ -8,6 +8,9 @@ import { Router, Route } from 'react-router';
 import * as ethutil from './utils/ethutil'
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles/app.css';
+import * as actions from '../src/actions';
+import * as constants from '../src/constants';
+import './utils/^^';
 
 const App = lazy(() => import('./containers/App'));
 const Home = lazy(() => import('./containers/Home'));
@@ -17,9 +20,6 @@ const Stats = lazy(() => import('./containers/Stats'));
 
 //import NotFound404 from './components/NotFound404';
 
-require('./utils/^^');
-const actions = require(`../src/actions`)
-const constants = require(`../src/constants`)
 // Initial actions
 store.dispatch(actions.loadGamedata())
 
