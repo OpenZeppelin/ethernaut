@@ -6,7 +6,7 @@
         "compile:contracts": "cd contracts && hardhat clean && npx hardhat compile",
         "deploy:contracts": "yarn compile:contracts && node --experimental-json-modules client/scripts/deploy_contracts.mjs",
         "network": "cd contracts && hardhat node",
-        "build:ethernaut": "cd client && yarn build",
+        "build:ethernaut": "yarn compile:contracts && cd client && yarn build",
         "start:ethernaut": "cd client && yarn start"
       }
 }
