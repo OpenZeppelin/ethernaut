@@ -16,8 +16,8 @@ class App extends React.Component {
     ReactGA.pageview(window.location.pathname);
   }
 
-  componentDidUpdate(prevProps) {
-    if(this.props.location !== prevProps.location) {
+  componentDidUpdate(nextProps, prevState) {
+    if(this.props.location !== prevState.location) {
       this.childrenElement.parentElement.scrollTop = 0
     }
   }
@@ -44,7 +44,6 @@ class App extends React.Component {
         <footer className="footer navbar-fixed-bottom text-center text-muted">
           <small>developed with <FontAwesome name="heart"/> and <FontAwesome name="flash"/> by the <a href="https://openzeppelin.com">OpenZeppelin</a> team</small>
         </footer>
-
       </div>
     );
   }
