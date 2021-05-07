@@ -1,4 +1,4 @@
-The goal of this level is for you claim ownership of the instance you are given.
+The goal of this level is for you to claim ownership of the instance you are given.
 
 &nbsp;
 Things that might help
