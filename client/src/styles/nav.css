@@ -1,3 +1,13 @@
 li {
     margin: 0 0 0 5px;
+
+}
+
+.navbar-nav > li {
+    float: left;
+}
+
+.nav > li {
+    position: relative;
+    display: block;
 }

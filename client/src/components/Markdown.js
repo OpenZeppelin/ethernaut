@@ -12,7 +12,7 @@ class Markdown extends React.Component {
     }
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     this._isMounted = true
     await this.loadContents(this.props.target)
   }
@@ -21,8 +21,13 @@ class Markdown extends React.Component {
     this._isMounted = false
   }
 
-  async componentWillReceiveProps(nextProps) {
-    await this.loadContents(nextProps.target)
+  componentDidUpdate(nextProps, prevState) {
+    try {
+      const text = loadText(nextProps.target)
+      return { target: nextProps.target, source: text }
+    } catch(error) {
+      return { source: undefined }
+    }
   }
 
   async loadContents(target) {
@@ -37,8 +42,8 @@ class Markdown extends React.Component {
   }
 
   render() {
-    const source = this.state.source;
-    return <div>{ source && <ReactMarkdown source={source}/> }</div>
+    const children = this.state.source;
+    return <div>{ children && <ReactMarkdown children={children}/> }</div>
   }
 }
 

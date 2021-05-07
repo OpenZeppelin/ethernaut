@@ -16,7 +16,7 @@ class Header extends React.Component {
         backgroundColor: 'red',
         zIndex: 10000
       }}>
-        <div>
+        <div style={{height: '50px'}}>
 
           {/* VERSIONS */}
           { constants.SHOW_VERSION &&
@@ -27,9 +27,11 @@ class Header extends React.Component {
 
           {/* HEADER */}
           <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+
+            <button style={{display: 'none'}} type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
               <span className="sr-only">Toggle navigation</span>
             </button>
+
             <div className="navbar-brand" style={{paddingTop: '0', paddingBottom: '0', paddingLeft: '25px', lineHeight: '49px'}}>
               <span>
                 <a href="https://openzeppelin.com" target="_blank" rel='noopener noreferrer'>
@@ -41,10 +43,11 @@ class Header extends React.Component {
                 <span style={{display: 'inline-block', verticalAlign: 'text-top', lineHeight: '22px'}}>Ethernaut</span>
               </Link>
             </div>
+
           </div>
 
           {/* CONTENT */}
-          <div className="navbar-collapse collapse">
+          <div className="navbar-collapse collapse" style={{display: 'block', height: '50px'}}>
 
             {/* LEFT */}
             <ul className="nav navbar-nav" style={{paddingLeft: '10px'}}>
@@ -57,7 +60,7 @@ class Header extends React.Component {
             </ul>
 
             {/* RIGHT */}
-            <ul className="nav navbar-nav pull-right">
+            <ul className="nav navbar-nav pull-right" style={{float: 'right'}}>
               <li>
                 <Link to='' style={{fontSize: '16px'}}><ConsoleDetect/></Link>
               </li>

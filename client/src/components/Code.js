@@ -23,8 +23,16 @@ class Code extends React.Component {
     this._isMounted = false
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.loadContents(nextProps.target)
+  componentDidUpdate(nextProps, prevState) {
+    if(prevState.target === nextProps.target) return {}
+    loadText(nextProps.target)
+    .then(text => {
+      return {
+        target: nextProps.target,
+        source: text
+      }
+    })
+    .catch(() => {return {source: undefined}})
   }
 
   loadContents(target) {

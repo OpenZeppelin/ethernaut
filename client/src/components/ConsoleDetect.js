@@ -16,8 +16,13 @@ class ConsoleDetect extends React.Component {
     setInterval(() => this.checkConsole(), 500)
   }
 
+  componentDidUpdate() {
+    this.checkConsole()
+    this.render()
+  }
+
   checkConsole() {
-    const isOpen = DevToolsDetect.open
+    const isOpen = DevToolsDetect.isOpen
     if(this.state.consoleIsOpen !== isOpen) {
       this.setState({
         consoleIsOpen: isOpen

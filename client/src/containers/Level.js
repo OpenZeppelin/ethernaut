@@ -9,9 +9,13 @@ import * as actions from '../actions';
 import * as constants from '../constants';
 
 class Level extends React.Component {
+  constructor() {
+    super()
+    this.state = {}
+  }
 
-  componentWillMount() {
-    this.props.activateLevel(this.props.routeParams.address)
+  componentDidMount() {
+    this.props.activateLevel(this.props.match.params.address)
   }
 
   componentWillUnmount() {
@@ -20,9 +24,10 @@ class Level extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.level.deployedAddress !== nextProps.routeParams.address)
-      this.props.activateLevel(nextProps.routeParams.address)
+  componentDidUpdate(nextProps, prevState) {
+    if(nextProps.level && nextProps.level.deployedAddress !== nextProps.match.params.address)
+      this.props.activateLevel(nextProps.match.params.address)
+      return null
   }
 
   render() {

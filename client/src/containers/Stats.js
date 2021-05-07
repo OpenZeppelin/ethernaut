@@ -15,7 +15,7 @@ class Stats extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.collectStats()
   }
 

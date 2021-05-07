@@ -3,6 +3,8 @@
 @import "./page.css";
 @import url(https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,700,400italic,700italic);
 
+#root > [data-reactroot] {height: 100%;}
+
 .no-margin {
     margin: 0 !important;
 }
@@ -52,15 +54,44 @@
 
 .navbar {
     font-family: "Helvetica Neue", Lato, Helvetica, Arial, sans-serif;
-    line-height: 80px;
+    line-height: 50px;
     font-size: 17px;
     padding: 5px 0;
     font-weight: 300;
-    color: rgb(74, 74, 74);
+    color: #777;
+    position: relative;
+    display: block;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .25)
 }
 
-.navbar-brand a {
-    color: rgb(74, 74, 74) !important;
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #777 !important;
+    margin-right: unset;
+}
+
+.navbar-default {
+    background-image: linear-gradient(to bottom, #fff 0%, #f8f8f8 100%);
+    background-repeat: repeat-x;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 5px rgba(0, 0, 0, .075);
+    border-color: #e7e7e7;
+}
+
+.navbar-header {
+    float: left;
+}
+
+.navbar-nav {
+    float: left;
+    display: block;
+    margin: 0;
 }
 
 .navbar-nav > .active > a {

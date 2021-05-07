@@ -35,9 +35,9 @@ class App extends React.Component {
           shadow={false}
           styles={{ root: { top: 62, bottom: 20 }, sidebar: { backgroundColor: '#e5f2fb', boxShadow: 'none' }, content: { overflowX: 'hidden' }}}
         >
-          <div ref={el => this.childrenElement = el}>
-            {this.props.children}
-          </div>
+        <div ref={el => this.childrenElement = el}>
+          {this.props.children}
+        </div>
         </Sidebar>
 
         {/* FOOTER */}

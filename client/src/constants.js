@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
-import pkg from 'web3';
-
+import pkgWeb3 from 'web3';
+import * as pkgJSON from '../package.json';
 dotenv.config()
 
 export const DEBUG = process.env.NODE_ENV !== 'production'
@@ -30,7 +30,7 @@ export const NETWORKS = {
 }
 
 // Web3
-export const Web3 = pkg;
+export const Web3 = pkgWeb3;
 
 // Misc
 export const CLEAR_CONSOLE = !DEBUG
@@ -44,7 +44,7 @@ export const ADDRESSES = {
 }
 
 // Storage
-export const VERSION = process.env.npm_package_version
+export const VERSION = pkgJSON.default.version
 export const STORAGE_PLAYER_DATA_KEY = `ethernaut_player_data_${VERSION}_`
 
 // Paths
