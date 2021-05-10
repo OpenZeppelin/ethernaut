@@ -7,6 +7,13 @@
       "hljs"
     ]
   },
+  "dependencies": {
+    "highlight.js": "^10.7.2"
+  },
+  "resolutions": {
+    "**/@truffle/contract/**/highlight.js": "10.7.2-local",
+    "**/react-highlight/**/highlight.js": "10.7.2-local"
+  },
   "scripts": {
     "test": "cd contracts && hardhat test",
     "compile:contracts": "cd contracts && hardhat clean && npx hardhat compile",
@@ -14,9 +21,5 @@
     "network": "cd contracts && hardhat node",
     "build:ethernaut": "yarn compile:contracts && cd client && yarn build",
     "start:ethernaut": "cd client && yarn start"
-  },
-  "resolutions": {
-    "**/@truffle/contract/**/highlight.js": "10.7.2-local",
-    "**/react-highlight/**/highlight.js": "10.7.2-local"
   }
 }

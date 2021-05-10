@@ -1,6 +1,7 @@
 {
   "name": "highlight.js",
   "version": "10.7.2-local",
+  "main": "lib/index.js",
   "dependencies": {
     "highlight.js": "^10.7.2"
   }
