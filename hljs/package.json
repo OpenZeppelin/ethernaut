@@ -1,0 +1,7 @@
+{
+  "name": "highlight.js",
+  "version": "10.7.2-local",
+  "dependencies": {
+    "highlight.js": "^10.7.2"
+  }
+}
