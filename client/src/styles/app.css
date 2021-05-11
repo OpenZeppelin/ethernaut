@@ -116,9 +116,13 @@
 
 .footer {
     background-color: #2e4763;
-    color: white;
     font-weight: 300;
     letter-spacing: 0.75px !important;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0; 
+    z-index: 1030
 }
 
 .footer a {

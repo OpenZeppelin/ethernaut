@@ -29,7 +29,7 @@ class App extends React.Component {
 
         {/* SPLIT VIEW */}
         <Sidebar
-          sidebar={<div style={{ width: '170px' }}><SidebarContent/></div>}
+          sidebar={<div style={{ width: '180px' }}><SidebarContent/></div>}
           transitions={false}
           docked={true}
           shadow={false}
@@ -41,8 +41,8 @@ class App extends React.Component {
         </Sidebar>
 
         {/* FOOTER */}
-        <footer className="footer navbar-fixed-bottom text-center text-muted">
-          <small>developed with <FontAwesome name="heart"/> and <FontAwesome name="flash"/> by the <a href="https://openzeppelin.com">OpenZeppelin</a> team</small>
+        <footer className="footer text-center text-muted">
+          <small>developed with <FontAwesome name="heart" style={{color: 'red'}}/> and <FontAwesome name="flash" style={{color: 'yellow'}}/> by the <a href="https://openzeppelin.com">OpenZeppelin</a> team</small>
         </footer>
       </div>
     );
