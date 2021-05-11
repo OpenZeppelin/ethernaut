@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { store, history } from './store';
 import { syncHistoryWithStore } from 'react-router-redux';
 //import { browserHistory } from 'react-router';
-import { Router, Route } from 'react-router';
+import { Router, Route, Switch } from 'react-router';
 import * as ethutil from './utils/ethutil'
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles/app.css';
@@ -14,11 +14,11 @@ import './utils/^^';
 
 const App = lazy(() => import('./containers/App'));
 const Home = lazy(() => import('./containers/Home'));
+import NotFound404 from './components/NotFound404';
+
 const Level = lazy(() => import('./containers/Level'));
 const Help = lazy(() => import('./containers/Help'));
 const Stats = lazy(() => import('./containers/Stats'));
-
-//import NotFound404 from './components/NotFound404';
 
 // Initial actions
 store.dispatch(actions.loadGamedata())
@@ -27,14 +27,17 @@ store.dispatch(actions.loadGamedata())
 ReactDOM.render(
   <Provider store={store}>
     <Router history={syncHistoryWithStore(history, store)}>
-    <Suspense fallback={<div>Loading...</div>}>
-      <Route exact path={constants.PATH_ROOT} component={App}/>
-      <Route component={Home}/>
-      <Route path={constants.PATH_HELP} component={Help}/>
-      <Route path={constants.PATH_LEVEL} component={Level}/>
-      <Route path={constants.PATH_STATS} component={Stats}/>
-        {/* <Route path='*' exact={true} component={NotFound404}/> */}
-    </Suspense>
+      <App>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route path={constants.PATH_HELP} component={Help}/>
+            <Route path={constants.PATH_LEVEL} component={Level}/>
+            <Route path={constants.PATH_STATS} component={Stats}/>
+            <Route exact path="/" component={Home}/>
+            <Route path="/" component={NotFound404}/>
+          </Switch>
+        </Suspense>
+      </App>
     </Router>
   </Provider>,
   document.getElementById('root')
