@@ -12,8 +12,8 @@ import * as actions from '../src/actions';
 import * as constants from '../src/constants';
 import './utils/^^';
 
-const App = lazy(() => import('./containers/App'));
-const Home = lazy(() => import('./containers/Home'));
+import App from './containers/App';
+import Home from './containers/Home';
 import NotFound404 from './components/NotFound404';
 
 const Level = lazy(() => import('./containers/Level'));
