@@ -7,7 +7,6 @@
     "@truffle/hdwallet-provider": "^1.3.0",
     "colors": "^1.4.0",
     "ethereumjs-util": "^7.0.10",
-    "json-loader": "^0.5.7",
     "openzeppelin-test-helpers": "^0.5.1",
     "prompt": "^1.1.0",
     "web3": "^1.3.5",
