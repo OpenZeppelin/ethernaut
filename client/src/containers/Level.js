@@ -24,14 +24,16 @@ class Level extends React.Component {
     }
   }
 
-  componentDidUpdate(nextProps, prevState) {
-    if(nextProps.level && nextProps.level.deployedAddress !== nextProps.match.params.address)
-      this.props.activateLevel(nextProps.match.params.address)
+  static getDerivedStateFromProps(props, state) {
+    const selectedLevel = window.location.pathname.substring(7); // remove /level/ from path
+    if(props.level && props.level.deployedAddress !== selectedLevel)
+      {
+        props.activateLevel(selectedLevel);
+      }
       return null
   }
 
   render() {
-
     const {
       level,
       levelCompleted

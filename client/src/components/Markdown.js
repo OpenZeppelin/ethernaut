@@ -19,25 +19,21 @@ class Markdown extends React.Component {
 
   componentWillUnmount() {
     this._isMounted = false
+    
   }
 
-  componentDidUpdate(nextProps, prevState) {
-    try {
-      const text = loadText(nextProps.target)
-      return { target: nextProps.target, source: text }
-    } catch(error) {
-      return { source: undefined }
-    }
+  async componentDidUpdate(nextProps, prevState) {
+    await this.loadContents(nextProps.target);
   }
 
   async loadContents(target) {
     if(!this._isMounted) return
     if(this.state.target === target) return
     try {
-      const text = await loadText(target)
+      const text = await loadText(target);
       this.setState({ target: target, source: text })
     } catch(error) {
-      this.setState({ source: undefined })
+      this.setState({source: undefined})
     }
   }
 
