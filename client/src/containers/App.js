@@ -16,8 +16,8 @@ class App extends React.Component {
     ReactGA.pageview(window.location.pathname);
   }
 
-  componentDidUpdate(nextProps, prevState) {
-    if(this.props.location !== prevState.location) {
+  componentDidUpdate(prevProps) {
+    if(this.props.location !== prevProps.location) {
       this.childrenElement.parentElement.scrollTop = 0
     }
   }

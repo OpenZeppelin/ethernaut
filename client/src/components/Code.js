@@ -23,29 +23,25 @@ class Code extends React.Component {
     this._isMounted = false
   }
 
-  componentDidUpdate(nextProps, prevState) {
-    if(prevState.target === nextProps.target) return {}
-    loadText(nextProps.target)
-    .then(text => {
-      return {
-        target: nextProps.target,
-        source: text
-      }
-    })
-    .catch(() => {return {source: undefined}})
+  async componentDidUpdate(prevProps) {
+    if (this.props.target !== prevProps.target) {
+      this.loadContents(this.props.target);
+    }
   }
 
-  loadContents(target) {
-    if(this.state.target === target) return
-    loadText(target)
-      .then(text => {
-        if(!this._isMounted) return
-        this.setState({
-          target: target,
-          source: text
-        })
-      })
-      .catch(this.setState({source: undefined}))
+  async loadContents(target) {
+    if (!this._isMounted) return;
+    try {
+      const text = await loadText(target);
+      this.setState({
+        target: target,
+        source: text,
+      });
+    } catch (e) {
+      this.setState({
+        source: undefined,
+      });
+    }
   }
 
   render() {

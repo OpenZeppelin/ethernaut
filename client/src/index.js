@@ -27,17 +27,22 @@ store.dispatch(actions.loadGamedata())
 ReactDOM.render(
   <Provider store={store}>
     <Router history={syncHistoryWithStore(history, store)}>
-      <App>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Switch>
-            <Route path={constants.PATH_HELP} component={Help}/>
-            <Route path={constants.PATH_LEVEL} component={Level}/>
-            <Route path={constants.PATH_STATS} component={Stats}/>
-            <Route exact path="/" component={Home}/>
-            <Route path="/" component={NotFound404}/>
-          </Switch>
-        </Suspense>
-      </App>
+      <Route
+        path={constants.PATH_ROOT}
+        children={({ location }) => (
+          <App location={location}>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Switch>
+                <Route path={constants.PATH_HELP} component={Help}/>
+                <Route path={constants.PATH_LEVEL} component={Level}/>
+                <Route path={constants.PATH_STATS} component={Stats}/>
+                <Route exact path="/" component={Home}/>
+                <Route path="/" component={NotFound404}/>
+              </Switch>
+            </Suspense>
+          </App>
+        )}
+      />
     </Router>
   </Provider>,
   document.getElementById('root')

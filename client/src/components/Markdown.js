@@ -22,8 +22,8 @@ class Markdown extends React.Component {
     
   }
 
-  async componentDidUpdate(nextProps, prevState) {
-    await this.loadContents(nextProps.target);
+  async componentDidUpdate() {
+    await this.loadContents(this.props.target);
   }
 
   async loadContents(target) {

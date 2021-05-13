@@ -24,13 +24,10 @@ class Level extends React.Component {
     }
   }
 
-  static getDerivedStateFromProps(props, state) {
-    const selectedLevel = window.location.pathname.substring(7); // remove /level/ from path
-    if(props.level && props.level.deployedAddress !== selectedLevel)
-      {
-        props.activateLevel(selectedLevel);
-      }
-      return null
+  componentDidUpdate() {
+    if (this.props.level.deployedAddress !== this.props.match.params.address) {
+      this.props.activateLevel(this.props.match.params.address);
+    }
   }
 
   render() {

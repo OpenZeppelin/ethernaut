@@ -12,16 +12,18 @@ class Author extends React.Component {
     };
   }
 
-  componentDidUpdate(nextProps, prevState) {
-    const data = require(`../gamedata/authors.json`).authors;
-    const authorData = data[nextProps.author];
-    if(!authorData) return null;
-    return {
-      name: authorData.name,
-      email: authorData.email,
-      website: authorData.website,
-      donate: authorData.donate
-    };
+  componentDidUpdate(prevProps) {
+    if (this.props.author !== prevProps.author) {
+      const data = require(`../gamedata/authors.json`).authors;
+      const authorData = data[this.props.author];
+      if(!authorData) return null;
+      this.setState({
+        name: authorData.name,
+        email: authorData.email,
+        website: authorData.website,
+        donate: authorData.donate
+      });
+    }
   }
 
   componentDidMount() {
