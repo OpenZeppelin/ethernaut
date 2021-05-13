@@ -11,8 +11,7 @@
     "highlight.js": "^10.7.2"
   },
   "resolutions": {
-    "**/@truffle/contract/**/highlight.js": "10.7.2-local",
-    "**/react-highlight/**/highlight.js": "10.7.2-local"
+    "**/@truffle/contract/**/highlight.js": "10.7.2-local"
   },
   "scripts": {
     "test": "cd contracts && hardhat test",

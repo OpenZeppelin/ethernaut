@@ -50,7 +50,6 @@ class Level extends React.Component {
     try { sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
 
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels)
-
     return (
       <div className="page-container">
 
@@ -107,7 +106,7 @@ class Level extends React.Component {
             <button
               type="button"
               className='btn btn-info'
-              onClick={evt => this.props.router.push(`${constants.PATH_LEVEL_ROOT}${nextLevelId}`)}
+              onClick={evt => this.props.history.push(`${constants.PATH_LEVEL_ROOT}${nextLevelId}`)}
             >
               Go to the next level!
             </button>

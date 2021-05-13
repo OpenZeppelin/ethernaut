@@ -19,7 +19,7 @@ class Home extends React.Component {
     }
 
     // Navigate to first incomplete level
-    this.props.router.push(`${constants.PATH_LEVEL_ROOT}${target}`)
+    this.props.history.push(`${constants.PATH_LEVEL_ROOT}${target}`)
   }
 
   render() {

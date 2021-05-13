@@ -26,11 +26,7 @@ export default store => next => async action => {
     console.victory(`@good Well done`, `You have completed this level!!!`)
   }
   else {
-    console.error(`
-    *!@#(*&(@!(#*&(*$&!@#(*&(%@)#$(!@)#(*!@)(#@!(*^#(&()%*)#@(*!@)#(*&
-    @bad Oops! Looks like you haven't cracked this level just yet @bad
-    *&@#$(*!@_#)(+!@)_*$(@!$_)&*&%!@#$_)@(#_)@_)#(@(#)&(*$^#*&%^#$)(#@
-    `)
+    console.error(`@bad Oops! Looks like you haven't cracked this level just yet @bad`)
   }
 
   action.completed = completed
