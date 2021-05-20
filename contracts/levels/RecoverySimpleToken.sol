@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // This is used for the HiJack truffle test. 
 pragma solidity ^0.6.0;
 
