@@ -11,6 +11,7 @@ import './styles/app.css';
 import * as actions from '../src/actions';
 import * as constants from '../src/constants';
 import './utils/^^';
+import * as Sentry from "@sentry/react";
 
 import App from './containers/App';
 import Home from './containers/Home';
@@ -20,6 +21,7 @@ import Help from './containers/Help';
 import Stats from './containers/Stats';
 
 // Initial actions
+Sentry.init({ dsn: constants.SENTRY_DNS });
 store.dispatch(actions.loadGamedata())
 
 // View entry point.
