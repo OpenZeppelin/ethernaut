@@ -1,9 +1,7 @@
 import React from 'react'
 import loadText from '../utils/textloader'
-import hljs from 'highlight.js'
 import 'highlight.js/styles/atom-one-dark.css'
-import hljsDefineSolidity from 'highlightjs-solidity'
-hljsDefineSolidity(hljs);
+import hljs from 'highlight.js'
 
 class Code extends React.Component {
 
@@ -26,15 +24,13 @@ class Code extends React.Component {
 
   async componentDidUpdate(prevProps) {
     await this.loadContents(this.props.target);
-    this.highlightCode();
   }
 
-  highlightCode() {
-    const nodes = document.querySelectorAll('pre code');
-
-    for (let i = 0; i < nodes.length; i++) {
-        if(!nodes[i].className.includes('solidity')) return;
-        hljs.highlightElement(nodes[i])
+  getHighlightedCode() {
+    if (this.state.source) {
+      return {
+        __html: hljs.highlight(this.state.source, { language: 'solidity' }).value,
+      };
     }
   }
 
@@ -55,10 +51,8 @@ class Code extends React.Component {
   }
 
   render() {
-      return (
-      <pre><code className='solidity'>
-        {this.state.source}
-      </code></pre>
+    return (
+      <pre><code className='hljs' dangerouslySetInnerHTML={this.getHighlightedCode()}></code></pre>
     )
   }
 }

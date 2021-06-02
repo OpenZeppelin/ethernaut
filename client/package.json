@@ -10,6 +10,7 @@
     "contracts": "0.1.0",
     "cross-env": "5.0.5",
     "devtools-detect": "^3.0.1",
+    "highlight.js": "10.7.2-local",
     "moment": "^2.29.1",
     "rainbow-color": "^2.0.0",
     "react": "16.11.0",
