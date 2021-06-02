@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { store, history } from './store';
@@ -15,10 +15,9 @@ import './utils/^^';
 import App from './containers/App';
 import Home from './containers/Home';
 import NotFound404 from './components/NotFound404';
-
-const Level = lazy(() => import('./containers/Level'));
-const Help = lazy(() => import('./containers/Help'));
-const Stats = lazy(() => import('./containers/Stats'));
+import Level from './containers/Level';
+import Help from './containers/Help';
+import Stats from './containers/Stats';
 
 // Initial actions
 store.dispatch(actions.loadGamedata())
