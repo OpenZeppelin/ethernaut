@@ -5,6 +5,7 @@ dotenv.config()
 
 export const DEBUG = process.env.NODE_ENV !== 'production'
 export const DEBUG_REDUX = DEBUG
+export const SENTRY_DNS = process.env.SENTRY_DNS
 
 // Networks
 export const NETWORKS = {
@@ -61,8 +62,8 @@ export const PATH_STATS = `${PATH_ROOT}stats`
 export const CUSTOM_LOGGING = true                              /* TRUE on production */
 export const SHOW_ALL_COMPLETE_DESCRIPTIONS = false             /* FALSE on production */
 export const SHOW_VERSION = true                                /* TRUE on production */
-//    export const ACTIVE_NETWORK = NETWORKS.ROPSTEN
+// export const ACTIVE_NETWORK = NETWORKS.ROPSTEN
 export const ACTIVE_NETWORK = NETWORKS.RINKEBY
-//    export const ACTIVE_NETWORK = NETWORKS.LOCAL
+// export const ACTIVE_NETWORK = NETWORKS.LOCAL
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------
