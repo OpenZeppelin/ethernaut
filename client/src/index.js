@@ -22,7 +22,7 @@ import Stats from './containers/Stats';
 
 // Initial actions
 Sentry.init({ dsn: constants.SENTRY_DNS });
-store.dispatch(actions.loadGamedata())
+store.dispatch(actions.loadGamedata());
 
 // View entry point.
 ReactDOM.render(
