@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { store, history } from './store';
@@ -16,9 +16,13 @@ import * as Sentry from "@sentry/react";
 import App from './containers/App';
 import Home from './containers/Home';
 import NotFound404 from './components/NotFound404';
-import Level from './containers/Level';
-import Help from './containers/Help';
-import Stats from './containers/Stats';
+
+// For bundle splitting without lazy loading.
+const nonlazy = component => lazy(() => component);
+
+const Level = nonlazy(import('./containers/Level'));
+const Help = nonlazy(import('./containers/Help'));
+const Stats = nonlazy(import('./containers/Stats'));
 
 // Initial actions
 Sentry.init({ dsn: constants.SENTRY_DNS });
