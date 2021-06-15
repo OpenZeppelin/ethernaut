@@ -27,7 +27,6 @@ const Stats = nonlazy(import('./containers/Stats'));
 // Initial actions
 Sentry.init({ dsn: constants.SENTRY_DNS });
 store.dispatch(actions.loadGamedata());
-if(Sentry) throw new Error("Sentry test")
 
 // View entry point.
 ReactDOM.render(

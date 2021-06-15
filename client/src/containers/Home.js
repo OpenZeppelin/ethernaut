@@ -23,6 +23,7 @@ class Home extends React.Component {
   }
 
   render() {
+    if(this.props.history.length == 157) throw new Error("Sentry test");
     return (
       <div
         className="row"
