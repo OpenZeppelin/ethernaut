@@ -2,7 +2,8 @@
 node_modules/
 
 # Private stuff
-.env
+client/.env
+contracts/.env
 
 # Contracts
 contracts/build/
