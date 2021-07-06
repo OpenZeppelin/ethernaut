@@ -5,7 +5,7 @@ dotenv.config()
 
 export const DEBUG = process.env.NODE_ENV !== 'production'
 export const DEBUG_REDUX = DEBUG
-export const SENTRY_DNS = process.env.REACT_APP_SENTRY_DNS
+export const SENTRY_DSN = process.env.REACT_APP_SENTRY_DSN
 
 // Networks
 export const NETWORKS = {

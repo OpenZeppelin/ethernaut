@@ -27,7 +27,7 @@ export default function(state = initialState, action) {
         ...state,
         emittedLevels: {
           ...state.emittedLevels,
-          [action.level.deployedAddress]: action.instance.address
+          [action.level.deployedAddress]: action.instance.address // fix this action.instance?.address
         }
       }
       cachePlayer(newState)

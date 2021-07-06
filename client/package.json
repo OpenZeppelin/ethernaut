@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@sentry/react": "^6.5.0",
+    "@sentry/react": "^6.8.0",
     "@truffle/contract": "^4.3.15",
     "bootstrap": "^4.6.0",
     "contracts": "0.1.0",
@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && node scripts/build-redirects.cjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

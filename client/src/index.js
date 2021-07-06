@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { store, history } from './store';
 import { syncHistoryWithStore } from 'react-router-redux';
-//import { browserHistory } from 'react-router';
 import { Router, Route, Switch } from 'react-router';
 import * as ethutil from './utils/ethutil'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -11,7 +10,8 @@ import './styles/app.css';
 import * as actions from '../src/actions';
 import * as constants from '../src/constants';
 import './utils/^^';
-import * as Sentry from "@sentry/react";
+import * as Sentry from "@sentry/browser";
+import { Integrations } from '@sentry/tracing';
 
 import App from './containers/App';
 import Home from './containers/Home';
@@ -24,8 +24,15 @@ const Level = nonlazy(import('./containers/Level'));
 const Help = nonlazy(import('./containers/Help'));
 const Stats = nonlazy(import('./containers/Stats'));
 
-// Initial actions
-Sentry.init({ dsn: constants.SENTRY_DNS });
+Sentry.init({ 
+  dsn: constants.SENTRY_DSN, 
+  debug: false,
+  tunnel: '/errors',
+  integrations: [new Integrations.BrowserTracing()],
+  tracesSampleRate: 1.0,
+  release: constants.VERSION,
+});
+
 store.dispatch(actions.loadGamedata());
 
 // View entry point.
