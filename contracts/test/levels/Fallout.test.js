@@ -16,7 +16,7 @@ contract('Fallout', function(accounts) {
     ethernaut = await Ethernaut.new();
     level = await FalloutFactory.new()
     await ethernaut.registerLevel(level.address)
-    console.log(ethernaut.address, level.address)
+    //console.log(ethernaut.address, level.address)
   });
 
   it('should allow the player to solve the level', async function() {

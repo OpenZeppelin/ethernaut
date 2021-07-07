@@ -25,7 +25,7 @@ contract('Reentrance', function(accounts) {
     const insertCoin = web3.utils.fromWei(
       (await level.insertCoin.call()).toString(), 'ether'
     )
-    console.log(`level insertCoin:`, insertCoin)
+    //console.log(`level insertCoin:`, insertCoin)
 
     const instance = await utils.createLevelInstance(
       ethernaut, level.address, player, Reentrance,
@@ -34,7 +34,7 @@ contract('Reentrance', function(accounts) {
 
     // Query contract balance (should be 0.1)
     let instanceBalance = await utils.getBalance(web3, instance.address)
-    console.log(`init instance balance:`, instanceBalance)
+    //console.log(`init instance balance:`, instanceBalance)
     assert.equal(instanceBalance, insertCoin)
 
     // Deploy attacker contract
@@ -45,20 +45,20 @@ contract('Reentrance', function(accounts) {
 
     // Check attacker balance
     let attackerBalance = await utils.getBalance(web3, attacker.address)
-    console.log(`init attacker balance:`, attackerBalance)
+    //console.log(`init attacker balance:`, attackerBalance)
     assert.equal(attackerBalance, attackerFunds)
 
     // '(◣_◢)'
     await attacker.attack_1_causeOverflow()
     attackerBalance = await utils.getBalance(web3, attacker.address)
-    console.log(`post attacker balance 1:`, attackerBalance)
+    //console.log(`post attacker balance 1:`, attackerBalance)
     await attacker.attack_2_deplete()
     attackerBalance = await utils.getBalance(web3, attacker.address)
-    console.log(`post attacker balance 2:`, attackerBalance)
+    //console.log(`post attacker balance 2:`, attackerBalance)
 
     // Query balance
     instanceBalance = await utils.getBalance(web3, instance.address)
-    console.log(`post instance balance:`, instanceBalance)
+    //console.log(`post instance balance:`, instanceBalance)
     assert.equal(instanceBalance, 0)
 
     // Factory check

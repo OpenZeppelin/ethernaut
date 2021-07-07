@@ -23,10 +23,10 @@ contract('Delegation', function(accounts) {
 
     // Get instance, which should be owned by the level
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, Delegation);
-    console.log(`player:`, player)
-    console.log(`factory:`, level.address)
+    // console.log(`player:`, player)
+    // console.log(`factory:`, level.address)
     let owner = await instance.owner.call()
-    console.log(`instance owner:`, level.address)
+    // console.log(`instance owner:`, level.address)
     assert.equal(owner, level.address)
 
     // Use the fallback method to call the delegate's pwn()
@@ -39,7 +39,7 @@ contract('Delegation', function(accounts) {
 
     // Player should own the instance now
     owner = await instance.owner.call()
-    console.log(`new instance owner:`, owner)
+    // console.log(`new instance owner:`, owner)
     assert.equal(owner, player)
 
     // Factory check

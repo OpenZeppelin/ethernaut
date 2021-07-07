@@ -39,12 +39,12 @@ contract('Privacy', function(accounts) {
       
       // Read storage.
       for(let i = 0; i < 6; i++) {
-        console.log(await web3.eth.getStorageAt(instance.address, i));
+        //console.log(await web3.eth.getStorageAt(instance.address, i));
       }
 
       // Read contract storage.
       const dataEntry = await web3.eth.getStorageAt(instance.address, 5);
-      console.log("data entry " + dataEntry)
+      //console.log("data entry " + dataEntry)
       const key = '0x' + dataEntry.substring(2, 34);
 
       // Unlock.

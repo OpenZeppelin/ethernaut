@@ -27,7 +27,7 @@ contract('Force', function(accounts) {
 
     // Check init balances
     let balance = await utils.getBalance(web3, instance.address)
-    console.log(`init instance balance: ${balance}`)
+    //console.log(`init instance balance: ${balance}`)
     assert.equal(balance, 0)
 
     // Sending funds should not work
@@ -40,7 +40,7 @@ contract('Force', function(accounts) {
     )
       
     balance = await utils.getBalance(web3, instance.address)
-    console.log(`instance balance: ${balance}`)
+    //console.log(`instance balance: ${balance}`)
     assert.equal(balance, 0)
 
     // Attack
@@ -52,7 +52,7 @@ contract('Force', function(accounts) {
 
     // Check init balances
     balance = await utils.getBalance(web3, instance.address)
-    console.log(`post instance balance: ${balance}`)
+    //console.log(`post instance balance: ${balance}`)
     assert.notEqual(balance, 0)
 
     // Check win.
