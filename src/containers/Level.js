@@ -10,6 +10,11 @@ import Difficulty from '../components/Difficulty';
 
 class Level extends React.Component {
 
+  state = {
+    requestedInstance: false,
+    submittedIntance: false,
+  }
+
   componentWillMount() {
     this.props.activateLevel(this.props.routeParams.address)
   }
@@ -26,7 +31,10 @@ class Level extends React.Component {
   }
 
   render() {
-
+    const {
+      requestedInstance,
+      submittedIntance,
+    } = this.state;
     const {
       level,
       levelCompleted
@@ -82,7 +90,13 @@ class Level extends React.Component {
             <button
               type="button"
               className='btn btn-primary'
-              onClick={evt => this.props.loadLevelInstance(level, false)}
+              onClick={evt => {
+                if (!requestedInstance) {
+                  this.props.loadLevelInstance(level, false);
+                  this.setState({ requestedInstance: true });
+                  setTimeout(() => this.setState({ requestedInstance: false }), 2000);
+                }
+              }}
             >
               Get new instance
             </button>
@@ -92,7 +106,13 @@ class Level extends React.Component {
             <button
               type="button"
               className='btn btn-warning'
-              onClick={evt => this.props.submitLevelInstance(level)}
+              onClick={evt => {
+                if (!submittedIntance) {
+                  this.props.submitLevelInstance(level);
+                  this.setState({ submittedIntance: true });
+                  setTimeout(() => this.setState({ submittedIntance: false }), 2000);
+                }
+              }}
             >
               Submit instance
             </button>
