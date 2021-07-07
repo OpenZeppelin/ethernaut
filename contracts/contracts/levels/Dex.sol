@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -30,8 +31,8 @@ contract Dex  {
   }
 
   function approve(address spender, uint amount) public {
-    SwappableToken(token1).approve(msg.sender, spender, amount);
-    SwappableToken(token2).approve(msg.sender, spender, amount);
+    SwappableToken(token1).approve(spender, amount);
+    SwappableToken(token2).approve(spender, amount);
   }
 
   function balanceOf(address token, address account) public view returns (uint){
@@ -43,7 +44,4 @@ contract SwappableToken is ERC20 {
   constructor(string memory name, string memory symbol, uint initialSupply) public ERC20(name, symbol) {
         _mint(msg.sender, initialSupply);
   }
-  function approve(address owner, address spender, uint amount) public returns(bool){
-        super._approve(owner, spender, amount);
-    }
 }
