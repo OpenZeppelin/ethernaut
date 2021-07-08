@@ -23,7 +23,7 @@ contract DenialFactory is Level {
         return false;
     }
     // fix the gas limit for this call
-    (bool result,) = address(instance).call.gas(500000)(abi.encodeWithSignature("withdraw()")); // Must revert
+    (bool result,) = address(instance).call.gas(1000000)(abi.encodeWithSignature("withdraw()")); // Must revert
     return !result;
   }
 
