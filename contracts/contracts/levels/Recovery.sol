@@ -26,7 +26,7 @@ contract SimpleToken {
   }
 
   // collect ether in return for tokens
-  fallback() external payable {
+  receive() external payable {
     balances[msg.sender] = msg.value.mul(10);
   }
 

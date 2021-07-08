@@ -16,11 +16,11 @@ contract KingFactory is Level {
   function validateInstance(address payable _instance, address _player) override public returns (bool) {
     _player;
     King instance = King(_instance);
-    (bool result, bytes memory data) = address(instance).call.value(0)("");
+    (bool result,) = address(instance).call.value(0)("");
     !result;
     return instance._king() != address(this);
   }
 
-  fallback() external payable {}
+  receive() external payable {}
 
 }

@@ -15,7 +15,7 @@ contract GatekeeperOneAttack {
 
     // gas offset usually comes in around 210, give a buffer of 60 on each side
     for (uint256 i = 0; i < 120; i++) {
-      (bool result, bytes memory data) = address(GatekeeperOneContractAddress).call.gas(
+      (bool result, ) = address(GatekeeperOneContractAddress).call.gas(
           i + 150 + 8191 * 3
         )(
           encodedParams

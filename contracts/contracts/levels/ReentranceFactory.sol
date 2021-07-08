@@ -22,5 +22,5 @@ contract ReentranceFactory is Level {
     return address(instance).balance == 0;
   }
 
-  fallback() external payable {}
+  receive() external payable {}
 }

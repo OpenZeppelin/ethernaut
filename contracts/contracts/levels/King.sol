@@ -13,7 +13,7 @@ contract King {
     prize = msg.value;
   }
 
-  fallback() external payable {
+  receive() external payable {
     require(msg.value >= prize || msg.sender == owner);
     king.transfer(msg.value);
     king = msg.sender;
