@@ -1,6 +1,10 @@
 import * as ethutil from '../utils/ethutil'
 import EthernautABI from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json'
 import * as actions from '../actions';
+import { loadTranslations } from '../utils/translations'
+
+let language = localStorage.getItem('lang')
+let strings = loadTranslations(language)
 
 export default store => next => action => {
   if(action.type !== actions.LOAD_ETHERNAUT_CONTRACT) return next(action)
@@ -30,7 +34,7 @@ export default store => next => action => {
   Ethernaut.at(state.gamedata.ethernautAddress)
     .then(instance => {
 
-      console.info(`=> Ethernaut address\n${instance.address}`)
+      console.info(`${strings.ethernautAddressMessage}\n${instance.address}`)
 
       // for player interaction via the browser's console
       window.ethernaut = instance
@@ -46,6 +50,6 @@ export default store => next => action => {
         store.dispatch(actions.loadLevelInstance(state.gamedata.activeLevel, true))
     })
     .catch(() => {
-      console.error(`@bad Ethernaut contract not found in the current network. Please make sure (1) that you are using metamask, (2) that it's on the rinkeby testnet, (3) that it is unlocked, (4 optional) From November 2 you can turn ON privacy mode (OFF by default) in Metamask settings if you don't want to expose your info by default. (5 optional) If privacy mode is turn ON you have to authorized metamask to use this page. and (6) then refresh.`)
+      console.error(`@bad ${strings.ethernautNotFoundMessage}`)
     })
 }

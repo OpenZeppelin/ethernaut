@@ -2,9 +2,9 @@ import React from 'react';
 import Sidebar from 'react-sidebar';
 import Header from './Header';
 import SidebarContent from './Sidebar';
-import FontAwesome from 'react-fontawesome';
 import ReactGA from 'react-ga'
 import * as constants from '../constants';
+import { loadTranslations } from '../utils/translations'
 
 class App extends React.Component {
 
@@ -23,6 +23,8 @@ class App extends React.Component {
   }
 
   render() {
+    let language = localStorage.getItem('lang')
+    let strings = loadTranslations(language)
     return (
       <div style={{ fontFamily: '"Helvetica Neue", Lato, sans-serif'}}>
         <Header/>
@@ -42,7 +44,7 @@ class App extends React.Component {
 
         {/* FOOTER */}
         <footer className="footer text-center text-muted">
-          <small>developed with <FontAwesome name="heart" style={{color: 'red'}}/> and <FontAwesome name="flash" style={{color: 'yellow'}}/> by the <a href="https://openzeppelin.com">OpenZeppelin</a> team</small>
+          <small dangerouslySetInnerHTML={{ __html: strings.footer }}></small>
         </footer>
       </div>
     );

@@ -15,7 +15,6 @@
     "rainbow-color": "^2.0.0",
     "react": "16.11.0",
     "react-dom": "16.11.0",
-    "react-fontawesome": "^1.7.1",
     "react-ga": "^3.3.0",
     "react-markdown": "^6.0.1",
     "react-redux": "^7.2.4",

@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as constants from '../constants';
+import { loadTranslations } from '../utils/translations'
 
 class Home extends React.Component {
 
@@ -23,6 +24,9 @@ class Home extends React.Component {
   }
 
   render() {
+    let language = localStorage.getItem('lang')
+    let strings = loadTranslations(language)
+    
     return (
       <div
         className="row"
@@ -35,22 +39,20 @@ class Home extends React.Component {
 
           {/* TITLE */}
           <h2 className="title">
-            The Ethernaut&nbsp;
+            {strings.title}&nbsp;
             <small style={{ fontSize: 10 }}>by</small>
             <a href='https://openzeppelin.com' target="_blank" rel="noopener noreferrer">
               <img style={{ maxWidth: '120px' }} src='../../imgs/openzeppelin-by-logo.png' alt='OpenZeppelin'/>
             </a>
           </h2>
           {/* INFO */}
-          <p>The Ethernaut is a Web3/Solidity based wargame inspired on <a href="https://overthewire.org" target="_blank" rel="noopener noreferrer">overthewire.org</a>, played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'.</p>
-          <p>The game is 100% open source and all levels are contributions made by other players. Do you have an interesting idea? PRs are welcome at <a href="https://github.com/OpenZeppelin/ethernaut">github.com/OpenZeppelin/ethernaut</a>.</p>
-          <p>Are you interested in smart contract development or security? Does securing the world’s blockchain infrastructure sound exciting to you? <a href="https://openzeppelin.com/jobs" target="_blank" rel="noopener noreferrer"><strong style={{ color: '#eb5424', fontWeight: 600 }}>We are hiring!</strong></a></p>
+          <div dangerouslySetInnerHTML={{ __html: strings.info }}></div>
           <button
             style={{marginTop: '10px'}}
             className="btn btn-primary"
             onClick={() => this.navigateToFirstIncompleteLevel()}
           >
-            Play now! 
+            {strings.playNow}
           </button>
         </div>
       </div>

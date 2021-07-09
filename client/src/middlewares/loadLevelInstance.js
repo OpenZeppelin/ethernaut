@@ -1,5 +1,9 @@
 import * as ethutil from '../utils/ethutil'
 import * as actions from '../actions';
+import { loadTranslations } from '../utils/translations'
+
+let language = localStorage.getItem('lang')
+let strings = loadTranslations(language)
 
 export default store => next => action => {
   if(action.type !== actions.LOAD_LEVEL_INSTANCE) return next(action)
@@ -21,10 +25,10 @@ export default store => next => action => {
 
   // Get a new instance address
   if(!instanceAddress && !action.reuse) {
-    console.asyncInfo(`@good Requesting new instance from level...`)
+    console.asyncInfo(`@good ${strings.requestingNewInstanceMessage}`)
 
     const showErr = function(error) {
-      console.error('@bad Unable to retrieve level instance! Please check gas amount and try again.', error || '')
+      console.error(`@bad ${strings.unableToRetrieveLevelMessage}`, error || '')
     }
 
     // const estimate = await state.contracts.ethernaut.getLevelInstance.estimateGas(action.level.deployedAddress)
@@ -44,7 +48,7 @@ export default store => next => action => {
           store.dispatch(action)
         }
         else {
-          showErr('tx contains no logs')
+          showErr(strings.transactionNoLogsMessage)
         }
       })
       .catch(error => {
@@ -55,7 +59,7 @@ export default store => next => action => {
 
   // Get instance from address
   if(!instanceAddress) return
-  console.info(`=> Instance address\n${instanceAddress}`)
+  console.info(`${strings.instanceAddressMessage}\n${instanceAddress}`)
   const Instance = ethutil.getTruffleContract(
     require(`contracts/build/contracts/levels/${action.level.instanceContract}/${withoutExtension(action.level.instanceContract)}.json`),
     {
@@ -71,7 +75,7 @@ export default store => next => action => {
       next(action);
     })
     .catch(err => {
-      console.log(`Error: ${err}, retrying...`);
+      console.log(`${strings.error}: ${err}, ${strings.retrying}`);
       setTimeout(() => {
         store.dispatch(action);
       }, 1000);

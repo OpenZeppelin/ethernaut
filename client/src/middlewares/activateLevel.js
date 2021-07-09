@@ -2,6 +2,10 @@ import _ from 'lodash'
 import { push } from 'react-router-redux'
 import * as actions from '../actions';
 import * as constants from '../constants';
+import { loadTranslations } from '../utils/translations'
+
+let language = localStorage.getItem('lang')
+let strings = loadTranslations(language)
 
 export default store => next => action => {
   if(action.type !== actions.ACTIVATE_LEVEL) return next(action)
@@ -25,14 +29,14 @@ export default store => next => action => {
     console.clear()
   }
   if(activeLevel) console.greet(activeLevel.name)
-  console.secret(`Type help() for a listing of custom web3 addons`)
+  console.secret(strings.typeHelpMessage)
   const isChrome = !!window.chrome && !!window.chrome.webstore;
   if(isChrome) {
-    console.quiet(`Annoying 'Slow network detected' message? Try Dev Tools settings -> User messages only or disable 'chrome://flags/#enable-webfonts-intervention-v2'`)
+    console.quiet(strings.slowNetworkMessage)
   }
 
   // Remove contract reference
-  window.contract = `No contract set, go to a level and click 'Get new instance'`
+  window.contract = strings.notContractSetMessage
   window.instance = undefined
 
   // -> 404
@@ -46,7 +50,7 @@ export default store => next => action => {
     store.dispatch(actions.loadLevelInstance(activeLevel, true))
 
   window.level = activeLevel.deployedAddress;
-  console.info(`=> Level address\n${activeLevel.deployedAddress}`)
+  console.info(`${strings.levelAddressMessage}\n${activeLevel.deployedAddress}`)
 
   action.activeLevel = activeLevel;
   next(action)

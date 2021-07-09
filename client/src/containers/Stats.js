@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux'
 import _ from 'lodash'
 import '../styles/page.css'
 import * as actions from '../actions';
+import { loadTranslations } from '../utils/translations'
 
 class Stats extends React.Component {
 
@@ -45,6 +46,9 @@ class Stats extends React.Component {
   }
 
   render() {
+    let language = localStorage.getItem('lang')
+    let strings = loadTranslations(language)
+    
     return (
       <div className="page-container">
 
@@ -78,31 +82,31 @@ class Stats extends React.Component {
             className="btn btn-xs btn-primary"
             onClick={() => this.props.collectStats()}
           >
-            Refresh
+            {strings.refresh}
           </button>
         </div>
 
         {/* STATS */}
         <div>
-          <h3>Stats</h3>
+          <h3>{strings.stats}</h3>
           <ul>
-            <li><strong># completed: {this.props.completedLevels.length}</strong></li>
-            <li><strong># created: {this.props.createdInstances.length}</strong></li>
-            <li><strong># players: {this.getNumPlayers()}</strong></li>
+            <li><strong>{strings.numberOf} {strings.lLevels} {strings.lCompleted}: {this.props.completedLevels.length}</strong></li>
+            <li><strong>{strings.numberOf} {strings.lLevels} {strings.lCreated}: {this.props.createdInstances.length}</strong></li>
+            <li><strong>{strings.numberOf} {strings.players}: {this.getNumPlayers()}</strong></li>
           </ul>
         </div>
 
         {/* COMPLETED */}
         <div>
-          <h3>Completed</h3>
-          <strong># completed: {this.props.completedLevels.length}</strong>
+          <h3>{strings.uCompleted}</h3>
+          <strong>{strings.lCompleted}: {this.props.completedLevels.length}</strong>
           <table className="table">
             <thead>
             <tr>
-              <th>Player</th>
-              <th>Level name</th>
-              <th>Level address</th>
-              <th>Block num</th>
+              <th>{strings.player}</th>
+              <th>{strings.levelName}</th>
+              <th>{strings.levelAddress}</th>
+              <th>{strings.blockNum}</th>
             </tr>
             </thead>
             <tbody>
@@ -123,13 +127,13 @@ class Stats extends React.Component {
 
         {/* CREATED */}
         <div>
-          <h3>Created</h3>
-          <strong># created: {this.props.createdInstances.length}</strong>
+          <h3>{strings.uCreated}</h3>
+          <strong>{strings.lCreated}: {this.props.createdInstances.length}</strong>
           <table className="table">
             <thead>
             <tr>
-              <th>Player</th>
-              <th>Instance</th>
+              <th>{strings.player}</th>
+              <th>{strings.instance}</th>
             </tr>
             </thead>
             <tbody>

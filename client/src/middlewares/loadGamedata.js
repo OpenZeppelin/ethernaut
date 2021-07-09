@@ -1,5 +1,9 @@
 import * as actions from '../actions';
 import * as constants from '../constants';
+import { loadTranslations } from '../utils/translations'
+
+let language = localStorage.getItem('lang')
+let strings = loadTranslations(language)
 
 export default store => next => action => {
     if(action.type !== actions.LOAD_GAME_DATA) return next(action)
@@ -21,7 +25,7 @@ export default store => next => action => {
       action.ethernautAddress = deployData.ethernaut
       action.levels = levelsOut;
     } catch(e) {
-      window.alert('cannot find levels data')
+      window.alert(strings.noLevelsDataMessage)
     }
 
     next(action)

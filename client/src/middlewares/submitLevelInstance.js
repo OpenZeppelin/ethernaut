@@ -1,4 +1,8 @@
 import * as actions from '../actions';
+import { loadTranslations } from '../utils/translations'
+
+let language = localStorage.getItem('lang')
+let strings = loadTranslations(language)
 
 export default store => next => async action => {
   if(action.type !== actions.SUBMIT_LEVEL_INSTANCE) return next(action)
@@ -13,7 +17,7 @@ export default store => next => async action => {
     !state.network.gasPrice
   ) return next(action)
 
-  console.asyncInfo(`@good Submitting level instance...`)
+  console.asyncInfo(`@good ${strings.submitLevelMessage}`)
 
   let completed = await submitLevelInstance(
     state.contracts.ethernaut,
@@ -23,10 +27,10 @@ export default store => next => async action => {
     state.network.gasPrice
   )
   if(completed) {
-    console.victory(`@good Well done`, `You have completed this level!!!`)
+    console.victory(`@good ${strings.wellDoneMessage}, ${strings.completedLevelMessage}`)
   }
   else {
-    console.error(`@bad Oops! Looks like you haven't cracked this level just yet @bad`)
+    console.error(`@bad ${strings.completedLevelMessage} @bad`)
   }
 
   action.completed = completed
@@ -36,11 +40,6 @@ export default store => next => async action => {
 async function submitLevelInstance(ethernaut, levelAddress, instanceAddress, player, gasPrice) {
   return new Promise(async function(resolve) {
     const data = {from: player, gasPrice}
-    // let estimate;
-    // try {
-    //   estimate = await ethernaut.submitLevelInstance.estimateGas(instanceAddress, data)
-    //   data.gas = estimate;
-    // } catch(e) {}
     const tx = await ethernaut.submitLevelInstance(instanceAddress, data);
     if(tx.logs.length === 0) resolve(false)
     else {
