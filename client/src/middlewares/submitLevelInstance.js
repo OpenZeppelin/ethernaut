@@ -30,7 +30,7 @@ export default store => next => async action => {
     console.victory(`@good ${strings.wellDoneMessage}, ${strings.completedLevelMessage}`)
   }
   else {
-    console.error(`@bad ${strings.completedLevelMessage} @bad`)
+    console.error(`@bad ${strings.uncompletedLevelMessage} @bad`)
   }
 
   action.completed = completed
