@@ -72,9 +72,9 @@ class Header extends React.Component {
               <li className={currentPath === constants.PATH_HELP ? 'active' : ''}>
                 <Link to={constants.PATH_HELP} style={{fontSize: '16px'}}>{strings.help}</Link>
               </li>
-              <li className={currentPath === constants.PATH_STATS ? 'active' : ''}>
+              {/* <li className={currentPath === constants.PATH_STATS ? 'active' : ''}>
                 <Link to={constants.PATH_STATS} style={{fontSize: '16px'}}>{strings.stats}</Link>
-              </li>
+              </li> */}
             </ul>
 
             {/* RIGHT */}
