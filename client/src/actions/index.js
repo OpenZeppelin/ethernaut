@@ -37,4 +37,7 @@ export const collectStats = () => ({ type: COLLECT_STATS })
 export const SET_BLOCK_NUM = "SET_BLOCK_NUM";
 export const setBlockNum = num => ({ type: SET_BLOCK_NUM, blockNum: num })
 
+export const SET_LANG = "SET_LANG";
+export const setLang = (lang) => ({ type: SET_LANG, lang }) 
+
 export const CHECK_ALL_COMPLETED = "CHECK_ALL_COMPLETED";

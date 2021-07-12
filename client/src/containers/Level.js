@@ -7,6 +7,7 @@ import MarkdownComponent from '../components/Markdown';
 import Difficulty from '../components/Difficulty';
 import * as actions from '../actions';
 import * as constants from '../constants';
+import { loadTranslations } from '../utils/translations'
 
 class Level extends React.Component {
   constructor() {
@@ -49,10 +50,21 @@ class Level extends React.Component {
     const showCompletedDescription = constants.SHOW_ALL_COMPLETE_DESCRIPTIONS || levelCompleted
 
     let description = null
-    try { description = require(`../gamedata/descriptions/levels/${level.description}`) } catch(e){ console.log(e) }
+    let language = localStorage.getItem('lang')
+    let strings = loadTranslations(language)
+
+    try { 
+      description = require(`../gamedata/${language}/descriptions/levels/${level.description}`) 
+    } catch(e){ 
+      description = require(`../gamedata/en/descriptions/levels/${level.description}`)
+    }
     let completedDescription = null
     if(showCompletedDescription && level.completedDescription) {
-      try { completedDescription = require(`../gamedata/descriptions/levels/${level.completedDescription}`) } catch(e){ console.log(e) }
+      try { 
+        completedDescription = require(`../gamedata/${language}/descriptions/levels/${level.completedDescription}`) 
+      } catch(e){ 
+        completedDescription = require(`../gamedata/en/descriptions/levels/${level.completedDescription}`) 
+      }
     }
     let sourcesFile = null
     try { sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
@@ -65,7 +77,7 @@ class Level extends React.Component {
           {/* TITLE + INFO */}
           <div className="level-title col-sm-6">
             <h2 className="title no-margin">{level.name}</h2>
-            { levelCompleted === true && <span className='label label-default'>Level completed!</span>}
+            { levelCompleted === true && <span className='label label-default'>{strings.levelCompleted}</span>}
           </div>
           <div className="difficulty col-sm-6 right">
             <Difficulty level={parseInt(level.difficulty, 10)}/>
@@ -101,7 +113,7 @@ class Level extends React.Component {
                 }
               }}
             >
-              Get new instance
+              {strings.getNewInstance}
             </button>
 
             {/* SUBMIT */}
@@ -117,7 +129,7 @@ class Level extends React.Component {
                 }
               }}
             >
-              Submit instance
+              {strings.submitInstance}
             </button>
             }
 
@@ -128,7 +140,7 @@ class Level extends React.Component {
               className='btn btn-info'
               onClick={evt => this.props.history.push(`${constants.PATH_LEVEL_ROOT}${nextLevelId}`)}
             >
-              Go to the next level!
+              {strings.nextLevel}
             </button>
             }
 
@@ -139,7 +151,7 @@ class Level extends React.Component {
         {/* CODE */}
         { showCode && sourcesFile &&
         <div style={{marginTop: '50px'}}>
-          <div className='page-header'><h3>Sources</h3></div>
+          <div className='page-header'><h3>{strings.sources}</h3></div>
           <CodeComponent target={sourcesFile}/>
         </div>
         }

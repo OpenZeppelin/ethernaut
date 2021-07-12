@@ -4,9 +4,12 @@ import {bindActionCreators} from 'redux';
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import * as constants from '../constants';
+import { loadTranslations } from '../utils/translations'
 
 class Sidebar extends React.Component {
   render() {
+    let language = localStorage.getItem('lang')
+    let strings = loadTranslations(language)
 
     return (
       <div style={{
@@ -14,7 +17,7 @@ class Sidebar extends React.Component {
       }}>
 
         {/* TITLE */}
-        <h4 className="levels-list-title">Levels</h4>
+        <h4 className="levels-list-title">{strings.uLevels}</h4>
 
         {/* LIST */}
         <div className="levels-list">

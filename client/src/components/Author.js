@@ -1,4 +1,5 @@
 import React from 'react'
+import { loadTranslations } from '../utils/translations'
 
 class Author extends React.Component {
 
@@ -47,13 +48,16 @@ class Author extends React.Component {
   }
 
   render() {
+    let language = localStorage.getItem('lang')
+    let strings = loadTranslations(language)
+
     const { name, email, website, donate } = this.state;
     const nodata = !name && !email && !website && !donate;
     return (
       <div>
         <div style={{marginTop: '20px', marginBotton: '20px'}}>
 
-          <h4>Level author</h4>
+          <h4>{strings.levelAuthor}</h4>
 
           {nodata && 
             <span>{this.props.author}</span>
@@ -72,7 +76,7 @@ class Author extends React.Component {
           }
 
           {!nodata && donate && 
-              <span><br/>Did this level teach you anything useful? Donate to the level author (on mainnet): <strong>{donate}</strong></span>
+              <span><br/>{strings.donate}<strong>{donate}</strong></span>
           }
 
         </div>

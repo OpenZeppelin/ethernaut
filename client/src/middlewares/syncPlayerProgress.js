@@ -1,5 +1,9 @@
 import _ from 'lodash'
 import * as actions from '../actions';
+import { loadTranslations } from '../utils/translations'
+
+let language = localStorage.getItem('lang')
+let strings = loadTranslations(language)
 
 export default store => next => action => {
   if(action.type !== actions.SYNC_PLAYER_PROGRESS) return next(action)
@@ -20,9 +24,9 @@ export default store => next => action => {
   log.on('error', (error) => {
     if (error) {
       if (error.message && error.message.includes("TypeError: Cannot read property 'filter' of undefined")) {
-        console.error("Ouch! It seems you have run into a known Metamask issue. Try disabling and re-enabling your metamask plugin, and if that doesn't work, I'm afraid you'll need to close all Chrome processes and restart to work around it, until a fix is released. Don't worry, after restarting you should not see this message ever again.");
+        console.error(strings.metamaskKnownIssue);
       } else {
-        console.log("Error watching completion events:", error);
+        console.log(strings.eventsCompletionMessage, error);
       }
     }
   })
@@ -36,7 +40,7 @@ export default store => next => action => {
       // Fetch level object given the address and dispatch submit action
       const level = _.find(state.gamedata.levels, l => l.deployedAddress === levelAddr);
       if (!level) {
-        console.log("Unexpected address in LevelCompletedLog event (skipping): ", levelAddr);
+        console.log(strings.unexpectedAddressMessage, levelAddr);
       } else {
         store.dispatch(actions.submitLevelInstance(level, true))
       }

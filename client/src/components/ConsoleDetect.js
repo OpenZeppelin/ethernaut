@@ -1,5 +1,6 @@
 import React from 'react'
 import DevToolsDetect from 'devtools-detect'
+import { loadTranslations } from '../utils/translations'
 
 class ConsoleDetect extends React.Component {
 
@@ -32,12 +33,14 @@ class ConsoleDetect extends React.Component {
 
   render() {
     if(this.state.consoleIsOpen === true) return null
+    let language = localStorage.getItem('lang')
+    let strings = loadTranslations(language)
     return (
       <span
         style={{fontSize: '12px'}}
         className="text-muted"
       >
-        OPEN YOUR CONSOLE TO PLAY
+        {strings.openConsole}
       </span>
     )
   }

@@ -1,7 +1,10 @@
 import * as ethutil from './ethutil'
 import { createRainbow } from 'rainbow-color'
 import { rgbaString } from 'color-map'
+import { loadTranslations } from './translations'
 const constants = require(`../constants`)
+let language = localStorage.getItem('lang')
+let strings = loadTranslations(language)
 
 function interceptConsole() {
 
@@ -46,7 +49,7 @@ function interceptConsole() {
     args = processArgs(args)
     if(args.length === 0) return
     defaultConsole.info(
-      `%c${args} %c<  < <<PLEASE WAIT>> >  >`,
+      `%c${args} %c<  < <<${strings.pleaseWait}>> >  >`,
       `color: rgba(255, 255, 255, 0.85); font-weight: bold; font-size: 14px; text-shadow: 3px 2px red; background: #006;`,
       `color: rgba(255, 0, 0, 0.85); font-family: monospace; font-weight: bold; font-size: 18px; text-shadow: 3px 2px white; background: #00f;`,
     )
@@ -219,21 +222,21 @@ function setupConsoleUtils() {
   window.toWei = ethutil.toWei
   window.fromWei = ethutil.fromWei
   window.version = constants.VERSION
-  window.contract = `No contract set, go to a level and click 'Get new instance'`
+  window.contract = strings.notContractSetMessage
   window.help = function() {
     console.table({
-      'player': 'current player address',
-      'ethernaut': 'main game contract',
-      'level': 'current level contract address',
-      'contract': 'current level contract instance (if created)',
-      'instance': 'current level instance contract address (if created)',
-      'version': 'current game version',
-      'getBalance(address)': 'gets balance of address in ether',
-      'getBlockNumber()': 'gets current network block number',
-      'sendTransaction({options})': 'send transaction util',
-      'getNetworkId()': 'get ethereum network id',
-      'toWei(ether)': 'convert ether units to wei',
-      'fromWei(wei)': 'convert wei units to ether',
+      'player': strings.helperPlayer,
+      'ethernaut': strings.helperEthernaut,
+      'level': strings.helperLevel,
+      'contract': strings.helperContract,
+      'instance': strings.helperInstance,
+      'version': strings.helperVersion,
+      'getBalance(address)': strings.helperGetBalance,
+      'getBlockNumber()': strings.helperGetBlockNumber,
+      'sendTransaction({options})': strings.helperSendTransaction,
+      'getNetworkId()': strings.helperGetNetworkId,
+      'toWei(ether)': strings.helperToWei,
+      'fromWei(wei)': strings.helperFromWei,
     })
   }
 }
