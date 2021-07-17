@@ -74,7 +74,7 @@
     "babel-register": "^6.26.0",
     "bignumber": "^1.1.0",
     "bignumber.js": "^4.1.0",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "color-map": "^0.5.9",
     "colors": "^1.1.2",
     "devtools-detect": "^2.2.0",
