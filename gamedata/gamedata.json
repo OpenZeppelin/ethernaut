@@ -16,21 +16,6 @@
       "author": "ajsantander"
     },
     {
-      "name": "Coin Flip",
-      "created": "2018-03-18",
-      "difficulty": "3",
-      "description": "coinflip.md",
-      "completedDescription": "coinflip_complete.md",
-      "levelContract": "CoinFlipFactory.sol",
-      "instanceContract": "CoinFlip.sol",
-      "revealCode": true,
-      "deployParams": [],
-      "deployFunds": 0,
-      "deployId": "1",
-      "instanceGas": 320000,
-      "author": "syncikin"
-    },
-    {
       "name": "Funding",
       "created": "2021-07-20",
       "difficulty": "1",
@@ -44,6 +29,36 @@
       "deployId": "2",
       "instanceGas": 3200000,
       "author": ""
+    },
+    {
+      "name": "Fallout",
+      "created": "2017-11-01",
+      "difficulty": "2",
+      "description": "fallout.md",
+      "completedDescription": "fallout_complete.md",
+      "levelContract": "FalloutFactory.sol",
+      "instanceContract": "Fallout.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "3",
+      "instanceGas": 450000,
+      "author": "ajsantander"
+    },
+    {
+      "name": "Token",
+      "created": "2017-11-01",
+      "difficulty": "3",
+      "description": "token.md",
+      "completedDescription": "token_complete.md",
+      "levelContract": "TokenFactory.sol",
+      "instanceContract": "Token.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "4",
+      "instanceGas": 330000,
+      "author": "ajsantander"
     }
   ]
 }
