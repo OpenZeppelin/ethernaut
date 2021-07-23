@@ -26,9 +26,24 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "3",
+      "deployId": "1",
       "instanceGas": 320000,
       "author": "syncikin"
+    },
+    {
+      "name": "Funding",
+      "created": "2021-07-20",
+      "difficulty": "1",
+      "description": "funding.md",
+      "completedDescription": "funding_complete.md",
+      "levelContract": "FundingFactory.sol",
+      "instanceContract": "Funding.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 1,
+      "deployId": "2",
+      "instanceGas": 3200000,
+      "author": ""
     }
   ]
 }
