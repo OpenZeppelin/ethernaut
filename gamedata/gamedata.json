@@ -59,6 +59,51 @@
       "deployId": "4",
       "instanceGas": 330000,
       "author": "ajsantander"
+    },
+    {
+      "name": "Private Key",
+      "created": "2021-07-24",
+      "difficulty": "3",
+      "description": "private_key.md",
+      "completedDescription": "private_key_complete.md",
+      "levelContract": "PrivateKeyFactory.sol",
+      "instanceContract": "PrivateKey.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "7",
+      "instanceGas": 330000,
+      "author": ""
+    },
+    {
+      "name": "Force",
+      "created": "2017-11-01",
+      "difficulty": "5",
+      "description": "force.md",
+      "completedDescription": "force_complete.md",
+      "levelContract": "ForceFactory.sol",
+      "instanceContract": "Force.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "5",
+      "instanceGas": 150000,
+      "author": "ajsantander"
+    },
+    {
+      "name": "Secret Number",
+      "created": "2021-07-24",
+      "difficulty": "3",
+      "description": "secret_number.md",
+      "completedDescription": "secret_number_complete.md",
+      "levelContract": "SecretNumberFactory.sol",
+      "instanceContract": "SecretNumber.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "6",
+      "instanceGas": 330000,
+      "author": ""
     }
   ]
 }

@@ -1,1 +1,1 @@
-Some random text
+You have accomplished learning how ether goes in and out of contracts.

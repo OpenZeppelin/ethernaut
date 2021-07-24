@@ -1,0 +1,1 @@
+In solidity, making a variable as private does not make them inaccessible publicly. The data needs to be encrypted properly before being put into blockchain.
