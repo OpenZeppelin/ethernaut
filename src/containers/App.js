@@ -2,7 +2,6 @@ import React from 'react';
 import Sidebar from 'react-sidebar';
 import Header from './Header';
 import SidebarContent from './Sidebar';
-import FontAwesome from 'react-fontawesome';
 import ReactGA from 'react-ga'
 import * as constants from '../constants'
 
@@ -42,7 +41,7 @@ class App extends React.Component {
 
         {/* FOOTER */}
         <footer className="footer navbar-fixed-bottom text-center text-muted">
-          <small>developed with <FontAwesome name="heart"/> and <FontAwesome name="flash"/> by the <a href="https://openzeppelin.com">OpenZeppelin</a> team</small>
+          <small>Forked from <a href="https://github.com/OpenZeppelin/ethernaut">Ethernaut</a> (Developed by OpenZeppelin Team)</small>
         </footer>
 
       </div>

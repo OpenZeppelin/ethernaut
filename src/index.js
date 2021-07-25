@@ -12,7 +12,6 @@ import * as actions from './actions'
 import * as constants from './constants'
 
 import App from './containers/App';
-import Home from './containers/Home';
 import Level from './containers/Level';
 import Help from './containers/Help';
 import Stats from './containers/Stats';
@@ -30,7 +29,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={syncHistoryWithStore(browserHistory, store)}>
       <Route path={constants.PATH_ROOT} component={App}>
-        <IndexRoute component={Home}/>
+        <IndexRoute component={Help}/>
         <Route path={constants.PATH_HELP} component={Help}/>
         <Route path={constants.PATH_LEVEL} component={Level}/>
         <Route path={constants.PATH_STATS} component={Stats}/>

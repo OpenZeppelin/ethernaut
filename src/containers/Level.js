@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import CodeComponent from '../components/Code';
-import Author from '../components/Author';
+// import Author from '../components/Author';
 import MarkdownComponent from '../components/Markdown';
 import * as actions from '../actions';
 import * as constants from '../constants';
@@ -122,9 +122,9 @@ class Level extends React.Component {
         }
 
         {/* AUTHOR */}
-        { level.author && 
+        {/* { level.author && 
           <Author author={level.author}/>
-        }
+        } */}
 
       </div>
     );

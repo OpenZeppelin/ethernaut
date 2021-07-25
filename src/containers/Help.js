@@ -9,7 +9,7 @@ class Help extends React.Component {
     try { file = require(`../../gamedata/descriptions/pages/help.md`) } catch(e){}
     return (
       <div className="page-container">
-        <h2 className="title">Ethernaut Help</h2>
+        <h2 className="title">Help</h2>
         { file && <MarkdownComponent target={file}/> }
       </div>
     )

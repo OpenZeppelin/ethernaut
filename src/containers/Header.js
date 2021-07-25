@@ -37,7 +37,7 @@ class Header extends React.Component {
               </span>
               &nbsp;
               <Link to={constants.PATH_ROOT}  style={{ textDecoration: 'none' }} activeStyle={{display: 'inline-block', verticalAlign: 'text-top', lineHeight: '22px'}}>
-                <span style={{}}>Ethernaut</span>
+                <span style={{}}>ETH-BOOTCAMP</span>
               </Link>
             </div>
           </div>
