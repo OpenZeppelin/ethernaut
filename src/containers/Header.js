@@ -29,16 +29,16 @@ class Header extends React.Component {
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
               <span className="sr-only">Toggle navigation</span>
             </button>
-            <div className="navbar-brand" style={{paddingTop: '0', paddingBottom: '0', paddingLeft: '25px', lineHeight: '49px'}}>
+            <div className="navbar-brand" style={{paddingTop: '0', paddingBottom: '0', paddingLeft: '0px', lineHeight: '49px'}}>
               <span>
-                <a href="https://openzeppelin.com" target="_blank" rel="noopener noreferred">
-                  <img style={{width: '40px', height: '40px'}} src='../../imgs/openzeppelin-logo.svg' alt='OpenZeppelin'/>
+                <a href="https://maven.com/preethi/ethereum-bootcamp" target="_blank" rel="noopener noreferred">
+                  <img style={{width: '170px', height: '50px'}} src='../../imgs/eth-bootcamp.jpeg' alt='OpenZeppelin'/>
                 </a>
               </span>
               &nbsp;
-              <Link to={constants.PATH_ROOT}  style={{ textDecoration: 'none' }} activeStyle={{display: 'inline-block', verticalAlign: 'text-top', lineHeight: '22px'}}>
+              {/* <Link to={constants.PATH_ROOT}  style={{ textDecoration: 'none' }} activeStyle={{display: 'inline-block', verticalAlign: 'text-top', lineHeight: '22px'}}>
                 <span style={{}}>ETH-BOOTCAMP</span>
-              </Link>
+              </Link> */}
             </div>
           </div>
 
