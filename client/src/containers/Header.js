@@ -33,13 +33,6 @@ class Header extends React.Component {
       }}>
         <div style={{height: '50px'}}>
 
-          {/* VERSIONS */}
-          { constants.SHOW_VERSION &&
-          <div style={{right: '0', position: 'absolute', color: 'lightgray', fontSize: '10px'}}>
-            {`v${constants.VERSION}`}
-          </div>
-          }
-
           {/* HEADER */}
           <div className="navbar-header">
 
@@ -80,14 +73,23 @@ class Header extends React.Component {
             {/* RIGHT */}
             <ul className="nav navbar-nav pull-right" style={{float: 'right'}}>
             <li>
-                <Link to='' style={{fontSize: '16px'}}><ConsoleDetect/></Link>
-              </li>
+              <ConsoleDetect/>
+            </li>
+            {/* VERSIONS */}
+            { constants.SHOW_VERSION &&
+                <li>
+                <span style={{fontSize: '12px'}}>
+                  {`v${constants.VERSION}`}
+                </span>
+                </li>
+            }
             <li>
               <select style={{fontSize: 'small'}} onChange={this.changeLanguage.bind(this)} value={this.state.lang ? this.state.lang : 'en'}>
                   <option value="en">{strings.english}</option>
                   <option value="es">{strings.spanish}</option>
                 </select>
             </li>
+
 
             </ul>
           </div>
