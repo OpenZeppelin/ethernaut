@@ -76,7 +76,7 @@ class Author extends React.Component {
           }
 
           {!nodata && donate && 
-              <span><br/>{strings.donate}<strong>{donate}</strong></span>
+              <span><br/>{strings.donate} <strong>{donate}</strong></span>
           }
 
         </div>

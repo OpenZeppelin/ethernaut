@@ -34,7 +34,7 @@ export default store => next => action => {
   Ethernaut.at(state.gamedata.ethernautAddress)
     .then(instance => {
 
-      console.info(`${strings.ethernautAddressMessage}\n${instance.address}`)
+      console.info(`=> ${strings.ethernautAddressMessage}\n${instance.address}`)
 
       // for player interaction via the browser's console
       window.ethernaut = instance

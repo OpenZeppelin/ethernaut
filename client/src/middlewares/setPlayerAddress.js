@@ -21,7 +21,7 @@ export default store => next => action => {
   }
 
   window.player = action.address
-  console.info(`${strings.playerAddressMessage}\n${action.address}`)
+  console.info(`=> ${strings.playerAddressMessage}\n${action.address}`)
 
   // Warn about 0 balance
   ethutil.getBalance(action.address)
