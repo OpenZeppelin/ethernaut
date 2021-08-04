@@ -1,5 +1,5 @@
 ## August 2021
-- Add informative messages when metamask is not installed nor connected
+- Add informative messages when Metamask is not installed nor connected
 - Add message for translation contribution
 - Add guide on how to add languages in the README
 
@@ -11,4 +11,4 @@
 - Reduced compiler warnings
 
 ## June 2021
-- Refactor project to use create-react-app
+- Refactor project to use create-react-app --> 50% reduced codesize and lot of complexity saved 
