@@ -11,9 +11,16 @@ export default store => next => action => {
   const state = store.getState()
   if(
     !state.network.web3 ||
-    !state.contracts.ethernaut ||
+    !state.contracts.ethernaut
+  ) {
+    console.error(`@bad ${strings.ethernautNotFoundMessage}`)
+    return next(action)
+  } else if(
     !state.player.address
-  ) return next(action)
+  ) {
+    console.error(`@bad ${strings.noPlayerAddressMessage}`)
+    return next(action)
+  }
 
   // Recover old instance address from local cache?
   let instanceAddress
