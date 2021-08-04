@@ -130,7 +130,7 @@ In `en/strings.json` add:
 In `es/strings.json` add:
 {
   ...
-  "frances": "Francès",
+  "french": "Francès",
   ...
 }
 ```
