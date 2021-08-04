@@ -54,7 +54,7 @@
     "submitLevelMessage": "Enviando la instancia del nivel",
     "wellDoneMessage": "Bien hecho",
     "completedLevelMessage": "Has completado ese nivel!!!",
-    "uncompletedLevelmessage": "Ups, parece que todavia no has hackeado este nivel",
+    "uncompletedLevelMessage": "Ups, parece que todavia no has hackeado este nivel",
     "metamaskKnownIssue": "Ouch! Parece que has encontrado un error conocido de MetaMask. Intenta desactivar en reactivar la extension, y si no funciona, intenta cerrar todos los processos del navegador y reiniciar, hasta que no se publique una solucion. No te preocupes, despues de reiniciar no deberias volver a ver ese mensaje.",
     "eventsCompletionMessage": "Error mirando la terminacion de los eventos:",
     "unexpectedAddressMessage": "Direccion inesperada en el evento LevelCompletedLog (saltando al siguiente):",
