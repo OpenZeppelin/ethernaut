@@ -2,6 +2,7 @@ import * as ethjs from 'ethereumjs-util';
 import TruffleContract from '@truffle/contract';
 
 let web3;
+let duplicateTransactions = new Map();
 
 export const setWeb3 = (_web3) => {
   web3 = _web3;
@@ -188,9 +189,13 @@ export const logger = (req, res, next, end) => {
     } else if (req.method === 'eth_sendTransaction') {
       console.mineInfo('Sent transaction', res.result);
     } else if (req.method === 'eth_getTransactionReceipt' && res.result) {
-      console.log(req);
-      console.mineInfo('Mined transaction', res.result.transactionHash);
-    }
+      if(duplicateTransactions.size > 1000) duplicateTransactions.clear()
+      if(duplicateTransactions.has(res.result.transactionHash)) {
+        duplicateTransactions[res.result.transactionHash] = true
+        console.mineInfo('Mined transaction', res.result.transactionHash);
+      }
+      return;
+    } 
     cb();
   })
 }
