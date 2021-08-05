@@ -188,6 +188,7 @@ export const logger = (req, res, next, end) => {
     } else if (req.method === 'eth_sendTransaction') {
       console.mineInfo('Sent transaction', res.result);
     } else if (req.method === 'eth_getTransactionReceipt' && res.result) {
+      console.log(req);
       console.mineInfo('Mined transaction', res.result.transactionHash);
     }
     cb();
