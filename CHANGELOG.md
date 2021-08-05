@@ -1,4 +1,6 @@
 ## August 2021
+- Filter out repeated log messages for mined transactions
+- Increased Sidebar width
 - Add informative messages when Metamask is not installed nor connected
 - Add message for translation contribution
 - Add guide on how to add languages in the README
