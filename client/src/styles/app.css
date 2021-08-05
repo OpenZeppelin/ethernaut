@@ -1,0 +1,155 @@
+@import "./nav.css";
+@import "./code.css";
+@import "./page.css";
+@import url(https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,700,400italic,700italic);
+
+#root > [data-reactroot] {height: 100%;}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.btn {
+    font-weight: 300;
+    letter-spacing: 0.75px !important;
+    border: 1px solid;
+    border-image: initial;
+    padding: 10px 23px;
+    outline: none !important;
+    margin: 5px 5px 0 0;
+}
+
+.btn-primary {
+    color: white;
+    background: rgb(74, 144, 226) none !important;
+    border-color: rgb(74, 144, 226) !important;
+}
+
+.btn-info {
+    color: white;
+    background: #5bc0de none !important;
+    border-color: #5bc0de !important;
+}
+
+.btn-default {
+    background: #e0e0e0 none !important;
+    border-color: #e0e0e0 !important;
+}
+
+.btn-warning {
+    color: white;
+    background: #eb9316 none !important;
+    border-color: #eb9316 !important;
+}
+
+.page-header {
+    margin-top: 20px;
+}
+
+.title {
+    font-weight: 600;
+    line-height: 1.5em;
+    letter-spacing: 1px;
+}
+
+.navbar {
+    font-family: "Helvetica Neue", Lato, Helvetica, Arial, sans-serif;
+    line-height: 50px;
+    font-size: 17px;
+    padding: 5px 0;
+    font-weight: 300;
+    color: rgb(74, 74, 74);
+    position: relative;
+    display: block;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .25)
+}
+
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #777 !important;
+    margin-right: unset;
+}
+
+.navbar-default {
+    background-image: linear-gradient(to bottom, #fff 0%, #f8f8f8 100%);
+    background-repeat: repeat-x;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 5px rgba(0, 0, 0, .075);
+    border-color: #e7e7e7;
+}
+
+.navbar-header {
+    float: left;
+}
+
+.navbar-nav {
+    float: left;
+    display: block;
+    margin: 0;
+}
+
+.navbar-nav > .active > a {
+    background-image: none !important;
+    background-color: inherit !important;
+    box-shadow: none !important;
+    color: #000 !important;
+}
+
+.navbar-nav > li.new > a {
+    background-image: url(/imgs/new.png);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    padding-left: 35px;
+    background-position: left;
+    font-weight: bold;
+}
+
+.levels-list-title {
+    font-weight: 500;
+    letter-spacing: 0.75px !important;
+}
+.levels-list {
+    font-weight: 400;
+    letter-spacing: 0.75px !important;
+}
+.levels-list div {
+    margin-bottom: 10px;
+}
+
+
+.footer {
+    background-color: #2e4763;
+    font-weight: 300;
+    letter-spacing: 0.75px !important;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0; 
+    z-index: 1030
+}
+
+.footer a {
+    color: white !important;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.level-title, .difficulty {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.level-title > .title > .label {
+    font-weight: 400;
+    font-size: 10px !important;
+}
+
