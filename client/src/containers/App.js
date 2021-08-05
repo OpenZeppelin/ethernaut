@@ -31,7 +31,7 @@ class App extends React.Component {
 
         {/* SPLIT VIEW */}
         <Sidebar
-          sidebar={<div style={{ width: '180px' }}><SidebarContent/></div>}
+          sidebar={<div style={{ width: '200px' }}><SidebarContent/></div>}
           transitions={false}
           docked={true}
           shadow={false}
