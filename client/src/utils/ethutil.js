@@ -189,10 +189,9 @@ export const logger = (req, res, next, end) => {
     } else if (req.method === 'eth_sendTransaction') {
       console.mineInfo('Sent transaction', res.result);
     } else if (req.method === 'eth_getTransactionReceipt' && res.result) {
-      console.log(duplicateTransactions)
       if(duplicateTransactions.size > 1000) duplicateTransactions.clear()
-      if(!duplicateTransactions[res.result.transactionHash]) {
-        duplicateTransactions[res.result.transactionHash] = true
+      if(!duplicateTransactions.get(res.result.transactionHash)) {
+        duplicateTransactions.set(res.result.transactionHash, true);
         console.mineInfo('Mined transaction', res.result.transactionHash);
       }
     } 
