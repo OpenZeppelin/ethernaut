@@ -15,8 +15,8 @@ export const getTruffleContract = (jsonABI, defaults = {}) => {
   // const TruffleContract = require('@truffle/contract');
   
   const truffleContract = TruffleContract(jsonABI);
-  if(!defaults.gasPrice) defaults.gasPrice = 20000000000;
-  // if(!defaults.gas) defaults.gas = 200000;
+  if(!defaults.gasPrice) defaults.gasPrice = 2000000000;
+  if(!defaults.gas) defaults.gas = 2000000;
   truffleContract.defaults(defaults);
   truffleContract.setProvider(web3.currentProvider);
   return truffleContract;
