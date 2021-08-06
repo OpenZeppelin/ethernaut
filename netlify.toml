@@ -1,6 +1,6 @@
 [build]
-  command = "npm run compile:contracts && npm run build"
-  publish = "build_webpack"
+  command = "yarn run build:ethernaut"
+  publish = "client/build"
 
 [[redirects]]
   from = "https://solidity-05.ethernaut.openzeppelin.com/*"

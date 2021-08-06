@@ -1,7 +1,0 @@
-{
-  "presets": [
-    "react",
-    "env"
-  ],
-  "plugins": ["syntax-async-functions", "transform-object-rest-spread"]
-}
