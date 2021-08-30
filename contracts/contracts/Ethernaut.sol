@@ -1,9 +1,10 @@
-pragma solidity ^0.6.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.7.4;
 
 import './levels/base/Level.sol';
-// import '@openzeppelin/contracts/access/Ownable.sol';
+
 import "https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-contracts/release-v3.4-solc-0.7/contracts/token/ERC20/ERC20.sol";
-//Import openZeppelin the way I have imported at line 5
+
 contract Ethernaut is Ownable {
 
   // ----------------------------------
