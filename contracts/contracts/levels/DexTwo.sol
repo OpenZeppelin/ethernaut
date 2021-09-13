@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import '@openzeppelin/contracts/math/SafeMath.sol';
 
-contract Dex  {
+contract DexTwo  {
   using SafeMath for uint;
   address public token1;
   address public token2;
@@ -15,7 +15,6 @@ contract Dex  {
   }
 
   function swap(address from, address to, uint amount) public {
-    require((from == token1 && to == token2) || (from == token2 && to == token1), "Invalid tokens");
     require(IERC20(from).balanceOf(msg.sender) >= amount, "Not enough to swap");
     uint swap_amount = get_swap_amount(from, to, amount);
     IERC20(from).transferFrom(msg.sender, address(this), amount);
@@ -32,8 +31,8 @@ contract Dex  {
   }
 
   function approve(address spender, uint amount) public {
-    SwappableToken(token1).approve(spender, amount);
-    SwappableToken(token2).approve(spender, amount);
+    SwappableTokenTwo(token1).approve(spender, amount);
+    SwappableTokenTwo(token2).approve(spender, amount);
   }
 
   function balanceOf(address token, address account) public view returns (uint){
@@ -41,7 +40,7 @@ contract Dex  {
   }
 }
 
-contract SwappableToken is ERC20 {
+contract SwappableTokenTwo is ERC20 {
   constructor(string memory name, string memory symbol, uint initialSupply) public ERC20(name, symbol) {
         _mint(msg.sender, initialSupply);
   }
