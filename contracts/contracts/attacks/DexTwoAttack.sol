@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.6.0;
 
-contract Dex2AttackToken {
+contract DexTwoAttackToken {
     function balanceOf(address) external pure returns (uint256) {
         return 1;
     }

@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import '@openzeppelin/contracts/math/SafeMath.sol';
 
-contract Dex2  {
+contract DexTwo  {
   using SafeMath for uint;
   address public token1;
   address public token2;
@@ -31,8 +31,8 @@ contract Dex2  {
   }
 
   function approve(address spender, uint amount) public {
-    SwappableToken2(token1).approve(spender, amount);
-    SwappableToken2(token2).approve(spender, amount);
+    SwappableTokenTwo(token1).approve(spender, amount);
+    SwappableTokenTwo(token2).approve(spender, amount);
   }
 
   function balanceOf(address token, address account) public view returns (uint){
@@ -40,7 +40,7 @@ contract Dex2  {
   }
 }
 
-contract SwappableToken2 is ERC20 {
+contract SwappableTokenTwo is ERC20 {
   constructor(string memory name, string memory symbol, uint initialSupply) public ERC20(name, symbol) {
         _mint(msg.sender, initialSupply);
   }

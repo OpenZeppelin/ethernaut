@@ -346,13 +346,13 @@
       "author": "patrickalphac"
     },
     {
-      "name": "Dex2",
+      "name": "Dex Two",
       "created": "2021-08-20",
       "difficulty": "4",
       "description": "dex2.md",
       "completedDescription": "dex2_complete.md",
-      "levelContract": "Dex2Factory.sol",
-      "instanceContract": "Dex2.sol",
+      "levelContract": "DexTwoFactory.sol",
+      "instanceContract": "DexTwo.sol",
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
