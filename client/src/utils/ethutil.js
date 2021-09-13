@@ -200,5 +200,9 @@ export const logger = (req, res, next, end) => {
 }
 
 export const attachLogger = () => {
-  web3.currentProvider._rpcEngine._middleware.unshift(logger);
+  if(web3.currentProvider._rpcEngine) 
+  {  
+    web3.currentProvider._rpcEngine._middleware.unshift(logger)
+  }
+  else throw new Error("Can't access to provider's rpc engine and initialize a logger")
 }

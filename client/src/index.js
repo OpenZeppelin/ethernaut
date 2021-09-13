@@ -77,7 +77,14 @@ window.addEventListener('load', async() => {
   if(window.web3) {
 
     ethutil.setWeb3(window.web3)
-    ethutil.attachLogger()
+
+    try {
+      ethutil.attachLogger()
+    } catch (error) {
+        console.error(error)
+        console.error(`Refresh the page when done`)
+        window.web3 = null
+    }
 
     // Initial web3 related actions
     store.dispatch(actions.connectWeb3(window.web3))
