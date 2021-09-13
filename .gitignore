@@ -13,3 +13,5 @@ contracts/node_modules/
 # Client
 client/build/
 client/node_modules/
+
+.env
