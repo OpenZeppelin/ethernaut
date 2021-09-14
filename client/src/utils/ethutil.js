@@ -200,9 +200,19 @@ export const logger = (req, res, next, end) => {
 }
 
 export const attachLogger = () => {
-  if(web3.currentProvider._rpcEngine) 
-  {  
-    web3.currentProvider._rpcEngine._middleware.unshift(logger)
+  //If the current provider is not Metamask, look for Metamask
+  if(!web3.currentProvider._rpcEngine) {
+    const providers = web3.currentProvider.providers;
+
+    for(var i = 0; i<providers.length; i++) {
+      if(providers[i]._rpcEngine) {
+        providers[i]._rpcEngine._middleware.unshift(logger);
+        web3.currentProvider = providers[i];
+        return;
+      }
+    }
+
+    //If still there's no Metamask throw error
+    throw new Error("You must have MetaMask installed")
   }
-  else throw new Error("Can't access to provider's rpc engine and initialize a logger")
 }
