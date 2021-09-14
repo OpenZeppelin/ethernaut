@@ -207,6 +207,8 @@ export const attachLogger = () => {
     for(var i = 0; i<providers.length; i++) {
       if(providers[i]._rpcEngine) {
         providers[i]._rpcEngine._middleware.unshift(logger);
+
+        // Set this provider as current provider
         web3.currentProvider = providers[i];
         return;
       }
@@ -214,5 +216,5 @@ export const attachLogger = () => {
 
     //If still there's no Metamask throw error
     throw new Error("You must have MetaMask installed")
-  }
+  } else web3.currentProvider._rpcEngine._middleware.unshift(logger);
 }
