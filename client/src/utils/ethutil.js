@@ -200,10 +200,12 @@ export const logger = (req, res, next, end) => {
 }
 
 export const attachLogger = () => {
-  //If the current provider is not Metamask, look for Metamask
-  if(!web3.currentProvider._rpcEngine) {
-    const providers = web3.currentProvider.providers;
-
+  if(web3.currentProvider._rpcEngine) {
+    web3.currentProvider._rpcEngine._middleware.unshift(logger);
+    return;
+  }  //If the current provider hasn't an RPC Engine look for other providers
+  else if(web3.currentProvider.providers) {
+    var providers = web3.currentProvider.providers;
     for(var i = 0; i<providers.length; i++) {
       if(providers[i]._rpcEngine) {
         providers[i]._rpcEngine._middleware.unshift(logger);
@@ -213,8 +215,9 @@ export const attachLogger = () => {
         return;
       }
     }
+  }
 
-    //If still there's no Metamask throw error
-    throw new Error("You must have MetaMask installed")
-  } else web3.currentProvider._rpcEngine._middleware.unshift(logger);
+  //If still there's no RPC Engine throw error
+  console.error("Can't find a valid provider, make sure you have Metamask installed and that any other wallet plugin is disabled");
+  return;
 }
