@@ -79,6 +79,7 @@ window.addEventListener('load', async() => {
     ethutil.setWeb3(window.web3)
     ethutil.attachLogger()
 
+
     // Initial web3 related actions
     store.dispatch(actions.connectWeb3(window.web3))
     window.web3.eth.getAccounts(function (error, accounts) {
