@@ -13,7 +13,7 @@
     "highlight.js": "10.7.2-local",
     "moment": "^2.29.1",
     "rainbow-color": "^2.0.0",
-    "react": "16.11.0",
+    "react": "17.0.2",
     "react-dom": "16.11.0",
     "react-ga": "^3.3.0",
     "react-markdown": "^7.0.0",
