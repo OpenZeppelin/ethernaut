@@ -16,7 +16,7 @@
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-ga": "^3.3.0",
-    "react-markdown": "^6.0.1",
+    "react-markdown": "^7.0.0",
     "react-redux": "^7.2.4",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
