@@ -42,6 +42,12 @@
       "email": "patrick@alphachain.io",
       "website": "http://alphachain.io/blogs/",
       "donate": "0x874437B5a42aA6E6419eC2447C9e36c278c46532"
+    },
+    "scottt": {
+      "name": "Scott Tsai",
+      "email": "scottt.tw@gmail.com",
+      "website": "http://scottt.tw",
+      "donate": "scottt.eth"
     }
   }
 }
