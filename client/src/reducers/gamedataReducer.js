@@ -6,7 +6,7 @@ const initialState = {
   levels: []
 }
 
-export default function(state = initialState, action) {
+const gameDataReducer = function(state = initialState, action) {
   switch(action.type) {
 
     case actions.LOAD_GAME_DATA:
@@ -32,3 +32,5 @@ export default function(state = initialState, action) {
       return state
   }
 }
+
+export default gameDataReducer

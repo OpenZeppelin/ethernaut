@@ -6,7 +6,7 @@ const initialState = {
   nonce: 0
 }
 
-export default function(state = initialState, action) {
+const contractsReducer = function(state = initialState, action) {
   switch(action.type) {
 
     case actions.LOAD_ETHERNAUT_CONTRACT:
@@ -42,3 +42,5 @@ export default function(state = initialState, action) {
       return state
   }
 }
+
+export default contractsReducer
