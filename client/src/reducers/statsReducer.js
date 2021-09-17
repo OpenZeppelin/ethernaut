@@ -5,7 +5,7 @@ const initialState = {
   completedLevelLogs: []
 }
 
-export default function(state = initialState, action) {
+const statsReducer = function(state = initialState, action) {
   let newState = { ...state }
   switch(action.type) {
 
@@ -23,3 +23,5 @@ export default function(state = initialState, action) {
   }
   return newState;
 }
+
+export default statsReducer

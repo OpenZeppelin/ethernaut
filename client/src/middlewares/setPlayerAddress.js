@@ -5,7 +5,7 @@ import { loadTranslations } from '../utils/translations'
 let language = localStorage.getItem('lang')
 let strings = loadTranslations(language)
 
-export default store => next => action => {
+const setPlayerAddress = store => next => action => {
   if(action.type !== actions.SET_PLAYER_ADDRESS) return next(action)
 
   const state = store.getState()
@@ -33,3 +33,5 @@ export default store => next => action => {
 
   next(action)
 }
+
+export default setPlayerAddress

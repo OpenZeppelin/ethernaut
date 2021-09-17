@@ -7,7 +7,7 @@ const initialState = {
   emittedLevels: {}
 }
 
-export default function(state = initialState, action) {
+const playerReducer = function(state = initialState, action) {
   let newState;
   switch(action.type) {
 
@@ -52,6 +52,8 @@ export default function(state = initialState, action) {
   }
   return newState
 }
+
+export default playerReducer
 
 function cachePlayer(data) {
   if(data.address) {
