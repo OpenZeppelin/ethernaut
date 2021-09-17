@@ -6,7 +6,7 @@ import { loadTranslations } from '../utils/translations'
 let language = localStorage.getItem('lang')
 let strings = loadTranslations(language)
 
-export default store => next => action => {
+const loadEthernautContract = store => next => action => {
   if(action.type !== actions.LOAD_ETHERNAUT_CONTRACT) return next(action)
   if(action.contract !== undefined) return next(action)
 
@@ -53,3 +53,5 @@ export default store => next => action => {
       console.error(`@bad ${strings.ethernautNotFoundMessage}`)
     })
 }
+
+export default loadEthernautContract

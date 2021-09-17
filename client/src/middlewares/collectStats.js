@@ -2,7 +2,7 @@ import * as actions from '../actions';
 
 let queuedAction;
 
-export default store => next => action => {
+const collectStats = store => next => action => {
   if(action.type !== actions.COLLECT_STATS) {
     if(queuedAction && action.type === actions.LOAD_ETHERNAUT_CONTRACT && action.contract) {
       // console.log(`RETRIGGER`)
@@ -57,3 +57,5 @@ export default store => next => action => {
 
   next(action)
 }
+
+export default collectStats

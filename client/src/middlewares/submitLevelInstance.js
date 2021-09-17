@@ -4,7 +4,7 @@ import { loadTranslations } from '../utils/translations'
 let language = localStorage.getItem('lang')
 let strings = loadTranslations(language)
 
-export default store => next => async action => {
+const submitLevelInstance = store => next => async action => {
   if(action.type !== actions.SUBMIT_LEVEL_INSTANCE) return next(action)
   if(action.completed) return next(action)
 
@@ -19,7 +19,7 @@ export default store => next => async action => {
 
   console.asyncInfo(`@good ${strings.submitLevelMessage}`)
 
-  let completed = await submitLevelInstance(
+  let completed = await submitLevelInstanceUtil(
     state.contracts.ethernaut,
     action.level.deployedAddress,
     state.contracts.levels[action.level.deployedAddress].address,
@@ -37,7 +37,9 @@ export default store => next => async action => {
   next(action)
 }
 
-async function submitLevelInstance(ethernaut, levelAddress, instanceAddress, player, gasPrice) {
+export default submitLevelInstance
+
+async function submitLevelInstanceUtil(ethernaut, levelAddress, instanceAddress, player, gasPrice) {
   return new Promise(async function(resolve) {
     const data = {from: player, gasPrice}
     const tx = await ethernaut.submitLevelInstance(instanceAddress, data);
