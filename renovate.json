@@ -1,6 +1,7 @@
 {
   "extends": [
-    "github>OpenZeppelin/code-style"
+    "github>OpenZeppelin/code-style",
+    "group:monorepos"
   ]
 }
 
