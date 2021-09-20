@@ -7,7 +7,7 @@ const initialState = {
   networkId: undefined
 }
 
-export default function(state = initialState, action) {
+const networkReducer = function(state = initialState, action) {
   switch(action.type) {
 
     case actions.CONNECT_WEB3:
@@ -26,3 +26,5 @@ export default function(state = initialState, action) {
       return state;
   }
 }
+
+export default networkReducer

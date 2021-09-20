@@ -1,6 +1,6 @@
 import * as actions from '../actions'
 
-export default store => next => action => {
+const setLanguage = store => next => action => {
     if (action.type !== actions.SET_LANG) return next(action)
 
     // window.lang = action.lang
@@ -9,3 +9,5 @@ export default store => next => action => {
 
     next(action)
 } 
+
+export default setLanguage

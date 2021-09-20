@@ -7,7 +7,7 @@ import { loadTranslations } from '../utils/translations'
 let language = localStorage.getItem('lang')
 let strings = loadTranslations(language)
 
-export default store => next => action => {
+const activateLevel = store => next => action => {
   if(action.type !== actions.ACTIVATE_LEVEL) return next(action)
 
   const state = store.getState()
@@ -55,3 +55,5 @@ export default store => next => action => {
   action.activeLevel = activeLevel;
   next(action)
 }
+
+export default activateLevel

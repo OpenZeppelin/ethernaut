@@ -4,7 +4,7 @@ const initialState = {
     lang: 'en'
 }
 
-export default function(state = initialState, action) {
+const languageReducer = function(state = initialState, action) {
   switch(action.type) {
 
     case actions.SET_LANG:
@@ -14,3 +14,5 @@ export default function(state = initialState, action) {
       return state;
   }
 } 
+
+export default languageReducer
