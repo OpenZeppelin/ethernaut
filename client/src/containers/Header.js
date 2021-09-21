@@ -87,6 +87,7 @@ class Header extends React.Component {
               <select style={{fontSize: 'small'}} onChange={this.changeLanguage.bind(this)} value={this.state.lang ? this.state.lang : 'en'}>
                   <option value="en">{strings.english}</option>
                   <option value="es">{strings.spanish}</option>
+                  <option value="ja">{strings.japanese}</option>
                 </select>
             </li>
 
