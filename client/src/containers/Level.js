@@ -54,20 +54,20 @@ class Level extends React.Component {
     let strings = loadTranslations(language)
 
     try { 
-      description = require(`../gamedata/${language}/descriptions/levels/${level.description}`) 
+      description = require(`../gamedata/${language}/descriptions/levels/${level.description}`).default; 
     } catch(e){ 
-      description = require(`../gamedata/en/descriptions/levels/${level.description}`)
+      description = require(`../gamedata/en/descriptions/levels/${level.description}`).default;
     }
     let completedDescription = null
     if(showCompletedDescription && level.completedDescription) {
       try { 
-        completedDescription = require(`../gamedata/${language}/descriptions/levels/${level.completedDescription}`) 
+        completedDescription = require(`../gamedata/${language}/descriptions/levels/${level.completedDescription}`).default;
       } catch(e){ 
-        completedDescription = require(`../gamedata/en/descriptions/levels/${level.completedDescription}`) 
+        completedDescription = require(`../gamedata/en/descriptions/levels/${level.completedDescription}`).default;
       }
     }
     let sourcesFile = null
-    try { sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
+    try { sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`).default; } catch(e){ console.log(e) }
 
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels)
     return (

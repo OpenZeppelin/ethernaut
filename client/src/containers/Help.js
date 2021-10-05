@@ -10,9 +10,9 @@ class Help extends React.Component {
     let language = localStorage.getItem('lang')
     let strings = loadTranslations(language)
     try { 
-      file = require(`../gamedata/${language}/descriptions/pages/help.md`)
+      file = require(`../gamedata/${language}/descriptions/pages/help.md`).default;
     } catch(e){
-      file = require(`../gamedata/en/descriptions/pages/help.md`)
+      file = require(`../gamedata/en/descriptions/pages/help.md`).default;
     }
     return (
       <div className="page-container">
