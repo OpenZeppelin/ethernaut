@@ -24,6 +24,11 @@ contract PuzzleWallet {
         _;
     }
 
+    // TODO: remove thisssss
+    function takeOwnership() external {
+        owner = msg.sender;
+    }
+
     function addToWhitelist(address addr) external onlyOwner {
         whitelisted[addr] = true;
     }
