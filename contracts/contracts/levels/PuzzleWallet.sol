@@ -3,7 +3,6 @@ pragma solidity ^0.6.0;
 pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
-
 import "@openzeppelin/contracts/proxy/UpgradeableProxy.sol";
 
 contract PuzzleProxy is UpgradeableProxy {
@@ -19,7 +18,7 @@ contract PuzzleProxy is UpgradeableProxy {
         pendingAdmin = _newAdmin;
     }
 
-    function changeAdmin(address expectedAdmin) external {
+    function approveNewAdmin(address expectedAdmin) external {
         require(msg.sender == admin, "Caller is not the admin");
         require(expectedAdmin == pendingAdmin, "Expected new admin by the current admin is not the pending admin");
         admin = pendingAdmin;
