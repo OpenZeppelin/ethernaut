@@ -4,23 +4,23 @@ pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
-contract Proxy {
-    address public pendingAdmin;
-    bytes32 public constant ADMIN_SLOT = 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103;
-    bytes32 public constant IMPLEMENTATION_SLOT = 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc;
+import "@openzeppelin/contracts/proxy/UpgradeableProxy.sol";
 
-    constructor(address _implementation, address _admin) public {
-        bytes32 adminSlot = ADMIN_SLOT;
-        bytes32 implSlot = IMPLEMENTATION_SLOT;
+contract PuzzleProxy is UpgradeableProxy {
+    address public pendingAdmin;
+    bytes32 public constant _ADMIN_SLOT = 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103;
+
+    constructor(address _implementation, address _admin) UpgradeableProxy(_implementation, "") public {
+        assert(_ADMIN_SLOT == bytes32(uint256(keccak256("eip1967.proxy.admin")) - 1));
+        bytes32 adminSlot = _ADMIN_SLOT;
         // solhint-disable-next-line no-inline-assembly
         assembly {
-            sstore(implSlot, _implementation)
             sstore(adminSlot, _admin)
         }
     }
 
     modifier onlyAdmin {
-      bytes32 adminSlot = ADMIN_SLOT;
+      bytes32 adminSlot = _ADMIN_SLOT;
       address admin;
 
       assembly {
@@ -37,28 +37,12 @@ contract Proxy {
     }
 
     function updateAdmin() external onlyAdmin {
-      bytes32 slot = ADMIN_SLOT;
+      bytes32 slot = _ADMIN_SLOT;
       address newAdmin = pendingAdmin;
       // solhint-disable-next-line no-inline-assembly
       assembly {
           sstore(slot, newAdmin)
       }
-    }
-
-    fallback() external payable {
-        // solhint-disable-next-line no-inline-assembly
-        bytes32 slot = IMPLEMENTATION_SLOT;
-        address impl;
-        assembly {
-            impl := sload(slot)
-            calldatacopy(0, 0, calldatasize())
-            let result := delegatecall(gas(), impl, 0, calldatasize(), 0, 0)
-            returndatacopy(0, 0, returndatasize())
-
-            switch result
-            case 0 { revert(0, returndatasize()) }
-            default { return(0, returndatasize()) }
-        }
     }
 }
 
