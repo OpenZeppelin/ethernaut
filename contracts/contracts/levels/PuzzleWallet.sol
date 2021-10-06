@@ -18,7 +18,7 @@ contract PuzzleProxy is UpgradeableProxy {
         pendingAdmin = _newAdmin;
     }
 
-    function changeAdmin(address expectedAdmin) external onlyAdmin {
+    function changeAdmin(address expectedAdmin) external {
         require(msg.sender == admin, "Caller is not the admin");
         require(expectedAdmin == pendingAdmin, "Expected new admin by the current admin is not the pending admin");
         admin = pendingAdmin;
