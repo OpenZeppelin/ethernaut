@@ -14,6 +14,7 @@ contract PuzzleProxy is UpgradeableProxy {
         admin = _admin;
     }
 
+    // Anyone can propose a new admin, but the current admin must accept the change in the `changeAdmin` function
     function proposeNewAdmin(address _newAdmin) external {
         pendingAdmin = _newAdmin;
     }
