@@ -34,13 +34,13 @@ contract PuzzleWallet {
     }
     
     // Adapted from https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Multicall.sol#L16
-    function multicall(bytes[] calldata data) external onlyWhitelisted returns (bytes[] memory results) {
+    function multicall(bytes[] calldata data) external payable onlyWhitelisted returns (bytes[] memory results) {
         results = new bytes[](data.length);
 
         // Protect against reusing msg.value
         bool depositCalled = false;
 
-        for (uint256 i = 0; i < data.length; i.add(1)) {
+        for (uint256 i = 0; i < data.length; i++) {
             bytes memory _data = data[i];
             bytes4 selector;
             assembly {
@@ -62,7 +62,7 @@ contract PuzzleWallet {
                         revert(add(32, returndata), returndata_size)
                     }
                 } else {
-                    revert();
+                    revert("No revert reason returned");
                 }
             }
             results[i] = returndata;
@@ -71,7 +71,7 @@ contract PuzzleWallet {
     }
 
     function deposit(uint256 amount) external onlyWhitelisted payable {
-        require(amount == msg.value);
+        require(amount == msg.value, "Amount doesn't match msg.value");
         // Add to sender's balance
         balances[msg.sender] = balances[msg.sender].add(amount);
     }

