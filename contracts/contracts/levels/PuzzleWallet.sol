@@ -10,7 +10,8 @@ contract PuzzleWallet {
     mapping(address => bool) public whitelisted;
     mapping(address => uint256) public balances;
 
-    constructor() public {
+    function init() public {
+        require(owner == address(0), "Already initialized");
         owner = msg.sender;
     }
 
