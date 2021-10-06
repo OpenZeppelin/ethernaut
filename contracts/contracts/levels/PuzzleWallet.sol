@@ -2,7 +2,10 @@
 pragma solidity ^0.6.0;
 pragma experimental ABIEncoderV2;
 
+import "@openzeppelin/contracts/math/SafeMath.sol";
+
 contract PuzzleWallet {
+    using SafeMath for uint256;
     address public owner;
     mapping(address => bool) public whitelisted;
     mapping(address => uint256) public balances;
@@ -32,7 +35,7 @@ contract PuzzleWallet {
         // Protect against reusing msg.value
         bool depositCalled = false;
 
-        for (uint256 i = 0; i < data.length; i++) {
+        for (uint256 i = 0; i < data.length; i.add(1)) {
             bytes memory _data = data[i];
             bytes4 selector;
             assembly {
@@ -65,14 +68,14 @@ contract PuzzleWallet {
     function deposit(uint256 amount) external onlyWhitelisted payable {
         require(amount == msg.value);
         // Add to sender's balance
-        balances[msg.sender] = balances[msg.sender] + amount;
+        balances[msg.sender] = balances[msg.sender].add(amount);
     }
     
     function execute(address to, uint256 value, bytes calldata data) external payable onlyWhitelisted returns(bytes memory) {
         uint256 currentBalance = balances[msg.sender];
         require(currentBalance >= value, "Insufficient balance");
-        balances[msg.sender] = currentBalance - value;
-        (bool success, bytes memory result) = to.call{value: value}(data);
+        balances[msg.sender] = currentBalance.sub(value);
+        (bool success, bytes memory result) = to.call{ value: value }(data);
         require(success, "Execution failed");
         return result;
     }
