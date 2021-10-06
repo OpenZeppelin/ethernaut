@@ -8,25 +8,13 @@ import "@openzeppelin/contracts/proxy/UpgradeableProxy.sol";
 
 contract PuzzleProxy is UpgradeableProxy {
     address public pendingAdmin;
-    bytes32 public constant _ADMIN_SLOT = 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103;
+    address public admin;
 
     constructor(address _implementation, address _admin) UpgradeableProxy(_implementation, "") public {
-        assert(_ADMIN_SLOT == bytes32(uint256(keccak256("eip1967.proxy.admin")) - 1));
-        bytes32 adminSlot = _ADMIN_SLOT;
-        // solhint-disable-next-line no-inline-assembly
-        assembly {
-            sstore(adminSlot, _admin)
-        }
+      admin = _admin;
     }
 
     modifier onlyAdmin {
-      bytes32 adminSlot = _ADMIN_SLOT;
-      address admin;
-
-      assembly {
-          admin := sload(adminSlot)
-      }
-
       require(msg.sender == admin, "Caller is not the admin");
       _;
     }
@@ -36,19 +24,16 @@ contract PuzzleProxy is UpgradeableProxy {
       pendingAdmin = _newAdmin;
     }
 
-    function updateAdmin() external onlyAdmin {
-      bytes32 slot = _ADMIN_SLOT;
-      address newAdmin = pendingAdmin;
-      // solhint-disable-next-line no-inline-assembly
-      assembly {
-          sstore(slot, newAdmin)
-      }
+    function changeAdmin(address expectedAdmin) external onlyAdmin {
+      require(expectedAdmin == pendingAdmin, "Expected new admin by the current admin is not the pending admin");
+      admin = pendingAdmin;
     }
 }
 
 contract PuzzleWallet {
     using SafeMath for uint256;
     address public owner;
+    uint256 public maxBalance = uint256(-1);
     mapping(address => bool) public whitelisted;
     mapping(address => uint256) public balances;
 
