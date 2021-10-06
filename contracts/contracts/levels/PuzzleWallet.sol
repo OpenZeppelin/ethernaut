@@ -3,11 +3,30 @@ pragma solidity ^0.6.0;
 pragma experimental ABIEncoderV2;
 
 contract PuzzleWallet {
-
+    address public owner;
+    mapping(address => bool) public whitelisted;
     mapping(address => uint256) public balances;
+
+    constructor() public {
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner {
+        require(msg.sender == owner, "Not the owner");
+        _;
+    }
+
+    modifier onlyWhitelisted {
+        require(whitelisted[msg.sender], "Not whitelisted");
+        _;
+    }
+
+    function addToWhitelist(address addr) external onlyOwner {
+        whitelisted[addr] = true;
+    }
     
     // Adapted from https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Multicall.sol#L16
-    function multicall(bytes[] calldata data) external returns (bytes[] memory results) {
+    function multicall(bytes[] calldata data) external onlyWhitelisted returns (bytes[] memory results) {
         results = new bytes[](data.length);
 
         // Protect against reusing msg.value
@@ -43,15 +62,16 @@ contract PuzzleWallet {
         return results;
     }
 
-    function deposit(uint256 amount) external payable {
+    function deposit(uint256 amount) external onlyWhitelisted payable {
         require(amount == msg.value);
         // Add to sender's balance
         balances[msg.sender] = balances[msg.sender] + amount;
     }
     
-    function execute(address to, uint256 value, bytes calldata data) external payable returns(bytes memory) {
+    function execute(address to, uint256 value, bytes calldata data) external payable onlyWhitelisted returns(bytes memory) {
         uint256 currentBalance = balances[msg.sender];
         require(currentBalance >= value, "Insufficient balance");
+        balances[msg.sender] = currentBalance - value;
         (bool success, bytes memory result) = to.call{value: value}(data);
         require(success, "Execution failed");
         return result;
