@@ -51,19 +51,15 @@ contract PuzzleWallet {
         _;
     }
 
-    // TODO: remove thisssss
-    function takeOwnership() external {
-        owner = msg.sender;
-    }
-
     function addToWhitelist(address addr) external {
         require(msg.sender == owner, "Not the owner");
         whitelisted[addr] = true;
     }
 
     function deposit() external payable onlyWhitelisted {
-      require(msg.value == 5 ether, "Incorrect msg.value");
-      balances[msg.sender] = balances[msg.sender].add(5 ether);
+      require(msg.value == 1 ether, "Deposit must equal 1 ether");
+      require(address(this).balance <= maxBalance, "Max balance reached");
+      balances[msg.sender] = balances[msg.sender].add(msg.value);
     }
 
     function execute(address to, uint256 value, bytes calldata data) external payable onlyWhitelisted {
@@ -76,7 +72,7 @@ contract PuzzleWallet {
     function multicall(bytes[] calldata data) external payable onlyWhitelisted {
         // Protect against reusing msg.value
         bool depositCalled = false;
-        for (uint256 i = 0; i < data.length; i.add(1)) {
+        for (uint256 i = 0; i < data.length; i++) {
             bytes memory _data = data[i];
             bytes4 selector;
             assembly {
