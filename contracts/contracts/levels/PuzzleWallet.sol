@@ -3,10 +3,32 @@ pragma solidity ^0.6.0;
 pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/proxy/UpgradeableProxy.sol";
+
+contract PuzzleProxy is UpgradeableProxy {
+    address public pendingAdmin;
+    address public admin;
+
+    constructor(address _implementation, bytes memory _initData, address _admin) UpgradeableProxy(_implementation, _initData) public {
+        admin = _admin;
+    }
+
+    // Anyone can propose a new admin, but the current admin must accept the change in the `changeAdmin` function
+    function proposeNewAdmin(address _newAdmin) external {
+        pendingAdmin = _newAdmin;
+    }
+
+    function approveNewAdmin(address _expectedAdmin) external {
+        require(msg.sender == admin, "Caller is not the admin");
+        require(pendingAdmin == _expectedAdmin, "Expected new admin by the current admin is not the pending admin");
+        admin = pendingAdmin;
+    }
+}
 
 contract PuzzleWallet {
     using SafeMath for uint256;
     address public owner;
+    uint256 public maxBalance = uint256(-1);
     mapping(address => bool) public whitelisted;
     mapping(address => uint256) public balances;
 
