@@ -46,11 +46,6 @@ contract PuzzleWallet {
         owner = msg.sender;
     }
 
-    modifier onlyOwner {
-        require(msg.sender == owner, "Not the owner");
-        _;
-    }
-
     modifier onlyWhitelisted {
         require(whitelisted[msg.sender], "Not whitelisted");
         _;
@@ -61,18 +56,28 @@ contract PuzzleWallet {
         owner = msg.sender;
     }
 
-    function addToWhitelist(address addr) external onlyOwner {
+    function addToWhitelist(address addr) external {
+        require(msg.sender == owner, "Not the owner");
         whitelisted[addr] = true;
     }
-    
-    // Adapted from https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Multicall.sol#L16
-    function multicall(bytes[] calldata data) external payable onlyWhitelisted returns (bytes[] memory results) {
-        results = new bytes[](data.length);
 
+    function deposit() external payable onlyWhitelisted {
+      require(msg.value == 5 ether, "Incorrect msg.value");
+      balances[msg.sender] = balances[msg.sender].add(5 ether);
+    }
+
+    function execute(address to, uint256 value, bytes calldata data) external payable onlyWhitelisted {
+        require(balances[msg.sender] >= value, "Insufficient balance");
+        balances[msg.sender] = balances[msg.sender].sub(value);
+        (bool success, ) = to.call{ value: value }(data);
+        require(success, "Execution failed");
+    }
+
+    function multicall(bytes[] calldata data) external payable onlyWhitelisted {
         // Protect against reusing msg.value
         bool depositCalled = false;
 
-        for (uint256 i = 0; i < data.length; i++) {
+        for (uint256 i = 0; i < data.length; i.add(1)) {
             bytes memory _data = data[i];
             bytes4 selector;
             assembly {
@@ -83,37 +88,8 @@ contract PuzzleWallet {
                 require(!depositCalled, "Deposit can only be called once");
                 depositCalled = true;
             }
-
-            (bool success, bytes memory returndata) = address(this).delegatecall(data[i]);
-            if (!success) {
-                // Look for revert reason and bubble it up if present
-                if (returndata.length > 0) {
-                    // The easiest way to bubble the revert reason is using memory via assembly
-                    assembly {
-                        let returndata_size := mload(returndata)
-                        revert(add(32, returndata), returndata_size)
-                    }
-                } else {
-                    revert("No revert reason returned");
-                }
-            }
-            results[i] = returndata;
+            (bool success, ) = address(this).delegatecall(data[i]);
+            require(success, "Error while delegating call");
         }
-        return results;
-    }
-
-    function deposit(uint256 amount) external onlyWhitelisted payable {
-        require(amount == msg.value, "Amount doesn't match msg.value");
-        // Add to sender's balance
-        balances[msg.sender] = balances[msg.sender].add(amount);
-    }
-    
-    function execute(address to, uint256 value, bytes calldata data) external payable onlyWhitelisted returns(bytes memory) {
-        uint256 currentBalance = balances[msg.sender];
-        require(currentBalance >= value, "Insufficient balance");
-        balances[msg.sender] = currentBalance.sub(value);
-        (bool success, bytes memory result) = to.call{ value: value }(data);
-        require(success, "Execution failed");
-        return result;
     }
 }

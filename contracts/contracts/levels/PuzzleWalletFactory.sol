@@ -9,10 +9,8 @@ contract PuzzleWalletFactory is Level {
     require(msg.value == 1 ether, "Must send 1 ETH to create instance");
 
     PuzzleWallet puzzle = new PuzzleWallet();
-
     puzzle.addToWhitelist(address(this));
-
-    puzzle.deposit{value: 1 ether}(1 ether);
+    puzzle.deposit{value: 5 ether}();
 
     return address(puzzle);
   }
