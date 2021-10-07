@@ -1,8 +1,10 @@
 const ethutil = require('ethereumjs-util')
-const PuzzleWalletFactory = artifacts.require('./levels/PuzzleWalletFactory.sol')
-const PuzzleWallet = artifacts.require('./attacks/PuzzleWallet.sol')
 
+const PuzzleProxy  = artifacts.require('PuzzleProxy');
+const PuzzleWalletFactory = artifacts.require('PuzzleWalletFactory')
+const PuzzleWallet = artifacts.require('PuzzleWallet')
 const Ethernaut = artifacts.require('./Ethernaut.sol')
+
 const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 const utils = require('../utils/TestUtils')
 
@@ -26,11 +28,17 @@ contract('PuzzleWallet', function(accounts) {
       {from: player, value: web3.utils.toWei('1', 'ether')}
     )
 
-    assert.equal(await instance.owner(), level.address)
+    assert.equal(level.address, await instance.owner(), 'Owner is not the factory')
     assert.equal(web3.utils.toWei('1', 'ether'), (await instance.balances(level.address)).toString())
+    
+    const proxy = await PuzzleProxy.at(instance.address)
+    await proxy.proposeNewAdmin(player)
 
-    // TODO: take ownership in a real way
-    await instance.takeOwnership({from: player})
+    // check that the player has placed their address in the owner slot
+    assert.equal(player, await instance.owner(), "Player is not the owner")
+
+    // check that player is not whitelisted yet
+    assert.isFalse(await instance.whitelisted(player), 'Player is not whitelisted')
 
     // Player whitelists herself
     await instance.addToWhitelist(player, { from: player })
