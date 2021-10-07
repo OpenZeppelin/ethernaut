@@ -36,12 +36,13 @@ contract PuzzleProxy is UpgradeableProxy {
 contract PuzzleWallet {
     using SafeMath for uint256;
     address public owner;
-    uint256 public maxBalance = uint256(-1);
+    uint256 public maxBalance;
     mapping(address => bool) public whitelisted;
     mapping(address => uint256) public balances;
 
-    function init() public {
-        require(owner == address(0), "Already initialized");
+    function init(uint256 _maxBalance) public {
+        require(_maxBalance != 0, "Already initialized");
+        maxBalance = _maxBalance;
         owner = msg.sender;
     }
 
