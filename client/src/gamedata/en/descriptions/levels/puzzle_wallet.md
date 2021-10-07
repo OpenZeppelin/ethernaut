@@ -1,8 +1,18 @@
-Look carefully at the contract's code below.
+Nowadays, paying for DeFi operations is impossible, fact.
 
-You will beat this level if
-1) you reduce its balance to 0
+A group of friends discovered how to slightly decrease the cost of performing multiple transactions by batching them in one transaction, so they developed a smart contract for doing this. 
+
+They needed this contract to be upgradeable in case the code contained a bug, and they also wanted to prevent people from outside the group from using it. To do so, they voted and assigned two people with special roles in the system:
+The admin, which has the power of updating the logic of the smart contract.
+The owner, which controls the whitelist of addresses allowed to use the contract.
+The contracts were deployed, and the group was whitelisted. Everyone cheered for their accomplishments against evil miners.
+
+Little did they know, their lunch money was at risk…
 
 &nbsp;
-Things that might help
-* TODO methods
+You'll need to hijack this wallet to become the owner and remove all funds deposited in it to pass this level.
+
+&nbsp;
+Things that might help::
+* Understanding how `delegatecall`s work and how `msg.sender` behaves when performing one.
+* Knowing about proxy patterns and the way they handle storage variables.
