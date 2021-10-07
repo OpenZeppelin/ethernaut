@@ -76,14 +76,12 @@ contract PuzzleWallet {
     function multicall(bytes[] calldata data) external payable onlyWhitelisted {
         // Protect against reusing msg.value
         bool depositCalled = false;
-
         for (uint256 i = 0; i < data.length; i.add(1)) {
             bytes memory _data = data[i];
             bytes4 selector;
             assembly {
                 selector := mload(add(_data, 32))
             }
-
             if (selector == this.deposit.selector) {
                 require(!depositCalled, "Deposit can only be called once");
                 depositCalled = true;
