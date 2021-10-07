@@ -1,14 +1,18 @@
-Nowadays, paying for DeFi operations is impossible, fact. A group of friends discovered that one of them managed to slightly decrease the cost of sending multiple transactions by chaining them under one same roof. After the friends discovered this, they asked the dev to allow them to use the wallet too, so the dev agreed and accounted for the value deposited by each to use it as its threshold. At the same time, the dev improved the wallet by allowing the admin to upgrade its functionality without removing the deposited funds, which would be unnecessary expensive. Of course, the admin would veil for the best interest of the wallet and therefore it was applied 2 rules: a new admin can be accepted by the old admin after a new proposed admin has been submitted, and that { TODO: how can you become an admin besides proposing/accepting? }. Everyone thought it was fair and agreed with the change.
+Nowadays, paying for DeFi operations is impossible, fact.
 
-The dev deployed the contracts, everyone whitelisted in the group of friends started to deposit their funds into it, and cheered for their accomplishment against evil miners.
+A group of friends discovered how to slightly decrease the cost of performing multiple transfers by batching them in one transaction, so they developed a smart contract for doing this. 
 
-However, little that they knew, their lunch money was at risk…
+They needed this contract to be upgradeable in case the code contained a bug, and they also wanted to prevent people from outside the group from using it. To do so, they voted and assigned two people with special roles in the system:
+The admin, which has the power of updating the logic of the smart contract.
+The owner, which controls the whitelist of addresses allowed to use the contract.
+The contracts were deployed, and the group was whitelisted. Everyone cheered for their accomplishments against evil miners.
+
+Little did they know, their lunch money was at risk…
 
 &nbsp;
-To pass this level, you’ll need to hijack this wallet to become the owner and remove all funds stored there.
+You'll need to hijack this wallet to become the owner and remove all funds deposited in it to pass this level.
 
 &nbsp;
 Things that might help::
-In which ways can a whitelisted user execute a transaction?
-How does a proxy work?
-How does this proxy work?
+Understanding how `delegatecall`s work and how `msg.sender` behaves when performing one.
+Knowing about proxy patterns and the way they handle storage variables.
