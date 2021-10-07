@@ -28,20 +28,17 @@ contract('PuzzleWallet', function(accounts) {
       {from: player, value: web3.utils.toWei('1', 'ether')}
     )
 
-    assert.equal(await instance.owner(), level.address)
+    assert.equal(level.address, await instance.owner(), 'Owner is not the factory')
     assert.equal(web3.utils.toWei('1', 'ether'), (await instance.balances(level.address)).toString())
     
-    // check that PuzzleProxy.pendingAdmin is factory
-    assert.equal(owner, await instance.owner())
-
     const proxy = await PuzzleProxy.at(instance.address)
     await proxy.proposeNewAdmin(player)
 
     // check that the player has placed their address in the owner slot
-    assert.equal(player, await instance.owner())
+    assert.equal(player, await instance.owner(), "Player is not the owner")
 
     // check that player is not whitelisted yet
-    assert.notequal(true, await instance.whitelisted(player))
+    assert.isFalse(await instance.whitelisted(player), 'Player is not whitelisted')
 
     // Player whitelists herself
     await instance.addToWhitelist(player, { from: player })
@@ -57,11 +54,6 @@ contract('PuzzleWallet', function(accounts) {
     ]
 
     await instance.multicall(calls, { from: player, value: web3.utils.toWei('1', 'ether')})
-
-    // check that PuzzleWallet.balance == zero
-    assert.isZero(await web3.eth.getBalance(instance))
-
-    // another step with dust?
 
     // Factory check
     const ethCompleted = await utils.submitLevelInstance(

@@ -10,25 +10,22 @@ contract PuzzleWalletFactory is Level {
 
     // Deploy the Wallet logic
     PuzzleWallet walletLogic = new PuzzleWallet();
-    walletLogic.init(100 ether);
+    walletLogic.init();
 
     // Proxy instance
-    bytes data= abi.encodeWithSelector(PuzzleWallet.init.selector, 100 ether);
+    bytes memory data= abi.encodeWithSelector(PuzzleWallet.init.selector, 100 ether);
     PuzzleProxy proxy = new PuzzleProxy(address(this), address(walletLogic), data);
 
-    data = abi.encodeWithSelector(PuzzleWallet.addToWhitelist.selector, (address(this)));
-    (bool success, bytes memory result) = address(proxy).call(data);
-    require(success, "Execution failed");
+    PuzzleWallet instance = PuzzleWallet(address(proxy));
 
-    data = abi.encodeWithSelector(PuzzleWallet.deposit.selector, 1 ether);
-    (success, result) = address(proxy).call{ value: msg.value }(data);
-    require(success, "Execution failed");
+    instance.addToWhitelist(address(this));
+    instance.deposit{ value: msg.value }(1 ether);
 
     return address(proxy);
   }
 
   function validateInstance(address payable _instance, address _player) override public returns (bool) {
     PuzzleWallet instance = PuzzleWallet(_instance);
-    return instance.balance == 0 && instance.owner() == _player && instance.whitelisted[_player];
+    return _instance.balance == 0 && instance.owner() == _player && instance.whitelisted(_player);
   }
 }
