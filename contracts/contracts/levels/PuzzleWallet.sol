@@ -9,7 +9,7 @@ contract PuzzleProxy is UpgradeableProxy {
     address public pendingAdmin;
     address public admin;
 
-    constructor(address _implementation, bytes memory _initData, address _admin) UpgradeableProxy(_implementation, _initData) public {
+    constructor(address _admin, address _implementation, bytes memory _initData) UpgradeableProxy(_implementation, _initData) public {
         admin = _admin;
     }
 
