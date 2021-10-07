@@ -36,18 +36,14 @@ contract PuzzleProxy is UpgradeableProxy {
 contract PuzzleWallet {
     using SafeMath for uint256;
     address public owner;
-    uint256 public maxBalance = uint256(-1);
+    uint256 public maxBalance;
     mapping(address => bool) public whitelisted;
     mapping(address => uint256) public balances;
 
-    function init() public {
-        require(owner == address(0), "Already initialized");
+    function init(uint256 _maxBalance) public {
+        require(_maxBalance != 0, "Already initialized");
+        maxBalance = _maxBalance;
         owner = msg.sender;
-    }
-
-    modifier onlyOwner {
-        require(msg.sender == owner, "Not the owner");
-        _;
     }
 
     modifier onlyWhitelisted {
@@ -55,59 +51,39 @@ contract PuzzleWallet {
         _;
     }
 
-    function addToWhitelist(address addr) external onlyOwner {
+    function addToWhitelist(address addr) external {
+        require(msg.sender == owner, "Not the owner");
         whitelisted[addr] = true;
     }
-    
-    // Adapted from https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Multicall.sol#L16
-    function multicall(bytes[] calldata data) external payable onlyWhitelisted returns (bytes[] memory results) {
-        results = new bytes[](data.length);
 
+    function deposit() external payable onlyWhitelisted {
+      require(msg.value == 1 ether, "Deposit must equal 1 ether");
+      require(address(this).balance <= maxBalance, "Max balance reached");
+      balances[msg.sender] = balances[msg.sender].add(msg.value);
+    }
+
+    function execute(address to, uint256 value, bytes calldata data) external payable onlyWhitelisted {
+        require(balances[msg.sender] >= value, "Insufficient balance");
+        balances[msg.sender] = balances[msg.sender].sub(value);
+        (bool success, ) = to.call{ value: value }(data);
+        require(success, "Execution failed");
+    }
+
+    function multicall(bytes[] calldata data) external payable onlyWhitelisted {
         // Protect against reusing msg.value
         bool depositCalled = false;
-
         for (uint256 i = 0; i < data.length; i++) {
             bytes memory _data = data[i];
             bytes4 selector;
             assembly {
                 selector := mload(add(_data, 32))
             }
-
             if (selector == this.deposit.selector) {
                 require(!depositCalled, "Deposit can only be called once");
                 depositCalled = true;
             }
-
-            (bool success, bytes memory returndata) = address(this).delegatecall(data[i]);
-            if (!success) {
-                // Look for revert reason and bubble it up if present
-                if (returndata.length > 0) {
-                    // The easiest way to bubble the revert reason is using memory via assembly
-                    assembly {
-                        let returndata_size := mload(returndata)
-                        revert(add(32, returndata), returndata_size)
-                    }
-                } else {
-                    revert("No revert reason returned");
-                }
-            }
-            results[i] = returndata;
+            (bool success, ) = address(this).delegatecall(data[i]);
+            require(success, "Error while delegating call");
         }
-        return results;
-    }
-
-    function deposit(uint256 amount) external onlyWhitelisted payable {
-        require(amount == msg.value, "Amount doesn't match msg.value");
-        // Add to sender's balance
-        balances[msg.sender] = balances[msg.sender].add(amount);
-    }
-    
-    function execute(address to, uint256 value, bytes calldata data) external payable onlyWhitelisted returns(bytes memory) {
-        uint256 currentBalance = balances[msg.sender];
-        require(currentBalance >= value, "Insufficient balance");
-        balances[msg.sender] = currentBalance.sub(value);
-        (bool success, bytes memory result) = to.call{ value: value }(data);
-        require(success, "Execution failed");
-        return result;
     }
 }

@@ -43,7 +43,7 @@ contract('PuzzleWallet', function(accounts) {
     // Player whitelists herself
     await instance.addToWhitelist(player, { from: player })
 
-    const { data: depositData } = await instance.deposit.request(web3.utils.toWei('1', 'ether'))
+    const { data: depositData } = await instance.deposit.request()
     const { data: nestedMulticallData } = await instance.multicall.request([ depositData ])
     const { data: executeData } = await instance.execute.request(player, web3.utils.toWei('2', 'ether'), [])
 

@@ -10,7 +10,7 @@ contract PuzzleWalletFactory is Level {
 
     // Deploy the Wallet logic
     PuzzleWallet walletLogic = new PuzzleWallet();
-    walletLogic.init();
+    walletLogic.init(100 ether);
 
     // Proxy instance
     bytes memory data= abi.encodeWithSelector(PuzzleWallet.init.selector, 100 ether);
@@ -19,7 +19,7 @@ contract PuzzleWalletFactory is Level {
     PuzzleWallet instance = PuzzleWallet(address(proxy));
 
     instance.addToWhitelist(address(this));
-    instance.deposit{ value: msg.value }(1 ether);
+    instance.deposit{ value: msg.value }();
 
     return address(proxy);
   }
