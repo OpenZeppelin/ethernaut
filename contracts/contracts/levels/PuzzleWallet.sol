@@ -13,15 +13,23 @@ contract PuzzleProxy is UpgradeableProxy {
         admin = _admin;
     }
 
+    modifier onlyAdmin {
+      require(msg.sender == admin, "Caller is not the admin");
+      _;
+    }
+
     // Anyone can propose a new admin, but the current admin must accept the change in the `changeAdmin` function
     function proposeNewAdmin(address _newAdmin) external {
         pendingAdmin = _newAdmin;
     }
 
-    function approveNewAdmin(address _expectedAdmin) external {
-        require(msg.sender == admin, "Caller is not the admin");
+    function approveNewAdmin(address _expectedAdmin) external onlyAdmin {
         require(pendingAdmin == _expectedAdmin, "Expected new admin by the current admin is not the pending admin");
         admin = pendingAdmin;
+    }
+
+    function upgradeTo(address _newImplementation) external onlyAdmin {
+        _upgradeTo(_newImplementation);
     }
 }
 
