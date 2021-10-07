@@ -3,14 +3,45 @@ pragma solidity ^0.6.0;
 pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/proxy/UpgradeableProxy.sol";
+
+contract PuzzleProxy is UpgradeableProxy {
+    address public pendingAdmin;
+    address public admin;
+
+    constructor(address _admin, address _implementation, bytes memory _initData) UpgradeableProxy(_implementation, _initData) public {
+        admin = _admin;
+    }
+
+    modifier onlyAdmin {
+      require(msg.sender == admin, "Caller is not the admin");
+      _;
+    }
+
+    // Anyone can propose a new admin, but the current admin must accept the change in the `changeAdmin` function
+    function proposeNewAdmin(address _newAdmin) external {
+        pendingAdmin = _newAdmin;
+    }
+
+    function approveNewAdmin(address _expectedAdmin) external onlyAdmin {
+        require(pendingAdmin == _expectedAdmin, "Expected new admin by the current admin is not the pending admin");
+        admin = pendingAdmin;
+    }
+
+    function upgradeTo(address _newImplementation) external onlyAdmin {
+        _upgradeTo(_newImplementation);
+    }
+}
 
 contract PuzzleWallet {
     using SafeMath for uint256;
     address public owner;
+    uint256 public maxBalance = uint256(-1);
     mapping(address => bool) public whitelisted;
     mapping(address => uint256) public balances;
 
-    constructor() public {
+    function init() public {
+        require(owner == address(0), "Already initialized");
         owner = msg.sender;
     }
 
@@ -24,23 +55,18 @@ contract PuzzleWallet {
         _;
     }
 
-    // TODO: remove thisssss
-    function takeOwnership() external {
-        owner = msg.sender;
-    }
-
     function addToWhitelist(address addr) external onlyOwner {
         whitelisted[addr] = true;
     }
     
     // Adapted from https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Multicall.sol#L16
-    function multicall(bytes[] calldata data) external onlyWhitelisted returns (bytes[] memory results) {
+    function multicall(bytes[] calldata data) external payable onlyWhitelisted returns (bytes[] memory results) {
         results = new bytes[](data.length);
 
         // Protect against reusing msg.value
         bool depositCalled = false;
 
-        for (uint256 i = 0; i < data.length; i.add(1)) {
+        for (uint256 i = 0; i < data.length; i++) {
             bytes memory _data = data[i];
             bytes4 selector;
             assembly {
@@ -62,7 +88,7 @@ contract PuzzleWallet {
                         revert(add(32, returndata), returndata_size)
                     }
                 } else {
-                    revert();
+                    revert("No revert reason returned");
                 }
             }
             results[i] = returndata;
@@ -71,7 +97,7 @@ contract PuzzleWallet {
     }
 
     function deposit(uint256 amount) external onlyWhitelisted payable {
-        require(amount == msg.value);
+        require(amount == msg.value, "Amount doesn't match msg.value");
         // Add to sender's balance
         balances[msg.sender] = balances[msg.sender].add(amount);
     }

