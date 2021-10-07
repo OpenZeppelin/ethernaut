@@ -10,11 +10,11 @@ contract PuzzleWalletFactory is Level {
 
     // Deploy the Wallet logic
     PuzzleWallet walletLogic = new PuzzleWallet();
-    walletLogic.init();
+    walletLogic.init(100 ether);
 
     // Proxy instance
-    bytes data= abi.encodeWithSelector(PuzzleWallet.init.selector);
-    PuzzleProxy proxy = new PuzzleProxy(address(walletLogic), data, address(this));
+    bytes data= abi.encodeWithSelector(PuzzleWallet.init.selector, 100 ether);
+    PuzzleProxy proxy = new PuzzleProxy(address(this), address(walletLogic), data);
 
     data = abi.encodeWithSelector(PuzzleWallet.addToWhitelist.selector, (address(this)));
     (bool success, bytes memory result) = address(proxy).call(data);
