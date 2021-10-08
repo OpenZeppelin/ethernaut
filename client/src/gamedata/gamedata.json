@@ -268,7 +268,7 @@
       "deployFunds": 0,
       "deployId": "17",
       "instanceGas": 5000000,
-      "author": "OpenZeppelin team"
+      "author": "openzeppelin"
     },
     {
       "name": "Recovery",
