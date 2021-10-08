@@ -3,7 +3,6 @@ pragma solidity ^0.6.0;
 pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract OrderBook {
     using SafeMath for uint256;
@@ -15,8 +14,8 @@ contract OrderBook {
 
     event OrderFilled (
         address indexed user,
-        IERC20 indexed tokenIn,
-        IERC20 indexed tokenOut,
+        address indexed tokenIn,
+        address indexed tokenOut,
         uint256 amountIn,
         uint256 amountOut
     );
@@ -35,13 +34,13 @@ contract OrderBook {
 
     event Deposit(
         address indexed user,
-        IERC20 indexed token,
+        address indexed token,
         uint256 amount
     );
 
     event Withdraw(
         address indexed user,
-        IERC20 indexed token,
+        address indexed token,
         uint256 amount
     );
 
@@ -53,8 +52,8 @@ contract OrderBook {
 
     struct Order {
         address user;
-        IERC20 tokenIn;
-        IERC20 tokenOut;
+        address tokenIn;
+        address tokenOut;
         uint256 amountIn;
         uint256 amountOut;
     }
@@ -65,20 +64,23 @@ contract OrderBook {
     // every token pair has it's own order book
     // users want to sell tokenIn and buy tokenOut
     // [tokenIn][tokenOut][amountIn][amountOut] => array of pending orders that match
-    mapping(IERC20 => mapping(IERC20 => mapping(uint256 => mapping(uint256 => Order[])))) newOrderBook;
+    mapping(address => mapping(address => mapping(uint256 => mapping(uint256 => Order[])))) newOrderBook;
 
     // record when an order signature is used, so that it cannot be used again
     mapping(bytes32 => bool) private _usedSignatures;
 
     // tracks user => token => available balances
     // (deposited balances that are not associated with an order)
-    mapping(address => mapping(IERC20 => uint256)) private _balancesAvailable;
+    mapping(address => mapping(address => uint256)) private _balancesAvailable;
 
     // tracks user => token => reserved balances
     // (balances that are no longer available for withdrawal while associated with a pending order)
-    mapping(address => mapping(IERC20 => uint256)) private _balancesReserved;
+    mapping(address => mapping(address => uint256)) private _balancesReserved;
 
-    //
+    // since the scenario is a closed system, we need to mock "external" balances
+    mapping(address => mapping(address => uint256)) private _balancesExternal;
+
+    // array of all tokens that have been whitelisted
     address[] private _whitelistedTokens;
 
     // contract deployer becomes the owner of the contract, non-transferable
@@ -101,7 +103,7 @@ contract OrderBook {
      */
     function depositOnBehalfOf(
         address user,
-        IERC20 token,
+        address token,
         uint256 amount
     ) external {
         require(_owner == msg.sender, "Only owner");
@@ -159,7 +161,7 @@ contract OrderBook {
      * @param token that the msg.sender wishes to deposit into their account on the order book
      * @param amount the amount of token to deposit
      */
-    function deposit(IERC20 token, uint256 amount) external {
+    function deposit(address token, uint256 amount) external {
         require(
             isTokenWhitelisted(address(token)),
             "Cannot deposit a token that has not been whitelisted"
@@ -173,9 +175,9 @@ contract OrderBook {
      * @param token the msg.sender wants to withdraw from their account on the order book
      * @param amount how much token the msg.sender wants to withdraw
      */
-    function withdraw(IERC20 token, uint256 amount) external {
+    function withdraw(address token, uint256 amount) external {
         _decreaseAvailableBalance(msg.sender, token, amount);
-        token.transfer(msg.sender, amount);
+        _increaseExternalBalance(msg.sender, token, amount);
         emit Withdraw(msg.sender, token, amount);
     }
 
@@ -213,8 +215,8 @@ contract OrderBook {
         );
 
         // token indices are in the right range, so get the actual tokens
-        IERC20 tokenIn = IERC20(_whitelistedTokens[tokenInIndex]);
-        IERC20 tokenOut = IERC20(_whitelistedTokens[tokenOutIndex]);
+        address tokenIn = address(_whitelistedTokens[tokenInIndex]);
+        address tokenOut = address(_whitelistedTokens[tokenOutIndex]);
 
         require(tokenIn != tokenOut, "Must trade across different tokens");
         require(amountIn != 0 && amountOut != 0, "Cannot trade a zero value");
@@ -285,7 +287,7 @@ contract OrderBook {
      * @param user for balance inquiry
      * @param token for balance inquiry
      */
-    function getTotalBalance(address user, IERC20 token)
+    function getTotalBalance(address user, address token)
         external
         view
         returns (uint256)
@@ -299,7 +301,7 @@ contract OrderBook {
      * @param user for balance inquiry
      * @param token for balance inquiry
      */
-    function getAvailableBalance(address user, IERC20 token)
+    function getAvailableBalance(address user, address token)
         external
         view
         returns (uint256)
@@ -312,12 +314,26 @@ contract OrderBook {
      * @param user for balance inquiry
      * @param token for balance inquiry
      */
-    function getReservedBalance(address user, IERC20 token)
+    function getReservedBalance(address user, address token)
         external
         view
         returns (uint256)
     {
         return _balancesReserved[user][token];
+    }
+
+        /**
+     * Get the total balance that the user has inside the order book
+     * @param user for balance inquiry
+     * @param token for balance inquiry
+     */
+    function getExternalBalance(address user, address token)
+        external
+        view
+        returns (uint256)
+    {
+        return
+            _balancesExternal[user][token].add(_balancesReserved[user][token]);
     }
 
     // super simple, add new order to the end of the relevant "book"
@@ -421,27 +437,20 @@ contract OrderBook {
 
     function _transferInFromUser(
         address user,
-        IERC20 token,
+        address token,
         uint256 amount
     ) private {
-        uint256 startingBalance = token.balanceOf(address(this));
-        token.transferFrom(user, address(this), amount);
-        uint256 endingBalance = token.balanceOf(address(this));
-
-        require(
-            endingBalance == startingBalance.add(amount),
-            "Unexpected transfer behavior"
-        );
+        _decreaseExternalBalance(user, token, amount);
     }
 
-    function _deposit(address user, IERC20 token, uint256 amount) private {
+    function _deposit(address user, address token, uint256 amount) private {
         _increaseAvailableBalance(user, token, amount);
         emit Deposit(user, token, amount);
     }
 
     function _increaseAvailableBalance(
         address user,
-        IERC20 token,
+        address token,
         uint256 amount
     ) private {
         _balancesAvailable[user][token] = _balancesAvailable[user][token].add(amount);
@@ -449,7 +458,7 @@ contract OrderBook {
 
     function _decreaseAvailableBalance(
         address user,
-        IERC20 token,
+        address token,
         uint256 amount
     ) private {
         _balancesAvailable[user][token] = _balancesAvailable[user][token].sub(amount);
@@ -457,7 +466,7 @@ contract OrderBook {
 
     function _increaseReserveBalance(
         address user,
-        IERC20 token,
+        address token,
         uint256 amount
     ) private {
         _balancesReserved[user][token] = _balancesReserved[user][token].add(amount);
@@ -465,11 +474,29 @@ contract OrderBook {
 
     function _decreaseReserveBalance(
         address user,
-        IERC20 token,
+        address token,
         uint256 amount
     ) private {
         _balancesReserved[user][token] = _balancesReserved[user][token].sub(amount);
     }
+
+    function _increaseExternalBalance(
+        address user,
+        address token,
+        uint256 amount
+    ) private {
+        _balancesExternal[user][token] = _balancesExternal[user][token].add(amount);
+    }
+
+    function _decreaseExternalBalance(
+        address user,
+        address token,
+        uint256 amount
+    ) private {
+        _balancesExternal[user][token] = _balancesExternal[user][token].sub(amount);
+    }
+
+
 
     // the function below is used only to set up the scenario
     function setupScenario() external {

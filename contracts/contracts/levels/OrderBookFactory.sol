@@ -3,8 +3,6 @@ pragma solidity ^0.6.0;
 import "./base/Level.sol";
 import "./OrderBook.sol";
 import "./OrderBookProxy.sol";
-import "./OrderBookDummyToken.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 /// @title Factory contract for OrderBook
 /// @author Andrew, Nikesh, Rick
@@ -15,17 +13,11 @@ contract OrderBookFactory is Level {
 
     address private _implementation;
 
-    ///Setup of 3 dummy tokens - name, symbol, initialSupply in 2 different arrays
-    string[2][3] TOKEN_SETUP = [
-        ["TokenA", "TKA"],
-        ["TokenB", "TKB"],
-        ["TokenC", "TKC"]
-    ];
-
     uint256[3] TOKEN_SUPPLIES = [1000, 1000, 1000];
 
     ///To hold deployed token addresses
-    address[3] public tokenAdds;
+    address[3] public tokenAdds = [address(0xA), address(0xB), address(0xC)];
+
 
     ///Dummy user addresses and their initial 3 token balances in 2 arrays. This also sets the initial balance for the player (msg.sender)
     address payable[6] USERS = [
@@ -52,10 +44,6 @@ contract OrderBookFactory is Level {
     constructor(address implementation) public {
         ///Setup checks
         require(
-            TOKEN_SETUP.length == TOKEN_SUPPLIES.length,
-            "Incorrect TOKEN_SETUP or TOKEN_SUPPLIES"
-        );
-        require(
             USERS.length == INITIAL_TOKEN_BALANCES.length,
             "Incorrect USERS or INITIAL_TOKEN_BALANCES"
         );
@@ -64,16 +52,6 @@ contract OrderBookFactory is Level {
     }
 
     function createInstance(address) public override payable returns (address) {
-
-        ///deploy 3 dummy tokens and save their addresses in tokenAdds[]
-        for (uint256 i = 0; i < TOKEN_SETUP.length; i++) {
-            OrderBookDummyToken token_instance = new OrderBookDummyToken(
-                TOKEN_SETUP[i][0],
-                TOKEN_SETUP[i][1],
-                TOKEN_SUPPLIES[i] * scalar
-            );
-            tokenAdds[i] = address(token_instance);
-        }
 
         ///Deploy orderBook instance, which is really a proxy of a deployed OrderBook
         OrderBook orderBook_instance = OrderBook(address(new OrderBookProxy(_implementation)));
@@ -85,22 +63,14 @@ contract OrderBookFactory is Level {
         ///* Transfer all outstanding supply to the orderBook. Note: this amount should exceed the user deposits
         ///* Call depositOnBehalfOf() for each user and token
 
-        for (uint256 i = 0; i < TOKEN_SETUP.length; i++) {
+        for (uint256 i = 0; i < TOKEN_SUPPLIES.length; i++) {
             orderBook_instance.whitelistToken(tokenAdds[i]);
-
-            require(
-                IERC20(tokenAdds[i]).transfer(
-                    address(orderBook_instance),
-                    IERC20(tokenAdds[i]).balanceOf(address(this))
-                ),
-                "Failed to transfer tokens to OrderBook"
-            );
 
             for (uint256 j = 0; j < USERS.length; j++) {
                 if (INITIAL_TOKEN_BALANCES[j][i] > 0) {
                     orderBook_instance.depositOnBehalfOf(
                         USERS[j],
-                        IERC20(tokenAdds[i]),
+                        address(tokenAdds[i]),
                         INITIAL_TOKEN_BALANCES[j][i] * scalar
                     );
                 }
@@ -114,12 +84,12 @@ contract OrderBookFactory is Level {
     }
 
     ///Does the player have enough TokenC tokens
-    function validateInstance(address payable, address _player)
+    function validateInstance(address payable _instance, address _player)
         public
         override
         returns (bool)
     {
         return
-            IERC20(tokenAdds[2]).balanceOf(_player) >= VERIFY_THRESHOLD_TOKEN_C;
+        OrderBook(_instance).getExternalBalance(_player, tokenAdds[2]) >= VERIFY_THRESHOLD_TOKEN_C;
     }
 }

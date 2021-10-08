@@ -3,7 +3,6 @@ const ethers = require("ethers");
 const OrderBookFactory = artifacts.require("./levels/OrderBookFactory.sol");
 const OrderBook = artifacts.require("./levels/OrderBook.sol");
 const Ethernaut = artifacts.require("./Ethernaut");
-const DummyToken = artifacts.require("./levels/OrderBookDummyToken.sol");
 const testUtils = require("../utils/TestUtils");
 const BigNumber = ethers.utils.BigNumber
 const BN = Web3.utils.BN;
@@ -48,7 +47,7 @@ contract("OrderBook", function () {
 
   describe("Initialization", async function () {
     // these are the balances after the factory has run the setup trades
-    const initialBalances = {
+    const initialScenarioBalances = {
       Alice: [70, 75, 90],
       Bob: [35, 70, 50],
       Charlie: [45, 35, 5],
@@ -56,8 +55,8 @@ contract("OrderBook", function () {
       Evelyn: [15, 5, 105],
     };
 
-    Object.keys(initialBalances).map((name) =>
-      initialBalances[name].map((balance, idx) => {
+    Object.keys(initialScenarioBalances).map((name) =>
+    initialScenarioBalances[name].map((balance, idx) => {
         it(`should give ${name} ${balance} units of token ${idx}`, async function () {
           const totalBalance = await instance.getTotalBalance(
             users[name].address,
@@ -167,8 +166,7 @@ contract("OrderBook", function () {
     });
 
     it("should retrieve 100 units of token 2", async function () {
-      const token = await DummyToken.at(tokens[2]);
-      const balance = await token.balanceOf(player.address);
+      const balance = await instance.getExternalBalance(player.address, tokens[2]);
       assert(balance.eq(scale.mul(new BN(100))));
     });
 
