@@ -24,9 +24,7 @@ contract('PuzzleWallet', function([player]) {
     assert.equal(level.address, await instance.owner(), "PuzzleFactory is not the owner");
     assert.equal(web3.utils.toWei('1', 'ether'), (await instance.balances(level.address)).toString());
 
-    const balance = await instance.maxBalance();
     const proxy = await PuzzleProxy.at(instance.address);
-
     // overwrites the owner address by setting the pendingAdmin
     await proxy.proposeNewAdmin(player);
 
