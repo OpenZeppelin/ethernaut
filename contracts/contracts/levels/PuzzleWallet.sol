@@ -40,7 +40,7 @@ contract PuzzleWallet {
     mapping(address => uint256) public balances;
 
     function init(uint256 _maxBalance) public {
-        require(_maxBalance != 0, "Already initialized");
+        require(maxBalance == 0, "Already initialized");
         maxBalance = _maxBalance;
         owner = msg.sender;
     }
