@@ -363,7 +363,7 @@
     {
       "name": "Puzzle Wallet",
       "created": "2021-10-5",
-      "difficulty": "4",
+      "difficulty": "7",
       "description": "puzzle_wallet.md",
       "completeDescription": "puzzle_wallet_complete.md",
       "levelContract": "PuzzleWalletFactory.sol",

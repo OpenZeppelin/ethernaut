@@ -61,7 +61,6 @@ contract PuzzleWallet {
     }
 
     function deposit() external payable onlyWhitelisted {
-      require(msg.value == 1 ether, "Deposit must equal 1 ether");
       require(address(this).balance <= maxBalance, "Max balance reached");
       balances[msg.sender] = balances[msg.sender].add(msg.value);
     }
