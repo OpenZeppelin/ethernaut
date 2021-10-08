@@ -10,7 +10,7 @@ The contracts were deployed, and the group was whitelisted. Everyone cheered for
 Little did they know, their lunch money was at risk…
 
 &nbsp;
-You'll need to hijack this wallet to become the owner and remove all funds deposited in it to pass this level.
+You'll need to hijack this wallet to become the admin of the proxy.
 
 &nbsp;
 Things that might help::
