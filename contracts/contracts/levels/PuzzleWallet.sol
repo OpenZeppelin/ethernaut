@@ -28,7 +28,7 @@ contract PuzzleProxy is UpgradeableProxy {
     }
 
     function upgradeTo(address _newImplementation) external onlyAdmin {
-        _upgradeTo(address(0));
+        _upgradeTo(_newImplementation);
     }
 }
 
