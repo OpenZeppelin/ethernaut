@@ -1,17 +1,17 @@
 const PuzzleProxy  = artifacts.require('PuzzleProxy');
 const PuzzleWalletFactory = artifacts.require('PuzzleWalletFactory')
-const PuzzleWallet = artifacts.require('PuzzleWallet')
-const Ethernaut = artifacts.require('./Ethernaut.sol')
+const PuzzleWallet = artifacts.require('PuzzleWallet');
+const Ethernaut = artifacts.require('./Ethernaut.sol');
 
-const utils = require('../utils/TestUtils')
+const utils = require('../utils/TestUtils');
 
 contract('PuzzleWallet', function([player]) {
   let ethernaut, level;
 
   beforeEach(async function() {
     ethernaut = await Ethernaut.new();
-    level = await PuzzleWalletFactory.new()
-    await ethernaut.registerLevel(level.address)
+    level = await PuzzleWalletFactory.new();
+    await ethernaut.registerLevel(level.address);
   });
 
   it('should allow the player to solve the level', async function() {

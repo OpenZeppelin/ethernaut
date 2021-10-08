@@ -24,12 +24,8 @@ contract PuzzleWalletFactory is Level {
   }
 
   function validateInstance(address payable _instance, address _player) override public returns (bool) {
-    PuzzleWallet instance = PuzzleWallet(_instance);
     PuzzleProxy proxy = PuzzleProxy(_instance);
 
-    return _instance.balance == 0 &&
-      instance.owner() == _player &&
-      instance.whitelisted(_player) &&
-      proxy.admin() == _player;
+    return proxy.admin() == _player;
   }
 }
