@@ -51,11 +51,11 @@ contract('PuzzleWallet', function([player]) {
 
     await instance.multicall(calls, { from: player, value: web3.utils.toWei('1', 'ether')});
     // checks that balance in the contract is 0
-    assert.equal(await web3.eth.getBalance(instance.address), 0);
+    assert.equal(await web3.eth.getBalance(instance.address), 0, "Contract balance is not 0");
 
     // updates the maxBalance to take over adminship
     await instance.setMaxBalance(player, { from: player });
-    assert.equal(await proxy.admin(), player);
+    assert.equal(await proxy.admin(), player, "Admin address is not player address");
 
     // check that the level was completed successfully
     const ethCompleted = await utils.submitLevelInstance(
@@ -65,6 +65,6 @@ contract('PuzzleWallet', function([player]) {
       player
     );
 
-    assert.equal(ethCompleted, true);
+    assert.equal(ethCompleted, true, "Level not completed");
   });
 });
