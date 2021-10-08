@@ -51,6 +51,11 @@ contract PuzzleWallet {
         _;
     }
 
+    function setMaxBalance(uint256 _maxBalance) external onlyWhitelisted {
+      require(address(this).balance == 0, "Contract balance is not 0");
+      maxBalance = _maxBalance;
+    }
+
     function addToWhitelist(address addr) external {
         require(msg.sender == owner, "Not the owner");
         whitelisted[addr] = true;
@@ -70,7 +75,6 @@ contract PuzzleWallet {
     }
 
     function multicall(bytes[] calldata data) external payable onlyWhitelisted {
-        // Protect against reusing msg.value
         bool depositCalled = false;
         for (uint256 i = 0; i < data.length; i++) {
             bytes memory _data = data[i];
@@ -80,6 +84,7 @@ contract PuzzleWallet {
             }
             if (selector == this.deposit.selector) {
                 require(!depositCalled, "Deposit can only be called once");
+                // Protect against reusing msg.value
                 depositCalled = true;
             }
             (bool success, ) = address(this).delegatecall(data[i]);

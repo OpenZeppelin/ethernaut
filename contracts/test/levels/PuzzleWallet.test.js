@@ -12,8 +12,7 @@ contract('PuzzleWallet', function(accounts) {
 
   let ethernaut
   let level
-  let owner = accounts[1]
-  let player = accounts[0]
+  const [player, owner] = accounts;
 
   beforeEach(async function() {
     ethernaut = await Ethernaut.new();
@@ -21,7 +20,7 @@ contract('PuzzleWallet', function(accounts) {
     await ethernaut.registerLevel(level.address)
   });
 
-  it('should allow the player to solve the level', async function() {
+  it.only('should allow the player to solve the level', async function() {
 
     const instance = await utils.createLevelInstance(
       ethernaut, level.address, player, PuzzleWallet,
@@ -31,7 +30,11 @@ contract('PuzzleWallet', function(accounts) {
     assert.equal(level.address, await instance.owner(), 'Owner is not the factory')
     assert.equal(web3.utils.toWei('1', 'ether'), (await instance.balances(level.address)).toString())
     
+    const balance = await instance.maxBalance();
     const proxy = await PuzzleProxy.at(instance.address)
+
+    // checks that the initial owner address is the puzzle wallet factory contract
+    assert.equal(level.address, await instance.owner());
     await proxy.proposeNewAdmin(player)
 
     // check that the player has placed their address in the owner slot
@@ -54,6 +57,12 @@ contract('PuzzleWallet', function(accounts) {
     ]
 
     await instance.multicall(calls, { from: player, value: web3.utils.toWei('1', 'ether')})
+    // Check that balance in the contract is 0
+    assert.equal(await web3.eth.getBalance(instance.address), 0);
+    
+
+    // update the maxBalance to take over adminship
+    await instance.setMaxBalance(player, { from: player });
 
     // Factory check
     const ethCompleted = await utils.submitLevelInstance(
