@@ -48,6 +48,11 @@
       "email": "scottt.tw@gmail.com",
       "website": "http://scottt.tw",
       "donate": "scottt.eth"
+    },
+    "ClericRDeHarder": {
+      "name": "George R Carder, Eric Decourcy, and Clark Henry",
+      "email": "contact@openzeppelin.com",
+      "website": "https://openzeppelin.com/security-audits"
     }
   }
 }

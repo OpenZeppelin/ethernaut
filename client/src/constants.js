@@ -42,6 +42,7 @@ export const ADDRESSES = {
   [NETWORKS.LOCAL.name]: undefined,
   [NETWORKS.ROPSTEN.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
   [NETWORKS.RINKEBY.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820'
+  
 }
 
 // Storage
@@ -63,7 +64,7 @@ export const CUSTOM_LOGGING = true                              /* TRUE on produ
 export const SHOW_ALL_COMPLETE_DESCRIPTIONS = false             /* FALSE on production */
 export const SHOW_VERSION = true                                /* TRUE on production */
 // export const ACTIVE_NETWORK = NETWORKS.ROPSTEN
-export const ACTIVE_NETWORK = NETWORKS.RINKEBY
-// export const ACTIVE_NETWORK = NETWORKS.LOCAL
+//export const ACTIVE_NETWORK = NETWORKS.RINKEBY
+ export const ACTIVE_NETWORK = NETWORKS.LOCAL
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------

@@ -359,6 +359,21 @@
       "deployId": "24",
       "instanceGas": 3600000,
       "author": "scottt"
+    },
+    {
+      "name": "Moon Soon",
+      "created": "2021-10-05",
+      "difficulty": "7",
+      "description": "moonsoon.md",
+      "completedDescription": "moonsoon_complete.md",
+      "levelContract": "MoonSoonFactory.sol",
+      "instanceContract": "MoonSoon.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "25",
+      "instanceGas": 3600000,
+      "author": "ClericRDeHarder"
     }
   ]
 }
