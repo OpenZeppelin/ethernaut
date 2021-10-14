@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 pragma solidity ^0.6.0;
 
 import './base/Level.sol';
@@ -11,7 +13,7 @@ contract DenialFactory is Level {
     _player;
     require(msg.value >= initialDeposit);
     Denial instance = new Denial();
-    (bool result,) = address(instance).call.value(msg.value)("");
+    (bool result,) = address(instance).call{value:msg.value}("");
     require(result);
     return address(instance);
   }
@@ -23,7 +25,7 @@ contract DenialFactory is Level {
         return false;
     }
     // fix the gas limit for this call
-    (bool result,) = address(instance).call.gas(1000000)(abi.encodeWithSignature("withdraw()")); // Must revert
+    (bool result,) = address(instance).call{gas:1000000}(abi.encodeWithSignature("withdraw()")); // Must revert
     return !result;
   }
 
