@@ -378,7 +378,7 @@
     {
       "name": "Motorbike",
       "created": "2021-10-7",
-      "difficulty": "8",
+      "difficulty": "6",
       "description": "motorbike.md",
       "completedDescription": "motorbike_complete.md",
       "levelContract": "MotorbikeFactory.sol",
