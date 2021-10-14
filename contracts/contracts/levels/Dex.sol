@@ -17,7 +17,7 @@ contract Dex  {
   function swap(address from, address to, uint amount) public {
     require((from == token1 && to == token2) || (from == token2 && to == token1), "Invalid tokens");
     require(IERC20(from).balanceOf(msg.sender) >= amount, "Not enough to swap");
-    uint swap_amount = get_swap_amount(from, to, amount);
+    uint swap_amount = get_swap_price(from, to, amount);
     IERC20(from).transferFrom(msg.sender, address(this), amount);
     IERC20(to).approve(address(this), swap_amount);
     IERC20(to).transferFrom(address(this), msg.sender, swap_amount);
@@ -27,7 +27,7 @@ contract Dex  {
     IERC20(token_address).transferFrom(msg.sender, address(this), amount);
   }
 
-  function get_swap_amount(address from, address to, uint amount) public view returns(uint){
+  function get_swap_price(address from, address to, uint amount) public view returns(uint){
     return((amount * IERC20(to).balanceOf(address(this)))/IERC20(from).balanceOf(address(this)));
   }
 
