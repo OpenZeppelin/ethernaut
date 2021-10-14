@@ -59,6 +59,7 @@ class Level extends React.Component {
       description = require(`../gamedata/en/descriptions/levels/${level.description}`)
     }
     let completedDescription = null
+
     if(showCompletedDescription && level.completedDescription) {
       try { 
         completedDescription = require(`../gamedata/${language}/descriptions/levels/${level.completedDescription}`) 
@@ -70,6 +71,7 @@ class Level extends React.Component {
     try { sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
 
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels)
+
     return (
       <div className="page-container">
 
@@ -86,7 +88,7 @@ class Level extends React.Component {
         </div>
 
         {/* DESCRIPTION */}
-        { description && <MarkdownComponent target={description}/> }
+        { description && !showCompletedDescription && <MarkdownComponent target={description}/> }
 
         {/* COMPLETED DESCRIPTION */}
         { showCompletedDescription &&
@@ -117,7 +119,7 @@ class Level extends React.Component {
             </button>
 
             {/* SUBMIT */}
-            { this.props.levelEmitted &&
+            { this.props.levelEmitted && nextLevelId &&
             <button
               type="button"
               className='btn btn-warning'
