@@ -18,7 +18,7 @@ contract Reentrance {
 
   function withdraw(uint _amount) public {
     if(balances[msg.sender] >= _amount) {
-      (bool result,) = msg.sender.call.value(_amount)("");
+      (bool result,) = msg.sender.call{value:_amount}("");
       if(result) {
         _amount;
       }
