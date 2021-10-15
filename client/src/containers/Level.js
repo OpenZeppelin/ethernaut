@@ -122,9 +122,9 @@ class Level extends React.Component {
             { this.props.levelEmitted &&
             <button
               type="button"
-              className='btn btn-warning'
+              className = { !this.props.levelCompleted ?  'btn btn-warning' : 'btn disabled'}
               onClick={evt => {
-                if (!submittedIntance) {
+                if (!submittedIntance && nextLevelId) {
                   this.props.submitLevelInstance(level);
                   this.setState({ submittedIntance: true });
                   setTimeout(() => this.setState({ submittedIntance: false }), 2000);
