@@ -119,7 +119,7 @@ class Level extends React.Component {
             </button>
 
             {/* SUBMIT */}
-            { this.props.levelEmitted && nextLevelId &&
+            { this.props.levelEmitted &&
             <button
               type="button"
               className='btn btn-warning'
