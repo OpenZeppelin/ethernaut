@@ -48,6 +48,11 @@
       "email": "scottt.tw@gmail.com",
       "website": "http://scottt.tw",
       "donate": "scottt.eth"
+    },
+    "openzeppelin": {
+      "name": "OpenZeppelin",
+      "email": "ethernaut@zeppelin.solutions",
+      "website": "https://openzeppelin.com"
     }
   }
 }
