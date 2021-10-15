@@ -362,7 +362,7 @@
     },
     {
       "name": "Puzzle Wallet",
-      "created": "2021-10-5",
+      "created": "2021-10-05",
       "difficulty": "7",
       "description": "puzzle_wallet.md",
       "completedDescription": "puzzle_wallet_complete.md",
@@ -377,7 +377,7 @@
     },
     {
       "name": "Motorbike",
-      "created": "2021-10-7",
+      "created": "2021-10-07",
       "difficulty": "6",
       "description": "motorbike.md",
       "completedDescription": "motorbike_complete.md",
