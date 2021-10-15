@@ -6,7 +6,6 @@ let language = localStorage.getItem('lang')
 let strings = loadTranslations(language)
 
 const loadLevelInstance = store => next => action => {
-  console.clear();
   if(action.type !== actions.LOAD_LEVEL_INSTANCE) return next(action)
 
   const state = store.getState()
