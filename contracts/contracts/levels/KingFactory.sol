@@ -7,7 +7,7 @@ import './King.sol';
 
 contract KingFactory is Level {
 
-  uint public insertCoin = 1 milliether;
+  uint public insertCoin = 3 milliether;
 
   function createInstance(address _player) override public payable returns (address) {
     _player;
