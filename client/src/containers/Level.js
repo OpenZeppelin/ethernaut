@@ -71,7 +71,6 @@ class Level extends React.Component {
     try { sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
 
     var nextLevelId = findNextLevelId(this.props.level, this.props.levels)
-    if(!nextLevelId) nextLevelId = this.props.levels[0].deployedAddress;
 
     return (
       <div className="page-container">
@@ -177,7 +176,7 @@ function findNextLevelId(level, list) {
       if(i < list.length - 1) {
         return list[i+1].deployedAddress
       }
-      else return null
+      else return list[0].deployedAddress
     }
   }
 }
