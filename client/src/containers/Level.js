@@ -70,7 +70,8 @@ class Level extends React.Component {
     let sourcesFile = null
     try { sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
 
-    const nextLevelId = findNextLevelId(this.props.level, this.props.levels)
+    var nextLevelId = findNextLevelId(this.props.level, this.props.levels)
+    if(!nextLevelId) nextLevelId = this.props.levels[0].deployedAddress;
 
     return (
       <div className="page-container">
@@ -124,7 +125,8 @@ class Level extends React.Component {
               type="button"
               className = { !this.props.levelCompleted ?  'btn btn-warning' : 'btn disabled'}
               onClick={evt => {
-                if (!submittedIntance && nextLevelId) {
+                if(this.props.levelCompleted) return;
+                if (!submittedIntance) {
                   this.props.submitLevelInstance(level);
                   this.setState({ submittedIntance: true });
                   setTimeout(() => this.setState({ submittedIntance: false }), 2000);
