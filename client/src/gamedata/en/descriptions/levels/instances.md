@@ -55,7 +55,7 @@ You can see who the owner of the ethernaut contract is, which is not you of cour
 
 &nbsp;
 #### 6. Get test ether
-To play the game, you will need test ether. The easiest way to get some testnet ether is via [this faucet](https://faucet.rinkeby.io/).
+To play the game, you will need test ether. The easiest way to get some testnet ether is via [this faucet](https://faucet.rinkeby.io/) or [this faucet](http://rinkeby-faucet.com/).
 
 Once you see some ether in your balance, move on to the next step.
 
