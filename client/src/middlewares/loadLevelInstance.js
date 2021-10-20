@@ -29,7 +29,7 @@ const loadLevelInstance = store => next => action => {
     const cache = state.player.emittedLevels[action.level.deployedAddress]
     if(cache) instanceAddress = cache
   }
-
+  
   // Get a new instance address
   if(!instanceAddress && !action.reuse) {
     console.asyncInfo(`@good ${strings.requestingNewInstanceMessage}`)
@@ -51,6 +51,7 @@ const loadLevelInstance = store => next => action => {
         console.dir(tx)
         instanceAddress = tx.logs[0].args.instance;
         if(tx.logs.length > 0) {
+          if(document.getElementById('submitButton')) document.getElementById('submitButton').setAttribute('class', 'btn btn-warning');
           action.instanceAddress = instanceAddress
           store.dispatch(action)
         }
@@ -74,8 +75,10 @@ const loadLevelInstance = store => next => action => {
       gasPrice: 2 * state.network.gasPrice
     }
   )
+
   Instance.at(instanceAddress)
     .then(instance => {
+      if(document.getElementById('submitButton')) document.getElementById('submitButton').setAttribute('class', 'btn btn-warning');
       window.instance = instance.address;
       window.contract = instance;
       action.instance = instance;
