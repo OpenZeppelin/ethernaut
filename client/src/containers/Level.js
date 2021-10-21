@@ -106,6 +106,7 @@ class Level extends React.Component {
             {/* CREATE */}
             <button
               type="button"
+              disabled={ this.props.levelCompleted }
               className='btn btn-primary'
               onClick={evt => {
                 if (!requestedInstance) {
@@ -123,7 +124,8 @@ class Level extends React.Component {
             <button
               id="submitButton"
               type="button"
-              className = { !this.props.levelCompleted ?  'btn btn-warning' : 'btn disabled'}
+              disabled={ this.props.levelCompleted }  
+              className ='btn btn-warning'
               onClick={evt => {
                 if (!submittedIntance) {
                   this.props.submitLevelInstance(level);

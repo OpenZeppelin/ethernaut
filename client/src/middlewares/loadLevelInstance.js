@@ -51,7 +51,6 @@ const loadLevelInstance = store => next => action => {
         console.dir(tx)
         instanceAddress = tx.logs[0].args.instance;
         if(tx.logs.length > 0) {
-          if(document.getElementById('submitButton')) document.getElementById('submitButton').setAttribute('class', 'btn btn-warning');
           action.instanceAddress = instanceAddress
           store.dispatch(action)
         }
@@ -78,7 +77,6 @@ const loadLevelInstance = store => next => action => {
 
   Instance.at(instanceAddress)
     .then(instance => {
-      if(document.getElementById('submitButton')) document.getElementById('submitButton').setAttribute('class', 'btn btn-warning');
       window.instance = instance.address;
       window.contract = instance;
       action.instance = instance;
