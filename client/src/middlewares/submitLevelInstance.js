@@ -26,14 +26,16 @@ const submitLevelInstance = store => next => async action => {
     state.player.address,
     state.network.gasPrice
   )
-  if(completed) {
+  if(completed.result && !completed.needNewInstance) {
     console.victory(`@good ${strings.wellDoneMessage}, ${strings.completedLevelMessage}`)
+  } else if(completed.result && completed.needNewInstance) {
+    console.error(`@bad ${strings.alreadySubmittedOrDifferentPlayer}`)
   }
   else {
     console.error(`@bad ${strings.uncompletedLevelMessage} @bad`)
   }
 
-  action.completed = completed
+  action.completed = completed.result
   next(action)
 }
 
@@ -42,19 +44,23 @@ export default submitLevelInstance
 async function submitLevelInstanceUtil(ethernaut, levelAddress, instanceAddress, player, gasPrice) {
   return new Promise(async function(resolve) {
     const data = {from: player, gasPrice}
-    const tx = await ethernaut.submitLevelInstance(instanceAddress, data);
-    if(tx.logs.length === 0) resolve(false)
+    let tx;
+    try {
+      tx = await ethernaut.submitLevelInstance(instanceAddress, data);
+    } catch(error) {
+      if(error.message.includes("Transaction reverted without a reason")) resolve({result: true, needNewInstance: true})
+      return;
+    }
+    
+    if(tx.logs.length === 0) resolve({result: false, needNewInstance: false})
     else {
-      if(tx.logs.length === 0) resolve(false)
-      else {
-        const log = tx.logs[0].args;
-        const ethLevelAddress = log.level;
-        const ethPlayer = log.player;
-        if(player === ethPlayer && levelAddress === ethLevelAddress) {
-          resolve(true)
-        }
-        else resolve(false)
+      const log = tx.logs[0].args;
+      const ethLevelAddress = log.level;
+      const ethPlayer = log.player;
+      if(player === ethPlayer && levelAddress === ethLevelAddress) {
+        resolve({result: true, needNewInstance: false})
       }
+      else resolve({result: false, needNewInstance: false})
     }
   });
 }

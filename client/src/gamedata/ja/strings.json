@@ -46,6 +46,7 @@
     "playerAddressMessage": "プレーヤーのアドレス",
     "ethernautAddressMessage": "Ethernautのアドレス",
     "noLevelsDataMessage": "レベルのデータが見つかりません",
+    "alreadySubmittedOrDifferentPlayer": "It seems you might have already solved this one, or you're attempting to call the contract with a different player, please create a new instance or make sure to use the same player",
     "ethernautNotFoundMessage": "現在のネットワークではEthernautのコントラクトは見つかりません。次を確認してください。(1) メタマスクを使用している (2) rinkeby testnetを選択している (3) ロックが解除されている (4 optional) 11月2日からMetamaskの設定でプライバシーモードをOnにすることができます。(デフォルトではOFF) (5) プライバシーモードをOnにした場合、再認証する必要があります。 (6) 再認証後にページを更新してください",
     "requestingNewInstanceMessage": "レベルからインスタンスを生成しています...",
     "unableToRetrieveLevelMessage": "レベルからインスタンスを生成できませんでした。gas amountを確認してください。",
