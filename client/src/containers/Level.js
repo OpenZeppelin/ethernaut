@@ -70,7 +70,7 @@ class Level extends React.Component {
     let sourcesFile = null
     try { sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
 
-    var nextLevelId = findNextLevelId(this.props.level, this.props.levels)
+    const nextLevelId = findNextLevelId(this.props.level, this.props.levels)
 
     return (
       <div className="page-container">
