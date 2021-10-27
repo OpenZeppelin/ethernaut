@@ -176,7 +176,7 @@ function findNextLevelId(level, list) {
       if(i < list.length - 1) {
         return list[i+1].deployedAddress
       }
-      else return null
+      else return list[0].deployedAddress
     }
   }
 }
