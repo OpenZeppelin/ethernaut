@@ -28,6 +28,10 @@ const playerReducer = function(state = initialState, action) {
         emittedLevels: {
           ...state.emittedLevels,
           [action.level.deployedAddress]: action.instance?.address
+        },
+        completedLevels: {
+          ...state.completedLevels,
+          [action.level.deployedAddress]: false,
         }
       }
       cachePlayer(newState)

@@ -122,6 +122,7 @@ class Level extends React.Component {
             { this.props.levelEmitted &&
             <button
               type="button"
+              disabled = { this.props.levelCompleted }
               className = { !this.props.levelCompleted ?  'btn btn-warning' : 'btn disabled'}
               onClick={evt => {
                 if (!submittedIntance && nextLevelId) {
