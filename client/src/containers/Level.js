@@ -109,7 +109,7 @@ class Level extends React.Component {
               className='btn btn-primary'
               onClick={evt => {
                 if (!requestedInstance) {
-                  this.props.loadLevelInstance(level, false);
+                  this.props.loadLevelInstance(level, false, true);
                   this.setState({ requestedInstance: true });
                   setTimeout(() => this.setState({ requestedInstance: false }), 2000);
                 }

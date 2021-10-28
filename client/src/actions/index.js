@@ -23,7 +23,7 @@ export const DEACTIVATE_LEVEL = "DEACTIVATE_LEVEL";
 export const deactivateLevel = level => ({ type: DEACTIVATE_LEVEL, level })
 
 export const LOAD_LEVEL_INSTANCE = "LOAD_LEVEL_INSTANCE";
-export const loadLevelInstance = (level, reuse) => ({ type: LOAD_LEVEL_INSTANCE, level, reuse, instance: undefined })
+export const loadLevelInstance = (level, reuse, reset) => ({ type: LOAD_LEVEL_INSTANCE, level, reuse, instance: undefined, reset })
 
 export const SUBMIT_LEVEL_INSTANCE = "SUBMIT_LEVEL_INSTANCE";
 export const submitLevelInstance = (level, completed) => ({ type: SUBMIT_LEVEL_INSTANCE, level, completed })

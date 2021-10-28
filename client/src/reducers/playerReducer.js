@@ -28,7 +28,10 @@ const playerReducer = function(state = initialState, action) {
         emittedLevels: {
           ...state.emittedLevels,
           [action.level.deployedAddress]: action.instance?.address
-        },
+        }
+      }
+      if(action.reset !== false) newState = {
+        ...newState,
         completedLevels: {
           ...state.completedLevels,
           [action.level.deployedAddress]: false,
