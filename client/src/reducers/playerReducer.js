@@ -30,6 +30,13 @@ const playerReducer = function(state = initialState, action) {
           [action.level.deployedAddress]: action.instance?.address
         }
       }
+      if (action.reset) newState = {
+        ...newState,
+        completedLevels: {
+          ...state.completedLevels,
+          [action.level.deployedAddress]: false,
+        }
+      }
       cachePlayer(newState)
       break
 
