@@ -30,7 +30,7 @@ const playerReducer = function(state = initialState, action) {
           [action.level.deployedAddress]: action.instance?.address
         }
       }
-      if(action.reset !== false) newState = {
+      if (action.reset) newState = {
         ...newState,
         completedLevels: {
           ...state.completedLevels,
