@@ -45,9 +45,9 @@ const activateLevel = store => next => action => {
     return
   }
 
-  // Auto-restore previoius instance
+  // Auto-restore previous instance
   if(state.contracts.ethernaut)
-    store.dispatch(actions.loadLevelInstance(activeLevel, true))
+    store.dispatch(actions.loadLevelInstance(activeLevel, true, false))
 
   window.level = activeLevel.deployedAddress;
   console.info(`=> ${strings.levelAddressMessage}\n${activeLevel.deployedAddress}`)

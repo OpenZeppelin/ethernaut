@@ -109,7 +109,7 @@ class Level extends React.Component {
               className='btn btn-primary'
               onClick={evt => {
                 if (!requestedInstance) {
-                  this.props.loadLevelInstance(level, false);
+                  this.props.loadLevelInstance(level, false, true);
                   this.setState({ requestedInstance: true });
                   setTimeout(() => this.setState({ requestedInstance: false }), 2000);
                 }
@@ -122,6 +122,7 @@ class Level extends React.Component {
             { this.props.levelEmitted &&
             <button
               type="button"
+              disabled = { this.props.levelCompleted }
               className = { !this.props.levelCompleted ?  'btn btn-warning' : 'btn disabled'}
               onClick={evt => {
                 if (!submittedIntance && nextLevelId) {
@@ -175,7 +176,7 @@ function findNextLevelId(level, list) {
       if(i < list.length - 1) {
         return list[i+1].deployedAddress
       }
-      else return null
+      else return list[0].deployedAddress
     }
   }
 }
