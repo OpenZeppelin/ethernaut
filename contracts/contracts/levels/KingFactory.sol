@@ -18,7 +18,7 @@ contract KingFactory is Level {
   function validateInstance(address payable _instance, address _player) override public returns (bool) {
     _player;
     King instance = King(_instance);
-    (bool result,) = address(instance).call{value:0}("");
+    (bool result,) = address(instance).call.gas(21_000).value(0)("");
     !result;
     return instance._king() != address(this);
   }
