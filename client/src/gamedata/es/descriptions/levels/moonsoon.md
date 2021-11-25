@@ -4,4 +4,5 @@ You don't have any tokens. To win this level, pull the rug and steal some tokens
 
 ##### Things that might help:
 
-* Some things are not always as they seem. Trust nobody
+* Some things are not always as they seem. Trust nobody.
+* Where does Ethernaut come from?
