@@ -1,84 +1,85 @@
-This level walks you through the very basics of how to play the game.
+这一关带你出不了解如何玩这个游戏
 
 &nbsp;
-#### 1. Set up MetaMask
-If you don't have it already, install the [MetaMask browser extension](https://metamask.io/) (in Chrome, Firefox, Brave or Opera on your desktop machine).
-Set up the extension's wallet and use the network selector to point to the 'Rinkeby test network' in the top left of the extension's interface.
+#### 1. 设置MetaMask
+如果你还没有, 安装 [MetaMask browser extension](https://metamask.io/) (适用于桌面端Chrome, Firefox, Brave 或者 Opera).
+设置好拓展应用，并且在其界面上方选择'Rinkeby test network'测试网络.
 
 &nbsp;
-#### 2. Open the browser's console
-Open your browser's console: `Tools > Developer Tools`.
+#### 2. 打开浏览器的控制台
+打开浏览器控制台: `Tools > Developer Tools`.
 
-You should see a few messages from the game. One of them should state your player's address. This will be important during the game! You can always see your player address by entering the following command:
+你应该可以看到一些关于游戏的简单的信息，其中一个是你的玩家地址。这在游戏中很重要，你总是可以通过一下命令查看你的玩家地址:
 ```
 player
 ```
 
-Keep an eye out for warnings and errors, since they could provide important information during gameplay.
+注意警告和错误，因为他们可以在提供关于游戏的重要信息。
 
 &nbsp;
-#### 3. Use the console helpers
+#### 3. 使用控制台协助
 
-You can also see your current ether balance by typing:
+你可以通过以下命令来得知你的账户余额:
 ```
 getBalance(player)
 ```
-###### NOTE: Expand the promise to see the actual value, even if it reads "pending". If you're using Chrome v62, you can use `await getBalance(player)` for a cleaner console experience.
+###### NOTE: 展开promise可以看到真实数值, 即使他显示的是"pending". 如果你使用的是Chrome v62, 你可以使用 `await getBalance(player)` 用起来更舒爽.
 
-Great! To see what other utility functions you have in the console type:
+很好！可以使用以下命令获得更多其他的功能:
 ```
 help()
 ```
-These will be super handy during gameplay.
+这在游戏中非常方便.
 
 &nbsp;
-#### 4. The ethernaut contract
-Enter the following command in the console:
+#### 4. ethernaut 合约
+在控制台中输入以下命令:
 ```
 ethernaut
 ```
 
-This is the game's main smart contract. You don't need to interact with it directly through the console (as this app will do that for you) but you can if you want to. Playing around with this object now is a great way to learn how to interact with the other smart contracts of the game.
+这个游戏的主要合约，你不需要通过控制台和他直接互动（因为这个应用已经替你做好了），但是如果你想，你还是可以做到。先尝试熟悉它，这是让你了解如何和游戏里其他合约互动的好途径。
 
-Go ahead and expand the ethernaut object to see what's inside.
+然后让我们来展开 ethernaut 看看里面都有啥。
 
 &nbsp;
-#### 5. Interact with the ABI
-`ethernaut` is a `TruffleContract` object that wraps the `Ethernaut.sol` contract that has been deployed to the blockchain.
+#### 5. 和 ABI 互动
+`ethernaut` 是一个 `TruffleContract` 对象， 它包装了部署在区块链上的 `Ethernaut.sol` 合约contract that has been deployed to the blockchain.
 
-Among other things, the contract's ABI exposes all of `Ethernaut.sol`'s public methods, such as `owner`. Type the following command for example:
+除此之外，合约的 ABI 还暴露所有的 `Ethernaut.sol` 公开方法, 比如 `owner`. 比如输入以下命令:
 ```
 ethernaut.owner()
 ```
-###### `await ethernaut.owner()` if you're using Chrome v62.
-You can see who the owner of the ethernaut contract is, which is not you of course =D.
+###### `await ethernaut.owner()` 如果你使用的是 Chrome v62.
+你可以看到这个 ethernaut 所有者是谁, 当然不是你，哈哈 XD.
 
 &nbsp;
-#### 6. Get test ether
-To play the game, you will need test ether. The easiest way to get some testnet ether is via [this faucet](https://faucet.rinkeby.io/).
+#### 6. 获得测试ether
+你需要ether来进行这个游戏. 在测试网络上获得ether最简单的方法是通过 [this faucet](https://faucet.rinkeby.io/).
 
-Once you see some ether in your balance, move on to the next step.
-
-&nbsp;
-#### 7. Getting a level instance
-When playing a level, you don't interact directly with the ethernaut contract. Instead, you ask it to generate a **level instance** for you. To do so, click the blue button at the bottom of the page. Go do it now and come back!
-
-You should be prompted by MetaMask to authorize the transaction. Do so, and you should see some messages in the console. Note that this is deploying a new contract in the blockchain and might take a few seconds, so please be patient when requesting new level instances!
+一旦你在你的余额中有一些ether之后，我们就可以进行下一步。
 
 &nbsp;
-#### 8. Inspecting the contract
-Just as you did with the ethernaut contract, you can inspect this contract's ABI through the console using the `contract` variable.
+#### 7. 获得这个关卡的实例
+当进行这个关卡的时候，你不直接和 ethernaut 合约互动。而是请求生成一个 **level instance** .为了完成这个步骤，你需要点击页面下方的蓝色按钮. 去点他点他点他，然后再回来!
+
+你应该被Metamask要求通过授权交易. 请通过请求, 然后你会在控制台看到一些信息. 注意这会在网络上部署一个新的合约，并且这需要一些时间, 所以请耐心等待!
 
 &nbsp;
-#### 9. Interact with the contract to complete the level
-Look into the levels's info method
+#### 8. 检查合约
+就像你刚才和 ethernaut 合约互动的那样, 你可以通过控制台输入 `contract` 变量名来观察这个合约的ABI.
+
+&nbsp;
+#### 9. 和这个合约互动来完成关卡
+来看看这个合约的 info 方法
 ```
 contract.info()
 ```
-###### `await contract.info()` if you're using Chrome v62.
-You should have all you need to complete the level within the contract.
-When you know you have completed the level, submit the contract using the orange button at the bottom of the page.
-This sends your instance back to the ethernaut, which will determine if you have completed it.
+###### `await contract.info()` 如果你使用的是 Chrome v62.
+你应该在合约内找到帮你通过关卡的东西了。
+当你知道你已经完成了这个关卡，通过这个页面的橙色按钮提交合约。
+这会将你的实例发送回给 ethernaut， 然后来判断你是否完成了任务。
 
 
-##### Tip: don't forget that you can always look in the contract's ABI!
+
+##### 提示: 别忘了你总是可以观察 ABI!
