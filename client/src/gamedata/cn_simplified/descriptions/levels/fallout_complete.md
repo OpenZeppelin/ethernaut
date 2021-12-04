@@ -1,8 +1,8 @@
-That was silly wasn't it? Real world contracts must be much more secure than this and so must it be much harder to hack them right?
+这很白痴是吧? 真实世界的合约必须安全的多, 难以入侵多, 对吧?
 
-Well... Not quite.
+实际上... 也未必.
 
-The story of Rubixi is a very well known case in the Ethereum ecosystem. The company changed its name from 'Dynamic Pyramid' to 'Rubixi' but somehow they didn't rename the constructor method of its contract:
+Rubixi的故事在以太坊生态中非常知名. 这个公司把名字从 'Dynamic Pyramid' 改成 'Rubixi' 但是不知道怎么地, 他们没有把合约的 constructor 方法也一起更名:
 
 ```
 contract Rubixi {
@@ -12,4 +12,4 @@ contract Rubixi {
   ...
 ```
 
-This allowed the attacker to call the old constructor and claim ownership of the contract, and steal some funds. Yep. Big mistakes can be made in smartcontractland.
+这让攻击者可以调用旧合约的constructor 然后获得合约的控制权, 然后再获得一些资产. 是的. 这些重大错误在智能合约的世界是有可能的.
