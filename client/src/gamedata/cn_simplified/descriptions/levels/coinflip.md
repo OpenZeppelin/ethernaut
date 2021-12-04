@@ -1,5 +1,6 @@
-This is a coin flipping game where you need to build up your winning streak by guessing the outcome of a coin flip. To complete this level you'll need to use your psychic abilities to guess the correct outcome 10 times in a row.
+这是一个掷硬币的游戏，你需要连续的猜对结果。完成这一关，你需要通过你的超能力来连续猜对十次。
+
 
 &nbsp;
-Things that might help
-* See the Help page above, section "Beyond the console"
+这可能能帮助到你
+* 查看上面的帮助页面，“控制台之外” 部分
