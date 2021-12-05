@@ -1,5 +1,5 @@
-Claim ownership of the contract below to complete this level.
+获得以下合约的所有权来完成这一关.
 
 &nbsp;
-Things that might help
+这可能有帮助
 * Solidity Remix IDE

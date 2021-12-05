@@ -1,5 +1,5 @@
-Claim ownership of the contract below to complete this level.
+获得下面合约来完成这一关
 
 &nbsp;
-Things that might help
-* See the Help page above, section "Beyond the console"
+这可能有用
+* 参阅帮助页面,在 "控制台以外"部分
