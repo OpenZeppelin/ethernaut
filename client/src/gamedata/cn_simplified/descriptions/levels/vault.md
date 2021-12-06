@@ -1,1 +1,1 @@
-Unlock the vault to pass the level!
+打开 vault 来通过这一关!

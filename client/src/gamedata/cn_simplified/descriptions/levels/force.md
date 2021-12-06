@@ -1,9 +1,9 @@
-Some contracts will simply not take your money `¯\_(ツ)_/¯`
+有些合约就是拒绝你的付款,就是这么任性 `¯\_(ツ)_/¯`
 
-The goal of this level is to make the balance of the contract greater than zero.
+这一关的目标是使合约的余额大于0
 
 &nbsp;
-Things that might help:
-* Fallback methods
-* Sometimes the best way to attack a contract is with another contract.
-* See the Help page above, section "Beyond the console"
+这可能有帮助:
+* Fallback 方法
+* 有时候攻击一个合约最好的方法是使用另一个合约.
+* 阅读上方的帮助页面, "控制台之外" 部分
