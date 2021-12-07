@@ -59,7 +59,7 @@
     "uncompletedLevelMessage": "很遗憾，你没有通过这关考验",
     "metamaskKnownIssue": "哎呀! 看起来你遇到了一个metamask常见的问题. 尝试关闭重新启动metamask插件, 如果这没有用, 那你可能需要关闭所有的Chrome页面然后重新打开Chrome, 直到这个问题被解决. 别担心, 重启之后你就不会再看到这条信息了",
     "eventsCompletionMessage": "Error watching completion events:",
-    "unexpectedAddressMessage": "sUnexpected address in LevelCompletedLog event (skipping):",
+    "unexpectedAddressMessage": "Unexpected address in LevelCompletedLog event (skipping):",
     "helperPlayer": "当前玩家地址",
     "helperEthernaut": "主游戏合约",
     "helperLevel": "当前关卡合约地址",
