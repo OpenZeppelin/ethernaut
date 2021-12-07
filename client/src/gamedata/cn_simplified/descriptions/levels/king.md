@@ -1,5 +1,6 @@
-The contract below represents a very simple game: whoever sends it an amount of ether that is larger than the current prize becomes the new king. On such an event, the overthrown king gets paid the new prize, making a bit of ether in the process! As ponzi as it gets xD
+下面的合约表示了一个很简单的游戏: 任何一个发送了高于目前价格的人将成为新的国王. 在这个情况下, 上一个国王将会获得新的出价, 这样可以赚得一些以太币. 看起来像是庞氏骗局.
 
-Such a fun game. Your goal is to break it.
 
-When you submit the instance back to the level, the level is going to reclaim kingship. You will beat the level if you can avoid such a self proclamation.
+这么有趣的游戏, 你的目标是攻破他.
+
+当你提交实例给关卡时, 关卡会重新申明王位. 你需要阻止他重获王位来通过这一关.

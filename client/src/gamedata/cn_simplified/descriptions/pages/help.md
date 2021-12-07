@@ -1,34 +1,35 @@
 &nbsp;
-#### Game mechanics
-The game uses the main contract `Ethernaut.sol` to manage player progress and delegate interaction with `Level.sol` implementations. Each level contract emits instances for players to manipulate, break, destroy, fix, etc. The player requests an instance, manipulates it and returns it to the game for evaluation of level completion. Both requesting instances and submitting instances back to the game are done with the buttons in the user interface in each level. When this app retrieves an instance from `Ethernaut.sol`, it wraps it in a `TruffleContract` object and exposes it in the browser's console. See the first level for a full tutorial on how to play the game.
+#### 游戏机制
+这个游戏使用主合约 `Ethernaut.sol` 来管理玩家进度, 代理玩家和 `Level.sol` 互动. 每一关的合约会产生一个实例供玩家操作, 攻破, 摧毁, 修复等等. 玩家请求一个实例, 操作之后返回,然后将会被评判完成度. 请求和提交实例都是通过每一关界面上的按钮. 当这个 app 从 `Ethernaut.sol` 取回实例时, 会把它包装在 `TruffleContract` 对象中, 然后暴露在浏览器的控制台里. 尝试第一关来看看怎么玩这个游戏.
+
 
 &nbsp;
-#### Using the browser console
-Most game interaction is via the browser's console: `Dev Tools -> Console`. Open the console and enter the command:
+#### 使用浏览器控制台
+大多数的游戏互动时通过浏览器的控制台: `Dev Tools -> Console`. 打开控制台然后输入这个命令:
 ```
 help()
 ```
-to see a list of objects and functions injected by the game to the console.
-Since most interactions are asynchronous, we recommend using Chrome v62 which enables the `async`/`await` keywords in the console, so instead of writting:
+可以得到一个列表, 包含了被这个游戏放入控制台的对象和函数.
+鉴于多数的互动是异步的, 我们推荐使用Chrome v62 并且使用 `async`/`await` 关键词, 所以相比于使用:
 ```
 getBalance(player)
 > PROMISE
 ```
-and opening the promise.
+打开 promise.
 
-With await/async, you can write:
+我们推荐使用 await/async, 你可以这样使用:
 ```
 await getBalance(player)
 > "1.11002387"
 ```
 
 &nbsp;
-#### Beyond the console
-Some levels will require working outside of the browser console. That is, writing solidity code and deploying it in the network to attack the level's instance contract with another contract. This can be done in multiple ways, for example:
-1) Use Remix to write the code and deploy it in the conrresponding network See [Remix Solidity IDE](https://remix.ethereum.org/).
-2) Setup a local truffle project to develop and deploy the attack contracts. See [Truffle Framework](http://truffleframework.com/).
+#### 控制台之外
+有些关起需要在控制台之外的操作. 比如, 用 solidity 写一些代码, 部署合约在网络上, 然后攻击实例. 这可以通过很多方式完成, 比如: 
+1) 使用 Remix 写代码并部署在相应的网络上 参见 [Remix Solidity IDE](https://remix.ethereum.org/).
+2) 设置一个本地 truffle 项目, 开发并部署攻击合约. 参见 [Truffle Framework](http://truffleframework.com/).
 
 &nbsp;
-#### Troubleshooting
-Sometimes (a) the app state or (b) the MetaMask plugin state can become a bit messed up, specially after switching networks, unlocking, etc. If what you're seeing doesn't make much sense, try refreshing the app, hard-refreshing it, disabling and re-enabling your metamask plugin or even restarting your browser.
-If you find issues, please let us know at ethernaut@zeppelin.solutions
+#### 疑难杂症
+有的时候, app 或者 MetaMask 插件会有点问题, 特别是当你转换网络和解锁时. 如果你遇到什么莫名其妙的问题, 尝试刷新 app, 多次刷新. 重启 MetaMask 插件, 甚至是重启浏览器. 
+如果你发现其他问题, 欢迎提交给我们 ethernaut@zeppelin.solutions
