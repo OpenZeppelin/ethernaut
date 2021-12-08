@@ -1,5 +1,5 @@
-This elevator won't let you reach the top of your building. Right?
+电梯不会让你达到大楼顶部, 对吧?
 
-##### Things that might help:
-* Sometimes solidity is not good at keeping promises.
-* This `Elevator` expects to be used from a `Building`.
+##### 这可能有帮助:
+* 有的时候 solidity 不是很擅长保存 promises.
+* 这个 `电梯` 期待被用在一个 `建筑` 里.

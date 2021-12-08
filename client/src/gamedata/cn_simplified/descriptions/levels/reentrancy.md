@@ -1,9 +1,9 @@
-The goal of this level is for you to steal all the funds from the contract.
+这一关的目标是偷走合约的所有资产.
 
 &nbsp;
-Things that might help:
-* Untrusted contracts can execute code where you least expect it.
+这些可能有帮助:
+* 不可信的合约可以在你意料之外的地方执行代码.
 * Fallback methods
-* Throw/revert bubbling
-* Sometimes the best way to attack a contract is with another contract.
-* See the Help page above, section "Beyond the console"
+* 抛出/恢复 bubbling
+* 有的时候攻击一个合约的最好方式是使用另一个合约.
+* 查看上方帮助页面, "控制台之外" 部分
