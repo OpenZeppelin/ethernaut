@@ -1,5 +1,5 @@
-Make it past the gatekeeper and register as an entrant to pass this level.
+越过守门人并且注册为一个参赛者来完成这一关.
 
-##### Things that might help:
-* Remember what you've learned from the Telephone and Token levels.
-* You can learn more about the special function `gasleft()`, in Solidity's documentation (see [here](https://docs.soliditylang.org/en/v0.8.3/units-and-global-variables.html) and [here](https://docs.soliditylang.org/en/v0.8.3/control-structures.html#external-function-calls)).
+##### 这可能有帮助:
+* 想一想你在 Telephone 和 Token 关卡学到的知识.
+* 你可以在 solidity 文档中更深入的了解 `gasleft()` 函数 (参见 [here](https://docs.soliditylang.org/en/v0.8.3/units-and-global-variables.html) 和 [here](https://docs.soliditylang.org/en/v0.8.3/control-structures.html#external-function-calls)).

@@ -1,11 +1,11 @@
-The creator of this contract was careful enough to protect the sensitive areas of its storage. 
+这个合约的制作者非常小心的保护了敏感区域的 storage.
 
-Unlock this contract to beat the level.
+解开这个合约来完成这一关.
 
-Things that might help:
-* Understanding how storage works
-* Understanding how parameter parsing works
-* Understanding how casting works
+这些可能有帮助:
+* 理解 storage 的原理
+* 理解 parameter parsing 的原理
+* 理解 casting 的原理
 
 Tips:
-* Remember that metamask is just a commodity. Use another tool if it is presenting problems. Advanced gameplay could involve using remix, or your own web3 provider.
+* 记住 metamask 只是个普通的工具. 如果它有问题,可以使用别的工具. 进阶的操作应该包括 remix, 或是你自己的 web3 提供者.

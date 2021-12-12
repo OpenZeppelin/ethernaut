@@ -15,7 +15,6 @@ help()
 getBalance(player)
 > PROMISE
 ```
-打开 promise.
 
 我们推荐使用 await/async, 你可以这样使用:
 ```
