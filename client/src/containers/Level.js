@@ -72,10 +72,6 @@ class Level extends React.Component {
       }
     }
 
-    if(isDescriptionMissingTranslation || isCompleteDescriptionMissingTranslation) {
-
-    }
-
     let sourcesFile = null
     try { sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
 
