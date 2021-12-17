@@ -116,7 +116,7 @@ To modify or add a new language to the list of supported ones follow these steps
   - pages and level descriptions under `descriptions` subdirectory
   - `strings.json`. For this, only the values of the keys in the json must be translated. Do not translate keys (i.e. `nextLevel`).
 
-4. If you are just modifying an already existing language you can stop here and submit a PR. If you're adding a new language go to the next steps. Translations are mantained by the community but we ask to translate at least the `Help` page and the `strings.json` file entirely. Levels which are not translated will default to English in any case. 
+4. If you are just modifying an already existing language you can stop here and submit a PR. If you're adding a new language go to the next steps. Translations are mantained by the community but we ask to translate at least the `Help` page, the `strings.json` and the `instances.md` and `instances_complete.md` files entirely since those are the most important ones to understand how the game works. Levels which are not translated will default to English in any case. 
 
 5. Add a new key/value in all `strings.json` of all languages for the newly added language. For example, if you're going to add French, add
 
