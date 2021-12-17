@@ -53,20 +53,29 @@ class Level extends React.Component {
     let language = localStorage.getItem('lang')
     let strings = loadTranslations(language)
 
+    let isDescriptionMissingTranslation = false;
     try { 
       description = require(`../gamedata/${language}/descriptions/levels/${level.description}`) 
     } catch(e){ 
+      isDescriptionMissingTranslation = true;
       description = require(`../gamedata/en/descriptions/levels/${level.description}`)
     }
     let completedDescription = null
 
+    let isCompleteDescriptionMissingTranslation = false;
     if(showCompletedDescription && level.completedDescription) {
       try { 
         completedDescription = require(`../gamedata/${language}/descriptions/levels/${level.completedDescription}`) 
-      } catch(e){ 
+      } catch(e){
+        isCompleteDescriptionMissingTranslation = true;
         completedDescription = require(`../gamedata/en/descriptions/levels/${level.completedDescription}`) 
       }
     }
+
+    if(isDescriptionMissingTranslation || isCompleteDescriptionMissingTranslation) {
+
+    }
+
     let sourcesFile = null
     try { sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
 
@@ -77,7 +86,19 @@ class Level extends React.Component {
 
         <div className="page-header row">
           {/* TITLE + INFO */}
-          <div className="level-title col-sm-6">
+
+          <div className="level-title col-sm-6">          
+            {
+                (
+                  isDescriptionMissingTranslation || 
+                  isCompleteDescriptionMissingTranslation
+                ) && <a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">
+                  <div title="This level is not translated or translation is incomplete. Click here to improve the translation" >
+                    <i class='fa fa-exclamation-triangle' style={{color: 'yellow', background: 'black'}}>
+                    </i>
+                  </div>
+                </a>
+            }
             <h2 className="title no-margin">{level.name}</h2>
             { levelCompleted === true && <span className='label label-default'>{strings.levelCompleted}</span>}
           </div>
