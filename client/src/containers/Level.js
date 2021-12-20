@@ -81,18 +81,19 @@ class Level extends React.Component {
 
     return (
       <div className="page-container">
+        {
+          (
+            isDescriptionMissingTranslation || 
+            isCompleteDescriptionMissingTranslation
+          ) && (
+            <div>
+              <p>This level is not translated or translation is incomplete. <a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">Click here to improve the translation.</a></p>
+            </div>
+          )
+        }
 
         <div className="page-header row">
           {/* TITLE + INFO */}
-          {
-                (
-                  isDescriptionMissingTranslation || 
-                  isCompleteDescriptionMissingTranslation
-                ) &&
-                  <div>
-                    <p>This level is not translated or translation is incomplete. <a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">Click here to improve the translation.</a></p>
-                  </div>
-            }
           <div className="level-title col-sm-6">          
             <h2 className="title no-margin">{level.name}</h2>
             { levelCompleted === true && <span className='label label-default'>{strings.levelCompleted}</span>}
