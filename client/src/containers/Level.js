@@ -54,10 +54,12 @@ class Level extends React.Component {
     let strings = loadTranslations(language)
 
     let isDescriptionMissingTranslation = false;
+
     try { 
       description = require(`../gamedata/${language}/descriptions/levels/${level.description}`) 
     } catch(e){ 
-      isDescriptionMissingTranslation = true;
+      //FIX-ME: If language selected is english then "language" variable is null and not "en"
+      if(language) isDescriptionMissingTranslation = true; // Only set it if language is not null (i.e. some language different from english)
       description = require(`../gamedata/en/descriptions/levels/${level.description}`)
     }
     let completedDescription = null
@@ -82,19 +84,16 @@ class Level extends React.Component {
 
         <div className="page-header row">
           {/* TITLE + INFO */}
-
-          <div className="level-title col-sm-6">          
-            {
+          {
                 (
                   isDescriptionMissingTranslation || 
                   isCompleteDescriptionMissingTranslation
-                ) && <a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">
-                  <div title="This level is not translated or translation is incomplete. Click here to improve the translation" >
-                    <i class='fa fa-exclamation-triangle' style={{color: 'yellow', background: 'black'}}>
-                    </i>
+                ) &&
+                  <div>
+                    <p>This level is not translated or translation is incomplete. <a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">Click here to improve the translation.</a></p>
                   </div>
-                </a>
             }
+          <div className="level-title col-sm-6">          
             <h2 className="title no-margin">{level.name}</h2>
             { levelCompleted === true && <span className='label label-default'>{strings.levelCompleted}</span>}
           </div>
