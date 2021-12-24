@@ -1,6 +1,6 @@
-Congratulations! You have completed the tutorial. 
-Have a look at the Solidity code for the contract you just interacted with below.
+恭喜你! 你完成了这一关. 
+在下面你可以看到刚才与你交互对合约的代码.
 
-You are now ready to complete all the levels of the game, and as of now, you're on your own.
+现在你已经可以去攻破后面对所有关卡了, 从现在起, 你需要独自战斗.
 
-Godspeed!!
+冲啊!!!
