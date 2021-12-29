@@ -2,11 +2,11 @@ El objetivo de este nivel es piratear el contrato básico de [DEX](https://en.wi
 
 Comenzarás con 10 tokens de `token1` y 10 de` token2`. El contrato DEX comienza con 100 de cada token.
 
-Tendrá éxito en este nivel si lograras agotar al menos 1 de los 2 tokens del contrato y permitir que el contrato informe un precio equivocado de los activos.
+Tendrás éxito en este nivel si lograras agotar al menos 1 de los 2 tokens del contrato y permitir que el contrato informe un precio equivocado de los activos.
 
 &nbsp;
 ### Nota rápida
-Normalmente, cuando realizas un intercambio con un token ERC20, debe autorizar mediante `approve` el contrato para gastar sus tokens. Para mantener la sintaxis del juego, simplemente hemos agregado método `approve` al contrato. Así que siéntase libre de usar `contract.approve (contract.address, <uint amount>)` en lugar de llamar a los tokens directamente, y automáticamente se aprobará gastar los dos tokens por la cantidad deseada. De lo contrario, no dude en ignorar el contrato de `SwappableToken`.
+Normalmente, cuando realizas un intercambio con un token ERC20, debes autorizar mediante `approve` el contrato para gastar tus tokens. Para mantener la sintaxis del juego, simplemente hemos agregado el método `approve` al contrato. Así que siéntete libre de usar `contract.approve (contract.address, <uint amount>)` en lugar de llamar a los tokens directamente, y automáticamente se aprobará gastar los dos tokens por la cantidad deseada. De lo contrario, no dudes en ignorar el contrato de `SwappableToken`.
 
 &nbsp;
 Cosas que pueden ayudar:

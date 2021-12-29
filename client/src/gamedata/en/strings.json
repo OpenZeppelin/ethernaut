@@ -71,5 +71,7 @@
     "helperSendTransaction": "send transaction util",
     "helperGetNetworkId": "get ethereum network id",
     "helperToWei": "convert ether units to wei",
-    "helperFromWei": "convert wei units to ether"
+    "helperFromWei": "convert wei units to ether",
+    "levelNotTranslated": "This level is not translated or translation is incomplete. ",
+    "contributeTranslation": "Click here to improve the translation."
 }

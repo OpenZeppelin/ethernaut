@@ -1,4 +1,4 @@
-Este nivel le pedirá que rompa `DexTwo`, un contrato de `Dex` sutilmente modificado a partir del nivel anterior.
+Este nivel te pedirá que rompas `DexTwo`, un contrato de `Dex` sutilmente modificado a partir del nivel anterior.
 
 Necesita robar todos los saldos de token1 y token2 del contrato `DexTwo` para tener éxito en este nivel.
 

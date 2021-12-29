@@ -71,5 +71,7 @@
     "helperSendTransaction": "herramienta para el envío de transacciones",
     "helperGetNetworkId": "obtén el identificador de la red",
     "helperToWei": "convierte ether en wei",
-    "helperFromWei": "convierte wei en ether"
+    "helperFromWei": "convierte wei en ether",
+    "levelNotTranslated": "Este nivel no está traducido o la traducción es incompleta. ",
+    "contributeTranslation": "Haz clic aquí para contribuir en mejorar la traducción"
 }

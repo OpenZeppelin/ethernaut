@@ -71,5 +71,7 @@
     "helperSendTransaction": "发送交易直到",
     "helperGetNetworkId": "获得以太网id",
     "helperToWei": "从ether转换到wei",
-    "helperFromWei": "从wei转换到ether"
+    "helperFromWei": "从wei转换到ether",
+    "levelNotTranslated": "This level is not translated or translation is incomplete. ",
+    "contributeTranslation": "Click here to improve the translation."
 }

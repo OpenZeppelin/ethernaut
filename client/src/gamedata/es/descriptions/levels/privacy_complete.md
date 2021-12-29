@@ -1,0 +1,3 @@
+Nada en la red de Ethereum es privado. La palabra clave `private` es simplemente una construcción artificial del lenguaje. La función `getStorageAt(...)` de Web3 se puede usar para leer cualquier cosa desde el storage del contrato. Sin embargo, puede ser complicado leer lo que deseas, ya que se utilizan varias reglas y técnicas de optimización para compactar el almacenamiento tanto como sea posible.
+
+No puede ser mucho más complicado de lo que se propuso en este nivel. Para obtener más información, consulta este excelente artículo de "Darius": [How to read Ethereum contract storage](https://medium.com/aigang-network/how-to-read-ethereum-contract-storage-44252c8af925)
