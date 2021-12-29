@@ -52,7 +52,7 @@
     "unableToRetrieveLevelMessage": "No se puede obtener la instancia del nivel! Por favor, controle la cantidad de gas proporcionada e inténtelo de nuevo.",
     "transactionNoLogsMessage": "La transacción no contiene logs",
     "noPlayerAddressMessage": "Ninguna dirección encontrada para el jugador! Asegúrate de que 1) Tengas instalada la extensión MetaMask para tu navegador y 2) Que esté desbloqueada. 3 opcional) Puedes habilitar y setear en ON el modo privado (desactivado por defecto) en los ajustes si no quieres que tus informaciones sean automáticamente expuestas. 4 opcional) Si el modo privado esta habilitado tienes que autorizar MetaMask a utilizar esta página web. 5) Actualiza la página.",
-    "noEthersMessage": "Ups, no tienes ethers! Obtén algunos en https://faucet.rinkeby.io/",
+    "noEthersMessage": "Ups, no tienes ethers! Obtén algunos en https://faucet.rinkeby.io/, https://faucets.chain.link/rinkeby o https://faucet.paradigm.xyz/",
     "submitLevelMessage": "Enviando la instancia del nivel",
     "wellDoneMessage": "Bien hecho",
     "completedLevelMessage": "Has completado ese nivel!!!",
