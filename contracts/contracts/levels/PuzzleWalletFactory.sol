@@ -8,7 +8,7 @@ import './PuzzleWallet.sol';
 contract PuzzleWalletFactory is Level {
 
   function createInstance(address /*_player*/) override public payable returns (address) {
-    require(msg.value == 1 ether, "Must send 1 ETH to create instance");
+    require(msg.value ==  0.001 ether, "Must send 1 ETH to create instance");
 
     // deploy the PuzzleWallet logic
     PuzzleWallet walletLogic = new PuzzleWallet();

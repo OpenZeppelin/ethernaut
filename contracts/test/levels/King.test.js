@@ -24,12 +24,12 @@ contract('King', function(accounts) {
 
     const instance = await utils.createLevelInstance(
       ethernaut, level.address, player, King,
-      {from: player, value: web3.utils.toWei('1', 'ether')}
+      {from: player, value: web3.utils.toWei('0.001', 'ether')}
     )
 
     // Init checks
     assert.equal(await instance._king(), level.address)
-    assert.equal(web3.utils.fromWei(await instance.prize()).toString(), '1')
+    assert.equal(web3.utils.fromWei(await instance.prize()).toString(), '0.001')
     //console.log('king:', await instance._king())
     //console.log('prize:', web3.utils.fromWei(await instance.prize()).toString())
 
