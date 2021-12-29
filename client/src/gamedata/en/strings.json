@@ -52,7 +52,7 @@
     "unableToRetrieveLevelMessage": "Unable to retrieve level instance! Please check gas amount and try again.",
     "transactionNoLogsMessage": "Transaction contains no logs",
     "noPlayerAddressMessage": "No player address detected! Make sure that 1) You've installed the metamask browser extension and 2) that it's unlocked. 3 optional) From November 2 you can turn ON privacy mode (OFF by default) in settings if you don't want to expose your info by default. 4 optional) If privacy mode is turn ON you have to authorized metamask to use this page. 5) then refresh.",
-    "noEthersMessage": "Yikes, you have no ether! Get some at https://faucet.rinkeby.io/",
+    "noEthersMessage": "Yikes, you have no ether! Get some at https://faucet.rinkeby.io/, https://faucets.chain.link/rinkeby or https://faucet.paradigm.xyz/",
     "submitLevelMessage": "Submitting level instance...",
     "wellDoneMessage": "Well done",
     "completedLevelMessage": "You have completed this level!!!",

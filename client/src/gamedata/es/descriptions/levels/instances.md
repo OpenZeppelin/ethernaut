@@ -58,7 +58,7 @@ Puedes ver quién es el propietario del contrato de ethernaut, que no eres tú, 
 
 &nbsp;
 #### 6. Obtén el ether de prueba
-Para jugar, necesitarás algunos ethers de prueba. La forma más fácil de obtener testnet ethers es a través de [este faucet](https://faucet.rinkeby.io/).
+Para jugar, necesitarás algunos ethers de prueba. La forma más fácil de obtener testnet ethers es a través de [este](https://faucet.rinkeby.io/), [este](https://faucets.chain.link/rinkeby) or [este faucet](https://faucet.paradigm.xyz/).
 
 Una vez que veas algo de ether en su saldo, continúa con el siguiente paso.
 
