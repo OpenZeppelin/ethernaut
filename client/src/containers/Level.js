@@ -87,7 +87,7 @@ class Level extends React.Component {
             isCompleteDescriptionMissingTranslation
           ) && (
             <div>
-              <p>This level is not translated or translation is incomplete. <a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">Click here to improve the translation.</a></p>
+              <p>{strings.levelNotTranslated}<a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">{strings.contributeTranslation}</a></p>
             </div>
           )
         }
