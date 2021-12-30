@@ -370,7 +370,7 @@
       "instanceContract": "PuzzleWallet.sol",
       "revealCode": true,
       "deployParams": [],
-      "deployFunds": 1,
+      "deployFunds": 0.001,
       "deployId": "24",
       "instanceGas": 3600000,
       "author": "openzeppelin"
