@@ -52,7 +52,7 @@
     "unableToRetrieveLevelMessage": "レベルからインスタンスを生成できませんでした。gas amountを確認してください。",
     "transactionNoLogsMessage": "トランザクションにログはありません",
     "noPlayerAddressMessage": "プレーヤーのアドレスが検出できませんでした。次を確認してください。(1) ブラウザ拡張機能のMetamaskがインストールされている。(2) ロックが解除されている (3 optional) 11月2日からMetamaskの設定でプライバシーモードをOnにすることができます。(デフォルトではOFF) (4) プライバシーモードをOnにした場合、再認証する必要があります。 (5) 再認証後にページを更新してください",
-    "noEthersMessage": "わぁ！ イーサ持ってないじゃん! ここから取得してください https://faucet.rinkeby.io/",
+    "noEthersMessage": "わぁ！ イーサ持ってないじゃん! ここから取得してください https://faucet.rinkeby.io/, https://faucets.chain.link/rinkeby または https://faucet.paradigm.xyz/",
     "submitLevelMessage": "レベルのインスタンスを提出中...",
     "wellDoneMessage": "やったね",
     "completedLevelMessage": "このレベルをクリアしました!!!",
@@ -71,5 +71,7 @@
     "helperSendTransaction": "トランザクションutilを送信",
     "helperGetNetworkId": "イーサリアムネットワークIDを取得",
     "helperToWei": "etherをweiに変換",
-    "helperFromWei": "weiをetherに変換"
+    "helperFromWei": "weiをetherに変換",
+    "levelNotTranslated": "This level is not translated or translation is incomplete. ",
+    "contributeTranslation": "Click here to improve the translation."
 }
