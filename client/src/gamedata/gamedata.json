@@ -145,7 +145,7 @@
       "instanceContract": "King.sol",
       "revealCode": true,
       "deployParams": [],
-      "deployFunds": 1,
+      "deployFunds": 0.001,
       "deployId": "9",
       "instanceGas": 350000,
       "author": "ajsantander"
@@ -160,7 +160,7 @@
       "instanceContract": "Reentrance.sol",
       "revealCode": true,
       "deployParams": [],
-      "deployFunds": 1,
+      "deployFunds": 0.001,
       "deployId": "10",
       "instanceGas": 350000,
       "author": "ajsantander"
@@ -265,7 +265,7 @@
       "instanceContract": "Recovery.sol",
       "revealCode": true,
       "deployParams": [],
-      "deployFunds": 1,
+      "deployFunds": 0.001,
       "deployId": "17",
       "instanceGas": 1100000,
       "author": "AgeManning"
@@ -310,7 +310,7 @@
       "instanceContract": "Denial.sol",
       "revealCode": true,
       "deployParams": [],
-      "deployFunds": 1,
+      "deployFunds": 0.001,
       "deployId": "20",
       "instanceGas": 450000,
       "author": "AgeManning"
