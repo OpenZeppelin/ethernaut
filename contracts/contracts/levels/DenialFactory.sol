@@ -7,7 +7,7 @@ import './Denial.sol';
 
 contract DenialFactory is Level {
 
-  uint public initialDeposit = 1 ether;
+  uint public initialDeposit = 0.001 ether;
 
   function createInstance(address _player) override public payable returns (address) {
     _player;
