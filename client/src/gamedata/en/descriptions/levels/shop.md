@@ -2,4 +2,4 @@
 
 ##### Things that might help:
 * `Shop` expects to be used from a `Buyer`
-* Understanding how `gas()` options works
+* Understanding restrictions of view functions

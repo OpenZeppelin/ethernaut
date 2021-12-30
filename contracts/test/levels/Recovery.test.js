@@ -31,7 +31,7 @@ contract('Recovery', function(accounts) {
 
     instance = await utils.createLevelInstance(
       ethernaut, level.address, player, Recovery,
-      {from: player, value: web3.utils.toWei('1', 'ether')}
+      {from: player, value: web3.utils.toWei('0.001', 'ether')}
     )
   })
 
