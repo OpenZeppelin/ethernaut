@@ -1,5 +1,5 @@
-You know the basics of how ether goes in and out of contracts, including the usage of the fallback method.
+现在你知道了一些 ether 如何进出合约的基础知识, 包括使用 fallback 方法.
 
-You've also learnt about OpenZeppelin's Ownable contract, and how it can be used to restrict the usage of some methods to a privileged address.
+你也学到了 OpenZeppelin 的 Ownable 合约, 以及他可以如何用来限制一些针对特权地址方法的使用.
 
-Move on to the next level when you're ready!
+当你准备好了, 就可以出发去下一关!
