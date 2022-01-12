@@ -24,7 +24,7 @@ await getBalance(player)
 
 &nbsp;
 #### 控制台之外
-有些关起需要在控制台之外的操作. 比如, 用 solidity 写一些代码, 部署合约在网络上, 然后攻击实例. 这可以通过很多方式完成, 比如: 
+有些关卡需要在控制台之外的操作. 比如, 用 solidity 写一些代码, 部署合约在网络上, 然后攻击实例. 这可以通过很多方式完成, 比如: 
 1) 使用 Remix 写代码并部署在相应的网络上 参见 [Remix Solidity IDE](https://remix.ethereum.org/).
 2) 设置一个本地 truffle 项目, 开发并部署攻击合约. 参见 [Truffle Framework](http://truffleframework.com/).
 
