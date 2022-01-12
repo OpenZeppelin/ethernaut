@@ -1,12 +1,12 @@
-In order to prevent re-entrancy attacks when moving funds out of your contract, use the [Checks-Effects-Interactions pattern](https://solidity.readthedocs.io/en/develop/security-considerations.html#use-the-checks-effects-interactions-pattern) being aware that `call` will only return false without interrupting the execution flow. Solutions such as [ReentrancyGuard](https://docs.openzeppelin.com/contracts/2.x/api/utils#ReentrancyGuard) or [PullPayment](https://docs.openzeppelin.com/contracts/2.x/api/payment#PullPayment) can also be used.
+Para evitar ataques de reentrancy al sacar fondos de tu contrato, utiliza el patron de [Checks-Effects-Interactions](https://solidity.readthedocs.io/en/develop/security-considerations.html#use-the-checks-effects-interactions-pattern) teniendo en cuenta que `call` solo devolverá falso sin interrumpir la ejecución. También se pueden utilizar soluciones como [ReentrancyGuard](https://docs.openzeppelin.com/contracts/2.x/api/utils#ReentrancyGuard) o [PullPayment](https://docs.openzeppelin.com/contracts/2.x/api/payment#PullPayment).
 
-`transfer` and `send` are no longer recommended solutions as they can potentially break contracts after the Istanbul hard fork [Source 1](https://diligence.consensys.net/blog/2019/09/stop-using-soliditys-transfer-now/) [Source 2](https://forum.openzeppelin.com/t/reentrancy-after-istanbul/1742).
+`transfer` y `send` ya no son soluciones recomendadas, ya que pueden romper algunos contratos después del hardfork de Instanbul [Fuente 1](https://diligence.consensys.net/blog/2019/09/stop-using-soliditys-transfer-now/), [Fuente 2](https://forum.openzeppelin.com/t/reentrancy-after-istanbul/1742).
 
-Always assume that the receiver of the funds you are sending can be another contract, not just a regular address. Hence, it can execute code in its payable fallback method and *re-enter* your contract, possibly messing up your state/logic.
+Siempre asume que el destinatario de los fondos que está enviando puede ser otro contrato, no únicamente una dirección regular. Por lo tanto, puede ejecutar código en su método fallback y *volver a ingresar* en tu contrato, posiblemente arruinando su estado/lógica.
 
-Re-entrancy is a common attack. You should always be prepared for it!
+Los ataques de reentrancy son muy común. ¡Siempre debes estar preparado para ellos!
 
 &nbsp;
-#### The DAO Hack
+#### El DAO hack
 
-The famous DAO hack used reentrancy to extract a huge amount of ether from the victim contract. See [15 lines of code that could have prevented TheDAO Hack](https://blog.openzeppelin.com/15-lines-of-code-that-could-have-prevented-thedao-hack-782499e00942).
+El famoso hack de DAO empleó reentrancy para extraer una gran cantidad de ethers del contrato de la víctima. Consulta [15 líneas de código que podrían haber evitado TheDAO Hack](https://blog.openzeppelin.com/15-lines-of-code-that-could-have-prevented-thedao-hack-782499e00942).

@@ -1,6 +1,6 @@
-This gatekeeper introduces a few new challenges. Register as an entrant to pass this level.
+Este gatekeeper presenta algunos desafíos nuevos. Regístrate como entrant para pasar este nivel.
 
-##### Things that might help:
-* Remember what you've learned from getting past the first gatekeeper - the first gate is the same.
-* The `assembly` keyword in the second gate allows a contract to access functionality that is not native to vanilla Solidity. See [here](http://solidity.readthedocs.io/en/v0.4.23/assembly.html) for more information. The `extcodesize` call in this gate will get the size of a contract's code at a given address - you can learn more about how and when this is set in section 7 of the [yellow paper](https://ethereum.github.io/yellowpaper/paper.pdf).
-* The `^` character in the third gate is a bitwise operation (XOR), and is used here to apply another common bitwise operation (see [here](http://solidity.readthedocs.io/en/v0.4.23/miscellaneous.html#cheatsheet)). The Coin Flip level is also a good place to start when approaching this challenge.
+##### Cosas que pueden ayudar:
+* Recuerda lo que has aprendido al pasar el primer gatekeeper: el primer gate es el mismo.
+* La palabra clave `assembly` en el segundo gatekeeper permite que un contrato acceda a una funcionalidad que no es nativa de Solidity. Consulta [aquí](http://solidity.readthedocs.io/en/v0.4.23/assembly.html) para obtener más información. La llamada `extcodesize` en este gate obtendrá el tamaño del código de un contrato en una dirección determinada; puedes obtener más información sobre cómo y cuándo se setea en la sección 7 del [yellow paper](https://ethereum.github.io/yellowpaper/paper.pdf).
+* El carácter `^` en el tercer gate es una operación bit a bit (XOR), y se usa aquí para aplicar otra operación bit a bit común (ver [aquí](http://solidity.readthedocs.io/en/v0.4.23/miscellaneous.html#cheatsheet)). El nivel CoinFlip también es un buen lugar para comenzar al tratar este desafío.

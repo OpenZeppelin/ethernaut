@@ -1,3 +1,3 @@
-Contracts can manipulate with the data from other contracts the way they want.
+Los contratos pueden manipular los datos de otros contratos de la forma que desean.
 
-It's unsafe to approve some action by double calling even the same view function.
+No es seguro aprobar acciónes haciendo doble llamadas incluso a la misma función view.

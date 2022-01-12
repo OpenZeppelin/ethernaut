@@ -14,7 +14,7 @@ contract('Denial', function(accounts) {
   let instance
   let player = accounts[0]
   let owner = "0xA9E"
-  let initialDeposit = web3.utils.toWei("1",'ether');
+  let initialDeposit = web3.utils.toWei("0.001",'ether');
 
   before(async function() {
     ethernaut = await Ethernaut.new();

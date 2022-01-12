@@ -1,5 +1,5 @@
-You know the basics of how ether goes in and out of contracts, including the usage of the fallback method.
+Conoces los conceptos básicos de cómo ether entra y sale de los contratos, incluido el uso del método fallback.
 
-You've also learnt about OpenZeppelin's Ownable contract, and how it can be used to restrict the usage of some methods to a privileged address.
+También aprendiste sobre el contrato Ownable de OpenZeppelin y cómo se puede usar para restringir el uso de algunos métodos a una dirección privilegiada.
 
-Move on to the next level when you're ready!
+¡Pasa al siguiente nivel cuando estas listo!

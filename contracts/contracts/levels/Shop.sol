@@ -12,9 +12,9 @@ contract Shop {
   function buy() public {
     Buyer _buyer = Buyer(msg.sender);
 
-    if (_buyer.price{gas:3300}() >= price && !isSold) {
+    if (_buyer.price() >= price && !isSold) {
       isSold = true;
-      price = _buyer.price{gas:3300}();
+      price = _buyer.price();
     }
   }
 }

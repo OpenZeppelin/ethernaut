@@ -7,11 +7,11 @@ import './King.sol';
 
 contract KingFactory is Level {
 
-  uint public insertCoin = 1 ether;
+  uint public insertCoin = 0.001 ether;
 
   function createInstance(address _player) override public payable returns (address) {
     _player;
-    require(msg.value >= insertCoin);
+    require(msg.value >= insertCoin, "Must send at least 0.001 ETH");
     return address((new King){value:msg.value}());
   }
 

@@ -1,5 +1,5 @@
-Claim ownership of the contract below to complete this level.
+Reclama la propiedad del contrato a continuación para completar este nivel.
 
 &nbsp;
-Things that might help
+Cosas que pueden ayudar
 * Solidity Remix IDE

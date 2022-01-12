@@ -1,4 +1,3 @@
+Un creador de contratos ha construido una factory de tokens muy simple. Cualquiera puede crear nuevos tokens con facilidad. Después de implementar el primer contrato de tokens, el creador envió `0.5` ether para obtener más tokens. Desde entonces han perdido la dirección del contrato.
 
-A contract creator has built a very simple token factory contract. Anyone can create new tokens with ease. After deploying the first token contract, the creator sent `0.5` ether to obtain more tokens. They have since lost the contract address. 
-
-This level will be completed if you can recover (or remove) the `0.5` ether from the lost contract address. 
+Este nivel se completará si puedes recuperar (o eliminar) los `0.5` ether de la dirección de contrato que se ha perdido.

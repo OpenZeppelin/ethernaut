@@ -1,7 +1,7 @@
-The goal of this level is for you to claim ownership of the instance you are given.
+El objetivo de ese nivel es lo de reclamar la propiedad de la instancia del contrato.
 
 &nbsp;
-Things that might help
-* Look into Solidity's documentation on the `delegatecall` low level function, how it works, how it can be used to delegate operations to on-chain libraries, and what implications it has on execution scope.
-* Fallback methods
-* Method ids
+Cosas que pueden ayudar
+* Mira en la documentación de Solidity sobre la función `delegatecall`, como funciona, como puede utilizarse para delegar operaciones a librerías on-chain, y cuáles consecuencias tiene a la hora de ejecutarse
+* Métodos fallback
+* Método ids

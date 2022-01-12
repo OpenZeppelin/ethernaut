@@ -1,5 +1,5 @@
-Сan you get the item from the shop for less than the price asked?
+¿Puedes conseguir el artículo en la tienda por menos del precio solicitado?
 
-##### Things that might help:
-* `Shop` expects to be used from a `Buyer`
-* Understanding how `gas()` options works
+##### Cosas que pueden ayudar:
+* `Shop` espera ser utilizado por un `Buyer`
+* Entender cómo funcionan la opciones de `gas()`

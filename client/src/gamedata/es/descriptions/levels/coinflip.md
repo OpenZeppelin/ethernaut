@@ -1,5 +1,5 @@
-This is a coin flipping game where you need to build up your winning streak by guessing the outcome of a coin flip. To complete this level you'll need to use your psychic abilities to guess the correct outcome 10 times in a row.
+Eso es el típico juego del lanzamiento de la moneda donde necesitaras construir la estrategia ganadora adivinando el resultado de un lanzamiento. Para completar el nivel deberás usar tus habilidades psíquicas para adivinar exactamente el resultado 10 veces seguidas.
 
 &nbsp;
-Things that might help
-* See the Help page above, section "Beyond the console"
+Cosas que pueden ayudar
+* Mira la página de Ayuda arriba, en la sección "Más allá de la consola"

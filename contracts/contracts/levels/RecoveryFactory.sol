@@ -17,7 +17,7 @@ contract RecoveryFactory is Level {
     // the lost address
     lostAddress[address(recoveryInstance)] = address(uint160(uint256(keccak256(abi.encodePacked(uint8(0xd6), uint8(0x94), recoveryInstance, uint8(0x01))))));
     // Send it some ether
-    (bool result,) = lostAddress[address(recoveryInstance)].call{value:0.5 ether}("");
+    (bool result,) = lostAddress[address(recoveryInstance)].call{value:0.001 ether}("");
     require(result);
 
     return address(recoveryInstance);

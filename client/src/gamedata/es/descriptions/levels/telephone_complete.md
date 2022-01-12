@@ -1,8 +1,8 @@
-While this example may be simple, confusing `tx.origin` with `msg.sender` can lead to phishing-style attacks, such as [this](https://blog.ethereum.org/2016/06/24/security-alert-smart-contract-wallets-created-in-frontier-are-vulnerable-to-phishing-attacks/). 
+Si bien este ejemplo puede ser simple, confundir `tx.origin` con `msg.sender` puede conducir a ataques de phishing, como [este](https://blog.ethereum.org/2016/06/24/security-alert-smart-contract-wallets-created-in-frontier-are-vulnerable-to-phishing-attacks/).
 
-An example of a possible attack is outlined below.
+A continuación se describe un ejemplo de un posible ataque.
 
-1) Use `tx.origin` to determine whose tokens to transfer, e.g.
+1) Utilizas `tx.origin` para determinar qué tokens transferir, p. Ej.
 
 ```
 function transfer(address _to, uint _value) {
@@ -10,7 +10,8 @@ function transfer(address _to, uint _value) {
   tokens[_to] += _value;
 }
 ```
-2) Attacker gets victim to send funds to a malicious contract that calls the transfer function of the token contract, e.g. 
+
+2) El atacante consigue que la víctima envíe fondos a un contrato malicioso que llama a la función de transferencia del contrato de token, p.
 
 ```
 function () payable {
@@ -18,4 +19,4 @@ function () payable {
 }
 ```
 
-3) In this scenario, `tx.origin` will be the victim's address (while `msg.sender` will be the malicious contract's address), resulting in the funds being transferred from the victim to the attacker.
+3) En este escenario, `tx.origin` será la dirección de la víctima (mientras que `msg.sender` será la dirección del contrato malicioso), lo que hará que los fondos se transfieran de la víctima al atacante.

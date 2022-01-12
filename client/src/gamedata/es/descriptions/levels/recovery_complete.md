@@ -1,10 +1,7 @@
+Las direcciones de los contratos son deterministas y se calculan mediante `keccack256(address, nonce)` donde el `address` es la dirección del contrato (o la dirección ethereum que creó la transacción) y `nonce` es el número de contratos que el contrato en sí ha generado (o el nonce de la transacción, para transacciones regulares).
 
-Contract addresses are deterministic and are calculated by `keccack256(address, nonce)` where the `address` is the address of the contract (or ethereum address that created the transaction) and `nonce` is the number of contracts the spawning contract has created (or the transaction nonce, for regular transactions).  
+Debido a esto, uno puede enviar ether a una dirección predeterminada (que no tiene clave privada) y luego crear un contrato en esa dirección que recupera el ether. Esta es una forma no intuitiva y algo secreta de almacenar (peligrosamente) ether sin tener una clave privada.
 
-Because of this, one can send ether to a pre-determined address (which has no private key) and later create a contract at that address which recovers the ether. This is a non-intuitive and somewhat secretive way to (dangerously) store ether without holding a private key. 
+Un [blog post](http://martin.swende.se/blog/Ethereum_quirks_and_vulns.html) de Martin Swende detalla posibles casos de uso de esto.
 
-An interesting [blog post](http://martin.swende.se/blog/Ethereum_quirks_and_vulns.html) by Martin Swende details potential use cases of this. 
-
-If you're going to implement this technique, make sure you don't miss the nonce, or your funds will be lost forever. 
-
-
+Si vas a implementar esta técnica, asegúrate de no perder el nonce, o tus fondos se perderán para siempre.

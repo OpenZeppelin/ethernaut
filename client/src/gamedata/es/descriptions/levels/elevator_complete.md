@@ -1,4 +1,4 @@
-You can use the `view` function modifier on an interface in order to prevent state modifications. The `pure` modifier also prevents functions from modifying the state.
-Make sure you read [Solidity's documentation](http://solidity.readthedocs.io/en/develop/contracts.html#view-functions) and learn its caveats.
+Puedes utilizar el modifier `view` en una interfaz para evitar modificaciones de estado. El modifier `pure` también evita que las funciones modifiquen el estado.
+Asegúrate de leer la [documentación de Solidity](http://solidity.readthedocs.io/en/develop/contracts.html#view-functions) y aprendas sus advertencias.
 
-An alternative way to solve this level is to build a view function which returns different results depends on input data but don't modify state, e.g. `gasleft()`.
+Una forma alternativa de resolver este nivel es construir una función `view` que devuelva resultados diferentes dependiendo de los datos de entrada, pero que no modifique el estado, por ejemplo `gasleft()`.

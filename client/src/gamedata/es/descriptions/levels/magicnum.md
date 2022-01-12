@@ -1,11 +1,11 @@
-To solve this level, you only need to provide the Ethernaut with a `Solver`, a contract that responds to `whatIsTheMeaningOfLife()` with the right number.
+Para resolver este nivel, solo necesitas proporcionar a Ethernaut un `Solver`, un contrato que responde a `whatIsTheMeaningOfLife()` con el número correcto.
 
-Easy right?
-Well... there's a catch.
+Fácil, ¿verdad?
+Bueno ... Hay una trampa.
 
-The solver's code needs to be really tiny. Really reaaaaaallly tiny. Like freakin' really really itty-bitty tiny: 10 opcodes at most.
+El código del `Solver` debe ser realmente pequeño. Realmeeeeeente diminuto. Jodidamente minúsculo: 10 opcodes como máximo.
 
-Hint: Perhaps its time to leave the comfort of the Solidity compiler momentarily, and build this one by hand O_o. 
-That's right: Raw EVM bytecode.
+Sugerencia: Quizás es hora de dejar la comodidad del compilador Solidity momentáneamente y construir este a mano O_o.
+Así es: puro bytecode EVM.
 
-Good luck!
+¡Suerte!
