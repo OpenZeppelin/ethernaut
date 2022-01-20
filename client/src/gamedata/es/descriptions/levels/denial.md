@@ -1,5 +1,5 @@
-This is a simple wallet that drips funds over time. You can withdraw the funds
-slowly by becoming a withdrawing partner.
+Esta es una billetera simple que libera fondos con el tiempo. Puedes retirar los fondos
+lentamente convirtiéndose en un socio withdrawer.
 
-If you can deny the owner from withdrawing funds when they call `withdraw()`
-(whilst the contract still has funds, and the transaction is of 1M gas or less) you will win this level.
+Si puedes negarle al owner que retire fondos cuando llame a `withdraw()`
+(mientras el contrato aún tenga fondos y la transacción sea de 1 millón de gas o menos) ganarás este nivel.

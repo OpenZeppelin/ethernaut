@@ -1,9 +1,9 @@
-The advantage of following an UUPS pattern is to have very minimal proxy to be deployed. The proxy acts as storage layer so any state modification in the implementation contract normally doesn't produce side effects to systems using it, since only the logic is used through delegatecalls.
+La ventaja de seguir un patrón UUPS es tener un proxy mínimo para deployar. El proxy actúa como capa de almacenamiento, por lo que cualquier modificación de estado en el contrato de implementación normalmente no produce efectos secundarios en los sistemas que lo utilizan, ya que solo se usa la lógica a través de delegatecalls.
 
-This doesn't mean that you shouldn't watch out for vulnerabilities that can be exploited if we leave an implementation contract uninitialized.
+Esto no significa que no debas estar atento a las vulnerabilidades que pueden usarse si dejamos un contrato de implementación sin inicializar.
 
-This was a slightly simplified version of what has really been discovered after months of the release of UUPS pattern. 
+Esta es una versión ligeramente simplificada de lo que realmente se descubrió después de meses del lanzamiento del patrón UUPS.
 
-Takeways: never leaves implementation contracts uninitialized ;) 
+Conclusiones: nunca dejes los contratos de implementación sin inicializar ;)
 
-If you're interested in what happened, read more [here](https://forum.openzeppelin.com/t/uupsupgradeable-vulnerability-post-mortem/15680).
+Si estás interesado en lo que sucedió, puedes leer más [aquí](https://forum.openzeppelin.com/t/uupsupgradeable-vulnerability-post-mortem/15680).

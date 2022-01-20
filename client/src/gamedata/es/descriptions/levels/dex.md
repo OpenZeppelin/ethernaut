@@ -1,15 +1,15 @@
-The goal of this level is for you to hack the basic [DEX](https://en.wikipedia.org/wiki/Decentralized_exchange) contract below and steal the funds by price manipulation.
+El objetivo de este nivel es piratear el contrato básico de [DEX](https://en.wikipedia.org/wiki/Decentralized_exchange) a continuación y robar los fondos mediante la manipulación de precios.
 
-You will start with 10 tokens of `token1` and 10 of `token2`. The DEX contract starts with 100 of each token. 
+Comenzarás con 10 tokens de `token1` y 10 de` token2`. El contrato DEX comienza con 100 de cada token.
 
-You will be successful in this level if you manage to drain all of at least 1 of the 2 tokens from the contract, and allow the contract to report a "bad" price of the assets. 
-
-&nbsp;
-### Quick note
-Normally, when you make a swap with an ERC20 token, you have to `approve` the contract to spend your tokens for you. To keep with the syntax of the game, we've just added the `approve` method to the contract itself. So feel free to use `contract.approve(contract.address, <uint amount>)` instead of calling the tokens directly, and it will automatically approve spending the two tokens by the desired amount. Feel free to ignore the `SwappableToken` contract otherwise. 
+Tendrás éxito en este nivel si lograras agotar al menos 1 de los 2 tokens del contrato y permitir que el contrato informe un precio equivocado de los activos.
 
 &nbsp;
-Things that might help:
-* How is the price of the token calculated?
-* How does the `swap` method work?
-* How do you `approve` a transaction of an ERC20? 
+### Nota rápida
+Normalmente, cuando realizas un intercambio con un token ERC20, debes autorizar mediante `approve` el contrato para gastar tus tokens. Para mantener la sintaxis del juego, simplemente hemos agregado el método `approve` al contrato. Así que siéntete libre de usar `contract.approve (contract.address, <uint amount>)` en lugar de llamar a los tokens directamente, y automáticamente se aprobará gastar los dos tokens por la cantidad deseada. De lo contrario, no dudes en ignorar el contrato de `SwappableToken`.
+
+&nbsp;
+Cosas que pueden ayudar:
+* ¿Cómo se calcula el precio del token?
+* ¿Cómo funciona el método `swap`?
+* ¿Cómo se aprueba  una transacción de un ERC20?

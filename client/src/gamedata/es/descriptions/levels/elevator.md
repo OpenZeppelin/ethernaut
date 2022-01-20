@@ -1,5 +1,5 @@
-This elevator won't let you reach the top of your building. Right?
+Este ascensor no te permitirá llegar a la parte superior de tu edificio. ¿Correcto?
 
-##### Things that might help:
-* Sometimes solidity is not good at keeping promises.
-* This `Elevator` expects to be used from a `Building`.
+##### Cosas que pueden ayudar:
+* A veces Solidity no es bueno para cumplir las promesas.
+* Este `Elevator` espera ser utilizado desde un `Building`.

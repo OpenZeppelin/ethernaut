@@ -17,12 +17,12 @@ contract('PuzzleWallet', function([player]) {
   it('should allow the player to solve the level', async function() {
     const instance = await utils.createLevelInstance(
       ethernaut, level.address, player, PuzzleWallet,
-      { from: player, value: web3.utils.toWei('1', 'ether') },
+      { from: player, value: web3.utils.toWei('0.001', 'ether') },
     );
 
     // checks that the initial owner address is the puzzle wallet factory contract
     assert.equal(level.address, await instance.owner(), "PuzzleFactory is not the owner");
-    assert.equal(web3.utils.toWei('1', 'ether'), (await instance.balances(level.address)).toString());
+    assert.equal(web3.utils.toWei('0.001', 'ether'), (await instance.balances(level.address)).toString());
 
     const proxy = await PuzzleProxy.at(instance.address);
     // overwrites the owner address by setting the pendingAdmin
@@ -39,7 +39,7 @@ contract('PuzzleWallet', function([player]) {
 
     const { data: depositData } = await instance.deposit.request()
     const { data: nestedMulticallData } = await instance.multicall.request([ depositData ]);
-    const { data: executeData } = await instance.execute.request(player, web3.utils.toWei('2', 'ether'), []);
+    const { data: executeData } = await instance.execute.request(player, web3.utils.toWei('0.002', 'ether'), []);
 
     const calls = [
       depositData,
@@ -47,7 +47,7 @@ contract('PuzzleWallet', function([player]) {
       executeData,
     ];
 
-    await instance.multicall(calls, { from: player, value: web3.utils.toWei('1', 'ether')});
+    await instance.multicall(calls, { from: player, value: web3.utils.toWei('0.001', 'ether')});
     // checks that balance in the contract is 0
     assert.equal(await web3.eth.getBalance(instance.address), 0, "Contract balance is not 0");
 

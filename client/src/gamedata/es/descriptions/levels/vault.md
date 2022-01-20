@@ -1,1 +1,1 @@
-Unlock the vault to pass the level!
+¡Desbloquea el vault para pasar de nivel!

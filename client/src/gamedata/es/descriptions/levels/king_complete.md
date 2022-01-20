@@ -1,6 +1,6 @@
-Most of Ethernaut's levels try to expose (in an oversimpliefied form of course) something that actually happend. A real hack or a real bug.
+La mayoría de los niveles de Ethernaut intentan exponer (en una forma simplificada, por supuesto) algo que realmente sucedió. Un truco real o un error real.
 
-In this case, see:
+En este caso, consulta:
 [King of the Ether](https://www.kingoftheether.com/thrones/kingoftheether/index.html)
-and
+y
 [King of the Ether Postmortem](http://www.kingoftheether.com/postmortem.html)

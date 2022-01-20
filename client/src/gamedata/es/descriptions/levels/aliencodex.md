@@ -1,7 +1,7 @@
-You've uncovered an Alien contract. Claim ownership to complete the level.
+Acabas de descubrir un Alien contract. Reclama la propiedad sobre él para completar el nivel.
 
 &nbsp;
-Things that might help
-* Understanding how array storage works
-* Understanding [ABI specifications](https://solidity.readthedocs.io/en/v0.4.21/abi-spec.html)
-* Using a very `underhanded` approach
+Cosas que pueden ayudar
+* Entender como funciona el storage de un array
+* Entender las [especificaciones ABI](https://solidity.readthedocs.io/en/v0.4.21/abi-spec.html)
+* Usar una estrategia sutil y poco común

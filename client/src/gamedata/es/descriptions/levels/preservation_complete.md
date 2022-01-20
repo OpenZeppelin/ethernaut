@@ -1,6 +1,5 @@
-As the previous level, `delegate` mentions, the use of `delegatecall` to call
-libraries can be risky. This is particularly true for contract libraries that
-have their own state. This example demonstrates why the `library` keyword
-should be used for building libraries, as it prevents the libraries from
-storing and accessing state variables. 
-
+Como en el nivel anterior, `delegate` menciona, el uso de `delegatecall` para llamar
+las librerías puede ser peligroso. Esto es particularmente cierto para las librerías que
+tienen su propio estado. Este ejemplo demuestra por qué la palabra clave `library`
+debe usarse para construir librerías, ya que evita que ellas puedan
+almacenar y acceder a las variables de estado.

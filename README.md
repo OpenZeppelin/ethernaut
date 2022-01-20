@@ -104,19 +104,21 @@ To deploy the contracts on ropsten, first set the ACTIVE_NETWORK variable in con
 
 Then run `yarn deploy:contracts`. This action will effectively deploy a new version of the level data item whose deployed_ropsten array was updated, and will point the ethernaut dapp to use this new deployed contract instance for the level.
 
-### Adding new languages
+### Modify or add new languages
 
-To add a new language to the list of supported ones follow these steps:
+To modify or add a new language to the list of supported ones follow these steps:
 
 1. under `client/src/gamedata` create a new folder with the languge you want to add. 
 
-2. Copy paste the entire content of any other language into the new directory.
+2. Copy paste the content you want to translate of any other language into the new directory.
 
 3. You will need to translate two things:
   - pages and level descriptions under `descriptions` subdirectory
   - `strings.json`. For this, only the values of the keys in the json must be translated. Do not translate keys (i.e. `nextLevel`).
 
-4. Add a new key/value in all `strings.json` of all languages for the newly added language. For example, if you're going to add French, add
+4. If you are just modifying an already existing language you can stop here and submit a PR. If you're adding a new language go to the next steps. Translations are mantained by the community but we ask to translate at least the `Help` page, the `strings.json` and the `instances.md` and `instances_complete.md` files entirely since those are the most important ones to understand how the game works. Levels which are not translated will default to English in any case. 
+
+5. Add a new key/value in all `strings.json` of all languages for the newly added language. For example, if you're going to add French, add
 
 ```
 In `en/strings.json` add:
@@ -136,7 +138,7 @@ In `es/strings.json` add:
 ```
 And so on with all other languages present.
 
-5. Once translation is done, add an entry in `client/src/containers/Headers.js` in the language picker for the user interface so you can select your added language:
+6. Once translation is done, add an entry in `client/src/containers/Headers.js` in the language picker for the user interface so you can select your added language:
 
 ```
 <li>
@@ -147,3 +149,5 @@ And so on with all other languages present.
     </select>
 </li>
 ```
+
+7. You can now submit a PR and we will review.
