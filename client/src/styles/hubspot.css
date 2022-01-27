@@ -4,7 +4,15 @@ body .leadinModal.leadinModal-theme-top {
   bottom: 0;
   z-index: 99999999999;
 }
-@keyframes leadinModal-dropin {
+.leadinModal.leadinModal-theme-top.leadinModal-closing .leadinModal-content,
+.leadinModal.leadinModal-theme-top.leadinModal-hiding .leadinModal-content {
+  animation-name: leadinModal-reset;
+}
+.leadinModal.leadinModal-theme-top .leadinModal-content {
+ animation-name: leadinModal-reset;
+}
+
+@keyframes leadinModal-reset {
     0% {
       transform: translateY(0);
       -webkit-transform: translateY(0);
