@@ -1,4 +1,9 @@
 /* To reset HubSpot Popup Banner's default animation effect */
+body .leadinModal.leadinModal-theme-top {
+  top: auto;
+  bottom: 0;
+  z-index: 99999999999;
+}
 @keyframes leadinModal-dropin {
     0% {
       transform: translateY(0);
