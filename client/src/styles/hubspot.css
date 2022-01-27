@@ -6,10 +6,10 @@ body .leadinModal.leadinModal-theme-top {
 }
 .leadinModal.leadinModal-theme-top.leadinModal-closing .leadinModal-content,
 .leadinModal.leadinModal-theme-top.leadinModal-hiding .leadinModal-content {
-  animation-name: leadinModal-reset;
+  animation-name: leadinModal-reset!important;
 }
 .leadinModal.leadinModal-theme-top .leadinModal-content {
- animation-name: leadinModal-reset;
+ animation-name: leadinModal-reset!important;
 }
 
 @keyframes leadinModal-reset {
