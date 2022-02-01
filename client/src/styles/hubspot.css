@@ -12,6 +12,7 @@ body .leadinModal.leadinModal-theme-top {
 .leadinModal.leadinModal-theme-top.leadinModal-closing .leadinModal-content{
     animation-name: leadinModal-fadeout!important;
 }
+
 @keyframes leadinModal-reset {
     0% {
       transform: translateY(0);
