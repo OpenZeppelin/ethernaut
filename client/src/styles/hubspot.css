@@ -4,14 +4,14 @@ body .leadinModal.leadinModal-theme-top {
   bottom: 0;
   z-index: 99999999999;
 }
-.leadinModal.leadinModal-theme-top.leadinModal-closing .leadinModal-content,
-.leadinModal.leadinModal-theme-top.leadinModal-hiding .leadinModal-content {
-  animation-name: leadinModal-reset!important;
-}
+
 .leadinModal.leadinModal-theme-top .leadinModal-content {
  animation-name: leadinModal-reset!important;
 }
-
+.leadinModal.leadinModal-theme-top.leadinModal-closing,
+.leadinModal.leadinModal-theme-top.leadinModal-closing .leadinModal-content{
+    animation-name: leadinModal-fadeout!important;
+}
 @keyframes leadinModal-reset {
     0% {
       transform: translateY(0);
