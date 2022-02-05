@@ -71,7 +71,7 @@
     "helperSendTransaction": "发送交易到",
     "helperGetNetworkId": "获得以太网id",
     "helperToWei": "从ether转换到wei",
-    "helperFromWei": "从wei转换到ether"
+    "helperFromWei": "从wei转换到ether",
     "levelNotTranslated": "这一关卡还没有被翻译或是翻译不完全 ",
     "contributeTranslation": "来帮助我们翻译吧"
 }
