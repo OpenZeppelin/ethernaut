@@ -1,7 +1,7 @@
 {
     "ethernaut": "Ethernaut",
     "title": "The Ethernaut",
-    "info": "<p>Ethernaut 是一个基于 Web3/Solidity 的对抗游戏，受 <a href='https://overthewire.org' target='_blank' rel='noopener noreferrer'>overthewire.org</a> 启发, 运行于以太坊虚拟机. 每个关卡是一个需要被攻破的智能合约.</p><p> 整个游戏百分百开源，并且由不同玩家贡献. 如果你也有有意思的想法? 欢迎PRs到 <a href='https://github.com/OpenZeppelin/ethernaut'>github.com/OpenZeppelin/ethernaut</a>.</p><p>你也对开发智能合约和其安全性感兴趣吗? 你是否被保障区块链基础设施这个重要的任务吸引? <a href='https://openzeppelin.com/jobs' target='_blank' rel='noopener noreferrer'><strong style={{ color: '#eb5424', fontWeight: 600 }}>加入我们!</strong></a></p><p> 你喜欢这个游戏但是没有你的语言? <a href='https://github.com/OpenZeppelin/ethernaut/tree/master/README.md#adding-new-languages' target='_blank' rel='noopener noreferrer'><strong style={{ color: '#eb5424', fontWeight: 600 }}> 快来贡献吧!</strong></a></p>",
+    "info": "<p>Ethernaut 是一个基于 Web3/Solidity 的对抗游戏，受 <a href='https://overthewire.org' target='_blank' rel='noopener noreferrer'>overthewire.org</a> 启发, 运行于以太坊虚拟机. 每个关卡是一个需要被 'hacked' 的智能合约.</p><p> 整个游戏百分百开源，并且由不同玩家贡献. 如果你也有有意思的想法? 欢迎PRs到 <a href='https://github.com/OpenZeppelin/ethernaut'>github.com/OpenZeppelin/ethernaut</a>.</p><p>你也对开发智能合约和其安全性感兴趣吗? 你是否被保障区块链基础设施这个重要的任务吸引? <a href='https://grnh.se/dd38880f3us' target='_blank' rel='noopener noreferrer'><strong style={{ color: '#eb5424', fontWeight: 600 }}>加入我们!</strong></a></p><p> 你喜欢这个游戏但是没有你的语言? <a href='https://github.com/OpenZeppelin/ethernaut/tree/master/README.md#adding-new-languages' target='_blank' rel='noopener noreferrer'><strong style={{ color: '#eb5424', fontWeight: 600 }}> 快来贡献吧!</strong></a></p>",
     "home": "主页",
     "help": "帮助",
     "stats": "状态",
@@ -52,7 +52,7 @@
     "unableToRetrieveLevelMessage": "无法获得关卡实例! 请检查gas并重新尝试.",
     "transactionNoLogsMessage": "交易不含日志",
     "noPlayerAddressMessage": "玩家地址不存在! 请确保 1) 你安装了Metamask浏览器插件 并且 2) 它没有被锁住. 3 optional) 如果你不想暴露你的信息，从十一月二日起，你可以在设置里打开隐私模式 (默认关闭). 4 optional) 如果隐私模式被打开，你需要授权metamask使用这个页面. 5) 然后刷新.",
-    "noEthersMessage": "哎呀, 你没有 ether! 在 https://faucet.rinkeby.io/ 获取",
+    "noEthersMessage": "哎呀, 你没有 ether! 在 https://faucet.rinkeby.io/, https://faucets.chain.link/rinkeby 或https://faucet.paradigm.xyz/ 获取",
     "submitLevelMessage": "正在提交关卡实例...",
     "wellDoneMessage": "牛逼！",
     "completedLevelMessage": "你通过了这关!!!",
@@ -72,4 +72,6 @@
     "helperGetNetworkId": "获得以太网id",
     "helperToWei": "从ether转换到wei",
     "helperFromWei": "从wei转换到ether"
+    "levelNotTranslated": "这一关卡还没有被翻译或是翻译不完全 ",
+    "contributeTranslation": "来帮助我们翻译吧"
 }

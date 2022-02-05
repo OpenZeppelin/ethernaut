@@ -55,7 +55,7 @@ ethernaut.owner()
 
 &nbsp;
 #### 6. 获得测试ether
-你需要ether来进行这个游戏. 在测试网络上获得ether最简单的方法是通过 [this faucet](https://faucet.rinkeby.io/).
+你需要ether来进行这个游戏. 在测试网络上获得ether最简单的方法是通过 [this](https://faucet.rinkeby.io/), [this](https://faucets.chain.link/rinkeby) 或 [this faucet](https://faucet.paradigm.xyz/).
 
 一旦你在你的余额中有一些ether之后，我们就可以进行下一步。
 
