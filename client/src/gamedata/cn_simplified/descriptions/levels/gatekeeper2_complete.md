@@ -1,0 +1,1 @@
+准备好了! 现在你通过了守门人, 你现在可以加入 [theCyber](https://etherscan.io/address/thecyber.eth#code), 一个在以太坊主网上的去中心化俱乐部. 联系作者并获得通关密语 [reddit](https://www.reddit.com/user/0age) 或通过 [email](mailto:0age@protonmail.com) 然后注册合约 [gatekeepertwo.thecyber.eth](https://etherscan.io/address/gatekeepertwo.thecyber.eth#code) (注意只有128个名额会被合约接受).
