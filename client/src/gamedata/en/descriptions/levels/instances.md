@@ -71,7 +71,7 @@ Just as you did with the ethernaut contract, you can inspect this contract's ABI
 
 &nbsp;
 #### 9. Interact with the contract to complete the level
-Look into the levels's info method
+Look into the level's info method
 ```
 contract.info()
 ```
