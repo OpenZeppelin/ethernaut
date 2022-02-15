@@ -157,14 +157,77 @@ class Header extends React.Component {
   render() {
     let strings = loadTranslations(this.state.lang);
     return (
-      <div>
-        <div className="lines">
-          <center>
-            <hr className="top" />
-          </center>
-          <center>
-            <hr className="top" />
-          </center>
+      <nav className="navbar navbar-default" style={{
+        borderRadius: '0px',
+        backgroundImage: '',
+        backgroundColor: 'red',
+        zIndex: 10000
+      }}>
+        <div style={{height: '50px'}}>
+
+          {/* HEADER */}
+          <div className="navbar-header">
+
+            <button style={{display: 'none'}} type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span className="sr-only">{strings.toggleNavigation}</span>
+            </button>
+
+            <div className="navbar-brand" style={{paddingTop: '0', paddingBottom: '0', paddingLeft: '25px', lineHeight: '49px'}}>
+              <span>
+                <a href="https://openzeppelin.com" target="_blank" rel='noopener noreferrer'>
+                  <img style={{width: '40px', height: '40px'}} src='../../imgs/openzeppelin-logo.svg' alt='OpenZeppelin'/>
+                </a>
+              </span>
+              &nbsp;
+              <Link to={constants.PATH_ROOT}  style={{ textDecoration: 'none' }}>
+                <span style={{display: 'inline-block', verticalAlign: 'text-top', lineHeight: '22px'}}>{strings.ethernaut}</span>
+              </Link>
+            </div>
+
+          </div>
+
+          {/* CONTENT */}
+          <div className="navbar-collapse collapse" style={{display: 'block', height: '50px'}}>
+
+            {/* LEFT */}
+            <ul className="nav navbar-nav" style={{paddingLeft: '10px'}}>
+              <li className={currentPath === constants.PATH_ROOT ? 'active' : ''}>
+                <Link to={constants.PATH_ROOT} style={{fontSize: '16px'}}>{strings.home}</Link>
+              </li>
+              <li className={currentPath === constants.PATH_HELP ? 'active' : ''}>
+                <Link to={constants.PATH_HELP} style={{fontSize: '16px'}}>{strings.help}</Link>
+              </li>
+              {/* <li className={currentPath === constants.PATH_STATS ? 'active' : ''}>
+                <Link to={constants.PATH_STATS} style={{fontSize: '16px'}}>{strings.stats}</Link>
+              </li> */}
+            </ul>
+
+            {/* RIGHT */}
+            <ul className="nav navbar-nav pull-right" style={{float: 'right'}}>
+            <li>
+              <ConsoleDetect/>
+            </li>
+            {/* VERSIONS */}
+            { constants.SHOW_VERSION &&
+                <li>
+                <span style={{fontSize: '12px'}}>
+                  {`v${constants.VERSION}`}
+                </span>
+                </li>
+            }
+            <li>
+              <select style={{fontSize: 'small'}} onChange={this.changeLanguage.bind(this)} value={this.state.lang ? this.state.lang : 'en'}>
+                  <option value="en">{strings.english}</option>
+                  <option value="es">{strings.spanish}</option>
+                  <option value="ja">{strings.japanese}</option>
+                  <option value="cn_simplified">{strings.chinese_simplified}</option>
+                  <option value="tr">{strings.turkish}</option>
+                </select>
+            </li>
+
+
+            </ul>
+          </div>
         </div>
         <center>
           <header>
