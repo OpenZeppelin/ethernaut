@@ -6,7 +6,7 @@
     "help": "帮助",
     "stats": "状态",
     "ethernautHelp": "使用指南",
-    "footer": "developed with <span aria-hidden='true' class='fa fa-heart' style='color: red;'></span> and <span aria-hidden='true' class='fa fa-flash' style='color: yellow;'></span> by the <a href='https://openzeppelin.com'>OpenZeppelin</a> team",
+    "footer": "developed with <span aria-hidden='true' class='fa fa-heart' style='color: red; background: black;'></span> and <span aria-hidden='true' class='fa fa-flash' style='color: yellow; background: black;'></span> by the <a href='https://openzeppelin.com'>OpenZeppelin</a> team",
     "english": "英语",
     "spanish": "西班牙语",
     "japanese":"日语",

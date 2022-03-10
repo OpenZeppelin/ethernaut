@@ -6,7 +6,7 @@
     "help": "Ayuda",
     "stats": "Estadísticas",
     "ethernautHelp": "Guía para jugar",
-    "footer": "desarrollado con <span aria-hidden='true' class='fa fa-heart' style='color: red;'></span> y <span aria-hidden='true' class='fa fa-flash' style='color: yellow;'></span> por el equipo de <a href='https://openzeppelin.com'>OpenZeppelin</a>",
+    "footer": "desarrollado con <span aria-hidden='true' class='fa fa-heart' style='color: red; background: black;'></span> y <span aria-hidden='true' class='fa fa-flash' style='color: yellow; background: black;'></span> por el equipo de <a href='https://openzeppelin.com'>OpenZeppelin</a>",
     "english": "Inglés",
     "spanish": "Español",
     "japanese":"Japonés",
