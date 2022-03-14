@@ -13,9 +13,33 @@
   }
 
   .logo {
-    width: 10%;
+    width: 100%;
     color: black;
+    cursor: pointer;
+    padding-left: 30px;
   }
+
+  .boxes{
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Boxes */
+  
+  
+  .boxes{
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 60px; 
+  }
+  .boxes section {
+    padding: 15px 25px 15px 25px;
+    border: 1px;
+    border-style: solid;
+    border-color:#eddfd6;
+    margin: 10px;
+   }
 
   .main,
   .home,
@@ -85,10 +109,6 @@
     margin-top: 1%;
   
   }
-
-  .logo {
-    cursor: pointer;
-  }
   
   .hiring {
     color: #eddfd6;
@@ -134,6 +154,7 @@
   .dropdown-content {
     display: none;
     right:55px;
+    top: 85px;
     position: fixed;
     background-color: black;
     min-width: 100px;
@@ -171,8 +192,6 @@
     color: #eddfd6;
   }
   
-
-
   .dropdown-content .contr {
     background-color: black;
     color: #eddfd6;
@@ -199,7 +218,6 @@
   }
 
   .titles ul{
-
     position: relative;
     text-align: center;
     align-items:center;
@@ -208,14 +226,6 @@
   }
 
   /* Game */
-
-  .game{
-    width: 85%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1% 0% 5% 0%;
-  }
 
   .top{
     border:none;
@@ -226,12 +236,11 @@
     padding: 1px 0% 0% 0% ;
   }
 
-  .Game {
+  .game {
       display: flex;
       flex-wrap: wrap;
-      margin-left: 4%;
       align-items:center;
-      padding-left: 14%;
+      padding-left: 10%;
       padding-right: 50px;
       margin-top: 4%;
   }
@@ -330,8 +339,10 @@
   }
 
   .logo {
-    width: 10%;
+    width: 100%;
     color: black;
+    cursor: pointer;
+    padding-left: 30px;
   }
 
   .main,
@@ -371,16 +382,6 @@
     background-color: #eddfd6;
   }
 
-  .buttons2{
-    background-color: #eddfd6;
-    border: solid 1px black;
-    border-radius: 4px;
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 4px 9px;
-    font-style: none;
-  } 
-
   /* Header */
   header {
     display: flex;
@@ -390,10 +391,6 @@
     margin-top: 1%;
     
     list-style: none;
-  }
-
-  .logo {
-    cursor: pointer;
   }
 
   nav li {
@@ -431,9 +428,15 @@
     font-size: x-large;
   }
 
+  a:not([href]):not([class]) {
+    color: black;
+    text-decoration: none;
+  }
+
   .dropdown-content {
     display: none;
     right:200px;
+    top: 85px;
     position: fixed;
     background-color: black;
     min-width: 100px;
@@ -504,14 +507,6 @@
 
   /* Game */
 
-  .game{
-    width: 85%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0% 0% 5% 0%;
-  }
-
   hr {
     border:none;
     border-top:1px dashed black;
@@ -540,12 +535,11 @@
     padding: 1px 0% 0% 0% ;
   }
 
-  .Game {
+  .game {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 4%;
     align-items:center;
-    padding-left: 14%;
+    padding-left: 10%;
     padding-right: 50px;
     margin-top: 4%;
   }
@@ -631,7 +625,7 @@
 
 /*//Mobile Screen//*/
 
-@media only screen and (max-width: 700px)
+@media only screen and (max-width: 1000px)
 
 {
 
@@ -648,6 +642,7 @@
     width: 10%;
     color: black;
     cursor: pointer;
+    padding-left: 30px;
   }
 
   .main,
@@ -686,16 +681,6 @@
   button :hover{
     background-color: #eddfd6;
   }
-
-  .buttons2 {
-    background-color: #eddfd6;
-    border: solid 1px black;
-    border-radius: 4px;
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 4px 9px;
-    font-style: none;
-  } 
 
   /* Header */
 
@@ -817,14 +802,6 @@
 
   /* Game */
 
-  .game{
-    width: 85%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0% 0% 5% 0%;
-  }
-
   hr {
     border:none;
     border-top:1px dashed black;
@@ -853,12 +830,11 @@
     padding: 1px 0% 0% 0%;
   }
 
-  .Game {
+  .game {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 4%;
     align-items:center;
-    padding-left: 14%;
+    padding-left: 10%;
     padding-right: 50px;
     margin-top: 4%;
   }

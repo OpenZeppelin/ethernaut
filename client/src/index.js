@@ -14,7 +14,6 @@ import * as Sentry from "@sentry/browser";
 import { Integrations } from '@sentry/tracing';
 
 import App from './containers/App';
-import Home from './containers/Home';
 import NotFound404 from './components/NotFound404';
 
 // For bundle splitting without lazy loading.
@@ -42,17 +41,15 @@ ReactDOM.render(
       <Route
         path={constants.PATH_ROOT}
         children={({ location }) => (
-          <App location={location}>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense location={location} fallback={<div>Loading...</div>}>
               <Switch>
                 <Route path={constants.PATH_HELP} component={Help}/>
                 <Route path={constants.PATH_LEVEL} component={Level}/>
                 <Route path={constants.PATH_STATS} component={Stats}/>
-                <Route exact path="/" component={Home}/>
+                <Route exact path="/" component={App}/>
                 <Route path="/" component={NotFound404}/>
               </Switch>
             </Suspense>
-          </App>
         )}
       />
     </Router>

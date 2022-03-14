@@ -4,6 +4,9 @@ import Header from './Header';
 import ReactGA from 'react-ga'
 import * as constants from '../constants';
 import { loadTranslations } from '../utils/translations'
+import parse from 'html-react-parser'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
 class App extends React.Component {
 
@@ -21,56 +24,56 @@ class App extends React.Component {
     }
   }
 
+  navigateToFirstIncompleteLevel() {
+    console.log(this.props)
+    // Find first incomplete level
+    let target = this.props.levels[0].deployedAddress
+    for(let i = 0; i < this.props.levels.length; i++) {
+      const level = this.props.levels[i]
+      const completed = this.props.completedLevels[level.deployedAddress]
+      if(!completed) {
+        target = level.deployedAddress
+        break
+      }
+    }
+
+    // Navigate to first incomplete level
+    this.props.history.push(`${constants.PATH_LEVEL_ROOT}${target}`)
+  }
+
   render() {
     let language = localStorage.getItem('lang')
     let strings = loadTranslations(language)
-    // return (
-    //   <div style={{ fontFamily: '"Helvetica Neue", Lato, sans-serif'}}>
-    //     <Header/>
-
-    //     {/* SPLIT VIEW */}
-    //     <Sidebar
-    //       sidebar={<div style={{ width: '200px' }}><SidebarContent/></div>}
-    //       transitions={false}
-    //       docked={true}
-    //       shadow={false}
-    //       styles={{ root: { top: 62, bottom: 20 }, sidebar: { backgroundColor: '#e5f2fb', boxShadow: 'none' }, content: { overflowX: 'hidden' }}}
-    //     >
-    //     <div ref={el => this.childrenElement = el}>
-    //       {this.props.children}
-    //     </div>
-    //     </Sidebar>
-
-    //     {/* FOOTER */}
-    //     <footer className="footer text-center text-muted">
-    //       <small dangerouslySetInnerHTML={{ __html: strings.footer }}></small>
-    //     </footer>
-    //   </div>
-    // );
     return (
       <div>
+        {/* Two lines above */}
         <div className="lines">
           <center><hr className="top" /></center>
           <center><hr className="top" /></center>
         </div>
-        <Header></Header>
+        {/* Header */}
+        <Header>
+        </Header>
+        {/* Parent container */}
         <main>
-          <section className="Titles">
-            <img src="../../imgs/R.svg" alt="The-Ethernaut" className="Ethernaut" />
+          {/* Main title and buttons */}
+          <section className="titles">
+            <a href={constants.PATH_ROOT}><img src="../../imgs/R.svg" alt="The-Ethernaut" className="Ethernaut" /></a>
             <img src="../../imgs/Rectangle 286.svg" alt="arrows" className="arrow" />
             <ul>
-              <a className="buttons" href="#"><button>Start</button></a>
-              <a className="buttons" href="#"><button className="button2">How to play</button></a>
+              <button onClick={() => this.navigateToFirstIncompleteLevel()} className="buttons">{strings.playNow}</button>
             </ul>      
           </section>
-
+          {/* Levels */}
           <Mosaic>
-            </Mosaic>
-            <section className="Description">
+          </Mosaic>
+          {/* Game description */}
+          <section className="Description">
               <center><hr /></center>
-              <h2>The <u>Ethernaut</u> is a Web3/Solidity based wargame inspired on overthewire.org, played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'.The game is 100% open source and all levels are contributions made by other players. Do you have an interesting idea? PRs are <button>Welcome</button></h2>
-            </section>    
+              {parse(strings.info)}
+          </section> 
         </main>
+        {/* Footer */}
         <footer dangerouslySetInnerHTML={{ __html: strings.footer }}>
         </footer>
       </div>
@@ -78,4 +81,20 @@ class App extends React.Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    levels: state.gamedata.levels,
+    completedLevels: state.player.completedLevels
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+
+  }, dispatch);
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

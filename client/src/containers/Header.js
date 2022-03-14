@@ -3,8 +3,6 @@ import {connect} from 'react-redux'
 import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions'
-import { Link } from 'react-router-dom'
-import ConsoleDetect from '../components/ConsoleDetect'
 import * as constants from '../constants';
 import { loadTranslations } from '../utils/translations'
 
@@ -23,123 +21,38 @@ class Header extends React.Component {
   }
 
   render() {
-    const currentPath = this.props.location.pathname
     let strings = loadTranslations(this.state.lang)
     return (
       <header>
       <nav>
         <li>
           <ul className="nav-links">
-            <a href="#">Ethernaut</a>
-            <a className="buttons" href="#"><button>We're hiring!</button></a>
+            <a className="buttons" href="https://grnh.se/dd38880f3us"><button>{strings.hiring}</button></a>
           </ul>
         </li>
       </nav>
-      <img className="logo" src="../../imgs/exports.svg" alt="logo" />
+      <a href="https://openzeppelin.com"><img className="logo" src="../../imgs/exports.svg" alt="logo" /></a>
       <nav>
       <li>
         <ul className="nav-links">
-          <a className="buttons" href="#"><button>{strings.help}</button></a> 
-          <a className="buttons" href="#"><button>Contribute</button></a>
+          <a className="buttons" href={constants.PATH_HELP}><button>{strings.ethernautHelp}</button></a> 
           <div className="dropdown">
-            <a className="icon-buttons"><i className="fas fa-globe-americas"></i></a>
-            {/* <select className="dropdown-content" style={{fontSize: 'small'}} onChange={this.changeLanguage.bind(this)} value={this.state.lang ? this.state.lang : 'en'}>
-              <option value="en">{strings.english}</option>
-              <option value="es">{strings.spanish}</option>
-              <option value="ja">{strings.japanese}</option>
-              <option value="cn_simplified">{strings.chinese_simplified}</option>
-              <option className="contr"href="https://github.com/openzeppelin/ethernaut#modify-or-add-new-languages">Contribute</option>
-            </select> */}
+            <a className="icon-buttons" href='/'><i className="fas fa-globe-americas"></i></a>
             <div className="dropdown-content">
-              <a value="en">{strings.english}</a>
-              <a value="es">{strings.spanish}</a>
-              <a value="ja">{strings.japanese}</a>
-              <a value="cn_simplified">{strings.chinese_simplified}</a>
-              <a className="contr" href="https://github.com/openzeppelin/ethernaut#modify-or-add-new-languages">Contribute</a>
+              <a onClick={() => {this.changeLanguage('en')}} href='/'>{strings.english}</a>
+              <a onClick={() => {this.changeLanguage('es')}} href='/'>{strings.spanish}</a>
+              <a onClick={() => {this.changeLanguage('ja')}} href='/'>{strings.japanese}</a>
+              <a onClick={() => {this.changeLanguage('cn_simplified')}} href='/'>{strings.chinese_simplified}</a>
+              <a className="contr" href="https://github.com/openzeppelin/ethernaut#modify-or-add-new-languages">{strings.contributeTranslation}</a>
             </div>
           </div>
         </ul>
         </li>
       </nav>
     </header>
-
-      // <nav className="navbar navbar-default" style={{
-      //   borderRadius: '0px',
-      //   backgroundImage: '',
-      //   backgroundColor: 'red',
-      //   zIndex: 10000
-      // }}>
-      //   <div style={{height: '50px'}}>
-
-      //     {/* HEADER */}
-      //     <div className="navbar-header">
-
-      //       <button style={{display: 'none'}} type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-      //         <span className="sr-only">{strings.toggleNavigation}</span>
-      //       </button>
-
-      //       <div className="navbar-brand" style={{paddingTop: '0', paddingBottom: '0', paddingLeft: '25px', lineHeight: '49px'}}>
-      //         <span>
-      //           <a href="https://openzeppelin.com" target="_blank" rel='noopener noreferrer'>
-      //             <img style={{width: '40px', height: '40px'}} src='../../imgs/openzeppelin-logo.svg' alt='OpenZeppelin'/>
-      //           </a>
-      //         </span>
-      //         &nbsp;
-      //         <Link to={constants.PATH_ROOT}  style={{ textDecoration: 'none' }}>
-      //           <span style={{display: 'inline-block', verticalAlign: 'text-top', lineHeight: '22px'}}>{strings.ethernaut}</span>
-      //         </Link>
-      //       </div>
-
-      //     </div>
-
-      //     {/* CONTENT */}
-      //     <div className="navbar-collapse collapse" style={{display: 'block', height: '50px'}}>
-
-      //       {/* LEFT */}
-      //       <ul className="nav navbar-nav" style={{paddingLeft: '10px'}}>
-      //         <li className={currentPath === constants.PATH_ROOT ? 'active' : ''}>
-      //           <Link to={constants.PATH_ROOT} style={{fontSize: '16px'}}>{strings.home}</Link>
-      //         </li>
-      //         <li className={currentPath === constants.PATH_HELP ? 'active' : ''}>
-      //           <Link to={constants.PATH_HELP} style={{fontSize: '16px'}}>{strings.help}</Link>
-      //         </li>
-      //         {/* <li className={currentPath === constants.PATH_STATS ? 'active' : ''}>
-      //           <Link to={constants.PATH_STATS} style={{fontSize: '16px'}}>{strings.stats}</Link>
-      //         </li> */}
-      //       </ul>
-
-      //       {/* RIGHT */}
-      //       <ul className="nav navbar-nav pull-right" style={{float: 'right'}}>
-      //       <li>
-      //         <ConsoleDetect/>
-      //       </li>
-      //       {/* VERSIONS */}
-      //       { constants.SHOW_VERSION &&
-      //           <li>
-      //           <span style={{fontSize: '12px'}}>
-      //             {`v${constants.VERSION}`}
-      //           </span>
-      //           </li>
-      //       }
-      //       <li>
-      //         <select style={{fontSize: 'small'}} onChange={this.changeLanguage.bind(this)} value={this.state.lang ? this.state.lang : 'en'}>
-      //             <option value="en">{strings.english}</option>
-      //             <option value="es">{strings.spanish}</option>
-      //             <option value="ja">{strings.japanese}</option>
-      //             <option value="cn_simplified">{strings.chinese_simplified}</option>
-      //           </select>
-      //       </li>
-
-
-      //       </ul>
-      //     </div>
-      //   </div>
-
-      // </nav>
     );
   }
 }
-
 
 function mapStateToProps(state) {
   return { allLevelsCompleted: state.player.allLevelsCompleted }
@@ -150,4 +63,5 @@ function mapDispatchToProps(dispatch) {
     setLang: actions.setLang
   }, dispatch);
 }
+
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header))

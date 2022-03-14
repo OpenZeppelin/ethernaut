@@ -15,10 +15,50 @@ class Help extends React.Component {
       file = require(`../gamedata/en/descriptions/pages/help.md`)
     }
     return (
-      <div className="page-container">
-        <h2 className="title">{strings.ethernautHelp}</h2>
-        { file && <MarkdownComponent target={file}/> }
-      </div>
+      // <div className="page-container">
+      //   <h2 className="title">{strings.ethernautHelp}</h2>
+      //   { file && <MarkdownComponent target={file}/> }
+      // </div>
+      <main class="boxes">
+        
+        <section>
+        
+        <h3>Game Mechanics</h3>
+        
+            <p>
+            {strings.gameMechanics}
+          </p>
+
+        </section>
+        <section>
+        
+        <h3>Using the console</h3>
+        
+          <p>
+          {strings.usingConsole}
+        </p>
+
+        </section>
+        <section>
+        
+        <h3>Beyond the console</h3>
+        
+          <p>
+          {strings.beyondConsole}
+        </p>
+
+        </section>
+        <section>
+        
+        <h3>Troubleshooting</h3>
+        
+          <p>
+          {strings.troubleshooting}
+        </p>
+
+        </section>
+
+      </main>
     )
   }
 }
