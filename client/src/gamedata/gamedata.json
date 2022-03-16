@@ -389,6 +389,21 @@
       "deployId": "25",
       "instanceGas": 5000000,
       "author": "openzeppelin"
+    },
+    {
+      "name": "FortaCounter",
+      "created": "2022-03-14",
+      "difficulty": "3",
+      "description": "fortacounter.md",
+      "completedDescription": "fortacounter_complete.md",
+      "levelContract": "FortaCounterFactory.sol",
+      "instanceContract": "FortaCounter.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "26",
+      "instanceGas": 5000000,
+      "author": "openzeppelin"
     }
   ]
 }
