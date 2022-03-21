@@ -21,8 +21,5 @@
     "build:ethernaut": "yarn compile:contracts && cd client && yarn build",
     "start:ethernaut": "cd client && yarn start",
     "test:contracts": "cd contracts && hardhat test"
-  },
-  "devDependencies": {
-    "hardhat": "^2.9.1"
   }
 }
