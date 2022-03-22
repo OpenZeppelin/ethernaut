@@ -2,8 +2,7 @@ Congratulations !
 
 This is the first experience you have with a [Forta's agent](https://docs.forta.network/en/latest/). 
 
-Forta agents help you in monitoring specific things happening in the blockchain and that have an implementation which is executed everytime they are triggered. Forta agents are really useful for monitoring live blockchain events and might help newer protocols into implementing reactive strategies. 
-
+The Forta Protocol has two main components – agents and nodes. Agents are scripts that look for certain transaction characteristics or state changes (e.g. anomaly detection) on smart contracts across any Layer 1, Layer 2, or sidechain. Nodes run agents against each block of transactions. When the agents detect a specific condition or event, the network emits an alert which is stored on IPFS and linked on a public blockchain. Forta also maintains an automated public registry of all alerts, and anyone interested in the security of a contract can consume relevant alerts via the explorer or API.
 The presented example is just for educational purpose since Forta agents are not modeled into smart contracts. This level showcases how they can be defeated if the system depends on an upgradeable contract that might remove agent's observed events.
 
 If there are contracts which are upgradeable and that might break your specific agent, you can even create a specific agent to look for contract  upgrades and react to it. Learn how to do it [here](https://docs.forta.network/en/latest/quickstart/).

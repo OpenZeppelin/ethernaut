@@ -2,11 +2,11 @@ In this level you have a DEX pool with a special functionality, the `sweepToken`
 
 The underlying token is an instance of the DET token implemented in `DoubleEntry` contract definition and the DEX holds 100 units of it. Additionally the DEX also holds 100 of `LegacyToken LGT` which is unexpectedly related to `DoubleEntry`.
 
-The `DoubleEntry` DET implements a models of a [Forta's agent](https://forta.org/) which is here for educational purposes and doesn't represent the actual functioning design of it.
+The `DoubleEntry` DET implements a models of a [Forta's agent](https://docs.forta.network/en/latest/) which is here for educational purposes and doesn't represent the actual functioning design of it. Forta is the first runtime intelligence network on the security and health of Web3 core infrastructure and dApps.
 
 An importante notice is that the `DoubleEntry` DET token is deployed behind a [`TransparentUpgradeableProxy`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v3.2.0/contracts/proxy/TransparentUpgradeableProxy.sol).
 
-Your goal is to suceed **in order** to:
+Your goal is to succeed **in order** to:
 - Have `Agent` not being called again when calling `delegateTransfer` function.
 - Sweep all LTT tokens from DEX.
 

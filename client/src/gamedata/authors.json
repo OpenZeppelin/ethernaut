@@ -53,6 +53,11 @@
       "name": "OpenZeppelin",
       "email": "ethernaut@zeppelin.solutions",
       "website": "https://openzeppelin.com"
+    },
+    "openzeppelin&forta": {
+      "name": "OpenZeppelin in collaboration with Forta",
+      "email": "ethernaut@zeppelin.solutions - info@forta.org",
+      "website": "https://openzeppelin.com - https://forta.org"
     }
   }
 }
