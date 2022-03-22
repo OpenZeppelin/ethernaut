@@ -46,20 +46,16 @@ contract DEX {
 }
 
 contract LegacyToken is ERC20("LegacyToken", "LGT"), Ownable {
-    // If this contract needs to be upgraded, the new contract will be stored
-    // in 'delegate' and any ERC20 calls to this contract will be delegated to that one.
     DelegateERC20 public delegate;
 
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
     }
 
-    // Can undelegate by passing in newContract = address(0)
     function delegateToNewContract(DelegateERC20 newContract) public onlyOwner {
         delegate = newContract;
     }
 
-    // If a delegate has been designated, all ERC20 calls are forwarded to it
     function transfer(address to, uint256 value) public override returns (bool) {
         if (address(delegate) == address(0)) {
             return super.transfer(to, value);
@@ -69,7 +65,7 @@ contract LegacyToken is ERC20("LegacyToken", "LGT"), Ownable {
     }
 }
 
-contract DoubleEntry is ERC20("LatestToken", "LTT"), DelegateERC20, Ownable {
+contract DoubleEntry is ERC20("DoubleEntryToken", "DET"), DelegateERC20, Ownable {
     address public dex;
     address public player;
     address public delegatedFrom;
@@ -87,7 +83,6 @@ contract DoubleEntry is ERC20("LatestToken", "LTT"), DelegateERC20, Ownable {
         _mint(dex, 100 ether);
     }
 
-    // require msg.sender is the delegate smart contract
     modifier onlyDelegateFrom() {
         require(msg.sender == delegatedFrom);
         _;

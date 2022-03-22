@@ -6,8 +6,8 @@ Forta agents help you in monitoring specific things happening in the blockchain 
 
 The presented example is just for educational purpose since Forta agents are not modeled into smart contracts. This level showcases how they can be defeated if the system depends on an upgradeable contract that might remove agent's observed events.
 
-If there are contracts which are upgradeable and that might break your specific agent, you can even create a specific agent to look for contract's upgrade and react to it. Learn how to do it [here](https://docs.forta.network/en/latest/quickstart/).
+If there are contracts which are upgradeable and that might break your specific agent, you can even create a specific agent to look for contract  upgrades and react to it. Learn how to do it [here](https://docs.forta.network/en/latest/quickstart/).
 
-But you have also passed to a recent security issue that has been patched during our latest collaboration with Compound.
+But you have also passed to a recent security issue that has been uncovered during our latest [collaboration with Compound protocol](https://compound.finance/governance/proposals/76).
 
-You can read the entire details of it [here](https://blog.openzeppelin.com/compound-tusd-integration-issue-retrospective/). 
+Having tokens that present double entry point is a non trivial pattern that might affect many protocols. This is because is commonly assumed invariant to have one contract per token. But it was not the case this time :) You can read the entire details of what happened [here](https://blog.openzeppelin.com/compound-tusd-integration-issue-retrospective/).

@@ -403,6 +403,7 @@
       "deployFunds": 0,
       "deployId": "26",
       "instanceGas": 5000000,
+      "poweredBy": "../../imgs/forta_black.svg",
       "author": "openzeppelin"
     }
   ]
