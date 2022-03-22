@@ -98,8 +98,8 @@ class Level extends React.Component {
             <h2 className="title no-margin">
               {level.name}
             </h2>
-            {level.poweredBy && <p>{strings.poweredBy} <img style={{width: '80px', height: '80px'}} src={level.poweredBy}/></p>}
-            <h2></h2>
+            {level.poweredBy && <p>{strings.poweredBy} <img alt="" style={{width: '80px', height: '80px'}} src={level.poweredBy}/></p>}
+            <h2> </h2>
             { levelCompleted === true && <span className='label label-default'>{strings.levelCompleted}</span>}
           </div>
           <div className="difficulty col-sm-6 right">
