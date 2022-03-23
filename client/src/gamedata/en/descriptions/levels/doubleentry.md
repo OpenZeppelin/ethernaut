@@ -4,7 +4,7 @@ The underlying token is an instance of the DET token implemented in `DoubleEntry
 
 The `DoubleEntry` DET implements a models of a [Forta's agent](https://docs.forta.network/en/latest/) which is here for educational purposes and doesn't represent the actual design of it. Forta is the first runtime intelligence network on the security and health of Web3 core infrastructure and dApps.
 
-An importante notice is that the `DoubleEntry` DET token is deployed behind a [`TransparentUpgradeableProxy`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v3.2.0/contracts/proxy/TransparentUpgradeableProxy.sol).
+An important notice is that the `DoubleEntry` DET token is deployed behind a [`TransparentUpgradeableProxy`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v3.2.0/contracts/proxy/TransparentUpgradeableProxy.sol).
 
 Your goal is to succeed **in order** to:
 - Have `Agent` not being called again when calling `delegateTransfer` function.
