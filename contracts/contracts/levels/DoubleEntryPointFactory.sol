@@ -17,7 +17,7 @@ contract DoubleEntryPointFactory is Level {
   }
 
   function createInstance(address _player) override public payable returns (address) {
-    // Create legacy and latest token
+    // Create Legacy and DoubleEntryPoint token
     LegacyToken oldToken = new LegacyToken();
     oldToken.initialize();
     DoubleEntryPoint newToken = new DoubleEntryPoint();
@@ -33,11 +33,11 @@ contract DoubleEntryPointFactory is Level {
     // Activate legacy support to newToken
     oldToken.delegateToNewContract(DelegateERC20(address(proxy)));
     
-    // Give CryptoVault some LGT (LegactyTokens)
+    // Give CryptoVault some LGT (LegacyTokens)
     oldToken.mint(address(vault), 100 ether);
 
     // Initialize
-    // Notice that the initialize function will mint 100 LTT (DoubleEntryPoint token) to the CryptoVault
+    // Notice that the initialize function will mint 100 DET (DoubleEntryPoint token) to the CryptoVault
     proxiedToken.initialize(address(oldToken), address(vault), address(agent), _player);
 
     // Assign agent to player on mapping
