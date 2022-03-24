@@ -2,9 +2,9 @@ This level features a `CryptoVault` with special functionality, the `sweepToken`
 
 The underlying token is an instance of the DET token implemented in `DoubleEntryPoint` contract definition and the `CryptoVault` holds 100 units of it. Additionally the `CryptoVault` also holds 100 of `LegacyToken LGT` which is unexpectedly related to `DoubleEntryPoint`.
 
-A model of a [Forta agent](https://docs.forta.network/en/latest/) which is here for educational purposes and doesn't represent the actual functioning design of it is presented but not used by any contract yet. Forta is the first decentralized runtime intelligence network on the security and health of Web3 core infrastructure and dApps. Your jop is to implement `Agent` inside `DoubleEntryPoint`.
+A model of a [Forta agent](https://docs.forta.network/en/latest/) which is here for educational purposes and doesn't represent the actual functioning design of it is presented but not used by any contract yet. Forta is the first decentralized runtime intelligence network on the security and health of Web3 core infrastructure and dApps. Your job is to implement `Agent` inside `DoubleEntryPoint` contract.
 
-An important notice is that the `DoubleEntryPoint` DET token is deployed behind a [`TransparentUpgradeableProxy`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v3.2.0/contracts/proxy/TransparentUpgradeableProxy.sol).
+An important notice is that the `DoubleEntryPoint` DET token is deployed behind a [`TransparentUpgradeableProxy`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v3.2.0/contracts/proxy/TransparentUpgradeableProxy.sol) contract.
 
 Your goal is to succeed **in order** to:
 - Have `Agent` integrated in every `delegateTransfer` function call so that a notification is sent everytime the function is called.
