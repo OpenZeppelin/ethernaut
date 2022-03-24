@@ -1,8 +1,9 @@
-const DoubleEntry = artifacts.require('./levels/DoubleEntry.sol')
-const DoubleEntryFactory = artifacts.require('./levels/DoubleEntryFactory.sol')
-const DoubleEntryAttack = artifacts.require('./attacks/DoubleEntryAttack.sol')
+const DoubleEntryPoint = artifacts.require('./levels/DoubleEntryPoint.sol')
+const DoubleEntryPointFactory = artifacts.require('./levels/DoubleEntryPointFactory.sol')
+const DoubleEntryPointAttack = artifacts.require('./attacks/DoubleEntryPointAttack.sol')
 const TransparentUpgradeableProxy = artifacts.require('@openzeppelin/contracts/proxy/TransparentUpgradeableProxy.sol')
-const DEX = artifacts.require('./levels/DEX.sol')
+const CryptoVault = artifacts.require('./levels/CryptoVault.sol')
+const Agent = artifacts.require('contracts/levels/DoubleEntryPoint.sol:Agent')
 
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
@@ -10,7 +11,7 @@ const { web3 } = require('openzeppelin-test-helpers/src/setup')
 const utils = require('../utils/TestUtils')
 
 
-contract('DoubleEntry', function(accounts) {
+contract('DoubleEntryPoint', function(accounts) {
 
   let ethernaut
   let level
@@ -19,12 +20,12 @@ contract('DoubleEntry', function(accounts) {
 
   before(async function() {
     ethernaut = await Ethernaut.new();
-    level = await DoubleEntryFactory.new()
+    level = await DoubleEntryPointFactory.new()
     await ethernaut.registerLevel(level.address)
   });
 
   it('should fail if the player did not solve the level', async function() {
-    const instance = await utils.createLevelInstance(ethernaut, level.address, player, DoubleEntry)
+    const instance = await utils.createLevelInstance(ethernaut, level.address, player, DoubleEntryPoint)
 
     const completed = await utils.submitLevelInstance(
       ethernaut,
@@ -38,19 +39,19 @@ contract('DoubleEntry', function(accounts) {
 
 
   it('should allow the player to solve the level', async function() {
-    const instance = await utils.createLevelInstance(ethernaut, level.address, player, DoubleEntry);
+    const instance = await utils.createLevelInstance(ethernaut, level.address, player, DoubleEntryPoint);
     
-    const attacker = await DoubleEntryAttack.new();
+    const attacker = await DoubleEntryPointAttack.new();
 
     const proxyContract = await TransparentUpgradeableProxy.at(instance.address)
 
-    const DexContract = await DEX.at(
-      await instance.dex({from: owner})
+    const VaultContract = await CryptoVault.at(
+      await instance.cryptoVault({from: owner})
     )
 
     await proxyContract.upgradeTo(attacker.address, {from: player});
     
-    await DexContract.sweepToken(
+    await VaultContract.sweepToken(
       await instance.delegatedFrom({from: owner})
     );
 
@@ -60,7 +61,7 @@ contract('DoubleEntry', function(accounts) {
       instance.address,
       player
     )
-    
+
     assert.isTrue(completed)
   });
 

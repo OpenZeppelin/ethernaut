@@ -50,7 +50,8 @@ const loadLevelInstance = store => next => action => {
     })
       .then(tx => {
         console.dir(tx)
-        instanceAddress = tx.logs[0].args.instance ? tx.logs[0].args.instance : tx.logs[tx.logs.length - 1].args.instance;
+
+        instanceAddress = tx.logs.find(l => l.event === 'LevelInstanceCreatedLog').args.instance;
         if(tx.logs.length > 0) {
           action.instanceAddress = instanceAddress
           store.dispatch(action)

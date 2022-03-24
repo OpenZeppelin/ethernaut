@@ -73,6 +73,8 @@ class Level extends React.Component {
         completedDescription = require(`../gamedata/en/descriptions/levels/${level.completedDescription}`) 
       }
     }
+    
+    let poweredBy = level.poweredBy.src && level.poweredBy.href ? level.poweredBy : null
 
     let sourcesFile = null
     try { sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
@@ -98,7 +100,7 @@ class Level extends React.Component {
             <h2 className="title no-margin">
               {level.name}
             </h2>
-            {level.poweredBy && <p>{strings.poweredBy} <img alt="" style={{width: '80px', height: '80px'}} src={level.poweredBy}/></p>}
+            {poweredBy && <p>{strings.poweredBy} <a href={poweredBy.href}><img alt="" style={{width: '80px', height: '80px'}} src={poweredBy.src}/></a></p>}
             <h2> </h2>
             { levelCompleted === true && <span className='label label-default'>{strings.levelCompleted}</span>}
           </div>

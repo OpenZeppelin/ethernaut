@@ -2,11 +2,11 @@
 pragma solidity ^0.6.0;
 
 import "@openzeppelin/contracts/utils/Address.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 
 interface NotificationReceiver {
-  function receiveAgentNotification(uint256 value, address player) external;
+  function receiveAgentNotification(address player) external;
 }
 
 interface DelegateERC20 {
@@ -15,38 +15,47 @@ interface DelegateERC20 {
 
 contract Agent {
   address public attachedEmissor;
+  bool public emissorSet;
+  event AddressesAre(address, address);
 
-  constructor (address emittingAddress) public {
+  function setEmissor(address emittingAddress) public {
+      require(!emissorSet, "Already set");
+      emissorSet = true;
       attachedEmissor = emittingAddress;
   }
 
-  function handleTransaction(uint256 value, address destination, address player) public {
+  function handleTransaction(address destination, address player) public {
     require(msg.sender == attachedEmissor, "Unauthorized");
-    NotificationReceiver(destination).receiveAgentNotification(value, player);
+    NotificationReceiver(destination).receiveAgentNotification(player);
   }
 }
 
-contract DEX {
-    IERC20 public underlying;
+contract CryptoVault {
     address public sweptTokensRecipient;
+    IERC20Upgradeable public underlying;
 
     constructor(address recipient, address latestToken) public {
-        underlying = IERC20(latestToken);
         sweptTokensRecipient = recipient;
+        underlying = IERC20Upgradeable(latestToken);
     }
 
     //
-    // DEX code
+    // CryptoVault code
     //
 
-    function sweepToken(IERC20 token) public {
+    function sweepToken(IERC20Upgradeable token) public {
         require(token != underlying, "Can't transfer underlying token");
         token.transfer(sweptTokensRecipient, token.balanceOf(address(this)));
     }
 }
 
-contract LegacyToken is ERC20("LegacyToken", "LGT"), Ownable {
+contract LegacyToken is ERC20Upgradeable, OwnableUpgradeable {
     DelegateERC20 public delegate;
+
+    constructor () public {
+        __ERC20_init("LegacyToken", "LGT");
+        __Ownable_init();
+    }
 
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
@@ -65,26 +74,24 @@ contract LegacyToken is ERC20("LegacyToken", "LGT"), Ownable {
     }
 }
 
-contract DoubleEntry is ERC20("DoubleEntryToken", "DET"), DelegateERC20, Ownable {
-    address public dex;
+contract DoubleEntryPoint is ERC20Upgradeable, DelegateERC20, OwnableUpgradeable {
+    address public cryptoVault;
     address public player;
     address public delegatedFrom;
-    uint256 public delegatedCalls;
-    bool public initialized;
     Agent public fortaAgent;
 
-    function initialize(address legacyToken, address dexAddress, address agent, address playerAddress) public {
-        require(!initialized, "Contract already initialized");
-        initialized = true;
+    function initialize(address legacyToken, address vaultAddress, address agent, address playerAddress) initializer public {
         delegatedFrom = legacyToken;
         fortaAgent = Agent(agent);
         player = playerAddress;
-        dex = dexAddress;
-        _mint(dex, 100 ether);
+        cryptoVault = vaultAddress;
+        __ERC20_init_unchained("DoubleEntryPointToken", "DET");
+        __Ownable_init_unchained();
+        _mint(cryptoVault, 100 ether);
     }
 
     modifier onlyDelegateFrom() {
-        require(msg.sender == delegatedFrom);
+        require(msg.sender == delegatedFrom, "Not legacy contract");
         _;
     }
 
@@ -94,8 +101,6 @@ contract DoubleEntry is ERC20("DoubleEntryToken", "DET"), DelegateERC20, Ownable
         address origSender
     ) public override onlyDelegateFrom returns (bool) {
         _transfer(origSender, to, value);
-        delegatedCalls += 1;
-        fortaAgent.handleTransaction(delegatedCalls, owner(), player);
         return true;
     }
 }

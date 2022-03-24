@@ -391,19 +391,19 @@
       "author": "openzeppelin"
     },
     {
-      "name": "DoubleEntry",
+      "name": "DoubleEntryPoint",
       "created": "2022-03-21",
       "difficulty": "4",
-      "description": "doubleentry.md",
-      "completedDescription": "doubleentry_complete.md",
-      "levelContract": "DoubleEntryFactory.sol",
-      "instanceContract": "DoubleEntry.sol",
+      "description": "doubleentrypoint.md",
+      "completedDescription": "doubleentrypoint_complete.md",
+      "levelContract": "DoubleEntryPointFactory.sol",
+      "instanceContract": "DoubleEntryPoint.sol",
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "26",
       "instanceGas": 5000000,
-      "poweredBy": "../../imgs/forta_black.svg",
+      "poweredBy": {"src": "../../imgs/forta_black.svg", "href": "https://forta.org"},
       "author": "openzeppelin&forta"
     }
   ]
