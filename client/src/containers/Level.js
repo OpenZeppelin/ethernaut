@@ -74,7 +74,7 @@ class Level extends React.Component {
       }
     }
     
-    let poweredBy = level.poweredBy.src && level.poweredBy.href ? level.poweredBy : null
+    let poweredBy = level.poweredBy?.src && level.poweredBy?.href ? level.poweredBy : null
 
     let sourcesFile = null
     try { sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`) } catch(e){ console.log(e) }
