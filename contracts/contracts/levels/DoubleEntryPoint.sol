@@ -52,10 +52,11 @@ contract CryptoVault {
 contract LegacyToken is ERC20Upgradeable, OwnableUpgradeable {
     DelegateERC20 public delegate;
 
-    constructor () public {
+    function initialize() initializer public {
         __ERC20_init("LegacyToken", "LGT");
         __Ownable_init();
     }
+
 
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);

@@ -19,6 +19,7 @@ contract DoubleEntryPointFactory is Level {
   function createInstance(address _player) override public payable returns (address) {
     // Create legacy and latest token
     LegacyToken oldToken = new LegacyToken();
+    oldToken.initialize();
     DoubleEntryPoint newToken = new DoubleEntryPoint();
 
     // Create a new Agent
