@@ -65,7 +65,7 @@ class Author extends React.Component {
 
     for(var j = 0; j<websites.length; j++) {
       websiteElements.push(
-        <span key={`${emails[j]}`}><br/><strong><a href={`mailto:${websites[j]}`} target='_blank' rel='noopener noreferrer'>{websites[j]}</a></strong></span>
+        <span key={j}><br/><strong><a href={websites[j]} target='_blank' rel='noopener noreferrer'>{websites[j]}</a></strong></span>
       )
     }
 
