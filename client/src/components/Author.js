@@ -59,13 +59,13 @@ class Author extends React.Component {
 
     for(var i = 0; i<emails.length; i++) {
       emailElements.push(
-        <span key={emails[i]}><br/><strong><a href={`mailto:${emails[i]}`} target='_blank' rel='noopener noreferrer'>{emails[i]}</a></strong></span>
+        <span key={i}><br/><strong><a href={`mailto:${emails[i]}`} target='_blank' rel='noopener noreferrer'>{emails[i]}</a></strong></span>
       )
     }
 
     for(var j = 0; j<websites.length; j++) {
       websiteElements.push(
-        <span key={`${emails[j]}`}><br/><strong><a href={`mailto:${websites[j]}`} target='_blank' rel='noopener noreferrer'>{websites[j]}</a></strong></span>
+        <span key={j}><br/><strong><a href={websites[j]} target='_blank' rel='noopener noreferrer'>{websites[j]}</a></strong></span>
       )
     }
 

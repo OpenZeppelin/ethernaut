@@ -22,7 +22,7 @@ contract DoubleEntryPointFactory is Level {
     // Activate legacy support to newToken
     oldToken.delegateToNewContract(DelegateERC20(address(newToken)));
     
-    // Give CryptoVault some LGT (LegactyTokens)
+    // Give CryptoVault some LGT (LegacyTokens)
     oldToken.mint(address(vault), 100 ether);
 
     return address(newToken);
