@@ -3,65 +3,64 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import MarkdownComponent from '../components/Markdown'
 import { loadTranslations } from '../utils/translations'
+import Header from './Header';
 
 class Help extends React.Component {
+  
   render() {
-    let file = null
     let language = localStorage.getItem('lang')
     let strings = loadTranslations(language)
-    try { 
-      file = require(`../gamedata/${language}/descriptions/pages/help.md`)
-    } catch(e){
-      file = require(`../gamedata/en/descriptions/pages/help.md`)
-    }
+
+    var newColor = hexToRgb('#eddfd6');
+
+    // document.body.style.backgroundColor = 'black';
+
     return (
-      // <div className="page-container">
-      //   <h2 className="title">{strings.ethernautHelp}</h2>
-      //   { file && <MarkdownComponent target={file}/> }
-      // </div>
-      <main class="boxes">
-        
-        <section>
-        
-        <h3>Game Mechanics</h3>
-        
-            <p>
-            {strings.gameMechanics}
-          </p>
+      <div>
+        <Header></Header>
+        <main className="boxes">
+          <section>
+          
+          <h3>Game Mechanics</h3>
+          
+          <MarkdownComponent target={strings.gameMechanics} />
 
-        </section>
-        <section>
-        
-        <h3>Using the console</h3>
-        
-          <p>
-          {strings.usingConsole}
-        </p>
+          </section>
+          <section className="emptySection">
+      
+          </section >
+          <section>
 
-        </section>
-        <section>
-        
-        <h3>Beyond the console</h3>
-        
-          <p>
-          {strings.beyondConsole}
-        </p>
+          <h3>Using the console</h3>
+          
+          <MarkdownComponent target={strings.usingConsole} />
 
-        </section>
-        <section>
-        
-        <h3>Troubleshooting</h3>
-        
-          <p>
-          {strings.troubleshooting}
-        </p>
+          </section>
+          
+          <section className="emptySection">
+      
+          </section>
 
-        </section>
+          <section>
 
-      </main>
-    )
-  }
-}
+          <h3>Beyond the console</h3>
+          
+          <MarkdownComponent target={strings.beyondConsole} />
+
+          </section>
+          <section className="emptySection">
+      
+          </section>
+          <section>
+
+          <h3>Troubleshooting</h3>
+
+          <MarkdownComponent target={strings.troubleshooting} />  
+
+          </section>
+        </main>
+      </div>)
+}}
 
 function mapStateToProps(state) {
   return {
@@ -71,6 +70,15 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch)
+}
+
+function hexToRgb(hex) {
+  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+      return r + r + g + g + b + b;
+  });
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? "rgb(" + parseInt(result[1], 16) + "," + parseInt(result[2], 16) + "," + parseInt(result[3], 16) + ")" : null;
 }
 
 export default connect(

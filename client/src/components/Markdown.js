@@ -1,5 +1,4 @@
 import React from 'react'
-import loadText from '../utils/textloader'
 import ReactMarkdown from 'react-markdown'
 
 class Markdown extends React.Component {
@@ -30,7 +29,7 @@ class Markdown extends React.Component {
     if(!this._isMounted) return
     if(this.state.target === target) return
     try {
-      const text = await loadText(target);
+      const text = target;
       this.setState({ target: target, source: text })
     } catch(error) {
       this.setState({source: undefined})

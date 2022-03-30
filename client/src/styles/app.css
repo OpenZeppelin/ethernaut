@@ -1,11 +1,39 @@
 /*//Closed Console Screen//*/
 
+   /* Boxes */
+
+   .boxes{
+    display: grid;
+    justify-content: space-between;
+    margin: 50px 60px;
+    background-color: black;
+    color:#eddfd6;
+
+  }
+
+  .boxes section {
+    padding: 15px 25px 15px 25px;
+    border: 1px;
+    border-style: solid;
+    border-color:#eddfd6;
+    margin: 10px;
+    background-color: black;
+   }
+
+  .boxes .emptySection {
+    background-color: #eddfd6;
+    margin: 0;
+    border: 0;
+    border-style: none;
+  }
+
+
 @media only screen and (min-width: 1300px)  
 
 {
 
   /* General */
-  * {
+  body {
     box-sizing: border-box;
     margin: 0;
     padding: 0%;
@@ -16,30 +44,8 @@
     width: 100%;
     color: black;
     cursor: pointer;
-    padding-left: 30px;
+    padding-left: 90px;
   }
-
-  .boxes{
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Boxes */
-  
-  
-  .boxes{
-    display: flex;
-    justify-content: space-between;
-    margin: 50px 60px; 
-  }
-  .boxes section {
-    padding: 15px 25px 15px 25px;
-    border: 1px;
-    border-style: solid;
-    border-color:#eddfd6;
-    margin: 10px;
-   }
 
   .main,
   .home,
@@ -330,19 +336,13 @@
 
 {
 
+
   /* General */
-  * {
+  body {
     box-sizing: border-box;
     margin: 0;
     padding: 0%;
     background-color: #eddfd6;
-  }
-
-  .logo {
-    width: 100%;
-    color: black;
-    cursor: pointer;
-    padding-left: 30px;
   }
 
   .main,
@@ -631,7 +631,7 @@
 
   /* General */
 
-  * {
+  body {
     box-sizing: border-box;
     margin: 0;
     padding: 0%;
@@ -642,7 +642,7 @@
     width: 10%;
     color: black;
     cursor: pointer;
-    padding-left: 30px;
+    padding-left: 90px;
   }
 
   .main,
