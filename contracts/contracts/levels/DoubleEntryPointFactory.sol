@@ -4,67 +4,43 @@ pragma solidity ^0.6.0;
 
 import './DoubleEntryPoint.sol';
 import './base/Level.sol';
-import '@openzeppelin/contracts/proxy/TransparentUpgradeableProxy.sol';
 
 contract DoubleEntryPointFactory is Level {
-  mapping(address => address) playerAgent;
-
-  mapping(address => bool) triggerPause;
-
-  modifier onlyAgent(address player) {
-    require(msg.sender == playerAgent[player], "Not agent");
-    _;
-  }
 
   function createInstance(address _player) override public payable returns (address) {
-    // Create legacy and latest token
+    // Create legacy token
     LegacyToken oldToken = new LegacyToken();
-    oldToken.initialize();
-    DoubleEntryPoint newToken = new DoubleEntryPoint();
-
-    // Create a new Agent
-    Agent agent = new Agent();
-
-    // Put the new tokens behing a proxy where the player is the admin (it can upgrade)
-    TransparentUpgradeableProxy proxy = new TransparentUpgradeableProxy(address(newToken), _player, bytes(""));
-    DoubleEntryPoint proxiedToken = DoubleEntryPoint(address(proxy));
-    CryptoVault vault = new CryptoVault(_player, address(proxy));
-    
+    // Create a new Forta contract
+    Forta forta = new Forta();
+    // Create a new CryptoVault
+    CryptoVault vault = new CryptoVault(_player);
+    // Create latest token
+    DoubleEntryPoint newToken = new DoubleEntryPoint(address(oldToken), address(vault), address(forta), _player);
+    // Set underlying in CryptoVault
+    vault.setUnderlying(address(newToken));
+  
     // Activate legacy support to newToken
-    oldToken.delegateToNewContract(DelegateERC20(address(proxy)));
+    oldToken.delegateToNewContract(DelegateERC20(address(newToken)));
     
     // Give CryptoVault some LGT (LegactyTokens)
     oldToken.mint(address(vault), 100 ether);
 
-    // Initialize
-    // Notice that the initialize function will mint 100 LTT (DoubleEntryPoint token) to the CryptoVault
-    proxiedToken.initialize(address(oldToken), address(vault), address(agent), _player);
-
-    // Assign agent to player on mapping
-    playerAgent[_player] = address(proxiedToken.fortaAgent());
-
-    // Set emissor on agent
-    agent.setEmissor(address(proxy));
-
-    return address(proxy);
-  }
-
-  function receiveAgentNotification(address player) external onlyAgent(player) {
-    triggerPause[player] = true;
+    return address(newToken);
   }
 
   function validateInstance(address payable _instance, address _player) override public returns (bool) {
     DoubleEntryPoint instance = DoubleEntryPoint(_instance);
+    Forta forta = Forta(instance.forta());
+    address userAgent = address(forta.usersAgent(_player));
+    if(userAgent == address(0)) return false;
+    uint256 raisedAlerts = forta.agentRaisedAlerts(userAgent);
+    if(raisedAlerts == 0) return false;
+    address vault = instance.cryptoVault();
+    CryptoVault cryptoVault = CryptoVault(vault);
 
-    if(
-      triggerPause[_player] &&
-      instance.balanceOf(instance.cryptoVault()) == 0
-    ) {
-      delete playerAgent[_player];
-      delete triggerPause[_player];
-      return true;
-    }
-
-    return false;
+    try cryptoVault.sweepToken(IERC20(instance.delegatedFrom())) {}
+    catch {}
+    if(instance.balanceOf(instance.cryptoVault()) == 0) return false;
+    return true;
   }
 }

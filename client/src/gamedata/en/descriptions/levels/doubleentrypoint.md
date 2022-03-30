@@ -1,16 +1,10 @@
 This level features a `CryptoVault` with special functionality, the `sweepToken` function. This is a common function to retrieve tokens stuck in a contract. The `CryptoVault` operates with an `underlying` token that can't be swept, being it an important core's logic component of the `CryptoVault`, any other token can be swept.
 
-The underlying token is an instance of the DET token implemented in `DoubleEntryPoint` contract definition and the `CryptoVault` holds 100 units of it. Additionally the `CryptoVault` also holds 100 of `LegacyToken LGT` which is unexpectedly related to `DoubleEntryPoint`.
+The underlying token is an instance of the DET token implemented in `DoubleEntryPoint` contract definition and the `CryptoVault` holds 100 units of it. Additionally the `CryptoVault` also holds 100 of `LegacyToken LGT`.
 
-A model of a [Forta agent](https://docs.forta.network/en/latest/) which is here for educational purposes and doesn't represent the actual functioning design of it is presented but not used by any contract yet. Forta is the first decentralized runtime intelligence network on the security and health of Web3 core infrastructure and dApps. Your jop is to implement `Agent` inside `DoubleEntryPoint`.
+In this level you should figure out where the bug is in `CryptoVault` and protect it from being drained out of tokens.
 
-An important notice is that the `DoubleEntryPoint` DET token is deployed behind a [`TransparentUpgradeableProxy`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v3.2.0/contracts/proxy/TransparentUpgradeableProxy.sol).
-
-Your goal is to succeed **in order** to:
-- Have `Agent` integrated in every `delegateTransfer` function call so that a notification is sent everytime the function is called.
-- Sweep all DET tokens from `CryptoVault`.
+The contract features a `Forta` contract where any user can register its own `Agent` contract. Forta is the first decentralized runtime intelligence network on the security and health of Web3 core infrastructure and dApps. Your job is to implement an `Agent` and register it in the `Forta` contract. The agent's implementation will need to raise correct alerts to prevent potential attacks or bug exploits.
 
 Things that might help:
-- How to upgrade contract implementations behind a proxy.
 - How does a double entry point work for a token contract ?
-

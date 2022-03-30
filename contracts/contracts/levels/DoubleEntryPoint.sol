@@ -1,62 +1,69 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
-import "@openzeppelin/contracts/utils/Address.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
-
-interface NotificationReceiver {
-  function receiveAgentNotification(address player) external;
-}
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 interface DelegateERC20 {
   function delegateTransfer(address to, uint256 value, address origSender) external returns (bool);
 }
 
-contract Agent {
-  address public attachedEmissor;
-  bool public emissorSet;
-  event AddressesAre(address, address);
+interface IAgent {
+    function handleTransaction(address user) external returns(bool);
+}
 
-  function setEmissor(address emittingAddress) public {
-      require(!emissorSet, "Already set");
-      emissorSet = true;
-      attachedEmissor = emittingAddress;
+interface IForta {
+    function setAgent(address agentAddress) external;
+    function notify(address user) external returns(bool);
+    function raiseAlert(address user) external;
+}
+
+contract Forta is IForta {
+  mapping(address => IAgent) public usersAgent;
+  mapping(address => uint256) public agentRaisedAlerts;
+
+  function setAgent(address agentAddress) external override {
+      require(address(usersAgent[msg.sender]) == address(0), "Agent already set");
+      usersAgent[msg.sender] = IAgent(agentAddress);
   }
 
-  function handleTransaction(address destination, address player) public {
-    require(msg.sender == attachedEmissor, "Unauthorized");
-    NotificationReceiver(destination).receiveAgentNotification(player);
+  function notify(address user) external override returns(bool) {
+    require(address(usersAgent[user]) != address(0), "Can't find a suitable agent for user");
+    require(usersAgent[user].handleTransaction(user), "Failed handling transaction");
+    return true;
   }
+
+  function raiseAlert(address user) external override {
+      require(address(usersAgent[user]) == msg.sender, "Caller is not agent");
+      agentRaisedAlerts[msg.sender] += 1;
+  } 
 }
 
 contract CryptoVault {
     address public sweptTokensRecipient;
-    IERC20Upgradeable public underlying;
+    IERC20 public underlying;
 
-    constructor(address recipient, address latestToken) public {
+    constructor(address recipient) public {
         sweptTokensRecipient = recipient;
-        underlying = IERC20Upgradeable(latestToken);
+    }
+
+    function setUnderlying(address latestToken) public {
+        require(address(underlying) == address(0), "Already set");
+        underlying = IERC20(latestToken);
     }
 
     //
     // CryptoVault code
     //
 
-    function sweepToken(IERC20Upgradeable token) public {
+    function sweepToken(IERC20 token) public {
         require(token != underlying, "Can't transfer underlying token");
         token.transfer(sweptTokensRecipient, token.balanceOf(address(this)));
     }
 }
 
-contract LegacyToken is ERC20Upgradeable, OwnableUpgradeable {
+contract LegacyToken is ERC20("LegacyToken", "LGT"), Ownable {
     DelegateERC20 public delegate;
-
-    function initialize() initializer public {
-        __ERC20_init("LegacyToken", "LGT");
-        __Ownable_init();
-    }
-
 
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
@@ -75,20 +82,23 @@ contract LegacyToken is ERC20Upgradeable, OwnableUpgradeable {
     }
 }
 
-contract DoubleEntryPoint is ERC20Upgradeable, DelegateERC20, OwnableUpgradeable {
+contract DoubleEntryPoint is ERC20("DoubleEntryPointToken", "DET"), DelegateERC20, Ownable {
     address public cryptoVault;
     address public player;
     address public delegatedFrom;
-    Agent public fortaAgent;
+    Forta public forta;
 
-    function initialize(address legacyToken, address vaultAddress, address agent, address playerAddress) initializer public {
+    constructor(address legacyToken, address vaultAddress, address fortaAddress, address playerAddress) public {
         delegatedFrom = legacyToken;
-        fortaAgent = Agent(agent);
+        forta = Forta(fortaAddress);
         player = playerAddress;
         cryptoVault = vaultAddress;
-        __ERC20_init_unchained("DoubleEntryPointToken", "DET");
-        __Ownable_init_unchained();
         _mint(cryptoVault, 100 ether);
+    }
+
+    modifier fortaNotify() {
+        require(forta.notify(player),"Failed notifying forta");
+        _;
     }
 
     modifier onlyDelegateFrom() {
@@ -96,11 +106,19 @@ contract DoubleEntryPoint is ERC20Upgradeable, DelegateERC20, OwnableUpgradeable
         _;
     }
 
+    modifier protected() {
+        address agentAddress = address(forta.usersAgent(player)); 
+        require(agentAddress != address(0), "No agent set to protect");
+        uint256 previousValue = forta.agentRaisedAlerts(agentAddress);
+        _;
+        require(forta.agentRaisedAlerts(agentAddress) > previousValue, "Alert has been triggered, reverting");
+    }
+
     function delegateTransfer(
         address to,
         uint256 value,
         address origSender
-    ) public override onlyDelegateFrom returns (bool) {
+    ) public override onlyDelegateFrom fortaNotify protected returns (bool) {
         _transfer(origSender, to, value);
         return true;
     }

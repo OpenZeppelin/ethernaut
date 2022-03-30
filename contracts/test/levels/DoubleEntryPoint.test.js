@@ -1,10 +1,7 @@
 const DoubleEntryPoint = artifacts.require('./levels/DoubleEntryPoint.sol')
 const DoubleEntryPointFactory = artifacts.require('./levels/DoubleEntryPointFactory.sol')
-const DoubleEntryPointAttack = artifacts.require('./attacks/DoubleEntryPointAttack.sol')
-const TransparentUpgradeableProxy = artifacts.require('@openzeppelin/contracts/proxy/TransparentUpgradeableProxy.sol')
-const CryptoVault = artifacts.require('./levels/CryptoVault.sol')
-const Agent = artifacts.require('contracts/levels/DoubleEntryPoint.sol:Agent')
-
+const Agent = artifacts.require('./attacks/Agent.sol')
+const Forta = artifacts.require('./levels/Forta.sol')
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
 const { web3 } = require('openzeppelin-test-helpers/src/setup')
@@ -40,20 +37,14 @@ contract('DoubleEntryPoint', function(accounts) {
 
   it('should allow the player to solve the level', async function() {
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, DoubleEntryPoint);
+
+    const fortaAddress = await instance.forta();
     
-    const attacker = await DoubleEntryPointAttack.new();
-
-    const proxyContract = await TransparentUpgradeableProxy.at(instance.address)
-
-    const VaultContract = await CryptoVault.at(
-      await instance.cryptoVault({from: owner})
-    )
-
-    await proxyContract.upgradeTo(attacker.address, {from: player});
+    const fortaContract = await Forta.at(fortaAddress);
     
-    await VaultContract.sweepToken(
-      await instance.delegatedFrom({from: owner})
-    );
+    const agent = await Agent.new(fortaAddress, {from: player});
+
+    await fortaContract.setAgent(agent.address, {from: player});
 
     const completed = await utils.submitLevelInstance(
       ethernaut,
