@@ -71,7 +71,7 @@ class Author extends React.Component {
             <a href={websites[i]} target='_blank' rel='noopener noreferrer'>{websites[i]}
             </a>
           </strong>
-          <h2></h2>
+          <h2> </h2>
         </span>
       )
     }
