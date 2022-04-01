@@ -30,17 +30,17 @@ contract DoubleEntryPointFactory is Level {
 
   function validateInstance(address payable _instance, address _player) override public returns (bool) {
     DoubleEntryPoint instance = DoubleEntryPoint(_instance);
-    Forta forta = Forta(instance.forta());
+    Forta forta = instance.forta();
     address userAgent = address(forta.usersAgent(_player));
     if(userAgent == address(0)) return false;
-    uint256 raisedAlerts = forta.agentRaisedAlerts(userAgent);
-    if(raisedAlerts == 0) return false;
     address vault = instance.cryptoVault();
     CryptoVault cryptoVault = CryptoVault(vault);
 
-    try cryptoVault.sweepToken(IERC20(instance.delegatedFrom())) {}
-    catch {}
-    if(instance.balanceOf(instance.cryptoVault()) == 0) return false;
-    return true;
+    try cryptoVault.sweepToken(IERC20(instance.delegatedFrom())) {
+      return false;
+    } catch {
+      if(instance.balanceOf(instance.cryptoVault()) == 0) return false;
+      return true;
+    }
   }
 }

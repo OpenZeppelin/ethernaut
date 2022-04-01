@@ -39,7 +39,7 @@ contract('DoubleEntryPoint', function(accounts) {
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, DoubleEntryPoint);
 
     const fortaAddress = await instance.forta();
-    
+
     const fortaContract = await Forta.at(fortaAddress);
     
     const agent = await Agent.new(fortaAddress, {from: player});
