@@ -96,29 +96,30 @@ contract DoubleEntryPoint is ERC20("DoubleEntryPointToken", "DET"), DelegateERC2
         _mint(cryptoVault, 100 ether);
     }
 
-    modifier fortaNotify() {
-        require(forta.notify(player),"Failed notifying forta");
-        _;
-    }
-
     modifier onlyDelegateFrom() {
         require(msg.sender == delegatedFrom, "Not legacy contract");
         _;
     }
 
-    modifier protected() {
-        address agentAddress = address(forta.usersAgent(player)); 
-        require(agentAddress != address(0), "No agent set to protect");
+    modifier fortaNotify() {
+        // Cache old number of agent alerts
         uint256 previousValue = forta.agentRaisedAlerts(agentAddress);
+
+        // Notify Forta
+        require(forta.notify(player),"Failed notifying forta");
+        
+        // Continue execution
         _;
-        require(forta.agentRaisedAlerts(agentAddress) > previousValue, "Alert has been triggered, reverting");
+
+        // Check if alarms have been raised
+        if(forta.agentRaisedAlerts(agentAddress) > previousValue) revert("Alert has been triggered, reverting");
     }
 
     function delegateTransfer(
         address to,
         uint256 value,
         address origSender
-    ) public override onlyDelegateFrom fortaNotify protected returns (bool) {
+    ) public override onlyDelegateFrom fortaNotify returns (bool) {
         _transfer(origSender, to, value);
         return true;
     }

@@ -16,6 +16,7 @@ contract Agent {
   }
   
   function handleTransaction(address user) public returns(bool) {
+    // Only the Forta contract can call this method
     require(msg.sender == address(fortaContract), "Unauthorized");
     fortaContract.raiseAlert(user);
     return true;

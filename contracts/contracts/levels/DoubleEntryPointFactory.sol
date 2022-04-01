@@ -31,15 +31,21 @@ contract DoubleEntryPointFactory is Level {
   function validateInstance(address payable _instance, address _player) override public returns (bool) {
     DoubleEntryPoint instance = DoubleEntryPoint(_instance);
     Forta forta = instance.forta();
+
+    // If user didn't set an agent, level failed.
     address userAgent = address(forta.usersAgent(_player));
     if(userAgent == address(0)) return false;
+
     address vault = instance.cryptoVault();
     CryptoVault cryptoVault = CryptoVault(vault);
-
     try cryptoVault.sweepToken(IERC20(instance.delegatedFrom())) {
+      // If it didn't revert, it means no alerts have been raised by the agent. level failed.
       return false;
     } catch {
+      // If balance has been swept, level failed.
       if(instance.balanceOf(instance.cryptoVault()) == 0) return false;
+
+      // Otherwise level is completed
       return true;
     }
   }
