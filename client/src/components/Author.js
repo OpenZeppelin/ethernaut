@@ -56,7 +56,7 @@ class Author extends React.Component {
 
     var elements = [];
 
-    var totalLength = emails.length == websites.length ? websites.length : Math.max(emails.length, websites.length);
+    var totalLength = Math.max(emails.length, websites.length);
 
     for(var i = 0; i<totalLength; i++) {
       elements.push(
