@@ -54,18 +54,25 @@ class Author extends React.Component {
     const { name, emails, websites, donate } = this.state;
     const nodata = !name && !emails.length && !websites.length && !donate;
 
-    var emailElements = [];
-    var websiteElements = [];
+    var elements = [];
 
-    for(var i = 0; i<emails.length; i++) {
-      emailElements.push(
-        <span key={i}><br/><strong><a href={`mailto:${emails[i]}`} target='_blank' rel='noopener noreferrer'>{emails[i]}</a></strong></span>
-      )
-    }
+    var totalLength = emails.length == websites.length ? websites.length : Math.max(emails.length, websites.length);
 
-    for(var j = 0; j<websites.length; j++) {
-      websiteElements.push(
-        <span key={j}><br/><strong><a href={websites[j]} target='_blank' rel='noopener noreferrer'>{websites[j]}</a></strong></span>
+    for(var i = 0; i<totalLength; i++) {
+      elements.push(
+        <span key={i}>
+          <br/>
+          <strong>
+            <a href={`mailto:${emails[i]}`} target='_blank' rel='noopener noreferrer'>{emails[i]}
+            </a>
+          </strong>
+          <br/>
+          <strong>
+            <a href={websites[i]} target='_blank' rel='noopener noreferrer'>{websites[i]}
+            </a>
+          </strong>
+          <h2></h2>
+        </span>
       )
     }
 
@@ -82,11 +89,8 @@ class Author extends React.Component {
           {!nodata && name &&
             <span>{name}</span>
           }
-
-          {!nodata && emailElements
-          }
-
-          {!nodata && websiteElements
+          <p></p>
+          {!nodata && elements
           }
 
           {!nodata && donate && 
