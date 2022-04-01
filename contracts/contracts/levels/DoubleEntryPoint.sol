@@ -102,6 +102,8 @@ contract DoubleEntryPoint is ERC20("DoubleEntryPointToken", "DET"), DelegateERC2
     }
 
     modifier fortaNotify() {
+        address agentAddress = address(forta.usersAgent(player));
+
         // Cache old number of agent alerts
         uint256 previousValue = forta.agentRaisedAlerts(agentAddress);
 
