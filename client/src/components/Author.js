@@ -8,8 +8,8 @@ class Author extends React.Component {
 
     this.state = {
       name: undefined,
-      email: undefined,
-      website: undefined
+      emails: [],
+      websites: []
     };
   }
 
@@ -20,8 +20,8 @@ class Author extends React.Component {
       if(!authorData) return null;
       this.setState({
         name: authorData.name,
-        email: authorData.email,
-        website: authorData.website,
+        emails: authorData.emails,
+        websites: authorData.websites,
         donate: authorData.donate
       });
     }
@@ -37,8 +37,8 @@ class Author extends React.Component {
     if(!authorData) return;
     this.setState({
       name: authorData.name,
-      email: authorData.email,
-      website: authorData.website,
+      emails: authorData.emails,
+      websites: authorData.websites,
       donate: authorData.donate
     });
   }
@@ -51,8 +51,31 @@ class Author extends React.Component {
     let language = localStorage.getItem('lang')
     let strings = loadTranslations(language)
 
-    const { name, email, website, donate } = this.state;
-    const nodata = !name && !email && !website && !donate;
+    const { name, emails, websites, donate } = this.state;
+    const nodata = !name && !emails.length && !websites.length && !donate;
+
+    var elements = [];
+
+    var totalLength = Math.max(emails.length, websites.length);
+
+    for(var i = 0; i<totalLength; i++) {
+      elements.push(
+        <span key={i}>
+          <br/>
+          <strong>
+            <a href={`mailto:${emails[i]}`} target='_blank' rel='noopener noreferrer'>{emails[i]}
+            </a>
+          </strong>
+          <br/>
+          <strong>
+            <a href={websites[i]} target='_blank' rel='noopener noreferrer'>{websites[i]}
+            </a>
+          </strong>
+          <h2> </h2>
+        </span>
+      )
+    }
+
     return (
       <div>
         <div style={{marginTop: '20px', marginBotton: '20px'}}>
@@ -66,13 +89,8 @@ class Author extends React.Component {
           {!nodata && name &&
             <span>{name}</span>
           }
-
-          {!nodata && email && 
-              <span><br/><strong><a href={`mailto:${email}`} target='_blank' rel='noopener noreferrer'>{email}</a></strong></span>
-          }
-
-          {!nodata && website && 
-            <span><br/><strong><a href={website} target='_blank' rel='noopener noreferrer'>{website}</a></strong></span>
+          <p></p>
+          {!nodata && elements
           }
 
           {!nodata && donate && 

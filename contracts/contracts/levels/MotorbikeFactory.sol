@@ -8,14 +8,14 @@ import "@openzeppelin/contracts/utils/Address.sol";
 
 contract MotorbikeFactory is Level {
 
-  Engine public engine;
-  Motorbike public motorbike;
+  mapping(address => address) private engines;
 
   function createInstance(address _player) public payable override returns (address) {
     _player;
 
-    engine = new Engine();
-    motorbike = new Motorbike(address(engine));
+    Engine engine = new Engine();
+    Motorbike motorbike = new Motorbike(address(engine));
+    engines[address(motorbike)] = address(engine);
 
     require(
         keccak256(Address.functionCall(
@@ -38,7 +38,6 @@ contract MotorbikeFactory is Level {
 
   function validateInstance(address payable _instance, address _player) public override returns (bool) {
     _player;
-    _instance;
-    return !Address.isContract(address(engine));
+    return !Address.isContract(engines[_instance]);
   }
 }
