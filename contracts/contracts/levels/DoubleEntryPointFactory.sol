@@ -38,15 +38,18 @@ contract DoubleEntryPointFactory is Level {
 
     address vault = instance.cryptoVault();
     CryptoVault cryptoVault = CryptoVault(vault);
+    
     (bool ok, bytes memory data) = this.__trySweep(cryptoVault, instance);
-    require(!ok);
+    
+    require(!ok, "Sweep succeded");
+
     bool swept = abi.decode(data, (bool));
     return swept;
   }
 
   function __trySweep(CryptoVault cryptoVault, DoubleEntryPoint instance) external returns(bool, bytes memory) {
     try cryptoVault.sweepToken(IERC20(instance.delegatedFrom())) {
-      return(false, abi.encode(false));
+      return(true, abi.encode(false));
     } catch {
       return(false, abi.encode(instance.balanceOf(instance.cryptoVault()) > 0));
     }

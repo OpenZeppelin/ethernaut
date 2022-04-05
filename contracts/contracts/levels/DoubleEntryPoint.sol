@@ -31,13 +31,11 @@ contract Forta is IForta {
     if(address(usersAgent[user]) == address(0)) return;
     try usersAgent[user].handleTransaction(user, msgData) {
         return;
-    } catch {
-        revert("Failed handling transaction");
-    }
+    } catch {}
   }
 
   function raiseAlert(address user) external override {
-      require(address(usersAgent[user]) == msg.sender, "Caller is not agent");
+      if(address(usersAgent[user]) != msg.sender) return;
       agentRaisedAlerts[msg.sender] += 1;
   } 
 }
