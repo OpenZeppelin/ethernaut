@@ -41,7 +41,7 @@ contract Motorbike {
     fallback () external payable virtual {
         _delegate(_getAddressSlot(_IMPLEMENTATION_SLOT).value);
     }
-    
+
     // Returns an `AddressSlot` with member `value` located at `slot`.
     function _getAddressSlot(bytes32 slot) internal pure returns (AddressSlot storage r) {
         assembly {

@@ -24,6 +24,7 @@ const loadLevelInstance = store => next => action => {
 
   // Recover old instance address from local cache?
   let instanceAddress
+
   if(action.instanceAddress) instanceAddress = action.instanceAddress
   else if(action.reuse) {
     const cache = state.player.emittedLevels[action.level.deployedAddress]
@@ -49,7 +50,8 @@ const loadLevelInstance = store => next => action => {
     })
       .then(tx => {
         console.dir(tx)
-        instanceAddress = tx.logs[0].args.instance;
+
+        instanceAddress = tx.logs.find(l => l.event === 'LevelInstanceCreatedLog').args.instance;
         if(tx.logs.length > 0) {
           action.instanceAddress = instanceAddress
           store.dispatch(action)
