@@ -8,35 +8,35 @@ interface DelegateERC20 {
   function delegateTransfer(address to, uint256 value, address origSender) external returns (bool);
 }
 
-interface IAgent {
+interface IDetectionBot {
     function handleTransaction(address user, bytes calldata msgData) external;
 }
 
 interface IForta {
-    function setAgent(address agentAddress) external;
+    function setDetectionBot(address detectionBotAddress) external;
     function notify(address user, bytes calldata msgData) external;
     function raiseAlert(address user) external;
 }
 
 contract Forta is IForta {
-  mapping(address => IAgent) public usersAgent;
-  mapping(address => uint256) public agentRaisedAlerts;
+  mapping(address => IDetectionBot) public usersDetectionBots;
+  mapping(address => uint256) public botRaisedAlerts;
 
-  function setAgent(address agentAddress) external override {
-      require(address(usersAgent[msg.sender]) == address(0), "Agent already set");
-      usersAgent[msg.sender] = IAgent(agentAddress);
+  function setDetectionBot(address detectionBotAddress) external override {
+      require(address(usersDetectionBots[msg.sender]) == address(0), "DetectionBot already set");
+      usersDetectionBots[msg.sender] = IDetectionBot(detectionBotAddress);
   }
 
   function notify(address user, bytes calldata msgData) external override {
-    if(address(usersAgent[user]) == address(0)) return;
-    try usersAgent[user].handleTransaction(user, msgData) {
+    if(address(usersDetectionBots[user]) == address(0)) return;
+    try usersDetectionBots[user].handleTransaction(user, msgData) {
         return;
     } catch {}
   }
 
   function raiseAlert(address user) external override {
-      if(address(usersAgent[user]) != msg.sender) return;
-      agentRaisedAlerts[msg.sender] += 1;
+      if(address(usersDetectionBots[user]) != msg.sender) return;
+      botRaisedAlerts[msg.sender] += 1;
   } 
 }
 
@@ -103,10 +103,10 @@ contract DoubleEntryPoint is ERC20("DoubleEntryPointToken", "DET"), DelegateERC2
     }
 
     modifier fortaNotify() {
-        address agentAddress = address(forta.usersAgent(player));
+        address detectionBot = address(forta.usersDetectionBots(player));
 
-        // Cache old number of agent alerts
-        uint256 previousValue = forta.agentRaisedAlerts(agentAddress);
+        // Cache old number of bot alerts
+        uint256 previousValue = forta.botRaisedAlerts(detectionBot);
 
         // Notify Forta
         forta.notify(player, msg.data);
@@ -115,7 +115,7 @@ contract DoubleEntryPoint is ERC20("DoubleEntryPointToken", "DET"), DelegateERC2
         _;
 
         // Check if alarms have been raised
-        if(forta.agentRaisedAlerts(agentAddress) > previousValue) revert("Alert has been triggered, reverting");
+        if(forta.botRaisedAlerts(detectionBot) > previousValue) revert("Alert has been triggered, reverting");
     }
 
     function delegateTransfer(

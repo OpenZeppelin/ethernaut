@@ -1,12 +1,12 @@
 Congratulations!
 
-This is the first experience you have with a [Forta agent](https://docs.forta.network/en/latest/). 
+This is the first experience you have with a [Forta bot](https://docs.forta.network/en/latest/). 
 
-The Forta Protocol has two main components – agents and nodes. Agents are scripts that look for certain transaction characteristics or state changes (e.g. anomaly detection) on smart contracts across any Layer 1, Layer 2, or sidechain. Nodes run agents against each block of transactions. When the agents detect a specific condition or event, the network emits an alert which is stored on IPFS and linked on a public blockchain. Forta also maintains an automated public registry of all alerts, and anyone interested in the security of a contract can consume relevant alerts via the explorer or API.
+Forta comprises a decentralized network of independent node operators who scan all transactions and block-by-block state changes for outlier transactions and threats. When an issue is detected, node operators send alerts to subscribers of potential risks, which enables them to take action.
 
-The presented example is just for educational purpose since Forta agents are not modeled into smart contracts. This level showcases how they can be used to be alerted and react to observed events.
+The presented example is just for educational purpose since Forta bot are not modeled into smart contracts. In Forta, a bot is a monitoring service that raises alerts of specific events happening, but it is not meant to trigger automatic actions as a consequence of such alerts. In this level, the bot's alert effectively trigger a revert in the transaction, deviating from the intended Forta's bot design.
 
-Agent heavily depends on contract's final implementations and some might be upgradeable and break agent's integrations, but to mitigate that you can even create a specific agent to look for contract upgrades and react to it. Learn how to do it [here](https://docs.forta.network/en/latest/quickstart/).
+Detection bots heavily depends on contract's final implementations and some might be upgradeable and break bot's integrations, but to mitigate that you can even create a specific bot to look for contract upgrades and react to it. Learn how to do it [here](https://docs.forta.network/en/latest/quickstart/).
 
 You have also passed through a recent security issue that has been uncovered during OpenZeppelin's latest [collaboration with Compound protocol](https://compound.finance/governance/proposals/76).
 

@@ -1,6 +1,6 @@
 const DoubleEntryPoint = artifacts.require('./levels/DoubleEntryPoint.sol')
 const DoubleEntryPointFactory = artifacts.require('./levels/DoubleEntryPointFactory.sol')
-const Agent = artifacts.require('./attacks/Agent.sol')
+const DetectionBot = artifacts.require('./attacks/DetectionBot.sol')
 const Forta = artifacts.require('./levels/Forta.sol')
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
@@ -42,9 +42,9 @@ contract('DoubleEntryPoint', function(accounts) {
 
     const fortaContract = await Forta.at(fortaAddress);
     
-    const agent = await Agent.new(fortaAddress, {from: player});
+    const detectionBot = await DetectionBot.new(fortaAddress, {from: player});
 
-    await fortaContract.setAgent(agent.address, {from: player});
+    await fortaContract.setDetectionBot(detectionBot.address, {from: player});
 
     const completed = await utils.submitLevelInstance(
       ethernaut,

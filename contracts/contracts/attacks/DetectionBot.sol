@@ -1,17 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
-interface IAgent {
+interface IDetectionBot {
     function handleTransaction(address user, bytes calldata msgData) external;
 }
 
 interface IForta {
-    function setAgent(address agentAddress) external;
+    function setDetectionBot(address detectionBotAddress) external;
     function notify(address user, bytes calldata msgData) external;
     function raiseAlert(address user) external;
 }
 
-contract Agent is IAgent {
+contract DetectionBot is IDetectionBot {
 
   IForta public fortaContract;
 

@@ -32,9 +32,9 @@ contract DoubleEntryPointFactory is Level {
     DoubleEntryPoint instance = DoubleEntryPoint(_instance);
     Forta forta = instance.forta();
 
-    // If user didn't set an agent, level failed.
-    address userAgent = address(forta.usersAgent(_player));
-    if(userAgent == address(0)) return false;
+    // If user didn't set an DetectionBot, level failed.
+    address usersDetectionBot = address(forta.usersDetectionBots(_player));
+    if(usersDetectionBot == address(0)) return false;
 
     address vault = instance.cryptoVault();
     CryptoVault cryptoVault = CryptoVault(vault);
