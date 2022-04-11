@@ -1,0 +1,49 @@
+/* To reset HubSpot Popup Banner's default animation effect */
+body .leadinModal.leadinModal-theme-top {
+  top: auto;
+  bottom: 0;
+  z-index: 99999999999;
+}
+
+.leadinModal.leadinModal-theme-top .leadinModal-content {
+ animation-name: leadinModal-reset!important;
+}
+.leadinModal.leadinModal-theme-top.leadinModal-closing,
+.leadinModal.leadinModal-theme-top.leadinModal-closing .leadinModal-content{
+    animation-name: leadinModal-fadeout!important;
+}
+
+@keyframes leadinModal-reset {
+    0% {
+      transform: translateY(0);
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -o-transform: translateY(0);
+      opacity: 0;
+    }
+    1% {
+      transform: translateY(0);
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -o-transform: translateY(0);
+      opacity: 0;
+    }
+    2% {
+      transform: translateY(0);
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -o-transform: translateY(0);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -o-transform: translateY(0);
+      opacity: 1;
+    }
+  }

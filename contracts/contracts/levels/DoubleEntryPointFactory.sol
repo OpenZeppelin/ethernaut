@@ -32,21 +32,26 @@ contract DoubleEntryPointFactory is Level {
     DoubleEntryPoint instance = DoubleEntryPoint(_instance);
     Forta forta = instance.forta();
 
-    // If user didn't set an agent, level failed.
-    address userAgent = address(forta.usersAgent(_player));
-    if(userAgent == address(0)) return false;
+    // If user didn't set an DetectionBot, level failed.
+    address usersDetectionBot = address(forta.usersDetectionBots(_player));
+    if(usersDetectionBot == address(0)) return false;
 
     address vault = instance.cryptoVault();
     CryptoVault cryptoVault = CryptoVault(vault);
-    try cryptoVault.sweepToken(IERC20(instance.delegatedFrom())) {
-      // If it didn't revert, it means no alerts have been raised by the agent. level failed.
-      return false;
-    } catch {
-      // If balance has been swept, level failed.
-      if(instance.balanceOf(instance.cryptoVault()) == 0) return false;
+    
+    (bool ok, bytes memory data) = this.__trySweep(cryptoVault, instance);
+    
+    require(!ok, "Sweep succeded");
 
-      // Otherwise level is completed
-      return true;
+    bool swept = abi.decode(data, (bool));
+    return swept;
+  }
+
+  function __trySweep(CryptoVault cryptoVault, DoubleEntryPoint instance) external returns(bool, bytes memory) {
+    try cryptoVault.sweepToken(IERC20(instance.delegatedFrom())) {
+      return(true, abi.encode(false));
+    } catch {
+      return(false, abi.encode(instance.balanceOf(instance.cryptoVault()) > 0));
     }
   }
 }
