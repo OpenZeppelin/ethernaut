@@ -35,8 +35,8 @@ class Header extends React.Component {
       <nav>
       <li>
         <ul className="nav-links">
-          <a className="buttons" href={window.location.pathname === constants.PATH_HELP ? constants.PATH_ROOT : constants.PATH_HELP}>
-            <button>{window.location.pathname === constants.PATH_HELP ? strings.home : strings.ethernautHelp }
+          <a className="buttons" href={window.location.pathname !== constants.PATH_ROOT ? constants.PATH_ROOT : constants.PATH_HELP}>
+            <button>{window.location.pathname !== constants.PATH_ROOT ? strings.home : strings.ethernautHelp }
             </button>
           </a> 
           <div className="dropdown">

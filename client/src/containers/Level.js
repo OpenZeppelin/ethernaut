@@ -4,17 +4,20 @@ import {bindActionCreators} from 'redux';
 import CodeComponent from '../components/Code';
 import Author from '../components/Author';
 import MarkdownComponent from '../components/Markdown';
-import Difficulty from '../components/Difficulty';
 import * as actions from '../actions';
 import * as constants from '../constants';
 import { loadTranslations } from '../utils/translations'
+import Header from './Header';
+import { Link } from 'react-router-dom'
+import getlevelsdata from '../utils/getlevelsdata';
 
 class Level extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       requestedInstance: false,
       submittedIntance: false,
+      dropwDownOpened: false,
     }
   }
 
@@ -34,6 +37,34 @@ class Level extends React.Component {
     }
   }
 
+
+  toggleDropdown() {
+    const boxes = document.querySelectorAll('.level-selector-dropdown-content');
+    if(this.state.dropwDownOpened) {
+      boxes.forEach(box => {
+        box.style.display = 'none';
+        this.setState({
+          ...this.state,
+          dropwDownOpened: false
+        })
+      });
+    } else {
+      boxes.forEach(box => {
+        box.style.display = 'block';
+        box.style.position = 'relative';
+        box.style.zIndex = '100';
+        box.style.margin = '0%';
+        box.style.marginTop = '0.5%';
+        box.style.backgroundColor = box.parentNode.style.backgroundColor;
+      });
+      this.setState({
+        ...this.state,
+        dropwDownOpened: true
+      })
+  }
+  }
+
+
   render() {
     const {
       requestedInstance,
@@ -44,6 +75,8 @@ class Level extends React.Component {
       level,
       levelCompleted
     } = this.props;
+
+    var [levelData,selectedLevel] = getlevelsdata(this.props);
 
     if(!level) return null
     const showCode = levelCompleted || level.revealCode
@@ -83,6 +116,12 @@ class Level extends React.Component {
 
     return (
       <div className="page-container">
+        <Header></Header>
+
+        <div className="lines">
+        <center><hr className="top-line" /></center>
+        </div>
+
         {
           (
             isDescriptionMissingTranslation || 
@@ -94,20 +133,50 @@ class Level extends React.Component {
           )
         }
 
+        <div className="level-selector-nav">
+
+        <div onClick={() => {this.toggleDropdown()}} className="dropdown-menu-bar">
+
+            <p key={level.difficulty}>{selectedLevel.difficulty}</p>
+            <p key={level.name}>{level.name}</p>
+
+          <div className="dropdown-menu-bar-button">
+
+              <button className="dropdownbutton"> 
+                <i className="fa fa-caret-down"></i>
+              </button>
+
+          </div>
+        </div>
+
+          <div className="level-selector-dropdown-content">
+            {levelData.map((level) => {
+                  return (
+                    <Link key={level.name} to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`}>
+                      <div className="level-selector-dropdown-content-item">
+                      <p key={level.name}>{ level.completed === true && <span className='label label-default'>✔</span>} {level.name}</p>
+                        <p key={level.difficulty}>{level.difficulty}</p>
+                      </div>
+                    </Link>
+                  )
+              })}
+          </div>
+        </div>
+
+        <section>
+            <img alt='' className="level-img-view" src={selectedLevel.src}/>
+            <div> 
+                <center><h1>{selectedLevel.name}</h1></center>
+            </div>
+        </section>
+      
+
         <div className="page-header row">
           {/* TITLE + INFO */}
           <div className="level-title col-sm-6">          
-            <h2 className="title no-margin">
-              {level.name}
-            </h2>
             {poweredBy && <p>{strings.poweredBy} <a href={poweredBy.href}><img alt="" style={{width: '80px', height: '80px'}} src={poweredBy.src}/></a></p>}
             <h2> </h2>
-            { levelCompleted === true && <span className='label label-default'>{strings.levelCompleted}</span>}
           </div>
-          <div className="difficulty col-sm-6 right">
-            <Difficulty level={parseInt(level.difficulty, 10)}/>
-          </div>
-          <div className="clearfix"/>
         </div>
 
         {/* DESCRIPTION */}
@@ -206,8 +275,11 @@ function findNextLevelId(level, list) {
 
 function mapStateToProps(state) {
   const level = state.gamedata.activeLevel
+
   return {
     level: level,
+    activeLevel: level,
+    player: state.player,
     levels: state.gamedata.levels,
     levelCompleted: level && state.player.completedLevels[level.deployedAddress] > 0,
     levelEmitted: level && state.contracts.levels[level.deployedAddress] !== undefined

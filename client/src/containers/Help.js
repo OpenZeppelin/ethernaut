@@ -11,10 +11,6 @@ class Help extends React.Component {
     let language = localStorage.getItem('lang')
     let strings = loadTranslations(language)
 
-    var newColor = hexToRgb('#eddfd6');
-
-    // document.body.style.backgroundColor = 'black';
-
     return (
       <div>
         <Header></Header>
@@ -70,15 +66,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch)
-}
-
-function hexToRgb(hex) {
-  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, function(m, r, g, b) {
-      return r + r + g + g + b + b;
-  });
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? "rgb(" + parseInt(result[1], 16) + "," + parseInt(result[2], 16) + "," + parseInt(result[3], 16) + ")" : null;
 }
 
 export default connect(

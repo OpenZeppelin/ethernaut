@@ -25,7 +25,6 @@ class App extends React.Component {
   }
 
   navigateToFirstIncompleteLevel() {
-    console.log(this.props)
     // Find first incomplete level
     let target = this.props.levels[0].deployedAddress
     for(let i = 0; i < this.props.levels.length; i++) {

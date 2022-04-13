@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import * as constants from '../constants';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
+import getlevelsdata from '../utils/getlevelsdata';
 import moment from 'moment'
 
 class Mosaic extends React.Component {
@@ -15,55 +16,9 @@ class Mosaic extends React.Component {
     }
   
     render() {
-      var levels = require(`../gamedata/gamedata.json`).levels;
 
       // Array for tiles in the Mosaic
-      var levelData = [];
-      
-      // Style
-      let linkStyle = {};
-      let levelComplete;
-      let ago;
-
-      for(var i = 0; i<levels.length; i++) {
-
-          //Put as many ● as difficulty/2 (scaled from 10 to 5) and ○ as the rest up to 5
-          var numberOfFullCircles = (parseInt(levels[i].difficulty) / 2);
-          var numberOfEmptyCircles = 5 - numberOfFullCircles;
-          var emptyCircle = '○';
-          var fullCircle = '●';
-          var difficulty = '';
-          for(var j=0; j<numberOfFullCircles; j++) {
-                difficulty+=fullCircle;
-          }
-
-          for(var k=0; k<numberOfEmptyCircles; k++) {
-                difficulty+=emptyCircle;
-          }
-
-          // Each tile of the mosaic
-          var object = {
-              name: levels[i].name,
-              src: `../../imgs/Level${levels[i].deployId}.png`,
-              difficulty: difficulty,
-              deployedAddress: levels[i].deployedAddress
-          }
-
-          if(this.props.activeLevel) {
-            if(this.props.activeLevel.deployedAddress === levels[i].deployedAddress) {
-              linkStyle.textDecoration = 'underline'
-            }
-          }
-
-          // Level completed
-          levelComplete = this.props.player.completedLevels[levels[i].deployedAddress] > 0
-
-          // Created
-          const creationDate = moment(levels[i].created)
-          ago = moment.duration(moment().diff(creationDate)).asDays() || 0
-
-          levelData.push(object);
-      }
+      var [levelData,] = getlevelsdata(this.props);
 
       return (
         <section className="game">
@@ -73,18 +28,15 @@ class Mosaic extends React.Component {
                         <div className="content_img">
                             <img alt="" src={level.src}/> 
                             <div>
+                                { moment.duration(moment().diff(moment(level.creationDate))).asDays() < 14 &&
+                                  <img style={{width: '20px', height: '20px'}} src='../../imgs/new.png' alt='new'/>
+                                }
+                                {`${level.completed ? ' ✔' : ''} `}
                                 {level.name}
                                 <br /> {level.difficulty}
                             </div>
                         </div>
-                        <span style={linkStyle}>
-                        {`${levelComplete ? ' ✔' : ''}`}
-                        </span>
-                        { ago < 14 &&
-                        <img style={{width: '20px', height: '20px'}} src='../../imgs/new.png' alt='new'/>
-                        }
                     </Link>
-
                 )
             })}
         </section>
