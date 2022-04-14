@@ -7,11 +7,11 @@
 /* Boxes */
 
 .boxes{
-  display: grid;
-  justify-content: space-between;
-  margin: 50px 60px;
-  background-color: black;
-  color:#eddfd6;
+  padding: 15px 25px 15px 25px;
+  border: 2px solid black;
+  margin: 0% 5% 5% 5%;
+  width: 90%;
+  text-align: left;
 }
 
 .boxes section {
@@ -308,7 +308,8 @@
   /* Footer */
 
   footer{
-    width: 100%;
+    width: 105%;
+    margin-left: -5%;
     position: fixed;
     padding: 10px 10px 0px 10px;
     bottom: 0;
@@ -602,7 +603,8 @@
   /* Footer */
 
   footer{
-    width: 100%;
+    width: 105%;
+    margin-left: -5%;
     position: fixed;
     padding: 10px 10px 0px 10px;
     bottom: 0;

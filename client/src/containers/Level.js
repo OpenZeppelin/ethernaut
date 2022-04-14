@@ -116,6 +116,11 @@ class Level extends React.Component {
 
     return (
       <div className="page-container">
+        {/* Two lines above */}
+        <div className="lines">
+          <center><hr className="top" /></center>
+          <center><hr className="top" /></center>
+        </div>
         <Header></Header>
 
         <div className="lines">
@@ -179,83 +184,96 @@ class Level extends React.Component {
           </div>
         </div>
 
-        {/* DESCRIPTION */}
-        { description && !showCompletedDescription && <MarkdownComponent target={description}/> }
 
-        {/* COMPLETED DESCRIPTION */}
-        { showCompletedDescription &&
-        <div style={{marginTop: '40px', marginBottom: '40px'}}>
-          { completedDescription && <div className='well'><MarkdownComponent target={completedDescription}/></div> }
-        </div>
-        }
+        <section className="descriptors">
+            <div className="boxes">
+              {/* DESCRIPTION */}
+              { description && !showCompletedDescription && <MarkdownComponent target={description}/> }
 
-        {/* BUTTONS */}
-        <div className="" style={{marginTop: '5px'}}>
+              {/* COMPLETED DESCRIPTION */}
+              { showCompletedDescription &&
+              <div style={{marginTop: '40px', marginBottom: '40px'}}>
+                { completedDescription && <div className='well'><MarkdownComponent target={completedDescription}/></div> }
+              </div>
+              }
+            </div>
+        </section>
 
-          { level.levelContract &&
-          <div className="">
-
-            {/* CREATE */}
-            <button
-              type="button"
-              className='btn btn-primary'
-              onClick={evt => {
-                if (!requestedInstance) {
-                  this.props.loadLevelInstance(level, false, true);
-                  this.setState({ requestedInstance: true });
-                  setTimeout(() => this.setState({ requestedInstance: false }), 2000);
-                }
-              }}
-            >
-              {strings.getNewInstance}
-            </button>
-
-            {/* SUBMIT */}
-            { this.props.levelEmitted &&
-            <button
-              type="button"
-              disabled = { this.props.levelCompleted }
-              className = { !this.props.levelCompleted ?  'btn btn-warning' : 'btn disabled'}
-              onClick={evt => {
-                if (!submittedIntance && nextLevelId) {
-                  this.props.submitLevelInstance(level);
-                  this.setState({ submittedIntance: true });
-                  setTimeout(() => this.setState({ submittedIntance: false }), 2000);
-                }
-              }}
-            >
-              {strings.submitInstance}
-            </button>
+        <section className="descriptors">
+          <div className="boxes">
+            {/* CODE */}
+            { showCode && sourcesFile &&
+            <div>
+              <div className='page-header'><h3>{strings.sources}</h3></div>
+              <CodeComponent target={sourcesFile}/>
+            </div>
             }
+            {/* BUTTONS */}
+            <div className="" style={{marginTop: '5px'}}>
+              { level.levelContract &&
+              <div className="">
 
-            {/* NEXT LEVEL */}
-            { levelCompleted && nextLevelId &&
-            <button
-              type="button"
-              className='btn btn-info'
-              onClick={evt => this.props.history.push(`${constants.PATH_LEVEL_ROOT}${nextLevelId}`)}
-            >
-              {strings.nextLevel}
-            </button>
-            }
+                {/* CREATE */}
+                <button
+                  type="button"
+                  // className='btn btn-primary'
+                  onClick={evt => {
+                    if (!requestedInstance) {
+                      this.props.loadLevelInstance(level, false, true);
+                      this.setState({ requestedInstance: true });
+                      setTimeout(() => this.setState({ requestedInstance: false }), 2000);
+                    }
+                  }}
+                >
+                  {strings.getNewInstance}
+                </button>
 
+                {/* SUBMIT */}
+                { this.props.levelEmitted &&
+                <button
+                  type="button"
+                  disabled = { this.props.levelCompleted }
+                  // className = { !this.props.levelCompleted ?  'btn btn-warning' : 'btn disabled'}
+                  onClick={evt => {
+                    if (!submittedIntance && nextLevelId) {
+                      this.props.submitLevelInstance(level);
+                      this.setState({ submittedIntance: true });
+                      setTimeout(() => this.setState({ submittedIntance: false }), 2000);
+                    }
+                  }}
+                >
+                  {strings.submitInstance}
+                </button>
+                }
+
+                {/* NEXT LEVEL */}
+                { levelCompleted && nextLevelId &&
+                <button
+                  type="button"
+                  // className='btn btn-info'
+                  onClick={evt => this.props.history.push(`${constants.PATH_LEVEL_ROOT}${nextLevelId}`)}
+                >
+                  {strings.nextLevel}
+                </button>
+                }
+
+              </div>
+              }
+              </div>
           </div>
-          }
-        </div>
+        </section>
 
-        {/* CODE */}
-        { showCode && sourcesFile &&
-        <div style={{marginTop: '50px'}}>
-          <div className='page-header'><h3>{strings.sources}</h3></div>
-          <CodeComponent target={sourcesFile}/>
-        </div>
-        }
-
-        {/* AUTHOR */}
-        { level.author && 
-          <Author author={level.author}/>
-        }
-
+        <section className="descriptors">
+          <div className="boxes">
+            {/* AUTHOR */}
+            { level.author && 
+              <Author author={level.author}/>
+            }
+          </div>
+        </section>
+        {/* Footer */}
+        <footer dangerouslySetInnerHTML={{ __html: strings.footer }}>
+        </footer>
       </div>
     );
   }
