@@ -35,20 +35,20 @@ class Header extends React.Component {
       <nav>
       <li>
         <ul className="nav-links">
-          <a className="buttons" href={window.location.pathname !== constants.PATH_ROOT ? constants.PATH_ROOT : constants.PATH_HELP}>
-            <button>{window.location.pathname !== constants.PATH_ROOT ? strings.home : strings.ethernautHelp }
-            </button>
-          </a> 
           <div className="dropdown">
             <a className="icon-buttons" href='/'><i className="fas fa-globe-americas"></i></a>
-          </div>
-          <div className="dropdown-content">
+            <div className="dropdown-content">
               <a onClick={() => {this.changeLanguage('en')}} href='/'>{strings.english}</a>
               <a onClick={() => {this.changeLanguage('es')}} href='/'>{strings.spanish}</a>
               <a onClick={() => {this.changeLanguage('ja')}} href='/'>{strings.japanese}</a>
               <a onClick={() => {this.changeLanguage('cn_simplified')}} href='/'>{strings.chinese_simplified}</a>
               <a className="contr" href="https://github.com/openzeppelin/ethernaut#modify-or-add-new-languages">{strings.contributeTranslation}</a>
             </div>
+          </div>
+          <a className="buttons" href={window.location.pathname !== constants.PATH_ROOT ? constants.PATH_ROOT : constants.PATH_HELP}>
+            <button>{window.location.pathname !== constants.PATH_ROOT ? strings.home : strings.ethernautHelp }
+            </button>
+          </a> 
         </ul>
         </li>
       </nav>
