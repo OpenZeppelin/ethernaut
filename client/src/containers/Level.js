@@ -122,9 +122,7 @@ class Level extends React.Component {
           <center><hr className="top" /></center>
         </div>
         <Header></Header>
-
         <div className="lines">
-        <center><hr className="top-line" /></center>
         </div>
 
         {

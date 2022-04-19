@@ -4,6 +4,267 @@
 @import "./hubspot.css";
 @import url(https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,700,400italic,700italic);
 
+/* General */
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0%;
+  background-color: #eddfd6;
+}
+
+.logo {
+  width: 120%;
+  color: black;
+  cursor: pointer;
+}
+
+.lines{
+  margin-bottom: 4%;
+  margin-top: 2%;
+}
+
+.main,
+.home,
+.navi-button,
+.other {
+  font-family: "helvetica", sans-serif;
+  font-weight: 400;
+  font-size: 16 px;
+  color: white;
+  text-decoration: none;
+}
+
+hr {
+  margin-top: 10px;
+}
+
+.top{
+  border:none;
+  border-top:1px solid black;
+  height:1px;
+  width: 90%;
+  align-items: center;
+  padding: 1px 0% 0% 0% ;
+}
+
+h2 {
+  font-size: 15px;
+  padding: 1% 10% 0% 10%;
+  color: black;
+  font-family: Helvetica, sans-serif;
+  font-weight: lighter;
+  text-align: center;
+  line-height: 1.5;
+}
+
+button {
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 9px;
+  color: #eddfd6;
+  font-weight: bold;
+}
+
+button :hover{
+  background-color: #eddfd6;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  padding: 0px 50px;
+  margin-top: 1%;
+}
+
+.hiring {
+  color: #eddfd6;
+}
+
+nav li {
+  list-style: none;
+}
+
+.nav-links {
+  display: inline-block;
+  padding: 0px;
+}
+
+.nav-links  a {
+  color:black;
+  text-decoration: none;
+  padding-right: 5px;
+  font-family: helvetica, sans-serif;
+}
+
+.nav-links .icon-buttons {
+  text-decoration: none;
+  font-family: helvetica, sans-serif;
+}
+
+.nav-links :hover {
+  color: #eddfd6;
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+  font-size: x-large;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: black;
+  min-width: 100px;
+  border:solid 15px black;
+  border-radius: 8px;
+  margin-top: -2.5%;
+  margin-right: 2%;
+  margin-left: -6%;
+  position: absolute;
+}
+
+.dropdown:hover ~ .dropdown-content {
+  display: block;
+  align-items: left;
+}
+
+.dropdown-content a {
+  float: none;
+  background-color: #eddfd6;
+  color:black;
+  border-radius: 4px;
+  padding: 6px 8px;
+  margin-bottom: 5%;
+  text-decoration: none;
+  font-style: bold;
+  display: block;
+  font-size: 12px;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: black;
+  color: #eddfd6;
+}
+
+.dropdown-content .contr {
+  background-color: black;
+  color: #eddfd6;
+  border: #eddfd6 solid 1px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.Ethernaut {
+  width: 40%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10% 0% 5% 0%;
+}
+
+.arrow {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 3%;
+}
+
+.titles ul{
+  position: relative;
+  text-align: center;
+  align-items:center;
+  padding: 0px 0px;
+  margin-top: 1%;
+}
+
+.game {
+    display: flex;
+    flex-wrap: wrap;
+    align-items:center;
+    padding-left: 10%;
+    padding-right: 50px;
+    margin-top: 4%;
+}
+
+.content_img{
+  word-wrap: break-word;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  float: center;
+}
+
+.content_img div{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: black;
+  padding-top: 10%;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  height: 120px;
+  width: 120px;
+  font-family: Arial, Helvetica, sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: visibility 0s, opacity 0.5s linear; 
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.content_img img{
+  width: 120px;
+  height: 120px;
+  border: black solid 1px;
+}
+
+.content_img:hover{
+  cursor: pointer;
+}
+
+.content_img:hover div{
+  width: 120px;
+  visibility: visible;
+  opacity: 100; 
+}
+
+.Description {
+  width: 85%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1% 0% 5% 0%;
+}
+
+.row2{
+  display: inline-flex;
+  margin-left: 4%;
+  align-items:center;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+
+footer{
+  width: 105%;
+  margin-left: -5%;
+  position: fixed;
+  padding: 10px 10px 0px 10px;
+  bottom: 0;
+  height: 25px;
+  background-color: black;
+  color: #eddfd6;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  padding: 5px;
+}
+
 /* Boxes */
 
 .boxes{
@@ -30,868 +291,28 @@
   border-style: none;
 }
 
-@media only screen and (min-width: 1300px)  
-
-{
-
-  /* General */
-  body {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0%;
-    background-color: #eddfd6;
-  }
-
-  .logo {
-    width: 120%;
-    color: black;
-    cursor: pointer;
-  }
-
-  .main,
-  .home,
-  .navi-button,
-  .other {
-    font-family: "helvetica", sans-serif;
-    font-weight: 400;
-    font-size: 16 px;
-    color: white;
-    text-decoration: none;
-  }
-
-  hr {
-    border-color: #eddfd6;
-    border: 1px solid #eddfd6;
-    height: 1px;
-    margin-top: 10px;
-    padding: 0px 5%;
-  }
-
-  hr {
-    border:none;
-    border-top:1px dashed black;
-    height:1px;
-    width: 85%;
-    align-items: center;
-    padding: 2% 0% 0% 0%;
-  }
-
-  h2{
-    font-size: 15px;
-    padding: 1% 10% 0% 10%;
-    color: black;
-    font-family: Helvetica, sans-serif;
-    font-weight: lighter;
-    text-align: center;
-    line-height: 1.5;
-  }
-
-  .lines{
-    margin-bottom: 4%;
-    margin-top: 2%;
-  }
-
-  button {
-    background-color: black;
-    border: none;
-    border-radius: 5px;
-    padding: 4px 9px;
-    color: #eddfd6;
-    font-weight: bold;
-  }
-
-  button :hover{
-    background-color: #eddfd6;
-  }
-  
-  /* Header */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-    padding: 0px 50px;
-    margin-top: 1%;
-  
-  }
-  
-  .hiring {
-    color: #eddfd6;
-  }
-
-  .nav-links {
-    display: inline-block;
-    padding: 0px ;
-    
-  }
-
-  .nav-links  a {
-    color:black;
-    text-decoration: none;
-    padding-right: 5px;
-    font-family: helvetica, sans-serif;
-  }
-
-  .nav-links .icon-buttons {
-    text-decoration: none;
-    font-family: helvetica, sans-serif;
-  }
-
-  .nav-links :hover {
-    color: #eddfd6;
-  }
-
-  nav li {
-    list-style: none;
-  }
-
-  .dropdown {
-    float: right;
-    overflow: hidden;
-    font-size: x-large;
-  }
-
-  .dropdown-content {
-    display: none;
-    right:55px;
-    top: 85px;
-    position: fixed;
-    background-color: black;
-    min-width: 100px;
-    border:solid 15px black;
-    border-radius: 8px;
-    z-index: 1;
-    padding: 10px,14px;
-  }
-
-  /* Show the dropdown menu on hover */
-
-  .dropdown:hover .dropdown-content {
-    display: block;
-    align-items: left;
-  }
-  
-  /* Links inside the dropdown */
-
-  .dropdown-content a {
-    float: none;
-    background-color: #eddfd6;
-    color:black;
-    border-radius: 4px;
-    padding: 6px 8px;
-    margin-bottom: 5%;
-    text-decoration: none;
-    font-style: bold;
-    display: block;
-    font-size: 12px;
-    text-align: left;
-  }
-
-  .dropdown-content a:hover {
-    background-color: black;
-    color: #eddfd6;
-  }
-  
-  .dropdown-content .contr {
-    background-color: black;
-    color: #eddfd6;
-    border: #eddfd6 solid 1px;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-  
-  /* Headings */
-
-  .Ethernaut {
-      width: 40%;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 10% 0% 5% 0%;
-  }
-
-  .arrow {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      padding-bottom: 3%;
-  }
-
-  .titles ul{
-    position: relative;
-    text-align: center;
-    align-items:center;
-    padding: 0px 0px;
-    margin-top: 1%;
-  }
-
-  /* Game */
-
-  .top{
-    border:none;
-    border-top:1px solid black;
-    height:1px;
-    width: 90%;
-    align-items: center;
-    padding: 1px 0% 0% 0% ;
-  }
-
-  .game {
-      display: flex;
-      flex-wrap: wrap;
-      align-items:center;
-      padding-left: 10%;
-      padding-right: 50px;
-      margin-top: 4%;
-  }
-
-  /* Parent Container */
-  .content_img{
-    position: relative;
-    width: 120px;
-    height: 120px;
-    float: center;
-  }
-
-  /* Child Text Container */
-  .content_img div{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: black;
-    padding-top: 40%;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    height: 120px;
-    width: 120px;
-    font-family: Arial, Helvetica, sans-serif;
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transition: visibility 0s, opacity 0.5s linear; 
-    transition: visibility 0s, opacity 0.5s linear;
-  }
-
-  /*level Image*/
-  .content_img img{
-    width: 120px;
-    height: 120px;
-    border: black solid 1px;
-  }
-
-  /* Hover on Parent Container */
-  .content_img:hover{
-    cursor: pointer;
-  }
-
-  .content_img:hover div{
-    width: 120px;
-    visibility: visible;
-    opacity: 100; 
-  }
-
-  .Description {
-    width: 85%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1% 0% 5% 0%;
-  }
-
-  .row2{
-    display: inline-flex;
-    margin-left: 4%;
-    align-items:center;
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-
-  /* Footer */
-
-  footer{
-    width: 105%;
-    margin-left: -5%;
-    position: fixed;
-    padding: 10px 10px 0px 10px;
-    bottom: 0;
-    height: 25px;
-    background-color: black;
-    color: #eddfd6;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    text-align: center;
-    padding: 5px;
-  }
-}
-
-/*//Open Console Screen//*/
-
 @media only screen and (max-width: 1300px)
 
 {
-
-
-  /* General */
-  body {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0%;
-    background-color: #eddfd6;
-  }
-
-  .main,
-  .home,
-  .navi-button,
-  .other {
-    font-family: "helvetica", sans-serif;
-    font-weight: 400;
-    font-size: 16 px;
-    color: white;
-    text-decoration: none;
-  }
-
-  hr {
-    border-color: #eddfd6;
-    border: 1px solid #eddfd6;
-    height: 1px;
-    margin-top: 10px;
-    padding: 0px 5%;
-  }
-
-  .lines{
-    margin-bottom: 4%;
-    margin-top: 2%;
-  }
-
-  button {
-    background-color: black;
-    border: none;
-    border-radius: 5px;
-    padding: 4px 9px;
-    color: #eddfd6;
-    font-weight: bold;
-  }
-
-  button :hover{
-    background-color: #eddfd6;
-  }
-
-  /* Header */
   header {
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-    padding: 0px 200px;
-    margin-top: 1%;
-    
+    padding: 0px 200px;    
     list-style: none;
-  }
-
-  .logo {
-    width: 120%;
-    color: black;
-    cursor: pointer;
-  }
-
-  nav li {
-    list-style: none;
-  }
-
-  .hiring {
-    color: #eddfd6;
-  }
-
-  .nav-links {
-    display: inline-block;
-    padding: 0px ;
-  }
-
-  .nav-links  a {
-    color:black;
-    text-decoration: none;
-    padding-right: 5px;
-    font-family: helvetica, sans-serif;
-  }
-
-  .nav-links .icon-buttons {
-    text-decoration: none;
-    font-family: helvetica, sans-serif;
-  }
-
-  .nav-links :hover {
-    color: #eddfd6;
-  }
-
-  .dropdown {
-    float: right;
-    overflow: hidden;
-    font-size: x-large;
-  }
-
-  .dropdown-content {
-    display: none;
-    right:200px;
-    top: 85px;
-    position: fixed;
-    background-color: black;
-    min-width: 100px;
-    border:solid 15px black;
-    border-radius: 8px;
-    z-index: 1;
-    padding: 10px,14px;
-  }
-
-  /* Show the dropdown menu on hover */
-
-  .dropdown:hover .dropdown-content {
-    display: block;
-    align-items: left;
-  }
-
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    float: none;
-    background-color: #eddfd6;
-    color:black;
-    border-radius: 4px;
-    padding: 6px 8px;
-    margin-bottom: 5%;
-    text-decoration: none;
-    font-style: bold;
-    display: block;
-    font-size: 12px;
-    text-align: left;
-  }
-
-  .dropdown-content a:hover {
-    background-color: black;
-    color: #eddfd6;
-  }
-
-  .dropdown-content .contr {
-    background-color: black;
-    color: #eddfd6;
-    border: #eddfd6 solid 1px;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-
-  /* Headings */
-  .Ethernaut {
-    width: 30%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5% 0% 4% 0%;
   }
 
   .arrow {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
     padding-bottom: 1%;
   }
-
-  .titles ul {
-    position: relative;
-    text-align: center;
-    align-items:center;
-    padding: 0px 0px;
-    margin-top: 1%;
-  }
-
-  /* Game */
-
-  hr {
-    border:none;
-    border-top:1px dashed black;
-    height:1px;
-    width: 85%;
-    align-items: center;
-    padding: 2% 0% 0% 0%;
-  }
-
-  h2 {
-    font-size: 15px;
-    padding: 1% 10% 0% 10%;
-    color: black;
-    font-family: Helvetica, sans-serif;
-    font-weight: lighter;
-    text-align: center;
-    line-height: 1.5;
-  }
-
-  .top{
-    border:none;
-    border-top:1px solid black;
-    height:1px;
-    width: 90%;
-    align-items: center;
-    padding: 1px 0% 0% 0% ;
-  }
-
-  .game {
-    display: flex;
-    flex-wrap: wrap;
-    align-items:center;
-    padding-left: 10%;
-    padding-right: 50px;
-    margin-top: 4%;
-  }
-
-  /* Parent Container */
-  .content_img{
-    position: relative;
-    width: 120px;
-    height: 120px;
-    float: center;
-  }
-
-  /* Child Text Container */
-  .content_img div{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: black;
-    padding-top: 40%;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    height: 120px;
-    width: 120px;
-    font-family: Arial, Helvetica, sans-serif;
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transition: visibility 0s, opacity 0.5s linear; 
-    transition: visibility 0s, opacity 0.5s linear;
-  }
-
-  /* level Image */
-  .content_img img {
-    width: 120px;
-    height: 120px;
-    border: black solid 1px;
-  }
-
-  /* Hover on Parent Container */
-  .content_img:hover{
-    cursor: pointer;
-  }
-
-  .content_img:hover div{
-    width: 120px;
-    visibility: visible;
-    opacity: 100; 
-  }
-
-  .Description {
-    width: 85%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1% 0% 5% 0%;
-  }
-
-  .row2{
-    display: inline-flex;
-    margin-left: 4%;
-    align-items:center;
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-
-  /* Footer */
-
-  footer{
-    width: 105%;
-    margin-left: -5%;
-    position: fixed;
-    padding: 10px 10px 0px 10px;
-    bottom: 0;
-    height: 25px;
-    background-color: black;
-    color: #eddfd6;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    text-align: center;
-    padding: 5px;
-  }
 }
-
-/*//Mobile Screen//*/
 
 @media only screen and (max-width: 1000px)
 
 {
-
-  /* General */
-
-  body {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0%;
-    background-color: #eddfd6;
-  }
-
-  .logo {
-    width: 120%;
-    color: black;
-    cursor: pointer;
-  }
-
-  .main,
-  .home,
-  .navi-button,
-  .other {
-    font-family: "helvetica", sans-serif;
-    font-weight: 400;
-    font-size: 16 px;
-    color: white;
-    text-decoration: none;
-  }
-
-  hr {
-    border-color: #eddfd6;
-    border: 1px solid #eddfd6;
-    height: 1px;
-    margin-top: 10px;
-    padding: 0px 5%;
-  }
-
-  .lines{
-    margin-bottom: 4%;
-    margin-top: 2%;
-  }
-
-  button {
-    background-color: black;
-    border: none;
-    border-radius: 5px;
-    padding: 4px 9px;
-    color: #eddfd6;
-    font-weight: bold;
-  }
-
-  button :hover{
-    background-color: #eddfd6;
-  }
-
-  /* Header */
-
   header {
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-    padding: 0px 200px;
-    margin-top: 1%;
-    
+    padding: 0px 200px;    
     list-style: none;
   }
 
-  nav li {
-      list-style: none;
-  }
-
-  .hiring {
-    color: #eddfd6;
-  }
-
-  .nav-links {
-    display: inline-block;
-    padding: 0px ;
-    
-  }
-
-  .nav-links  a {
-    color:black;
-    text-decoration: none;
-    padding-right: 5px;
-    font-family: helvetica, sans-serif;
-  }
-
-  .nav-links .icon-buttons {
-    text-decoration: none;
-    font-family: helvetica, sans-serif;
-  }
-
-  .nav-links :hover {
-    color: #eddfd6;
-  }
-
-  .dropdown {
-    float: right;
-    overflow: hidden;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: black;
-    min-width: 100px;
-    border:solid 15px black;
-    border-radius: 8px;
-    z-index: 1;
-    padding: 10px,14px;
-    margin-top: 5px;
-  }
-
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    float: none;
-    background-color: #eddfd6;
-    color:black;
-    border-radius: 4px;
-    padding: 6px 8px;
-    margin-bottom: 5%;
-    text-decoration: none;
-    font-style: bold;
-    display: block;
-    font-size: 12px;
-    text-align: left;
-  }
-
-  .dropdown-content a:hover {
-    background-color: black;
-    color: #eddfd6;
-  }
-
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
-    display: block;
-    align-items: left;
-  }
-
-  .dropdown-content .contr {
-    background-color: black;
-    color: #eddfd6;
-    border: #eddfd6 solid 1px;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-
-  /* Headings */
-
-  .Ethernaut {
-    width: 30%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5% 0% 4% 0%;
-  }
-
   .arrow {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
     padding-bottom: 1%;
-  }
-
-  .titles ul{
-    position: relative;
-    text-align: center;
-    align-items:center;
-    padding: 0px 0px;
-    margin-top: 1%;
-  }
-
-  /* Game */
-
-  hr {
-    border:none;
-    border-top:1px dashed black;
-    height:1px;
-    width: 85%;
-    align-items: center;
-    padding: 2% 0% 0% 0%;
-  }
-
-  h2 {
-    font-size: 15px;
-    padding: 1% 10% 0% 10%;
-    color: black;
-    font-family: Helvetica, sans-serif;
-    font-weight: lighter;
-    text-align: center;
-    line-height: 1.5;
-  }
-
-  .top {
-    border:none;
-    border-top:1px solid black;
-    height:1px;
-    width: 90%;
-    align-items: center;
-    padding: 1px 0% 0% 0%;
-  }
-
-  .game {
-    display: flex;
-    flex-wrap: wrap;
-    align-items:center;
-    padding-left: 10%;
-    padding-right: 50px;
-    margin-top: 4%;
-  }
-
-  /* Parent Container */
-  .content_img{
-    position: relative;
-    width: 120px;
-    height: 120px;
-    float: center;
-  }
-
-  /* Child Text Container */
-  .content_img div{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: black;
-    padding-top: 40%;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    height: 120px;
-    width: 120px;
-    font-family: Arial, Helvetica, sans-serif;
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transition: visibility 0s, opacity 0.5s linear; 
-    transition: visibility 0s, opacity 0.5s linear;
-  }
-
-  /*level Image*/
-  .content_img img{
-    width: 120px;
-    height: 120px;
-    border: black solid 1px;
-  }
-
-  /* Hover on Parent Container */
-  .content_img:hover{
-    cursor: pointer;
-  }
-
-  .content_img:hover div{
-    width: 120px;
-    visibility: visible;
-    opacity: 100; 
-  }
-
-  .Description {
-    width: 85%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1% 0% 5% 0%;
-  }
-
-  .row2{
-    display: inline-flex;
-    margin-left: 4%;
-    align-items:center;
-    padding-left: 50px;
-    padding-right: 50px;
   }
 }

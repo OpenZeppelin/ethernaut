@@ -13,7 +13,14 @@ class Help extends React.Component {
 
     return (
       <div>
+        {/* Two lines above */}
+        <div className="lines">
+          <center><hr className="top" /></center>
+          <center><hr className="top" /></center>
+        </div>
         <Header></Header>
+        <div className="lines">
+        </div>
         <main className="boxes">
           <section>
           

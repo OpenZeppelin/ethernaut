@@ -41,14 +41,14 @@ class Header extends React.Component {
           </a> 
           <div className="dropdown">
             <a className="icon-buttons" href='/'><i className="fas fa-globe-americas"></i></a>
-            <div className="dropdown-content">
+          </div>
+          <div className="dropdown-content">
               <a onClick={() => {this.changeLanguage('en')}} href='/'>{strings.english}</a>
               <a onClick={() => {this.changeLanguage('es')}} href='/'>{strings.spanish}</a>
               <a onClick={() => {this.changeLanguage('ja')}} href='/'>{strings.japanese}</a>
               <a onClick={() => {this.changeLanguage('cn_simplified')}} href='/'>{strings.chinese_simplified}</a>
               <a className="contr" href="https://github.com/openzeppelin/ethernaut#modify-or-add-new-languages">{strings.contributeTranslation}</a>
             </div>
-          </div>
         </ul>
         </li>
       </nav>
