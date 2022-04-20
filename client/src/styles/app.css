@@ -220,9 +220,11 @@ nav li {
 }
 
 .content_img img{
-  width: 120px;
-  height: 120px;
-  border: black solid 1px;
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+  margin-left: 10px;
+  /* border: black solid 1px; */
 }
 
 .content_img:hover{

@@ -32,9 +32,17 @@ export default (props) => {
         // Level completed
         levelComplete = props.player?.completedLevels[levels[i].deployedAddress] > 0
 
+        var isMissingImage;
+
+        try {
+            isMissingImage = require(`../../public/imgs/Level${levels[i].deployId}.svg`) ? false : true;
+        } catch(error) {
+            isMissingImage = true;
+        }
+
         var object = {
             name: levels[i].name,
-            src: `../../imgs/Level${levels[i].deployId}.png`,
+            src: isMissingImage ? `../../imgs/default.svg` : `../../imgs/Level${levels[i].deployId}.svg`,
             difficulty: difficulty,
             deployedAddress: levels[i].deployedAddress,
             completed: levelComplete,
