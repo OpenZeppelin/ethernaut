@@ -38,31 +38,32 @@ class Level extends React.Component {
   }
 
 
-  toggleDropdown() {
-    const boxes = document.querySelectorAll('.level-selector-dropdown-content');
-    if(this.state.dropwDownOpened) {
-      boxes.forEach(box => {
-        box.style.display = 'none';
-        this.setState({
-          ...this.state,
-          dropwDownOpened: false
-        })
-      });
-    } else {
-      boxes.forEach(box => {
-        box.style.display = 'block';
-        box.style.position = 'relative';
-        box.style.zIndex = '100';
-        box.style.margin = '0%';
-        box.style.marginTop = '0.5%';
-        box.style.backgroundColor = box.parentNode.style.backgroundColor;
-      });
-      this.setState({
-        ...this.state,
-        dropwDownOpened: true
-      })
-  }
-  }
+  // toggleDropdown() {
+  //   const boxes = document.querySelectorAll('.level-selector-dropdown-content');
+  //   if(this.state.dropwDownOpened) {
+  //     boxes.forEach(box => {
+  //       box.style.display = 'none';
+  //       this.setState({
+  //         ...this.state,
+  //         dropwDownOpened: false
+  //       })
+  //     });
+  //   } else {
+  //     boxes.forEach(box => {
+  //       box.style.display = 'block';
+  //       box.style.position = 'absolute';
+  //       box.style.zIndex = '1';
+  //       box.style.margin = '0%';
+  //       box.style.width = '50%';
+  //       box.style.marginTop = '0.5%';
+  //       box.style.backgroundColor = box.parentNode.style.backgroundColor;
+  //     });
+  //     this.setState({
+  //       ...this.state,
+  //       dropwDownOpened: true
+  //     })
+  // }
+  // }
 
 
   render() {
@@ -138,7 +139,7 @@ class Level extends React.Component {
 
           <div className="level-selector-nav">
 
-          <div onClick={() => {this.toggleDropdown()}} className="dropdown-menu-bar">
+          <div className="dropdown-menu-bar">
 
               <p key={level.difficulty}>{selectedLevel.difficulty}</p>
               <p key={level.name}>{level.name}</p>
@@ -150,8 +151,6 @@ class Level extends React.Component {
                 </button>
 
             </div>
-          </div>
-
             <div className="level-selector-dropdown-content">
               {levelData.map((level) => {
                     return (
@@ -164,6 +163,8 @@ class Level extends React.Component {
                     )
                 })}
             </div>
+          </div>
+
           </div>
 
           <section>

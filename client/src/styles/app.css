@@ -66,6 +66,7 @@ button {
   padding: 4px 9px;
   color: #eddfd6;
   font-weight: bold;
+  margin-left: 1%;
 }
 
 button :hover{
@@ -332,6 +333,11 @@ footer{
   .dropdown {
     right: 55px;
   }
+
+  .dropdown-menu-bar:hover .level-selector-dropdown-content{
+    margin-top: 360px;
+  } 
+
 }
 
 @media only screen and (max-width: 1000px)

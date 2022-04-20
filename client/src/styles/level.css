@@ -92,17 +92,16 @@
     color: #eddfd6;
 }
 
-/* .level-selector-nav:hover .level-selector-dropdown-content{
+.dropdown-menu-bar:hover .level-selector-dropdown-content{
     display: block;
     position: absolute;
-    z-index: 100;
-    margin: 0%;
-    margin-top: 0.5%;
-    width: 32rem;
+    z-index: 1;
+    width: 50%;
+    margin-top: 365px;
+    margin-left: -32px;
     background-color: #eddfd6;
-} */
+}
 
-/* Level Image */
 
 .level-img-view {
     position: relative;
