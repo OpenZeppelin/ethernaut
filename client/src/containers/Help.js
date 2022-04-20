@@ -22,20 +22,18 @@ class Help extends React.Component {
         <div className="lines">
         </div>
         <main className="boxes">
-          <section>
-          
           <h3>Game Mechanics</h3>
-          
+          <section>          
+
           <MarkdownComponent target={strings.gameMechanics} />
 
           </section>
           <section className="emptySection">
       
           </section >
-          <section>
 
           <h3>Using the console</h3>
-          
+          <section>
           <MarkdownComponent target={strings.usingConsole} />
 
           </section>
@@ -44,20 +42,16 @@ class Help extends React.Component {
       
           </section>
 
-          <section>
-
           <h3>Beyond the console</h3>
-          
+          <section>          
           <MarkdownComponent target={strings.beyondConsole} />
 
           </section>
           <section className="emptySection">
       
           </section>
-          <section>
-
           <h3>Troubleshooting</h3>
-
+          <section>
           <MarkdownComponent target={strings.troubleshooting} />  
 
           </section>

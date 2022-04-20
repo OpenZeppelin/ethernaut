@@ -64,10 +64,10 @@ class Author extends React.Component {
           <br/>
           <strong>
             {name[i]}
-            <a href={`mailto:${emails[i]}`} target='_blank' rel='noopener noreferrer' style={{marginLeft: '2%'}}>
+            <a href={`mailto:${emails[i]}`} target='_blank' rel='noopener noreferrer' style={{marginLeft: '1%'}}>
               <i className="fa fa-envelope" aria-hidden="true"></i>
             </a>
-            <a href={websites[i]} target='_blank' rel='noopener noreferrer' style={{marginLeft: '2%'}}>
+            <a href={websites[i]} target='_blank' rel='noopener noreferrer' style={{marginLeft: '1%'}}>
               <i className="fa fa-globe" aria-hidden="true"></i>
             </a>
           </strong>

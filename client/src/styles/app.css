@@ -14,9 +14,10 @@ body {
 }
 
 .logo {
-  width: 120%;
+  width: 140%;
   color: black;
   cursor: pointer;
+  margin-left: -28%;
 }
 
 .lines{
@@ -77,6 +78,8 @@ header {
   align-items:center;
   padding: 0px 50px;
   margin-top: 1%;
+  width: 95%;
+  margin-right: 2%;
 }
 
 .hiring {
@@ -106,7 +109,7 @@ nav li {
 
 .dropdown {
   float: right;
-  right: 20px;
+  right: 70px;
   overflow: hidden;
   font-size: x-large;
   position: absolute;
@@ -269,7 +272,7 @@ footer{
 .boxes{
   padding: 15px 25px 15px 25px;
   border: 2px solid black;
-  margin: 0% 5% 5% 5%;
+  margin: -1% 5% 3% 5%;
   width: 90%;
   text-align: left;
 }
@@ -278,9 +281,9 @@ footer{
   padding: 15px 25px 15px 25px;
   border: 1px;
   border-style: solid;
-  border-color:#eddfd6;
+  border-color:black;
   margin: 10px;
-  background-color: black;
+  background-color: #eddfd6;
 }
 
 .boxes .emptySection {
@@ -290,12 +293,36 @@ footer{
   border-style: none;
 }
 
+.boxes h3 {
+  text-align: center;
+}
+
+
+@media only screen and (min-width: 1600px)
+
+{
+  .arrow {
+    padding-bottom: 1%;
+  }
+
+  .dropdown {
+    right: 80px;
+  }
+}
+
+@media only screen and (min-width: 2000px)
+
+{
+  .dropdown {
+    right: 90px;
+  }
+}
+
 @media only screen and (max-width: 1300px)
 
 {
   header {
-    padding: 0px 200px;    
-    list-style: none;
+    width: 96%;
   }
 
   .arrow {
@@ -303,7 +330,7 @@ footer{
   }
 
   .dropdown {
-    right: 170px;
+    right: 55px;
   }
 }
 
@@ -312,16 +339,25 @@ footer{
 {
 
   .dropdown {
-    right: 25px;
+    right: 70px;
     z-index: 1;
   }
 
   header {
-    padding: 0px 55px;    
-    list-style: none;
+    width: 90%;
   }
 
   .arrow {
     padding-bottom: 1%;
+  }
+}
+
+@media only screen and (max-width: 750px)
+
+{
+
+  .dropdown {
+    right: 60px;
+    z-index: 1;
   }
 }

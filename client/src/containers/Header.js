@@ -23,36 +23,39 @@ class Header extends React.Component {
   render() {
     let strings = loadTranslations(this.state.lang)
     return (
-      <header>
-      <nav>
-        <li>
-          <ul className="nav-links">
-            <a className="buttons" href="https://grnh.se/dd38880f3us"><button>{strings.hiring}</button></a>
-          </ul>
-        </li>
-      </nav>
-      <a href="https://openzeppelin.com"><img className="logo" src="../../imgs/exports.svg" alt="logo" /></a>
-      <nav>
-      <li>
-        <ul className="nav-links">
-          <div className="dropdown">
-            <a className="icon-buttons" href='/'><i className="fas fa-globe-americas"></i></a>
-            <div className="dropdown-content">
-              <a onClick={() => {this.changeLanguage('en')}} href='/'>{strings.english}</a>
-              <a onClick={() => {this.changeLanguage('es')}} href='/'>{strings.spanish}</a>
-              <a onClick={() => {this.changeLanguage('ja')}} href='/'>{strings.japanese}</a>
-              <a onClick={() => {this.changeLanguage('cn_simplified')}} href='/'>{strings.chinese_simplified}</a>
-              <a className="contr" href="https://github.com/openzeppelin/ethernaut#modify-or-add-new-languages">{strings.contributeTranslation}</a>
-            </div>
-          </div>
-          <a className="buttons" href={window.location.pathname !== constants.PATH_ROOT ? constants.PATH_ROOT : constants.PATH_HELP}>
-            <button>{window.location.pathname !== constants.PATH_ROOT ? strings.home : strings.ethernautHelp }
-            </button>
-          </a> 
-        </ul>
-        </li>
-      </nav>
-    </header>
+      <center>
+        <header>
+          <nav>
+            <li>
+              <ul className="nav-links">
+                <a className="buttons" href="https://grnh.se/dd38880f3us"><button>{strings.hiring}</button></a>
+              </ul>
+            </li>
+          </nav>
+          <a href="https://openzeppelin.com"><img className="logo" src="../../imgs/exports.svg" alt="logo" /></a>
+          <nav>
+            <li>
+              <ul className="nav-links">
+                <div className="dropdown">
+                  <a className="icon-buttons" href='/'><i className="fas fa-globe-americas"></i></a>
+                  <div className="dropdown-content">
+                    <a onClick={() => {this.changeLanguage('en')}} href='/'>{strings.english}</a>
+                    <a onClick={() => {this.changeLanguage('es')}} href='/'>{strings.spanish}</a>
+                    <a onClick={() => {this.changeLanguage('ja')}} href='/'>{strings.japanese}</a>
+                    <a onClick={() => {this.changeLanguage('cn_simplified')}} href='/'>{strings.chinese_simplified}</a>
+                    <a className="contr" href="https://github.com/openzeppelin/ethernaut#modify-or-add-new-languages">{strings.contributeTranslation}</a>
+                  </div>
+                </div>
+                <a className="buttons" href={window.location.pathname !== constants.PATH_ROOT ? constants.PATH_ROOT : constants.PATH_HELP}>
+                  <button>{window.location.pathname !== constants.PATH_ROOT ? strings.home : strings.ethernautHelp }
+                  </button>
+                </a> 
+              </ul>
+            </li>
+          </nav>
+        </header>
+      </center>
+      
     );
   }
 }
