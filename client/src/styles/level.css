@@ -13,11 +13,11 @@
     padding: 5px 30px;
     margin-top: 1%;
     overflow: hidden;
-    background-color: #eddfd6;
-    border: solid black 2px;
+    background-color: var(--primary-color);
+    border: solid var(--secondary-color) 2px;
     border-radius: 6px;
     font-style: none;
-    color: black;
+    color: var(--secondary-color);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
     text-decoration: none;
@@ -37,7 +37,7 @@
 
 .level-selector-nav a{
     font-style: none;
-    color: black;
+    color: var(--secondary-color);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
     text-decoration: none;
@@ -48,11 +48,11 @@
     padding: 5px 13px;
     margin-top: 1%;
     overflow: hidden;
-    border: solid black 2px;
+    border: solid var(--secondary-color) 2px;
     border-radius: 6px;
     margin: 1% ;
     font-style: none;
-    color: #eddfd6;
+    color: var(--primary-color);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
     text-decoration: none;
@@ -65,31 +65,31 @@
     justify-content: space-between;
     text-align:center;
     width: auto;
-    background-color: #eddfd6;
-    color: black;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 .level-selector-dropdown-content-item a{
-    background-color: #eddfd6;
-    color: black;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     z-index: 1;
 }
 
 .dropdownbutton{
-    color: black;
-    background-color:#eddfd6;
+    color: var(--secondary-color);
+    background-color:var(--primary-color);
 }
 
 .level-selector-dropdown-content-item:hover {
-    background-color: black;
-    color: #eddfd6;
-    border: solid black 2px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: solid var(--secondary-color) 2px;
     border-radius: 6px;
 }
 
 .level-selector-dropdown-content-item:hover a{
-    background-color: black;
-    color: #eddfd6;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .dropdown-menu-bar:hover .level-selector-dropdown-content{
@@ -99,7 +99,7 @@
     width: 50%;
     margin-top: 365px;
     margin-left: -32px;
-    background-color: #eddfd6;
+    background-color: var(--primary-color);
 }
 
 

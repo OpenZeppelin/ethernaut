@@ -7,7 +7,7 @@
     "help": "ヘルプ",
     "stats": "ステータス",
     "ethernautHelp": "プレイ方法",
-    "footer": "developed with <span aria-hidden='true' class='fa fa-heart' style='color: red; background: black;'></span> and <span aria-hidden='true' class='fa fa-flash' style='color: yellow; background: black;'></span> by the <a href='https://openzeppelin.com'>OpenZeppelin</a> team",
+    "footer": "developed with <span aria-hidden='true' class='fa fa-heart' style='color: red;'></span> and <span aria-hidden='true' class='fa fa-flash' style='color: yellow;'></span> by the <a href='https://openzeppelin.com'>OpenZeppelin</a> team",
     "english": "English",
     "spanish": "Spanish",
     "japanese":"日本語",

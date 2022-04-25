@@ -35,6 +35,9 @@ class Level extends React.Component {
     if (this.props.level.deployedAddress !== this.props.match.params.address) {
       this.props.activateLevel(this.props.match.params.address);
     }
+    var codeElement = document.getElementsByClassName('hljs')[0];
+    var black = getComputedStyle(document.documentElement).getPropertyValue('--black');
+    if(codeElement?.style.background != black) codeElement.style.background = black; 
   }
 
 
@@ -199,7 +202,7 @@ class Level extends React.Component {
           </section>
 
           <section className="descriptors">
-            <div className="boxes">
+            <div className="boxes boxes-code">
               {/* CODE */}
               { showCode && sourcesFile &&
               <div>

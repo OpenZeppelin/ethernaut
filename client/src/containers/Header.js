@@ -11,6 +11,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      dark: false,
       lang: localStorage.getItem('lang')
     }
   }
@@ -18,6 +19,26 @@ class Header extends React.Component {
   changeLanguage(e) {
     var value = e?.target?.value ? e.target.value : e
     this.props.setLang(value)
+  }
+
+  toggleDarkMode() {
+
+    var pink = getComputedStyle(document.documentElement).getPropertyValue('--pink');
+    var black = getComputedStyle(document.documentElement).getPropertyValue('--black');
+
+    var newPrimary = this.state.dark ? pink : black;
+    var newSecondary = this.state.dark ? black : pink;
+
+    document.documentElement.style.setProperty('--primary-color', newPrimary);
+    document.documentElement.style.setProperty('--secondary-color', newSecondary);
+    // Change logo
+    var path = !this.state.dark ? '../../imgs/exports-white.svg' : '../../imgs/exports.svg';
+    
+    document.getElementById('logo').src = path;
+
+    this.setState({
+      dark: !this.state.dark
+    })
   }
 
   render() {
@@ -32,9 +53,10 @@ class Header extends React.Component {
               </ul>
             </li>
           </nav>
-          <a href="https://openzeppelin.com"><img className="logo" src="../../imgs/exports.svg" alt="logo" /></a>
+          <a href="https://openzeppelin.com"><img id='logo' className="logo" src="../../imgs/exports.svg" alt="logo" /></a>
           <nav>
             <li>
+              <input onClick={() => {this.toggleDarkMode()}} class="toggle" type="checkbox" />
               <ul className="nav-links">
                 <div className="dropdown">
                   <a className="icon-buttons" href='/'><i className="fas fa-globe-americas"></i></a>

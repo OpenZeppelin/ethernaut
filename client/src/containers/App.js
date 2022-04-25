@@ -73,7 +73,7 @@ class App extends React.Component {
           </section> 
         </main>
         {/* Footer */}
-        <footer dangerouslySetInnerHTML={{ __html: strings.footer }}>
+        <footer className='footer' dangerouslySetInnerHTML={{ __html: strings.footer }}>
         </footer>
       </div>
     );
