@@ -177,7 +177,7 @@ nav li {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 10% 0% 5% 0%;
+  padding: 5% 0% 3% 0%;
 }
 
 .arrow {
@@ -201,7 +201,6 @@ nav li {
     flex-wrap: wrap;
     align-items:center;
     padding-left: 10%;
-    padding-right: 50px;
     margin-top: 4%;
 }
 
@@ -215,15 +214,16 @@ nav li {
 
 .content_img div{
   position: absolute;
-  bottom: 0;
-  right: 0;
+
+  bottom: 15px;
+  right: 15px;
+
   background: var(--secondary-color);
   padding-top: 10%;
   font-weight: bold;
   color: white;
   text-align: center;
-  height: 120px;
-  width: 120px;
+  height: 110px;
   font-family: Arial, Helvetica, sans-serif;
   opacity: 0;
   visibility: hidden;
@@ -234,9 +234,6 @@ nav li {
 .content_img img{
   width: 100px;
   height: 100px;
-  margin-top: 10px;
-  margin-left: 10px;
-  /* border: var(--secondary-color) solid 1px; */
 }
 
 .content_img:hover{
@@ -244,9 +241,10 @@ nav li {
 }
 
 .content_img:hover div{
-  width: 120px;
+  width: 110px;
   visibility: visible;
   opacity: 100; 
+  border-radius: 10px;
 }
 
 .Description {
@@ -294,7 +292,7 @@ footer{
   margin: -1% 5% 3% 5%;
   width: 90%;
   text-align: left;
-  border-radius: 30px;
+  border-radius: 15px;
 }
 
 .boxes-code {
@@ -307,7 +305,7 @@ footer{
   border-style: solid;
   border-color:var(--secondary-color);
   margin: 10px;
-  border-radius: 30px;
+  border-radius: 10px;
   background-color: var(--primary-color);
 }
 
@@ -424,6 +422,35 @@ footer{
   .arrow {
     padding-bottom: 1%;
   }
+
+  .content_img {
+    width: 100px;
+    height: 100px;
+  }
+
+  
+  .content_img img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .content_img div{  
+    height: 90px;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .content_img:hover div{ 
+    width: 90px;
+  }
+}
+
+@media only screen and (max-width: 800px)
+
+{
+  .logo {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 750px)
@@ -432,6 +459,15 @@ footer{
 
   .dropdown {
     right: 60px;
+    z-index: 1;
+  }
+}
+
+@media only screen and (max-width: 600px)
+
+{
+  .dropdown {
+    right: 50px;
     z-index: 1;
   }
 }

@@ -56,7 +56,7 @@ class Header extends React.Component {
           <a href="https://openzeppelin.com"><img id='logo' className="logo" src="../../imgs/exports.svg" alt="logo" /></a>
           <nav>
             <li>
-              <input onClick={() => {this.toggleDarkMode()}} class="toggle" type="checkbox" />
+              <input onClick={() => {this.toggleDarkMode()}} className="toggle" type="checkbox" />
               <ul className="nav-links">
                 <div className="dropdown">
                   <a className="icon-buttons" href='/'><i className="fas fa-globe-americas"></i></a>

@@ -45,7 +45,7 @@
 
 .level-selector-dropdown-content{
     display: none;
-    padding: 5px 13px;
+    padding: 5px 5px;
     margin-top: 1%;
     overflow: hidden;
     border: solid var(--secondary-color) 2px;
@@ -96,9 +96,9 @@
     display: block;
     position: absolute;
     z-index: 1;
-    width: 50%;
+    width: 51%;
     margin-top: 365px;
-    margin-left: -32px;
+    margin-left: -34px;
     background-color: var(--primary-color);
 }
 

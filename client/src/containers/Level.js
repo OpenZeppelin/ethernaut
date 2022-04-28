@@ -37,7 +37,7 @@ class Level extends React.Component {
     }
     var codeElement = document.getElementsByClassName('hljs')[0];
     var black = getComputedStyle(document.documentElement).getPropertyValue('--black');
-    if(codeElement?.style.background != black) codeElement.style.background = black; 
+    if(codeElement?.style.background !== black) codeElement.style.background = black; 
   }
 
 
