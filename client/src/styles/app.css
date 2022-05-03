@@ -22,9 +22,10 @@ body {
 }
 
 .logo {
-  width: 140%;
+  width: 110%;
   color: var(--secondary-color);
   cursor: pointer;
+  margin-left: 5%;
 }
 
 .lines{
@@ -177,7 +178,7 @@ nav li {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 5% 0% 3% 0%;
+  padding: 3% 0% 3% 0%;
 }
 
 .arrow {
@@ -445,7 +446,7 @@ footer{
   }
 }
 
-@media only screen and (max-width: 800px)
+@media only screen and (max-width: 900px)
 
 {
   .logo {

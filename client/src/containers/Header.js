@@ -32,7 +32,7 @@ class Header extends React.Component {
     document.documentElement.style.setProperty('--primary-color', newPrimary);
     document.documentElement.style.setProperty('--secondary-color', newSecondary);
     // Change logo
-    var path = !this.state.dark ? '../../imgs/exports-white.svg' : '../../imgs/exports.svg';
+    var path = !this.state.dark ? '../../imgs/oz-logo-white.svg' : '../../imgs/oz-logo-black.svg';
     
     document.getElementById('logo').src = path;
 
@@ -53,7 +53,7 @@ class Header extends React.Component {
               </ul>
             </li>
           </nav>
-          <a href="https://openzeppelin.com"><img id='logo' className="logo" src="../../imgs/exports.svg" alt="logo" /></a>
+          <a href="https://openzeppelin.com"><img id='logo' className="logo" src="../../imgs/oz-logo-black.svg" alt="logo" /></a>
           <nav>
             <li>
               <input onClick={() => {this.toggleDarkMode()}} className="toggle" type="checkbox" />
