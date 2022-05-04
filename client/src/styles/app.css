@@ -44,7 +44,7 @@ body {
   font-family: "helvetica", sans-serif;
   font-weight: 400;
   font-size: 16 px;
-  color: white;
+  color: var(--primary-color);
   text-decoration: none;
 }
 
@@ -78,6 +78,9 @@ button {
   padding: 4px 9px;
   color: var(--primary-color);
   font-weight: bold;
+}
+
+.buttonActions {
   margin-left: 1%;
 }
 
@@ -201,7 +204,7 @@ nav li {
     display: flex;
     flex-wrap: wrap;
     align-items:center;
-    padding-left: 10%;
+    padding-left: 8%;
     margin-top: 4%;
 }
 
@@ -222,7 +225,7 @@ nav li {
   background: var(--secondary-color);
   padding-top: 10%;
   font-weight: bold;
-  color: white;
+  color: var(--primary-color);
   text-align: center;
   height: 110px;
   font-family: Arial, Helvetica, sans-serif;
@@ -339,7 +342,7 @@ footer{
 }
 
 .toggle:before {
-  content: "on off";
+  content: "🔆 🌘";
   display: block;
   position: absolute;
   z-index: 2;
@@ -349,7 +352,7 @@ footer{
   left: 2px;
   top: 2px;
   border-radius: 50%;
-  font: 10px/28px Helvetica;
+  font: 15px/28px Helvetica;
   text-transform: uppercase;
   font-weight: bold;
   text-indent: -22px;

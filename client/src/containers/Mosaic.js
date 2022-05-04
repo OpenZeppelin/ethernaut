@@ -26,7 +26,7 @@ class Mosaic extends React.Component {
                 return (
                     <Link key={level.name} to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`}>
                         <div className="content_img">
-                            <img alt="" src={level.src}/> 
+                            <img className='levelTile' alt="" src={level.src}/> 
                             <div>
                                 {`${level.completed ? ' ✔' : ''}`}{' '}
                                 {level.name}

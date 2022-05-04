@@ -57,8 +57,8 @@ class App extends React.Component {
         <main style={{marginLeft: '-3%'}}>
           {/* Main title and buttons */}
           <section className="titles">
-            <a href={constants.PATH_ROOT}><img src="../../imgs/R.svg" alt="The-Ethernaut" className="Ethernaut" /></a>
-            <img src="../../imgs/Rectangle 286.svg" alt="arrows" className="arrow" />
+            <a href={constants.PATH_ROOT}><img id='theEthernaut' src="../../imgs/the-ethernaut.svg" alt="The-Ethernaut" className="Ethernaut" /></a>
+            <img src="../../imgs/arrow.svg" id="arrow" alt="arrows" className="arrow" />
             <ul>
               <button onClick={() => this.navigateToFirstIncompleteLevel()} className="buttons">{strings.playNow}</button>
             </ul>      

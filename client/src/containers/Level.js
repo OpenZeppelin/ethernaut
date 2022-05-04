@@ -37,37 +37,8 @@ class Level extends React.Component {
     }
     var codeElement = document.getElementsByClassName('hljs')[0];
     var black = getComputedStyle(document.documentElement).getPropertyValue('--black');
-    if(codeElement?.style.background !== black) codeElement.style.background = black; 
+    if(codeElement && codeElement.style.background !== black) codeElement.style.background = black; 
   }
-
-
-  // toggleDropdown() {
-  //   const boxes = document.querySelectorAll('.level-selector-dropdown-content');
-  //   if(this.state.dropwDownOpened) {
-  //     boxes.forEach(box => {
-  //       box.style.display = 'none';
-  //       this.setState({
-  //         ...this.state,
-  //         dropwDownOpened: false
-  //       })
-  //     });
-  //   } else {
-  //     boxes.forEach(box => {
-  //       box.style.display = 'block';
-  //       box.style.position = 'absolute';
-  //       box.style.zIndex = '1';
-  //       box.style.margin = '0%';
-  //       box.style.width = '50%';
-  //       box.style.marginTop = '0.5%';
-  //       box.style.backgroundColor = box.parentNode.style.backgroundColor;
-  //     });
-  //     this.setState({
-  //       ...this.state,
-  //       dropwDownOpened: true
-  //     })
-  // }
-  // }
-
 
   render() {
     const {
@@ -134,7 +105,7 @@ class Level extends React.Component {
               isDescriptionMissingTranslation || 
               isCompleteDescriptionMissingTranslation
             ) && (
-              <div>
+              <div style={{textAlign: 'center'}}>
                 <p>{strings.levelNotTranslated}<a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">{strings.contributeTranslation}</a></p>
               </div>
             )
@@ -171,7 +142,7 @@ class Level extends React.Component {
           </div>
 
           <section>
-              <img alt='' className="level-img-view" src={selectedLevel.src}/>
+              <img alt='' className="levelTile level-img-view" src={selectedLevel.src}/>
               <div> 
                   <center><h1>{selectedLevel.name}</h1></center>
               </div>
@@ -181,7 +152,7 @@ class Level extends React.Component {
           <div className="page-header row">
             {/* TITLE + INFO */}
             <div className="level-title col-sm-6">          
-              {poweredBy && <p>{strings.poweredBy} <a href={poweredBy.href}><img alt="" style={{width: '80px', height: '80px'}} src={poweredBy.src}/></a></p>}
+              {poweredBy && <p>{strings.poweredBy} <a href={poweredBy.href}><img className='customImg' alt="" style={{width: '80px', height: '80px'}} src={poweredBy.src}/></a></p>}
               <h2> </h2>
             </div>
           </div>
@@ -218,7 +189,7 @@ class Level extends React.Component {
                   {/* CREATE */}
                   <button
                     type="button"
-                    // className='btn btn-primary'
+                    className='buttonActions'
                     onClick={evt => {
                       if (!requestedInstance) {
                         this.props.loadLevelInstance(level, false, true);
@@ -235,7 +206,7 @@ class Level extends React.Component {
                   <button
                     type="button"
                     disabled = { this.props.levelCompleted }
-                    // className = { !this.props.levelCompleted ?  'btn btn-warning' : 'btn disabled'}
+                    className='buttonActions'
                     onClick={evt => {
                       if (!submittedIntance && nextLevelId) {
                         this.props.submitLevelInstance(level);
@@ -252,7 +223,7 @@ class Level extends React.Component {
                   { levelCompleted && nextLevelId &&
                   <button
                     type="button"
-                    // className='btn btn-info'
+                    className='buttonActions'
                     onClick={evt => this.props.history.push(`${constants.PATH_LEVEL_ROOT}${nextLevelId}`)}
                   >
                     {strings.nextLevel}

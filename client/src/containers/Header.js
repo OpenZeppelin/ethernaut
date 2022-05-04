@@ -31,10 +31,37 @@ class Header extends React.Component {
 
     document.documentElement.style.setProperty('--primary-color', newPrimary);
     document.documentElement.style.setProperty('--secondary-color', newSecondary);
-    // Change logo
-    var path = !this.state.dark ? '../../imgs/oz-logo-white.svg' : '../../imgs/oz-logo-black.svg';
-    
-    document.getElementById('logo').src = path;
+
+    // Source for the CSS filter: 
+    // https://codepen.io/sosuke/pen/Pjoqqp?__cf_chl_jschl_tk__=ecc0b72797ae71bc009d6322e3e470773936b386-1604211766-0-ASpz720gXnc6Ej0vzlgY9-KLmlPkldgcOx1wAmGTUCjLZLOxkArNxpRzZ9m8woL-NGmP9LBGVPws8UxMJZrR7O1qFH6QkKtrGVPw6StRnXiK1XTQR_nY905r0XobAG2nOmyC6Zq8mdyPDp1MyHD7JLodJUXCRViXhtmLmRVE_-JGarVJRlxs6k3DzAOQQEJewfp00DjhlD0mxr8ZKpk2yq6IPTZZQ52XYxh26FC5MxLHhs7LuAwhtolmDZyp4_IuwRg8I5m-2--MmvGE8CCqjRWrkE85zgkMXPlOqcZtppRpZhn6Uz9DZAuKheHwVBb0ySIhFYG92bvQOgiKX0TTswB1SHgOLIeqktuyUaAgxI_h
+    // The tool has been used to pass from --secondary-color to --primary-color through CSS filters
+    // This is because SVGs embedded into <img> tags can't be filled as we can do with inline SVGs
+    let svgFilter = 'invert(92%) sepia(17%) saturate(168%) hue-rotate(337deg) brightness(98%) contrast(89%)'
+
+    // Change OpenZeppeling logo
+    document.getElementById('logo').style.filter = !this.state.dark ? svgFilter : null;
+
+    // Change The Ethernaut logo
+    let isTheEthernautInPage = document.getElementById('theEthernaut');
+    if(isTheEthernautInPage) isTheEthernautInPage.style.filter = !this.state.dark ? svgFilter : null;
+
+    // Change Arrow
+    let isArrowInPage = document.getElementById('arrow');
+    if(isArrowInPage) isArrowInPage.style.filter = !this.state.dark ? svgFilter : null;
+
+    // Change Mosaic and levels logo
+    let elements = document.getElementsByClassName('levelTile');
+    for(let i = 0; i< elements.length; i++) {
+      let element = elements[i];
+      if(element) element.style.filter = !this.state.dark ? svgFilter : null;
+    }
+
+    // Change all custom images
+    elements = document.getElementsByClassName('customImg');
+    for(let i = 0; i< elements.length; i++) {
+      let element = elements[i];
+      if(element) element.style.filter = !this.state.dark ? svgFilter : null;
+    }
 
     this.setState({
       dark: !this.state.dark
@@ -53,7 +80,7 @@ class Header extends React.Component {
               </ul>
             </li>
           </nav>
-          <a href="https://openzeppelin.com"><img id='logo' className="logo" src="../../imgs/oz-logo-black.svg" alt="logo" /></a>
+          <a href="https://openzeppelin.com"><img id='logo' className="logo" src="../../imgs/oz-logo.svg" alt="logo" /></a>
           <nav>
             <li>
               <input onClick={() => {this.toggleDarkMode()}} className="toggle" type="checkbox" />
