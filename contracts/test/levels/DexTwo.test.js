@@ -46,6 +46,12 @@ contract('DexTwo', function (accounts) {
     assert.equal(playerBalances[0], 10)
     assert.equal(playerBalances[1], 10)
 
+    // Ensure its not possible to approve yourself as a spender of the Dex balances
+    await expectRevert(
+      token1.approve(instance.address, player, 100),
+      "InvalidApprover"
+    )
+
     const t = await DexTwoAttackToken.new()
 
     // Drain funds through swap
