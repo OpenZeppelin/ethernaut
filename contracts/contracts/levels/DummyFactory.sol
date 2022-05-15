@@ -4,7 +4,7 @@ pragma solidity ^0.6.0;
 import './base/Level.sol';
 import './Dummy.sol';
 
-contract DummyLevel is Level {
+contract DummyFactory is Level {
 
   function createInstance(address _player) override public payable returns (address) {
     _player;
