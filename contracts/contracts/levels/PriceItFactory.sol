@@ -5,21 +5,14 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./PriceIt.sol";
+import './base/Level.sol';
 
-contract TestingERC20 is Ownable, ERC20 {
-    constructor(string memory _name, string memory _symbol) Ownable() ERC20(_name, _symbol) {}
-
-    function addBalance(address _address, uint _balance) external onlyOwner {
-        _mint(_address, _balance);
-    }
-}
-
-contract LevelFactory {
+contract PriceItFactory is Level {
   IUniswapV2Factory public uniFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
   IUniswapV2Router02 public uniRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
   uint amount = 100000 ether;
 
-  function createInstance(address _player) public payable returns (address) {
+  function createInstance(address _player) override public payable returns (address) {
     _player;
 
     TestingERC20 tokenA = new TestingERC20("Token 0", "TZERO");
@@ -61,8 +54,16 @@ contract LevelFactory {
     }
   }
 
-  function validateInstance(address payable _instance, address _player) public returns (bool) {
+  function validateInstance(address payable _instance, address _player) override public returns (bool) {
     _player;
-    return true;
+    return false;
   }
+}
+
+contract TestingERC20 is Ownable, ERC20 {
+    constructor(string memory _name, string memory _symbol) Ownable() ERC20(_name, _symbol) {}
+
+    function addBalance(address _address, uint _balance) external onlyOwner {
+        _mint(_address, _balance);
+    }
 }
