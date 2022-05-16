@@ -26,7 +26,7 @@ contract LevelFactory {
     TestingERC20 tokenB = new TestingERC20("Token 1", "TONE");
     TestingERC20 tokenC = new TestingERC20("Token 2", "TTWO");
     (TestingERC20 token0, TestingERC20 token1, TestingERC20 token2) = sortTokens(tokenA, tokenB, tokenC);
-    LevelContract level = new LevelContract(token0, token1, token2);
+    PriceIt level = new PriceIt(token0, token1, token2);
     token0.addBalance(address(level), amount);
     token1.addBalance(address(level), amount);
     createPair(token0, token1);
