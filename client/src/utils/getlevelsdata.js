@@ -1,6 +1,6 @@
 var levels = require(`../gamedata/gamedata.json`).levels;
 
-export default (props) => {
+const getlevelsdata = (props) => {
     var levelData = [];
     let linkStyle = {};
     let levelComplete;
@@ -55,3 +55,5 @@ export default (props) => {
 
     return [levelData,levelData[selectedIndex]];
 }
+
+export default getlevelsdata
