@@ -92,6 +92,7 @@ class Header extends React.Component {
                     <a onClick={() => {this.changeLanguage('es')}} href='/'>{strings.spanish}</a>
                     <a onClick={() => {this.changeLanguage('ja')}} href='/'>{strings.japanese}</a>
                     <a onClick={() => {this.changeLanguage('cn_simplified')}} href='/'>{strings.chinese_simplified}</a>
+                    <a onClick={() => {this.changeLanguage('ru')}} href='/'>{strings.russian}</a>
                     <a className="contr" href="https://github.com/openzeppelin/ethernaut#modify-or-add-new-languages">{strings.contributeTranslation}</a>
                   </div>
                 </div>
