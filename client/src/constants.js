@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import pkgWeb3 from 'web3';
-import * as pkgJSON from '../package.json' assert {type: 'json'};
+import * as pkgJSON from '../package.json' //assert {type: 'json'};
 dotenv.config()
 
 export const DEBUG = process.env.NODE_ENV !== 'production'
