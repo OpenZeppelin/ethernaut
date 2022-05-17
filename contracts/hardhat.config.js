@@ -31,7 +31,11 @@ module.exports = {
   },
   networks: {
     hardhat: {
-      chainId: 1337
+      chainId: 1337,
+      forking: {
+        url: "https://eth-rinkeby.alchemyapi.io/v2/wqHV9Lvcxqi12zVXAcu44uEEOUmpYecF",
+        blockNumber: 10692451
+      }
     },
   }
 };
