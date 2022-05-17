@@ -12,7 +12,7 @@ contract PriceIt {
     IERC20 public token1;
     IERC20 public token2;
 
-    constructor(IERC20 _token0, IERC20 _token1, IERC20 _token2) {
+    constructor(IERC20 _token0, IERC20 _token1, IERC20 _token2) public {
         // You can assume the tokens are sorted, i.e. _token0 < _token1 < _token2. 
         (token0, token1, token2) = (_token0, _token1, _token2);
     }
