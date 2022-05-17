@@ -33,6 +33,7 @@ module.exports = {
     hardhat: {
       chainId: 1337,
       forking: {
+        // Forking the Rinkeby network to use the Uniswap factory & router.
         url: "https://eth-rinkeby.alchemyapi.io/v2/wqHV9Lvcxqi12zVXAcu44uEEOUmpYecF",
         blockNumber: 10692451
       }
