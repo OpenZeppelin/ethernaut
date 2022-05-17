@@ -23,7 +23,7 @@ module.exports = {
             runs: 1000,
           },
         }
-      }
+      },
     ]
   },
   paths: {
