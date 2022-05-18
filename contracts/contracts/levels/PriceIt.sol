@@ -6,6 +6,8 @@ import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol';
 import '@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol';
 
 contract PriceIt {
+  IUniswapV2Factory private constant uniFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
+  IUniswapV2Router02 private constant uniRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
   IERC20 public token0;
   IERC20 public token1;
   IERC20 public token2;
@@ -27,8 +29,6 @@ contract PriceIt {
   }
 
   function getTokenPrice(uint256 _inputAmount, IERC20 _inputToken) private view returns (uint256) {
-    IUniswapV2Factory uniFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
-    IUniswapV2Router02 uniRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     IUniswapV2Pair _pair = IUniswapV2Pair(uniFactory.getPair(address(token0), address(token1)));
     (uint256 res0, uint256 res1, ) = _pair.getReserves();
     if (_inputToken == token0) {
