@@ -8,18 +8,13 @@ import './PriceIt.sol';
 import './base/Level.sol';
 
 contract PriceItFactory is Level {
-  IUniswapV2Factory public constant uniFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
-  IUniswapV2Router02 public constant uniRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
-  uint256 amount = 100000 ether;
-  TestingERC20 token0;
+  IUniswapV2Factory private constant uniFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
+  IUniswapV2Router02 private constant uniRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
+  uint256 private constant amount = 100000 ether;
+  TestingERC20 private token0;
 
-  function createInstance(address _player) public payable override returns (address) {
-    _player;
-
-    TestingERC20 tokenA = new TestingERC20('Token 0', 'TZERO');
-    TestingERC20 tokenB = new TestingERC20('Token 1', 'TONE');
-    TestingERC20 tokenC = new TestingERC20('Token 2', 'TTWO');
-    (TestingERC20 _token0, TestingERC20 token1, TestingERC20 token2) = sortTokens(tokenA, tokenB, tokenC);
+  function createInstance(address) public payable override returns (address) {
+    (TestingERC20 _token0, TestingERC20 token1, TestingERC20 token2) = createThreeTokens();
     token0 = _token0;
     PriceIt level = new PriceIt(token0, token1, token2);
     token0.addBalance(address(level), amount);
@@ -29,7 +24,25 @@ contract PriceItFactory is Level {
     return address(level);
   }
 
-  function createPair(TestingERC20 _token0, TestingERC20 _token1) internal {
+  function validateInstance(address payable, address _player) public override returns (bool) {
+    return token0.balanceOf(_player) > 9000 ether;
+  }
+
+  function createThreeTokens()
+    private
+    returns (
+      TestingERC20,
+      TestingERC20,
+      TestingERC20
+    )
+  {
+    TestingERC20 tokenA = new TestingERC20('Token 0', 'TZERO');
+    TestingERC20 tokenB = new TestingERC20('Token 1', 'TONE');
+    TestingERC20 tokenC = new TestingERC20('Token 2', 'TTWO');
+    return sortThreeTokens(tokenA, tokenB, tokenC);
+  }
+
+  function createPair(TestingERC20 _token0, TestingERC20 _token1) private {
     address pair = uniFactory.createPair(address(_token0), address(_token1));
     _token0.addBalance(address(this), amount);
     _token1.addBalance(address(this), amount);
@@ -38,7 +51,7 @@ contract PriceItFactory is Level {
     uniRouter.addLiquidity(address(_token0), address(_token1), amount, amount, amount, amount, pair, block.timestamp);
   }
 
-  function sortTokens(
+  function sortThreeTokens(
     TestingERC20 tokenA,
     TestingERC20 tokenB,
     TestingERC20 tokenC
@@ -64,11 +77,6 @@ contract PriceItFactory is Level {
         return tokenB > tokenA ? (tokenA, tokenB, tokenC) : (tokenB, tokenA, tokenC);
       }
     }
-  }
-
-  function validateInstance(address payable, address _player) public override returns (bool) {
-    _player;
-    return token0.balanceOf(_player) > 9000 ether;
   }
 }
 

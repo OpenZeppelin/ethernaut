@@ -28,7 +28,8 @@
     "tabWidth": 2,
     "useTabs": false,
     "printWidth": 600,
-    "singleQuote": true
+    "singleQuote": true,
+    "singleAttributePerLine": false
   },
   "browserslist": {
     "production": [
