@@ -21,20 +21,20 @@ contract PriceIt {
     (token0, token1, token2) = (_token0, _token1, _token2);
   }
 
-  function buyToken(uint256 _inputAmount, IERC20 _inputToken) external {
-    IERC20 outputToken = _inputToken == token0 ? token1 : token0;
-    uint256 _outputAmount = getTokenPrice(_inputAmount, _inputToken);
-    _inputToken.transferFrom(msg.sender, address(this), _inputAmount);
-    outputToken.transfer(msg.sender, _outputAmount);
+  function buyToken(uint256 inputAmount, IERC20 inputToken) external {
+    IERC20 outputToken = inputToken == token0 ? token1 : token0;
+    uint256 outputAmount = getTokenPrice(inputAmount, inputToken);
+    inputToken.transferFrom(msg.sender, address(this), inputAmount);
+    outputToken.transfer(msg.sender, outputAmount);
   }
 
-  function getTokenPrice(uint256 _inputAmount, IERC20 _inputToken) private view returns (uint256) {
-    IUniswapV2Pair _pair = IUniswapV2Pair(uniFactory.getPair(address(token0), address(token1)));
-    (uint256 res0, uint256 res1, ) = _pair.getReserves();
-    if (_inputToken == token0) {
-      return uniRouter.getAmountOut(_inputAmount, res0, res1);
-    } else if (_inputToken == token1) {
-      return uniRouter.getAmountOut(_inputAmount, res1, res0);
+  function getTokenPrice(uint256 inputAmount, IERC20 inputToken) private view returns (uint256) {
+    IUniswapV2Pair pair = IUniswapV2Pair(uniFactory.getPair(address(token0), address(token1)));
+    (uint256 res0, uint256 res1, ) = pair.getReserves();
+    if (inputToken == token0) {
+      return uniRouter.getAmountOut(inputAmount, res0, res1);
+    } else if (inputToken == token1) {
+      return uniRouter.getAmountOut(inputAmount, res1, res0);
     } else {
       revert('Input token is not part of the token0/token1 pair.');
     }
