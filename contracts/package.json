@@ -27,7 +27,7 @@
   "prettier": {
     "tabWidth": 2,
     "useTabs": false,
-    "printWidth": 140,
+    "printWidth": 600,
     "singleQuote": true
   },
   "browserslist": {
