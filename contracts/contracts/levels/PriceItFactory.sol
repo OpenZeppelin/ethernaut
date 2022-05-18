@@ -19,7 +19,8 @@ contract PriceItFactory is Level {
     TestingERC20 tokenA = new TestingERC20("Token 0", "TZERO");
     TestingERC20 tokenB = new TestingERC20("Token 1", "TONE");
     TestingERC20 tokenC = new TestingERC20("Token 2", "TTWO");
-    (token0, TestingERC20 token1, TestingERC20 token2) = sortTokens(tokenA, tokenB, tokenC);
+    (TestingERC20 _token0, TestingERC20 token1, TestingERC20 token2) = sortTokens(tokenA, tokenB, tokenC);
+    token0 = _token0;
     PriceIt level = new PriceIt(token0, token1, token2);
     token0.addBalance(address(level), amount);
     token1.addBalance(address(level), amount);
