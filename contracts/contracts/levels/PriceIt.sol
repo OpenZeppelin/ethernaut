@@ -6,8 +6,6 @@ import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol";
 import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
 
 contract PriceIt {
-    IUniswapV2Factory public uniFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
-    IUniswapV2Router02 public uniRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     IERC20 public token0;
     IERC20 public token1;
     IERC20 public token2;
@@ -18,13 +16,15 @@ contract PriceIt {
     }
 
     function buyToken(uint _inputAmount, IERC20 _inputToken) external {
-        uint _outputAmount = getTokenPrice(_inputAmount, _inputToken);
         IERC20 outputToken = _inputToken == token0 ? token1 : token0;
+        uint _outputAmount = getTokenPrice(_inputAmount, _inputToken);
         _inputToken.transferFrom(msg.sender, address(this), _inputAmount);
         outputToken.transfer(msg.sender, _outputAmount);
     }
     
     function getTokenPrice(uint _inputAmount, IERC20 _inputToken) private view returns (uint) {
+        IUniswapV2Factory uniFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
+        IUniswapV2Router02 uniRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
         IUniswapV2Pair _pair = IUniswapV2Pair(uniFactory.getPair(address(token0), address(token1)));
         (uint res0, uint res1,) = _pair.getReserves();
         if (_inputToken == token0) {
@@ -32,7 +32,7 @@ contract PriceIt {
         } else if (_inputToken == token1) {
             return uniRouter.getAmountOut(_inputAmount, res1, res0);
         } else {
-            revert("Input token is not part of the token0 token1 pair.");
+            revert("Input token is not part of the token0/token1 pair.");
         }
     }
 }
