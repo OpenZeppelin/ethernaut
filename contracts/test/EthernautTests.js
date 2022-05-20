@@ -1,6 +1,6 @@
 /*eslint no-undef: "off"*/
 const Ethernaut = artifacts.require('./Ethernaut.sol');
-const DummyLevel = artifacts.require('./levels/DummyLevel.sol');
+const DummyFactory = artifacts.require('./levels/DummyFactory.sol');
 const Dummy = artifacts.require('./levels/Dummy.sol');
 const FallbackFactory = artifacts.require('./levels/FallbackFactory.sol');
 const Manufactured = artifacts.require('./levels/Manufactured.sol');
@@ -36,7 +36,7 @@ contract('Ethernaut', function(accounts) {
 
   it(`should not allow player A to use player's B instance to complete a level`, async function() {
 
-    const level = await DummyLevel.new()
+    const level = await DummyFactory.new()
     await ethernaut.registerLevel(level.address, {from: owner});
 
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, Dummy)
@@ -49,7 +49,7 @@ contract('Ethernaut', function(accounts) {
 
   it(`should not allow a player to generate 2 completion logs with the same instance`, async function() {
 
-    const level = await DummyLevel.new()
+    const level = await DummyFactory.new()
     await ethernaut.registerLevel(level.address, {from: owner});
 
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, Dummy)
@@ -71,7 +71,7 @@ contract('Ethernaut', function(accounts) {
 
   it(`should provide instances and verify completion`, async function() {
 
-    const level = await DummyLevel.new()
+    const level = await DummyFactory.new()
     await ethernaut.registerLevel(level.address, {from: owner});
 
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, Dummy)
@@ -90,7 +90,7 @@ contract('Ethernaut', function(accounts) {
 
   it(`should provide instances and verify non-complettion`, async function() {
 
-    const level = await DummyLevel.new()
+    const level = await DummyFactory.new()
     await ethernaut.registerLevel(level.address, {from: owner});
 
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, Dummy)
@@ -105,12 +105,12 @@ contract('Ethernaut', function(accounts) {
   });
 
   it(`should not provide instances to non-registered level factories`, async function() {
-    const level = await DummyLevel.new()
+    const level = await DummyFactory.new()
     await expectRevert.unspecified(ethernaut.createLevelInstance(level.address, {from: player}))
   });
 
   it(`should not allow anyone but the owner to upload a level`, async function() {
-    const level = await DummyLevel.new()
+    const level = await DummyFactory.new()
     await expectRevert.unspecified(ethernaut.registerLevel(level.address, {from: player}))
   });
 });
