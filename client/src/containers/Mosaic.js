@@ -18,7 +18,7 @@ class Mosaic extends React.Component {
     render() {
 
       // Array for tiles in the Mosaic
-      var [levelData,] = getlevelsdata(this.props);
+      var [levelData,] = getlevelsdata(this.props, 'mosaic');
 
       return (
         <section className="game">
@@ -26,7 +26,7 @@ class Mosaic extends React.Component {
                 return (
                     <Link key={level.name} to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`}>
                         <div className="content_img">
-                            <img className='levelTile' alt="" src={level.src}/> 
+                            <img className='level-tile' alt="" src={level.src}/> 
                             <div>
                                 {`${level.completed ? ' ✔' : ''}`}{' '}
                                 {level.name}

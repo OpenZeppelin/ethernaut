@@ -51,7 +51,7 @@ class Level extends React.Component {
       levelCompleted
     } = this.props;
 
-    var [levelData,selectedLevel] = getlevelsdata(this.props);
+    var [levelData,selectedLevel] = getlevelsdata(this.props, 'levelPage');
 
     if(!level) return null
     const showCode = levelCompleted || level.revealCode
@@ -125,7 +125,8 @@ class Level extends React.Component {
                 </button>
 
             </div>
-            <div className="level-selector-dropdown-content">
+          </div>
+          <div className="level-selector-dropdown-content">
               {levelData.map((level) => {
                     return (
                       <Link key={level.name} to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`}>
@@ -139,24 +140,22 @@ class Level extends React.Component {
             </div>
           </div>
 
-          </div>
-
           <section>
-              <img alt='' className="levelTile level-img-view" src={selectedLevel.src}/>
-              <div> 
-                  <center><h1>{selectedLevel.name}</h1></center>
-              </div>
+              <img alt='' className="level-tile level-img-view" src={selectedLevel.src}/>
           </section>
         
 
-          <div className="page-header row">
-            {/* TITLE + INFO */}
+          {/* TITLE + INFO */}
+          {poweredBy && <div className="page-header row">
             <div className="level-title col-sm-6">          
-              {poweredBy && <p>{strings.poweredBy} <a href={poweredBy.href}><img className='customImg' alt="" style={{width: '80px', height: '80px'}} src={poweredBy.src}/></a></p>}
+              <p>{strings.poweredBy} 
+                <a href={poweredBy.href}>
+                  <img className='custom-img' alt="" style={{width: '80px', height: '80px'}} src={poweredBy.src}/>
+                </a>
+              </p>
               <h2> </h2>
             </div>
-          </div>
-
+          </div>}
 
           <section className="descriptors">
               <div className="boxes">
@@ -172,41 +171,36 @@ class Level extends React.Component {
               </div>
           </section>
 
-          <section className="descriptors">
-            <div className="boxes boxes-code">
+          <section className="descriptors source-code">
               {/* CODE */}
               { showCode && sourcesFile &&
               <div>
-                <div className='page-header'><h3>{strings.sources}</h3></div>
                 <CodeComponent target={sourcesFile}/>
               </div>
               }
-              {/* BUTTONS */}
-              <div className="" style={{marginTop: '5px'}}>
-                { level.levelContract &&
-                <div className="">
+          </section>
+          {/* BUTTONS */}
+          <section className="descriptors button-sequence" >
+          { level.levelContract &&
+                <div >
 
-                  {/* CREATE */}
+                  {/* NEXT LEVEL */}
+                  { levelCompleted && nextLevelId &&
                   <button
                     type="button"
-                    className='buttonActions'
-                    onClick={evt => {
-                      if (!requestedInstance) {
-                        this.props.loadLevelInstance(level, false, true);
-                        this.setState({ requestedInstance: true });
-                        setTimeout(() => this.setState({ requestedInstance: false }), 2000);
-                      }
-                    }}
+                    className='button-actions'
+                    onClick={evt => this.props.history.push(`${constants.PATH_LEVEL_ROOT}${nextLevelId}`)}
                   >
-                    {strings.getNewInstance}
+                    {strings.nextLevel}
                   </button>
+                  }
 
                   {/* SUBMIT */}
-                  { this.props.levelEmitted &&
+                  { this.props.levelEmitted && !levelCompleted &&
                   <button
                     type="button"
                     disabled = { this.props.levelCompleted }
-                    className='buttonActions'
+                    className='button-actions'
                     onClick={evt => {
                       if (!submittedIntance && nextLevelId) {
                         this.props.submitLevelInstance(level);
@@ -219,21 +213,25 @@ class Level extends React.Component {
                   </button>
                   }
 
-                  {/* NEXT LEVEL */}
-                  { levelCompleted && nextLevelId &&
+                  {/* CREATE */}
                   <button
                     type="button"
-                    className='buttonActions'
-                    onClick={evt => this.props.history.push(`${constants.PATH_LEVEL_ROOT}${nextLevelId}`)}
+                    className='button-actions'
+                    onClick={evt => {
+                      if (!requestedInstance) {
+                        this.props.loadLevelInstance(level, false, true);
+                        this.setState({ requestedInstance: true });
+                        setTimeout(() => this.setState({ requestedInstance: false }), 2000);
+                      }
+                    }}
                   >
-                    {strings.nextLevel}
+                    {strings.getNewInstance}
                   </button>
-                  }
+                </div>
 
-                </div>
+
+
                 }
-                </div>
-            </div>
           </section>
 
           <section className="descriptors">
@@ -247,7 +245,7 @@ class Level extends React.Component {
         </main>
 
         {/* Footer */}
-        <footer dangerouslySetInnerHTML={{ __html: strings.footer }}>
+        <footer className='footer' dangerouslySetInnerHTML={{ __html: strings.footer }}>
         </footer>
       </div>
     );

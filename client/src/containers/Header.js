@@ -42,7 +42,7 @@ class Header extends React.Component {
     document.getElementById('logo').style.filter = !this.state.dark ? svgFilter : null;
 
     // Change The Ethernaut logo
-    let isTheEthernautInPage = document.getElementById('theEthernaut');
+    let isTheEthernautInPage = document.getElementById('the-ethernaut');
     if(isTheEthernautInPage) isTheEthernautInPage.style.filter = !this.state.dark ? svgFilter : null;
 
     // Change Arrow
@@ -50,14 +50,14 @@ class Header extends React.Component {
     if(isArrowInPage) isArrowInPage.style.filter = !this.state.dark ? svgFilter : null;
 
     // Change Mosaic and levels logo
-    let elements = document.getElementsByClassName('levelTile');
+    let elements = document.getElementsByClassName('level-tile');
     for(let i = 0; i< elements.length; i++) {
       let element = elements[i];
       if(element) element.style.filter = !this.state.dark ? svgFilter : null;
     }
 
     // Change all custom images
-    elements = document.getElementsByClassName('customImg');
+    elements = document.getElementsByClassName('custom-img');
     for(let i = 0; i< elements.length; i++) {
       let element = elements[i];
       if(element) element.style.filter = !this.state.dark ? svgFilter : null;
@@ -80,13 +80,16 @@ class Header extends React.Component {
               </ul>
             </li>
           </nav>
-          <a href="https://openzeppelin.com"><img id='logo' className="logo" src="../../imgs/oz-logo.svg" alt="logo" /></a>
+          <a className='logo-container' href="https://openzeppelin.com"><img id='logo' className="logo" src="../../imgs/oz-logo.svg" alt="logo" /></a>
           <nav>
-            <li>
-              <input onClick={() => {this.toggleDarkMode()}} className="toggle" type="checkbox" />
-              <ul className="nav-links">
-                <div className="dropdown">
-                  <a className="icon-buttons" href='/'><i className="fas fa-globe-americas"></i></a>
+            <ul className="nav-links">
+                <a className="buttons" href={window.location.pathname !== constants.PATH_ROOT ? constants.PATH_ROOT : constants.PATH_HELP}>
+                  <button>{window.location.pathname !== constants.PATH_ROOT ? strings.home : strings.ethernautHelp }
+                  </button>
+                </a> 
+            </ul>
+            <div className="dropdown">
+                  <div className="icon-buttons" href='/'><i className="fas fa-globe-americas"></i></div>
                   <div className="dropdown-content">
                     <a onClick={() => {this.changeLanguage('en')}} href='/'>{strings.english}</a>
                     <a onClick={() => {this.changeLanguage('es')}} href='/'>{strings.spanish}</a>
@@ -94,13 +97,8 @@ class Header extends React.Component {
                     <a onClick={() => {this.changeLanguage('cn_simplified')}} href='/'>{strings.chinese_simplified}</a>
                     <a className="contr" href="https://github.com/openzeppelin/ethernaut#modify-or-add-new-languages">{strings.contributeTranslation}</a>
                   </div>
-                </div>
-                <a className="buttons" href={window.location.pathname !== constants.PATH_ROOT ? constants.PATH_ROOT : constants.PATH_HELP}>
-                  <button>{window.location.pathname !== constants.PATH_ROOT ? strings.home : strings.ethernautHelp }
-                  </button>
-                </a> 
-              </ul>
-            </li>
+            </div>
+            <input onClick={() => {this.toggleDarkMode()}} className="toggle" type="checkbox" />
           </nav>
         </header>
       </center>

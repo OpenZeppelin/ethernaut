@@ -28,9 +28,6 @@ class Help extends React.Component {
           <MarkdownComponent target={strings.gameMechanics} />
 
           </section>
-          <section className="emptySection">
-      
-          </section >
 
           <h3>Using the console</h3>
           <section>
@@ -38,16 +35,9 @@ class Help extends React.Component {
 
           </section>
           
-          <section className="emptySection">
-      
-          </section>
-
           <h3>Beyond the console</h3>
           <section>          
           <MarkdownComponent target={strings.beyondConsole} />
-
-          </section>
-          <section className="emptySection">
       
           </section>
           <h3>Troubleshooting</h3>

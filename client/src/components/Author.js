@@ -81,7 +81,7 @@ class Author extends React.Component {
 
     return (
       <div>
-        <div style={{marginTop: '20px', marginBotton: '20px'}}>
+        <div style={{marginTop: '20px', marginBottm: '20px', overflowWrap: 'anywhere'}}>
 
           <h4>{strings.levelAuthor}</h4>
 

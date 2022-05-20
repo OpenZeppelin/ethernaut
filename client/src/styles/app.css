@@ -8,10 +8,12 @@
 
 :root{
   --pink: #eddfd6;
-  --black: black;
+  --black: #222222;
   --primary-color: var(--pink);
   --secondary-color: var(--black);
-  }
+  max-width: 75%;
+  margin-left: 10%;
+}
 
 body {
   box-sizing: border-box;
@@ -22,10 +24,10 @@ body {
 }
 
 .logo {
-  width: 110%;
+  width: 100%;
   color: var(--secondary-color);
   cursor: pointer;
-  margin-left: 5%;
+  margin-left: 3em;
 }
 
 .lines{
@@ -35,6 +37,7 @@ body {
 
 .footer {
   background-color: var(--secondary-color);
+  margin-left: -15%;
 }
 
 .main,
@@ -66,9 +69,9 @@ h2 {
   padding: 1% 10% 0% 10%;
   color: var(--secondary-color);
   font-family: Helvetica, sans-serif;
-  font-weight: lighter;
   text-align: center;
   line-height: 1.5;
+  font-weight: bold;
 }
 
 button {
@@ -80,8 +83,9 @@ button {
   font-weight: bold;
 }
 
-.buttonActions {
+.button-actions {
   margin-left: 1%;
+  font-size: larger;
 }
 
 button :hover{
@@ -119,35 +123,40 @@ nav li {
 }
 
 .nav-links .icon-buttons {
+  color: none;
   text-decoration: none;
   font-family: helvetica, sans-serif;
 }
 
 .dropdown {
   float: right;
-  right: 70px;
   overflow: hidden;
   font-size: x-large;
-  position: absolute;
+}
+
+p {
+  font-weight: bold;
 }
 
 .dropdown-content {
   display: none;
   background-color: var(--secondary-color);
-  min-width: 100px;
+  width: 10em;
   border:solid 15px var(--secondary-color);
-  border-radius: 8px;
-  position: relative;
+  border-radius: 6px;
+  position: fixed;
+  margin-left: -9em;
+  z-index: 10;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-.dropdown:hover .icon-buttons {
+/* .dropdown:hover .icon-buttons {
   position: relative;
   padding-left: 89%;
-}
+} */
 
 .dropdown-content a {
   float: none;
@@ -166,13 +175,15 @@ nav li {
 .dropdown-content a:hover {
   background-color: var(--secondary-color);
   color: var(--primary-color);
+  border: var(--primary-color) solid 1px;
+  border-radius: 6px;
 }
 
 .dropdown-content .contr {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   border: var(--primary-color) solid 1px;
-  border-radius: 4px;
+  border-radius: 6px;
   font-weight: bold;
 }
 
@@ -208,7 +219,7 @@ nav li {
     margin-top: 4%;
 }
 
-.content_img{
+.content_img {
   word-wrap: break-word;
   position: relative;
   width: 120px;
@@ -216,18 +227,28 @@ nav li {
   float: center;
 }
 
+.level-tile {
+  border-radius: 6px;
+}
+
+.source-code {
+  margin-bottom: 2em;
+  max-width: 60%;
+  margin-left: 20%;
+}
+
 .content_img div{
   position: absolute;
 
-  bottom: 15px;
-  right: 15px;
+  bottom: 20px;
+  right: 20px;
 
   background: var(--secondary-color);
   padding-top: 10%;
   font-weight: bold;
   color: var(--primary-color);
   text-align: center;
-  height: 110px;
+  height: 100px;
   font-family: Arial, Helvetica, sans-serif;
   opacity: 0;
   visibility: hidden;
@@ -245,10 +266,10 @@ nav li {
 }
 
 .content_img:hover div{
-  width: 110px;
+  width: 100px;
   visibility: visible;
   opacity: 100; 
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 .Description {
@@ -291,12 +312,13 @@ footer{
 /* Boxes */
 
 .boxes{
-  padding: 15px 25px 15px 25px;
+  padding: 20px 20px 20px 20px;
   border: 2px solid var(--secondary-color);
-  margin: -1% 5% 3% 5%;
-  width: 90%;
+  width: 60%;
+  margin-left: 20%;
+  margin-bottom: 2em;
   text-align: left;
-  border-radius: 15px;
+  border-radius: 6px;
 }
 
 .boxes-code {
@@ -304,13 +326,8 @@ footer{
 }
 
 .boxes section {
-  padding: 15px 25px 15px 25px;
-  border: 1px;
-  border-style: solid;
-  border-color:var(--secondary-color);
-  margin: 10px;
-  border-radius: 10px;
-  background-color: var(--primary-color);
+
+  text-align: left;
 }
 
 .boxes .emptySection {
@@ -321,7 +338,8 @@ footer{
 }
 
 .boxes h3 {
-  text-align: center;
+  text-align: left;
+  font-weight: bolder;
 }
 
 .toggle {
@@ -329,7 +347,7 @@ footer{
   appearance: none;
   width: 63px;
   height: 32px;
-  margin-bottom: -7%;
+  margin-bottom: -5%;
   display: inline-block;
   position: relative;
   border-radius: 50px;
@@ -375,103 +393,41 @@ footer{
   .arrow {
     padding-bottom: 1%;
   }
-
-  .dropdown {
-    right: 80px;
-  }
-}
-
-@media only screen and (min-width: 2000px)
-
-{
-  .dropdown {
-    right: 90px;
-  }
 }
 
 @media only screen and (max-width: 1300px)
 
 {
-  header {
-    width: 96%;
-  }
-
   .arrow {
     padding-bottom: 1%;
   }
-
-  .dropdown {
-    right: 55px;
-  }
-
-  .dropdown-menu-bar:hover .level-selector-dropdown-content{
-    margin-top: 355px;
-  } 
-
 }
 
-@media only screen and (max-width: 1000px)
-
-{
-
-  .dropdown {
-    right: 70px;
-    z-index: 1;
-  }
-
-  header {
-    width: 90%;
-  }
-
-  .arrow {
-    padding-bottom: 1%;
-  }
-
-  .content_img {
-    width: 100px;
-    height: 100px;
-  }
-
-  
-  .content_img img {
-    width: 80px;
-    height: 80px;
-  }
-
-  .content_img div{  
-    height: 90px;
-    bottom: 15px;
-    right: 15px;
-  }
-
-  .content_img:hover div{ 
-    width: 90px;
-  }
-}
-
-@media only screen and (max-width: 900px)
+@media only screen and (max-width: 1200px)
 
 {
   .logo {
+    margin-left: 0em;
+  }
+
+}
+
+@media only screen and (max-width: 1050px)
+
+{
+  .dropdown {
     display: none;
   }
-}
 
-@media only screen and (max-width: 750px)
-
-{
-
-  .dropdown {
-    right: 60px;
-    z-index: 1;
+  .toggle {
+    display: none;
   }
-}
 
-@media only screen and (max-width: 600px)
+  .header {
+    padding: 0;
+  }
 
-{
-  .dropdown {
-    right: 50px;
-    z-index: 1;
+  .logo-container {
+    max-width: 30%;
   }
 }
