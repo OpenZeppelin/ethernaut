@@ -23,24 +23,31 @@ contract('PriceIt', function (accounts) {
 
     assert.isFalse(completed);
   });
-
-  it('should allow the player to solve the level', async function () {
+  
+  it('should fail if the level instance tokens are not sorted', async function() {
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, PriceIt);
+    const [token0, token1, token2] = await Promise.all([instance.token0(), instance.token1(), instance.token2()])
+    assert.isTrue(token0 < token1);
+    assert.isTrue(token1 < token2)
+  }) 
 
-    const address = await web3.eth.getStorageAt(instance.address, '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc');
-    let string = '0x' + JSON.stringify(address).substr(27, 40);
-    string = web3.utils.toChecksumAddress(string);
+  // it('should allow the player to solve the level', async function () {
+  //   const instance = await utils.createLevelInstance(ethernaut, level.address, player, PriceIt);
 
-    const attacker = await MotorbikeAttack.new(string);
+  //   const address = await web3.eth.getStorageAt(instance.address, '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc');
+  //   let string = '0x' + JSON.stringify(address).substr(27, 40);
+  //   string = web3.utils.toChecksumAddress(string);
 
-    // ATTACK FIRST STEP: Take control over upgradeability functionality
-    await attacker.takeControl();
+  //   const attacker = await MotorbikeAttack.new(string);
 
-    // ATTACK SECOND STEP: Destroy the implementation
-    await attacker.destroy();
+  //   // ATTACK FIRST STEP: Take control over upgradeability functionality
+  //   await attacker.takeControl();
 
-    const completed = await utils.submitLevelInstance(ethernaut, level.address, instance.address, player);
+  //   // ATTACK SECOND STEP: Destroy the implementation
+  //   await attacker.destroy();
 
-    assert.isTrue(completed);
-  });
+  //   const completed = await utils.submitLevelInstance(ethernaut, level.address, instance.address, player);
+
+  //   assert.isTrue(completed);
+  // });
 });
