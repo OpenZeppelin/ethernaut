@@ -14,8 +14,9 @@ contract PriceItFactory is Level {
   TestingERC20 private token0;
 
   function createInstance(address) public payable override returns (address) {
-    (TestingERC20 _token0, TestingERC20 token1, TestingERC20 token2) = createThreeTokens();
-    token0 = _token0;
+    token0 = new TestingERC20('Token 0', 'TZERO');
+    TestingERC20 token1 = new TestingERC20('Token 1', 'TONE');
+    TestingERC20 token2 = new TestingERC20('Token 2', 'TTWO');
     PriceIt level = new PriceIt(token0, token1, token2);
     token0.addBalance(address(level), amount);
     token1.addBalance(address(level), amount);
@@ -28,20 +29,6 @@ contract PriceItFactory is Level {
     return token0.balanceOf(_player) > 9000 ether;
   }
 
-  function createThreeTokens()
-    private
-    returns (
-      TestingERC20,
-      TestingERC20,
-      TestingERC20
-    )
-  {
-    TestingERC20 tokenA = new TestingERC20('Token 0', 'TZERO');
-    TestingERC20 tokenB = new TestingERC20('Token 1', 'TONE');
-    TestingERC20 tokenC = new TestingERC20('Token 2', 'TTWO');
-    return sortThreeTokens(tokenA, tokenB, tokenC);
-  }
-
   function createPair(TestingERC20 _token0, TestingERC20 _token1) private {
     address pair = uniFactory.createPair(address(_token0), address(_token1));
     _token0.addBalance(address(this), amount);
@@ -49,34 +36,6 @@ contract PriceItFactory is Level {
     _token0.approve(address(uniRouter), amount);
     _token1.approve(address(uniRouter), amount);
     uniRouter.addLiquidity(address(_token0), address(_token1), amount, amount, amount, amount, pair, block.timestamp);
-  }
-
-  function sortThreeTokens(
-    TestingERC20 tokenA,
-    TestingERC20 tokenB,
-    TestingERC20 tokenC
-  )
-    private
-    pure
-    returns (
-      TestingERC20,
-      TestingERC20,
-      TestingERC20
-    )
-  {
-    if (tokenA > tokenB) {
-      if (tokenA > tokenC) {
-        return tokenB > tokenC ? (tokenC, tokenB, tokenA) : (tokenB, tokenC, tokenA);
-      } else {
-        return tokenB > tokenA ? (tokenA, tokenB, tokenC) : (tokenB, tokenA, tokenC);
-      }
-    } else {
-      if (tokenB > tokenC) {
-        return tokenC > tokenA ? (tokenA, tokenC, tokenB) : (tokenC, tokenA, tokenB);
-      } else {
-        return tokenB > tokenA ? (tokenA, tokenB, tokenC) : (tokenB, tokenA, tokenC);
-      }
-    }
   }
 }
 
