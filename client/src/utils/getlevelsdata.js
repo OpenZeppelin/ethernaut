@@ -1,6 +1,6 @@
 var levels = require(`../gamedata/gamedata.json`).levels;
 
-export default (props, source) => {
+const getlevelsdata = (props, source) => {
     var levelData = [];
     let linkStyle = {};
     let levelComplete;
@@ -43,7 +43,7 @@ export default (props, source) => {
         var object = {
             name: levels[i].name,
             src: isMissingImage ? `../../imgs/default.svg` : (
-                source == 'mosaic' ? `../../imgs/Level${levels[i].deployId}.svg` : `../../imgs/BigLevel${levels[i].deployId}.svg`
+                source !== 'mosaic' ? `../../imgs/BigLevel${levels[i].deployId}.svg` : `../../imgs/Level${levels[i].deployId}.svg`
             ),
             difficulty: difficulty,
             deployedAddress: levels[i].deployedAddress,
@@ -57,3 +57,5 @@ export default (props, source) => {
 
     return [levelData,levelData[selectedIndex]];
 }
+
+export default getlevelsdata
