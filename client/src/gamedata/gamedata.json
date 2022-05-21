@@ -418,7 +418,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "27",
-      "instanceGas": 250000,
+      "instanceGas": 300000,
       "author": "staa99"
     }
   ]
