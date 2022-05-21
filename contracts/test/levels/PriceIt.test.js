@@ -1,5 +1,6 @@
 const PriceIt = artifacts.require('./levels/PriceIt.sol');
 const PriceItFactory = artifacts.require('./levels/PriceItFactory.sol');
+const UniFactory = artifacts.require('@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol');
 const Ethernaut = artifacts.require('./Ethernaut.sol');
 const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers');
 const utils = require('../utils/TestUtils');
@@ -24,8 +25,14 @@ contract('PriceIt', function (accounts) {
 
   it("should fail if the paired didn't got created", async function () {
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, PriceIt);
-    const [token0, token1, token2] = await Promise.all([instance.token0(), instance.token1(), instance.token2()]);
-    const uniFactoryAddress = 
+    const [token0, token1, token2, uniFactoryAddress] = await Promise.all([
+      instance.token0(),
+      instance.token1(),
+      instance.token2(),
+      instance.uniFactory(),
+    ]);
+    const uniFactory = UniFactory.at(uniFactoryAddress)
+    
   });
 
   // it('should allow the player to solve the level', async function () {
