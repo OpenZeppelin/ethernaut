@@ -55,7 +55,8 @@ contract('PriceIt', function (accounts) {
     const pair_token0_token1 = await UniPair.at(token0_token1);
     const reserves = await pair_token0_token1.getReserves();
     const res1 = reserves.reserve1.toString()
-    assert.equal(res1, '100000000000000000000000')
+    const expectedAmount = '100000000000000000000000'
+    assert.equal(res1, expectedAmount)
   });
 
   // it('should allow the player to solve the level', async function () {
