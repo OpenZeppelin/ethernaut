@@ -50,13 +50,17 @@ contract('PriceIt', function (accounts) {
       instance.token2(),
       instance.uniFactory(),
     ]);
+    const expectedAmount = '100000000000000000000000';
     const uniFactory = await UniFactory.at(uniFactoryAddress);
-    const token0_token1 = await uniFactory.getPair(token0, token1);
-    const pair_token0_token1 = await UniPair.at(token0_token1);
-    const reserves = await pair_token0_token1.getReserves();
-    const res1 = reserves.reserve1.toString()
-    const expectedAmount = '100000000000000000000000'
-    assert.equal(res1, expectedAmount)
+    async function verifyPair(firstToken, secondToken) {
+      const pairAddress = await uniFactory.getPair(firstToken, secondToken);
+      const pairContract = await UniPair.at(pairAddress);
+      const reserves = await pairContract.getReserves();
+      assert.equal(reserves.reserve0.toString(), expectedAmount);
+      assert.equal(reserves.reserve1.toString(), expectedAmount);
+    }
+    await verifyPair(token0, token1);
+    await verifyPair(token0, token2);
   });
 
   // it('should allow the player to solve the level', async function () {
