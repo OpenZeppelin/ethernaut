@@ -25,6 +25,7 @@ contract('PriceIt', function (accounts) {
   it("should fail if the paired didn't got created", async function () {
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, PriceIt);
     const [token0, token1, token2] = await Promise.all([instance.token0(), instance.token1(), instance.token2()]);
+    const uniFactoryAddress = 
   });
 
   // it('should allow the player to solve the level', async function () {
