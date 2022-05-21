@@ -31,8 +31,14 @@ contract('PriceIt', function (accounts) {
       instance.token2(),
       instance.uniFactory(),
     ]);
-    const uniFactory = UniFactory.at(uniFactoryAddress)
-    
+    const uniFactory = await UniFactory.at(uniFactoryAddress);
+    const token0_token1 = await uniFactory.getPair(token0, token1);
+    const token0_token2 = await uniFactory.getPair(token0, token2);
+    assert.notEqual(token0_token1, constants.ZERO_ADDRESS);
+    assert.notEqual(token0_token2, constants.ZERO_ADDRESS);
+
+    const token1_token2 = await uniFactory.getPair(token1, token2);
+    assert.equal(token1_token2, constants.ZERO_ADDRESS);
   });
 
   // it('should allow the player to solve the level', async function () {
