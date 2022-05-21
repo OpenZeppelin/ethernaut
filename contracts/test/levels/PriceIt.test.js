@@ -63,23 +63,8 @@ contract('PriceIt', function (accounts) {
     await verifyPair(token0, token2);
   });
 
-  // it('should allow the player to solve the level', async function () {
-  //   const instance = await utils.createLevelInstance(ethernaut, level.address, player, PriceIt);
+  it('should allow the player to solve the level', async function () {
+    const instance = await utils.createLevelInstance(ethernaut, level.address, player, PriceIt);
 
-  //   const address = await web3.eth.getStorageAt(instance.address, '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc');
-  //   let string = '0x' + JSON.stringify(address).substr(27, 40);
-  //   string = web3.utils.toChecksumAddress(string);
-
-  //   const attacker = await MotorbikeAttack.new(string);
-
-  //   // ATTACK FIRST STEP: Take control over upgradeability functionality
-  //   await attacker.takeControl();
-
-  //   // ATTACK SECOND STEP: Destroy the implementation
-  //   await attacker.destroy();
-
-  //   const completed = await utils.submitLevelInstance(ethernaut, level.address, instance.address, player);
-
-  //   assert.isTrue(completed);
-  // });
+  })
 });
