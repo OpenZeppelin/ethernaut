@@ -1,6 +1,7 @@
 const PriceIt = artifacts.require('./levels/PriceIt.sol');
 const PriceItFactory = artifacts.require('./levels/PriceItFactory.sol');
 const UniFactory = artifacts.require('@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol');
+const UniPair = artifacts.require('@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol');
 const Ethernaut = artifacts.require('./Ethernaut.sol');
 const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers');
 const utils = require('../utils/TestUtils');
@@ -39,6 +40,22 @@ contract('PriceIt', function (accounts) {
 
     const token1_token2 = await uniFactory.getPair(token1, token2);
     assert.equal(token1_token2, constants.ZERO_ADDRESS);
+  });
+
+  it("should fail if the pools aren't loaded with the correct liquidity amount", async function () {
+    const instance = await utils.createLevelInstance(ethernaut, level.address, player, PriceIt);
+    const [token0, token1, token2, uniFactoryAddress] = await Promise.all([
+      instance.token0(),
+      instance.token1(),
+      instance.token2(),
+      instance.uniFactory(),
+    ]);
+    const uniFactory = await UniFactory.at(uniFactoryAddress);
+    const token0_token1 = await uniFactory.getPair(token0, token1);
+    const pair_token0_token1 = await UniPair.at(token0_token1);
+    const reserves = await pair_token0_token1.getReserves();
+    const res1 = reserves.reserve1.toString()
+    assert.equal(res1, '100000000000000000000000')
   });
 
   // it('should allow the player to solve the level', async function () {
