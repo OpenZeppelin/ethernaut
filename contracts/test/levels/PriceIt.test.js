@@ -1,5 +1,6 @@
 const PriceIt = artifacts.require('./levels/PriceIt.sol');
 const PriceItFactory = artifacts.require('./levels/PriceItFactory.sol');
+const PriceItAttack = artifacts.require('./attacks/PriceItAttack');
 const UniFactory = artifacts.require('@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol');
 const UniPair = artifacts.require('@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol');
 const Ethernaut = artifacts.require('./Ethernaut.sol');
@@ -65,6 +66,10 @@ contract('PriceIt', function (accounts) {
 
   it('should allow the player to solve the level', async function () {
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, PriceIt);
-
-  })
+    const attacker = await PriceItAttack.new();
+    await attacker.doYourThing(instance.address);
+    await attacker.withdrawToken0();
+    const completed = await utils.submitLevelInstance(ethernaut, level.address, instance.address, player);
+    assert.isTrue(completed);
+  });
 });
