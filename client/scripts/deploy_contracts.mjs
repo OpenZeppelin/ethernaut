@@ -5,8 +5,8 @@ import fs from 'fs';
 import * as ethutil from '../src/utils/ethutil.js';
 import * as constants from '../src/constants.js';
 import HDWalletProvider from '@truffle/hdwallet-provider';
-import * as gamedata from '../src/gamedata/gamedata.json' // assert {type: 'json'};
-import * as EthernautABI from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json' // assert {type: 'json'};
+import * as gamedata from '../src/gamedata/gamedata.json' assert {type: 'json'};
+import * as EthernautABI from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json' assert {type: 'json'};
 
 let web3;
 let ethernaut;
