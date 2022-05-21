@@ -58,6 +58,12 @@
       "name": "OpenZeppelin in collaboration with Forta",
       "emails": ["ethernaut@zeppelin.solutions", "info@forta.org"],
       "websites": ["https://openzeppelin.com", "https://forta.org"]
+    },
+    "staa99": {
+      "name": "Ahmad Alfawwaz Timehin",
+      "emails": ["ahmadulfawwaz@gmail.com"],
+      "websites": ["https://github.com/staa99"],
+      "donate": "0x534DBE4e23E48faC59847F120a80A83F764a381F"
     }
   }
 }

@@ -405,6 +405,21 @@
       "instanceGas": 5000000,
       "poweredBy": {"src": "../../imgs/forta_black.svg", "href": "https://forta.org"},
       "author": "openzeppelin&forta"
+    },
+    {
+      "name": "Switch",
+      "created": "2022-05-21",
+      "difficulty": "2",
+      "description": "switch.md",
+      "completedDescription": "switch_complete.md",
+      "levelContract": "SwitchFactory.sol",
+      "instanceContract": "Switch.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "27",
+      "instanceGas": 250000,
+      "author": "staa99"
     }
   ]
 }
