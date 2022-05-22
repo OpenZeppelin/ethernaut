@@ -134,10 +134,6 @@ nav li {
   font-size: x-large;
 }
 
-p {
-  font-weight: bold;
-}
-
 .dropdown-content {
   display: none;
   background-color: var(--secondary-color);
