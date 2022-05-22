@@ -25,7 +25,7 @@ contract('PriceIt', function (accounts) {
     assert.isFalse(completed);
   });
 
-  it("should fail if the paired didn't got created", async function () {
+  it("should fail if the pairs didn't create", async function () {
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, PriceIt);
     const [token0, token1, token2, uniFactoryAddress] = await Promise.all([
       instance.token0(),
@@ -43,7 +43,7 @@ contract('PriceIt', function (accounts) {
     assert.equal(token1_token2, constants.ZERO_ADDRESS);
   });
 
-  it("should fail if the pools aren't loaded with the correct liquidity amount", async function () {
+  it("should fail if the pools are not loaded with the correct liquidity amount", async function () {
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, PriceIt);
     const [token0, token1, token2, uniFactoryAddress] = await Promise.all([
       instance.token0(),
