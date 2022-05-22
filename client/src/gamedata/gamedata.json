@@ -395,7 +395,7 @@
       "name": "PriceIt",
       "created": "2022-05-15",
       "difficulty": "6",
-      "description": "motorbike.md",
+      "description": "price_it.md",
       "completedDescription": "motorbike_complete.md",
       "levelContract": "PriceItFactory.sol",
       "instanceContract": "PriceIt.sol",
