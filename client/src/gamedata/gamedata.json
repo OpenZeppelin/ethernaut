@@ -392,8 +392,8 @@
       "poweredBy": {"src": "../../imgs/forta_black.svg", "href": "https://forta.org"},
       "author": "openzeppelin&forta"
     }, {
-      "name": "PriceIt",
-      "created": "2022-05-15",
+      "name": "Price It",
+      "created": "2022-05-22",
       "difficulty": "4",
       "description": "price_it.md",
       "completedDescription": "price_it_complete.md",
