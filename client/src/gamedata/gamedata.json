@@ -405,6 +405,20 @@
       "instanceGas": 5000000,
       "poweredBy": {"src": "../../imgs/forta_black.svg", "href": "https://forta.org"},
       "author": "openzeppelin&forta"
+    }, {
+      "name": "Price It",
+      "created": "2022-05-22",
+      "difficulty": "4",
+      "description": "price_it.md",
+      "completedDescription": "price_it_complete.md",
+      "levelContract": "PriceItFactory.sol",
+      "instanceContract": "PriceIt.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "27",
+      "instanceGas": 11000000,
+      "author": "itslittlefrankie"
     }
   ]
 }

@@ -18,21 +18,23 @@ You can find the current, official version at:
 git clone git@github.com:OpenZeppelin/ethernaut.git
 yarn install
 ```
-2. Start deterministic rpc
+2. Configure Rinkeby endpoint
+Create a new Alchemy project on the Rinkeby testnet network, and copy the RPC URL to the forking section at contracts/hardhat.config.js
+3. Start deterministic rpc
 ```
 yarn network
 ```
-3. You might want to import one of the private keys from ganache-cli to your Metamask wallet.
-4. Compile contracts
+4. You might want to import one of the private keys from ganache-cli to your Metamask wallet.
+5. Compile contracts
 ```
 yarn compile:contracts
 ```
-5. Set client/src/constants.js ACTIVE_NETWORK to NETWORKS.LOCAL
-6. Deploy contracts
+6. Set client/src/constants.js ACTIVE_NETWORK to NETWORKS.LOCAL
+7. Deploy contracts
 ```
 yarn deploy:contracts
 ```
-7. Start Ethernaut locally
+8. Start Ethernaut locally
 ```
 yarn start:ethernaut
 ```
