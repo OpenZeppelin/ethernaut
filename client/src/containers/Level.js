@@ -120,7 +120,7 @@ class Level extends React.Component {
 
             <div className="dropdown-menu-bar-button">
 
-                <button className="dropdownbutton"> 
+                <button className="dropdown-button"> 
                   <i className="fa fa-caret-down"></i>
                 </button>
 

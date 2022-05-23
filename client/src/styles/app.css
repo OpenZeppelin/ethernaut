@@ -55,7 +55,7 @@ hr {
   margin-top: 10px;
 }
 
-.top{
+.top {
   border:none;
   border-top:1px solid var(--secondary-color);
   height:1px;
@@ -183,7 +183,7 @@ nav li {
   font-weight: bold;
 }
 
-.Ethernaut {
+.the-ethernaut {
   width: 40%;
   display: block;
   margin-left: auto;
@@ -284,8 +284,7 @@ nav li {
   padding-right: 50px;
 }
 
-
-footer{
+footer {
   width: 105%;
   margin-left: -5%;
   position: fixed;
@@ -322,7 +321,6 @@ footer{
 }
 
 .boxes section {
-
   text-align: left;
 }
 

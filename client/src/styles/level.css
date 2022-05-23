@@ -81,7 +81,7 @@
     z-index: 1;
 }
 
-.dropdownbutton{
+.dropdown-button{
     color: var(--secondary-color);
     background-color:var(--primary-color);
 }
@@ -109,7 +109,7 @@
 .level-img-view {
     position: relative;
     width: 60%;
-    margin-top: 1%;
+    margin-top: 2em;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2em;
