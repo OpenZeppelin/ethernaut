@@ -76,14 +76,14 @@ class Header extends React.Component {
           <nav>
             <li>
               <ul className="nav-links">
-                <a className="buttons" href="https://grnh.se/dd38880f3us"><button>{strings.hiring}</button></a>
+                <a className="buttons hiring-button" href="https://grnh.se/dd38880f3us"><button>{strings.hiring}</button></a>
               </ul>
             </li>
           </nav>
           <a className='logo-container' href="https://openzeppelin.com"><img id='logo' className="logo" src="../../imgs/oz-logo.svg" alt="logo" /></a>
           <nav>
             <ul className="nav-links">
-                <a className="buttons" href={window.location.pathname !== constants.PATH_ROOT ? constants.PATH_ROOT : constants.PATH_HELP}>
+                <a className="buttons help-button" href={window.location.pathname !== constants.PATH_ROOT ? constants.PATH_ROOT : constants.PATH_HELP}>
                   <button>{window.location.pathname !== constants.PATH_ROOT ? strings.home : strings.ethernautHelp }
                   </button>
                 </a> 

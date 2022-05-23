@@ -27,7 +27,7 @@ body {
   width: 100%;
   color: var(--secondary-color);
   cursor: pointer;
-  margin-left: 3em;
+  margin-left: 1em;
 }
 
 .lines{
@@ -188,7 +188,8 @@ nav li {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 3% 0% 3% 0%;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .arrow {
@@ -380,32 +381,6 @@ footer {
   left: 32px;
 }
 
-
-@media only screen and (min-width: 1600px)
-
-{
-  .arrow {
-    padding-bottom: 1%;
-  }
-}
-
-@media only screen and (max-width: 1300px)
-
-{
-  .arrow {
-    padding-bottom: 1%;
-  }
-}
-
-@media only screen and (max-width: 1200px)
-
-{
-  .logo {
-    margin-left: 0em;
-  }
-
-}
-
 @media only screen and (max-width: 1050px)
 
 {
@@ -417,11 +392,24 @@ footer {
     display: none;
   }
 
+  .help-button {
+    display: none;
+  }
+
+  .hiring-button {
+    display: none;
+  }
+
   .header {
     padding: 0;
   }
 
   .logo-container {
     max-width: 30%;
+    margin-left: -5em;
+  }
+
+  .logo {
+    margin-left: 3em;
   }
 }

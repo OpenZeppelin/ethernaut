@@ -6,6 +6,15 @@
     width: 60%;
 }
 
+.powered-by {
+    margin-left: auto;
+    margin-top: -2em;
+    margin-bottom: -2em;
+    margin-right: auto;
+    text-align: center;
+}
+
+
 .dropdown-menu-bar {
     display: flex;
     justify-content: space-between;

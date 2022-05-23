@@ -46,6 +46,9 @@ class Help extends React.Component {
 
           </section>
         </main>
+        {/* Footer */}
+        <footer className='footer' dangerouslySetInnerHTML={{ __html: strings.footer }}>
+        </footer>
       </div>)
 }}
 

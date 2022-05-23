@@ -146,15 +146,13 @@ class Level extends React.Component {
         
 
           {/* TITLE + INFO */}
-          {poweredBy && <div className="page-header row">
-            <div className="level-title col-sm-6">          
+          {poweredBy && <div className="powered-by">
               <p>{strings.poweredBy} 
                 <a href={poweredBy.href}>
                   <img className='custom-img' alt="" style={{width: '80px', height: '80px'}} src={poweredBy.src}/>
                 </a>
               </p>
               <h2> </h2>
-            </div>
           </div>}
 
           <section className="descriptors">
