@@ -68,7 +68,6 @@ contract('PriceIt', function (accounts) {
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, PriceIt);
     const attacker = await PriceItAttack.new();
     await attacker.doYourThing(instance.address);
-    await attacker.withdrawToken0();
     const completed = await utils.submitLevelInstance(ethernaut, level.address, instance.address, player);
     assert.isTrue(completed);
   });
