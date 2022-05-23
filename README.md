@@ -19,7 +19,7 @@ git clone git@github.com:OpenZeppelin/ethernaut.git
 yarn install
 ```
 2. Configure Rinkeby endpoint
-Create a new Alchemy project on the Rinkeby testnet network, and copy the RPC URL to the forking section at contracts/hardhat.config.js
+Create a new Alchemy project on the Rinkeby testnet, and copy your API KEY to the forking section at contracts/hardhat.config.js
 3. Start deterministic rpc
 ```
 yarn network
