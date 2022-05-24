@@ -11,10 +11,9 @@ contract PriceItFactory is Level {
   IUniswapV2Factory private constant uniFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
   IUniswapV2Router02 private constant uniRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
   uint256 private constant amount = 100000 ether;
-  TestingERC20 private token0;
 
   function createInstance(address) public payable override returns (address) {
-    token0 = new TestingERC20('Token 0', 'TZERO');
+    TestingERC20 token0 = new TestingERC20('Token 0', 'TZERO');
     TestingERC20 token1 = new TestingERC20('Token 1', 'TONE');
     TestingERC20 token2 = new TestingERC20('Token 2', 'TTWO');
     PriceIt level = new PriceIt(token0, token1, token2);
@@ -25,7 +24,8 @@ contract PriceItFactory is Level {
     return address(level);
   }
 
-  function validateInstance(address payable, address _player) public override returns (bool) {
+  function validateInstance(address payable _instance, address _player) public override returns (bool) {
+    IERC20 token0 = _instance.token0();
     return token0.balanceOf(_player) > 9000 ether;
   }
 
