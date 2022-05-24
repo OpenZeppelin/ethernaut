@@ -42,7 +42,7 @@ contract PriceItFactory is Level {
 contract TestingERC20 is Ownable, ERC20 {
   constructor(string memory _name, string memory _symbol) public Ownable() ERC20(_name, _symbol) {}
 
-  function mint(address _address, uint256 _balance) external onlyOwner {
-    _mint(_address, _balance);
+  function mint(address account, uint256 amount) external onlyOwner {
+    _mint(account, amount);
   }
 }
