@@ -42,8 +42,14 @@ const getlevelsdata = (props, source) => {
 
         var object = {
             name: levels[i].name,
-            src: isMissingImage ? `../../imgs/default.svg` : (
-                source !== 'mosaic' ? `../../imgs/BigLevel${levels[i].deployId}.svg` : `../../imgs/Level${levels[i].deployId}.svg`
+            src: isMissingImage ? (
+                source !== 'mosaic' ?
+                `../../imgs/BigDefault.svg` :
+                `../../imgs/Default.svg`
+            ) : (
+                source !== 'mosaic' ? 
+                `../../imgs/BigLevel${levels[i].deployId}.svg` : 
+                `../../imgs/Level${levels[i].deployId}.svg`
             ),
             difficulty: difficulty,
             deployedAddress: levels[i].deployedAddress,
