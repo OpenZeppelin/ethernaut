@@ -25,7 +25,7 @@ contract PriceItFactory is Level {
   }
 
   function validateInstance(address payable _instance, address _player) public override returns (bool) {
-    IERC20 token0 = _instance.token0();
+    IERC20 token0 = PriceIt(_instance).token0();
     return token0.balanceOf(_player) > 9000 ether;
   }
 
