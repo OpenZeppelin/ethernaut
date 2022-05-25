@@ -23,7 +23,6 @@ contract Forta is IForta {
   mapping(address => uint256) public botRaisedAlerts;
 
   function setDetectionBot(address detectionBotAddress) external override {
-      require(address(usersDetectionBots[msg.sender]) == address(0), "DetectionBot already set");
       usersDetectionBots[msg.sender] = IDetectionBot(detectionBotAddress);
   }
 
