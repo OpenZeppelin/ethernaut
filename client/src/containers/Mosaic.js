@@ -4,7 +4,7 @@ import * as constants from '../constants';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import getlevelsdata from '../utils/getlevelsdata';
-import moment from 'moment'
+//import moment from 'moment'
 
 class Mosaic extends React.Component {
 
