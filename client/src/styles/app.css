@@ -11,6 +11,7 @@
   --black: #222222;
   --primary-color: var(--pink);
   --secondary-color: var(--black);
+  font-size: 14px;
   max-width: 75%;
   margin-left: 10%;
 }
@@ -24,7 +25,6 @@ body {
 }
 
 .logo {
-  width: 100%;
   color: var(--secondary-color);
   cursor: pointer;
   margin-left: 1em;
@@ -381,7 +381,7 @@ footer {
   left: 32px;
 }
 
-@media only screen and (max-width: 1050px)
+@media only screen and (max-width: 1150px)
 
 {
   .dropdown {
@@ -402,14 +402,5 @@ footer {
 
   .header {
     padding: 0;
-  }
-
-  .logo-container {
-    max-width: 30%;
-    margin-left: -5em;
-  }
-
-  .logo {
-    margin-left: 3em;
   }
 }
