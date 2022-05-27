@@ -15,10 +15,10 @@
   },
   "scripts": {
     "test": "cd contracts && hardhat test",
-    "compile:contracts": "cd contracts && hardhat clean && npx hardhat compile",
+    "compile:contracts": "cd contracts && hardhat clean && hardhat compile",
     "deploy:contracts": "yarn compile:contracts && node --experimental-json-modules client/scripts/deploy_contracts.mjs",
     "network": "cd contracts && hardhat node",
-    "build:ethernaut": "yarn compile:contracts && rm -r -f client/node_modules && cd client && yarn build",
+    "build:ethernaut": "yarn compile:contracts && yarn --cwd client build",
     "start:ethernaut": "cd client && yarn start",
     "test:contracts": "cd contracts && hardhat test"
   }
