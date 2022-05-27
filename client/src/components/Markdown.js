@@ -30,8 +30,8 @@ class Markdown extends React.Component {
     if(!this._isMounted) return
     if(this.state.target === target) return
     try {
-      const text = /md?$/.test(target) ?  await loadText(target) : target;
-      this.setState({ target: target, source: text })
+      const text = /md?$/.test(target.default) ?  await loadText(target.default) : target.default;
+      this.setState({ target: target.default, source: text })
     } catch(error) {
       this.setState({source: undefined})
     }
