@@ -36,11 +36,12 @@ class Code extends React.Component {
 
   async loadContents(target) {
     if (!this._isMounted) return;
-    if(this.state.target === target.default) return
+    let targetText = typeof target == 'string' ? target : target.default;
+    if(this.state.target === targetText) return
     try {
-      const text = await loadText(target.default);
+      const text = await loadText(targetText);
       this.setState({
-        target: target.default,
+        target: targetText,
         source: text,
       });
     } catch (e) {

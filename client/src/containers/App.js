@@ -54,7 +54,7 @@ class App extends React.Component {
         <Header>
         </Header>
         {/* Parent container */}
-        <main style={{marginLeft: '-3%'}}>
+        <main>
           {/* Main title and buttons */}
           <section className="titles">
             <a href={constants.PATH_ROOT}><img id='the-ethernaut' src="../../imgs/the-ethernaut.svg" alt="The-Ethernaut" className="the-ethernaut" /></a>

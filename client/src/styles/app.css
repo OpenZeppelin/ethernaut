@@ -11,7 +11,6 @@
   --black: #222222;
   --primary-color: var(--pink);
   --secondary-color: var(--black);
-  font-size: 14px;
   max-width: 75%;
   margin-left: 10%;
 }
@@ -22,12 +21,16 @@ body {
   padding: 0%;
   background-color: var(--primary-color);
   color: var(--secondary-color);
+  font-size: 14px;
 }
 
 .logo {
   color: var(--secondary-color);
   cursor: pointer;
-  margin-left: 1em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
 }
 
 .lines{
@@ -65,13 +68,12 @@ hr {
 }
 
 h2 {
-  font-size: 15px;
+  font-size: 14px;
   padding: 1% 10% 0% 10%;
   color: var(--secondary-color);
   font-family: Helvetica, sans-serif;
   text-align: center;
   line-height: 1.5;
-  font-weight: bold;
 }
 
 button {
@@ -96,10 +98,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items:center;
-  padding: 0px 50px;
-  margin-top: 1%;
-  width: 95%;
-  margin-right: 2%;
+  padding: 0px 40px;
+  margin-top: 1em;
+  margin-right: 1em;
+  margin-left: 1em;
 }
 
 .hiring {
@@ -212,16 +214,18 @@ nav li {
     display: flex;
     flex-wrap: wrap;
     align-items:center;
-    padding-left: 8%;
-    margin-top: 4%;
+    padding-left: 10%;
+    margin-top: 2em;
 }
 
 .content_img {
   word-wrap: break-word;
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   float: center;
+  margin-left: 5px;
+  margin-bottom: 5px;
 }
 
 .level-tile {
@@ -237,15 +241,14 @@ nav li {
 .content_img div{
   position: absolute;
 
-  bottom: 20px;
-  right: 20px;
+  bottom: 1px;
+  right: 1px;
 
   background: var(--secondary-color);
-  padding-top: 10%;
   font-weight: bold;
   color: var(--primary-color);
   text-align: center;
-  height: 100px;
+  height: 80px;
   font-family: Arial, Helvetica, sans-serif;
   opacity: 0;
   visibility: hidden;
@@ -254,8 +257,8 @@ nav li {
 }
 
 .content_img img{
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 
 .content_img:hover{
@@ -263,7 +266,7 @@ nav li {
 }
 
 .content_img:hover div{
-  width: 100px;
+  width: 80px;
   visibility: visible;
   opacity: 100; 
   border-radius: 6px;
@@ -340,9 +343,9 @@ footer {
 .toggle {
   margin-right: 10px;
   appearance: none;
-  width: 63px;
-  height: 32px;
-  margin-bottom: -5%;
+  vertical-align: middle;
+  width: 60px;
+  height: 30px;
   display: inline-block;
   position: relative;
   border-radius: 50px;
@@ -357,19 +360,19 @@ footer {
 .toggle:before {
   content: "🔆 🌘";
   display: block;
-  position: absolute;
+  position: relative;
   z-index: 2;
-  width: 28px;
-  height: 28px;
+  width: 25px;
+  height: 25px;
   background: var(--primary-color);
   left: 2px;
   top: 2px;
   border-radius: 50%;
-  font: 15px/28px Helvetica;
+  font: 16px/26px Helvetica;
   text-transform: uppercase;
   font-weight: bold;
   text-indent: -22px;
-  word-spacing: 37px;
+  word-spacing: 30px;
   color: var(--primary-color);
   text-shadow: -1px -1px rgba(0,0,0,0.15);
   white-space: nowrap;
@@ -381,7 +384,7 @@ footer {
   left: 32px;
 }
 
-@media only screen and (max-width: 1150px)
+@media only screen and (max-width: 950px)
 
 {
   .dropdown {
@@ -398,9 +401,5 @@ footer {
 
   .hiring-button {
     display: none;
-  }
-
-  .header {
-    padding: 0;
   }
 }
