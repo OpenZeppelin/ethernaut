@@ -73,22 +73,20 @@ class Header extends React.Component {
     return (
       <center>
         <header>
-          <nav>
-            <li>
-              <ul className="nav-links">
-                <a className="buttons hiring-button" href="https://grnh.se/dd38880f3us"><button>{strings.hiring}</button></a>
-              </ul>
+          <ul>
+            <li className="nav-links">
+              <a className="buttons hiring-button" href="https://grnh.se/dd38880f3us"><button>{strings.hiring}</button></a>
             </li>
-          </nav>
+          </ul>
           <a className='logo-container' href="https://openzeppelin.com"><img id='logo' className="logo" src="../../imgs/oz-logo.svg" alt="logo" /></a>
-          <nav>
-            <ul className="nav-links">
-                <a className="buttons help-button" href={window.location.pathname !== constants.PATH_ROOT ? constants.PATH_ROOT : constants.PATH_HELP}>
-                  <button>{window.location.pathname !== constants.PATH_ROOT ? strings.home : strings.ethernautHelp }
-                  </button>
-                </a> 
-            </ul>
-            <div className="dropdown">
+          <ul>
+            <li className="nav-links">
+                  <a className="buttons help-button" href={window.location.pathname !== constants.PATH_ROOT ? constants.PATH_ROOT : constants.PATH_HELP}>
+                    <button>{window.location.pathname !== constants.PATH_ROOT ? strings.home : strings.ethernautHelp }
+                    </button>
+                  </a> 
+            </li>
+            <li className="dropdown">
                   <div className="icon-buttons" href='/'><i className="fas fa-globe-americas"></i></div>
                   <div className="dropdown-content">
                     <a onClick={() => {this.changeLanguage('en')}} href='/'>{strings.english}</a>
@@ -97,9 +95,9 @@ class Header extends React.Component {
                     <a onClick={() => {this.changeLanguage('cn_simplified')}} href='/'>{strings.chinese_simplified}</a>
                     <a className="contr" href="https://github.com/openzeppelin/ethernaut#modify-or-add-new-languages">{strings.contributeTranslation}</a>
                   </div>
-            </div>
+            </li>
             <input onClick={() => {this.toggleDarkMode()}} className="toggle" type="checkbox" />
-          </nav>
+          </ul>
         </header>
       </center>
       

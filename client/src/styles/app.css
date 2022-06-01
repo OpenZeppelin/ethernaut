@@ -11,8 +11,8 @@
   --black: #222222;
   --primary-color: var(--pink);
   --secondary-color: var(--black);
-  max-width: 75%;
-  margin-left: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 body {
@@ -24,13 +24,22 @@ body {
   font-size: 14px;
 }
 
+ul {
+  padding-left: 0;
+
+}
+
 .logo {
   color: var(--secondary-color);
   cursor: pointer;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  max-width: 100%;
+  max-width: 90%;
+}
+
+.logo-container {
+  padding-left: 3em;
 }
 
 .lines{
@@ -62,9 +71,7 @@ hr {
   border:none;
   border-top:1px solid var(--secondary-color);
   height:1px;
-  width: 90%;
   align-items: center;
-  padding: 1px 0% 0% 0% ;
 }
 
 h2 {
@@ -98,10 +105,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items:center;
-  padding: 0px 40px;
   margin-top: 1em;
-  margin-right: 1em;
-  margin-left: 1em;
 }
 
 .hiring {
@@ -124,10 +128,10 @@ nav li {
   font-family: helvetica, sans-serif;
 }
 
-.nav-links .icon-buttons {
-  color: none;
-  text-decoration: none;
-  font-family: helvetica, sans-serif;
+.icon-buttons {
+  height: 35px;
+  font-size: larger;
+  margin-top: -5px;
 }
 
 .dropdown {
@@ -139,22 +143,17 @@ nav li {
 .dropdown-content {
   display: none;
   background-color: var(--secondary-color);
-  width: 10em;
+  width: 11em;
   border:solid 15px var(--secondary-color);
   border-radius: 6px;
   position: fixed;
-  margin-left: -9em;
+  margin-left: -10em;
   z-index: 10;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
-/* .dropdown:hover .icon-buttons {
-  position: relative;
-  padding-left: 89%;
-} */
 
 .dropdown-content a {
   float: none;
@@ -215,6 +214,7 @@ nav li {
     flex-wrap: wrap;
     align-items:center;
     padding-left: 10%;
+    padding-right: 10%;
     margin-top: 2em;
 }
 
@@ -358,24 +358,19 @@ footer {
 }
 
 .toggle:before {
-  content: "🔆 🌘";
+  content: "";
   display: block;
   position: relative;
   z-index: 2;
   width: 25px;
   height: 25px;
   background: var(--primary-color);
-  left: 2px;
-  top: 2px;
+  left: 4px;
+  top: 2.5px;
   border-radius: 50%;
-  font: 16px/26px Helvetica;
   text-transform: uppercase;
   font-weight: bold;
-  text-indent: -22px;
-  word-spacing: 30px;
   color: var(--primary-color);
-  text-shadow: -1px -1px rgba(0,0,0,0.15);
-  white-space: nowrap;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
 }
@@ -384,7 +379,7 @@ footer {
   left: 32px;
 }
 
-@media only screen and (max-width: 950px)
+@media only screen and (max-width: 880px)
 
 {
   .dropdown {
@@ -401,5 +396,9 @@ footer {
 
   .hiring-button {
     display: none;
+  }
+
+  .logo-container {
+    padding-left: 0;
   }
 }
