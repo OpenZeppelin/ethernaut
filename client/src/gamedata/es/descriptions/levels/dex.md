@@ -15,3 +15,4 @@ Cosas que pueden ayudar:
 * ¿Cómo se aprueba  una transacción de un ERC20?
 * ¡Hay más de una forma de interactuar con un contrato!
 * Remix podría ayudar
+* ¿Qué hace "En la dirección"?
