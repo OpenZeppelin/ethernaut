@@ -13,3 +13,4 @@ Things that might help:
 * How is the price of the token calculated?
 * How does the `swap` method work?
 * How do you `approve` a transaction of an ERC20? 
+* Theres more than one way to interact with a contract!
