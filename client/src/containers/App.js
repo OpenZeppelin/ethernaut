@@ -1,17 +1,16 @@
-import React from 'react';
-import Mosaic from './Mosaic';
-import Header from './Header';
-import ReactGA from 'react-ga'
-import * as constants from '../constants';
-import { loadTranslations } from '../utils/translations'
-import parse from 'html-react-parser'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
+import React from "react";
+import Mosaic from "./Mosaic";
+import Header from "./Header";
+import ReactGA from "react-ga";
+import * as constants from "../constants";
+import { loadTranslations } from "../utils/translations";
+import parse from "html-react-parser";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 class App extends React.Component {
-
   constructor() {
-    super()
+    super();
 
     // Analytics
     ReactGA.initialize(constants.GOOGLE_ANALYTICS_ID);
@@ -19,62 +18,74 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.location !== prevProps.location) {
-      this.childrenElement.parentElement.scrollTop = 0
+    if (this.props.location !== prevProps.location) {
+      this.childrenElement.parentElement.scrollTop = 0;
     }
   }
 
   navigateToFirstIncompleteLevel() {
     // Find first incomplete level
-    let target = this.props.levels[0].deployedAddress
-    for(let i = 0; i < this.props.levels.length; i++) {
-      const level = this.props.levels[i]
-      const completed = this.props.completedLevels[level.deployedAddress]
-      if(!completed) {
-        target = level.deployedAddress
-        break
+    let target = this.props.levels[0].deployedAddress;
+    for (let i = 0; i < this.props.levels.length; i++) {
+      const level = this.props.levels[i];
+      const completed = this.props.completedLevels[level.deployedAddress];
+      if (!completed) {
+        target = level.deployedAddress;
+        break;
       }
     }
 
     // Navigate to first incomplete level
-    this.props.history.push(`${constants.PATH_LEVEL_ROOT}${target}`)
+    this.props.history.push(`${constants.PATH_LEVEL_ROOT}${target}`);
   }
 
   render() {
-    let language = localStorage.getItem('lang')
-    let strings = loadTranslations(language)
+    let language = localStorage.getItem("lang");
+    let strings = loadTranslations(language);
     return (
       <div>
-        {/* Two lines above */}
-        <div className="lines">
-          <center><hr className="top" /></center>
-          <center><hr className="top" /></center>
-        </div>
-        {/* Header */}
-        <Header>
-        </Header>
         {/* Parent container */}
         <main>
           {/* Main title and buttons */}
           <section className="titles">
-            <a href={constants.PATH_ROOT}><img id='the-ethernaut' src="../../imgs/the-ethernaut.svg" alt="The-Ethernaut" className="the-ethernaut" /></a>
-            <img src="../../imgs/arrow.svg" id="arrow" alt="arrows" className="arrow" />
+            <a href={constants.PATH_ROOT}>
+              <img
+                id="the-ethernaut"
+                src="../../imgs/the-ethernaut.svg"
+                alt="The-Ethernaut"
+                className="the-ethernaut"
+              />
+            </a>
+            <img
+              src="../../imgs/arrow.svg"
+              id="arrow"
+              alt="arrows"
+              className="arrow"
+            />
             <ul>
-              <button onClick={() => this.navigateToFirstIncompleteLevel()} className="buttons">{strings.playNow}</button>
-            </ul>      
+              <button
+                onClick={() => this.navigateToFirstIncompleteLevel()}
+                className="buttons"
+              >
+                {strings.playNow}
+              </button>
+            </ul>
           </section>
           {/* Levels */}
-          <Mosaic>
-          </Mosaic>
+          <Mosaic></Mosaic>
           {/* Game description */}
           <section className="Description">
-              <center><hr /></center>
-              {parse(strings.info)}
-          </section> 
+            <center>
+              <hr />
+            </center>
+            {parse(strings.info)}
+          </section>
         </main>
         {/* Footer */}
-        <footer className='footer' dangerouslySetInnerHTML={{ __html: strings.footer }}>
-        </footer>
+        <footer
+          className="footer"
+          dangerouslySetInnerHTML={{ __html: strings.footer }}
+        ></footer>
       </div>
     );
   }
@@ -83,17 +94,12 @@ class App extends React.Component {
 function mapStateToProps(state) {
   return {
     levels: state.gamedata.levels,
-    completedLevels: state.player.completedLevels
+    completedLevels: state.player.completedLevels,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-
-  }, dispatch);
+  return bindActionCreators({}, dispatch);
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

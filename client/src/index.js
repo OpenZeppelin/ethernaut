@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
-import MediaQuery from 'react-responsive'
+import MediaQuery from "react-responsive";
 import { Provider } from "react-redux";
 import { store, history } from "./store";
 import { syncHistoryWithStore } from "react-router-redux";
@@ -16,6 +16,7 @@ import { Integrations } from "@sentry/tracing";
 
 import App from "./containers/App";
 import NotFound404 from "./components/NotFound404";
+import Header from "./containers/Header";
 
 // For bundle splitting without lazy loading.
 const nonlazy = (component) => lazy(() => component);
@@ -44,6 +45,7 @@ ReactDOM.render(
           path={constants.PATH_ROOT}
           children={({ location }) => (
             <Suspense location={location} fallback={<div>Loading...</div>}>
+              <Header></Header>
               <Switch>
                 <Route path={constants.PATH_HELP} component={Help} />
                 <Route path={constants.PATH_LEVEL} component={Level} />
@@ -55,13 +57,20 @@ ReactDOM.render(
           )}
         />
       </Router>
-      </MediaQuery>
-      <MediaQuery maxWidth={880}>
-        <div className="unfitScreenSize">
-            <h3>You need a larger screen to play</h3>
-            <a href={constants.PATH_ROOT}><img id='the-ethernaut' src="../../imgs/the-ethernaut.svg" alt="The-Ethernaut" className="the-ethernaut" /></a>
-        </div>
-      </MediaQuery>
+    </MediaQuery>
+    <MediaQuery maxWidth={880}>
+      <div className="unfitScreenSize">
+        <h3>You need a larger screen to play</h3>
+        <a href={constants.PATH_ROOT}>
+          <img
+            id="the-ethernaut"
+            src="../../imgs/the-ethernaut.svg"
+            alt="The-Ethernaut"
+            className="the-ethernaut"
+          />
+        </a>
+      </div>
+    </MediaQuery>
   </Provider>,
   document.getElementById("root")
 );
