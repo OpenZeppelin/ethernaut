@@ -1,6 +1,6 @@
-Congratulations! You have completed the tutorial. 
-Have a look at the Solidity code for the contract you just interacted with below.
+Félicitations ! Vous avez terminé le tutoriel.
+Jetez un coup d'œil au code Solidity du contrat avec lequel vous venez d'interagir ci-dessous.
 
-You are now ready to complete all the levels of the game, and as of now, you're on your own.
+Vous êtes maintenant prêt à compléter tous les niveaux du jeu, et à partir de maintenant, vous êtes tout seul.
 
-Godspeed!!
+Bonne chance!!
