@@ -1,34 +1,35 @@
 &nbsp;
-#### Game mechanics
-The game uses the main contract `Ethernaut.sol` to manage player progress and delegate interaction with `Level.sol` implementations. Each level contract emits instances for players to manipulate, break, destroy, fix, etc. The player requests an instance, manipulates it and returns it to the game for evaluation of level completion. Both requesting instances and submitting instances back to the game are done with the buttons in the user interface in each level. When this app retrieves an instance from `Ethernaut.sol`, it wraps it in a `TruffleContract` object and exposes it in the browser's console. See the first level for a full tutorial on how to play the game.
+#### Mécanisme de jeu
+Le jeu utilise le contrat principal `Ethernaut.sol` pour gérer la progression du joueur et déléguer l'interaction avec les implémentations de `Level.sol`. Chaque contrat de niveau émet des instances que les joueurs peuvent manipuler, casser, détruire, réparer, etc. Le joueur crée une instance, la manipule et la renvoie au jeu pour l'évaluation de l'achèvement du niveau. La création d'instances et le renvoi d'instances au jeu se font à l'aide des boutons de l'interface utilisateur de chaque niveau. Lorsque l'application récupère une instance de `Ethernaut.sol`, elle l'emballe dans un objet `TruffleContract` et l'expose dans la console du navigateur. Voir le premier niveau pour un tutoriel complet sur la façon de jouer au jeu.
 
 &nbsp;
-#### Using the browser console
-Most game interaction is via the browser's console: `Dev Tools -> Console`. Open the console and enter the command:
+#### Utilisation de la console du navigateur
+La plupart des interactions avec le jeu se font via la console du navigateur : `Dev Tools -> Console`. Ouvrez la console et entrez la commande :
 ```
 help()
 ```
-to see a list of objects and functions injected by the game to the console.
-Since most interactions are asynchronous, we recommend using Chrome v62 which enables the `async`/`await` keywords in the console, so instead of writting:
+pour voir la liste d'objets et de fonctions injectés par le jeu dans la console.
+Comme la plupart des interactions sont asynchrones, nous recommandons d'utiliser Chrome v62 qui active les mots-clés `async`/`await` dans la console, donc au lieu d'écrire :
 ```
 getBalance(player)
 > PROMISE
 ```
-and opening the promise.
+et ouvrir une promesse.
 
-With await/async, you can write:
+Avec await/async, vous pouvez écrire:
 ```
 await getBalance(player)
 > "1.11002387"
 ```
 
 &nbsp;
-#### Beyond the console
-Some levels will require working outside of the browser console. That is, writing solidity code and deploying it in the network to attack the level's instance contract with another contract. This can be done in multiple ways, for example:
-1) Use Remix to write the code and deploy it in the corresponding network See [Remix Solidity IDE](https://remix.ethereum.org/).
-2) Setup a local truffle project to develop and deploy the attack contracts. See [Truffle Framework](http://truffleframework.com/).
+#### Au-delà de la console
+Certains niveaux nécessiteront de travailler en dehors de la console du navigateur. C'est-à-dire écrire du code Solidity et le déployer sur le réseau pour attaquer le contrat d'instance du niveau avec un autre contrat. Cela peut être fait de plusieurs façons, par exemple :
+1) Utiliser Remix pour écrire le code et le déployer sur le réseau correspondant Voir [Remix Solidity IDE](https://remix.ethereum.org/).
+2) Configurer un projet truffle local pour développer et déployer les contrats d'attaque. Voir [Truffle Framework](http://truffleframework.com/).
+
 
 &nbsp;
-#### Troubleshooting
-Sometimes (a) the app state or (b) the MetaMask plugin state can become a bit messed up, specially after switching networks, unlocking, etc. If what you're seeing doesn't make much sense, try refreshing the app, hard-refreshing it, disabling and re-enabling your metamask plugin or even restarting your browser.
-If you find issues, please let us know at ethernaut@zeppelin.solutions
+#### Problèmes
+Parfois (a) l'état de l'application ou (b) l'état de l'extension MetaMask peuvent être un peu perturbés, surtout après un changement de réseau, un déverrouillage, etc. Si ce que vous voyez n'a pas de sens, essayez de rafraîchir l'application, de recharger complètement la page, de désactiver et réactiver votre extension MetaMask ou même de redémarrer votre navigateur.
+Si vous rencontrez des problèmes, veuillez nous en faire part à l'adresse ethernaut@zeppelin.solutions.
