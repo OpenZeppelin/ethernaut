@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import MarkdownComponent from "../components/Markdown";
 import { loadTranslations } from "../utils/translations";
-import Header from "./Header";
 
 class Help extends React.Component {
   render() {
