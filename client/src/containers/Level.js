@@ -7,7 +7,6 @@ import MarkdownComponent from "../components/Markdown";
 import * as actions from "../actions";
 import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
-import Header from "./Header";
 import { Link } from "react-router-dom";
 import getlevelsdata from "../utils/getlevelsdata";
 
