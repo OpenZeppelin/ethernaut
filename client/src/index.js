@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
+
 import MediaQuery from "react-responsive";
 import { Provider } from "react-redux";
 import { store, history } from "./store";
