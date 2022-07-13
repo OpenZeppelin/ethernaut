@@ -1,4 +1,4 @@
-Las direcciones de los contratos son deterministas y se calculan mediante `keccack256(address, nonce)` donde el `address` es la dirección del contrato (o la dirección ethereum que creó la transacción) y `nonce` es el número de contratos que el contrato en sí ha generado (o el nonce de la transacción, para transacciones regulares).
+Las direcciones de los contratos son deterministas y se calculan mediante `keccak256(address, nonce)` donde el `address` es la dirección del contrato (o la dirección ethereum que creó la transacción) y `nonce` es el número de contratos que el contrato en sí ha generado (o el nonce de la transacción, para transacciones regulares).
 
 Debido a esto, uno puede enviar ether a una dirección predeterminada (que no tiene clave privada) y luego crear un contrato en esa dirección que recupera el ether. Esta es una forma no intuitiva y algo secreta de almacenar (peligrosamente) ether sin tener una clave privada.
 
