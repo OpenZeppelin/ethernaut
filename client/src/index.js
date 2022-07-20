@@ -40,7 +40,7 @@ store.dispatch(actions.loadGamedata());
 // View entry point.
 ReactDOM.render(
   <Provider store={store}>
-    <MediaQuery minWidth={881}>
+    <MediaQuery minWidth={880.1}>
       <Router history={syncHistoryWithStore(history, store)}>
         <Route
           path={constants.PATH_ROOT}
@@ -60,17 +60,27 @@ ReactDOM.render(
       </Router>
     </MediaQuery>
     <MediaQuery maxWidth={880}>
-      <div className="unfitScreenSize">
-        <h3>You need a larger screen to play</h3>
-        <a href={constants.PATH_ROOT}>
-          <img
-            id="the-ethernaut"
-            src="../../imgs/the-ethernaut.svg"
-            alt="The-Ethernaut"
-            className="the-ethernaut"
+      <Router history={syncHistoryWithStore(history, store)}>
+          <Route
+            path={constants.PATH_ROOT}
+            children={({ location }) => (
+              <Suspense location={location} fallback={<div>Loading...</div>}>
+                <Header></Header>
+                <div className="unfitScreenSize">
+                  <h3>You need a larger screen to play</h3>
+                  <a href={constants.PATH_ROOT}>
+                    <img
+                      id="the-ethernaut"
+                      src="../../imgs/the-ethernaut.svg"
+                      alt="The-Ethernaut"
+                      className="the-ethernaut"
+                    />
+                  </a>
+                </div>
+              </Suspense>
+            )}
           />
-        </a>
-      </div>
+        </Router>
     </MediaQuery>
   </Provider>,
   document.getElementById("root")

@@ -11,7 +11,7 @@
     "cross-env": "5.0.5",
     "devtools-detect": "^3.0.1",
     "highlight.js": "10.7.2-local",
-    "html-react-parser": "^1.4.8",
+    "html-react-parser": "^3.0.1",
     "moment": "^2.29.2",
     "rainbow-color": "^2.0.0",
     "react": "17.0.2",

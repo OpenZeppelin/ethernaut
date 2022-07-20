@@ -16,12 +16,28 @@ class Header extends React.Component {
     };
   }
 
+  componentDidMount() {
+
+    var black = getComputedStyle(document.documentElement).getPropertyValue(
+      "--black"
+    );
+
+    var primaryColor = getComputedStyle(document.documentElement).getPropertyValue(
+      "--primary-color"
+    );
+
+    if(primaryColor === black) this.toggleDarkMode()
+  }
+
   changeLanguage(e) {
     var value = e?.target?.value ? e.target.value : e;
     this.props.setLang(value);
   }
 
   toggleDarkMode() {
+    var documentElement = document.documentElement;
+    if(documentElement && documentElement.style) {
+
     var pink = getComputedStyle(document.documentElement).getPropertyValue(
       "--pink"
     );
@@ -32,6 +48,7 @@ class Header extends React.Component {
     var newPrimary = this.state.dark ? pink : black;
     var newSecondary = this.state.dark ? black : pink;
 
+  
     document.documentElement.style.setProperty("--primary-color", newPrimary);
     document.documentElement.style.setProperty(
       "--secondary-color",
@@ -46,37 +63,40 @@ class Header extends React.Component {
       "invert(92%) sepia(17%) saturate(168%) hue-rotate(337deg) brightness(98%) contrast(89%)";
 
     // Change OpenZeppeling logo
-    document.getElementById("logo").style.filter = !this.state.dark
+    var theLogo = document.getElementById("logo")
+    if(theLogo && theLogo.style) theLogo.style.filter = !this.state.dark
       ? svgFilter
       : null;
 
     // Change The Ethernaut logo
-    document.getElementById("the-ethernaut").style.filter = !this.state.dark
+    var theEthernaut = document.getElementById("the-ethernaut");
+    if(theEthernaut && theEthernaut.style) theEthernaut.style.filter = !this.state.dark
       ? svgFilter
       : null;
 
     // Change Arrow
     let isArrowInPage = document.getElementById("arrow");
-    if (isArrowInPage)
+    if (isArrowInPage && isArrowInPage.style)
       isArrowInPage.style.filter = !this.state.dark ? svgFilter : null;
 
     // Change Mosaic and levels logo
     let elements = document.getElementsByClassName("level-tile");
     for (let i = 0; i < elements.length; i++) {
       let element = elements[i];
-      if (element) element.style.filter = !this.state.dark ? svgFilter : null;
+      if (element && element.style) element.style.filter = !this.state.dark ? svgFilter : null;
     }
 
     // Change all custom images
     elements = document.getElementsByClassName("custom-img");
     for (let i = 0; i < elements.length; i++) {
       let element = elements[i];
-      if (element) element.style.filter = !this.state.dark ? svgFilter : null;
+      if (element && element.style) element.style.filter = !this.state.dark ? svgFilter : null;
     }
 
     this.setState({
       dark: !this.state.dark,
     });
+  }
   }
 
   render() {

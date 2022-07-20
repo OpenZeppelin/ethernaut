@@ -165,7 +165,7 @@ nav li {
 .icon-buttons {
   height: 35px;
   font-size: larger;
-  margin-top: -5px;
+  margin-top: -7px;
 }
 
 .dropdown {
@@ -380,8 +380,8 @@ footer {
   padding: 4px;
   appearance: none;
   vertical-align: middle;
-  width: 60px;
-  height: 30px;
+  width: 40px;
+  height: 25px;
   display: inline-block;
   position: relative;
   border-radius: 50px;
@@ -398,10 +398,10 @@ footer {
   display: block;
   position: relative;
   z-index: 2;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   background: var(--primary-color);
-  left: 4px;
+  left: 2px;
   top: 2.5px;
   border-radius: 50%;
   text-transform: uppercase;
@@ -412,7 +412,7 @@ footer {
 }
 
 .toggle:checked:before {
-  left: 32px;
+  left: 16px;
 }
 
 @media only screen and (max-width: 880px) {
