@@ -87,8 +87,8 @@ To deploy the contracts on ropsten, first set the ACTIVE_NETWORK variable in con
 
 Then run `yarn deploy:contracts`. This action will effectively deploy a new version of the level data item whose deployed_ropsten array was updated, and will point the ethernaut dapp to use this new deployed contract instance for the level.
 
-## Contributing
-
-Contributions and corrections are always welcome!
+### Modify or add new languages
+ 
+To modify or add a new language to the list of supported ones follow these steps:
 
 Please follow the [Contributor's Guide](./CONTRIBUTING.md) if you would like to help out.
