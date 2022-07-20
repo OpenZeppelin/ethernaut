@@ -40,31 +40,22 @@ store.dispatch(actions.loadGamedata());
 // View entry point.
 ReactDOM.render(
   <Provider store={store}>
-    <MediaQuery minWidth={880.1}>
       <Router history={syncHistoryWithStore(history, store)}>
         <Route
           path={constants.PATH_ROOT}
           children={({ location }) => (
             <Suspense location={location} fallback={<div>Loading...</div>}>
-              <Header></Header>
-              <Switch>
-                <Route path={constants.PATH_HELP} component={Help} />
-                <Route path={constants.PATH_LEVEL} component={Level} />
-                <Route path={constants.PATH_STATS} component={Stats} />
-                <Route exact path="/" component={App} />
-                <Route path="/" component={NotFound404} />
-              </Switch>
-            </Suspense>
-          )}
-        />
-      </Router>
-    </MediaQuery>
-    <MediaQuery maxWidth={880}>
-      <Router history={syncHistoryWithStore(history, store)}>
-          <Route
-            path={constants.PATH_ROOT}
-            children={({ location }) => (
-              <Suspense location={location} fallback={<div>Loading...</div>}>
+              <MediaQuery minWidth={880.1}>
+                <Header></Header>
+                <Switch>
+                  <Route path={constants.PATH_HELP} component={Help} />
+                  <Route path={constants.PATH_LEVEL} component={Level} />
+                  <Route path={constants.PATH_STATS} component={Stats} />
+                  <Route exact path="/" component={App} />
+                  <Route path="/" component={NotFound404} />
+                </Switch>
+              </MediaQuery>
+              <MediaQuery maxWidth={880}>
                 <Header></Header>
                 <div className="unfitScreenSize">
                   <h3>You need a larger screen to play</h3>
@@ -77,11 +68,12 @@ ReactDOM.render(
                     />
                   </a>
                 </div>
-              </Suspense>
-            )}
-          />
-        </Router>
-    </MediaQuery>
+              </MediaQuery>
+            </Suspense>
+          )}
+        />
+      </Router>
+
   </Provider>,
   document.getElementById("root")
 );

@@ -6,6 +6,7 @@ import { bindActionCreators } from "redux";
 import * as actions from "../actions";
 import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
+import PropTypes from "prop-types";
 
 class Header extends React.Component {
   constructor(props) {
@@ -15,6 +16,12 @@ class Header extends React.Component {
       lang: localStorage.getItem("lang"),
     };
   }
+
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  };
 
   componentDidMount() {
 
@@ -27,6 +34,49 @@ class Header extends React.Component {
     );
 
     if(primaryColor === black) this.toggleDarkMode()
+  }
+
+  componentDidUpdate(prevProps) {
+    
+    if (prevProps && this.props.location !== prevProps.location) {
+
+      let elements = document.getElementsByClassName("level-tile");
+      if(elements.length !== 0) {
+        for (let i = 0; i < elements.length; i++) {
+          let element = elements[i];
+          if (element && element.style) element.style.filter = this.state.dark ? this.svgFilter() : null;
+        }
+      }
+
+      // Change The Ethernaut logo
+      var theEthernaut = document.getElementById("the-ethernaut");
+      if(theEthernaut && theEthernaut.style) theEthernaut.style.filter = this.state.dark
+        ? this.svgFilter()
+        : null;
+
+      // Change Arrow
+      let isArrowInPage = document.getElementById("arrow");
+      if (isArrowInPage && isArrowInPage.style)
+        isArrowInPage.style.filter = this.state.dark ? this.svgFilter() : null;
+
+      // Change all custom images
+      var imageElements = document.getElementsByClassName("custom-img");
+      if(imageElements.length !== 0) {
+        for (let i = 0; i < imageElements.length; i++) {
+          let element = imageElements[i];
+          if(imageElements.length === 0) element = imageElements;
+          if (element && element.style) element.style.filter = this.state.dark ? this.svgFilter() : null;
+        }
+      }
+    }
+  }
+
+  svgFilter() {
+    // Source for the CSS filter:
+    // https://codepen.io/sosuke/pen/Pjoqqp?__cf_chl_jschl_tk__=ecc0b72797ae71bc009d6322e3e470773936b386-1604211766-0-ASpz720gXnc6Ej0vzlgY9-KLmlPkldgcOx1wAmGTUCjLZLOxkArNxpRzZ9m8woL-NGmP9LBGVPws8UxMJZrR7O1qFH6QkKtrGVPw6StRnXiK1XTQR_nY905r0XobAG2nOmyC6Zq8mdyPDp1MyHD7JLodJUXCRViXhtmLmRVE_-JGarVJRlxs6k3DzAOQQEJewfp00DjhlD0mxr8ZKpk2yq6IPTZZQ52XYxh26FC5MxLHhs7LuAwhtolmDZyp4_IuwRg8I5m-2--MmvGE8CCqjRWrkE85zgkMXPlOqcZtppRpZhn6Uz9DZAuKheHwVBb0ySIhFYG92bvQOgiKX0TTswB1SHgOLIeqktuyUaAgxI_h
+    // The tool has been used to pass from --secondary-color to --primary-color through CSS filters
+    // This is because SVGs embedded into <img> tags can't be filled as we can do with inline SVGs
+    return "invert(92%) sepia(17%) saturate(168%) hue-rotate(337deg) brightness(98%) contrast(89%)";
   }
 
   changeLanguage(e) {
@@ -55,42 +105,35 @@ class Header extends React.Component {
       newSecondary
     );
 
-    // Source for the CSS filter:
-    // https://codepen.io/sosuke/pen/Pjoqqp?__cf_chl_jschl_tk__=ecc0b72797ae71bc009d6322e3e470773936b386-1604211766-0-ASpz720gXnc6Ej0vzlgY9-KLmlPkldgcOx1wAmGTUCjLZLOxkArNxpRzZ9m8woL-NGmP9LBGVPws8UxMJZrR7O1qFH6QkKtrGVPw6StRnXiK1XTQR_nY905r0XobAG2nOmyC6Zq8mdyPDp1MyHD7JLodJUXCRViXhtmLmRVE_-JGarVJRlxs6k3DzAOQQEJewfp00DjhlD0mxr8ZKpk2yq6IPTZZQ52XYxh26FC5MxLHhs7LuAwhtolmDZyp4_IuwRg8I5m-2--MmvGE8CCqjRWrkE85zgkMXPlOqcZtppRpZhn6Uz9DZAuKheHwVBb0ySIhFYG92bvQOgiKX0TTswB1SHgOLIeqktuyUaAgxI_h
-    // The tool has been used to pass from --secondary-color to --primary-color through CSS filters
-    // This is because SVGs embedded into <img> tags can't be filled as we can do with inline SVGs
-    let svgFilter =
-      "invert(92%) sepia(17%) saturate(168%) hue-rotate(337deg) brightness(98%) contrast(89%)";
-
-    // Change OpenZeppeling logo
+    // Change OpenZeppelin logo
     var theLogo = document.getElementById("logo")
     if(theLogo && theLogo.style) theLogo.style.filter = !this.state.dark
-      ? svgFilter
+      ? this.svgFilter()
       : null;
 
     // Change The Ethernaut logo
     var theEthernaut = document.getElementById("the-ethernaut");
     if(theEthernaut && theEthernaut.style) theEthernaut.style.filter = !this.state.dark
-      ? svgFilter
+      ? this.svgFilter()
       : null;
 
     // Change Arrow
     let isArrowInPage = document.getElementById("arrow");
     if (isArrowInPage && isArrowInPage.style)
-      isArrowInPage.style.filter = !this.state.dark ? svgFilter : null;
+      isArrowInPage.style.filter = !this.state.dark ? this.svgFilter() : null;
 
     // Change Mosaic and levels logo
     let elements = document.getElementsByClassName("level-tile");
     for (let i = 0; i < elements.length; i++) {
       let element = elements[i];
-      if (element && element.style) element.style.filter = !this.state.dark ? svgFilter : null;
+      if (element && element.style) element.style.filter = !this.state.dark ? this.svgFilter() : null;
     }
 
     // Change all custom images
     elements = document.getElementsByClassName("custom-img");
     for (let i = 0; i < elements.length; i++) {
       let element = elements[i];
-      if (element && element.style) element.style.filter = !this.state.dark ? svgFilter : null;
+      if (element && element.style) element.style.filter = !this.state.dark ? this.svgFilter() : null;
     }
 
     this.setState({
