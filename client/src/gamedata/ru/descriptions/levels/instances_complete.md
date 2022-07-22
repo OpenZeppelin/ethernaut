@@ -1,6 +1,7 @@
-Congratulations! You have completed the tutorial. 
-Have a look at the Solidity code for the contract you just interacted with below.
+Поздравляем! Ты познакомился(ась) с основами игры.
 
-You are now ready to complete all the levels of the game, and as of now, you're on your own.
+Взгляни на исходный код Solidity контракта с которым ты взаимодействовал(а).
 
-Godspeed!!
+Теперь ты готов(а) к прохождению оставшихся уровней. И теперь ты сам(а) по себе.
+
+Удачи!!
