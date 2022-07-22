@@ -41,7 +41,6 @@ class Stats extends React.Component {
 
   getNumPlayers() {
     const players = _.uniq(_.map(this.props.createdInstances, 'args.player'))
-    // console.log(`players:`, players)
     return players.length
   }
 

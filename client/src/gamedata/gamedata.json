@@ -403,7 +403,7 @@
       "deployFunds": 0,
       "deployId": "26",
       "instanceGas": 5000000,
-      "poweredBy": {"src": "../../imgs/forta_black.svg", "href": "https://forta.org"},
+      "poweredBy": {"src": "../../imgs/forta.svg", "href": "https://forta.org"},
       "author": "openzeppelin&forta"
     }, {
       "name": "Price It",
