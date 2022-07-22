@@ -229,7 +229,7 @@ class Header extends React.Component {
                   </a>
                   <a
                     onClick={() => {
-                      this.changeLanguage("russian");
+                      this.changeLanguage("ru");
                     }}
                     href="/"
                   >
