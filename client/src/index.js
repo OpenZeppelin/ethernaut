@@ -34,12 +34,23 @@ Sentry.init({
   tracesSampleRate: 1.0,
   release: constants.VERSION,
 });
+// store.dispatch(actions.setNetworkId(id));
+store.dispatch(actions.connectWeb3(window.web3));
+if (!window.web3) {
+  ReactDOM.render(
+    <h3>Hey, You dont have the supported wallet!</h3>,
+    document.getElementById("root")
+  );
+} else {
+  window.ethereum.request({ method: 'eth_chainId' }).then((res) => {
+    store.dispatch(actions.setNetworkId(parseInt(res)));
+    store.dispatch(actions.loadGamedata());
+  })
 
-store.dispatch(actions.loadGamedata());
 
-// View entry point.
-ReactDOM.render(
-  <Provider store={store}>
+  // View entry point.
+  ReactDOM.render(
+    <Provider store={store}>
       <Router history={syncHistoryWithStore(history, store)}>
         <Route
           path={constants.PATH_ROOT}
@@ -74,9 +85,11 @@ ReactDOM.render(
         />
       </Router>
 
-  </Provider>,
-  document.getElementById("root")
-);
+    </Provider>,
+    document.getElementById("root")
+  );
+}
+
 
 // Post-load actions.
 window.addEventListener("load", async () => {
@@ -109,7 +122,7 @@ window.addEventListener("load", async () => {
         gasPrice: (price) =>
           store.dispatch(actions.setGasPrice(Math.floor(price * 1.1))),
         networkId: (id) => {
-          checkWrongNetwork(id);
+          // checkWrongNetwork(id);
           if (id !== store.getState().network.networkId)
             store.dispatch(actions.setNetworkId(id));
         },
@@ -122,28 +135,28 @@ window.addEventListener("load", async () => {
   }
 });
 
-function checkWrongNetwork(id) {
-  let onWrongNetwork = false;
-  if (constants.ACTIVE_NETWORK.id === constants.NETWORKS.LOCAL.id) {
-    onWrongNetwork = Number(id) < 1000;
-  } else {
-    onWrongNetwork = Number(constants.ACTIVE_NETWORK.id) !== Number(id);
-  }
+// function checkWrongNetwork(id) {
+//   let onWrongNetwork = false;
+//   if (constants.ACTIVE_NETWORK.id === constants.NETWORKS.LOCAL.id) {
+//     onWrongNetwork = Number(id) < 1000;
+//   } else {
+//     onWrongNetwork =  !constants.ACTIVE_NETWORK.includes(Number(id)) ;
+//   }
 
-  if (onWrongNetwork) {
-    console.error(
-      `Heads up, you're on the wrong network!! @bad Please switch to the << ${constants.ACTIVE_NETWORK.name.toUpperCase()} >> network.`
-    );
-    console.error(
-      `1) From November 2 you can turn on privacy mode (off by default) in settings if you don't want to expose your info by default. 2) If privacy mode is turn on you have to authorized metamask to use this page. 3) then refresh.`
-    );
+//   if (onWrongNetwork) {
+//     console.error(
+//       `Heads up, you're on the wrong network!! @bad Please switch to the << ${constants.ACTIVE_NETWORK.name.toUpperCase()} >> network.`
+//     );
+//     console.error(
+//       `1) From November 2 you can turn on privacy mode (off by default) in settings if you don't want to expose your info by default. 2) If privacy mode is turn on you have to authorized metamask to use this page. 3) then refresh.`
+//     );
 
-    if (id === constants.NETWORKS.ROPSTEN.id) {
-      console.error(
-        `If you want to play on Ropsten, check out https://ropsten.ethernaut.openzeppelin.com/`
-      );
-    }
-  }
+//     if (id === constants.NETWORKS.ROPSTEN.id) {
+//       console.error(
+//         `If you want to play on Ropsten, check out https://ropsten.ethernaut.openzeppelin.com/`
+//       );
+//     }
+//   }
 
-  return onWrongNetwork;
-}
+//   return onWrongNetwork;
+// }
