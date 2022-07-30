@@ -4,7 +4,7 @@ import * as constants from '../constants';
 let wasOnWrongNetwork = false
 
 const setNetwork = store => next => action => {
-  if (action.type !== actions.SET_NETWORK_ID) return next(action)
+  if (action.type !== actions.SET_NETWORK_ID) return next(action) //we need to reload the window here
 
   // console.log(`ID`, action.id)
   if (checkWrongNetwork(action.id)) {
