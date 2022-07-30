@@ -33,7 +33,7 @@ const loadGameData = store => next => action => {
     // Load levels and add a bit of post processing...
 
   } catch (e) {
-    window.alert(strings.noLevelsDataMessage)
+    window.alert(strings.noLevelsDataMessage) //need to do something here more nicer to tell user
   }
 
   next(action)
