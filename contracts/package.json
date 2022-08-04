@@ -9,6 +9,7 @@
     "cross-env": "5.0.5",
     "ethereumjs-util": "^7.0.10",
     "hardhat": "^2.9.2",
+    "openzeppelin-contracts-08": "npm:@openzeppelin/contracts",
     "openzeppelin-test-helpers": "^0.5.1",
     "prompt": "^1.1.0",
     "web3": "^1.3.5"
