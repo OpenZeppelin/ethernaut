@@ -20,7 +20,7 @@ contract('GoodSamaritan', function(accounts) {
     await ethernaut.registerLevel(level.address)
   });
 
-  it.only('should allow the player to solve the level', async function() {
+  it('should allow the player to solve the level', async function() {
 
     const instance = await utils.createLevelInstance(
       ethernaut, level.address, player, GoodSamaritan,
