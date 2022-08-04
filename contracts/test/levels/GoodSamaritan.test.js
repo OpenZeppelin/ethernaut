@@ -1,9 +1,10 @@
-const GoodSamaritanFactory = artifacts.require('./levels/GoodSamaritanFactory.sol')
-const GoodSamaritan = artifacts.require('./attacks/GoodSamaritan.sol')
-const GoodSamaritanAttack = artifacts.require('./attacks/GoodSamaritanAttack.sol')
+const GoodSamaritanFactory = artifacts.require('GoodSamaritanFactory')
+const GoodSamaritan = artifacts.require('GoodSamaritan')
+const Wallet = artifacts.require('Wallet')
+const Coin = artifacts.require('Coin')
+const GoodSamaritanAttack = artifacts.require('GoodSamaritanAttack')
 
 const Ethernaut = artifacts.require('./Ethernaut.sol')
-const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
 const utils = require('../utils/TestUtils')
 
 
@@ -11,11 +12,10 @@ contract('GoodSamaritan', function(accounts) {
 
   let ethernaut
   let level
-  let owner = accounts[1]
   let player = accounts[0]
 
   before(async function() {
-    ethernaut = await Ethernaut.new();
+    ethernaut = await Ethernaut.new()
     level = await GoodSamaritanFactory.new()
     await ethernaut.registerLevel(level.address)
   });
@@ -27,71 +27,46 @@ contract('GoodSamaritan', function(accounts) {
       {from: player, value: web3.utils.toWei('0.001', 'ether')}
     )
 
+    let coin = await Coin.at(await instance.coin())
+    let wallet = await Wallet.at(await instance.wallet())
+    let attacker = await GoodSamaritanAttack.new(instance.address)
+
     // Init checks
-    console.log('sdfadsf', await instance.wallet())
-    assert.equal(await instance.wallet(), level.address)
-    assert.equal(web3.utils.fromWei(await instance.prize()).toString(), '0.001')
-    //console.log('king:', await instance._king())
-    //console.log('prize:', web3.utils.fromWei(await instance.prize()).toString())
+    assert.equal(await wallet.coin(), coin.address)
+    assert.equal(await coin.balances(wallet.address), 10**6)
+    assert.equal(await coin.balances(player), 0)
 
-    // Ensure that players can become king
-    //console.log('new king...')
-    await (web3.eth.sendTransaction)({
-      from: accounts[1],
-      to: instance.address,
-      value: web3.utils.toWei('2', 'ether')
-    })
-    //console.log('king:', await instance._king());
-    //console.log('prize:', web3.utils.fromWei(await instance.prize()).toString())
-    assert.equal(web3.utils.fromWei(await instance.prize()).toString(), '2')
-    assert.equal(await instance._king(), accounts[1])
+    // Ensure that players can requestDonation
+    await instance.requestDonation({from: player});
 
-    // Ensure that players dont become king if they dont meet the prize
-    //console.log('failed claim...')
-    await expectRevert.unspecified(
-      (web3.eth.sendTransaction)({
-        from: accounts[2],
-        to: instance.address,
-        value: web3.utils.toWei('0.1', 'ether')
-      })
-    )
-    //console.log('king:', await instance._king());
-    //console.log('prize:', web3.utils.fromWei(await instance.prize()).toString())
-    assert.equal(web3.utils.fromWei(await instance.prize()).toString(), '2')
-    assert.equal(await instance._king(), accounts[1])
+    assert.equal((await coin.balances(wallet.address)).toNumber(), 10**6 - 10)
+    assert.equal(await coin.balances(player), 10)
 
     // Factory check (should fail)
-    // NOTE: Factory check makes the level become the king,
-    //       player wins when the factory is not able to do this.
-    //console.log('Check complete (should fail)...')
     let completed = await utils.submitLevelInstance(
       ethernaut,
       level.address,
       instance.address,
       player
     )
-    //console.log('completed:', completed)
-    assert.equal(completed, false)
-    assert.equal(await instance._king(), level.address)
 
-    // Attack
-    const attackerFunds = '2.01'
-    const attacker = await KingAttack.new();
-    await attacker.doYourThing(instance.address, {
-      value: web3.utils.toWei(attackerFunds, 'ether')
-    })
+    assert.equal(completed, false)
+
+    // Ensure that players can hack the contract
+    await attacker.attack();
+
+    assert.equal((await coin.balances(wallet.address)).toNumber(), 0)
+    assert.equal(await coin.balances(attacker.address), 10**6 - 10)
 
     // Factory check (should pass)
-    //console.log('Check complete (should pass)...')
     completed = await utils.submitLevelInstance(
       ethernaut,
       level.address,
       instance.address,
       player
     )
-    //console.log('completed:', completed)
-    assert.equal(completed, true)
 
+    assert.equal(completed, true)
   });
 
 });

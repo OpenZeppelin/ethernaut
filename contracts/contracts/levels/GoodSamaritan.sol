@@ -21,7 +21,7 @@ contract GoodSamaritan {
         } catch (bytes memory err) {
             if (keccak256(abi.encodeWithSignature("NotEnoughBalance()")) == keccak256(err)) {
                 // send the coins left
-                wallet.trasnferRemainder(msg.sender);
+                wallet.transferRemainder(msg.sender);
                 return false;
             }
         }
@@ -50,7 +50,7 @@ contract Coin {
 
             if(dest_.isContract()) {
                 // notify contract 
-                INotifyable(dest_).notify();
+                INotifyable(dest_).notify(amount_);
             }
         } else {
             revert InsufficientBalance(currentBalance, amount_);
@@ -62,7 +62,7 @@ contract Wallet {
     // The owner of the wallet instance
     address public owner;
 
-    Coin private coin;
+    Coin public coin;
 
     error OnlyOwner();
     error NotEnoughBalance();
@@ -88,7 +88,7 @@ contract Wallet {
         }
     }
 
-    function trasnferRemainder(address dest_) external onlyOwner {
+    function transferRemainder(address dest_) external onlyOwner {
         // transfer balance left
         coin.transfer(dest_, coin.balances(address(this)));
     }
@@ -99,5 +99,5 @@ contract Wallet {
 }
 
 interface INotifyable {
-    function notify() external;
+    function notify(uint256 amount) external;
 }
