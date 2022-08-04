@@ -418,8 +418,8 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "27",
-      "instanceGas": 5000000,
-      "author": "Eric Nordelo"
+      "instanceGas": 10000000,
+      "author": "ericnordelo"
     }
   ]
 }
