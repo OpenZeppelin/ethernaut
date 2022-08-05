@@ -64,11 +64,14 @@ export const SHOW_ALL_COMPLETE_DESCRIPTIONS = false             /* FALSE on prod
 export const SHOW_VERSION = true                                /* TRUE on production */
 // export const ACTIVE_NETWORK = NETWORKS.RINKEBY
 // export const ACTIVE_NETWORK = NETWORKS.ROPSTEN
-// export const ACTIVE_NETWORK = NETWORKS.LOCAL
-export const ACTIVE_NETWORK = [NETWORKS.RINKEBY, NETWORKS.ROPSTEN, NETWORKS.LOCAL]
-export const ID_TO_NETWORK = {
-  3: "ropsten",
-  4: "rinkeby"
-}
+export const ACTIVE_NETWORK = NETWORKS.LOCAL
+// export const ACTIVE_NETWORK = [NETWORKS.RINKEBY, NETWORKS.ROPSTEN, NETWORKS.LOCAL]
+let id_to_network = {}
+Object.keys(NETWORKS).filter((network) => NETWORKS[network] && NETWORKS[network].name !== 'local').forEach(network => id_to_network[NETWORKS[network].id] = NETWORKS[network].name)
+//The above line will output: 
+//id_to_network = {3: 'ropsten', 4: 'rinkeby'}
+
+
+export const ID_TO_NETWORK = id_to_network
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------
