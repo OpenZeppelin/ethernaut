@@ -243,6 +243,30 @@ class Header extends React.Component {
                   </a>
                 </div>
               </li>
+              <li className="dropdown">
+                <div className="icon-buttons" href="/">
+                <i class="fas fa-network-wired"></i>
+                </div>
+                <div className="dropdown-content">
+                  <a
+                    onClick={() => {
+                      // Execute function
+                    }}
+                    href="/"
+                  >
+                    Polygon Mumbai
+                  </a>
+                  <a
+                    onClick={() => {
+                      // Execute function
+                    }}
+                    href="/"
+                  >
+                    Eth Goerli
+                  </a>
+                  
+                </div>
+              </li>
               <input
                 onClick={() => {
                   this.toggleDarkMode();
