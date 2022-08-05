@@ -1,16 +1,27 @@
 import * as actions from '../actions';
 import * as constants from '../constants';
 
-let wasOnWrongNetwork = false
+// let wasOnWrongNetwork = false
 
 const setNetwork = store => next => action => {
   if (action.type !== actions.SET_NETWORK_ID) return next(action) //we need to reload the window here
 
+  console.log("the network id is,", action.id)
+  console.log("the value is ", checkWrongNetwork(action.id))
   // console.log(`ID`, action.id)
+  // if (checkWrongNetwork(action.id)) {
+  //   wasOnWrongNetwork = true
+  // }
+  // else if (wasOnWrongNetwork) {
+  //   document.location.reload()
+  // }
+  // let supportedNetworks = constants.ACTIVE_NETWORK.filter((network) => network.name !== 'local')
+  // console.log(supportedNetworks)
+
+  // let supportedNetworkNames = supportedNetworks.map((network) => network.name)
+  console.log("list of supported Networks", JSON.stringify(JSON.stringify(constants.ID_TO_NETWORK)))
   if (checkWrongNetwork(action.id)) {
-    wasOnWrongNetwork = true
-  }
-  else if (wasOnWrongNetwork) {
+    alert(`Your are on wrong network. Currently we support these networks ${JSON.stringify(JSON.stringify(constants.ID_TO_NETWORK))}`)
     document.location.reload()
   }
 
@@ -38,7 +49,8 @@ function checkWrongNetwork(id) {
   // if (constants.ACTIVE_NETWORK.id === constants.NETWORKS.LOCAL.id) {
   //   onWrongNetwork = Number(id) < 1000;
   // } else {
-  onWrongNetwork = !constants.ACTIVE_NETWORK.includes(Number(id));
+  let allNetworkIds = Object.keys(constants.ID_TO_NETWORK).map((key)=>Number(key))
+  onWrongNetwork = !allNetworkIds.includes(Number(id));
   // }
 
   // if (onWrongNetwork) {
