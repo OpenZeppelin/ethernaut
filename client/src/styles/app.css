@@ -13,6 +13,10 @@
   --secondary-color: var(--black);
   margin-left: 15%;
   margin-right: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 ::-webkit-scrollbar {
@@ -268,8 +272,7 @@ nav li {
 
 .source-code {
   margin-bottom: 2em;
-  max-width: 60%;
-  margin-left: 20%;
+  width: 800px;
 }
 
 .content_img div {
@@ -350,8 +353,8 @@ footer {
 .boxes {
   padding: 20px 20px 20px 20px;
   border: 2px solid var(--secondary-color);
-  width: 60%;
-  margin-left: 20%;
+  width: 800px;
+
   margin-bottom: 2em;
   text-align: left;
   border-radius: 6px;
