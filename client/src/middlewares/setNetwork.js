@@ -5,9 +5,16 @@ import * as constants from '../constants';
 
 const setNetwork = store => next => action => {
   if (action.type !== actions.SET_NETWORK_ID) return next(action) //we need to reload the window here
-
-  console.log("the network id is,", action.id)
-  console.log("the value is ", checkWrongNetwork(action.id))
+  // if (localStorage.getItem("NetId") == null){
+  //   document.location.reload()
+  // }
+//  if (localStorage.getItem("NetId") !== action.id){
+//   localStorage.setItem("NetId",action.id)
+//   // document.location.reload();
+//  }
+//  console.log("from store,",store.getState().network.networkId)
+//   console.log("the network id is,", action.id)
+//   console.log("the value is ", checkWrongNetwork(action.id))
   // console.log(`ID`, action.id)
   // if (checkWrongNetwork(action.id)) {
   //   wasOnWrongNetwork = true
@@ -19,12 +26,25 @@ const setNetwork = store => next => action => {
   // console.log(supportedNetworks)
 
   // let supportedNetworkNames = supportedNetworks.map((network) => network.name)
-  console.log("list of supported Networks", JSON.stringify(JSON.stringify(constants.ID_TO_NETWORK)))
+  // console.log("list of supported Networks", JSON.stringify(JSON.stringify(constants.ID_TO_NETWORK)))
+  // 
   if (checkWrongNetwork(action.id)) {
-    alert(`Your are on wrong network. Currently we support these networks ${JSON.stringify(JSON.stringify(constants.ID_TO_NETWORK))}`)
+    alert(`Your are on wrong network. Currently we support these networks ${JSON.stringify(Object.keys(constants.NETWORKS).filter((key) => key !== "LOCAL" && key !== "UNDEFINED"))}`)
+    async function changeNetwork(){
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0x3' }],//if on wrong network giving option to switch to ropsten network.
+      });
+    }
+    changeNetwork()
+    // alert(`Your are on wrong network. Currently we support these networks ${JSON.stringify(JSON.stringify(constants.ID_TO_NETWORK))}`)
+    
+  }
+  
+  //This will trigger reload if the network is changed between supported network
+  if (!checkWrongNetwork(action.id) && store.getState().network.networkId !== undefined && store.getState().network.networkId !== action.id){
     document.location.reload()
   }
-
   next(action)
 }
 
