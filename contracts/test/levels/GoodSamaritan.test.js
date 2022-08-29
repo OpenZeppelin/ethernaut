@@ -13,20 +13,33 @@ contract('GoodSamaritan', function(accounts) {
   let ethernaut
   let level
   let player = accounts[0]
+  let instance
 
-  before(async function() {
+  beforeEach(async function() {
     ethernaut = await Ethernaut.new()
     level = await GoodSamaritanFactory.new()
     await ethernaut.registerLevel(level.address)
-  });
 
-  it('should allow the player to solve the level', async function() {
-
-    const instance = await utils.createLevelInstance(
+    instance = await utils.createLevelInstance(
       ethernaut, level.address, player, GoodSamaritan,
       {from: player, value: web3.utils.toWei('0.001', 'ether')}
     )
+  });
 
+  it("should fail if the player didnt solve the level", async function() {
+    // Factory check (should fail)
+    let completed = await utils.submitLevelInstance(
+      ethernaut,
+      level.address,
+      instance.address,
+      player
+    )
+
+    assert.equal(completed, false)
+
+  })
+
+  it('should allow the player to solve the level', async function() {
     let coin = await Coin.at(await instance.coin())
     let wallet = await Wallet.at(await instance.wallet())
     let attacker = await GoodSamaritanAttack.new(instance.address)
@@ -41,16 +54,6 @@ contract('GoodSamaritan', function(accounts) {
 
     assert.equal((await coin.balances(wallet.address)).toNumber(), 10**6 - 10)
     assert.equal(await coin.balances(player), 10)
-
-    // Factory check (should fail)
-    let completed = await utils.submitLevelInstance(
-      ethernaut,
-      level.address,
-      instance.address,
-      player
-    )
-
-    assert.equal(completed, false)
 
     // Ensure that players can hack the contract
     await attacker.attack();
