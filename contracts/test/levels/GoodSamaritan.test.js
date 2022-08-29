@@ -22,7 +22,7 @@ contract('GoodSamaritan', function(accounts) {
 
     instance = await utils.createLevelInstance(
       ethernaut, level.address, player, GoodSamaritan,
-      {from: player, value: web3.utils.toWei('0.001', 'ether')}
+      {from: player}
     )
   });
 
