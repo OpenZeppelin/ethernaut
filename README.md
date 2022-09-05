@@ -62,11 +62,11 @@ yarn build:ethernaut
 
 * A `level factory` contract that needs to extend Level.sol. This factory contract will be deployed only once and registered on Ethernaut.sol by Ethernaut's owner. Players never interact with the factory directly. The factory is in charge of creating level instances for players to use (1 instance per player) and to check these instances to verify if the player has beat the level. Factories should not have state that can be changed by the player.
 * A `level instance` contract that is emitted by the factory for each player that requests it. Instances need to be completely decouppled from Ethernaut's architecture. Factories will emit them and verify them. That is, level instances don't know anything about their factories or Ethernaut. An instance's state can be completely demolished by players and even destroyed since they are not really part of the architecture, just a challenge for a player to use at will.
-* A `description file` in client/gamedata/descriptions that the UI presents to the player and describes the level's objectives with some narrative and tips.
-* A `description completion file` also in client/gamedata/descriptions that the UI presents to the player when the level is beaten, that presents further information about the player, historical insights, further explanations or just a congrats message.
+* A `description file` in client/src/gamedata/descriptions that the UI presents to the player and describes the level's objectives with some narrative and tips.
+* A `description completion file` also in client/src/gamedata/descriptions that the UI presents to the player when the level is beaten, that presents further information about the player, historical insights, further explanations or just a congrats message.
 * A `tests file` in contracts/test/levels that performs unit tests on the level.
-* A `json entry` for the level in client/gamedata/gamedata.json that appends metadata to the level. The UI uses this metadata to display the level's title, difficulty, etc, but also to determine if sources are shown, the default gas for the creation of an instance, etc. NOTE: "deployId" must be unique and is also used by the deployment script.
-* Optionally, an `author entry` at client/gamedata/authors.json. You can specify opt-in information about yourself in this file.
+* A `json entry` for the level in client/src/gamedata/gamedata.json that appends metadata to the level. The UI uses this metadata to display the level's title, difficulty, etc, but also to determine if sources are shown, the default gas for the creation of an instance, etc. NOTE: "deployId" must be unique and is also used by the deployment script.
+* Optionally, an `author entry` at client/src/gamedata/authors.json. You can specify opt-in information about yourself in this file.
 
 #### Example level development: King
 
@@ -77,8 +77,8 @@ Let's suppose that we are creating the level "King" (which is already created an
 3. Rename and modify the contracts to KingFactory.sol and King.sol.
 4. Implement the desired instance and factory logic in solidity. See current levels and notes to understand how the game mechanics work.
 5. Add contracts/test/levels/King.test.js file. Use other tests files as reference to see how tests might work.
-6. Run `yarn test:contracts` and once all tests pass, register the level in client/gamedata/gamedata.json.
-7. The level should now show up in the ui. To start the UI, set client/src/constants.js' ACTIVE_NETWORK to DEVELOPMENT and run npm start.
+6. Run `yarn test:contracts` and once all tests pass, register the level in client/src/gamedata/gamedata.json.
+7. The level should now show up in the ui. To start the UI, set client/src/constants.js' ACTIVE_NETWORK to NETWORKS.LOCAL and run npm start.
 8. Add a description markdown file, in this case client/src/gamedata/levels/king.md (make sure gamedata.json points to it). This content will now be displayed in the ui for the level.
 9. Verify that the level is playable and winnable via UI. It is common for levels to be beatable in some way in tests that doesn't work using the UI, so it is important to test it manually as well.
 10. Add a completed description markdown file, in this case client/src/gamedata/levels/king_complete.md (make sure gamedata.json points to it). The level will display this as additional info once the level is solved, usually to include historical information related to the level.
