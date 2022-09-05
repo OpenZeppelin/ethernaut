@@ -47,6 +47,7 @@
     "levelAddressMessage": "Адрес уровня",
     "instanceAddressMessage": "Адрес инстанса",
     "playerAddressMessage": "Адрес игрока",
+    "selectedNetworkMessage": "Current network: ",
     "ethernautAddressMessage": "Адрес Ethernaut-а",
     "noLevelsDataMessage": "Данные уровней не найдены",
     "ethernautNotFoundMessage": "Основной контракт Ethernaut-а не найден. Убедись, что (1) MetaMask установлен, (2) разблокирован и (3) выбрана сеть Rinkeby. Если в MetaMask включен приватный режим, то в настройках MetaMask вам необходимо авторизовать текущую страницу. Обнови страницу после выполнения вышеуказанных действий.",

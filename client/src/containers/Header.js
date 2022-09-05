@@ -254,11 +254,28 @@ class Header extends React.Component {
                         <a key={network.name}
                           onClick={() => {
                             async function changeNetwork(){
-                              await window.ethereum.request({
-                                method: 'wallet_switchEthereumChain',
-                                params: [{ chainId: `0x${network.id.toString(16)}` }],//if on wrong network giving option to switch to sepolia network.
-                              });
-                            }
+                              try {
+                                await window.ethereum.request({
+                                  method: 'wallet_switchEthereumChain',
+                                  params: [{ chainId: `0x${Number(network.id).toString(16)}` }],
+                                });
+                              } catch (switchError) {
+                                // This error code indicates that the chain has not been added to MetaMask.
+                                if (switchError.code === 4902) {
+                                  try {
+                                    await window.ethereum.request({
+                                      method: 'wallet_addEthereumChain',
+                                      params: [
+                                        {
+                                          chainId: [{ chainId: `0x${Number(network.id).toString(16)}` }]
+                                        },
+                                      ],
+                                    });
+                                  } catch (addError) {
+                                    console.error("Can't add nor switch to the selected network")
+                                  }
+                                }
+                            }}
                             changeNetwork()
                           
                           }}

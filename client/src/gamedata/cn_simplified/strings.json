@@ -47,6 +47,7 @@
     "levelAddressMessage": "关卡地址",
     "instanceAddressMessage": "实例地址",
     "playerAddressMessage": "玩家地址",
+    "selectedNetworkMessage": "Current network: ",
     "ethernautAddressMessage": "以太坊地址",
     "noLevelsDataMessage": "无法获得关卡信息",
     "ethernautNotFoundMessage": "Ethernaut 合约在当前网络中无法找到. 请确保 (1) 你正在使用 metamask, (2) 它设置在 rinkeby testnet, (3) 它已经解锁, (4 可选) 从 11月2日 起如果你不想暴露你的信息你可以在MetaMask设置里打开 privacy mode (默认关闭). (5 可选) 如果 privacy mode被打开,你需要授权metamask使用当前页面. 然后 (6) 刷新.",
