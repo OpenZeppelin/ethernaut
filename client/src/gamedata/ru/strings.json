@@ -54,7 +54,7 @@
     "unableToRetrieveLevelMessage": "Не удалось получить инстанс! Проверь параметры газа и попробуй запросить инстанс снова.",
     "transactionNoLogsMessage": "Транзакция не содержит логов",
     "noPlayerAddressMessage": "Адрес игрока не обнаружен! Убедись, что MetaMask плагин (1) установлен и (2) разблокирован. Если в MetaMask включен приватный режим, то в настройках MetaMask вам необходимо авторизовать текущую страницу. Обновите страницу после выполнения вышеуказанных действий.",
-    "noEthersMessage": "Ой! У тебя нет эфира! Получить эфир можно на страницах: https://faucet.rinkeby.io/, https://faucets.chain.link/rinkeby и https://faucet.paradigm.xyz/.",
+    "noEthersMessage": "Yikes, you have no ether! Get some at valid faucet for your chosen network",
     "submitLevelMessage": "Инстанс проверяется...",
     "wellDoneMessage": "Отлично",
     "completedLevelMessage": "Уровень пройден!",

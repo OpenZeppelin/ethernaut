@@ -13,7 +13,6 @@ const loadGameData = store => next => action => {
     if (network_id) {
 
       const active_network = constants.ID_TO_NETWORK[network_id]
-      console.log("from loadgamedata, network id is", network_id);
       const network = active_network;
       const data = require(`../gamedata/gamedata.json`)
       const deployData = require(`../gamedata/deploy.${network}.json`)

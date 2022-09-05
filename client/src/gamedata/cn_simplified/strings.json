@@ -54,7 +54,7 @@
     "unableToRetrieveLevelMessage": "无法获得关卡实例! 请检查gas并重新尝试.",
     "transactionNoLogsMessage": "交易不含日志",
     "noPlayerAddressMessage": "玩家地址不存在! 请确保 1) 你安装了Metamask浏览器插件 并且 2) 它没有被锁住. 3 optional) 如果你不想暴露你的信息，从十一月二日起，你可以在设置里打开隐私模式 (默认关闭). 4 optional) 如果隐私模式被打开，你需要授权metamask使用这个页面. 5) 然后刷新.",
-    "noEthersMessage": "哎呀, 你没有 ether! 在 https://faucet.rinkeby.io/, https://faucets.chain.link/rinkeby 或https://faucet.paradigm.xyz/ 获取",
+    "noEthersMessage": "Yikes, you have no ether! Get some at valid faucet for your chosen network",
     "submitLevelMessage": "正在提交关卡实例...",
     "wellDoneMessage": "牛逼！",
     "completedLevelMessage": "你通过了这关!!!",

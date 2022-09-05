@@ -20,13 +20,31 @@ export const NETWORKS = {
     name: 'ropsten',
     id: '3',
     url: `${process.env.ROPSTEN_HOST}`,
-    privKey: `${process.env.ROPSTEN_PRIV_KEY}`
+    privKey: `${process.env.PRIV_KEY}`
   },
   RINKEBY: {
     name: 'rinkeby',
     id: '4',
     url: `${process.env.RINKEBY_HOST}`,
-    privKey: `${process.env.RINKEBY_PRIV_KEY}`
+    privKey: `${process.env.PRIV_KEY}`
+  },
+  GOERLI: {
+    name: 'goerli',
+    id: '5',
+    url: `${process.env.GOERLI_HOST}`,
+    privKey: `${process.env.PRIV_KEY}`
+  },
+  MUMBAI: {
+    name: 'mumbai-polygon',
+    id: '80001',
+    url: `${process.env.MUMBAI_HOST}`,
+    privKey: `${process.env.PRIV_KEY}`
+  },
+  SEPOLIA: {
+    name: 'sepolia',
+    id: '11155111',
+    url: `${process.env.SEPOLIA_HOST}`,
+    privKey: `${process.env.PRIV_KEY}`
   }
 }
 
@@ -41,7 +59,10 @@ export const GOOGLE_ANALYTICS_ID = 'UA-85043059-4'
 export const ADDRESSES = {
   [NETWORKS.LOCAL.name]: undefined,
   [NETWORKS.ROPSTEN.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
-  [NETWORKS.RINKEBY.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820'
+  [NETWORKS.RINKEBY.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
+  [NETWORKS.MUMBAI.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
+  [NETWORKS.GOERLI.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
+  [NETWORKS.SEPOLIA.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820'
 }
 
 // Storage
@@ -61,11 +82,15 @@ export const PATH_STATS = `${PATH_ROOT}stats`
 // -----------------------------------------------------------------------------------------
 export const CUSTOM_LOGGING = true                              /* TRUE on production */
 export const SHOW_ALL_COMPLETE_DESCRIPTIONS = false             /* FALSE on production */
-export const SHOW_VERSION = true                                /* TRUE on production */
+export const SHOW_VERSION = true   
+
+// export const ACTIVE_NETWORK = NETWORKS.SEPOLIA
+// export const ACTIVE_NETWORK = NETWORKS.GOERLI
+// export const ACTIVE_NETWORK = NETWORKS.MUMBAI
 // export const ACTIVE_NETWORK = NETWORKS.RINKEBY
 // export const ACTIVE_NETWORK = NETWORKS.ROPSTEN
 export const ACTIVE_NETWORK = NETWORKS.LOCAL
-// export const ACTIVE_NETWORK = [NETWORKS.RINKEBY, NETWORKS.ROPSTEN, NETWORKS.LOCAL]
+
 let id_to_network = {}
 Object.keys(NETWORKS).filter((network) => NETWORKS[network] && NETWORKS[network].name !== 'local').forEach(network => id_to_network[NETWORKS[network].id] = NETWORKS[network].name)
 //The above line will output: 

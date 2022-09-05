@@ -245,26 +245,31 @@ class Header extends React.Component {
               </li>
               <li className="dropdown">
                 <div className="icon-buttons" href="/">
-                <i class="fas fa-network-wired"></i>
+                <i className="fas fa-network-wired"></i>
                 </div>
                 <div className="dropdown-content">
-                  <a
-                    onClick={() => {
-                      // Execute function
-                    }}
-                    href="/"
-                  >
-                    Polygon Mumbai
-                  </a>
-                  <a
-                    onClick={() => {
-                      // Execute function
-                    }}
-                    href="/"
-                  >
-                    Eth Goerli
-                  </a>
-                  
+                      {Object.values(constants.NETWORKS).map((network) => {
+                      if(network && network.name !== 'local') {
+                        return (
+                        <a key={network.name}
+                          onClick={() => {
+                            async function changeNetwork(){
+                              await window.ethereum.request({
+                                method: 'wallet_switchEthereumChain',
+                                params: [{ chainId: `0x${network.id.toString(16)}` }],//if on wrong network giving option to switch to sepolia network.
+                              });
+                            }
+                            changeNetwork()
+                          
+                          }}
+                          href="/"
+                          >
+                          {network.name}
+                        </a>
+                      )
+                      }
+                      return null
+                  })}
                 </div>
               </li>
               <input
