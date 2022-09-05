@@ -63,9 +63,9 @@ ethernaut コントラクトの owner が誰であるかを見ることができ
 
 #### 6. テスト用 ether の入手
 
-ゲームをプレイするには、テスト用の ether が必要です。テストネットの ether を入手する最も簡単な方法は、[これに](https://faucet.rinkeby.io/), [これに](https://faucets.chain.link/rinkeby) または [これに fauset](https://faucet.paradigm.xyz/).
+To play the game, you will need test ether. The easiest way to get some testnet ether is via a valid faucet for your chosen network.
 
-残高に ether が表示されたら、次のステップに進んでください。
+Once you see some coins in your balance, move on to the next step.
 
 #### 7. レベルインスタンスの取得
 

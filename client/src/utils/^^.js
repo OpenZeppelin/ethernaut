@@ -136,12 +136,13 @@ function interceptConsole() {
     const negColor = invertColor(color)
 
     window.web3.eth.net.getId().then((res) => {
-      let network_name = constants.ID_TO_NETWORK[res]
+      var network_name = JSON.stringify(constants.ID_TO_NETWORK[res]);
+      let explorer_domain = network_name.indexOf('polygon') !== -1 ? 'polygonscan.com' : `etherscan.io`
       defaultConsole.info(
         `%c⛏️ ${text} ⛏%c`,
         `color: ${negColor}; font-weight: bold; font-size: 12px; background-color: ${color};`,
         "",
-        `https://${network_name}.etherscan.io/tx/${txId}`
+        `https://${network_name}.${explorer_domain}/tx/${txId}`
       )
     }
     )
@@ -156,7 +157,7 @@ function interceptConsole() {
       const isString = typeof arg === 'string'
 
       // Filter annoying warnings
-      if (isString && arg.indexOf('web3 will be deprecated') !== -1) return []
+      if (isString && arg.indexOf('deprecated') !== -1) return []
       if (isString && arg.indexOf('Accessing PropTypes via') !== -1) return []
       if (isString && arg.indexOf('Slow network is detected.') !== -1) return []
 

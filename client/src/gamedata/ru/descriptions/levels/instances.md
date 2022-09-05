@@ -56,9 +56,9 @@ ABI контракта описывает доступные функции ко
 
 #### 6. Получи тестовый эфир
 
-Для прохождения игры тебе потребуется тестовый эфир. Получить эфир в сети Rinkeby можно на страницах https://faucet.rinkeby.io/, https://faucets.chain.link/rinkeby и https://faucet.paradigm.xyz/. В других сетях процесс получение эфира будет отличаться.
+To play the game, you will need test ether. The easiest way to get some testnet ether is via a valid faucet for your chosen network.
 
-Как только на твоем балансе появится эфир - переходи к следующему шагу.
+Once you see some coins in your balance, move on to the next step.
 
 #### 7. Получи инстанс
 

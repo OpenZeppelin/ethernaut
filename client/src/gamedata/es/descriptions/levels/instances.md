@@ -52,9 +52,9 @@ ethernaut.owner()
 Puedes ver quién es el propietario del contrato de ethernaut, que no eres tú, por supuesto =D.
 
 #### 6. Obtén el ether de prueba
-Para jugar, necesitarás algunos ethers de prueba. La forma más fácil de obtener testnet ethers es a través de [este](https://faucet.rinkeby.io/), [este](https://faucets.chain.link/rinkeby) or [este faucet](https://faucet.paradigm.xyz/).
+To play the game, you will need test ether. The easiest way to get some testnet ether is via a valid faucet for your chosen network.
 
-Una vez que veas algo de ether en su saldo, continúa con el siguiente paso.
+Once you see some coins in your balance, move on to the next step.
 
 #### 7. Obtener una instancia de nivel
 Al jugar un nivel, no interactúas directamente con el contrato de ethernaut. En su lugar, le pides que genere una **instancia de nivel** para ti. Para hacerlo, haz clic en el botón azul en la parte inferior de la página. ¡Hazlo ahora y vuelve!

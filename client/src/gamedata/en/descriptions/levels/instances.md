@@ -47,9 +47,9 @@ Among other things, the contract's ABI exposes all of `Ethernaut.sol`'s public m
 You can see who the owner of the ethernaut contract is.
 
 #### 6. Get test ether
-To play the game, you will need test ether. The easiest way to get some testnet ether is via [this](https://faucet.rinkeby.io/), [this](https://faucets.chain.link/rinkeby) or [this faucet](https://faucet.paradigm.xyz/). Those are Rinkeby faucets where the game was originally deployed. If you're on a different network be sure to find your test money needed to run the game.
+To play the game, you will need test ether. The easiest way to get some testnet ether is via a valid faucet for your chosen network.
 
-Once you see some ether in your balance, move on to the next step.
+Once you see some coins in your balance, move on to the next step.
 
 #### 7. Getting a level instance
 When playing a level, you don't interact directly with the ethernaut contract. Instead, you ask it to generate a **level instance** for you. To do so, click the blue button at the bottom of the page. Go do it now and come back!
