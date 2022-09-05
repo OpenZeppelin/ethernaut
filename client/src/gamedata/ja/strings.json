@@ -47,6 +47,7 @@
     "levelAddressMessage": "レベルのアドレス",
     "instanceAddressMessage": "インスタンスのアドレス",
     "playerAddressMessage": "プレーヤーのアドレス",
+    "selectedNetworkMessage": "Current network: ",
     "ethernautAddressMessage": "Ethernautのアドレス",
     "noLevelsDataMessage": "レベルのデータが見つかりません",
     "ethernautNotFoundMessage": "現在のネットワークではEthernautのコントラクトは見つかりません。次を確認してください。(1) メタマスクを使用している (2) rinkeby testnetを選択している (3) ロックが解除されている (4 optional) 11月2日からMetamaskの設定でプライバシーモードをOnにすることができます。(デフォルトではOFF) (5) プライバシーモードをOnにした場合、再認証する必要があります。 (6) 再認証後にページを更新してください",
