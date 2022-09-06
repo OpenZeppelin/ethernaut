@@ -18,7 +18,7 @@ contract AlienCodex is Ownable {
   }
 
   function record(bytes32 _content) contacted public {
-  	codex.push(_content);
+    codex.push(_content);
   }
 
   function retract() contacted public {

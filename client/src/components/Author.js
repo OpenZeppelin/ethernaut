@@ -7,7 +7,7 @@ class Author extends React.Component {
     super(props);
 
     this.state = {
-      name: undefined,
+      name: [],
       emails: [],
       websites: []
     };
@@ -52,7 +52,7 @@ class Author extends React.Component {
     let strings = loadTranslations(language)
 
     const { name, emails, websites, donate } = this.state;
-    const nodata = !name && !emails.length && !websites.length && !donate;
+    const nodata = !name.length && !emails.length && !websites.length && !donate;
 
     var elements = [];
 
@@ -63,33 +63,28 @@ class Author extends React.Component {
         <span key={i}>
           <br/>
           <strong>
-            <a href={`mailto:${emails[i]}`} target='_blank' rel='noopener noreferrer'>{emails[i]}
+            {name[i]}
+            <a href={`mailto:${emails[i]}`} target='_blank' rel='noopener noreferrer' style={{marginLeft: '1%'}}>
+              <i className="fa fa-envelope" aria-hidden="true"></i>
+            </a>
+            <a href={websites[i]} target='_blank' rel='noopener noreferrer' style={{marginLeft: '1%'}}>
+              <i className="fa fa-globe" aria-hidden="true"></i>
             </a>
           </strong>
           <br/>
           <strong>
-            <a href={websites[i]} target='_blank' rel='noopener noreferrer'>{websites[i]}
-            </a>
+
           </strong>
-          <h2> </h2>
         </span>
       )
     }
 
     return (
       <div>
-        <div style={{marginTop: '20px', marginBotton: '20px'}}>
+        <div style={{marginTop: '20px', marginBottm: '20px', overflowWrap: 'anywhere'}}>
 
           <h4>{strings.levelAuthor}</h4>
 
-          {nodata && 
-            <span>{this.props.author}</span>
-          }
-
-          {!nodata && name &&
-            <span>{name}</span>
-          }
-          <p></p>
           {!nodata && elements
           }
 

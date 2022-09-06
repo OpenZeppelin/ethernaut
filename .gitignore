@@ -14,5 +14,4 @@ contracts/node_modules/
 client/build/
 client/node_modules/
 client/src/gamedata/deploy.local.json
-
 .env
