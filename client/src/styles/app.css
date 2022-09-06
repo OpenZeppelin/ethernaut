@@ -207,7 +207,6 @@ nav li {
 .dropdown-content a:hover {
   background-color: var(--secondary-color);
   color: var(--primary-color);
-  border: var(--primary-color) solid 1px;
   border-radius: 6px;
 }
 
@@ -261,6 +260,7 @@ nav li {
   float: center;
   margin-left: 5px;
   margin-bottom: 5px;
+  overflow: hidden;
 }
 
 .level-tile {
@@ -275,15 +275,18 @@ nav li {
 
 .content_img div {
   position: absolute;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   bottom: 1px;
   right: 1px;
-
   background: var(--secondary-color);
   font-weight: bold;
   color: var(--primary-color);
   text-align: center;
-  height: 80px;
+  height: 78px;
+  word-break: break-all;
   font-family: Arial, Helvetica, sans-serif;
   opacity: 0;
   visibility: hidden;
@@ -301,7 +304,7 @@ nav li {
 }
 
 .content_img:hover div {
-  width: 80px;
+  width: 78px;
   visibility: visible;
   opacity: 100;
   border-radius: 6px;
