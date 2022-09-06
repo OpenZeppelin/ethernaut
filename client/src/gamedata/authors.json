@@ -58,6 +58,11 @@
       "name": ["OpenZeppelin","Forta"],
       "emails": ["ethernaut@zeppelin.solutions", "info@forta.org"],
       "websites": ["https://openzeppelin.com", "https://forta.org"]
+    },
+    "ericnordelo": {
+      "name": ["Eric Nordelo"],
+      "emails": ["eric.nordelo39@gmail.com"],
+      "websites": ["https://www.ericnordelo.com/"]
     }
   }
 }
