@@ -207,7 +207,6 @@ nav li {
 .dropdown-content a:hover {
   background-color: var(--secondary-color);
   color: var(--primary-color);
-  border: var(--primary-color) solid 1px;
   border-radius: 6px;
 }
 
