@@ -38,6 +38,12 @@ contract('Dex', function (accounts) {
         assert.equal(token_one_balance, 100)
         assert.equal(token_two_balance, 100)
 
+        // Ensure its not possible to approve yourself as a spender of the Dex balances
+        await expectRevert(
+            token1.approve(instance.address, player, 100),
+            "InvalidApprover"
+        )
+
         // Start swapping
         await token1.approve(instance.address, 200, { from: player })
         await token2.approve(instance.address, 200, { from: player })
