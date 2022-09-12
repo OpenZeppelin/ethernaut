@@ -329,9 +329,9 @@ nav li {
 }
 
 footer {
-  width: 100%;
-  margin-left: -15%;
+  width: 100vw;
   position: fixed;
+  left: 0;
   padding: 10px 10px 0px 10px;
   bottom: 0;
   height: 25px;
