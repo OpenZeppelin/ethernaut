@@ -256,9 +256,11 @@ class Level extends React.Component {
           </section>
 
           <section className="descriptors">
-            <div className="boxes">
+            <div className="boxes author-section-border">
+              <div className="author-section">
               {/* AUTHOR */}
               {level.author && <Author author={level.author} />}
+            </div>
             </div>
           </section>
         </main>
