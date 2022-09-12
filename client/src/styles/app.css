@@ -327,7 +327,20 @@ nav li {
   padding-left: 50px;
   padding-right: 50px;
 }
+.author-section-border{
+  border: none !important;
+}
+.author-section{
+  width: 60%;
+  margin-left: 20%;
 
+  padding: 20px 20px 20px 20px;
+  border: 2px solid var(--secondary-color);
+
+  margin-bottom: 2em;
+  text-align: left;
+  border-radius: 6px;
+}
 footer {
   width: 100vw;
   position: fixed;
