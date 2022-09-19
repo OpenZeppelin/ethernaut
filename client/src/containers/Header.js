@@ -248,11 +248,12 @@ class Header extends React.Component {
                 <i className="fas fa-network-wired"></i>
                 </div>
                 <div className="dropdown-content">
-                      {Object.values(constants.NETWORKS).map((network) => {
+                      {Object.values(constants.NETWORKS_INGAME).map((network) => {
                       if(network && network.name !== 'local') {
                         return (
                         <a key={network.name}
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.preventDefault();
                             async function changeNetwork(){
                               try {
                                 await window.ethereum.request({
@@ -260,6 +261,7 @@ class Header extends React.Component {
                                   params: [{ chainId: `0x${Number(network.id).toString(16)}` }],
                                 });
                               } catch (switchError) {
+
                                 // This error code indicates that the chain has not been added to MetaMask.
                                 if (switchError.code === 4902) {
                                   try {
@@ -267,7 +269,15 @@ class Header extends React.Component {
                                       method: 'wallet_addEthereumChain',
                                       params: [
                                         {
-                                          chainId: [{ chainId: `0x${Number(network.id).toString(16)}` }]
+                                          chainId: `0x${Number(network.id).toString(16)}`,
+                                          chainName: network.name,
+                                          rpcUrls: [network.rpcUrl],
+                                          nativeCurrency: {
+                                            name: network.currencyName,
+                                            symbol: network.currencySymbol, 
+                                            decimals: 18
+                                          },
+                                          blockExplorerUrls: [network.blockExplorer]
                                         },
                                       ],
                                     });
@@ -276,8 +286,8 @@ class Header extends React.Component {
                                   }
                                 }
                             }}
+
                             changeNetwork()
-                          
                           }}
                           href="/"
                           >

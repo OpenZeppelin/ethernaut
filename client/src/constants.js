@@ -7,7 +7,7 @@ export const DEBUG = process.env.NODE_ENV !== 'production'
 export const DEBUG_REDUX = DEBUG
 export const SENTRY_DSN = process.env.REACT_APP_SENTRY_DSN
 
-// Networks
+// Networks for operations
 export const NETWORKS = {
   UNDEFINED: undefined,
   LOCAL: {
@@ -45,6 +45,57 @@ export const NETWORKS = {
     id: '11155111',
     url: `${process.env.SEPOLIA_HOST}`,
     privKey: `${process.env.PRIV_KEY}`
+  }
+}
+
+// Networks for operations
+export const NETWORKS_INGAME = {
+  UNDEFINED: undefined,
+  LOCAL: {
+    name: 'local',
+    id: '*',
+    url: 'http://localhost',
+    port: 8545
+  },
+  ROPSTEN: {
+    name: 'ropsten',
+    id: '3',
+    currencyName: 'Ropsten-ETH',
+    currencySymbol: "ETH",
+    rpcUrl: `https://rpc.ankr.com/eth_ropsten`,
+    blockExplorer: 'https://ropsten.etherscan.io'
+  },
+  RINKEBY: {
+    name: 'rinkeby',
+    id: '4',
+    currencyName: 'Rinkeby-ETH',
+    currencySymbol: "ETH",
+    rpcUrl: `https://rpc.ankr.com/eth_rinkeby`,
+    blockExplorer: 'https://rinkeby.etherscan.io'
+  },
+  GOERLI: {
+    name: 'goerli',
+    id: '5',
+    currencyName: 'Goerli-ETH',
+    currencySymbol: "ETH",
+    rpcUrl: `https://eth-goerli.public.blastapi.io`,
+    blockExplorer: 'https://goerli.etherscan.io'
+  },
+  MUMBAI: {
+    name: 'mumbai-polygon',
+    id: '80001',
+    currencyName: 'Mumbai-Matic',
+    currencySymbol: "MATIC",
+    rpcUrl: `https://matic-mumbai.chainstacklabs.com`,
+    blockExplorer: 'https://mumbai.polygonscan.com'
+  },
+  SEPOLIA: {
+    name: 'sepolia',
+    id: '11155111',
+    currencyName: 'Sepolia-ETH',
+    currencySymbol: "SEP",
+    rpcUrl: `https://rpc.sepolia.org`,
+    blockExplorer: 'https://sepolia.etherscan.io'
   }
 }
 
