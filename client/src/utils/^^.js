@@ -136,8 +136,11 @@ function interceptConsole() {
     const negColor = invertColor(color)
 
     window.web3.eth.net.getId().then((res) => {
-      var network_name = JSON.stringify(constants.ID_TO_NETWORK[res]);
+      var network_name = constants.ID_TO_NETWORK[res];
       let explorer_domain = network_name.indexOf('polygon') !== -1 ? 'polygonscan.com' : `etherscan.io`
+      if (explorer_domain === 'polygonscan.com'){
+        network_name = 'mumbai'
+      }
       defaultConsole.info(
         `%c⛏️ ${text} ⛏%c`,
         `color: ${negColor}; font-weight: bold; font-size: 12px; background-color: ${color};`,
