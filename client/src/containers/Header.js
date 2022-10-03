@@ -256,17 +256,28 @@ class Header extends React.Component {
                         <a key={network.name}
                           onClick={(e) => {
                             e.preventDefault();
+                            
                             this.setState({
                               loading : true
                             })
                             async function changeNetwork(){
                               try {
+                                const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+                                if (Number(chainId) === Number(network.id)) {
+                                  this.setState({
+                                    loading : false
+                                  })
+                                  return;
+                                }
                                 await window.ethereum.request({
                                   method: 'wallet_switchEthereumChain',
                                   params: [{ chainId: `0x${Number(network.id).toString(16)}` }],
                                 });
-                              } catch (switchError) {
+                               
 
+                                
+                              } catch (switchError) {
+                                console.log(switchError)
                                 // This error code indicates that the chain has not been added to MetaMask.
                                 if (switchError.code === 4902) {
                                   try {
@@ -292,7 +303,7 @@ class Header extends React.Component {
                                 }
                             }}
 
-                            changeNetwork()
+                            changeNetwork.bind(this)()
                           }}
                           href="/"
                           >
@@ -321,7 +332,7 @@ class Header extends React.Component {
               ariaLabel="blocks-loading"
               wrapperStyle={{}}
               wrapperClass="blocks-wrapper"
-              colors={['#1c1b1a']}
+              colors={['#eddbd1', '#1c1b1a', '#f8b26a', '#abbd81', '#849b87']}
             />: 
             null
             }
