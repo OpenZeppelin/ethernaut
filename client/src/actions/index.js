@@ -41,3 +41,5 @@ export const SET_LANG = "SET_LANG";
 export const setLang = (lang) => ({ type: SET_LANG, lang }) 
 
 export const CHECK_ALL_COMPLETED = "CHECK_ALL_COMPLETED";
+
+

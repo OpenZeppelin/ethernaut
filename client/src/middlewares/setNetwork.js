@@ -36,11 +36,14 @@ const setNetwork = store => next => action => {
         }
     }}
     changeNetwork()
+    // console.log("hey I am called from here!")
   }
   
   //This will trigger reload if the network is changed between supported network
   if (!checkWrongNetwork(action.id) && store.getState().network.networkId !== undefined && store.getState().network.networkId !== action.id){
     document.location.reload()
+    // console.log("hey called from here 2 ")
+    return;
   }
 
   var selectedNetwork;

@@ -14,10 +14,10 @@ import * as constants from "../src/constants";
 import "./utils/^^";
 import * as Sentry from "@sentry/browser";
 import { Integrations } from "@sentry/tracing";
-
 import App from "./containers/App";
 import NotFound404 from "./components/NotFound404";
 import Header from "./containers/Header";
+
 
 // For bundle splitting without lazy loading.
 const nonlazy = (component) => lazy(() => component);
@@ -50,6 +50,7 @@ if (!window.web3) {
 
   // View entry point.
   ReactDOM.render(
+
     <Provider store={store}>
       <Router history={syncHistoryWithStore(history, store)}>
         <Route
