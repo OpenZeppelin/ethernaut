@@ -7,7 +7,7 @@ import * as actions from "../actions";
 import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
 import PropTypes from "prop-types";
-import { ColorRing } from 'react-loader-spinner';
+import { ProgressBar } from 'react-loader-spinner';
 
 class Header extends React.Component {
   constructor(props) {
@@ -325,16 +325,17 @@ class Header extends React.Component {
             </ul>
             {
               this.state.loading ? 
-              <ColorRing
-              visible={true}
-              height="80"
-              width="80"
-              ariaLabel="blocks-loading"
-              wrapperStyle={{}}
-              wrapperClass="blocks-wrapper"
-              colors={['#eddbd1', '#1c1b1a', '#f8b26a', '#abbd81', '#849b87']}
-            />: 
-            null
+              <ProgressBar
+                height="100"
+                width="100"
+                borderColor={this.state.dark ? getComputedStyle(document.documentElement).getPropertyValue("--pink") : getComputedStyle(document.documentElement).getPropertyValue("--black")}
+                barColor={this.state.dark ? getComputedStyle(document.documentElement).getPropertyValue("--pink") : getComputedStyle(document.documentElement).getPropertyValue("--black")}
+                ariaLabel="progress-bar-loading"
+                wrapperStyle={{}}
+                wrapperClass="progress-bar-wrapper"
+                visible={true}
+              />: 
+              null
             }
             
           </header>
