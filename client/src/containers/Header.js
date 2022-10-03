@@ -7,6 +7,7 @@ import * as actions from "../actions";
 import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
 import PropTypes from "prop-types";
+import { ColorRing } from 'react-loader-spinner';
 
 class Header extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class Header extends React.Component {
     this.state = {
       dark: false,
       lang: localStorage.getItem("lang"),
+      loading : false
     };
   }
 
@@ -254,6 +256,9 @@ class Header extends React.Component {
                         <a key={network.name}
                           onClick={(e) => {
                             e.preventDefault();
+                            this.setState({
+                              loading : true
+                            })
                             async function changeNetwork(){
                               try {
                                 await window.ethereum.request({
@@ -307,6 +312,20 @@ class Header extends React.Component {
                 type="checkbox"
               />
             </ul>
+            {
+              this.state.loading ? 
+              <ColorRing
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={['#1c1b1a']}
+            />: 
+            null
+            }
+            
           </header>
         </center>
       </div>
