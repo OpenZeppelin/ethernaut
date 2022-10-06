@@ -67,7 +67,7 @@ if (!window.web3) {
                   <Route path="/" component={NotFound404} />
                 </Switch>
               </MediaQuery>
-              <MediaQuery maxWidth={880}>
+              <MediaQuery maxWidth={885}>
                 <Header></Header>
                 <div className="unfitScreenSize">
                   <h3>You need a larger screen to play</h3>

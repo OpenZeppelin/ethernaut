@@ -2,7 +2,7 @@ Este nivel te guiará a través de los conceptos básicos de cómo jugar.
 
 #### 1. Configurar MetaMask
 Si aún no lo tienes, instala la [extensión del navegador MetaMask](https://metamask.io/).
-Configura la billetera de la extensión y usa el selector de red para apuntar a la 'Red de prueba de Rinkeby' en la parte superior izquierda de la interfaz de la extensión.
+Configura la billetera de la extensión y usa el selector de red para apuntar a tu red preferida en la parte superior izquierda de la interfaz de la extensión. De forma alternativa, puedes usar el boton en la interfaz de usuario para cambiar entre diferentes redes. Si seleccionas una red no soportada, el juego te notificarà y llevarà a la red de test por defecto de Goerli.
 
 #### 2. Abre la consola del navegador
 Abre la consola de tu navegador: `Herramientas > Herramientas de desarrollo`.

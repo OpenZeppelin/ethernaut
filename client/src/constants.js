@@ -45,6 +45,12 @@ export const NETWORKS = {
     id: '11155111',
     url: `${process.env.SEPOLIA_HOST}`,
     privKey: `${process.env.PRIV_KEY}`
+  },
+  KOVAN: {
+    name: 'kovan',
+    id: '',
+    url: `${process.env.KOVAN_HOST}`,
+    privKey: `${process.env.PRIV_KEY}`
   }
 }
 
@@ -96,6 +102,14 @@ export const NETWORKS_INGAME = {
     currencySymbol: "SEP",
     rpcUrl: `https://rpc.sepolia.org`,
     blockExplorer: 'https://sepolia.etherscan.io'
+  },
+  KOVAN: {
+    name: 'kovan',
+    id: '5',
+    currencyName: 'Kovan-ETH',
+    currencySymbol: "ETH",
+    rpcUrl: `https://eth-goerli.public.blastapi.io`,
+    blockExplorer: 'https://goerli.etherscan.io'
   }
 }
 
@@ -113,7 +127,9 @@ export const ADDRESSES = {
   [NETWORKS.RINKEBY.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
   [NETWORKS.MUMBAI.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
   [NETWORKS.GOERLI.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
-  [NETWORKS.SEPOLIA.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820'
+  [NETWORKS.SEPOLIA.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
+  [NETWORKS.KOVAN.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820'
+
 }
 
 // Storage
@@ -140,12 +156,11 @@ export const SHOW_VERSION = true
 // export const ACTIVE_NETWORK = NETWORKS.MUMBAI
 // export const ACTIVE_NETWORK = NETWORKS.RINKEBY
 // export const ACTIVE_NETWORK = NETWORKS.ROPSTEN
+// export const ACTIVE_NETWORK = NETWORSK.KOVAN
 export const ACTIVE_NETWORK = NETWORKS.LOCAL
 
 let id_to_network = {}
 Object.keys(NETWORKS).filter((network) => NETWORKS[network] && NETWORKS[network].name !== 'local').forEach(network => id_to_network[NETWORKS[network].id] = NETWORKS[network].name)
-//The above line will output: 
-//id_to_network = {3: 'ropsten', 4: 'rinkeby'}
 
 
 export const ID_TO_NETWORK = id_to_network

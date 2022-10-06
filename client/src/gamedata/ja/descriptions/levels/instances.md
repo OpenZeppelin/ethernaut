@@ -1,9 +1,9 @@
 このレベルでは、ゲームをプレイするための基本的な方法を説明します。
 
-#### 1. MetaMask の設定
+#### 1. Set up MetaMask
 
-まだお持ちでない方は、[MetaMask ブラウザ拡張機能](https://metamask.io/)をインストールしてください（デスクトップマシンの Chrome、Firefox、Brave、Opera にインストール）。
-拡張機能のウォレットを設定し、ネットワークセレクターを使って、拡張機能のインターフェースの上にある「Rinkeby test network」を指定します。
+If you don't have it already, install the [MetaMask browser extension](https://metamask.io/) (in Chrome, Firefox, Brave or Opera on your desktop machine).
+Set up the extension's wallet and use the network selector to point to the preferred network in the top left of the extension's interface. Alternatively you can use the UI button to switch between networks. If you select an unsupported network, the game will notify you and bring you to the default Goerli testnet.
 
 #### 2. ブラウザのコンソールを開く
 

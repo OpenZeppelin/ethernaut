@@ -11,12 +11,15 @@ const setNetwork = store => next => action => {
   if (action.type !== actions.SET_NETWORK_ID) return next(action) //we need to reload the window here
 
   if (checkWrongNetwork(action.id)) {
-    alert(`Your are on wrong network. Currently the game support these networks ${JSON.stringify(Object.keys(constants.NETWORKS).filter((key) => key !== "LOCAL" && key !== "UNDEFINED"))}`)
+    alert(`You are on wrong network. Currently the game support these networks ${JSON.stringify(Object.keys(constants.NETWORKS).filter((key) => key !== "LOCAL" && key !== "UNDEFINED"))}`)
+    const elements = document.querySelectorAll('.progress-bar-wrapper');
+    elements[0].style.display = 'flex';
+
     async function changeNetwork(){
       try {
         await window.ethereum.request({
           method: 'wallet_switchEthereumChain',
-          params: [{ chainId: `0x${Number(constants.NETWORKS.SEPOLIA.id).toString(16)}` }],//if on wrong network giving option to switch to sepolia network.
+          params: [{ chainId: `0x${Number(constants.NETWORKS.GOERLI.id).toString(16)}` }],//if on wrong network giving option to switch to sepolia network.
         });
       } catch (switchError) {
         // This error code indicates that the chain has not been added to MetaMask.
@@ -26,7 +29,7 @@ const setNetwork = store => next => action => {
               method: 'wallet_addEthereumChain',
               params: [
                 {
-                  chainId: [{ chainId: `0x${Number(constants.NETWORKS.SEPOLIA.id).toString(16)}` }]
+                  chainId: [{ chainId: `0x${Number(constants.NETWORKS.GOERLI.id).toString(16)}` }]
                 },
               ],
             });
@@ -36,13 +39,13 @@ const setNetwork = store => next => action => {
         }
     }}
     changeNetwork()
-    // console.log("hey I am called from here!")
   }
   
   //This will trigger reload if the network is changed between supported network
   if (!checkWrongNetwork(action.id) && store.getState().network.networkId !== undefined && store.getState().network.networkId !== action.id){
+    const elements = document.querySelectorAll('.progress-bar-wrapper');
+    elements[0].style.display = 'flex';
     document.location.reload()
-    // console.log("hey called from here 2 ")
     return;
   }
 
