@@ -419,7 +419,7 @@ footer {
   position: fixed;
   margin-left: 31%;
   margin-top: 3%;
-  display: flex;
+  display: none;
 }
 
 @media only screen and (max-width: 956px) {

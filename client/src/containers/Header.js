@@ -14,8 +14,7 @@ class Header extends React.Component {
     super(props);
     this.state = {
       dark: false,
-      lang: localStorage.getItem("lang"),
-      loading : false
+      lang: localStorage.getItem("lang")
     };
   }
 
@@ -257,27 +256,20 @@ class Header extends React.Component {
                           onClick={(e) => {
                             e.preventDefault();
                             
-                            this.setState({
-                              loading : true
-                            })
                             async function changeNetwork(){
+                              const elements = document.querySelectorAll('.progress-bar-wrapper');
+                              elements[0].style.display = 'flex';
                               try {
                                 const chainId = await window.ethereum.request({ method: 'eth_chainId' });
                                 if (Number(chainId) === Number(network.id)) {
-                                  this.setState({
-                                    loading : false
-                                  })
                                   return;
                                 }
                                 await window.ethereum.request({
                                   method: 'wallet_switchEthereumChain',
                                   params: [{ chainId: `0x${Number(network.id).toString(16)}` }],
                                 });
-                               
-
                                 
                               } catch (switchError) {
-                                console.log(switchError)
                                 // This error code indicates that the chain has not been added to MetaMask.
                                 if (switchError.code === 4902) {
                                   try {
@@ -323,9 +315,7 @@ class Header extends React.Component {
                 type="checkbox"
               />
             </ul>
-            {
-              this.state.loading ? 
-              <ProgressBar
+            <ProgressBar
                 height="100"
                 width="100"
                 borderColor={this.state.dark ? getComputedStyle(document.documentElement).getPropertyValue("--pink") : getComputedStyle(document.documentElement).getPropertyValue("--black")}
@@ -334,10 +324,7 @@ class Header extends React.Component {
                 wrapperStyle={{}}
                 wrapperClass="progress-bar-wrapper"
                 visible={true}
-              />: 
-              null
-            }
-            
+            />
           </header>
         </center>
       </div>

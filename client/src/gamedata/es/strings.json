@@ -50,7 +50,7 @@
     "selectedNetworkMessage": "Current network: ",
     "ethernautAddressMessage": "Dirección de Ethernaut",
     "noLevelsDataMessage": "No se encuentran los datos de los niveles",
-    "ethernautNotFoundMessage": "El contrato de Ethernaut no se ha encontrado en la red seleccionada. Por favor averigua que 1) Estás usando MetaMask, 2) Estas en la red de Rinkeby, 3) Que MetaMask esté desbloqueado, 4 opcional) Puedes habilitar y setear en ON el modo privado (desactivado por defecto) en los ajustes si no quieres que tus informaciones sean automáticamente expuestas. 5 opcional) Si el modo privado esta habilitado tienes que autorizar MetaMask a utilizar esta página web. 6) Actualiza la página.",
+    "ethernautNotFoundMessage": "El contrato de Ethernaut no se ha encontrado en la red seleccionada. Por favor averigua que 1) Estás usando MetaMask, 2) Estas en una red soportada, 3) Que MetaMask esté desbloqueado, 4 opcional) Puedes habilitar y setear en ON el modo privado (desactivado por defecto) en los ajustes si no quieres que tus informaciones sean automáticamente expuestas. 5 opcional) Si el modo privado esta habilitado tienes que autorizar MetaMask a utilizar esta página web. 6) Actualiza la página.",
     "requestingNewInstanceMessage": "Obteniendo nueva instancia del nivel...",
     "unableToRetrieveLevelMessage": "No se puede obtener la instancia del nivel! Por favor, controle la cantidad de gas proporcionada e inténtelo de nuevo.",
     "transactionNoLogsMessage": "La transacción no contiene logs",
