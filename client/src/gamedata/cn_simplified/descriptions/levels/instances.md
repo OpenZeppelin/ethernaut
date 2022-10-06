@@ -1,8 +1,8 @@
 这一关可以帮助你初步了解如何体验这个游戏
 
-#### 1. 设置MetaMask
-如果你还没有Metamask, 安装 [MetaMask browser extension](https://metamask.io/) (适用于桌面Chrome, Firefox, Brave 或者 Opera).
-设置好拓展应用，并且在其界面上方选择'Rinkeby test network'测试网络.
+#### 1. Set up MetaMask
+If you don't have it already, install the [MetaMask browser extension](https://metamask.io/) (in Chrome, Firefox, Brave or Opera on your desktop machine).
+Set up the extension's wallet and use the network selector to point to the preferred network in the top left of the extension's interface. Alternatively you can use the UI button to switch between networks. If you select an unsupported network, the game will notify you and bring you to the default Goerli testnet.
 
 #### 2. 打开浏览器的控制台
 打开浏览器控制台: `Tools > Developer Tools`.
@@ -49,9 +49,9 @@ ethernaut.owner()
 你可以看到这个 ethernaut 合约的所有者是谁, 当然不是你，哈哈 XD.
 
 #### 6. 获得测试ether
-你需要ether来进行这个游戏. 在测试网络上获得ether最简单的方法是通过 [this](https://faucet.rinkeby.io/), [this](https://faucets.chain.link/rinkeby) 或 [this faucet](https://faucet.paradigm.xyz/).
+To play the game, you will need test ether. The easiest way to get some testnet ether is via a valid faucet for your chosen network.
 
-一旦你在你的余额中有一些ether之后，我们就可以进行下一步。
+Once you see some coins in your balance, move on to the next step.
 
 #### 7. 获得这个关卡的实例
 当进行这个关卡的时候，你不直接和 ethernaut 合约互动。而是请求生成一个 **level instance** .为了完成这个步骤，你需要点击页面下方的蓝色按钮. 去点他点他点他，然后再回来!

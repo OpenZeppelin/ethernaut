@@ -1,8 +1,9 @@
 Этот уровень поможет тебе освоить основы игры.
 
-#### 1. Установи MetaMask
+#### 1. Set up MetaMask
 
-Установи расширение для браузера [MetaMask](https://metamask.io/) в Chrome, Firefox, Brave или Opera на компьютере. Открой MetaMask и следуй по предложенным шагам, чтобы настроить 'кошелек'. После этого смени текущую сеть на тестовую сеть Rinkeby с помощью выпадающего меню в верхней части интерфейса MetaMask.
+If you don't have it already, install the [MetaMask browser extension](https://metamask.io/) (in Chrome, Firefox, Brave or Opera on your desktop machine).
+Set up the extension's wallet and use the network selector to point to the preferred network in the top left of the extension's interface. Alternatively you can use the UI button to switch between networks. If you select an unsupported network, the game will notify you and bring you to the default Goerli testnet.
 
 #### 2. Открой консоль браузера
 
@@ -40,25 +41,21 @@
 
 Раскрой объект `ethernaut` в консоли, чтобы посмотреть какие объекты и функции он содержит.
 
-#### 5. Взаимодействие с контрактом через Application Binary Interface (ABI)
+#### 5. Interact with the ABI
 
-Контракт `Ethernaut.sol` раскачен в блокчейн, в данном случае в тестовую сеть Rinkeby. `ethernaut` это объект типа `TruffleContract`, который позволяет взаимодействовать с контрактом `Ethernaut.sol` через консоль браузера.
+`ethernaut` is a `TruffleContract` object that wraps the `Ethernaut.sol` contract that has been deployed to the blockchain.
 
-ABI контракта описывает доступные функции контракта. Например, команда:
+Among other things, the contract's ABI exposes all of `Ethernaut.sol`'s public methods, such as `owner`. Type the following command for example:
 
-`ethernaut.owner()`
+`ethernaut.owner()` or `await ethernaut.owner()` if you're using Chrome v62.
 
-или
-
-`await ethernaut.owner()`
-
-позволяет вызвать функцию `owner` и узнать кто является владельцем контракта `Ethernaut.sol`.
+You can see who the owner of the ethernaut contract is.
 
 #### 6. Получи тестовый эфир
 
-Для прохождения игры тебе потребуется тестовый эфир. Получить эфир в сети Rinkeby можно на страницах https://faucet.rinkeby.io/, https://faucets.chain.link/rinkeby и https://faucet.paradigm.xyz/. В других сетях процесс получение эфира будет отличаться.
+To play the game, you will need test ether. The easiest way to get some testnet ether is via a valid faucet for your chosen network.
 
-Как только на твоем балансе появится эфир - переходи к следующему шагу.
+Once you see some coins in your balance, move on to the next step.
 
 #### 7. Получи инстанс
 

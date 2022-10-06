@@ -7,13 +7,14 @@ import * as actions from "../actions";
 import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
 import PropTypes from "prop-types";
+import { ProgressBar } from 'react-loader-spinner';
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dark: false,
-      lang: localStorage.getItem("lang"),
+      lang: localStorage.getItem("lang")
     };
   }
 
@@ -243,6 +244,69 @@ class Header extends React.Component {
                   </a>
                 </div>
               </li>
+              <li className="dropdown">
+                <div className="icon-buttons" href="/">
+                <i className="fas fa-network-wired"></i>
+                </div>
+                <div className="dropdown-content">
+                      {Object.values(constants.NETWORKS_INGAME).map((network) => {
+                      if(network && network.name !== 'local') {
+                        return (
+                        <a key={network.name}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            
+                            async function changeNetwork(){
+                              const elements = document.querySelectorAll('.progress-bar-wrapper');
+                              elements[0].style.display = 'flex';
+                              try {
+                                const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+                                if (Number(chainId) === Number(network.id)) {
+                                  return;
+                                }
+                                await window.ethereum.request({
+                                  method: 'wallet_switchEthereumChain',
+                                  params: [{ chainId: `0x${Number(network.id).toString(16)}` }],
+                                });
+                                
+                              } catch (switchError) {
+                                // This error code indicates that the chain has not been added to MetaMask.
+                                if (switchError.code === 4902) {
+                                  try {
+                                    await window.ethereum.request({
+                                      method: 'wallet_addEthereumChain',
+                                      params: [
+                                        {
+                                          chainId: `0x${Number(network.id).toString(16)}`,
+                                          chainName: network.name,
+                                          rpcUrls: [network.rpcUrl],
+                                          nativeCurrency: {
+                                            name: network.currencyName,
+                                            symbol: network.currencySymbol, 
+                                            decimals: 18
+                                          },
+                                          blockExplorerUrls: [network.blockExplorer]
+                                        },
+                                      ],
+                                    });
+                                  } catch (addError) {
+                                    console.error("Can't add nor switch to the selected network")
+                                  }
+                                }
+                            }}
+
+                            changeNetwork.bind(this)()
+                          }}
+                          href="/"
+                          >
+                          {network.name}
+                        </a>
+                      )
+                      }
+                      return null
+                  })}
+                </div>
+              </li>
               <input
                 onClick={() => {
                   this.toggleDarkMode();
@@ -251,6 +315,16 @@ class Header extends React.Component {
                 type="checkbox"
               />
             </ul>
+            <ProgressBar
+                height="100"
+                width="100"
+                borderColor={this.state.dark ? getComputedStyle(document.documentElement).getPropertyValue("--pink") : getComputedStyle(document.documentElement).getPropertyValue("--black")}
+                barColor={this.state.dark ? getComputedStyle(document.documentElement).getPropertyValue("--pink") : getComputedStyle(document.documentElement).getPropertyValue("--black")}
+                ariaLabel="progress-bar-loading"
+                wrapperStyle={{}}
+                wrapperClass="progress-bar-wrapper"
+                visible={true}
+            />
           </header>
         </center>
       </div>

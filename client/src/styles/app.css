@@ -70,7 +70,7 @@ ul {
 }
 
 .logo-container {
-  padding-left: 3em;
+  padding-left: 4em;
 }
 
 .lines {
@@ -418,7 +418,25 @@ footer {
   left: 16px;
 }
 
-@media only screen and (max-width: 880px) {
+.progress-bar-wrapper {
+  position: fixed;
+  margin-left: 31%;
+  margin-top: 3%;
+  display: none;
+}
+
+@media only screen and (max-width: 956px) {
+  .toggle {
+    display: none;
+  }
+
+  .logo-container {
+    padding-left: 3em;
+  }
+}
+
+
+@media only screen and (max-width: 885px) {
   .dropdown {
     display: none;
   }
@@ -437,5 +455,9 @@ footer {
 
   .logo-container {
     padding-left: 0;
+  }
+
+  .progress-bar-wrapper {
+    display: none;
   }
 }

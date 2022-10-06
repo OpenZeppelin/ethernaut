@@ -23,21 +23,21 @@ function interceptConsole() {
   //   if(args.length === 0) return
   //   defaultConsole.log(...args)
   // }
-  if(!constants.DEBUG) {
-    logger.log = function(...args) {} // KILL LOGS IN PRODUCTION
+  if (!constants.DEBUG) {
+    logger.log = function (...args) { } // KILL LOGS IN PRODUCTION
   }
 
   // DIR
-  logger.dir = function(...args) {
+  logger.dir = function (...args) {
     args = processArgs(args)
-    if(args.length === 0) return
+    if (args.length === 0) return
     defaultConsole.log(args[0])
   }
 
   // INFO
-  logger.info = function(...args) {
+  logger.info = function (...args) {
     args = processArgs(args)
-    if(args.length === 0) return
+    if (args.length === 0) return
     defaultConsole.info(
       `%c${args}`,
       `color: rgba(255, 255, 255, 0.85); font-weight: bold; font-size: 14px; text-shadow: 3px 2px red; background: #006;`
@@ -45,9 +45,9 @@ function interceptConsole() {
   }
 
   // ASYNC INFO
-  logger.asyncInfo = function(...args) {
+  logger.asyncInfo = function (...args) {
     args = processArgs(args)
-    if(args.length === 0) return
+    if (args.length === 0) return
     defaultConsole.info(
       `%c${args} %c<  < <<${strings.pleaseWait}>> >  >`,
       `color: rgba(255, 255, 255, 0.85); font-weight: bold; font-size: 14px; text-shadow: 3px 2px red; background: #006;`,
@@ -56,9 +56,9 @@ function interceptConsole() {
   }
 
   // GREET
-  logger.greet = function(...args) {
+  logger.greet = function (...args) {
     args = processArgs(args)
-    if(args.length === 0) return
+    if (args.length === 0) return
     defaultConsole.info(
       `%c${args}`,
       `background-color: #222; font-family: monospace; font-weight: bold; font-size: 36px; color: white; text-shadow: 3px 3px 0 rgb(217, 31, 38), 5px 5px 0 rgb(226, 91, 14), 7px 7px 0 rgb(245, 221, 8), 9px 9px 0 rgb(5, 148, 68), 11px 11px 0 rgb(2, 135, 206), 13px 13px 0 rgb(4, 77, 145), 15px 15px 0 rgb(42, 21, 113)`
@@ -66,7 +66,7 @@ function interceptConsole() {
   }
 
   // VICTORY
-  logger.victory = function(msg1, msg2) {
+  logger.victory = function (msg1, msg2) {
     msg1 = processArgs([msg1])
     msg2 = processArgs([msg2])
     let c = 0
@@ -84,18 +84,18 @@ function interceptConsole() {
          font-size: ${Math.floor(20 * (c / m))}px;
          -webkit-text-stroke-width: 1px;
          -webkit-text-stroke-color: ${color};`)
-        c++;
-        if(c >= m) {
-          clearInterval(interval)
-          console.greet(msg2)
-        }
+      c++;
+      if (c >= m) {
+        clearInterval(interval)
+        console.greet(msg2)
+      }
     }, s)
   }
 
   // ERROR
-  logger.error = function(...args) {
+  logger.error = function (...args) {
     args = processArgs(args)
-    if(args.length === 0) return
+    if (args.length === 0) return
     defaultConsole.error(
       `%c${args}`,
       `background-color: #622; color: #f00; font-family: monospace; font-weight: bold; font-size: 18px;`
@@ -103,9 +103,9 @@ function interceptConsole() {
   }
 
   // WARN
-  logger.warn = function(...args) {
+  logger.warn = function (...args) {
     args = processArgs(args)
-    if(args.length === 0) return
+    if (args.length === 0) return
     defaultConsole.warn(
       `%c${args}`,
       `background-color: #662; color: #ff0; font-family: monospace; font-weight: bold;`
@@ -113,17 +113,17 @@ function interceptConsole() {
   }
 
   // SECRET
-  logger.secret = function(...args) {
+  logger.secret = function (...args) {
     args = processArgs(args)
-    if(args.length === 0) return
+    if (args.length === 0) return
     defaultConsole.info(
       `%c${args}`,
       `background-color: #262; color: #0f0; font-family: monospace; font-weight: bold;`
     )
   }
-  logger.quiet = function(...args) {
+  logger.quiet = function (...args) {
     args = processArgs(args)
-    if(args.length === 0) return
+    if (args.length === 0) return
     defaultConsole.info(
       `%c${args}`,
       `background-color: #333; color: #666; font-family: monospace; font-weight: bold; font-size: 10;`
@@ -131,31 +131,41 @@ function interceptConsole() {
   }
 
   // MINE
-  logger.mineInfo = function(text, txId) {
+  logger.mineInfo = function (text, txId) {
     const color = stringToColor(txId)
     const negColor = invertColor(color)
-    defaultConsole.info(
-      `%c⛏️ ${text} ⛏%c`,
-      `color: ${negColor}; font-weight: bold; font-size: 12px; background-color: ${color};`,
-      "",
-      `https://${constants.ACTIVE_NETWORK.name}.etherscan.io/tx/${txId}`
+
+    window.web3.eth.net.getId().then((res) => {
+      var network_name = constants.ID_TO_NETWORK[res];
+      let explorer_domain = network_name.indexOf('polygon') !== -1 ? 'polygonscan.com' : `etherscan.io`
+      if (explorer_domain === 'polygonscan.com'){
+        network_name = 'mumbai'
+      }
+      defaultConsole.info(
+        `%c⛏️ ${text} ⛏%c`,
+        `color: ${negColor}; font-weight: bold; font-size: 12px; background-color: ${color};`,
+        "",
+        `https://${network_name}.${explorer_domain}/tx/${txId}`
+      )
+    }
     )
+
   }
 
   // FILTER LOGGING
   function processArgs(args) {
-    for(let i = 0; i < args.length; i++) {
+    for (let i = 0; i < args.length; i++) {
 
       let arg = args[i]
       const isString = typeof arg === 'string'
 
       // Filter annoying warnings
-      if(isString && arg.indexOf('web3 will be deprecated') !== -1) return []
-      if(isString && arg.indexOf('Accessing PropTypes via') !== -1) return []
-      if(isString && arg.indexOf('Slow network is detected.') !== -1) return []
+      if (isString && arg.indexOf('deprecated') !== -1) return []
+      if (isString && arg.indexOf('Accessing PropTypes via') !== -1) return []
+      if (isString && arg.indexOf('Slow network is detected.') !== -1) return []
 
       // Icons
-      if(isString) {
+      if (isString) {
         arg = arg.replace(new RegExp('@good', 'g'), randGoodIcon())
         arg = arg.replace(new RegExp('@bad', 'g'), randBadIcon())
         args[i] = arg
@@ -211,7 +221,7 @@ function interceptConsole() {
     return (zeros + str).slice(-len);
   }
 }
-if(constants.CUSTOM_LOGGING) interceptConsole()
+if (constants.CUSTOM_LOGGING) interceptConsole()
 
 // Setup console utils
 function setupConsoleUtils() {
@@ -223,7 +233,7 @@ function setupConsoleUtils() {
   window.fromWei = ethutil.fromWei
   window.version = constants.VERSION
   window.contract = strings.notContractSetMessage
-  window.help = function() {
+  window.help = function () {
     console.table({
       'player': strings.helperPlayer,
       'ethernaut': strings.helperEthernaut,
