@@ -46,12 +46,12 @@ export const NETWORKS = {
     url: `${process.env.SEPOLIA_HOST}`,
     privKey: `${process.env.PRIV_KEY}`
   },
-  KOVAN: {
-    name: 'kovan',
-    id: '',
-    url: `${process.env.KOVAN_HOST}`,
-    privKey: `${process.env.PRIV_KEY}`
-  }
+  // KOVAN: {
+  //   name: 'kovan',
+  //   id: '',
+  //   url: `${process.env.KOVAN_HOST}`,
+  //   privKey: `${process.env.PRIV_KEY}`
+  // }
 }
 
 // Networks for operations
@@ -103,14 +103,14 @@ export const NETWORKS_INGAME = {
     rpcUrl: `https://rpc.sepolia.org`,
     blockExplorer: 'https://sepolia.etherscan.io'
   },
-  KOVAN: {
-    name: 'kovan',
-    id: '5',
-    currencyName: 'Kovan-ETH',
-    currencySymbol: "ETH",
-    rpcUrl: `https://eth-goerli.public.blastapi.io`,
-    blockExplorer: 'https://goerli.etherscan.io'
-  }
+  // KOVAN: {
+  //   name: 'kovan',
+  //   id: '5',
+  //   currencyName: 'Kovan-ETH',
+  //   currencySymbol: "ETH",
+  //   rpcUrl: `https://eth-goerli.public.blastapi.io`,
+  //   blockExplorer: 'https://goerli.etherscan.io'
+  // }
 }
 
 // Web3
@@ -128,7 +128,7 @@ export const ADDRESSES = {
   [NETWORKS.MUMBAI.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
   [NETWORKS.GOERLI.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
   [NETWORKS.SEPOLIA.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
-  [NETWORKS.KOVAN.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820'
+  //[NETWORKS.KOVAN.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820'
 
 }
 
