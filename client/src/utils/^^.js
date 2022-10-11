@@ -17,12 +17,6 @@ function interceptConsole() {
   // custom console API
   // ----------------------------------
 
-  // LOG
-  // logger.log = function(...args) {
-  //   args = processArgs(args)
-  //   if(args.length === 0) return
-  //   defaultConsole.log(...args)
-  // }
   if (!constants.DEBUG) {
     logger.log = function (...args) { } // KILL LOGS IN PRODUCTION
   }
@@ -137,15 +131,16 @@ function interceptConsole() {
 
     window.web3.eth.net.getId().then((res) => {
       var network_name = constants.ID_TO_NETWORK[res];
-      let explorer_domain = network_name.indexOf('polygon') !== -1 ? 'polygonscan.com' : `etherscan.io`
-      if (explorer_domain === 'polygonscan.com'){
-        network_name = 'mumbai'
+      var networks = Object.values(constants.NETWORKS_INGAME);
+      var networkObject;
+      for(var i = 1; i < networks.length; i++) {
+        if(networks[i].name === network_name) networkObject = networks[i]
       }
       defaultConsole.info(
         `%c⛏️ ${text} ⛏%c`,
         `color: ${negColor}; font-weight: bold; font-size: 12px; background-color: ${color};`,
         "",
-        `https://${network_name}.${explorer_domain}/tx/${txId}`
+        `${networkObject.blockExplorer}/tx/${txId}`
       )
     }
     )

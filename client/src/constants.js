@@ -16,18 +16,6 @@ export const NETWORKS = {
     url: 'http://localhost',
     port: 8545
   },
-  ROPSTEN: {
-    name: 'ropsten',
-    id: '3',
-    url: `${process.env.ROPSTEN_HOST}`,
-    privKey: `${process.env.PRIV_KEY}`
-  },
-  RINKEBY: {
-    name: 'rinkeby',
-    id: '4',
-    url: `${process.env.RINKEBY_HOST}`,
-    privKey: `${process.env.PRIV_KEY}`
-  },
   GOERLI: {
     name: 'goerli',
     id: '5',
@@ -46,12 +34,18 @@ export const NETWORKS = {
     url: `${process.env.SEPOLIA_HOST}`,
     privKey: `${process.env.PRIV_KEY}`
   },
-  // KOVAN: {
-  //   name: 'kovan',
-  //   id: '',
-  //   url: `${process.env.KOVAN_HOST}`,
-  //   privKey: `${process.env.PRIV_KEY}`
-  // }
+  OPTIMISM_GOERLI: {
+    name: 'goerli-optimism',
+    id: '420',
+    url: `${process.env.OPTIMISM_GOERLI_HOST}`,
+    privKey: `${process.env.PRIV_KEY}`
+  },
+  ARBITRUM_GOERLI: {
+    name: 'goerli-arbitrum',
+    id: '421613',
+    url: `${process.env.ARBITRUM_GOERLI_HOST}`,
+    privKey: `${process.env.PRIV_KEY}`
+  }
 }
 
 // Networks for operations
@@ -62,22 +56,6 @@ export const NETWORKS_INGAME = {
     id: '*',
     url: 'http://localhost',
     port: 8545
-  },
-  ROPSTEN: {
-    name: 'ropsten',
-    id: '3',
-    currencyName: 'Ropsten-ETH',
-    currencySymbol: "ETH",
-    rpcUrl: `https://rpc.ankr.com/eth_ropsten`,
-    blockExplorer: 'https://ropsten.etherscan.io'
-  },
-  RINKEBY: {
-    name: 'rinkeby',
-    id: '4',
-    currencyName: 'Rinkeby-ETH',
-    currencySymbol: "ETH",
-    rpcUrl: `https://rpc.ankr.com/eth_rinkeby`,
-    blockExplorer: 'https://rinkeby.etherscan.io'
   },
   GOERLI: {
     name: 'goerli',
@@ -103,14 +81,22 @@ export const NETWORKS_INGAME = {
     rpcUrl: `https://rpc.sepolia.org`,
     blockExplorer: 'https://sepolia.etherscan.io'
   },
-  // KOVAN: {
-  //   name: 'kovan',
-  //   id: '5',
-  //   currencyName: 'Kovan-ETH',
-  //   currencySymbol: "ETH",
-  //   rpcUrl: `https://eth-goerli.public.blastapi.io`,
-  //   blockExplorer: 'https://goerli.etherscan.io'
-  // }
+  OPTIMISM_GOERLI: {
+    name: 'goerli-optimism',
+    id: '420',
+    currencyName: 'Optimism-ETH',
+    currencySymbol: "ETH",
+    rpcUrl: `https://goerli.optimism.io`,
+    blockExplorer: 'https://goerli-optimism.etherscan.io'
+  },
+  ARBITRUM_GOERLI: {
+    name: 'goerli-arbitrum',
+    id: '421613',
+    currencyName: 'Arbitrum-ETH',
+    currencySymbol: "ETH",
+    rpcUrl: `https://goerli-rollup.arbitrum.io/rpc`,
+    blockExplorer: 'https://goerli-rollup-explorer.arbitrum.io'
+  }
 }
 
 // Web3
@@ -123,12 +109,11 @@ export const GOOGLE_ANALYTICS_ID = 'UA-85043059-4'
 // Owner addresses
 export const ADDRESSES = {
   [NETWORKS.LOCAL.name]: undefined,
-  [NETWORKS.ROPSTEN.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
-  [NETWORKS.RINKEBY.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
   [NETWORKS.MUMBAI.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
   [NETWORKS.GOERLI.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
   [NETWORKS.SEPOLIA.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
-  //[NETWORKS.KOVAN.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820'
+  [NETWORKS.OPTIMISM_GOERLI.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
+  [NETWORKS.ARBITRUM_GOERLI.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820'
 
 }
 
@@ -154,10 +139,9 @@ export const SHOW_VERSION = true
 // export const ACTIVE_NETWORK = NETWORKS.SEPOLIA
 // export const ACTIVE_NETWORK = NETWORKS.GOERLI
 // export const ACTIVE_NETWORK = NETWORKS.MUMBAI
-// export const ACTIVE_NETWORK = NETWORKS.RINKEBY
-// export const ACTIVE_NETWORK = NETWORKS.ROPSTEN
-// export const ACTIVE_NETWORK = NETWORSK.KOVAN
-export const ACTIVE_NETWORK = NETWORKS.LOCAL
+// export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_GOERLI
+export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_GOERLI
+// export const ACTIVE_NETWORK = NETWORKS.LOCAL
 
 let id_to_network = {}
 Object.keys(NETWORKS).filter((network) => NETWORKS[network] && NETWORKS[network].name !== 'local').forEach(network => id_to_network[NETWORKS[network].id] = NETWORKS[network].name)
