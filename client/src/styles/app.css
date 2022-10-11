@@ -170,7 +170,6 @@ nav li {
 
 .dropdown {
   float: right;
-  overflow: hidden;
   font-size: x-large;
   padding: 4px;
 }
@@ -181,7 +180,7 @@ nav li {
   width: 11em;
   border: solid 15px var(--secondary-color);
   border-radius: 6px;
-  position: fixed;
+  position: absolute;
   margin-left: -10em;
   z-index: 10;
 }
