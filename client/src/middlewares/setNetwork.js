@@ -34,8 +34,15 @@ const setNetwork = store => next => action => {
               ],
             });
           } catch (addError) {
+            if(addError.code === 4001) {
+              //User has rejected changing the request
+              elements[0].style.display = 'none';
+            }
             console.error("Can't add nor switch to the selected network")
           }
+        } else if(switchError.code === 4001) {
+          //User has rejected changing the request
+          elements[0].style.display = 'none';
         }
     }}
     changeNetwork()
@@ -45,7 +52,7 @@ const setNetwork = store => next => action => {
   if (!checkWrongNetwork(action.id) && store.getState().network.networkId !== undefined && store.getState().network.networkId !== action.id){
     const elements = document.querySelectorAll('.progress-bar-wrapper');
     elements[0].style.display = 'flex';
-    document.location.reload()
+    document.location.replace(document.location.origin)
     return;
   }
 
