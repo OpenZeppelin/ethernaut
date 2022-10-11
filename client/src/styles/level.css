@@ -2,8 +2,7 @@
 
   
 .level-selector-nav {
-    margin-left: 20%;
-    width: 60%;
+    width: 800px;
 }
 
 .powered-by {
@@ -117,7 +116,7 @@
 
 .level-img-view {
     position: relative;
-    width: 60%;
+    width: 800px;
     margin-top: 2em;
     margin-left: auto;
     margin-right: auto;
