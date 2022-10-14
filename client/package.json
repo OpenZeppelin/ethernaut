@@ -27,7 +27,7 @@
     "react-sidebar": "^3.0.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "web3": "1.5.2"
+    "web3": "1.8.0"
   },
   "scripts": {
     "start": "react-scripts start",
