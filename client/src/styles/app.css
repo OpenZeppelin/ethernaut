@@ -176,6 +176,7 @@ nav li {
   float: right;
   font-size: x-large;
   padding: 4px;
+  list-style-type: none;
 }
 
 .dropdown-content {
@@ -395,7 +396,6 @@ footer {
 
 .toggle {
   margin-right: 10px;
-  padding: 4px;
   appearance: none;
   vertical-align: middle;
   width: 40px;
