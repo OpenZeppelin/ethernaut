@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import pkgWeb3 from 'web3';
-import * as pkgJSON from '../package.json';
+
 dotenv.config()
 
 export const DEBUG = process.env.NODE_ENV !== 'production'
@@ -12,7 +12,7 @@ export const NETWORKS = {
   UNDEFINED: undefined,
   LOCAL: {
     name: 'local',
-    id: '*',
+    id: '1337',
     url: 'http://localhost',
     port: 8545
   },
@@ -53,7 +53,7 @@ export const NETWORKS_INGAME = {
   UNDEFINED: undefined,
   LOCAL: {
     name: 'local',
-    id: '*',
+    id: '1337',
     url: 'http://localhost',
     port: 8545
   },
@@ -118,7 +118,7 @@ export const ADDRESSES = {
 }
 
 // Storage
-export const VERSION = pkgJSON.default.version
+export const VERSION = "0.1.0"
 export const STORAGE_PLAYER_DATA_KEY = `ethernaut_player_data_${VERSION}_`
 
 // Paths
@@ -144,7 +144,7 @@ export const SHOW_VERSION = true
 export const ACTIVE_NETWORK = NETWORKS.LOCAL
 
 let id_to_network = {}
-Object.keys(NETWORKS).filter((network) => NETWORKS[network] && NETWORKS[network].name !== 'local').forEach(network => id_to_network[NETWORKS[network].id] = NETWORKS[network].name)
+Object.keys(NETWORKS).filter((network) => NETWORKS[network] /*&& NETWORKS[network].name !== 'local'*/).forEach(network => id_to_network[NETWORKS[network].id] = NETWORKS[network].name)
 
 
 export const ID_TO_NETWORK = id_to_network
