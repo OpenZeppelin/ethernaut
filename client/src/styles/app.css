@@ -434,9 +434,6 @@ footer {
 }
 
 .progress-bar-wrapper {
-  position: fixed;
-  margin-left: 31%;
-  margin-top: 3%;
   display: none;
 }
 

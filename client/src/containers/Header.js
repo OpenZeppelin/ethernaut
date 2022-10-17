@@ -14,8 +14,13 @@ class Header extends React.Component {
     super(props);
     this.state = {
       dark: false,
-      lang: localStorage.getItem("lang")
+      lang: localStorage.getItem("lang"),
+      chainId: 0
     };
+
+    window.ethereum.request({ method: 'eth_chainId' }).then((id)=> {
+      this.setState({chainId: Number(id)})
+    });
   }
 
   static propTypes = {
@@ -250,9 +255,13 @@ class Header extends React.Component {
                 </div>
                 <div className="dropdown-content">
                       {Object.values(constants.NETWORKS_INGAME).map((network) => {
-                      if(network && network.name !== 'local') {
+                      if(
+                        network && 
+                        network.name !== 'local'
+                      ) {
+                        if(Number(network.id) === this.state.chainId) return false; // filter out current network
                         return (
-                        <a key={network.name}
+                        <a id={network.name} key={network.name}
                           onClick={(e) => {
                             e.preventDefault();
                             
@@ -290,8 +299,15 @@ class Header extends React.Component {
                                       ],
                                     });
                                   } catch (addError) {
+                                    if(addError.code === 4001) {
+                                      //User has rejected changing the request
+                                      elements[0].style.display = 'none';
+                                    }
                                     console.error("Can't add nor switch to the selected network")
                                   }
+                                } else if(switchError.code === 4001) {
+                                  //User has rejected changing the request
+                                  elements[0].style.display = 'none';
                                 }
                             }}
 
@@ -301,7 +317,7 @@ class Header extends React.Component {
                           >
                           {network.name}
                         </a>
-                      )
+                        )
                       }
                       return null
                   })}
@@ -315,7 +331,8 @@ class Header extends React.Component {
                 type="checkbox"
               />
             </ul>
-            <ProgressBar
+          </header>
+          <ProgressBar
                 height="100"
                 width="100"
                 borderColor={this.state.dark ? getComputedStyle(document.documentElement).getPropertyValue("--pink") : getComputedStyle(document.documentElement).getPropertyValue("--black")}
@@ -325,7 +342,6 @@ class Header extends React.Component {
                 wrapperClass="progress-bar-wrapper"
                 visible={true}
             />
-          </header>
         </center>
       </div>
     );
