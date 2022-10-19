@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions";
@@ -8,6 +7,7 @@ import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
 import PropTypes from "prop-types";
 import { ProgressBar } from 'react-loader-spinner';
+import { withRouter } from "../utils/withRouter";
 
 class Header extends React.Component {
   constructor(props) {

@@ -9,6 +9,7 @@ import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
 import { Link } from "react-router-dom";
 import getlevelsdata from "../utils/getlevelsdata";
+import { withRouter } from "../utils/withRouter";
 
 class Level extends React.Component {
   constructor(props) {
@@ -21,7 +22,8 @@ class Level extends React.Component {
   }
 
   componentDidMount() {
-    this.props.activateLevel(this.props.match.params.address);
+    console.log(this.props)
+    this.props.activateLevel(this.props.params.address);
   }
 
   componentWillUnmount() {
@@ -31,8 +33,8 @@ class Level extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.level.deployedAddress !== this.props.match.params.address) {
-      this.props.activateLevel(this.props.match.params.address);
+    if (this.props.level.deployedAddress !== this.props.params.address) {
+      this.props.activateLevel(this.props.params.address);
     }
     var codeElement = document.getElementsByClassName("hljs")[0];
     var black = getComputedStyle(document.documentElement).getPropertyValue(
@@ -204,7 +206,7 @@ class Level extends React.Component {
                     type="button"
                     className="button-actions"
                     onClick={(evt) =>
-                      this.props.history.push(
+                      this.props.navigate(
                         `${constants.PATH_LEVEL_ROOT}${nextLevelId}`
                       )
                     }
@@ -313,4 +315,4 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Level);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Level));

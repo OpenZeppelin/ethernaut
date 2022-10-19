@@ -20,7 +20,7 @@ import setLanguage from './middlewares/setLanguage';
 import { createBrowserHistory } from 'history';
 import * as constants from '../src/constants';
 
-export const history = createBrowserHistory();
+export const history = createBrowserHistory({ window });
 
 const middlewares = [
   loadGamedata,

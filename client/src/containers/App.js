@@ -6,6 +6,7 @@ import { loadTranslations } from "../utils/translations";
 import parse from "html-react-parser";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { withRouter } from "../utils/withRouter";
 
 class App extends React.Component {
   constructor() {
@@ -35,7 +36,7 @@ class App extends React.Component {
     }
 
     // Navigate to first incomplete level
-    this.props.history.push(`${constants.PATH_LEVEL_ROOT}${target}`);
+    this.props.navigate(`${constants.PATH_LEVEL_ROOT}${target}`);
   }
 
   render() {
@@ -101,4 +102,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
