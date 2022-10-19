@@ -5,7 +5,7 @@ import MediaQuery from "react-responsive";
 import { Provider } from "react-redux";
 import { store, history } from "./store";
 import { syncHistoryWithStore } from "react-router-redux";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import * as ethutil from "./utils/ethutil";
 import "bootstrap/dist/css/bootstrap.css";
 import "./styles/app.css";
@@ -17,8 +17,6 @@ import { Integrations } from "@sentry/tracing";
 import App from "./containers/App";
 import NotFound404 from "./components/NotFound404";
 import Header from "./containers/Header";
-import { BrowserRouter as Router } from "react-router-dom";
-
 
 // For bundle splitting without lazy loading.
 const nonlazy = (component) => lazy(() => component);
@@ -48,10 +46,8 @@ if (!window.web3) {
     store.dispatch(actions.loadGamedata());
   })
 
-
   // View entry point.
   ReactDOM.render(
-
     <Provider store={store}>
       <Router history={syncHistoryWithStore(history, store)}>
         <Suspense fallback={<div>Loading...</div>}>
