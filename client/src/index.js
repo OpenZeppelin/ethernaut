@@ -4,7 +4,7 @@ import MediaQuery from "react-responsive";
 import { Provider } from "react-redux";
 import { store, history } from "./store";
 import { syncHistoryWithStore } from "react-router-redux";
-import { Router, Route, Switch } from "react-router";
+import { Router, Route, Routes } from "react-router";
 import * as ethutil from "./utils/ethutil";
 import "bootstrap/dist/css/bootstrap.css";
 import "./styles/app.css";
@@ -96,13 +96,13 @@ if (!window.web3) {
             <Suspense location={location} fallback={<div>Loading...</div>}>
               <MediaQuery minWidth={880.1}>
                 <Header></Header>
-                <Switch>
+                <Routes>
                   <Route path={constants.PATH_HELP} component={Help} />
                   <Route path={constants.PATH_LEVEL} component={Level} />
                   <Route path={constants.PATH_STATS} component={Stats} />
                   <Route exact path="/" component={App} />
                   <Route path="/" component={NotFound404} />
-                </Switch>
+                </Routes>
               </MediaQuery>
               <MediaQuery maxWidth={885}>
                 <Header></Header>
