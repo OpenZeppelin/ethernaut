@@ -24,9 +24,7 @@ class Header extends React.Component {
   }
 
   static propTypes = {
-    match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
   };
 
   componentDidMount() {
