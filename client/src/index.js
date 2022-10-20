@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import ReactDOM from "react-dom";
-
+import { createRoot } from 'react-dom/client';
 import MediaQuery from "react-responsive";
 import { Provider } from "react-redux";
 import { store, history } from "./store";
@@ -36,11 +35,10 @@ Sentry.init({
 });
 // store.dispatch(actions.setNetworkId(id));
 store.dispatch(actions.connectWeb3(window.web3));
+const container = document.getElementById('root');
+const root = createRoot(container);
 if (!window.web3) {
-  ReactDOM.render(
-    <h3>Hey, You dont have the supported wallet!</h3>,
-    document.getElementById("root")
-  );
+  root.render(<h3>Hey, You dont have the supported wallet!</h3>);
 } else {
   window.ethereum.request({ method: 'eth_chainId' }).then((res) => {
     store.dispatch(actions.setNetworkId(parseInt(res)));
@@ -49,8 +47,7 @@ if (!window.web3) {
 
 
   // View entry point.
-  ReactDOM.render(
-
+ root.render(
     <Provider store={store}>
       <Router history={syncHistoryWithStore(history, store)}>
         <Route
@@ -85,9 +82,7 @@ if (!window.web3) {
           )}
         />
       </Router>
-
-    </Provider>,
-    document.getElementById("root")
+    </Provider>
   );
 }
 
