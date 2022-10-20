@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router";
+import { withRouter } from "../hoc/withRouter"
 import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions";
