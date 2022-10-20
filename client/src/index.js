@@ -16,7 +16,8 @@ import { Integrations } from "@sentry/tracing";
 import App from "./containers/App";
 import NotFound404 from "./components/NotFound404";
 import Header from "./containers/Header";
-
+import MarkdownComponent from "./components/Markdown";
+import { loadTranslations } from "./utils/translations";
 
 // For bundle splitting without lazy loading.
 const nonlazy = (component) => lazy(() => component);
@@ -38,7 +39,46 @@ store.dispatch(actions.connectWeb3(window.web3));
 const container = document.getElementById('root');
 const root = createRoot(container);
 if (!window.web3) {
-  root.render(<h3>Hey, You dont have the supported wallet!</h3>);
+  //root.render(<h3>Hey, You dont have the supported wallet!</h3>);
+  let language = localStorage.getItem("lang");
+  let strings = loadTranslations(language);
+
+  root.render(
+    <div>
+      <div className="lines"></div>
+      <main className="boxes">
+        <h3>Setup Metamask</h3>
+        <section>
+          <MarkdownComponent target={strings.setupMetamask} />
+        </section>          
+
+        <h3>Game Mechanics</h3>
+        <section>
+          <MarkdownComponent target={strings.gameMechanics} />
+        </section>
+
+        <h3>Using the console</h3>
+        <section>
+          <MarkdownComponent target={strings.usingConsole} />
+        </section>
+
+        <h3>Beyond the console</h3>
+        <section>
+          <MarkdownComponent target={strings.beyondConsole} />
+        </section>
+        
+        <h3>Troubleshooting</h3>
+        <section>
+          <MarkdownComponent target={strings.troubleshooting} />
+        </section>
+      </main>
+      {/* Footer */}
+      <footer
+        className="footer"
+        dangerouslySetInnerHTML={{ __html: strings.footer }}
+      ></footer>
+    </div>
+  )
 } else {
   window.ethereum.request({ method: 'eth_chainId' }).then((res) => {
     store.dispatch(actions.setNetworkId(parseInt(res)));
@@ -85,7 +125,6 @@ if (!window.web3) {
     </Provider>
   );
 }
-
 
 // Post-load actions.
 window.addEventListener("load", async () => {
