@@ -13,6 +13,11 @@ class Help extends React.Component {
       <div>
         <div className="lines"></div>
         <main className="boxes">
+          <h3>Setup Metamask</h3>
+          <section>
+            <MarkdownComponent target={strings.setupMetamask} />
+          </section>          
+
           <h3>Game Mechanics</h3>
           <section>
             <MarkdownComponent target={strings.gameMechanics} />
@@ -27,6 +32,7 @@ class Help extends React.Component {
           <section>
             <MarkdownComponent target={strings.beyondConsole} />
           </section>
+          
           <h3>Troubleshooting</h3>
           <section>
             <MarkdownComponent target={strings.troubleshooting} />
