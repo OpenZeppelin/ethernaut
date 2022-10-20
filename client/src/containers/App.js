@@ -6,7 +6,7 @@ import { loadTranslations } from "../utils/translations";
 import parse from "html-react-parser";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { withRouter } from "../utils/withRouter";
+import { withRouter } from "../hoc/withRouter";
 
 class App extends React.Component {
   constructor() {

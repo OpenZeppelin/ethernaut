@@ -9,7 +9,7 @@ import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
 import { Link } from "react-router-dom";
 import getlevelsdata from "../utils/getlevelsdata";
-import { withRouter } from "../utils/withRouter";
+import { withRouter } from "../hoc/withRouter";
 
 class Level extends React.Component {
   constructor(props) {

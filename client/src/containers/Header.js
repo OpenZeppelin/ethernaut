@@ -7,7 +7,7 @@ import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
 import PropTypes from "prop-types";
 import { ProgressBar } from 'react-loader-spinner';
-import { withRouter } from "../utils/withRouter";
+import { withRouter } from "../hoc/withRouter";
 
 class Header extends React.Component {
   constructor(props) {
