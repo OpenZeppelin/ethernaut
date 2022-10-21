@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
 contract MagicNumSolver {
-  constructor() public {
+  constructor() {
     assembly {
 
       // This is the bytecode we want the program to have:
