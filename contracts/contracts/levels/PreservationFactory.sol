@@ -10,7 +10,7 @@ contract PreservationFactory is Level {
   address timeZone1LibraryAddress;
   address timeZone2LibraryAddress;
 
-  constructor() public {
+  constructor() {
     timeZone1LibraryAddress = address(new LibraryContract());
     timeZone2LibraryAddress = address(new LibraryContract());
   }

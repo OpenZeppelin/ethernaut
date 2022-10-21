@@ -5,7 +5,7 @@ contract Telephone {
 
   address public owner;
 
-  constructor() public {
+  constructor() {
     owner = msg.sender;
   }
 

