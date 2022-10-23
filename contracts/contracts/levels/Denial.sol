@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-
 contract Denial {
 
     address public partner; // withdrawal partner - pay the gas, split the withdraw
@@ -21,7 +20,7 @@ contract Denial {
         payable(owner).transfer(amountToSend);
         // keep track of last withdrawal time
         timeLastWithdrawn = block.timestamp;
-        withdrawPartnerBalances[partner] = withdrawPartnerBalances[partner] + amountToSend;
+        withdrawPartnerBalances[partner] +=  amountToSend;
     }
 
     // allow deposit of funds

