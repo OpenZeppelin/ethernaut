@@ -6,7 +6,8 @@ contract DenialAttack {
 
   fallback() external payable {
       // consume all the gas
-      assert(1==2);
+      while(true) {}
+      //TODO // assert(1==2);
   }
 
 }
