@@ -37,7 +37,7 @@ class Header extends React.Component {
       "--primary-color"
     );
 
-    if(primaryColor === black) this.toggleDarkMode()
+    // if(primaryColor === black) this.toggleDarkMode()
   }
 
   componentDidUpdate(prevProps) {
