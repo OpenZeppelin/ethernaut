@@ -29,13 +29,13 @@ class Header extends React.Component {
 
   componentDidMount() {
 
-    var black = getComputedStyle(document.documentElement).getPropertyValue(
-      "--black"
-    );
+    // var black = getComputedStyle(document.documentElement).getPropertyValue(
+    //   "--black"
+    // );
 
-    var primaryColor = getComputedStyle(document.documentElement).getPropertyValue(
-      "--primary-color"
-    );
+    // var primaryColor = getComputedStyle(document.documentElement).getPropertyValue(
+    //   "--primary-color"
+    // );
 
     // if(primaryColor === black) this.toggleDarkMode()
   }
