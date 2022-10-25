@@ -13,7 +13,7 @@ contract Denial {
 
     // withdraw 1% to recipient and 1% to owner
     function withdraw() public {
-        uint amountToSend = address(this).balance/ 100;
+        uint amountToSend = address(this).balance / 100;
         // perform a call without checking return
         // The recipient can revert, the owner will still get their share
         partner.call{value:amountToSend}("");
