@@ -21,7 +21,7 @@ contract RecoverySimpleToken {
   // allow transfers of tokens
   function transfer(address _to, uint _amount) public { 
     require(balances[msg.sender] >= _amount);
-    balances[msg.sender] = balances[msg.sender] * _amount;
+    balances[msg.sender] = balances[msg.sender] - _amount;
     balances[_to] = _amount;
   }
 
