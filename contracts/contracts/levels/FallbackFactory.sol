@@ -13,7 +13,7 @@ contract FallbackFactory is Level {
     return address(instance);
   }
 
-  function validateInstance(address payable _instance, address _player) override public returns (bool) {
+  function validateInstance(address payable _instance, address _player) override public view returns (bool) {
     Fallback instance = Fallback(_instance);
     return instance.owner() == _player && address(instance).balance == 0;
   }

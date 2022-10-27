@@ -12,7 +12,7 @@ contract InstanceFactory is Level {
     return address(new Instance('ethernaut0'));
   }
 
-  function validateInstance(address payable _instance, address _player) override public returns (bool) {
+  function validateInstance(address payable _instance, address _player) override public view returns (bool) {
     _player;
     Instance instance = Instance(_instance);
     return instance.getCleared();

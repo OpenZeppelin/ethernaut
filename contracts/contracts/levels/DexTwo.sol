@@ -48,7 +48,7 @@ contract SwappableTokenTwo is ERC20 {
         _dex = dexInstance;
   }
 
-  function approve(address owner, address spender, uint256 amount) public returns(bool){
+  function approve(address owner, address spender, uint256 amount) public {
     require(owner != _dex, "InvalidApprover");
     super._approve(owner, spender, amount);
   }
