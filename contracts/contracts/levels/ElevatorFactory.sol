@@ -13,7 +13,7 @@ contract ElevatorFactory is Level {
     return address(instance);
   }
 
-  function validateInstance(address payable _instance, address) override public returns (bool) {
+  function validateInstance(address payable _instance, address) override public view returns (bool) {
     Elevator elevator = Elevator(_instance);
     return elevator.top();
   }

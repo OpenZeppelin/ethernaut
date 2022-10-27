@@ -33,7 +33,7 @@ contract DexTwoFactory is Level {
     return instanceAddress;
   }
 
-  function validateInstance(address payable _instance, address) override public returns (bool) {
+  function validateInstance(address payable _instance, address) override public view returns (bool) {
     address token1 = DexTwo(_instance).token1();
     address token2 = DexTwo(_instance).token2();
     return IERC20(token1).balanceOf(_instance) == 0 && ERC20(token2).balanceOf(_instance) == 0;

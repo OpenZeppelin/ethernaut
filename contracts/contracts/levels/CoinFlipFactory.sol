@@ -12,7 +12,7 @@ contract CoinFlipFactory is Level {
     return address(new CoinFlip());
   }
 
-  function validateInstance(address payable _instance, address) override public returns (bool) {
+  function validateInstance(address payable _instance, address) override public view returns (bool) {
     CoinFlip instance = CoinFlip(_instance);
     return instance.consecutiveWins() >= 10;
   }

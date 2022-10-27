@@ -15,7 +15,7 @@ contract MagicNumFactory is Level {
     return address(new MagicNum());
   }
 
-  function validateInstance(address payable _instance, address) override public returns (bool) {
+  function validateInstance(address payable _instance, address) override public view returns (bool) {
 
     // Retrieve the instance.
     MagicNum instance = MagicNum(_instance);
