@@ -1,3 +1,7 @@
+## November 2021
+- Added Turkish language support for README.md
+- fixed gnache with `ganache` in README.md
+
 ## August 2021
 - Filter out repeated log messages for mined transactions
 - Increased Sidebar width
