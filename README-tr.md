@@ -15,7 +15,7 @@ Oyun, hem Ethereum'u öğrenmek isteyenler için bir araç olarak hem de tarihse
 
 Ethernaut ile local olarak çalışabilmeniz için üç bileşen mevcuttur:
 
-- Test Ağı - Genache, HardHat Network, Geth gibi local olarak çalışan bir test ağıdır
+- Test Ağı - Ganache, HardHat Network, Geth gibi local olarak çalışan bir test ağıdır
 - Kontrat Yayınlama - Kontratlar ile çalışmak için local üzerinde testnet aracılığı ile yayınlanmış olması gerekmektedir.
 - İstemci/Önyüz - localhost:3000 üzerinden erişim sağlanabilen bir React uygulaması
 
