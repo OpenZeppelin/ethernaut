@@ -19,4 +19,29 @@ contract Stats {
         uint256 noOfInstancesSubmitted_Fail;
     }
     mapping(address => Level) public levelStats;
+
+    function saveCreateLevelStats(address levelInstanceAddress, address levelFactoryAddress) public {
+        if(playerExists[msg.sender] == false) {
+            players.push(msg.sender);
+            playerExists[msg.sender] = true;
+        }
+        require(playerStats[msg.sender][levelFactoryAddress].instanceAddress == address(0), "Level already created");
+        playerStats[msg.sender][levelFactoryAddress] = LevelInstance(levelInstanceAddress, false, block.timestamp, 0, new uint256[](0));
+        levelStats[levelFactoryAddress].noOfInstancesCreated++;
+    }
+
+    function saveSubmitLevelStats(address levelFactoryAddress, bool isCompleted) public {
+        require(playerStats[msg.sender][levelFactoryAddress].instanceAddress != address(0), "Level not created");
+        require(playerStats[msg.sender][levelFactoryAddress].isCompleted == false, "Level already completed");
+
+        playerStats[msg.sender][levelFactoryAddress].timeSubmitted.push(block.timestamp);
+
+        if(isCompleted) {
+            levelStats[levelFactoryAddress].noOfInstancesSubmitted_Success++;
+            playerStats[msg.sender][levelFactoryAddress].timeCompleted = block.timestamp;
+            playerStats[msg.sender][levelFactoryAddress].isCompleted = true;
+        } else {
+            levelStats[levelFactoryAddress].noOfInstancesSubmitted_Fail++;
+        }
+    }
 }
