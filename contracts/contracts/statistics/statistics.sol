@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-contract Stats {
+contract Statistics {
     struct LevelInstance {
         address instanceAddress;
         bool isCompleted;

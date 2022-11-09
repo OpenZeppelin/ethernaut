@@ -5,6 +5,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "4.7.3",
     "@truffle/hdwallet-provider": "^2.0.0",
+    "chai": "^4.3.7",
     "colors": "^1.4.0",
     "cross-env": "7.0.3",
     "ethereumjs-util": "^7.0.10",
