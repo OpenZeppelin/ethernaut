@@ -1,4 +1,4 @@
-import prompt from 'prompt';
+/* import prompt from 'prompt';
 import colors from 'colors';
 import Web3 from 'web3';
 import fs from 'fs';
@@ -68,7 +68,7 @@ async function deployContracts(deployData) {
     console.log(`Deploying Ethernaut.sol...`);
     ethernaut = await Ethernaut.new(props)
     console.log(colors.yellow(`  Ethernaut: ${ethernaut.address}`));
-    deployData.ethernaut = ethernaut.address;
+    deployData.ethernaut = ethernaut.address; 
   }
   else {
     console.log('Using deployed Ethernaut.sol:', deployData.ethernaut);
@@ -185,3 +185,4 @@ function confirmDeployment() {
     }
   })
 }
+ */
