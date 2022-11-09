@@ -4,14 +4,14 @@ pragma solidity ^0.8.0;
 
 contract Statistics {
     struct LevelInstance {
-        address instanceAddress;
+        address instance;
         bool isCompleted;
         uint256 timeCreated;
         uint256 timeCompleted;
         uint256[] timeSubmitted;
     }
     mapping(address => mapping(address => LevelInstance)) playerStats;
-    mapping(address => bool) playerExists;
+    mapping(address => bool) public playerExists;
     address[] players;
 
     struct Level {
@@ -20,50 +20,56 @@ contract Statistics {
         uint256 noOfInstancesSubmitted_Fail;
     }
     mapping(address => Level) public levelStats;
-    address[] public levelFactoryAddresses;
+    address[] public levels;
 
-    function saveCreateLevelStats(address levelInstanceAddress, address levelFactoryAddress) public {
-        if(playerExists[msg.sender] == false) {
-            players.push(msg.sender);
-            playerExists[msg.sender] = true;
+    function createNewInstance(address instance, address level, address user) levelExistsCheck(instance) external {
+        if(playerExists[user] == false) {
+            players.push(user);
+            playerExists[user] = true;
         }
-        require(playerStats[msg.sender][levelFactoryAddress].instanceAddress == address(0), "Level already created");
-        playerStats[msg.sender][levelFactoryAddress] = LevelInstance(levelInstanceAddress, false, block.timestamp, 0, new uint256[](0));
-        levelStats[levelFactoryAddress].noOfInstancesCreated++;
+        require(playerStats[user][level].instance == address(0), "Level already created");
+        playerStats[user][level] = LevelInstance(instance, false, block.timestamp, 0, new uint256[](0));
+        levelStats[level].noOfInstancesCreated++;
     }
 
-    function saveSubmitLevelStats(address levelFactoryAddress, bool isCompleted) public {
-        require(playerStats[msg.sender][levelFactoryAddress].instanceAddress != address(0), "Level not created");
-        require(playerStats[msg.sender][levelFactoryAddress].isCompleted == false, "Level already completed");
+    function submitSuccess(address level, address user) external levelExistsCheck(level) playerExistsCheck(user) {
+        require(playerStats[user][level].instance != address(0), "Level not created");
+        require(playerStats[user][level].isCompleted == false, "Level already completed");
 
-        playerStats[msg.sender][levelFactoryAddress].timeSubmitted.push(block.timestamp);
+        playerStats[user][level].timeSubmitted.push(block.timestamp);
+        
+        playerStats[user][level].timeCompleted = block.timestamp;
+        playerStats[user][level].isCompleted = true;
 
-        if(isCompleted) {
-            levelStats[levelFactoryAddress].noOfInstancesSubmitted_Success++;
-            playerStats[msg.sender][levelFactoryAddress].timeCompleted = block.timestamp;
-            playerStats[msg.sender][levelFactoryAddress].isCompleted = true;
-        } else {
-            levelStats[levelFactoryAddress].noOfInstancesSubmitted_Fail++;
-        }
+        levelStats[level].noOfInstancesSubmitted_Success++;
     }
 
-    function saveNewLevelFactory(address levelFactoryAddress) public {
-        require(doesLevelExist(levelFactoryAddress) == false, "Level already exists");
-        levelFactoryAddresses.push(levelFactoryAddress);
+    function submitFailure(address level, address user) external levelExistsCheck(level) playerExistsCheck(user) {
+        require(playerStats[user][level].instance != address(0), "Level not created");
+        require(playerStats[user][level].isCompleted == false, "Level already completed");
+
+        playerStats[user][level].timeSubmitted.push(block.timestamp);
+
+        levelStats[level].noOfInstancesSubmitted_Fail++;
     }
 
-    function getNoOfLevelsCompletedByPlayer(address playerAddress) playerExistsCheck(playerAddress) public view returns(uint256) {
+    function saveNewLevel(address level) public {
+        require(doesLevelExist(level) == false, "Level already exists");
+        levels.push(level);
+    }
+
+    function getNoOfLevelsCompleted(address player) playerExistsCheck(player) public view returns(uint256) {
         uint256 noOfLevelsCompleted = 0;
-        for(uint256 i = 0; i < levelFactoryAddresses.length; i++) {
-            if(playerStats[playerAddress][levelFactoryAddresses[i]].isCompleted) {
+        for(uint256 i = 0; i < levels.length; i++) {
+            if(playerStats[player][levels[i]].isCompleted) {
                 noOfLevelsCompleted++;
             }
         }
         return noOfLevelsCompleted;
     }
 
-    function isLevelSolvedByPlayer(address playerAddress, address levelFactoryAddress) playerExistsCheck(playerAddress) levelExistsCheck(levelFactoryAddress) public view returns(bool) {
-        return playerStats[playerAddress][levelFactoryAddress].isCompleted;
+    function isLevelSolved(address playerAddress, address level) playerExistsCheck(playerAddress) levelExistsCheck(level) public view returns(bool) {
+        return playerStats[playerAddress][level].isCompleted;
     }
 
     function getTimeElapsedSinceCompletionOfLevel(address playerAddress, address levelFactoryAddress) playerExistsCheck(playerAddress) levelExistsCheck(levelFactoryAddress) public view returns(uint256) {
@@ -72,32 +78,32 @@ contract Statistics {
     }
 
     function getPercentageOfLevelsSolvedByPlayer(address playerAddress) playerExistsCheck(playerAddress) public view returns(uint256) {
-        return (getNoOfLevelsCompletedByPlayer(playerAddress) * 100) / levelFactoryAddresses.length;
+        return (getNoOfLevelsCompleted(playerAddress) * 100) / levels.length;
     }
 
-    function getTotalNoOfLevelInstancesCreated() public view returns(uint256) {
+    function getTotalNoOfInstancesCreated() public view returns(uint256) {
         uint256 totalNoOfLevelInstancesCreated = 0;
-        for(uint256 i = 0; i < levelFactoryAddresses.length; i++) {
-            totalNoOfLevelInstancesCreated += levelStats[levelFactoryAddresses[i]].noOfInstancesCreated;
+        for(uint256 i = 0; i < levels.length; i++) {
+            totalNoOfLevelInstancesCreated += levelStats[levels[i]].noOfInstancesCreated;
         }
         return totalNoOfLevelInstancesCreated;
     }
 
-    function getTotalNoOfLevelInstancesSolved() public view returns(uint256) {
+    function getTotalNoOfInstancesSolved() public view returns(uint256) {
         uint256 totalNoOfLevelInstancesSolved = 0;
-        for(uint256 i = 0; i < levelFactoryAddresses.length; i++) {
-            totalNoOfLevelInstancesSolved += levelStats[levelFactoryAddresses[i]].noOfInstancesSubmitted_Success;
+        for(uint256 i = 0; i < levels.length; i++) {
+            totalNoOfLevelInstancesSolved += levelStats[levels[i]].noOfInstancesSubmitted_Success;
         }
         return totalNoOfLevelInstancesSolved;
     }
 
-    function getNoOfUniquePlayers() public view returns(uint256) {
+    function getTotalNoOfUniquePlayers() public view returns(uint256) {
         return players.length;
     }
 
-    function doesLevelExist(address levelFactoryAddress) private view returns(bool) {
-        for(uint256 i = 0; i < levelFactoryAddresses.length; i++) {
-            if(levelFactoryAddresses[i] == levelFactoryAddress) {
+    function doesLevelExist(address level) private view returns(bool) {
+        for(uint256 i = 0; i < levels.length; i++) {
+            if(levels[i] == level) {
                 return true;
             }
         }

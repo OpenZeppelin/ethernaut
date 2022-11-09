@@ -1,12 +1,51 @@
 const Statistics = artifacts.require('./statistics/Statistics.sol')
-var { expect } = require('chai');  
+const chai = require('chai'); 
+const { expect } = chai; 
+const { solidity } = require('ethereum-waffle');
 
-contract('Statistics', () => { 
+chai.use(solidity);
+
+contract('Statistics', (accounts) => { 
     let statistics
+
+    let [
+        PLAYER_ADDRESS_1, PLAYER_ADDRESS_2,
+        LEVEL_FACTORY_ADDRESS_1, LEVEL_FACTORY_ADDRESS_2,
+        LEVEL_INSTANCE_ADDRESS_1
+    ] = accounts
+
     describe('Statistics', function () { 
-        it('tests statistics contract creation', async () => { 
-            statistics = await Statistics.new()
-            expect(statistics.address).to.contain("0x")
+        describe('Creation of statistics contract', () => { 
+            it('should create a new statistics contract', async () => { 
+                statistics = await Statistics.new()
+                expect(statistics.address).to.contain("0x")
+            })
+        })
+        
+        describe('Addition of a new level factory address', () => { 
+            it('should add a new level factory address', async () => { 
+                await statistics.saveNewLevelFactory(LEVEL_FACTORY_ADDRESS_1)
+                expect(await statistics.levelFactoryAddresses(0)).to.equal(LEVEL_FACTORY_ADDRESS_1)
+            })
+        })
+
+        describe('Creation of a level instance', () => { 
+            it('should create a new level stats instance', async () => { 
+                await statistics.saveCreateLevelStats(PLAYER_ADDRESS_1, LEVEL_INSTANCE_ADDRESS_1, LEVEL_FACTORY_ADDRESS_1)
+            })
+
+            it('checks if player address is successfully added to players list', async () => { 
+                expect(await statistics.playerExists(PLAYER_ADDRESS_1)).to.equal(true)
+            })
+
+            it('should throw error if invalid level factory address provided during level stats creation', async () => { 
+                await expect(statistics.saveCreateLevelStats(PLAYER_ADDRESS_1, LEVEL_INSTANCE_ADDRESS_1, LEVEL_FACTORY_ADDRESS_2))
+                    .to.be.revertedWith("Invalid level factory address")
+            })
+        })
+
+        describe("Submission of a level instance", () => { 
+
         })
     })
 })
