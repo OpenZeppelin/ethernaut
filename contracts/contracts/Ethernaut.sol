@@ -11,19 +11,19 @@ interface Statistics {
     function createNewInstance(
         address instance,
         address level,
-        address user
+        address player
     ) external;
 
     function submitFailure(
         address instance,
         address level,
-        address user
+        address player
     ) external;
 
     function submitSuccess(
         address instance,
         address level,
-        address user
+        address player
     ) external;
 }
 
