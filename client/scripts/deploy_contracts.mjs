@@ -1,4 +1,4 @@
-/* import prompt from 'prompt';
+import prompt from 'prompt';
 import colors from 'colors';
 import Web3 from 'web3';
 import fs from 'fs';
@@ -206,4 +206,3 @@ function confirmDeployment() {
     }
   });
 }
- */
