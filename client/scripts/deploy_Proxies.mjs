@@ -12,6 +12,7 @@ import * as ProxyStatsABI from 'contracts/build/contracts/Proxy/Proxy.sol/ProxyS
 let web3;
 
 async function deployProxyAdmin(from, props) {
+  console.log(`Deploying ProxyAdmin.sol...`);
   const ProxyAdmin = await ethutil.getTruffleContract(ProxyAdminABI.default, {
     from,
   });
@@ -21,6 +22,7 @@ async function deployProxyAdmin(from, props) {
 }
 
 async function deployImplementation(from, props) {
+  console.log(`Deploying Implementation.sol...`);
   const Implementation = await ethutil.getTruffleContract(
     ImplementationABI.default,
     {
@@ -33,6 +35,7 @@ async function deployImplementation(from, props) {
 }
 
 async function deployProxyStats(from, impl, proxyAdmin) {
+  console.log(`Deploying Proxy.sol...`);
   const ProxyStats = await ethutil.getTruffleContract(ProxyStatsABI.default, {
     from,
   });
@@ -48,7 +51,8 @@ async function deploy() {
     gas: 4500000,
   };
 
-  let from = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+  let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
+  if (!from) from = (await web3.eth.getAccounts())[0];
   console.log('FROM: ', from);
 
   let proxyAdmin = await deployProxyAdmin(from, props);
