@@ -11,8 +11,10 @@ import * as ProxyStatsABI from 'contracts/build/contracts/Proxy/Proxy.sol/ProxyS
 
 let web3;
 
+const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
+
 async function deployProxyAdmin(from, props) {
-  console.log(`Deploying ProxyAdmin.sol...`);
+  console.log(colors.green(`Deploying ProxyAdmin.sol...`));
   const ProxyAdmin = await ethutil.getTruffleContract(ProxyAdminABI.default, {
     from,
   });
@@ -22,7 +24,7 @@ async function deployProxyAdmin(from, props) {
 }
 
 async function deployImplementation(from, props) {
-  console.log(`Deploying Implementation.sol...`);
+  console.log(colors.green(`Deploying Implementation.sol...`));
   const Implementation = await ethutil.getTruffleContract(
     ImplementationABI.default,
     {
@@ -34,13 +36,15 @@ async function deployImplementation(from, props) {
   return implementation.address;
 }
 
-async function deployProxyStats(from, impl, proxyAdmin) {
-  console.log(`Deploying Proxy.sol...`);
+async function deployProxyStats(impl, proxyAdmin, from, props) {
+  console.log(colors.green(`Deploying Proxy.sol...`));
   const ProxyStats = await ethutil.getTruffleContract(ProxyStatsABI.default, {
     from,
   });
-  const proxyStats = await ProxyStats.new(impl, proxyAdmin);
+  const proxyStats = await ProxyStats.new(...[impl, proxyAdmin], props);
   console.log(` Proxy Statistics: ${proxyStats.address}`);
+
+  return proxyStats.address;
 }
 
 async function deploy() {
@@ -57,13 +61,26 @@ async function deploy() {
 
   let proxyAdmin = await deployProxyAdmin(from, props);
   let impl = await deployImplementation(from, props);
-  await deployProxyStats(from, impl, proxyAdmin);
+  let proxyStats = await deployProxyStats(impl, proxyAdmin, from, props);
+  let deployData = {
+    proxyAdmin: proxyAdmin,
+    implementation: impl,
+    proxyStats: proxyStats,
+  };
 
+  storeDeployData(DEPLOY_DATA_PATH, deployData);
   console.log('Done');
   process.exit();
 }
 
 deploy();
+
+function storeDeployData(path, deployData) {
+  console.log(colors.green(`Writing updated deploy data: ${path}`));
+  let json = JSON.parse(fs.readFileSync(path));
+  Object.assign(json, deployData);
+  return fs.writeFileSync(path, JSON.stringify(json), 'utf8');
+}
 
 function initWeb3() {
   return new Promise(async (resolve, reject) => {
