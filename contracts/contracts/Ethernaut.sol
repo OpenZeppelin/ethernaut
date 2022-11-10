@@ -30,10 +30,6 @@ interface Statistics {
 contract Ethernaut is Ownable {
     Statistics public statistics;
 
-    constructor(address _statProxy) {
-        statistics = Statistics(_statProxy);
-    }
-
     // ----------------------------------
     // Owner interaction
     // ----------------------------------
@@ -44,6 +40,10 @@ contract Ethernaut is Ownable {
     function registerLevel(Level _level) public onlyOwner {
         registeredLevels[address(_level)] = true;
         statistics.setNewLevel(address(_level));
+    }
+    
+    function setStatistics(address _statProxy) external onlyOwner {
+        statistics = Statistics(_statProxy);
     }
 
     // ----------------------------------
