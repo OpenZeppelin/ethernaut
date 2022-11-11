@@ -7,4 +7,3 @@ You will still start with 10 tokens of `token1` and 10 of `token2`. The DEX cont
 &nbsp;
 Things that might help:
 * How has the `swap` method been modified?
-* Could you use a custom token contract in your attack?
