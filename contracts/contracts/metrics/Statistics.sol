@@ -5,7 +5,6 @@ import "@openzeppelin/contracts/proxy/utils/Initializable.sol";
 
 contract Statistics is Initializable {
     address ETHERNAUT_ADDRESS;
-    bool initialized = false;
 
     struct LevelInstance {
         address instance;
