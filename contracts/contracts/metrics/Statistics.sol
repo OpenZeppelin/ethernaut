@@ -83,8 +83,9 @@ contract Statistics is Initializable {
             playerStats[player][level].instance != address(0),
             "Instance for the level is not created"
         );
+
         require(
-            playerStats[player][level].instance != instance,
+            playerStats[player][level].instance == instance,
             "Submitted instance is not the created one"
         );
         
@@ -109,7 +110,7 @@ contract Statistics is Initializable {
             "Instance for the level is not created"
         );
         require(
-            playerStats[player][level].instance != instance,
+            playerStats[player][level].instance == instance,
             "Submitted instance is not the created one"
         );
         require(
