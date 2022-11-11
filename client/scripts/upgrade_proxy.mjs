@@ -7,25 +7,13 @@ import * as constants from '../src/constants.js';
 import HDWalletProvider from '@truffle/hdwallet-provider';
 import * as ProxyAdminABI from 'contracts/build/contracts/Proxy/ProxyAdmin.sol/ProxyAdmin.json' assert { type: 'json' };
 import * as ImplementationABI from 'contracts/build/contracts/metrics/Statistics.sol/Statistics.json' assert { type: 'json' };
-import * as ProxyStatsABI from 'contracts/build/contracts/Proxy/ProxyStats.sol/ProxyStats.json' assert { type: 'json' };
-import * as EthernautABI from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json' assert { type: 'json' };
 
 let web3;
 
 const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
 
-async function deployProxyAdmin(from, props) {
-  console.log(colors.green(`Deploying ProxyAdmin.sol...`));
-  const ProxyAdmin = await ethutil.getTruffleContract(ProxyAdminABI.default, {
-    from,
-  });
-  const proxyAdmin = await ProxyAdmin.new(props);
-  console.log(` Proxy Admin: ${proxyAdmin.address}`);
-  return proxyAdmin.address;
-}
-
 async function deployImplementation(from, props) {
-  console.log(colors.green(`Deploying Implementation.sol...`));
+  console.log(colors.green(`Deploying Statistics.sol...`));
   const Implementation = await ethutil.getTruffleContract(
     ImplementationABI.default,
     {
@@ -37,20 +25,20 @@ async function deployImplementation(from, props) {
   return implementation.address;
 }
 
-async function deployProxyStats(impl, proxyAdmin, from, props) {
-  console.log(colors.green(`Deploying Proxy.sol...`));
+async function upgradeTo(from, props, newImplementation) {
+  console.log(colors.green(`Upgrading to new Implementation...`));
   const deployedData = loadDeployData(DEPLOY_DATA_PATH);
 
-  const ProxyStats = await ethutil.getTruffleContract(ProxyStatsABI.default, {
-    from,
-  });
-  const proxyStats = await ProxyStats.new(
-    ...[impl, proxyAdmin, deployedData.ethernaut],
-    props
+  const proxyAdmin = new web3.eth.Contract(
+    ProxyAdminABI.default.abi,
+    deployedData.proxyAdmin
   );
-  console.log(` Proxy Statistics: ${proxyStats.address}`);
 
-  return proxyStats.address;
+  await proxyAdmin.methods
+    .upgrade(deployedData.proxyStats, newImplementation)
+    .send({ from, ...props });
+
+  console.log(colors.bgBlue(`Proxy is upgraded!`));
 }
 
 async function deploy() {
@@ -65,16 +53,12 @@ async function deploy() {
   if (!from) from = (await web3.eth.getAccounts())[0];
   console.log('FROM: ', from);
 
-  let proxyAdmin = await deployProxyAdmin(from, props);
   let impl = await deployImplementation(from, props);
-  let proxyStats = await deployProxyStats(impl, proxyAdmin, from, props);
 
-  await setStatProxy(proxyStats, props, from);
+  await upgradeTo(from, props, impl);
 
   let deployData = {
-    proxyAdmin: proxyAdmin,
     implementation: impl,
-    proxyStats: proxyStats,
   };
 
   storeDeployData(DEPLOY_DATA_PATH, deployData);
@@ -83,22 +67,6 @@ async function deploy() {
 }
 
 deploy();
-
-async function setStatProxy(proxy, props, from) {
-  console.log(colors.green(`Setting proxy in Ethernaut.sol...`));
-
-  const deployedData = loadDeployData(DEPLOY_DATA_PATH);
-
-  const ethernaut = new web3.eth.Contract(
-    EthernautABI.default.abi,
-    deployedData.ethernaut
-  );
-
-  await ethernaut.methods.setStatistics(proxy).send({
-    from,
-    ...props,
-  });
-}
 
 function storeDeployData(path, deployData) {
   console.log(colors.green(`Writing updated deploy data: ${path}`));
