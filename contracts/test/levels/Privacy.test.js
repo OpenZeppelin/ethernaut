@@ -1,44 +1,51 @@
-const PrivacyFactory = artifacts.require('./levels/PrivacyFactory.sol')
-const Privacy = artifacts.require('./attacks/Privacy.sol')
+const PrivacyFactory = artifacts.require('./levels/PrivacyFactory.sol');
+const Privacy = artifacts.require('./attacks/Privacy.sol');
 
-const Ethernaut = artifacts.require('./Ethernaut.sol')
-const { BN, constants, expectEvent, expectRevert } = require('openzeppelin-test-helpers')
-const utils = require('../utils/TestUtils')
+const Ethernaut = artifacts.require('./Ethernaut.sol');
+const {
+  BN,
+  constants,
+  expectEvent,
+  expectRevert,
+} = require('openzeppelin-test-helpers');
+const utils = require('../utils/TestUtils');
+const { ethers, upgrades } = require('hardhat');
 
+contract('Privacy', function (accounts) {
+  let ethernaut;
+  let level;
+  let instance;
+  let player = accounts[0];
+  let statproxy;
 
-contract('Privacy', function(accounts) {
-
-  let ethernaut
-  let level
-  let instance
-  let player = accounts[0]
-
-  before(async function() {
+  before(async function () {
     ethernaut = await Ethernaut.new();
-    level = await PrivacyFactory.new()
-    await ethernaut.registerLevel(level.address)
+    const ProxyStat = await ethers.getContractFactory('Statistics');
+    statproxy = await upgrades.deployProxy(ProxyStat, [ethernaut.address]);
+    await ethernaut.setStatistics(statproxy.address);
+    level = await PrivacyFactory.new();
+    await ethernaut.registerLevel(level.address);
     instance = await utils.createLevelInstance(
-      ethernaut, level.address, player, Privacy,
-      {from: player, value: web3.utils.toWei('1', 'ether')}
-    )
+      ethernaut,
+      level.address,
+      player,
+      Privacy,
+      { from: player, value: web3.utils.toWei('1', 'ether') }
+    );
   });
 
-  describe('instance', function() {
-
-    it('should start locked', async function() {
+  describe('instance', function () {
+    it('should start locked', async function () {
       assert.equal(await instance.locked(), true);
     });
 
-    it('should not unlock with any key', async function() {
-      await expectRevert.unspecified(
-        instance.unlock("0x123")
-      );
+    it('should not unlock with any key', async function () {
+      await expectRevert.unspecified(instance.unlock('0x123'));
     });
 
-    it('should unlock with the proper key', async function() {
-      
+    it('should unlock with the proper key', async function () {
       // Read storage.
-      for(let i = 0; i < 6; i++) {
+      for (let i = 0; i < 6; i++) {
         //console.log(await web3.eth.getStorageAt(instance.address, i));
       }
 
@@ -61,5 +68,4 @@ contract('Privacy', function(accounts) {
       assert.equal(completed, true);
     });
   });
-
 });

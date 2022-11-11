@@ -6,7 +6,7 @@ import "./levels/base/Level.sol";
 import "openzeppelin-contracts-08/access/Ownable.sol";
 
 interface IStatistics {
-    function setNewLevel(address level) external;
+    function saveNewLevel(address level) external;
 
     function createNewInstance(
         address instance,
@@ -39,9 +39,9 @@ contract Ethernaut is Ownable {
     // Only registered levels will be allowed to generate and validate level instances.
     function registerLevel(Level _level) public onlyOwner {
         registeredLevels[address(_level)] = true;
-        statistics.setNewLevel(address(_level));
+        statistics.saveNewLevel(address(_level));
     }
-    
+
     function setStatistics(address _statProxy) external onlyOwner {
         statistics = IStatistics(_statProxy);
     }
