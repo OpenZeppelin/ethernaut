@@ -17,7 +17,8 @@
   "scripts": {
     "test": "cd contracts && hardhat test",
     "compile:contracts": "cd contracts && hardhat clean && hardhat compile",
-    "deploy:contracts": "yarn compile:contracts && node --experimental-json-modules client/scripts/deploy_*.mjs",
+    "deploy:contracts": "yarn compile:contracts && node --experimental-json-modules client/scripts/deploy_contracts.mjs",
+    "deploy:proxies": "yarn compile:contracts && node --experimental-json-modules client/scripts/deploy_proxies.mjs",
     "network": "cd contracts && hardhat node",
     "build:ethernaut": "yarn compile:contracts && yarn --cwd client build",
     "start:ethernaut": "cd client && yarn start",
