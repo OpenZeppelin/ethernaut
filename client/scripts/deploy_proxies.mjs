@@ -6,7 +6,7 @@ import * as ethutil from '../src/utils/ethutil.js';
 import * as constants from '../src/constants.js';
 import HDWalletProvider from '@truffle/hdwallet-provider';
 import * as ProxyAdminABI from 'contracts/build/contracts/Proxy/ProxyAdmin.sol/ProxyAdmin.json' assert { type: 'json' };
-import * as ImplementationABI from 'contracts/build/contracts/metrics/Stats.sol/Stats.json' assert { type: 'json' };
+import * as ImplementationABI from 'contracts/build/contracts/metrics/Statistics.sol/Statistics.json' assert { type: 'json' };
 import * as ProxyStatsABI from 'contracts/build/contracts/Proxy/Proxy.sol/ProxyStats.json' assert { type: 'json' };
 import * as EthernautABI from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json' assert { type: 'json' };
 
