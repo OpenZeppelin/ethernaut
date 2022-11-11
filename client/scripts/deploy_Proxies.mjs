@@ -8,6 +8,7 @@ import HDWalletProvider from '@truffle/hdwallet-provider';
 import * as ProxyAdminABI from 'contracts/build/contracts/Proxy/ProxyAdmin.sol/ProxyAdmin.json' assert { type: 'json' };
 import * as ImplementationABI from 'contracts/build/contracts/metrics/Stats.sol/Stats.json' assert { type: 'json' };
 import * as ProxyStatsABI from 'contracts/build/contracts/Proxy/Proxy.sol/ProxyStats.json' assert { type: 'json' };
+import * as EthernautABI from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json' assert { type: 'json' };
 
 let web3;
 
@@ -62,6 +63,9 @@ async function deploy() {
   let proxyAdmin = await deployProxyAdmin(from, props);
   let impl = await deployImplementation(from, props);
   let proxyStats = await deployProxyStats(impl, proxyAdmin, from, props);
+
+  await setStatProxy(proxyStats, props);
+
   let deployData = {
     proxyAdmin: proxyAdmin,
     implementation: impl,
@@ -75,11 +79,36 @@ async function deploy() {
 
 deploy();
 
+async function setStatProxy(proxy, props) {
+  console.log(colors.green(`Setting proxy in Ethernaut.sol...`));
+
+  const deployedData = loadDeployData(DEPLOY_DATA_PATH);
+
+  const ethernaut = new web3.eth.Contract(
+    EthernautABI.default.abi,
+    deployedData.ethernaut
+  );
+
+  await ethernaut.methods.setStatistics(proxy).send({
+    from: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',
+    gas: props.gas,
+    gasPrice: props.gasPrice,
+  });
+}
+
 function storeDeployData(path, deployData) {
   console.log(colors.green(`Writing updated deploy data: ${path}`));
   let json = JSON.parse(fs.readFileSync(path));
   Object.assign(json, deployData);
   return fs.writeFileSync(path, JSON.stringify(json), 'utf8');
+}
+
+function loadDeployData(path) {
+  try {
+    return JSON.parse(fs.readFileSync(path, 'utf8'));
+  } catch (err) {
+    return {};
+  }
 }
 
 function initWeb3() {
