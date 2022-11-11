@@ -82,11 +82,13 @@ contract('GatekeeperOne', function (accounts) {
 contract('GatekeeperTwo', function (accounts) {
   let ethernaut;
   let level;
-  let owner = accounts[1];
   let player = accounts[0];
 
   before(async function () {
     ethernaut = await Ethernaut.new();
+    const ProxyStat = await ethers.getContractFactory('Statistics');
+    statproxy = await upgrades.deployProxy(ProxyStat, [ethernaut.address]);
+    await ethernaut.setStatistics(statproxy.address);
     level = await GatekeeperTwoFactory.new();
     await ethernaut.registerLevel(level.address);
   });
