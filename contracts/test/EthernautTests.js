@@ -6,6 +6,7 @@ const FallbackFactory = artifacts.require('./levels/FallbackFactory.sol');
 const Manufactured = artifacts.require('./levels/Manufactured.sol');
 const { expectRevert } = require('openzeppelin-test-helpers');
 const utils = require('./utils/TestUtils');
+const { ethers, upgrades } = require('hardhat');
 
 contract('Ethernaut', function (accounts) {
   // ----------------------------------
@@ -15,9 +16,15 @@ contract('Ethernaut', function (accounts) {
   let owner = accounts[0];
   let player = accounts[1];
   let ethernaut;
+  let statproxy;
 
   before(async function () {
     ethernaut = await Ethernaut.new();
+
+    const ProxyStat = await ethers.getContractFactory('Statistics');
+    statproxy = await upgrades.deployProxy(ProxyStat, [ethernaut.address]);
+
+    await ethernaut.setStatistics(statproxy.address);
   });
 
   it(`should not allow a player to manufacture a solution instance`, async function () {

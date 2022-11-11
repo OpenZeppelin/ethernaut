@@ -16,8 +16,13 @@
     "web3": "1.8.0"
   },
   "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.1",
     "@nomiclabs/hardhat-truffle5": "^2.0.0",
-    "@nomiclabs/hardhat-web3": "^2.0.0"
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@openzeppelin/contracts-upgradeable": "^4.8.0",
+    "@openzeppelin/hardhat-upgrades": "^1.21.0",
+    "@openzeppelin/truffle-upgrades": "^1.17.0",
+    "ethers": "^5.7.2"
   },
   "eslintConfig": {
     "extends": "react-app"

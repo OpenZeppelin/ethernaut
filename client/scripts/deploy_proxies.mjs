@@ -79,7 +79,7 @@ async function deploy() {
 
 deploy();
 
-async function setStatProxy(proxy, props) {
+async function setStatProxy(proxy, props, from) {
   console.log(colors.green(`Setting proxy in Ethernaut.sol...`));
 
   const deployedData = loadDeployData(DEPLOY_DATA_PATH);
@@ -90,7 +90,7 @@ async function setStatProxy(proxy, props) {
   );
 
   await ethernaut.methods.setStatistics(proxy).send({
-    from: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',
+    from: from,
     gas: props.gas,
     gasPrice: props.gasPrice,
   });
