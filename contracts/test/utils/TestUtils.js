@@ -1,3 +1,6 @@
+const Ethernaut = artifacts.require('./Ethernaut.sol');
+const { ethers, upgrades } = require('hardhat');
+
 exports.getBalance = (web3, address) => {
   return new Promise(function(resolve, reject) {
     web3.eth.getBalance(address, function(error, result) {
@@ -57,5 +60,13 @@ exports.submitLevelInstance = async (ethernaut, levelAddress, instanceAddress, p
       else resolve(false)
     }
   });
+}
+
+exports.getEthernautWithStatsProxy = async () => { 
+    const ethernaut = await Ethernaut.new();
+    const ProxyStat = await ethers.getContractFactory('Statistics');
+    const statproxy = await upgrades.deployProxy(ProxyStat, [ethernaut.address]);
+    await ethernaut.setStatistics(statproxy.address);
+    return ethernaut;
 }
 
