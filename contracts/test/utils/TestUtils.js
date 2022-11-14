@@ -2,71 +2,88 @@ const Ethernaut = artifacts.require('./Ethernaut.sol');
 const { ethers, upgrades } = require('hardhat');
 
 exports.getBalance = (web3, address) => {
-  return new Promise(function(resolve, reject) {
-    web3.eth.getBalance(address, function(error, result) {
-      if(error) reject(error)
-      else resolve(web3.utils.fromWei(result.toString(), 'ether'))
-    })
-  })
-}
+  return new Promise(function (resolve, reject) {
+    web3.eth.getBalance(address, function (error, result) {
+      if (error) reject(error);
+      else resolve(web3.utils.fromWei(result.toString(), 'ether'));
+    });
+  });
+};
 
 exports.skipBlocks = (numBlocks, web3) => {
-  return new Promise(async resolve => {
-    for(let i = 0; i < numBlocks; i++) {
+  return new Promise(async (resolve) => {
+    for (let i = 0; i < numBlocks; i++) {
       await skipBlock(web3);
     }
     resolve();
   });
-}
+};
 
 exports.skipBlock = (web3) => {
   return new Promise((resolve, reject) => {
-    web3.currentProvider.sendAsync({
-      jsonrpc: '2.0',
-      method: 'evm_mine'
-    }, (error, result) => {
-      if(error) reject();
-      else resolve(result);
-    });
+    web3.currentProvider.sendAsync(
+      {
+        jsonrpc: '2.0',
+        method: 'evm_mine',
+      },
+      (error, result) => {
+        if (error) reject();
+        else resolve(result);
+      }
+    );
   });
-}
+};
 
-exports.createLevelInstance = async (ethernaut, levelAddress, player, levelInstanceClass, params) => {
-  return new Promise(async function(resolve, reject) {
-    const data = params || {from: player}
+exports.createLevelInstance = async (
+  ethernaut,
+  levelAddress,
+  player,
+  levelInstanceClass,
+  params
+) => {
+  return new Promise(async function (resolve, reject) {
+    const data = params || { from: player };
     const tx = await ethernaut.createLevelInstance(levelAddress, data);
-    if(tx.logs.length === 0) reject()
+    if (tx.logs.length === 0) reject();
     else {
-      const events = tx.logs.filter(e => e.event === "LevelInstanceCreatedLog");
+      const events = tx.logs.filter(
+        (e) => e.event === 'LevelInstanceCreatedLog'
+      );
       const instanceAddress = events[0].args.instance;
       const instance = await levelInstanceClass.at(instanceAddress);
       resolve(instance);
     }
   });
-}
+};
 
-exports.submitLevelInstance = async (ethernaut, levelAddress, instanceAddress, player, params) => {
-  return new Promise(async function(resolve) {
-    const data = params || {from: player}
+exports.submitLevelInstance = async (
+  ethernaut,
+  levelAddress,
+  instanceAddress,
+  player,
+  params
+) => {
+  return new Promise(async function (resolve) {
+    const data = params || { from: player };
     const tx = await ethernaut.submitLevelInstance(instanceAddress, data);
-    if(tx.logs.length === 0) resolve(false)
+    if (tx.logs.length === 0) resolve(false);
     else {
-      const events = tx.logs.filter(e => e.event === "LevelCompletedLog");
+      const events = tx.logs.filter((e) => e.event === 'LevelCompletedLog');
       const ethLevelAddress = events[0].args.level;
       const ethPlayer = events[0].args.player;
-      if(player === ethPlayer && levelAddress === ethLevelAddress) {
-        resolve(true)
-      }
-      else resolve(false)
+      if (player === ethPlayer && levelAddress === ethLevelAddress) {
+        resolve(true);
+      } else resolve(false);
     }
   });
-}
+};
 
-exports.getEthernautWithStatsProxy = async () => { 
-    const ethernaut = await Ethernaut.new();
-    const ProxyStat = await ethers.getContractFactory('Statistics');
-    const statproxy = await upgrades.deployProxy(ProxyStat, [ethernaut.address]);
-    await ethernaut.setStatistics(statproxy.address);
-    return ethernaut;
-}
-
+exports.getEthernautWithStatsProxy = async () => {
+  const ethernaut = await Ethernaut.new();
+  const implementation = await ethers.getContractFactory('Statistics');
+  const ProxyStats = await upgrades.deployProxy(implementation, [
+    ethernaut.address,
+  ]);
+  await ethernaut.setStatistics(ProxyStats.address);
+  return ethernaut;
+};
