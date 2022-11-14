@@ -23,10 +23,7 @@ contract('Dex', function (accounts) {
   // console.log(`player is ${player}`)
 
   before(async function () {
-    ethernaut = await Ethernaut.new();
-    const ProxyStat = await ethers.getContractFactory('Statistics');
-    statproxy = await upgrades.deployProxy(ProxyStat, [ethernaut.address]);
-    await ethernaut.setStatistics(statproxy.address);
+    ethernaut = await utils.getEthernautWithStatsProxy();
     level = await DexFactory.new();
     await ethernaut.registerLevel(level.address);
   });
