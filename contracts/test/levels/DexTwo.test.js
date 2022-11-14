@@ -22,10 +22,7 @@ contract('DexTwo', function (accounts) {
   let statproxy;
 
   before(async function () {
-    ethernaut = await Ethernaut.new();
-    const ProxyStat = await ethers.getContractFactory('Statistics');
-    statproxy = await upgrades.deployProxy(ProxyStat, [ethernaut.address]);
-    await ethernaut.setStatistics(statproxy.address);
+    ethernaut = await utils.getEthernautWithStatsProxy();
     level = await DexTwoFactory.new();
     await ethernaut.registerLevel(level.address);
   });

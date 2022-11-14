@@ -19,10 +19,7 @@ contract('Fallout', function (accounts) {
   let statproxy;
 
   beforeEach(async function () {
-    ethernaut = await Ethernaut.new();
-    const ProxyStat = await ethers.getContractFactory('Statistics');
-    statproxy = await upgrades.deployProxy(ProxyStat, [ethernaut.address]);
-    await ethernaut.setStatistics(statproxy.address);
+    ethernaut = await utils.getEthernautWithStatsProxy();
     level = await FalloutFactory.new();
     await ethernaut.registerLevel(level.address);
     //console.log(ethernaut.address, level.address)
