@@ -19,16 +19,18 @@ contract('Ethernaut', function (accounts) {
   let player = accounts[1];
   let player2 = accounts[2];
   let ethernaut;
-  let statproxy;
+  let ProxyStats;
   let statistics;
 
   before(async function () {
     ethernaut = await Ethernaut.new();
     const implementation = await ethers.getContractFactory('Statistics');
-    statproxy = await upgrades.deployProxy(implementation, [ethernaut.address]);
-    await ethernaut.setStatistics(statproxy.address);
+    ProxyStats = await upgrades.deployProxy(implementation, [
+      ethernaut.address,
+    ]);
+    await ethernaut.setStatistics(ProxyStats.address);
 
-    statistics = await ethers.getContractAt('Statistics', statproxy.address);
+    statistics = await ethers.getContractAt('Statistics', ProxyStats.address);
   });
 
   it(`should not allow a player to manufacture a solution instance`, async function () {
