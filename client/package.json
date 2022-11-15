@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts --max_old_space_size=8192 build && node scripts/build-redirects.cjs",
+    "build": "react-scripts build && node scripts/build-redirects.cjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
