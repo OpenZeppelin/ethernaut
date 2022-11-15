@@ -7,9 +7,15 @@ import * as constants from '../src/constants.js';
 import HDWalletProvider from '@truffle/hdwallet-provider';
 import * as gamedata from '../src/gamedata/gamedata.json' assert { type: 'json' };
 import * as EthernautABI from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json' assert { type: 'json' };
+import * as ProxyAdminABI from 'contracts/build/contracts/Proxy/ProxyAdmin.sol/ProxyAdmin.json' assert { type: 'json' };
+import * as ImplementationABI from 'contracts/build/contracts/metrics/Statistics.sol/Statistics.json' assert { type: 'json' };
+import * as ProxyStatsABI from 'contracts/build/contracts/Proxy/ProxyStats.sol/ProxyStats.json' assert { type: 'json' };
 
 let web3;
 let ethernaut;
+let proxyAdmin;
+let implementation;
+let proxyStats;
 
 const PROMPT_ON_DEVELOP = true;
 const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
@@ -29,6 +35,18 @@ async function exec() {
   if (needsDeploy(deployData.ethernaut)) {
     count++;
     console.log(colors.red(`(${count}) Will deploy Ethernaut.sol!`));
+  }
+  if (needsDeploy(deployData.implementation)) {
+    count++;
+    console.log(colors.red(`(${count}) Will deploy Statistics.sol!`));
+  }
+  if (needsDeploy(deployData.proxyAdmin)) {
+    count++;
+    console.log(colors.red(`(${count}) Will deploy ProxyAdmin.sol!`));
+  }
+  if (needsDeploy(deployData.proxyStats)) {
+    count++;
+    console.log(colors.red(`(${count}) Will deploy ProxyStats.sol!`));
   }
   gamedata.default.levels.map((level) => {
     if (needsDeploy(deployData[level.deployId])) {
@@ -70,6 +88,7 @@ async function deployContracts(deployData) {
   const Ethernaut = await ethutil.getTruffleContract(EthernautABI.default, {
     from,
   });
+
   if (needsDeploy(deployData.ethernaut)) {
     console.log(deployData);
     console.log(`Deploying Ethernaut.sol...`);
@@ -81,6 +100,18 @@ async function deployContracts(deployData) {
     ethernaut = await Ethernaut.at(deployData.ethernaut);
     // console.log('ethernaut: ', ethernaut);
   }
+
+  // Deploy/retrieve Implementation
+  await deployImplementation(from, props, deployData);
+
+  // Deploy/retrieve Proxy Admin
+  await deployProxyAdmin(from, props, deployData);
+
+  // Deploy/retrieve ProxyStats
+  await deployProxyStats(from, props, deployData);
+
+  // set ProxyStats in Ethernaut
+  await setStatProxy(from, props);
 
   // Sweep levels
   const promises = gamedata.default.levels.map(async (level) => {
@@ -128,8 +159,83 @@ async function deployContracts(deployData) {
 }
 
 // ----------------------------------
+// Deployment Functions
+// ----------------------------------
+
+async function deployProxyAdmin(from, props, deployData) {
+  const ProxyAdmin = await ethutil.getTruffleContract(ProxyAdminABI.default, {
+    from,
+  });
+
+  if (needsDeploy(deployData.proxyAdmin)) {
+    console.log(`Deploying ProxyAdmin.sol...`);
+    proxyAdmin = await ProxyAdmin.new(props);
+    console.log(colors.yellow(`  ProxyAdmin: ${proxyAdmin.address}`));
+    deployData.proxyAdmin = proxyAdmin.address;
+  } else {
+    console.log('Using deployed ProxyAdmin.sol:', deployData.proxyAdmin);
+    proxyAdmin = await ProxyAdmin.at(deployData.proxyAdmin);
+  }
+  return proxyAdmin.address;
+}
+
+async function deployImplementation(from, props, deployData) {
+  const Implementation = await ethutil.getTruffleContract(
+    ImplementationABI.default,
+    {
+      from,
+    }
+  );
+  if (needsDeploy(deployData.implementation)) {
+    console.log(`Deploying Statistics.sol...`);
+    implementation = await Implementation.new(props);
+    console.log(colors.yellow(`  Statistics: ${implementation.address}`));
+    deployData.implementation = implementation.address;
+  } else {
+    console.log('Using deployed Statistics.sol:', deployData.implementation);
+    implementation = await Implementation.at(deployData.implementation);
+  }
+
+  return implementation.address;
+}
+
+async function deployProxyStats(from, props, deployData) {
+  const ProxyStats = await ethutil.getTruffleContract(ProxyStatsABI.default, {
+    from,
+  });
+  if (needsDeploy(deployData.proxyStats)) {
+    console.log(`Deploying Proxy.sol...`);
+    proxyStats = await ProxyStats.new(
+      ...[implementation.address, proxyAdmin.address, ethernaut.address],
+      props
+    );
+    console.log(colors.yellow(`  Proxy: ${proxyStats.address}`));
+    deployData.proxyStats = proxyStats.address;
+  } else {
+    console.log('Using deployed Proxy.sol:', deployData.proxyStats);
+    proxyStats = await ProxyStats.at(deployData.proxyStats);
+  }
+
+  return proxyStats.address;
+}
+
+// ----------------------------------
 // Utils
 // ----------------------------------
+
+async function setStatProxy(from, props) {
+  console.log(`Setting proxy in Ethernaut.sol...`);
+
+  const ethernautContract = new web3.eth.Contract(
+    EthernautABI.default.abi,
+    ethernaut.address
+  );
+
+  await ethernautContract.methods.setStatistics(proxyStats.address).send({
+    from,
+    ...props,
+  });
+}
 
 function withoutExtension(str) {
   return str.split('.')[0];
