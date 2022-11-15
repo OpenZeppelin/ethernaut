@@ -1,7 +1,5 @@
 /*eslint no-undef: "off"*/
 const Ethernaut = artifacts.require('./Ethernaut.sol');
-
-const ProxyStats = require('contracts/build/contracts/metrics/Statistics.sol/Statistics.json');
 const DummyFactory = artifacts.require('./levels/DummyFactory.sol');
 const Dummy = artifacts.require('./levels/Dummy.sol');
 const FallbackFactory = artifacts.require('./levels/FallbackFactory.sol');
