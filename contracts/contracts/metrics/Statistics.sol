@@ -78,7 +78,6 @@ contract Statistics is Initializable {
                 ? playerStats[player][level].timeSubmitted
                 : new uint256[](0)
         );
-
         levelStats[level].noOfInstancesCreated++;
         globalNoOfInstancesCreated++;
         globalNoOfInstancesCreatedByPlayer[player]++;
@@ -93,21 +92,17 @@ contract Statistics is Initializable {
             playerStats[player][level].instance != address(0),
             "Instance for the level is not created"
         );
-
         require(
             playerStats[player][level].instance == instance,
             "Submitted instance is not the created one"
         );
-
         require(
             playerStats[player][level].isCompleted == false,
             "Level already completed"
         );
-
         if(firstSubmissionTime[player][level] == 0) {
             firstSubmissionTime[player][level] = block.timestamp;
         }
-
         playerStats[player][level].timeSubmitted.push(block.timestamp);
         playerStats[player][level].timeCompleted = block.timestamp;
         playerStats[player][level].isCompleted = true;
