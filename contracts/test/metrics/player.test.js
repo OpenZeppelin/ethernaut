@@ -97,17 +97,17 @@ contract('Player metrics', (accounts) => {
 
     describe("Total number of levels created", async () => {
       it('should return total number of levels created', async () => {
-        const totalLevels = await statistics.getTotalNoOfLevelsCreatedByPlayer(PLAYER_ADDRESS_1);
+        const totalLevels = await statistics.getTotalNoOfLevelInstancesCreatedByPlayer(PLAYER_ADDRESS_1);
         await expect(totalLevels.toNumber()).to.equal(2);
       })
 
       it('should return total number of levels completed', async () => {
-        const totalLevels = await statistics.getTotalNoOfLevelsCompletedByPlayer(PLAYER_ADDRESS_1);
+        const totalLevels = await statistics.getTotalNoOfLevelInstancesCompletedByPlayer(PLAYER_ADDRESS_1);
         await expect(totalLevels.toNumber()).to.equal(1);
       })
 
       it('should return total number of levels failed', async () => {
-        const totalLevels = await statistics.getTotalNoOfLevelsFailedByPlayer(PLAYER_ADDRESS_1);
+        const totalLevels = await statistics.getTotalNoOfLevelInstancesFailedByPlayer(PLAYER_ADDRESS_1);
         await expect(totalLevels.toNumber()).to.equal(2);
       })
 
