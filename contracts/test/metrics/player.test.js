@@ -13,10 +13,12 @@ contract('Player metrics', (accounts) => {
     ETHERNAUT_ADDRESS,
     PLAYER_ADDRESS_1,
     PLAYER_ADDRESS_2,
+    PLAYER_ADDRESS_3,
     LEVEL_FACTORY_ADDRESS_1,
     LEVEL_FACTORY_ADDRESS_2,
     LEVEL_INSTANCE_ADDRESS_1,
-    LEVEL_INSTANCE_ADDRESS_2
+    LEVEL_INSTANCE_ADDRESS_2,
+    LEVEL_INSTANCE_ADDRESS_3
   ] = accounts;
 
   describe('Statistics', function () {
@@ -95,17 +97,17 @@ contract('Player metrics', (accounts) => {
 
     describe("Total number of levels created", async () => {
       it('should return total number of levels created', async () => {
-        const totalLevels = await statistics.getTotalNoOfLevelsCreatedByPlayer(PLAYER_ADDRESS_1);
+        const totalLevels = await statistics.getTotalNoOfLevelInstancesCreatedByPlayer(PLAYER_ADDRESS_1);
         await expect(totalLevels.toNumber()).to.equal(2);
       })
 
       it('should return total number of levels completed', async () => {
-        const totalLevels = await statistics.getTotalNoOfLevelsCompletedByPlayer(PLAYER_ADDRESS_1);
+        const totalLevels = await statistics.getTotalNoOfLevelInstancesCompletedByPlayer(PLAYER_ADDRESS_1);
         await expect(totalLevels.toNumber()).to.equal(1);
       })
 
       it('should return total number of levels failed', async () => {
-        const totalLevels = await statistics.getTotalNoOfLevelsFailedByPlayer(PLAYER_ADDRESS_1);
+        const totalLevels = await statistics.getTotalNoOfFailedSubmissionsByPlayer(PLAYER_ADDRESS_1);
         await expect(totalLevels.toNumber()).to.equal(2);
       })
 
@@ -115,5 +117,15 @@ contract('Player metrics', (accounts) => {
       })
     })
   });
+
+  describe("Calculation of time taken for completion of a level", async () => { 
+    it('should calculate time taken for completion of a level', async () => { 
+      await statistics.createNewInstance(LEVEL_INSTANCE_ADDRESS_1, LEVEL_FACTORY_ADDRESS_1, PLAYER_ADDRESS_3);
+      await statistics.createNewInstance(LEVEL_INSTANCE_ADDRESS_2, LEVEL_FACTORY_ADDRESS_1, PLAYER_ADDRESS_3);
+      await statistics.createNewInstance(LEVEL_INSTANCE_ADDRESS_3, LEVEL_FACTORY_ADDRESS_1, PLAYER_ADDRESS_3);
+      await statistics.submitSuccess(LEVEL_INSTANCE_ADDRESS_3, LEVEL_FACTORY_ADDRESS_1, PLAYER_ADDRESS_3);
+      expect((await statistics.getTimeElapsedForCompletionOfLevel(PLAYER_ADDRESS_3, LEVEL_FACTORY_ADDRESS_1)).toNumber()).to.equal(3);
+    })
+  })
 });
 

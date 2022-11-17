@@ -37,7 +37,7 @@ const loadLevelInstance = (store) => (next) => (action) => {
       );
     };
 
-    // const estimate = await state.contracts.ethernaut.getLevelInstance.estimateGas(action.level.deployedAddress)
+ // const estimate = await state.contracts.ethernaut.getLevelInstance.estimateGas(action.level.deployedAddress)
     const estimate = parseInt(action.level.instanceGas, 10) || 2000000;
     const deployFunds = state.network.web3.utils.toWei(
       parseFloat(action.level.deployFunds, 10).toString(),

@@ -1,15 +1,16 @@
 import prompt from 'prompt';
 import colors from 'colors';
 import Web3 from 'web3';
+import { ethers } from "ethers";
 import fs from 'fs';
 import * as ethutil from '../src/utils/ethutil.js';
 import * as constants from '../src/constants.js';
 import HDWalletProvider from '@truffle/hdwallet-provider';
 import * as gamedata from '../src/gamedata/gamedata.json' assert { type: 'json' };
 import * as EthernautABI from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json' assert { type: 'json' };
-import * as ProxyAdminABI from 'contracts/build/contracts/Proxy/ProxyAdmin.sol/ProxyAdmin.json' assert { type: 'json' };
+import * as ProxyAdminABI from 'contracts/build/contracts/proxy/ProxyAdmin.sol/ProxyAdmin.json' assert { type: 'json' };
 import * as ImplementationABI from 'contracts/build/contracts/metrics/Statistics.sol/Statistics.json' assert { type: 'json' };
-import * as ProxyStatsABI from 'contracts/build/contracts/Proxy/ProxyStats.sol/ProxyStats.json' assert { type: 'json' };
+import * as ProxyStatsABI from 'contracts/build/contracts/proxy/ProxyStats.sol/ProxyStats.json' assert { type: 'json' };
 
 let web3;
 let ethernaut;
@@ -29,7 +30,6 @@ async function exec() {
 
   // Retrieve deployment data for the active network.
   const deployData = loadDeployData(DEPLOY_DATA_PATH);
-
   // Determine which contracts need to be deployed.
   let count = 0;
   if (needsDeploy(deployData.ethernaut)) {
@@ -77,7 +77,7 @@ exec();
 async function deployContracts(deployData) {
   const props = {
     gasPrice: (await web3.eth.getGasPrice()) * 10,
-    gas: 4500000,
+    gas: 10000000000,
   };
 
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
@@ -88,18 +88,21 @@ async function deployContracts(deployData) {
   const Ethernaut = await ethutil.getTruffleContract(EthernautABI.default, {
     from,
   });
-
-  if (needsDeploy(deployData.ethernaut)) {
-    console.log(deployData);
-    console.log(`Deploying Ethernaut.sol...`);
-    ethernaut = await Ethernaut.new(props);
-    console.log(colors.yellow(`  Ethernaut: ${ethernaut.address}`));
-    deployData.ethernaut = ethernaut.address;
-  } else {
-    console.log('Using deployed Ethernaut.sol:', deployData.ethernaut);
-    ethernaut = await Ethernaut.at(deployData.ethernaut);
-    // console.log('ethernaut: ', ethernaut);
+  try {
+    if (needsDeploy(deployData.ethernaut)) {
+      console.log(`Deploying Ethernaut.sol...`);
+      ethernaut = await Ethernaut.new(props);
+      console.log(colors.yellow(`  Ethernaut: ${ethernaut.address}`));
+      deployData.ethernaut = ethernaut.address;
+    } else {
+      console.log('Using deployed Ethernaut.sol:', deployData.ethernaut);
+      ethernaut = await Ethernaut.at(deployData.ethernaut);
+      // console.log('ethernaut: ', ethernaut);
+    }
+  } catch(error) {
+    console.log(error)
   }
+
 
   // Deploy/retrieve Implementation
   await deployImplementation(from, props, deployData);
@@ -240,6 +243,13 @@ async function setStatProxy(from, props) {
   }
 }
 
+function needsSetProxy(proxy) {
+  return (
+    proxy === undefined ||
+    proxy === '0x0000000000000000000000000000000000000000'
+  );
+}
+
 function withoutExtension(str) {
   return str.split('.')[0];
 }
@@ -247,13 +257,6 @@ function withoutExtension(str) {
 function needsDeploy(deployAddress) {
   if (constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) return true;
   return deployAddress === undefined || deployAddress === 'x';
-}
-
-function needsSetProxy(proxy) {
-  return (
-    proxy === undefined ||
-    proxy === '0x0000000000000000000000000000000000000000'
-  );
 }
 
 function initWeb3() {
@@ -269,20 +272,26 @@ function initWeb3() {
         constants.ACTIVE_NETWORK.url
       );
     }
-
+    //web3 = new ethers.providers.Web3Provider(provider)
     web3 = new Web3(provider);
+    ethutil.setWeb3(web3);
 
-    web3.eth.net.isListening((err, res) => {
-      if (err) {
-        console.log('error connecting web3:', err);
-        reject();
-        return;
-      }
-      console.log(colors.gray(`web3 connected: ${res}\n`));
-      ethutil.setWeb3(web3);
-      resolve();
-    });
-  });
+    resolve();
+
+    // web3.eth.net.isListening((err, res) => {
+    //   if (err) {
+    //     console.log('error connecting web3:', err);
+    //     reject();
+    //     return;
+    //   }
+    //   console.log(colors.gray(`web3 connected: ${res}\n`));
+    //   ethutil.setWeb3(web3);
+    //   resolve();
+    // });
+
+  }).catch((error)=>{
+    console.log(error)
+  })
 }
 
 function loadDeployData(path) {

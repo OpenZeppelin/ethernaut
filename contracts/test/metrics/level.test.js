@@ -46,7 +46,7 @@ contract('Level metrics', (accounts) => {
             })
 
             it('checks no of level instances created', async () => {
-                expect((await statistics.getTotalNoOfLevelsCreated()).toNumber()).to.equal(5)
+                expect((await statistics.getTotalNoOfLevelInstancesCreated()).toNumber()).to.equal(5)
             })
 
             it('checks total no of players', async () => { 
@@ -64,11 +64,11 @@ contract('Level metrics', (accounts) => {
             })
 
             it('checks no of completed submissions', async () => {
-                expect((await statistics.getTotalNoOfLevelsCompleted()).toNumber()).to.equal(3)
+                expect((await statistics.getTotalNoOfLevelInstancesCompleted()).toNumber()).to.equal(3)
             })
 
             it('checks no of failed submissions', async () => { 
-                expect((await statistics.getTotalNoOfLevelsFailures()).toNumber()).to.equal(2)
+                expect((await statistics.getTotalNoOfFailedSubmissions()).toNumber()).to.equal(2)
             })
         })
 
@@ -80,13 +80,13 @@ contract('Level metrics', (accounts) => {
             })
 
             it('checks the no of completed instances of a level', async () => {
-                expect((await statistics.getNoOfCompletedSubmissionForLevel(LEVEL_FACTORY_ADDRESS_1)).toNumber()).to.equal(2)
-                expect((await statistics.getNoOfCompletedSubmissionForLevel(LEVEL_FACTORY_ADDRESS_2)).toNumber()).to.equal(1)
+                expect((await statistics.getNoOfCompletedSubmissionsForLevel(LEVEL_FACTORY_ADDRESS_1)).toNumber()).to.equal(2)
+                expect((await statistics.getNoOfCompletedSubmissionsForLevel(LEVEL_FACTORY_ADDRESS_2)).toNumber()).to.equal(1)
             })
 
             it('checks the no of failed instances of a level', async () => {
-                expect((await statistics.getNoOfFailedSubmissionForLevel(LEVEL_FACTORY_ADDRESS_2)).toNumber()).to.equal(1)
-                expect((await statistics.getNoOfFailedSubmissionForLevel(LEVEL_FACTORY_ADDRESS_3)).toNumber()).to.equal(1)
+                expect((await statistics.getNoOfFailedSubmissionsForLevel(LEVEL_FACTORY_ADDRESS_2)).toNumber()).to.equal(1)
+                expect((await statistics.getNoOfFailedSubmissionsForLevel(LEVEL_FACTORY_ADDRESS_3)).toNumber()).to.equal(1)
             })
         })
     });
