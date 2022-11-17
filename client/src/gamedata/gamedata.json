@@ -403,8 +403,23 @@
       "deployFunds": 0,
       "deployId": "26",
       "instanceGas": 5000000,
-      "poweredBy": {"src": "../../imgs/forta_black.svg", "href": "https://forta.org"},
+      "poweredBy": {"src": "../../imgs/forta.svg", "href": "https://forta.org"},
       "author": "openzeppelin&forta"
+    },
+    {
+      "name": "Good Samaritan",
+      "created": "2022-8-4",
+      "difficulty": "5",
+      "description": "goodsamaritan.md",
+      "completedDescription": "goodsamaritan_complete.md",
+      "levelContract": "GoodSamaritanFactory.sol",
+      "instanceContract": "GoodSamaritan.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "27",
+      "instanceGas": 10000000,
+      "author": "ericnordelo"
     }
   ]
 }

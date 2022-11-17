@@ -1,15 +1,16 @@
-import React from 'react';
-import Sidebar from 'react-sidebar';
-import Header from './Header';
-import SidebarContent from './Sidebar';
-import ReactGA from 'react-ga'
-import * as constants from '../constants';
-import { loadTranslations } from '../utils/translations'
+import React from "react";
+import Mosaic from "./Mosaic";
+import ReactGA from "react-ga";
+import * as constants from "../constants";
+import { loadTranslations } from "../utils/translations";
+import parse from "html-react-parser";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { withRouter } from "../hoc/withRouter";
 
 class App extends React.Component {
-
   constructor() {
-    super()
+    super();
 
     // Analytics
     ReactGA.initialize(constants.GOOGLE_ANALYTICS_ID);
@@ -17,38 +18,88 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.location !== prevProps.location) {
-      this.childrenElement.parentElement.scrollTop = 0
+    if (this.props.location !== prevProps.location) {
+      this.childrenElement.parentElement.scrollTop = 0;
     }
   }
 
+  navigateToFirstIncompleteLevel() {
+    // Find first incomplete level
+    let target = this.props.levels[0].deployedAddress;
+    for (let i = 0; i < this.props.levels.length; i++) {
+      const level = this.props.levels[i];
+      const completed = this.props.completedLevels[level.deployedAddress];
+      if (!completed) {
+        target = level.deployedAddress;
+        break;
+      }
+    }
+
+    // Navigate to first incomplete level
+    this.props.navigate(`${constants.PATH_LEVEL_ROOT}${target}`);
+  }
+
   render() {
-    let language = localStorage.getItem('lang')
-    let strings = loadTranslations(language)
+    let language = localStorage.getItem("lang");
+    let strings = loadTranslations(language);
     return (
-      <div style={{ fontFamily: '"Helvetica Neue", Lato, sans-serif'}}>
-        <Header/>
-
-        {/* SPLIT VIEW */}
-        <Sidebar
-          sidebar={<div style={{ width: '200px' }}><SidebarContent/></div>}
-          transitions={false}
-          docked={true}
-          shadow={false}
-          styles={{ root: { top: 62, bottom: 20 }, sidebar: { backgroundColor: '#e5f2fb', boxShadow: 'none' }, content: { overflowX: 'hidden' }}}
-        >
-        <div ref={el => this.childrenElement = el}>
-          {this.props.children}
-        </div>
-        </Sidebar>
-
-        {/* FOOTER */}
-        <footer className="footer text-center text-muted">
-          <small dangerouslySetInnerHTML={{ __html: strings.footer }}></small>
-        </footer>
+      <div>
+        {/* Parent container */}
+        <main>
+          {/* Main title and buttons */}
+          <section className="titles">
+            <a href={constants.PATH_ROOT}>
+              <img
+                id="the-ethernaut"
+                src="../../imgs/the-ethernaut.svg"
+                alt="The-Ethernaut"
+                className="the-ethernaut"
+              />
+            </a>
+            <img
+              src="../../imgs/arrow.svg"
+              id="arrow"
+              alt="arrows"
+              className="arrow"
+            />
+            <ul>
+              <button
+                onClick={() => this.navigateToFirstIncompleteLevel()}
+                className="buttons"
+              >
+                {strings.playNow}
+              </button>
+            </ul>
+          </section>
+          {/* Levels */}
+          <Mosaic></Mosaic>
+          {/* Game description */}
+          <section className="Description">
+            <center>
+              <hr />
+            </center>
+            {parse(strings.info)}
+          </section>
+        </main>
+        {/* Footer */}
+        <footer
+          className="footer"
+          dangerouslySetInnerHTML={{ __html: strings.footer }}
+        ></footer>
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    levels: state.gamedata.levels,
+    completedLevels: state.player.completedLevels,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({}, dispatch);
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "openzeppelin-contracts-08/access/Ownable.sol";
+import "openzeppelin-contracts-08/token/ERC20/ERC20.sol";
 
 interface DelegateERC20 {
   function delegateTransfer(address to, uint256 value, address origSender) external returns (bool);
@@ -23,7 +23,6 @@ contract Forta is IForta {
   mapping(address => uint256) public botRaisedAlerts;
 
   function setDetectionBot(address detectionBotAddress) external override {
-      require(address(usersDetectionBots[msg.sender]) == address(0), "DetectionBot already set");
       usersDetectionBots[msg.sender] = IDetectionBot(detectionBotAddress);
   }
 
@@ -44,7 +43,7 @@ contract CryptoVault {
     address public sweptTokensRecipient;
     IERC20 public underlying;
 
-    constructor(address recipient) public {
+    constructor(address recipient) {
         sweptTokensRecipient = recipient;
     }
 
@@ -89,7 +88,7 @@ contract DoubleEntryPoint is ERC20("DoubleEntryPointToken", "DET"), DelegateERC2
     address public delegatedFrom;
     Forta public forta;
 
-    constructor(address legacyToken, address vaultAddress, address fortaAddress, address playerAddress) public {
+    constructor(address legacyToken, address vaultAddress, address fortaAddress, address playerAddress) {
         delegatedFrom = legacyToken;
         forta = Forta(fortaAddress);
         player = playerAddress;

@@ -7,11 +7,11 @@ let language = localStorage.getItem('lang')
 let strings = loadTranslations(language)
 
 const loadEthernautContract = store => next => action => {
-  if(action.type !== actions.LOAD_ETHERNAUT_CONTRACT) return next(action)
-  if(action.contract !== undefined) return next(action)
+  if (action.type !== actions.LOAD_ETHERNAUT_CONTRACT) return next(action)
+  if (action.contract !== undefined) return next(action)
 
   const state = store.getState()
-  if(
+  if (
     !state.network.web3 ||
     !state.player.address ||
     !state.gamedata.ethernautAddress
@@ -46,7 +46,7 @@ const loadEthernautContract = store => next => action => {
       store.dispatch(actions.syncLevelProgress())
 
       // Auto-restore previoius instance
-      if(state.gamedata.activeLevel)
+      if (state.gamedata.activeLevel)
         store.dispatch(actions.loadLevelInstance(state.gamedata.activeLevel, true, false))
     })
     .catch(() => {
