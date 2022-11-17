@@ -13,7 +13,7 @@
     "openzeppelin-contracts-08": "npm:@openzeppelin/contracts@4.7.3",
     "openzeppelin-test-helpers": "^0.5.1",
     "prompt": "^1.1.0",
-    "web3": "1.8.0"
+    "web3": "1.8.1"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.2.1",
