@@ -39,8 +39,15 @@ const loadLevelInstance = store => next => action => {
       console.error(`@bad ${strings.unableToRetrieveLevelMessage}`, error || '')
     }
 
+    state.contracts.ethernaut.createLevelInstance.estimateGas(action.level.deployedAddress).then((estimatedGas)=>{
+      console.log(state.web3)
+    })
+    const estimate = parseInt(action.level.instanceGas, 10) || 2000000
     const deployFunds = state.network.web3.utils.toWei(parseFloat(action.level.deployFunds, 10).toString(), 'ether')
+
     state.contracts.ethernaut.createLevelInstance(action.level.deployedAddress, {
+      gas: estimate.toString(),
+      gasPrice: 2 * state.network.gasPrice,
       from: state.player.address,
       value: deployFunds
     })
