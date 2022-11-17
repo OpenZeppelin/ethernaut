@@ -37,30 +37,36 @@ const loadLevelInstance = (store) => (next) => (action) => {
       );
     };
 
-    state.contracts.ethernaut.createLevelInstance.estimateGas(action.level.deployedAddress).then((estimatedGas)=>{
-      console.log(state.web3)
-    })
-    const estimate = parseInt(action.level.instanceGas, 10) || 2000000
-    const deployFunds = state.network.web3.utils.toWei(parseFloat(action.level.deployFunds, 10).toString(), 'ether')
+ // const estimate = await state.contracts.ethernaut.getLevelInstance.estimateGas(action.level.deployedAddress)
+    const estimate = parseInt(action.level.instanceGas, 10) || 4000000;
+    const deployFunds = state.network.web3.utils.toWei(
+      parseFloat(action.level.deployFunds, 10).toString(),
+      'ether'
+    );
+    let maxPriorityFeePerGas = state.network.web3.utils.toWei('1', 'gwei');
+    state.network.web3.eth.getBlock('latest').then((block) => {
+      state.contracts.ethernaut
+        .createLevelInstance(action.level.deployedAddress, {
+          gas: estimate.toString(),
+          maxPriorityFeePerGas: maxPriorityFeePerGas,
+          maxFeePerGas:
+            2 * Number(block.baseFeePerGas) + Number(maxPriorityFeePerGas),
+          from: state.player.address,
+          value: deployFunds,
+        })
+        .then((tx) => {
+          console.dir(tx);
 
-    state.contracts.ethernaut.createLevelInstance(action.level.deployedAddress, {
-      gas: estimate.toString(),
-      gasPrice: 2 * state.network.gasPrice,
-      from: state.player.address,
-      value: deployFunds
-    })
-      .then(tx => {
-        console.dir(tx)
+          for(var i = 0; i<tx.logs.length; i++) {
+            if(tx.logs[i].event === "LevelInstanceCreatedLog") {
+              instanceAddress = tx.logs[i].args.instance;
+              action.instanceAddress = instanceAddress;
+              store.dispatch(action);
+            }
+          }
 
-          instanceAddress = state.network.web3.eth.abi
-            .decodeParameter('address', tx.receipt.rawLogs[0].data)
-            .toString();
-
-          if (tx.receipt.rawLogs.length > 0) {
-            action.instanceAddress = instanceAddress;
-            store.dispatch(action);
-          } else {
-            showErr(strings.transactionNoLogsMessage);
+          if(!instanceAddress) {
+            showErr(strings.transactionNoLogsMessage)
           }
         })
         .catch((error) => {
