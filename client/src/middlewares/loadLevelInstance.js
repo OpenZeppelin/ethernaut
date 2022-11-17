@@ -38,7 +38,7 @@ const loadLevelInstance = (store) => (next) => (action) => {
     };
 
  // const estimate = await state.contracts.ethernaut.getLevelInstance.estimateGas(action.level.deployedAddress)
-    const estimate = parseInt(action.level.instanceGas, 10) || 2000000;
+    const estimate = parseInt(action.level.instanceGas, 10) || 4000000;
     const deployFunds = state.network.web3.utils.toWei(
       parseFloat(action.level.deployFunds, 10).toString(),
       'ether'
@@ -57,15 +57,16 @@ const loadLevelInstance = (store) => (next) => (action) => {
         .then((tx) => {
           console.dir(tx);
 
-          instanceAddress = state.network.web3.eth.abi
-            .decodeParameter('address', tx.receipt.rawLogs[0].data)
-            .toString();
+          for(var i = 0; i<tx.logs.length; i++) {
+            if(tx.logs[i].event === "LevelInstanceCreatedLog") {
+              instanceAddress = tx.logs[i].args.instance;
+              action.instanceAddress = instanceAddress;
+              store.dispatch(action);
+            }
+          }
 
-          if (tx.receipt.rawLogs.length > 0) {
-            action.instanceAddress = instanceAddress;
-            store.dispatch(action);
-          } else {
-            showErr(strings.transactionNoLogsMessage);
+          if(!instanceAddress) {
+            showErr(strings.transactionNoLogsMessage)
           }
         })
         .catch((error) => {
