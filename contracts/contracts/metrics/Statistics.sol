@@ -8,7 +8,7 @@ contract Statistics is Initializable {
     address[] public levels;
     uint256 private globalNoOfInstancesCreated;
     uint256 private globalNoOfInstancesCompleted;
-    uint256 private globalNoOfInstancesFailures;
+    uint256 private globalNoOfFailedSubmissions;
     struct LevelInstance {
         address instance;
         bool isCompleted;
@@ -19,12 +19,12 @@ contract Statistics is Initializable {
     struct Level {
         uint256 noOfInstancesCreated;
         uint256 noOfInstancesSubmitted_Success;
-        uint256 noOfInstancesSubmitted_Fail;
+        uint256 noOfSubmissions_Failed;
     }
     mapping(address => uint256) private globalNoOfLevelsCompletedByPlayer;
     mapping(address => uint256) private globalNoOfInstancesCreatedByPlayer;
     mapping(address => uint256) private globalNoOfInstancesCompletedByPlayer;
-    mapping(address => uint256) private globalNoOfInstancesFailuresByPlayer;
+    mapping(address => uint256) private globalNoOfFailedSubmissionsByPlayer;
     mapping(address => Level) private levelStats;
     mapping(address => mapping(address => uint256)) private firstInstanceCreationTime;
     mapping(address => mapping(address => uint256)) private firstSubmissionTime;
@@ -131,9 +131,9 @@ contract Statistics is Initializable {
             "Level already completed"
         );
         playerStats[player][level].timeSubmitted.push(block.timestamp);
-        levelStats[level].noOfInstancesSubmitted_Fail++;
-        globalNoOfInstancesFailures++;
-        globalNoOfInstancesFailuresByPlayer[player]++;
+        levelStats[level].noOfSubmissions_Failed++;
+        globalNoOfFailedSubmissions++;
+        globalNoOfFailedSubmissionsByPlayer[player]++;
     }
 
     function saveNewLevel(address level)
@@ -167,13 +167,13 @@ contract Statistics is Initializable {
     }
 
     // number of levels failed by player
-    function getTotalNoOfLevelInstancesFailedByPlayer(address player)
+    function getTotalNoOfFailedSubmissionsByPlayer(address player)
         public
         view
         playerExistsCheck(player)
         returns (uint256)
     {
-        return globalNoOfInstancesFailuresByPlayer[player];
+        return globalNoOfFailedSubmissionsByPlayer[player];
     }
 
     function getTotalNoOfLevelsCompletedByPlayer(address player)
@@ -268,21 +268,21 @@ contract Statistics is Initializable {
         return globalNoOfInstancesCompleted;
     }
 
-    function getTotalNoOfLevelInstancesFailures() public view returns (uint256) {
-        return globalNoOfInstancesFailures;
+    function getTotalNoOfFailedSubmissions() public view returns (uint256) {
+        return globalNoOfFailedSubmissions;
     }
 
     function getTotalNoOfPlayers() public view returns (uint256) {
         return players.length;
     }
 
-    function getNoOfFailedSubmissionForLevel(address level)
+    function getNoOfFailedSubmissionsForLevel(address level)
         public
         view
         levelExistsCheck(level)
         returns (uint256)
     {
-        return levelStats[level].noOfInstancesSubmitted_Fail;
+        return levelStats[level].noOfSubmissions_Failed;
     }
 
     function getNoOfInstancesForLevel(address level)
@@ -294,7 +294,7 @@ contract Statistics is Initializable {
         return levelStats[level].noOfInstancesCreated;
     }
 
-    function getNoOfCompletedSubmissionForLevel(address level)
+    function getNoOfCompletedSubmissionsForLevel(address level)
         public
         view
         levelExistsCheck(level)
