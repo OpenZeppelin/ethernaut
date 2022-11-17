@@ -37,13 +37,12 @@ const loadLevelInstance = (store) => (next) => (action) => {
       );
     };
 
- // const estimate = await state.contracts.ethernaut.getLevelInstance.estimateGas(action.level.deployedAddress)
     const estimate = parseInt(action.level.instanceGas, 10) || 4000000;
     const deployFunds = state.network.web3.utils.toWei(
       parseFloat(action.level.deployFunds, 10).toString(),
       'ether'
     );
-    let maxPriorityFeePerGas = state.network.web3.utils.toWei('1', 'gwei');
+    let maxPriorityFeePerGas = state.network.web3.utils.toWei('2.5', 'gwei');
     state.network.web3.eth.getBlock('latest').then((block) => {
       state.contracts.ethernaut
         .createLevelInstance(action.level.deployedAddress, {
