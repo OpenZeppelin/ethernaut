@@ -29,7 +29,6 @@ async function exec() {
 
   // Retrieve deployment data for the active network.
   const deployData = loadDeployData(DEPLOY_DATA_PATH);
-
   // Determine which contracts need to be deployed.
   let count = 0;
   if (needsDeploy(deployData.ethernaut)) {
@@ -282,7 +281,8 @@ function initWeb3() {
       ethutil.setWeb3(web3);
       resolve();
     });
-  });
+
+  })
 }
 
 function loadDeployData(path) {
