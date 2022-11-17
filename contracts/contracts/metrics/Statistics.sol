@@ -27,7 +27,7 @@ contract Statistics is Initializable {
     mapping(address => uint256) private globalNoOfFailedSubmissionsByPlayer;
     mapping(address => Level) private levelStats;
     mapping(address => mapping(address => uint256)) private levelFirstInstanceCreationTime;
-    mapping(address => mapping(address => uint256)) private levelFirstSubmissionTime;
+    mapping(address => mapping(address => uint256)) private levelFirstCompletionTime;
     mapping(address => mapping(address => LevelInstance)) private playerStats;
     mapping(address => bool) private playerExists;
     mapping(address => bool) private levelExists;
@@ -101,9 +101,9 @@ contract Statistics is Initializable {
             "Level already completed"
         );
         // If it is the first submission in the level
-        if(levelFirstSubmissionTime[player][level] == 0) {
+        if(levelFirstCompletionTime[player][level] == 0) {
             globalNoOfLevelsCompletedByPlayer[player]++;
-            levelFirstSubmissionTime[player][level] = block.timestamp;
+            levelFirstCompletionTime[player][level] = block.timestamp;
         }
         playerStats[player][level].timeSubmitted.push(block.timestamp);
         playerStats[player][level].timeCompleted = block.timestamp;
@@ -221,9 +221,9 @@ contract Statistics is Initializable {
         levelExistsCheck(level)
         returns (uint256)
     {
-        require(levelFirstSubmissionTime[player][level] != 0, "Level not completed");
+        require(levelFirstCompletionTime[player][level] != 0, "Level not completed");
         return
-            levelFirstSubmissionTime[player][level] - levelFirstInstanceCreationTime[player][level];
+            levelFirstCompletionTime[player][level] - levelFirstInstanceCreationTime[player][level];
     }
 
     // Get a specific submission time per level and player
