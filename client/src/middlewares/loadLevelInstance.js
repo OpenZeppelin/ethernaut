@@ -55,7 +55,7 @@ const loadLevelInstance = (store) => (next) => (action) => {
       ) {
         state.contracts.ethernaut
         .createLevelInstance(action.level.deployedAddress, {
-          gas: 1.5*estimate.toString(),
+          gas: 2*estimate.toString(),
           maxPriorityFeePerGas: maxPriorityFeePerGas,
           maxFeePerGas: 2 * Number(blockBaseFee) + Number(maxPriorityFeePerGas),
           from: state.player.address,
