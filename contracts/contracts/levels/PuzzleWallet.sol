@@ -1,15 +1,14 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 pragma experimental ABIEncoderV2;
 
-import "@openzeppelin/contracts/math/SafeMath.sol";
-import "@openzeppelin/contracts/proxy/UpgradeableProxy.sol";
+import "../helpers/UpgradeableProxy-08.sol";
 
 contract PuzzleProxy is UpgradeableProxy {
     address public pendingAdmin;
     address public admin;
 
-    constructor(address _admin, address _implementation, bytes memory _initData) UpgradeableProxy(_implementation, _initData) public {
+    constructor(address _admin, address _implementation, bytes memory _initData) UpgradeableProxy(_implementation, _initData) {
         admin = _admin;
     }
 
@@ -33,7 +32,6 @@ contract PuzzleProxy is UpgradeableProxy {
 }
 
 contract PuzzleWallet {
-    using SafeMath for uint256;
     address public owner;
     uint256 public maxBalance;
     mapping(address => bool) public whitelisted;
@@ -62,12 +60,12 @@ contract PuzzleWallet {
 
     function deposit() external payable onlyWhitelisted {
       require(address(this).balance <= maxBalance, "Max balance reached");
-      balances[msg.sender] = balances[msg.sender].add(msg.value);
+      balances[msg.sender] += msg.value;
     }
 
     function execute(address to, uint256 value, bytes calldata data) external payable onlyWhitelisted {
         require(balances[msg.sender] >= value, "Insufficient balance");
-        balances[msg.sender] = balances[msg.sender].sub(value);
+        balances[msg.sender] -= value;
         (bool success, ) = to.call{ value: value }(data);
         require(success, "Execution failed");
     }

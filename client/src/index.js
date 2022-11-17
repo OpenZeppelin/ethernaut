@@ -4,7 +4,7 @@ import MediaQuery from "react-responsive";
 import { Provider } from "react-redux";
 import { store, history } from "./store";
 import { syncHistoryWithStore } from "react-router-redux";
-import { Router, Route, Switch } from "react-router";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import * as ethutil from "./utils/ethutil";
 import "bootstrap/dist/css/bootstrap.css";
 import "./styles/app.css";
@@ -90,37 +90,32 @@ if (!window.web3) {
  root.render(
     <Provider store={store}>
       <Router history={syncHistoryWithStore(history, store)}>
-        <Route
-          path={constants.PATH_ROOT}
-          children={({ location }) => (
-            <Suspense location={location} fallback={<div>Loading...</div>}>
-              <MediaQuery minWidth={880.1}>
-                <Header></Header>
-                <Switch>
-                  <Route path={constants.PATH_HELP} component={Help} />
-                  <Route path={constants.PATH_LEVEL} component={Level} />
-                  <Route path={constants.PATH_STATS} component={Stats} />
-                  <Route exact path="/" component={App} />
-                  <Route path="/" component={NotFound404} />
-                </Switch>
-              </MediaQuery>
-              <MediaQuery maxWidth={885}>
-                <Header></Header>
-                <div className="unfitScreenSize">
-                  <h3>You need a larger screen to play</h3>
-                  <a href={constants.PATH_ROOT}>
-                    <img
-                      id="the-ethernaut"
-                      src="../../imgs/the-ethernaut.svg"
-                      alt="The-Ethernaut"
-                      className="the-ethernaut"
-                    />
-                  </a>
-                </div>
-              </MediaQuery>
-            </Suspense>
-          )}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+            <MediaQuery minWidth={880.1}>
+              <Header></Header>
+              <Routes>
+                <Route path={constants.PATH_HELP} element={<Help/>} />
+                <Route path={constants.PATH_LEVEL} element={<Level/>} />
+                <Route path={constants.PATH_STATS} element={<Stats/>} />
+                <Route exact path="/" element={<App/>} />
+                <Route path="/" element={<NotFound404/>} />
+              </Routes>
+            </MediaQuery>
+            <MediaQuery maxWidth={885}>
+              <Header></Header>
+              <div className="unfitScreenSize">
+                <h3>You need a larger screen to play</h3>
+                <a href={constants.PATH_ROOT}>
+                  <img
+                    id="the-ethernaut"
+                    src="../../imgs/the-ethernaut.svg"
+                    alt="The-Ethernaut"
+                    className="the-ethernaut"
+                  />
+                </a>
+              </div>
+            </MediaQuery>
+          </Suspense>
       </Router>
     </Provider>
   );

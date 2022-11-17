@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router";
+import { withRouter } from "../hoc/withRouter"
 import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions";
@@ -24,22 +24,20 @@ class Header extends React.Component {
   }
 
   static propTypes = {
-    match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
   };
 
   componentDidMount() {
 
-    var black = getComputedStyle(document.documentElement).getPropertyValue(
-      "--black"
-    );
+    // var black = getComputedStyle(document.documentElement).getPropertyValue(
+    //   "--black"
+    // );
 
-    var primaryColor = getComputedStyle(document.documentElement).getPropertyValue(
-      "--primary-color"
-    );
+    // var primaryColor = getComputedStyle(document.documentElement).getPropertyValue(
+    //   "--primary-color"
+    // );
 
-    if(primaryColor === black) this.toggleDarkMode()
+    // if(primaryColor === black) this.toggleDarkMode()
   }
 
   componentDidUpdate(prevProps) {
