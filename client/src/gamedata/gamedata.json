@@ -12,7 +12,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "0",
-      "instanceGas": 800000,
+      "instanceGas": 1500000,
       "author": "ajsantander"
     },
     {
