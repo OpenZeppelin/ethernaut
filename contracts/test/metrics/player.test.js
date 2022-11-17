@@ -107,7 +107,7 @@ contract('Player metrics', (accounts) => {
       })
 
       it('should return total number of levels failed', async () => {
-        const totalLevels = await statistics.getTotalNoOfLevelInstancesFailedByPlayer(PLAYER_ADDRESS_1);
+        const totalLevels = await statistics.getTotalNoOfFailedSubmissionsByPlayer(PLAYER_ADDRESS_1);
         await expect(totalLevels.toNumber()).to.equal(2);
       })
 
