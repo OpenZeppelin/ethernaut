@@ -7,7 +7,7 @@ contract Statistics is Initializable {
     address[] public players;
     address[] public levels;
     uint256 private globalNoOfInstancesCreated;
-    uint256 private globalNoOfInstancesSolved;
+    uint256 private globalNoOfInstancesCompleted;
     uint256 private globalNoOfInstancesFailures;
     struct LevelInstance {
         address instance;
@@ -21,9 +21,9 @@ contract Statistics is Initializable {
         uint256 noOfInstancesSubmitted_Success;
         uint256 noOfInstancesSubmitted_Fail;
     }
-    mapping(address => uint256) private globalNoOfLevelsCreatedByPlayer;
+    mapping(address => uint256) private globalNoOfLevelsCompletedByPlayer;
     mapping(address => uint256) private globalNoOfInstancesCreatedByPlayer;
-    mapping(address => uint256) private globalNoOfInstancesSolvedByPlayer;
+    mapping(address => uint256) private globalNoOfInstancesCompletedByPlayer;
     mapping(address => uint256) private globalNoOfInstancesFailuresByPlayer;
     mapping(address => Level) private levelStats;
     mapping(address => mapping(address => uint256)) private firstInstanceCreationTime;
@@ -65,8 +65,8 @@ contract Statistics is Initializable {
             players.push(player);
             playerExists[player] = true;
         }
+        // If it is the first instance of the level
         if(playerStats[player][level].instance == address(0)) {
-            globalNoOfLevelsCreatedByPlayer[player]++;
             firstInstanceCreationTime[player][level] = block.timestamp;
         }
         playerStats[player][level] = LevelInstance(
@@ -100,15 +100,17 @@ contract Statistics is Initializable {
             playerStats[player][level].isCompleted == false,
             "Level already completed"
         );
+        // If it is the first submission in the level
         if(firstSubmissionTime[player][level] == 0) {
+            globalNoOfLevelsCompletedByPlayer[player]++;
             firstSubmissionTime[player][level] = block.timestamp;
         }
         playerStats[player][level].timeSubmitted.push(block.timestamp);
         playerStats[player][level].timeCompleted = block.timestamp;
         playerStats[player][level].isCompleted = true;
         levelStats[level].noOfInstancesSubmitted_Success++;
-        globalNoOfInstancesSolved++;
-        globalNoOfInstancesSolvedByPlayer[player]++;
+        globalNoOfInstancesCompleted++;
+        globalNoOfInstancesCompletedByPlayer[player]++;
     }
 
     function submitFailure(
@@ -145,7 +147,7 @@ contract Statistics is Initializable {
 
     // Player specific metrics
     // number of levels created by player
-    function getTotalNoOfLevelsCreatedByPlayer(address player)
+    function getTotalNoOfLevelInstancesCreatedByPlayer(address player)
         public
         view
         playerExistsCheck(player)
@@ -155,23 +157,32 @@ contract Statistics is Initializable {
     }
 
     // number of levels completed by player
-    function getTotalNoOfLevelsCompletedByPlayer(address player)
+    function getTotalNoOfLevelInstancesCompletedByPlayer(address player)
         public
         view
         playerExistsCheck(player)
         returns (uint256)
     {
-        return globalNoOfInstancesSolvedByPlayer[player];
+        return globalNoOfInstancesCompletedByPlayer[player];
     }
 
     // number of levels failed by player
-    function getTotalNoOfLevelsFailedByPlayer(address player)
+    function getTotalNoOfLevelInstancesFailedByPlayer(address player)
         public
         view
         playerExistsCheck(player)
         returns (uint256)
     {
         return globalNoOfInstancesFailuresByPlayer[player];
+    }
+
+    function getTotalNoOfLevelsCompletedByPlayer(address player)
+        public
+        view
+        playerExistsCheck(player)
+        returns (uint256)
+    {
+        return globalNoOfLevelsCompletedByPlayer[player];
     }
 
     // number of failed submissions of a specific level by player (0 if player didn't play the level)
@@ -191,7 +202,7 @@ contract Statistics is Initializable {
                 : 0;
     }
 
-    // Is a specific level solved by a specific player ?
+    // Is a specific level completed by a specific player ?
     function isLevelCompleted(address player, address level)
         public
         view
@@ -202,7 +213,7 @@ contract Statistics is Initializable {
         return playerStats[player][level].isCompleted;
     }
 
-    // How much time a player took to solve a level (in seconds)
+    // How much time a player took to complete a level (in seconds)
     function getTimeElapsedForCompletionOfLevel(address player, address level)
         public
         view
@@ -254,7 +265,7 @@ contract Statistics is Initializable {
     }
 
     function getTotalNoOfLevelsCompleted() public view returns (uint256) {
-        return globalNoOfInstancesSolved;
+        return globalNoOfInstancesCompleted;
     }
 
     function getTotalNoOfLevelsFailures() public view returns (uint256) {
