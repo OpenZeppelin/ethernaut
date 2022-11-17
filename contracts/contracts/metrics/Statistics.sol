@@ -26,8 +26,8 @@ contract Statistics is Initializable {
     mapping(address => uint256) private globalNoOfInstancesCompletedByPlayer;
     mapping(address => uint256) private globalNoOfFailedSubmissionsByPlayer;
     mapping(address => Level) private levelStats;
-    mapping(address => mapping(address => uint256)) private firstInstanceCreationTime;
-    mapping(address => mapping(address => uint256)) private firstSubmissionTime;
+    mapping(address => mapping(address => uint256)) private levelFirstInstanceCreationTime;
+    mapping(address => mapping(address => uint256)) private levelFirstSubmissionTime;
     mapping(address => mapping(address => LevelInstance)) private playerStats;
     mapping(address => bool) private playerExists;
     mapping(address => bool) private levelExists;
@@ -67,7 +67,7 @@ contract Statistics is Initializable {
         }
         // If it is the first instance of the level
         if(playerStats[player][level].instance == address(0)) {
-            firstInstanceCreationTime[player][level] = block.timestamp;
+            levelFirstInstanceCreationTime[player][level] = block.timestamp;
         }
         playerStats[player][level] = LevelInstance(
             instance,
@@ -101,9 +101,9 @@ contract Statistics is Initializable {
             "Level already completed"
         );
         // If it is the first submission in the level
-        if(firstSubmissionTime[player][level] == 0) {
+        if(levelFirstSubmissionTime[player][level] == 0) {
             globalNoOfLevelsCompletedByPlayer[player]++;
-            firstSubmissionTime[player][level] = block.timestamp;
+            levelFirstSubmissionTime[player][level] = block.timestamp;
         }
         playerStats[player][level].timeSubmitted.push(block.timestamp);
         playerStats[player][level].timeCompleted = block.timestamp;
@@ -221,9 +221,9 @@ contract Statistics is Initializable {
         levelExistsCheck(level)
         returns (uint256)
     {
-        require(firstSubmissionTime[player][level] != 0, "Level not completed");
+        require(levelFirstSubmissionTime[player][level] != 0, "Level not completed");
         return
-            firstSubmissionTime[player][level] - firstInstanceCreationTime[player][level];
+            levelFirstSubmissionTime[player][level] - levelFirstInstanceCreationTime[player][level];
     }
 
     // Get a specific submission time per level and player
