@@ -231,10 +231,13 @@ async function setStatProxy(from, props) {
     ethernaut.address
   );
 
-  await ethernautContract.methods.setStatistics(proxyStats.address).send({
-    from,
-    ...props,
-  });
+  let proxy_address = await ethernaut.statistics();
+  if (needsSetProxy(proxy_address)) {
+    await ethernautContract.methods.setStatistics(proxyStats.address).send({
+      from,
+      ...props,
+    });
+  }
 }
 
 function withoutExtension(str) {
@@ -244,6 +247,13 @@ function withoutExtension(str) {
 function needsDeploy(deployAddress) {
   if (constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) return true;
   return deployAddress === undefined || deployAddress === 'x';
+}
+
+function needsSetProxy(proxy) {
+  return (
+    proxy === undefined ||
+    proxy === '0x0000000000000000000000000000000000000000'
+  );
 }
 
 function initWeb3() {
