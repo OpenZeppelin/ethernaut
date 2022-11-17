@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
 import './base/Level.sol';
 import './Privacy.sol';
@@ -16,7 +16,7 @@ contract PrivacyFactory is Level {
     return address(instance);
   }
 
-  function validateInstance(address payable _instance, address) override public returns (bool) {
+  function validateInstance(address payable _instance, address) override public view returns (bool) {
     Privacy instance = Privacy(_instance);
     return instance.locked() == false;
   }

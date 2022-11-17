@@ -2,7 +2,7 @@
 
 pragma solidity ^0.6.0;
 
-import './base/Level.sol';
+import './base/Level-06.sol';
 import './Reentrance.sol';
 
 contract ReentranceFactory is Level {

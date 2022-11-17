@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
 import './base/Level.sol';
 import './Recovery.sol';
@@ -23,7 +23,7 @@ contract RecoveryFactory is Level {
     return address(recoveryInstance);
   }
 
-  function validateInstance(address payable _instance, address) override public returns (bool) {
+  function validateInstance(address payable _instance, address) override public view returns (bool) {
     return address(lostAddress[_instance]).balance == 0;
   }
 }

@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
 import './base/Level.sol';
 import './DexTwo.sol';
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "openzeppelin-contracts-08/token/ERC20/ERC20.sol";
 
 
 contract DexTwoFactory is Level {
@@ -33,7 +33,7 @@ contract DexTwoFactory is Level {
     return instanceAddress;
   }
 
-  function validateInstance(address payable _instance, address) override public returns (bool) {
+  function validateInstance(address payable _instance, address) override public view returns (bool) {
     address token1 = DexTwo(_instance).token1();
     address token2 = DexTwo(_instance).token2();
     return IERC20(token1).balanceOf(_instance) == 0 && ERC20(token2).balanceOf(_instance) == 0;
