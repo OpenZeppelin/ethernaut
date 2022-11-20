@@ -54,12 +54,12 @@ In order to install, build, and run Ethernaut locally, follow these instructions
     yarn start:ethernaut
     ```
 
-### Running locally (ropsten network)
+### Running locally (goerli network)
 
 The same as using the local network but steps 2, 3 and 6 are not necessary.
 
 In this case, replace point 5 with:
-5. Set client/src/constants.js ACTIVE_NETWORK to NETWORKS.ROPSTEN
+5. Set client/src/constants.js ACTIVE_NETWORK to NETWORKS.GOERLI
 
 ### Running tests
 
@@ -109,17 +109,17 @@ Let's suppose that we are creating the level "King" (which is already created an
 
 ### Deployment
 
-To deploy the contracts on ropsten, first set the ACTIVE_NETWORK variable in constants.js and then edit gamedata.json. This file keeps a history of all level instances in each level data's deployed_ropsten array. To deploy a new instance, add an "x" entry to the array, like so:
+To deploy the contracts on goerli, first set the ACTIVE_NETWORK variable in constants.js and then edit gamedata.json. This file keeps a history of all level instances in each level data's deployed_goerli array. To deploy a new instance, add an "x" entry to the array, like so:
 
 ```json
-"deployed_ropsten": [
+"deployed_goerli": [
   "x",
   "0x4b1d5eb6cd2849c7890bcacd63a6855d1c0e79d5",
   "0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c"
 ],
 ```
 
-Then run `yarn deploy:contracts`. This action will effectively deploy a new version of the level data item whose deployed_ropsten array was updated, and will point the ethernaut dapp to use this new deployed contract instance for the level.
+Then run `yarn deploy:contracts`. This action will effectively deploy a new version of the level data item whose deployed_goerli array was updated, and will point the ethernaut dapp to use this new deployed contract instance for the level.
 
 ### Modify or add new languages
  
