@@ -46,7 +46,8 @@ const loadLevelInstance = (store) => (next) => (action) => {
     getGasFeeDetails(state.network).then(gasFeeDetails => {
       state.contracts.ethernaut
         .createLevelInstance(action.level.deployedAddress, {
-          gas: 2 * estimate.toString(),
+          // 2.5 * estimate is required for level creation to succeed in arbitrum goerli
+          gas: 2.5 * estimate.toString(),
           ...gasFeeDetails,
           from: state.player.address,
           value: deployFunds,
