@@ -1,7 +1,7 @@
 import * as ethutil from '../utils/ethutil';
 import * as actions from '../actions';
 import { loadTranslations } from '../utils/translations';
-import * as constants from "../constants";
+import { getGasFeeDetails } from '../utils/ethutil'
 
 let language = localStorage.getItem('lang');
 let strings = loadTranslations(language);
@@ -43,73 +43,29 @@ const loadLevelInstance = (store) => (next) => (action) => {
       parseFloat(action.level.deployFunds, 10).toString(),
       'ether'
     );
-    let maxPriorityFeePerGas = state.network.web3.utils.toWei('2.5', 'gwei');
-    state.network.web3.eth.getBlock('latest').then((block) => {
-      var blockBaseFee = block.baseFeePerGas ? block.baseFeePerGas : 1;
-      
-      // Try EIP-1559
-      if(
-        state.network.networkId.toString() === constants.NETWORKS.MUMBAI.id ||
-        state.network.networkId.toString() === constants.NETWORKS.SEPOLIA.id ||
-        state.network.networkId.toString() === constants.NETWORKS.GOERLI.id
-      ) {
-        state.contracts.ethernaut
+    getGasFeeDetails(state.network).then(gasFeeDetails => {
+      state.contracts.ethernaut
         .createLevelInstance(action.level.deployedAddress, {
-          gas: 2*estimate.toString(),
-          maxPriorityFeePerGas: maxPriorityFeePerGas,
-          maxFeePerGas: 2 * Number(blockBaseFee) + Number(maxPriorityFeePerGas),
+          gas: 2 * estimate.toString(),
+          ...gasFeeDetails,
           from: state.player.address,
           value: deployFunds,
         })
         .then((tx) => {
-          console.dir(tx);
-
-          for(var i = 0; i<tx.logs.length; i++) {
-            if(tx.logs[i].event === "LevelInstanceCreatedLog") {
+          for (var i = 0; i < tx.logs.length; i++) {
+            if (tx.logs[i].event === "LevelInstanceCreatedLog") {
               instanceAddress = tx.logs[i].args.instance;
               action.instanceAddress = instanceAddress;
               store.dispatch(action);
             }
           }
-
-          if(!instanceAddress) {
+          if (!instanceAddress) {
             showErr(strings.transactionNoLogsMessage)
           }
         }).catch((error) => {
           showErr(error)
         });
-      } else {
-        // Try legacy
-
-        state.network.web3.eth.getGasPrice()
-        .then((gasPrice) => {
-          state.contracts.ethernaut.createLevelInstance(action.level.deployedAddress, {
-            gas: 2*estimate.toString(),
-            gasPrice: Number(2 * gasPrice),
-            from: state.player.address,
-            value: deployFunds
-          }).then(tx => {
-            console.dir(tx)
-            instanceAddress = tx.logs[0].args.instance;
-  
-            instanceAddress = tx.logs.find(l => l.event === 'LevelInstanceCreatedLog').args.instance;
-            if(tx.logs.length > 0) {
-              action.instanceAddress = instanceAddress
-              store.dispatch(action)
-            }
-  
-            else {
-              showErr(strings.transactionNoLogsMessage)
-            }
-          }).catch((error2) => {
-            showErr(error2)
-          })
-        });
-      }
-        
-    });
-
-    return;
+    })
   }
 
   // Get instance from address
