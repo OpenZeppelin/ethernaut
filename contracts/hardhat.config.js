@@ -1,5 +1,6 @@
 require('@nomiclabs/hardhat-truffle5');
 require('@openzeppelin/hardhat-upgrades');
+require("hardhat-gas-reporter");
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
