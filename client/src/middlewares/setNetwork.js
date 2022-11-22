@@ -11,7 +11,7 @@ const setNetwork = store => next => action => {
   if (action.type !== actions.SET_NETWORK_ID) return next(action) //we need to reload the window here
 
   if (checkWrongNetwork(action.id)) {
-    alert(`You are on wrong network. Currently the game support these networks ${JSON.stringify(Object.keys(constants.NETWORKS).filter((key) => key !== "LOCAL" && key !== "UNDEFINED"))}`)
+    alert(`You are on the wrong network. Currently the game supports these networks ${JSON.stringify(Object.keys(constants.NETWORKS).filter((key) => key !== "LOCAL" && key !== "UNDEFINED"))}`)
     const elements = document.querySelectorAll('.progress-bar-wrapper');
     elements[0].style.display = 'flex';
 
