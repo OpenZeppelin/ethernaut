@@ -387,7 +387,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "25",
-      "instanceGas": 5000000,
+      "instanceGas": 2000000,
       "author": "openzeppelin"
     },
     {
@@ -418,7 +418,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "27",
-      "instanceGas": 10000000,
+      "instanceGas": 2500000,
       "author": "ericnordelo"
     }
   ]
