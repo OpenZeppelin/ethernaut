@@ -10,6 +10,12 @@ export const SENTRY_DSN = process.env.REACT_APP_SENTRY_DSN
 // Networks for operations
 export const NETWORKS = {
   UNDEFINED: undefined,
+  LOCAL: {
+    name: 'local',
+    id: '1337',
+    url: 'http://localhost',
+    port: 8545
+  },
   GOERLI: {
     name: 'goerli',
     id: '5',
@@ -102,7 +108,7 @@ export const GOOGLE_ANALYTICS_ID = 'UA-85043059-4'
 
 // Owner addresses
 export const ADDRESSES = {
-  // [NETWORKS.LOCAL.name]: undefined,
+  [NETWORKS.LOCAL.name]: undefined,
   [NETWORKS.MUMBAI.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
   [NETWORKS.GOERLI.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
   [NETWORKS.SEPOLIA.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
