@@ -52,7 +52,6 @@ const activateLevel = store => next => action => {
 
   // -> 404
   if(!activeLevel || !isLocalDeployed(network_id)) {
-    alert('here')
     store.dispatch(push(constants.PATH_NOT_FOUND))
     return
   }
