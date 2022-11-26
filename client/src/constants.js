@@ -89,7 +89,7 @@ export const NETWORKS_INGAME = {
     currencyName: 'Arbitrum-ETH',
     currencySymbol: "ETH",
     rpcUrl: `https://goerli-rollup.arbitrum.io/rpc`,
-    blockExplorer: 'https://goerli-rollup-explorer.arbitrum.io'
+    blockExplorer: 'https://goerli.arbiscan.io'
   }
 }
 

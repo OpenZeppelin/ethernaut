@@ -1,5 +1,6 @@
 import * as ethjs from 'ethereumjs-util';
 import TruffleContract from '@truffle/contract';
+import * as constants from "../constants";
 
 let web3;
 let duplicateTransactions = new Map();
@@ -223,3 +224,24 @@ export const attachLogger = () => {
   console.error("Can't find a valid provider, make sure you have Metamask installed and that any other wallet plugin is disabled");
   return;
 }
+
+export const getGasFeeDetails = async (network) => {
+  if (
+    network.networkId.toString() === constants.NETWORKS.MUMBAI.id ||
+    network.networkId.toString() === constants.NETWORKS.SEPOLIA.id ||
+    network.networkId.toString() === constants.NETWORKS.GOERLI.id
+  ) {
+    const maxPriorityFeePerGas = network.web3.utils.toWei('2.5', 'gwei');
+    const block = await network.web3.eth.getBlock('latest')
+    const blockBaseFee = block.baseFeePerGas ? block.baseFeePerGas : 1;
+    return {
+      maxPriorityFeePerGas,
+      maxFeePerGas: 2 * Number(blockBaseFee) + Number(maxPriorityFeePerGas)
+    }
+  } else { 
+    const gasPrice = await network.web3.eth.getGasPrice()
+    return {
+      gasPrice: 2 * gasPrice
+    }
+  }
+} 
