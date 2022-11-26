@@ -8,6 +8,8 @@ export const setWeb3 = (_web3) => {
   web3 = _web3;
 }
 
+export const getWeb3 = () => web3;
+
 export const getTruffleContract = (jsonABI, defaults = {}) => {
   // // HACK: Doing this here instead of `import` so that the project uses the web3.js version
   // // defined in `package.json` instead of relying on Truffle dependencies (that use an old version).

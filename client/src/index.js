@@ -82,7 +82,7 @@ if (!window.web3) {
 } else {
   window.ethereum.request({ method: 'eth_chainId' }).then((res) => {
     store.dispatch(actions.setNetworkId(parseInt(res)));
-    store.dispatch(actions.loadGamedata());
+    // store.dispatch(actions.loadGamedata());
   })
 
 
