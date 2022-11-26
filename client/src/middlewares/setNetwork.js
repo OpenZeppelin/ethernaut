@@ -17,10 +17,10 @@ const setNetwork = store => next => action => {
   window.localdeploy = deployAdminContracts; //TODO later remove refrence to contract from windows
   if (action.type !== actions.SET_NETWORK_ID) return next(action) //we need to reload the window here
   elements = document.querySelectorAll('.progress-bar-wrapper');
-  const hasBeenLocalDeployed =  isLocalDeployed(action.id);
+  const hasBeenLocalDeployed = isLocalDeployed(action.id);
 
   if (!onPredeployedNetwork(action.id) && !hasBeenLocalDeployed) {
-    if(elements[0]) elements[0].style.display = 'flex';
+    if (elements[0]) elements[0].style.display = 'flex';
     const shouldDeploy = window.confirm(
       `Currently the game support these networks ${JSON.stringify(
         Object.keys(constants.NETWORKS).filter(
@@ -29,11 +29,11 @@ const setNetwork = store => next => action => {
       )}. \nWould you like to deploy the game on your current network`
     );
     shouldDeploy ? deployAdminContracts() : changeNetwork();
-    
+
   }
-  
+
   //This will trigger reload if the network is changed 
-  if (store.getState().network.networkId !== undefined && store.getState().network.networkId !== action.id){
+  if (store.getState().network.networkId !== undefined && store.getState().network.networkId !== action.id) {
     elements[0].style.display = 'flex';
     document.location.replace(document.location.origin)
     return;
@@ -44,13 +44,16 @@ const setNetwork = store => next => action => {
 
 export function onPredeployedNetwork(id) {
   let onRightNetwork = false;
-  let allNetworkIds = Object.keys(constants.ID_TO_NETWORK).map((key)=>Number(key))
+  let allNetworkIds = Object.keys(constants.ID_TO_NETWORK).map((key) => Number(key))
   onRightNetwork = allNetworkIds.includes(Number(id));
+  if (id.toString() === constants.NETWORKS.LOCAL.id) {
+    onRightNetwork = isLocalDeployed(id);
+  }
   return onRightNetwork;
 }
 
 // change the network to goreli network
-async function changeNetwork(){
+async function changeNetwork() {
   try {
     await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
@@ -69,17 +72,18 @@ async function changeNetwork(){
           ],
         });
       } catch (addError) {
-        if(addError.code === 4001) {
+        if (addError.code === 4001) {
           //User has rejected changing the request
           elements[0].style.display = 'none';
         }
         console.error("Can't add nor switch to the selected network")
       }
-    } else if(switchError.code === 4001) {
+    } else if (switchError.code === 4001) {
       //User has rejected changing the request
-      if(elements[0]) elements[0].style.display = 'none';
+      if (elements[0]) elements[0].style.display = 'none';
     }
-}}
+  }
+}
 
 
 export default setNetwork
