@@ -74,6 +74,8 @@ export async function deployAdminContracts() {
       (key, index) => (gameData[key] = deployedCoreContracts[index].address)
     );
     cacheContract(gameData, chainId);
+    // -- refresh page after deploying contracts
+    document.location.replace(document.location.origin)
   } catch (err) {
     // TODO maybe refresh the page if they fail to deploy the contracts
     console.log(err);

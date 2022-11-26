@@ -18,7 +18,6 @@ const setNetwork = store => next => action => {
   if (action.type !== actions.SET_NETWORK_ID) return next(action) //we need to reload the window here
   elements = document.querySelectorAll('.progress-bar-wrapper');
   const hasBeenLocalDeployed =  isLocalDeployed(action.id);
-  console.log({hasBeenLocalDeployed})
 
   if (!onPredeployedNetwork(action.id) && !hasBeenLocalDeployed) {
     elements[0].style.display = 'flex';
@@ -43,7 +42,6 @@ const setNetwork = store => next => action => {
   next(action)
 }
 
-// todo change this function to check id:
 function onPredeployedNetwork(id) {
   let onRightNetwork = false;
   let allNetworkIds = Object.keys(constants.ID_TO_NETWORK).map((key)=>Number(key))
