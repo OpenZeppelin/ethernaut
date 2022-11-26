@@ -19,6 +19,7 @@
     "sources": "Sources",
     "submitInstance": "Submit instance",
     "getNewInstance": "Get new instance",
+    "deployNewInstance": "Deploy new instance",
     "nextLevel": "Go to the next level",
     "uLevels": "Levels",
     "lLevels": "levels",

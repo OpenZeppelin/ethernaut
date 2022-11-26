@@ -20,7 +20,7 @@ const setNetwork = store => next => action => {
   const hasBeenLocalDeployed =  isLocalDeployed(action.id);
 
   if (!onPredeployedNetwork(action.id) && !hasBeenLocalDeployed) {
-    elements[0].style.display = 'flex';
+    if(elements[0]) elements[0].style.display = 'flex';
     const shouldDeploy = window.confirm(
       `Currently the game support these networks ${JSON.stringify(
         Object.keys(constants.NETWORKS).filter(
@@ -42,7 +42,7 @@ const setNetwork = store => next => action => {
   next(action)
 }
 
-function onPredeployedNetwork(id) {
+export function onPredeployedNetwork(id) {
   let onRightNetwork = false;
   let allNetworkIds = Object.keys(constants.ID_TO_NETWORK).map((key)=>Number(key))
   onRightNetwork = allNetworkIds.includes(Number(id));
@@ -77,7 +77,7 @@ async function changeNetwork(){
       }
     } else if(switchError.code === 4001) {
       //User has rejected changing the request
-      elements[0].style.display = 'none';
+      if(elements[0]) elements[0].style.display = 'none';
     }
 }}
 

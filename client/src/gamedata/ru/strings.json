@@ -19,6 +19,7 @@
     "sources": "Исходный код",
     "submitInstance": "Отправить инстанс на проверку",
     "getNewInstance": "Создать новый инстанс",
+    "deployNewInstance": "Развернуть новый экземпляр",
     "nextLevel": "Следующий уровень",
     "uLevels": "Уровни",
     "lLevels": "уровни",

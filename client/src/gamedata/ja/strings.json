@@ -19,6 +19,7 @@
     "sources": "ソース",
     "submitInstance": "インスタンスの提出",
     "getNewInstance": "インスタンスの生成",
+    "deployNewInstance": "新しいインスタンスをデプロイする",
     "nextLevel": "次のレベルへ",
     "uLevels": "レベル",
     "lLevels": "レベル",

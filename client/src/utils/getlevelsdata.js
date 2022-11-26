@@ -1,3 +1,6 @@
+import Web3 from "web3";
+import { getLevelKey } from "./contractutil";
+
 var levels = require(`../gamedata/gamedata.json`).levels;
 
 const getlevelsdata = (props, source) => {
@@ -23,7 +26,8 @@ const getlevelsdata = (props, source) => {
         }
 
         if(props?.activeLevel) {
-            if(props.activeLevel.deployedAddress === levels[i].deployedAddress) {
+            const key = getLevelKey(props.params.address);
+            if(props.activeLevel[key] === levels[i][key]) {
               linkStyle.textDecoration = 'underline'
               selectedIndex = i;
             }

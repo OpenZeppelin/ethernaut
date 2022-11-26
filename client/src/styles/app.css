@@ -124,6 +124,7 @@ button {
   padding: 4px 9px;
   color: var(--primary-color);
   font-weight: bold;
+  cursor: pointer;
 }
 
 .button-actions {

@@ -19,6 +19,7 @@
     "sources": "Código",
     "submitInstance": "Comprueba instancia",
     "getNewInstance": "Nueva instancia",
+    "deployNewInstance": "Implementar nueva instancia",
     "nextLevel": "Pasa al siguiente nivel",
     "uLevels": "Niveles",
     "lLevels": "niveles",

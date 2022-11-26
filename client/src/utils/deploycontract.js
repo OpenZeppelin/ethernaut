@@ -7,8 +7,10 @@ import * as ImplementationABI from "contracts/build/contracts/metrics/Statistics
 import * as ProxyStatsABI from "contracts/build/contracts/proxy/ProxyStats.sol/ProxyStats.json";
 import {
   cacheContract,
+  fetchLevelABI,
   getInjectedProvider,
   restoreContract,
+  updateCachedContract,
 } from "./contractutil";
 import { CORE_CONTRACT_NAMES } from "../constants.js";
 
@@ -22,12 +24,41 @@ async function deploySingleContract(
   from,
   { deployParams = [] } = {}
 ) {
-  logger(`Deploying ${contractABI.default.contractName} contract`);
-  const Contract = await ethutil.getTruffleContract(contractABI.default, {
+  logger(`Deploying ${contractABI.contractName} contract`);
+  const Contract = await ethutil.getTruffleContract(contractABI, {
     from,
   });
   const contract = await Contract.new(...deployParams, props);
   return contract;
+}
+
+export async function deployAndRegisterLevel(level) {
+  try{
+    const levelABI = fetchLevelABI(level);
+    console.log({level});
+    const web3 = ethutil.getWeb3();
+    const chainId = await web3.eth.getChainId();
+    const props = {
+      gasPrice: (await web3.eth.getGasPrice()) * 10,
+      gas: 10000000,
+    };
+    const from = (await web3.eth.getAccounts())[0];
+    const levelContractAddress = await deploySingleContract(levelABI, props, from);
+  
+    logger(`Registering ${level.name} level on the ethernaut contract `);
+    const ethernautAddress = restoreContract(chainId)['ethernaut'];
+    const Ethernaut = await ethutil.getTruffleContract(EthernautABI.default, {
+      from,
+    });
+    const ethernaut = await Ethernaut.at(ethernautAddress);
+    await ethernaut.registerLevel(levelContractAddress.address, props);
+    // -- add this level factory instance to state
+    updateCachedContract(level.deployId, levelContractAddress.address, chainId);
+    return levelContractAddress;
+  }catch(err){
+    alert(err.message)
+  }
+  // return contractAddress;
 }
 
 export async function deployAdminContracts() {
@@ -47,18 +78,23 @@ export async function deployAdminContracts() {
     // -- deploy ethernaut/proxyadmin/implementation contracts
     const deployedCoreContracts = await Promise.all(
       [EthernautABI, ProxyAdminABI, ImplementationABI].map((contractABI) =>
-        deploySingleContract(contractABI, props, from)
+        deploySingleContract(contractABI.default, props, from)
       )
     );
     // -- deploy proxystats contract
     const [ethernaut, proxyAdmin, implementation] = deployedCoreContracts;
-    const proxyStats = await deploySingleContract(ProxyStatsABI, props, from, {
-      deployParams: [
-        implementation.address,
-        proxyAdmin.address,
-        ethernaut.address,
-      ],
-    });
+    const proxyStats = await deploySingleContract(
+      ProxyStatsABI.default,
+      props,
+      from,
+      {
+        deployParams: [
+          implementation.address,
+          proxyAdmin.address,
+          ethernaut.address,
+        ],
+      }
+    );
     deployedCoreContracts.push(proxyStats);
     // -- call the  setstatproxy method
     const ethernautContract = new web3.eth.Contract(
@@ -75,7 +111,7 @@ export async function deployAdminContracts() {
     );
     cacheContract(gameData, chainId);
     // -- refresh page after deploying contracts
-    document.location.replace(document.location.origin)
+    document.location.replace(document.location.origin);
   } catch (err) {
     // TODO maybe refresh the page if they fail to deploy the contracts
     console.log(err);

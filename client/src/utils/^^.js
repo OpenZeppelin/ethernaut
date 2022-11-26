@@ -140,7 +140,7 @@ function interceptConsole() {
         `%c⛏️ ${text} ⛏%c`,
         `color: ${negColor}; font-weight: bold; font-size: 12px; background-color: ${color};`,
         "",
-        `${networkObject.blockExplorer}/tx/${txId}`
+        networkObject ? `${networkObject.blockExplorer}/tx/${txId}` : ''
       )
     }
     )
