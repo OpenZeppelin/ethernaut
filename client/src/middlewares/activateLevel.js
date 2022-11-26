@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import Web3 from 'web3';
 import { push } from 'react-router-redux'
 import * as actions from '../actions';
 import * as constants from '../constants';
@@ -10,7 +9,6 @@ import { getLevelKey, isLocalDeployed } from '../utils/contractutil';
 
 let language = localStorage.getItem('lang')
 let strings = loadTranslations(language)
-var levels = require(`../gamedata/gamedata.json`).levels;
 
 const activateLevel = store => next => action => {
   if(action.type !== actions.ACTIVATE_LEVEL) return next(action)
