@@ -2,10 +2,7 @@ import * as actions from '../actions';
 import * as constants from '../constants';
 import { isLocalDeployed } from '../utils/contractutil';
 import { deployAdminContracts } from '../utils/deploycontract';
-import { loadTranslations } from '../utils/translations'
 
-let language = localStorage.getItem('lang')
-let strings = loadTranslations(language)
 let elements = document.querySelectorAll('.progress-bar-wrapper');
 
 // let wasOnWrongNetwork = false

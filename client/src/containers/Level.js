@@ -10,11 +10,8 @@ import { loadTranslations } from "../utils/translations";
 import { Link } from "react-router-dom";
 import getlevelsdata from "../utils/getlevelsdata";
 import { withRouter } from "../hoc/withRouter";
-import Web3 from "web3";
-import { fetchLevelABI, getLevelKey } from "../utils/contractutil";
+import { getLevelKey } from "../utils/contractutil";
 import { deployAndRegisterLevel } from "../utils/deploycontract";
-import { onPredeployedNetwork } from "../middlewares/setNetwork";
-import { getWeb3 } from "../utils/ethutil";
 
 class Level extends React.Component {
   constructor(props) {
@@ -121,15 +118,15 @@ class Level extends React.Component {
         <main>
           {(isDescriptionMissingTranslation ||
             isCompleteDescriptionMissingTranslation) && (
-            <div style={{ textAlign: "center" }}>
-              <p>
-                {strings.levelNotTranslated}
-                <a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">
-                  {strings.contributeTranslation}
-                </a>
-              </p>
-            </div>
-          )}
+              <div style={{ textAlign: "center" }}>
+                <p>
+                  {strings.levelNotTranslated}
+                  <a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">
+                    {strings.contributeTranslation}
+                  </a>
+                </p>
+              </div>
+            )}
 
           <div className="level-selector-nav">
             <div className="dropdown-menu-bar">
@@ -147,9 +144,8 @@ class Level extends React.Component {
                 return (
                   <Link
                     key={level.name}
-                    to={`${constants.PATH_LEVEL_ROOT}${
-                      level.deployedAddress || level.id
-                    }`}
+                    to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress || level.id
+                      }`}
                   >
                     <div className="level-selector-dropdown-content-item">
                       <p key={level.name}>
