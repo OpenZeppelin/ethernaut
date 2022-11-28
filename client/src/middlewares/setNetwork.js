@@ -41,11 +41,8 @@ const setNetwork = store => next => action => {
 
 export function onPredeployedNetwork(id) {
   let onRightNetwork = false;
-  let allNetworkIds = Object.keys(constants.ID_TO_NETWORK).map((key) => Number(key))
+  let allNetworkIds = Object.keys(constants.ID_TO_NETWORK).filter(id => constants.ID_TO_NETWORK[id] !== constants.NETWORKS.LOCAL.name).map((key) => Number(key))
   onRightNetwork = allNetworkIds.includes(Number(id));
-  if (id.toString() === constants.NETWORKS.LOCAL.id) {
-    onRightNetwork = isLocalDeployed(id);
-  }
   return onRightNetwork;
 }
 
