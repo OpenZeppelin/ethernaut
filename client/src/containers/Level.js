@@ -268,7 +268,7 @@ class Level extends React.Component {
                 >
                   {level.deployedAddress
                     ? strings.getNewInstance
-                    : strings.deployNewInstance}
+                    : strings.deployLevel}
                 </button>
 
               </div>
