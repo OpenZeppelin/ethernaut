@@ -33,9 +33,9 @@ async function deploySingleContract(
 }
 
 export async function deployAndRegisterLevel(level) {
-  try{
+  try {
     const levelABI = fetchLevelABI(level);
-    console.log({level});
+    console.log({ level });
     const web3 = ethutil.getWeb3();
     const chainId = await web3.eth.getChainId();
     const props = {
@@ -44,7 +44,7 @@ export async function deployAndRegisterLevel(level) {
     };
     const from = (await web3.eth.getAccounts())[0];
     const levelContractAddress = await deploySingleContract(levelABI, props, from);
-  
+
     logger(`Registering ${level.name} level on the ethernaut contract `);
     const ethernautAddress = restoreContract(chainId)['ethernaut'];
     const Ethernaut = await ethutil.getTruffleContract(EthernautABI.default, {
@@ -55,7 +55,7 @@ export async function deployAndRegisterLevel(level) {
     // -- add this level factory instance to state
     updateCachedContract(level.deployId, levelContractAddress.address, chainId);
     return levelContractAddress;
-  }catch(err){
+  } catch (err) {
     alert(err.message)
   }
   // return contractAddress;
@@ -112,6 +112,9 @@ export async function deployAdminContracts() {
     cacheContract(gameData, chainId);
     // -- refresh page after deploying contracts
     document.location.replace(document.location.origin);
+
+    const deployWindow = document.querySelectorAll('.deploy-window-bg');
+    deployWindow[0].style.display = 'none';
   } catch (err) {
     // TODO maybe refresh the page if they fail to deploy the contracts
     console.log(err);

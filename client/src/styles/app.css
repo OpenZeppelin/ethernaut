@@ -232,6 +232,45 @@ nav li {
   margin-bottom: 2em;
 }
 
+.deploy-window-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 4;
+  display: none;
+}
+
+.deploy-window {
+  position: fixed;
+  top: 20%;
+  width: 40%;
+  left: 30%;
+  right: 30%;
+  display: inherit;
+  background-color: var(--primary-color);
+  z-index: 5;
+  padding: 2% 2% 2% 2%;
+  box-shadow: black 0px 0px 60px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 6px;
+}
+
+.deploy-window ul {
+  padding-left: 1em;
+}
+
+.deploy-window h1 {
+  text-align: center;
+}
+
+.choice-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .arrow {
   fill: var(--secondary-color);
   display: block;

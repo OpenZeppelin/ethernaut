@@ -17,16 +17,8 @@ const setNetwork = store => next => action => {
   const hasBeenLocalDeployed = isLocalDeployed(action.id);
 
   if (!onPredeployedNetwork(action.id) && !hasBeenLocalDeployed) {
-    if (elements[0]) elements[0].style.display = 'flex';
-    const supportedNetworks = Object.keys(constants.NETWORKS).filter(
-      (key) => key !== "LOCAL" && key !== "UNDEFINED"
-    );
-    const shouldDeploy = window.confirm(
-      `Currently the game support these networks\n\t ${supportedNetworks.join("\n\t ")}
-      \nClick OK to deploy the contracts on this network or Cancel to switch to Goerli network.`
-    );
-    shouldDeploy ? deployAdminContracts() : changeNetwork();
-
+    const deployWindow = document.querySelectorAll('.deploy-window-bg');
+    deployWindow[0].style.display = 'block';
   }
 
   //This will trigger reload if the network is changed 
@@ -44,39 +36,6 @@ export function onPredeployedNetwork(id) {
   let allNetworkIds = Object.keys(constants.ID_TO_NETWORK).filter(id => constants.ID_TO_NETWORK[id] !== constants.NETWORKS.LOCAL.name).map((key) => Number(key))
   onRightNetwork = allNetworkIds.includes(Number(id));
   return onRightNetwork;
-}
-
-// change the network to goreli network
-async function changeNetwork() {
-  try {
-    await window.ethereum.request({
-      method: 'wallet_switchEthereumChain',
-      params: [{ chainId: `0x${Number(constants.NETWORKS.GOERLI.id).toString(16)}` }],//if on wrong network giving option to switch to sepolia network.
-    });
-  } catch (switchError) {
-    // This error code indicates that the chain has not been added to MetaMask.
-    if (switchError.code === 4902) {
-      try {
-        await window.ethereum.request({
-          method: 'wallet_addEthereumChain',
-          params: [
-            {
-              chainId: [{ chainId: `0x${Number(constants.NETWORKS.GOERLI.id).toString(16)}` }]
-            },
-          ],
-        });
-      } catch (addError) {
-        if (addError.code === 4001) {
-          //User has rejected changing the request
-          elements[0].style.display = 'none';
-        }
-        console.error("Can't add nor switch to the selected network")
-      }
-    } else if (switchError.code === 4001) {
-      //User has rejected changing the request
-      if (elements[0]) elements[0].style.display = 'none';
-    }
-  }
 }
 
 

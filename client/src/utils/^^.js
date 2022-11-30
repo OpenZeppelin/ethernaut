@@ -133,8 +133,8 @@ function interceptConsole() {
       var network_name = constants.ID_TO_NETWORK[res];
       var networks = Object.values(constants.NETWORKS_INGAME);
       var networkObject;
-      for(var i = 1; i < networks.length; i++) {
-        if(networks[i].name === network_name) networkObject = networks[i]
+      for (var i = 1; i < networks.length; i++) {
+        if (networks[i].name === network_name) networkObject = networks[i]
       }
       defaultConsole.info(
         `%c⛏️ ${text} ⛏%c`,
@@ -318,6 +318,6 @@ const ICONS_GOOD = [
   '(●*∩_∩*●)',
   '♪└(￣◇￣)┐♪└(￣◇￣)┐♪└(￣◇￣)┐♪'
 ]
-function randInt(min, max) { return Math.floor((max - min) * Math.random()) + min }
-function randBadIcon() { return ICONS_BAD[randInt(0, ICONS_BAD.length)] }
-function randGoodIcon() { return ICONS_GOOD[randInt(0, ICONS_GOOD.length)] }
+export function randInt(min, max) { return Math.floor((max - min) * Math.random()) + min }
+export function randBadIcon() { return ICONS_BAD[randInt(0, ICONS_BAD.length)] }
+export function randGoodIcon() { return ICONS_GOOD[randInt(0, ICONS_GOOD.length)] }
