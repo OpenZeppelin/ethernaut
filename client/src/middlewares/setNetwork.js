@@ -18,12 +18,12 @@ const setNetwork = store => next => action => {
 
   if (!onPredeployedNetwork(action.id) && !hasBeenLocalDeployed) {
     if (elements[0]) elements[0].style.display = 'flex';
+    const supportedNetworks = Object.keys(constants.NETWORKS).filter(
+      (key) => key !== "LOCAL" && key !== "UNDEFINED"
+    );
     const shouldDeploy = window.confirm(
-      `Currently the game support these networks ${JSON.stringify(
-        Object.keys(constants.NETWORKS).filter(
-          (key) => key !== "LOCAL" && key !== "UNDEFINED"
-        )
-      )}. \nWould you like to deploy the game on your current network`
+      `Currently the game support these networks\n\t ${supportedNetworks.join("\n\t ")}
+      \nClick OK to deploy the contracts on this network or Cancel to switch to Goerli network.`
     );
     shouldDeploy ? deployAdminContracts() : changeNetwork();
 

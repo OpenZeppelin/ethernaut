@@ -1,6 +1,6 @@
 import * as actions from '../actions';
 import * as constants from '../constants';
-import { isLocalDeployed, restoreContract } from '../utils/contractutil';
+import { restoreContract } from '../utils/contractutil';
 import { loadTranslations } from '../utils/translations'
 // import { store, history } from "./../store";
 let language = localStorage.getItem('lang')
