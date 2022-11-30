@@ -46,7 +46,6 @@ const getDeployData = (networkId) => {
     gameData = require(`../gamedata/deploy.${network}.json`);
   } catch (err) {
     // if there's an error then check localstorage if data exists for this chain
-    if(!isLocalDeployed(networkId)) throw new Error();
     gameData = restoreContract(networkId);
   }
 
