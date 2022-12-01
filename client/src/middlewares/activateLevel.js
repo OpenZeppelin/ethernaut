@@ -28,7 +28,8 @@ const activateLevel = store => next => action => {
   // Find level from deployed level address
   // -- check if the prop is a valid eth address or a number
   // -- if it is a number then match level based on number
-  const key = canDeploy && getLevelKey(action.address)
+  // -- make sure you can only index by id when you are on a chain you can deploy to
+  const key = canDeploy ? getLevelKey(action.address) : "deployedAddress"
   const activeLevel = _.find(
     state.gamedata.levels,
     level => +level[key] === +action.address
