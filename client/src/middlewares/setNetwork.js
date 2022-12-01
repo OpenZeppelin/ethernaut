@@ -18,7 +18,7 @@ const setNetwork = store => next => action => {
 
   if (!onPredeployedNetwork(action.id) && !hasBeenLocalDeployed) {
     const deployWindow = document.querySelectorAll('.deploy-window-bg');
-    deployWindow[0].style.display = 'block';
+    if(deployWindow[0]) deployWindow[0].style.display = 'block';
   }
 
   //This will trigger reload if the network is changed 

@@ -49,7 +49,8 @@ const loadEthernautContract = store => next => action => {
       if (state.gamedata.activeLevel)
         store.dispatch(actions.loadLevelInstance(state.gamedata.activeLevel, true, false))
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log({err})
       console.error(`@bad ${strings.ethernautNotFoundMessage}`)
     })
 }
