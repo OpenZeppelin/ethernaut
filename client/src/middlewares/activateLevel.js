@@ -34,6 +34,7 @@ const activateLevel = store => next => action => {
     state.gamedata.levels,
     level => +level[key] === +action.address
   )
+  console.log({key, activeLevel})
 
   if(constants.CLEAR_CONSOLE && constants.CUSTOM_LOGGING && activeLevel) {
     console.clear()
@@ -50,7 +51,7 @@ const activateLevel = store => next => action => {
   window.instance = undefined
 
   // -> 404
-  if(!activeLevel || !isLocalDeployed(network_id)) {
+  if(!activeLevel && !isLocalDeployed(network_id)) {
     store.dispatch(push(constants.PATH_NOT_FOUND))
     return
   }
