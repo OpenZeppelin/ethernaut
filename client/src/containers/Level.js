@@ -49,6 +49,7 @@ class Level extends React.Component {
   // use arrow function to prevent this binding
   deployFactoryContract = async () => {
     const levelFactory = await deployAndRegisterLevel(this.props.level);
+    if(!levelFactory) return;
     this.props.loadGameData();
     this.props.activateLevel(levelFactory.address);
   };

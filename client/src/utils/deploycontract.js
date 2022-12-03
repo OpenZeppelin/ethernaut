@@ -1,10 +1,7 @@
 import colors from "colors";
 import * as ethutil from "../utils/ethutil.js";
+import * as LocalFactoryABI from "contracts/build/contracts/factory/LocalFactory.sol/Factory.json";
 
-import * as EthernautABI from "contracts/build/contracts/Ethernaut.sol/Ethernaut.json";
-import * as ProxyAdminABI from "contracts/build/contracts/proxy/ProxyAdmin.sol/ProxyAdmin.json";
-import * as ImplementationABI from "contracts/build/contracts/metrics/Statistics.sol/Statistics.json";
-import * as ProxyStatsABI from "contracts/build/contracts/proxy/ProxyStats.sol/ProxyStats.json";
 import {
   cacheContract,
   fetchLevelABI,
@@ -43,26 +40,30 @@ export async function deployAndRegisterLevel(level) {
       gas: 10000000,
     };
     const from = (await web3.eth.getAccounts())[0];
-    const levelContractAddress = await deploySingleContract(levelABI, props, from);
+    const levelContractAddress = await deploySingleContract(
+      levelABI,
+      props,
+      from
+    );
 
     logger(`Registering ${level.name} level on the ethernaut contract `);
-    const ethernautAddress = restoreContract(chainId)['ethernaut'];
-    const Ethernaut = await ethutil.getTruffleContract(EthernautABI.default, {
+    // -- use the factory to register a new level since it owns the ethernaut contract
+    const factoryAddress = restoreContract(chainId)["factory"];
+    const LocalFactory = await ethutil.getTruffleContract(LocalFactoryABI.default, {
       from,
     });
-    const ethernaut = await Ethernaut.at(ethernautAddress);
-    await ethernaut.registerLevel(levelContractAddress.address, props);
+    const localFactory = await LocalFactory.at(factoryAddress);
+    await localFactory.registerLevel(levelContractAddress.address, props);
     // -- add this level factory instance to state
     updateCachedContract(level.deployId, levelContractAddress.address, chainId);
     return levelContractAddress;
   } catch (err) {
-    alert(err.message)
+    alert(err.message);
   }
   // return contractAddress;
 }
 
 export async function deployAdminContracts() {
-  logger("Deploying core contracts");
   try {
     // -- get instance of metamask injected into the environment
     const web3 = getInjectedProvider();
@@ -75,46 +76,34 @@ export async function deployAdminContracts() {
     };
     const from = (await web3.eth.getAccounts())[0];
 
-    // -- deploy ethernaut/proxyadmin/implementation contracts
-    const deployedCoreContracts = await Promise.all(
-      [EthernautABI, ProxyAdminABI, ImplementationABI].map((contractABI) =>
-        deploySingleContract(contractABI.default, props, from)
-      )
-    );
-    // -- deploy proxystats contract
-    const [ethernaut, proxyAdmin, implementation] = deployedCoreContracts;
-    const proxyStats = await deploySingleContract(
-      ProxyStatsABI.default,
+    // -- deploy factory contracts
+    const factoryContracts = await deploySingleContract(
+      LocalFactoryABI.default,
       props,
-      from,
-      {
-        deployParams: [
-          implementation.address,
-          proxyAdmin.address,
-          ethernaut.address,
-        ],
-      }
+      from
     );
-    deployedCoreContracts.push(proxyStats);
-    // -- call the  setstatproxy method
-    const ethernautContract = new web3.eth.Contract(
-      EthernautABI.default.abi,
-      ethernaut.address
-    );
-    await ethernautContract.methods.setStatistics(proxyStats.address).send({
-      from,
-      ...props,
-    });
+    // -- query factory address for ethernaut, proxy, proxyadmin and implementation
+    const deployedCoreContracts =
+      await Promise.all(
+        CORE_CONTRACT_NAMES.map((coreContractName) =>
+          factoryContracts[coreContractName]()
+        )
+      );
+
     // -- update the game data array with contract values
     CORE_CONTRACT_NAMES.forEach(
-      (key, index) => (gameData[key] = deployedCoreContracts[index].address)
+      (key, index) => (gameData[key] = deployedCoreContracts[index])
     );
+    gameData.factory = factoryContracts.address;
+    gameData.owner = from;
     cacheContract(gameData, chainId);
+      
+    // -- stop loader (unnecessary since refresh?)
+    const deployWindow = document.querySelectorAll(".deploy-window-bg");
+    deployWindow[0].style.display = "none";
+  
     // -- refresh page after deploying contracts
     document.location.replace(document.location.origin);
-
-    const deployWindow = document.querySelectorAll('.deploy-window-bg');
-    deployWindow[0].style.display = 'none';
   } catch (err) {
     // TODO maybe refresh the page if they fail to deploy the contracts
     console.log(err);
