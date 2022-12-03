@@ -1,10 +1,15 @@
-# New Network Support
+---
+name: New Network Support
+about: Create your request to add a new network support.
+title: New Network Support - [Network Name]
+labels: ''
+assignees: ''
 
-`Network name`: 
+---
 
-This PR will add a support for a new network/chain. Please complete all the field and checks provided below, and wait for the PR to be merged!
+This Issue is raised to add a support for a new network. To raise a PR for this issue, please follow the steps mentioned below.
 
-## Before proceeding
+## Before you start
 
 Make sure you have done the following transactions -
 - Deployment of the following core contracts:
@@ -14,7 +19,7 @@ Make sure you have done the following transactions -
   - `ProxyStats.sol`
 - `ProxyStats.sol` has been set in `Ethernaut.sol` by calling `setStatistics()`.
 - All the levels' contracts:
-  - Has been deployed.
+  - Have been deployed.
   - Are registered in the `Ethernaut.sol` by calling `registerLevel()`.
 
 Make sure that the following checks are passing.

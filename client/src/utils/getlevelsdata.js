@@ -25,7 +25,7 @@ const getlevelsdata = (props, source) => {
         }
 
         if (props?.activeLevel) {
-            const key = getLevelKey(props.params.address);
+            const key = getLevelKey(props.params?.address);
             if (props.activeLevel[key] === levels[i][key]) {
                 linkStyle.textDecoration = 'underline'
                 selectedIndex = i;
