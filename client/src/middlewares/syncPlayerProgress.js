@@ -1,55 +1,34 @@
-import _ from 'lodash'
 import * as actions from '../actions';
-import { loadTranslations } from '../utils/translations'
-
-let language = localStorage.getItem('lang')
-let strings = loadTranslations(language)
+import { getLevelsSolvedByPlayer, checkIfPlayerExist } from '../utils/statsContract';
 
 const syncPlayerProgress = store => next => async action => {
-  if(action.type !== actions.SYNC_PLAYER_PROGRESS) return next(action)
+  if (action.type !== actions.SYNC_PLAYER_PROGRESS) return next(action)
 
   const state = store.getState()
+
   if(
-    !state.network.web3 ||
-    !state.contracts.ethernaut ||
-    !state.gamedata.levels ||
+    !state.network.networkId ||
     !state.player.address
   ) return next(action)
 
-  // Watch LevelCompletedLog
-  const log = state.contracts.ethernaut.LevelCompletedLog({
-    filter: { player: state.player.address }
-  });
+  const playerExist = await checkIfPlayerExist(state.player.address, state.network.networkId)
 
-  // Download percentage of completion
-  // levels completed
-  // Other info ? 
+  if (!playerExist) { 
+    return next(action)
+  }
 
-  log.on('error', (error) => {
-    if (error) {
-      if (error.message && error.message.includes("TypeError: Cannot read property 'filter' of undefined")) {
-        console.error(strings.metamaskKnownIssue);
-      } else {
-        console.log(strings.eventsCompletionMessage, error);
-      }
-    }
-  })
+  const levelAddresses = await getLevelsSolvedByPlayer(state.player.address, state.network.networkId)
 
-  log.on('data', (result) => {
+  if (levelAddresses.length === 0) { 
+    return next(action)
+  }
+  
+  store.dispatch(actions.clearSolvedLevels())
 
-    // Only process if level is not known to be completed
-    const levelAddr = result.args.level;
-    const knownToBeCompleted = state.player.completedLevels[levelAddr];
-
-    if (!knownToBeCompleted) {
-      // Fetch level object given the address and dispatch submit action
-      const level = _.find(state.gamedata.levels, l => l.deployedAddress === levelAddr);
-      if (!level) {
-        console.log(strings.unexpectedAddressMessage, levelAddr);
-      } else {
-        store.dispatch(actions.submitLevelInstance(level, true))
-      }
-    }
+  levelAddresses.forEach((levelAddress) => { 
+    store.dispatch(actions.submitLevelInstance({
+      deployedAddress: levelAddress,
+    }, true))
   })
 
   next(action)

@@ -1,6 +1,7 @@
 import * as ethjs from 'ethereumjs-util';
 import TruffleContract from '@truffle/contract';
 import * as constants from "../constants";
+import { NETWORKS_INGAME } from '../constants'
 
 let web3;
 let duplicateTransactions = new Map();
@@ -240,4 +241,10 @@ export const getGasFeeDetails = async (network, multiplier) => {
       gasPrice: multiplier * gasPrice
     }
   }
+} 
+
+export const getNetworkNamefromId = (networkId) => { 
+    const networkObjectsList = Object.values(NETWORKS_INGAME);
+    const networkName = networkObjectsList.filter(Boolean).find(network => network.id === `${networkId}`)?.name;
+    return networkName;
 }
