@@ -28,7 +28,6 @@ export function isLevelDeployed(levelDeployId, chainId) {
 }
 // -- storage
 
-
 // -- Utils
 
 export function getInjectedProvider() {
@@ -47,7 +46,6 @@ export function isLocalDeployed(chainId) {
     (contractName) => restoreContract(chainId)[contractName]
   );
 }
-
 
 // return the right key to use to query the level object
 // use address if factory is deployed
@@ -84,5 +82,16 @@ window.transferOwnerShip = async function (newOwnerAddress) {
   updateCachedContract("owner", "newOwnerAddress", chainId);
 };
 
-// -- Utils
+// write helper function to load the contracts from localstorage for the current chain
+window.loadContracts = async function () {
+  const web3 = getInjectedProvider();
+  const chainId = await web3.eth.getChainId();
+  return restoreContract(chainId);
+};
 
+// // write helper function to create a new issue, this function should only be called when all the levels have been deployed
+// window.createIssue = async function(){
+
+// }
+
+// -- Utils

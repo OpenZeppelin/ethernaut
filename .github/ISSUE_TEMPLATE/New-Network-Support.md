@@ -30,7 +30,7 @@ Make sure that the following checks are passing.
   - [ ] `instance` in the console returns a valid address after creating the instance.
 
 And after all the above checks are passed...
-- [ ] You have transferred the ownership of the `Ethernaut.sol` contract to the OpenZeppeling account (`0x09902A56d04a9446601a0d451E07459dC5aF0820`).
+- [ ] You have transferred the ownership of the `Ethernaut.sol` contract to the OpenZeppeling account (`0x09902A56d04a9446601a0d451E07459dC5aF0820`) by running `window.transferOwnerShip(0x09902A56d04a9446601a0d451E07459dC5aF0820)` in the browser console.
 
 Take note of the following things before you start. Because you will need them further while preparing the PR.
 - [ ] A short `name` of the network. For example: goerli-optimism, mumbai-polygon, sepolia, etc.
@@ -78,7 +78,7 @@ Make sure you have followed the below steps:
   [NETWORKS.ALL_CAPS_NAME.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
 ```
 - [ ] Created a JSON new file in [./client/src/gamedata](./client/src/gamedata) directory with name `deploy.name.json`.
-- [ ] Provided the addresses of all the contracts in this file like below, and replaced all the `x` with their contract addresses in the network.
+- [ ] Provided the addresses of all the contracts in this file like below, and replaced all the `x` with their contract addresses in the network(This data can be gotten by running` await window.loadContracts()` in the browser console).
 ```
 {
   "0": "x",
