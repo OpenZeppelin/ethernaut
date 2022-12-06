@@ -1,7 +1,4 @@
-import open from 'open';
-
-
-export default function newGithubIssueUrl(options = {}) {
+export const newGithubIssueUrl = (options = {}) => {
     let repoUrl;
     if (options.repoUrl) {
         repoUrl = options.repoUrl;
@@ -47,5 +44,5 @@ export const raiseIssue = async () => {
         template: 'New-Network-Support.md'
     });
 
-    await open(url);
+    window.open(url, '_blank').focus();
 }
