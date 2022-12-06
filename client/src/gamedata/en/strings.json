@@ -21,7 +21,7 @@
     "getNewInstance": "Get new instance",
     "deployMessageTitle": "Game not deployed",
     "deployMessage": "Currently the game supports only these networks:",
-    "deployConfirmation": "Do you want to deploy the contracts on this network or switch to the Goerli network.",
+    "deployConfirmation": "Do you want to deploy the contracts on this network or switch to the Goerli network?",
     "deployGame": "Deploy game",
     "switchToGoerli": "Switch to Goerli",
     "deployLevel": "Deploy Level",
