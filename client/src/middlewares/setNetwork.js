@@ -35,14 +35,18 @@ const setNetwork = store => next => action => {
             });
           } catch (addError) {
             if(addError.code === 4001) {
-              //User has rejected changing the request
+              //User has rejected changing the network
               elements[0].style.display = 'none';
+              window.alert(strings.noLevelsDataMessage) //need to do something here more nicer to tell user
+              window.location.reload();
             }
             console.error("Can't add nor switch to the selected network")
           }
         } else if(switchError.code === 4001) {
           //User has rejected changing the request
           elements[0].style.display = 'none';
+          window.alert(strings.noLevelsDataMessage) //need to do something here more nicer to tell user
+          window.location.reload();
         }
     }}
     changeNetwork()
