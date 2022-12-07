@@ -9,7 +9,7 @@ assignees: ''
 
 This Issue is raised to add a support for a new network. To raise a PR for this issue, please follow the steps mentioned below.
 
-## Before you start
+## Before you submit this issue
 
 Make sure you have done the following transactions -
 - Deployment of the following core contracts:
@@ -32,6 +32,10 @@ Make sure that the following checks are passing.
 And after all the above checks are passed...
 - [ ] You have transferred the ownership of the `Ethernaut.sol` contract to the OpenZeppeling account (`0x09902A56d04a9446601a0d451E07459dC5aF0820`) by running `window.transferOwnerShip(0x09902A56d04a9446601a0d451E07459dC5aF0820)` in the browser console.
 
+That's it! Now you can submit this issue :D
+
+# To raise a Pull Request for this Issue
+
 Take note of the following things before you start. Because you will need them further while preparing the PR.
 - [ ] A short `name` of the network. For example: goerli-optimism, mumbai-polygon, sepolia, etc.
 - [ ] An `ALL_CAPS_NAME` for internal code. This is mostly the capitalised form of the above name with hyphens replaced by underscores.
@@ -47,9 +51,7 @@ Take note of the following things before you start. Because you will need them f
   - [ ] `ProxyStats.sol`
   - [ ] All the level addresses. (`level` in the console. **NOT** `instance`)
 
-Great! You have completed all the big tasks. Now, let's quickly edit the files and create the PR :D
-
-# File edits
+## File edits
 
 Make sure you have followed the below steps:
 
