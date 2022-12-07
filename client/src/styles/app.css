@@ -367,7 +367,7 @@ footer {
 .boxes {
   padding: 20px 20px 20px 20px;
   border: 2px solid var(--secondary-color);
-  width: 800px;
+  width: 100%;
 
   margin-bottom: 2em;
   text-align: left;

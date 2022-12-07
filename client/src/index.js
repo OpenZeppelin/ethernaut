@@ -87,7 +87,7 @@ if (!window.web3) {
 
 
   // View entry point.
- root.render(
+  root.render(
     <Provider store={store}>
       <Router history={syncHistoryWithStore(history, store)}>
         <Suspense fallback={<div>Loading...</div>}>
@@ -104,7 +104,8 @@ if (!window.web3) {
             <MediaQuery maxWidth={885}>
               <Header></Header>
               <div className="unfitScreenSize">
-                <h3>You need a larger screen to play</h3>
+                <h3>Screen is too small</h3>
+                <h3>Please switch to desktop view</h3>
                 <a href={constants.PATH_ROOT}>
                   <img
                     id="the-ethernaut"
