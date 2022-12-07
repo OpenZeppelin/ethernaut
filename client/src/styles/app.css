@@ -404,6 +404,23 @@ footer {
   padding: 5px;
 }
 
+.deploy-footer {
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  padding: 10px 10px 0px 10px;
+  bottom: 0;
+  height: 30px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+}
+
 .hljs-override {
   background: var(--secondary-color);
 }

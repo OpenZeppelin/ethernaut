@@ -26,6 +26,7 @@
     "deployGame": "Deploy game",
     "switchToGoerli": "Switch to Goerli",
     "deployLevel": "Deploy Level",
+    "submitGameFooter": "Awesome! Whole game is deployed on this network. Click here to raise a GitHub issue and submit it to us :)",
     "nextLevel": "Go to the next level",
     "uLevels": "Levels",
     "lLevels": "levels",

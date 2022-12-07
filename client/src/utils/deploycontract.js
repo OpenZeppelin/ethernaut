@@ -32,7 +32,6 @@ async function deploySingleContract(
 export async function deployAndRegisterLevel(level) {
   try {
     const levelABI = fetchLevelABI(level);
-    console.log({ level });
     const web3 = ethutil.getWeb3();
     const chainId = await web3.eth.getChainId();
     const props = {
@@ -97,11 +96,11 @@ export async function deployAdminContracts() {
     gameData.factory = factoryContracts.address;
     gameData.owner = from;
     cacheContract(gameData, chainId);
-      
+
     // -- stop loader (unnecessary since refresh?)
     const deployWindow = document.querySelectorAll(".deploy-window-bg");
     deployWindow[0].style.display = "none";
-  
+
     // -- refresh page after deploying contracts
     document.location.replace(document.location.origin);
   } catch (err) {

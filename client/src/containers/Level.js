@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import CodeComponent from "../components/Code";
+import Footer from "../components/Footer";
 import Author from "../components/Author";
 import MarkdownComponent from "../components/Markdown";
 import * as actions from "../actions";
@@ -49,7 +50,7 @@ class Level extends React.Component {
   // use arrow function to prevent this binding
   deployFactoryContract = async () => {
     const levelFactory = await deployAndRegisterLevel(this.props.level);
-    if(!levelFactory) return;
+    if (!levelFactory) return;
     this.props.loadGameData();
     this.props.activateLevel(levelFactory.address);
   };
@@ -287,10 +288,7 @@ class Level extends React.Component {
         </main>
 
         {/* Footer */}
-        <footer
-          className="footer"
-          dangerouslySetInnerHTML={{ __html: strings.footer }}
-        ></footer>
+        <Footer></Footer>
       </div>
     );
   }

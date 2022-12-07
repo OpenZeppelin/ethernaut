@@ -1,5 +1,6 @@
 import React from "react";
 import Mosaic from "./Mosaic";
+import Footer from "../components/Footer";
 import ReactGA from "react-ga";
 import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
@@ -155,10 +156,7 @@ class App extends React.Component {
           </section>
         </main>
         {/* Footer */}
-        <footer
-          className="footer"
-          dangerouslySetInnerHTML={{ __html: strings.footer }}
-        ></footer>
+        <Footer></Footer>
       </div>
     );
   }

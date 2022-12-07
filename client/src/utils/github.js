@@ -35,14 +35,3 @@ export const newGithubIssueUrl = (options = {}) => {
     }
     return url.toString();
 }
-
-
-export const raiseIssue = async () => {
-    const url = newGithubIssueUrl({
-        user: 'OpenZeppelin',
-        repo: 'ethernaut',
-        template: 'New-Network-Support.md'
-    });
-
-    window.open(url, '_blank').focus();
-}

@@ -1,6 +1,9 @@
 import * as constants from "../constants";
 import { getWeb3, setWeb3, getTruffleContract } from "./ethutil";
+import { newGithubIssueUrl } from "./github";
 import * as LocalFactoryABI from "contracts/build/contracts/factory/LocalFactory.sol/Factory.json";
+var levels = require(`../gamedata/gamedata.json`).levels;
+
 
 // -- storage
 export function cacheContract(data, chainId) {
@@ -89,9 +92,46 @@ window.loadContracts = async function () {
   return restoreContract(chainId);
 };
 
-// // write helper function to create a new issue, this function should only be called when all the levels have been deployed
-// window.createIssue = async function(){
+// write helper function to create a new issue, this function should only be called when all the levels have been deployed
+export const raiseIssue = async () => {
+  const url = newGithubIssueUrl({
+    user: 'OpenZeppelin',
+    repo: 'ethernaut',
+    template: 'New-Network-Support.md',
+    title: 'New Network Support - [Network Name]',
+  });
 
-// }
+  window.open(url, '_blank').focus();
+}
+
+// function to check if all the levels are deployed
+export const allNewContractsDeployed = (chainId) => {
+  if (!chainId)
+    return false;
+
+  if (chainId in constants.ID_TO_NETWORK)
+    return false;
+
+  const gamedata = restoreContract(chainId);
+  if (!gamedata)
+    return false;
+
+  for (let contractName of constants.CORE_CONTRACT_NAMES) {
+    if (!gamedata[contractName]) {
+      console.log(`Contract ${contractName} not deployed on chain ${chainId}`);
+      return false;
+    }
+  }
+
+  for (let level of levels) {
+    if (!gamedata[level.deployId]) {
+      console.log(`Level ${level.deployId} not deployed on chain ${chainId}`);
+      return false;
+    }
+  }
+
+  console.log(`All levels deployed on chain ${chainId}`);
+  return true;
+}
 
 // -- Utils

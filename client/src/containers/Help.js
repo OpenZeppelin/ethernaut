@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import MarkdownComponent from "../components/Markdown";
 import { loadTranslations } from "../utils/translations";
+import Footer from "../components/Footer";
 
 class Help extends React.Component {
   render() {
@@ -16,7 +17,7 @@ class Help extends React.Component {
           <h3>Setup Metamask</h3>
           <section>
             <MarkdownComponent target={strings.setupMetamask} />
-          </section>          
+          </section>
 
           <h3>Game Mechanics</h3>
           <section>
@@ -32,17 +33,14 @@ class Help extends React.Component {
           <section>
             <MarkdownComponent target={strings.beyondConsole} />
           </section>
-          
+
           <h3>Troubleshooting</h3>
           <section>
             <MarkdownComponent target={strings.troubleshooting} />
           </section>
         </main>
         {/* Footer */}
-        <footer
-          className="footer"
-          dangerouslySetInnerHTML={{ __html: strings.footer }}
-        ></footer>
+        <Footer></Footer>
       </div>
     );
   }
