@@ -5,7 +5,7 @@ import { loadTranslations } from '../utils/translations'
 let language = localStorage.getItem('lang')
 let strings = loadTranslations(language)
 
-const syncPlayerProgresses = store => next => action => {
+const syncPlayerProgress = store => next => async action => {
   if(action.type !== actions.SYNC_PLAYER_PROGRESS) return next(action)
 
   const state = store.getState()
@@ -21,6 +21,10 @@ const syncPlayerProgresses = store => next => action => {
     filter: { player: state.player.address }
   });
 
+  // Download percentage of completion
+  // levels completed
+  // Other info ? 
+
   log.on('error', (error) => {
     if (error) {
       if (error.message && error.message.includes("TypeError: Cannot read property 'filter' of undefined")) {
@@ -32,6 +36,7 @@ const syncPlayerProgresses = store => next => action => {
   })
 
   log.on('data', (result) => {
+
     // Only process if level is not known to be completed
     const levelAddr = result.args.level;
     const knownToBeCompleted = state.player.completedLevels[levelAddr];
@@ -50,4 +55,4 @@ const syncPlayerProgresses = store => next => action => {
   next(action)
 }
 
-export default syncPlayerProgresses
+export default syncPlayerProgress

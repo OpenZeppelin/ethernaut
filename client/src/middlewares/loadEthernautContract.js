@@ -40,14 +40,15 @@ const loadEthernautContract = store => next => action => {
       window.ethernaut = instance
 
       action.contract = instance
-      next(action)
 
       // Get game data
-      store.dispatch(actions.syncLevelProgress())
+      store.dispatch(actions.syncPlayerProgress())
 
       // Auto-restore previoius instance
       if (state.gamedata.activeLevel)
         store.dispatch(actions.loadLevelInstance(state.gamedata.activeLevel, true, false))
+
+      next(action)
     })
     .catch(() => {
       console.error(`@bad ${strings.ethernautNotFoundMessage}`)

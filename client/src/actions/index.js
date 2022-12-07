@@ -29,7 +29,7 @@ export const SUBMIT_LEVEL_INSTANCE = "SUBMIT_LEVEL_INSTANCE";
 export const submitLevelInstance = (level, completed) => ({ type: SUBMIT_LEVEL_INSTANCE, level, completed })
 
 export const SYNC_PLAYER_PROGRESS = "SYNC_PLAYER_PROGRESS";
-export const syncLevelProgress = () => ({ type: SYNC_PLAYER_PROGRESS })
+export const syncPlayerProgress = () => ({ type: SYNC_PLAYER_PROGRESS })
 
 export const COLLECT_STATS = "COLLECT_STATS";
 export const collectStats = () => ({ type: COLLECT_STATS })
