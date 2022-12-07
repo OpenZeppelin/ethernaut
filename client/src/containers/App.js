@@ -126,7 +126,7 @@ class App extends React.Component {
                   <li key={idx}>{network}</li>
                 )}
               </ul>
-              <p>{strings.deployConfirmation}</p>
+              <p className="deploy-note">{strings.deployConfirmation}</p>
               <div className="choice-buttons">
                 <button
                   className="buttons"
@@ -141,6 +141,7 @@ class App extends React.Component {
                   {strings.switchToGoerli}
                 </button>
               </div>
+              <p className="deploy-note">{strings.deployNote}</p>
             </div>
           </div>
           {/* Levels */}

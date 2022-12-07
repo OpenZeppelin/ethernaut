@@ -22,6 +22,7 @@
     "deployMessageTitle": "Juego no desplegado",
     "deployMessage": "Actualmente, el juego solo es compatible con estas redes.:",
     "deployConfirmation": "¿Quieres implementar los contratos en esta red o cambiar a la red Goerli?",
+    "deployNote": "Nota: Una vez que haya implementado todos los niveles, lo guiaremos para que envíe todo el juego implementado en esta red.",
     "deployGame": "Desplegar juego",
     "switchToGoerli": "Cambiar a Goerli",
     "deployLevel": "Nivel de implementación",

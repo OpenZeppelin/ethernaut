@@ -269,6 +269,12 @@ nav li {
 .choice-buttons {
   display: flex;
   justify-content: space-evenly;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.deploy-note {
+  margin-bottom: 0px;
 }
 
 .arrow {

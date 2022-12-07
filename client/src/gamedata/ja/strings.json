@@ -22,6 +22,7 @@
     "deployMessageTitle": "ゲームが展開されていません",
     "deployMessage": "現在、ゲームはこれらのネットワークのみをサポートしています:",
     "deployConfirmation": "コントラクトをこのネットワークに展開しますか、それとも Goerli ネットワークに切り替えますか?",
+    "deployNote": "注: すべてのレベルを展開したら、展開したゲーム全体をこのネットワークに送信するように案内します。",
     "deployGame": "ゲームを展開する",
     "switchToGoerli": "ゴエリに乗り換え",
     "deployLevel": "配備レベル",
