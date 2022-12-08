@@ -123,3 +123,15 @@ Make sure you have followed the below steps:
 ```
 
 #### All looks good now! Please raise the PR :)
+
+
+## Review checklist to check if the issue is resolved
+In the corresponding PR:
+- [ ] Verify the above checklist.
+- [ ] Review all the code files changes.
+- [ ] Start the project on this branch.
+- [ ] Run the following and check if it returns `true`.
+```
+(await ethernaut.owner()) === '0x09902A56d04a9446601a0d451E07459dC5aF0820'
+``` 
+- [ ] Navigate all the levels and check if they are playable.
