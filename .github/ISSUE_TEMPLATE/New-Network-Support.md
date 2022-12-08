@@ -79,6 +79,10 @@ Make sure you have followed the below steps:
 ```
   [NETWORKS.ALL_CAPS_NAME.name]: '0x09902A56d04a9446601a0d451E07459dC5aF0820',
 ```
+- [ ] Added a commented line just before `export const ACTIVE_NETWORK = NETWORKS.LOCAL;` in [./client/src/constants.js](./client/src/constants.js) like this:
+```
+  // export const ACTIVE_NETWORK = NETWORKS.ALL_CAPS_NAME
+```
 - [ ] Created a JSON new file in [./client/src/gamedata](./client/src/gamedata) directory with name `deploy.name.json`.
 - [ ] Provided the addresses of all the contracts in this file like below, and replaced all the `x` with their contract addresses in the network(This data can be gotten by running` await window.loadContracts()` in the browser console).
 ```
