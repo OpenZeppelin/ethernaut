@@ -1,7 +1,7 @@
 import colors from "colors";
 import * as ethutil from "../utils/ethutil.js";
 import * as LocalFactoryABI from "contracts/build/contracts/factory/LocalFactory.sol/Factory.json";
-
+import { getGasFeeDetails } from "../utils/ethutil.js";
 import {
   cacheContract,
   fetchLevelABI,
@@ -17,7 +17,7 @@ const logger = (text) => {
 
 async function deploySingleContract(
   contractABI,
-  props,
+  gasDetails,
   from,
   { deployParams = [] } = {}
 ) {
@@ -25,7 +25,7 @@ async function deploySingleContract(
   const Contract = await ethutil.getTruffleContract(contractABI, {
     from,
   });
-  const contract = await Contract.new(...deployParams, props);
+  const contract = await Contract.new(...deployParams, gasDetails);
   return contract;
 }
 
@@ -34,14 +34,11 @@ export async function deployAndRegisterLevel(level) {
     const levelABI = fetchLevelABI(level);
     const web3 = ethutil.getWeb3();
     const chainId = await web3.eth.getChainId();
-    const props = {
-      gasPrice: (await web3.eth.getGasPrice()) * 10,
-      gas: 10000000,
-    };
+    const gasDetails = await getGasFeeDetails({ networkId: chainId, web3: web3 }, 10);
     const from = (await web3.eth.getAccounts())[0];
     const levelContractAddress = await deploySingleContract(
       levelABI,
-      props,
+      { gas: 10000000, ...gasDetails },
       from
     );
 
@@ -52,7 +49,7 @@ export async function deployAndRegisterLevel(level) {
       from,
     });
     const localFactory = await LocalFactory.at(factoryAddress);
-    await localFactory.registerLevel(levelContractAddress.address, props);
+    await localFactory.registerLevel(levelContractAddress.address, gasDetails);
     // -- add this level factory instance to state
     updateCachedContract(level.deployId, levelContractAddress.address, chainId);
     return levelContractAddress;
@@ -69,16 +66,13 @@ export async function deployAdminContracts() {
     const chainId = await web3.eth.getChainId();
     const gameData = restoreContract(chainId);
 
-    const props = {
-      gasPrice: (await web3.eth.getGasPrice()) * 10,
-      gas: 10000000,
-    };
+    const gasDetails = await getGasFeeDetails({ networkId: chainId, web3: web3 }, 10);
     const from = (await web3.eth.getAccounts())[0];
 
     // -- deploy factory contracts
     const factoryContracts = await deploySingleContract(
       LocalFactoryABI.default,
-      props,
+      { gas: 10000000, ...gasDetails },
       from
     );
     // -- query factory address for ethernaut, proxy, proxyadmin and implementation

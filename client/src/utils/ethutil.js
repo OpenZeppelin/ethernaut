@@ -16,19 +16,19 @@ export const getTruffleContract = (jsonABI, defaults = {}) => {
   // // defined in `package.json` instead of relying on Truffle dependencies (that use an old version).
   // // With this, MetaMask v9 deprecation warnings are removed. 
   // const TruffleContract = require('@truffle/contract');
-  
+
   const truffleContract = TruffleContract(jsonABI);
-  if(!defaults.gasPrice) defaults.gasPrice = 2000000000;
-  if(!defaults.gas) defaults.gas = 2000000;
+  if (!defaults.gasPrice) defaults.gasPrice = 2000000000;
+  if (!defaults.gas) defaults.gas = 2000000;
   truffleContract.defaults(defaults);
   truffleContract.setProvider(web3.currentProvider);
   return truffleContract;
 }
 
 export const getBalance = (address) => {
-  return new Promise(function(resolve, reject) {
-    web3.eth.getBalance(address, function(error, result) {
-      if(error) reject(error)
+  return new Promise(function (resolve, reject) {
+    web3.eth.getBalance(address, function (error, result) {
+      if (error) reject(error)
       else resolve(web3.utils.fromWei(result, 'ether'))
     })
   })
@@ -37,7 +37,7 @@ export const getBalance = (address) => {
 export const getBlockNumber = () => {
   return new Promise((resolve, reject) => {
     web3.eth.getBlockNumber((err, blockNumber) => {
-      if(err) reject(err)
+      if (err) reject(err)
       resolve(blockNumber);
     });
   });
@@ -46,7 +46,7 @@ export const getBlockNumber = () => {
 export const sendTransaction = (options) => {
   return new Promise((resolve, reject) => {
     web3.eth.sendTransaction(options, (err, res) => {
-      if(err) reject(err)
+      if (err) reject(err)
       else resolve(res)
     })
   })
@@ -55,7 +55,7 @@ export const sendTransaction = (options) => {
 export const getNetworkId = () => {
   return new Promise((resolve, reject) => {
     web3.eth.net.getId((err, netId) => {
-      if(err) reject();
+      if (err) reject();
       else resolve(netId);
     });
   });
@@ -70,11 +70,11 @@ export const fromWei = (wei) => {
 }
 
 export const watchAccountChanges = (callback, lastKnownAccount) => {
-  let interval = setInterval(function() {
+  let interval = setInterval(function () {
     web3.eth.getAccounts(function (error, accounts) {
-      if(error) return console.log(error)
+      if (error) return console.log(error)
       const newAccount = accounts[0]
-      if(newAccount !== lastKnownAccount) {
+      if (newAccount !== lastKnownAccount) {
         callback(newAccount)
         clearInterval(interval)
         this.watchAccountChanges(callback, newAccount);
@@ -86,10 +86,10 @@ export const watchAccountChanges = (callback, lastKnownAccount) => {
 export const watchNetwork = (callbacks) => {
 
   // Gas price
-  if(callbacks.gasPrice) {
-    const gasPrice = function() {
-      web3.eth.getGasPrice(function(error, result) {
-        if(error) return console.log(error)
+  if (callbacks.gasPrice) {
+    const gasPrice = function () {
+      web3.eth.getGasPrice(function (error, result) {
+        if (error) return console.log(error)
         callbacks.gasPrice(result)
       })
     }
@@ -98,10 +98,10 @@ export const watchNetwork = (callbacks) => {
   }
 
   // Network id
-  if(callbacks.networkId) {
-    const netId = function() {
-      web3.eth.net.getId(function(error, result) {
-        if(error) return console.log(error)
+  if (callbacks.networkId) {
+    const netId = function () {
+      web3.eth.net.getId(function (error, result) {
+        if (error) return console.log(error)
         callbacks.networkId(result)
       })
     }
@@ -110,10 +110,10 @@ export const watchNetwork = (callbacks) => {
   }
 
   // Block num
-  if(callbacks.blockNum) {
-    const blockNum = function() {
+  if (callbacks.blockNum) {
+    const blockNum = function () {
       web3.eth.getBlockNumber((err, blockNumber) => {
-        if(err) console.log(err)
+        if (err) console.log(err)
         callbacks.blockNum(blockNumber);
       });
     }
@@ -124,31 +124,31 @@ export const watchNetwork = (callbacks) => {
 }
 
 export const validateAddress = (address) => {
-  if(!address) return false;
-  if(address === '0x0000000000000000000000000000000000000000') return false;
-  if(address.substring(0, 2) !== "0x") return false;
+  if (!address) return false;
+  if (address === '0x0000000000000000000000000000000000000000') return false;
+  if (address.substring(0, 2) !== "0x") return false;
 
   // Basic validation: length, valid characters, etc
-  if(!/^(0x)?[0-9a-f]{40}$/i.test(address)) return false;
+  if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) return false;
 
   // Checksum validation.
-  const raw = address.replace('0x','');
+  const raw = address.replace('0x', '');
   const allLowerCase = raw.toLowerCase() === raw;
   const allUppercase = raw.toUpperCase() === raw;
-  if(allLowerCase || allUppercase) {
+  if (allLowerCase || allUppercase) {
     return true; // accepts addreses with no checksum data
   }
   else {
     const checksum = ethjs.toChecksumAddress(address);
-    if(address !== checksum) return false;
+    if (address !== checksum) return false;
   }
 
   return true;
 }
 
 export const addressHasChecksum = (address) => {
-  if(!module.exports.isValidAddress(address)) return false;
-  const raw = address.replace('0x','');
+  if (!module.exports.isValidAddress(address)) return false;
+  const raw = address.replace('0x', '');
   const allLowerCase = raw.toLowerCase() === raw;
   const allUppercase = raw.toUpperCase() === raw;
   return !(allLowerCase || allUppercase);
@@ -163,7 +163,7 @@ export const verifySignature = (json) => {
     const recoveredAddress = ethjs.bufferToHex(recoveredAddressBuffer);
     return json.address === recoveredAddress;
   }
-  catch(err) {
+  catch (err) {
     return false;
   }
 }
@@ -174,7 +174,7 @@ export const signMessageWithMetamask = (addr, message, callback) => {
     method: 'personal_sign',
     params: [msg, addr],
     addr
-  }, function(err, res) {
+  }, function (err, res) {
     callback({
       address: addr,
       msg: message,
@@ -192,25 +192,25 @@ export const logger = (req, res, next, end) => {
     } else if (req.method === 'eth_sendTransaction') {
       console.mineInfo('Sent transaction', res.result);
     } else if (req.method === 'eth_getTransactionReceipt' && res.result) {
-      if(duplicateTransactions.size > 1000) duplicateTransactions.clear()
-      if(!duplicateTransactions.get(res.result.transactionHash)) {
+      if (duplicateTransactions.size > 1000) duplicateTransactions.clear()
+      if (!duplicateTransactions.get(res.result.transactionHash)) {
         duplicateTransactions.set(res.result.transactionHash, true);
         console.mineInfo('Mined transaction', res.result.transactionHash);
       }
-    } 
+    }
     cb();
   })
 }
 
 export const attachLogger = () => {
-  if(web3.currentProvider._rpcEngine) {
+  if (web3.currentProvider._rpcEngine) {
     web3.currentProvider._rpcEngine._middleware.unshift(logger);
     return;
   }  //If the current provider hasn't an RPC Engine look for other providers
-  else if(web3.currentProvider.providers) {
+  else if (web3.currentProvider.providers) {
     var providers = web3.currentProvider.providers;
-    for(var i = 0; i<providers.length; i++) {
-      if(providers[i]._rpcEngine) {
+    for (var i = 0; i < providers.length; i++) {
+      if (providers[i]._rpcEngine) {
         providers[i]._rpcEngine._middleware.unshift(logger);
 
         // Set this provider as current provider
@@ -225,7 +225,7 @@ export const attachLogger = () => {
   return;
 }
 
-export const getGasFeeDetails = async (network) => {
+export const getGasFeeDetails = async (network, multiplier) => {
   if (
     network.networkId.toString() === constants.NETWORKS.MUMBAI.id ||
     network.networkId.toString() === constants.NETWORKS.SEPOLIA.id ||
@@ -236,12 +236,12 @@ export const getGasFeeDetails = async (network) => {
     const blockBaseFee = block.baseFeePerGas ? block.baseFeePerGas : 1;
     return {
       maxPriorityFeePerGas,
-      maxFeePerGas: 2 * Number(blockBaseFee) + Number(maxPriorityFeePerGas)
+      maxFeePerGas: multiplier * Number(blockBaseFee) + Number(maxPriorityFeePerGas)
     }
-  } else { 
+  } else {
     const gasPrice = await network.web3.eth.getGasPrice()
     return {
-      gasPrice: 2 * gasPrice
+      gasPrice: multiplier * gasPrice
     }
   }
 } 

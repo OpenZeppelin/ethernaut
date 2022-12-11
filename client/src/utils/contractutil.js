@@ -118,19 +118,16 @@ export const allNewContractsDeployed = (chainId) => {
 
   for (let contractName of constants.CORE_CONTRACT_NAMES) {
     if (!gamedata[contractName]) {
-      console.log(`Contract ${contractName} not deployed on chain ${chainId}`);
       return false;
     }
   }
 
   for (let level of levels) {
     if (!gamedata[level.deployId]) {
-      console.log(`Level ${level.deployId} not deployed on chain ${chainId}`);
       return false;
     }
   }
 
-  console.log(`All levels deployed on chain ${chainId}`);
   return true;
 }
 
