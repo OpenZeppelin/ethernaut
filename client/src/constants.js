@@ -116,6 +116,13 @@ export const ADDRESSES = {
   [NETWORKS.ARBITRUM_GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
 };
 
+// Support EIP-1559
+export const SUPPORTS_EIP_1559 = [
+  '5', // NETWORKS.GOERLI.id
+  '80001', // NETWORKS.MUMBAI.id
+  '11155111', // NETWORKS.SEPOLIA.id
+]
+
 // Core contract keys
 export const CORE_CONTRACT_NAMES = [
   "ethernaut",

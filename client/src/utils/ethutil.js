@@ -226,11 +226,7 @@ export const attachLogger = () => {
 }
 
 export const getGasFeeDetails = async (network, multiplier) => {
-  if (
-    network.networkId.toString() === constants.NETWORKS.MUMBAI.id ||
-    network.networkId.toString() === constants.NETWORKS.SEPOLIA.id ||
-    network.networkId.toString() === constants.NETWORKS.GOERLI.id
-  ) {
+  if (constants.SUPPORTS_EIP_1559.includes(network.networkId.toString())) {
     const maxPriorityFeePerGas = network.web3.utils.toWei('2.5', 'gwei');
     const block = await network.web3.eth.getBlock('latest')
     const blockBaseFee = block.baseFeePerGas ? block.baseFeePerGas : 1;
@@ -244,4 +240,4 @@ export const getGasFeeDetails = async (network, multiplier) => {
       gasPrice: multiplier * gasPrice
     }
   }
-} 
+}
