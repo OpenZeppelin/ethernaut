@@ -18,6 +18,7 @@ import NotFound404 from "./components/NotFound404";
 import Header from "./containers/Header";
 import MarkdownComponent from "./components/Markdown";
 import { loadTranslations } from "./utils/translations";
+import Footer from "./components/Footer";
 
 // For bundle splitting without lazy loading.
 const nonlazy = (component) => lazy(() => component);
@@ -50,7 +51,7 @@ if (!window.web3) {
         <h3>Setup Metamask</h3>
         <section>
           <MarkdownComponent target={strings.setupMetamask} />
-        </section>          
+        </section>
 
         <h3>Game Mechanics</h3>
         <section>
@@ -66,17 +67,14 @@ if (!window.web3) {
         <section>
           <MarkdownComponent target={strings.beyondConsole} />
         </section>
-        
+
         <h3>Troubleshooting</h3>
         <section>
           <MarkdownComponent target={strings.troubleshooting} />
         </section>
       </main>
       {/* Footer */}
-      <footer
-        className="footer"
-        dangerouslySetInnerHTML={{ __html: strings.footer }}
-      ></footer>
+      <Footer></Footer>
     </div>
   )
 } else {

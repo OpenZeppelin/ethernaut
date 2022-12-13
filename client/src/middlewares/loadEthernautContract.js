@@ -50,7 +50,8 @@ const loadEthernautContract = store => next => action => {
 
       next(action)
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log({err})
       console.error(`@bad ${strings.ethernautNotFoundMessage}`)
     })
 }

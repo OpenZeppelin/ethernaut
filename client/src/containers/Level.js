@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import CodeComponent from "../components/Code";
+import Footer from "../components/Footer";
 import Author from "../components/Author";
 import MarkdownComponent from "../components/Markdown";
 import * as actions from "../actions";
@@ -9,7 +10,9 @@ import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
 import { Link } from "react-router-dom";
 import getlevelsdata from "../utils/getlevelsdata";
-import { withRouter } from "../hoc/withRouter"
+import { withRouter } from "../hoc/withRouter";
+import { getLevelKey } from "../utils/contractutil";
+import { deployAndRegisterLevel } from "../utils/deploycontract";
 
 class Level extends React.Component {
   constructor(props) {
@@ -32,7 +35,8 @@ class Level extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.level.deployedAddress !== this.props.params.address) {
+    const key = getLevelKey(this.props.params.address);
+    if (this.props.level?.[key] !== this.props.params.address) {
       this.props.activateLevel(this.props.params.address);
     }
     var codeElement = document.getElementsByClassName("hljs")[0];
@@ -43,10 +47,28 @@ class Level extends React.Component {
       codeElement.style.background = black;
   }
 
-  render() {
-    const { requestedInstance, submittedIntance } = this.state;
+  // use arrow function to prevent this binding
+  deployFactoryContract = async () => {
+    const levelFactory = await deployAndRegisterLevel(this.props.level);
+    if (!levelFactory) return;
+    this.props.loadGameData();
+    this.props.activateLevel(levelFactory.address);
+  };
 
+  createInstance = (evt) => {
+    if (!this.state.requestedInstance) {
+      this.props.loadLevelInstance(this.props.level, false, true);
+      this.setState({ requestedInstance: true });
+      setTimeout(
+        () => this.setState({ requestedInstance: false }),
+        2000
+      );
+    }
+  };
+
+  render() {
     const { level, levelCompleted } = this.props;
+    const { submittedIntance } = this.state;
 
     var [levelData, selectedLevel] = getlevelsdata(this.props, "levelPage");
 
@@ -98,15 +120,15 @@ class Level extends React.Component {
         <main>
           {(isDescriptionMissingTranslation ||
             isCompleteDescriptionMissingTranslation) && (
-            <div style={{ textAlign: "center" }}>
-              <p>
-                {strings.levelNotTranslated}
-                <a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">
-                  {strings.contributeTranslation}
-                </a>
-              </p>
-            </div>
-          )}
+              <div style={{ textAlign: "center" }}>
+                <p>
+                  {strings.levelNotTranslated}
+                  <a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">
+                    {strings.contributeTranslation}
+                  </a>
+                </p>
+              </div>
+            )}
 
           <div className="level-selector-nav">
             <div className="dropdown-menu-bar">
@@ -124,7 +146,8 @@ class Level extends React.Component {
                 return (
                   <Link
                     key={level.name}
-                    to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`}
+                    to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress || level.id
+                      }`}
                   >
                     <div className="level-selector-dropdown-content-item">
                       <p key={level.name}>
@@ -204,7 +227,7 @@ class Level extends React.Component {
                   <button
                     type="button"
                     className="button-actions"
-                    onClick={(evt) =>
+                    onClick={() =>
                       this.props.navigate(
                         `${constants.PATH_LEVEL_ROOT}${nextLevelId}`
                       )
@@ -235,23 +258,21 @@ class Level extends React.Component {
                   </button>
                 )}
 
-                {/* CREATE */}
+                {/* DEPLOY OR CREATE */}
                 <button
                   type="button"
                   className="button-actions"
-                  onClick={(evt) => {
-                    if (!requestedInstance) {
-                      this.props.loadLevelInstance(level, false, true);
-                      this.setState({ requestedInstance: true });
-                      setTimeout(
-                        () => this.setState({ requestedInstance: false }),
-                        2000
-                      );
-                    }
-                  }}
+                  onClick={
+                    level.deployedAddress
+                      ? this.createInstance
+                      : this.deployFactoryContract
+                  }
                 >
-                  {strings.getNewInstance}
+                  {level.deployedAddress
+                    ? strings.getNewInstance
+                    : strings.deployLevel}
                 </button>
+
               </div>
             )}
           </section>
@@ -259,30 +280,29 @@ class Level extends React.Component {
           <section className="descriptors">
             <div className="boxes author-section-border">
               <div className="author-section">
-              {/* AUTHOR */}
-              {level.author && <Author author={level.author} />}
-            </div>
+                {/* AUTHOR */}
+                {level.author && <Author author={level.author} />}
+              </div>
             </div>
           </section>
         </main>
 
         {/* Footer */}
-        <footer
-          className="footer"
-          dangerouslySetInnerHTML={{ __html: strings.footer }}
-        ></footer>
+        <Footer></Footer>
       </div>
     );
   }
 }
 
 function findNextLevelId(level, list) {
+  // check if we are a predeployed chain to know which key to use
   for (let i = 0; i < list.length; i++) {
     const otherLevel = list[i];
     if (level.deployedAddress === otherLevel.deployedAddress) {
       if (i < list.length - 1) {
-        return list[i + 1].deployedAddress;
-      } else return list[0].deployedAddress;
+        const listItem = list[i + 1];
+        return listItem.deployedAddress || listItem.deployId;
+      } else return list[0].deployedAddress || list[0].deployId;
     }
   }
 }
@@ -309,6 +329,7 @@ function mapDispatchToProps(dispatch) {
       deactivateLevel: actions.deactivateLevel,
       loadLevelInstance: actions.loadLevelInstance,
       submitLevelInstance: actions.submitLevelInstance,
+      loadGameData: actions.loadGamedata,
     },
     dispatch
   );
