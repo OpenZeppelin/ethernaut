@@ -30,11 +30,12 @@ async function deploySingleContract(
   return contract;
 }
 
-const confirmMainnetDeployment = async (chainId) => {
+const confirmMainnetDeployment = (chainId) => {
   if (chainId === 1) {
     let language = localStorage.getItem("lang");
     const strings = loadTranslations(language);
-    return window.confirm(strings.confirmMainnetDeploy);
+    const res = window.confirm(strings.confirmMainnetDeploy);
+    return res;
   }
 }
 
