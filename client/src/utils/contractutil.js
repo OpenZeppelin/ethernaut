@@ -104,31 +104,38 @@ export const raiseIssue = async () => {
   window.open(url, '_blank').focus();
 }
 
-// function to check if all the levels are deployed
-export const allNewContractsDeployed = (chainId) => {
-  if (!chainId)
-    return false;
+// statuses for the contracts deployment
+export const deployStatus = {
+  DEFAULT: 'DEFAULT',
+  CORE_DEPLOYED: 'CORE_DEPLOYED',
+  ALL_DEPLOYED: 'ALL_DEPLOYED'
+}
 
-  if (chainId in constants.ID_TO_NETWORK)
-    return false;
+// function to check what contracts are deployed on the current network
+export const contractsDeploymentStatus = (chainId) => {
+  if (!chainId)
+    return deployStatus.DEFAULT;
+
+  // if (chainId in constants.ID_TO_NETWORK)
+  //   return deployStatus.DEFAULT;
 
   const gamedata = restoreContract(chainId);
   if (!gamedata)
-    return false;
+    return deployStatus.DEFAULT;
 
   for (let contractName of constants.CORE_CONTRACT_NAMES) {
     if (!gamedata[contractName]) {
-      return false;
+      return deployStatus.DEFAULT;
     }
   }
 
   for (let level of levels) {
     if (!gamedata[level.deployId]) {
-      return false;
+      return deployStatus.CORE_DEPLOYED;
     }
   }
 
-  return true;
+  return deployStatus.ALL_DEPLOYED;
 }
 
 // -- Utils

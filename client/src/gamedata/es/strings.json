@@ -26,6 +26,7 @@
     "deployGame": "Desplegar juego",
     "switchToGoerli": "Cambiar a Goerli",
     "deployLevel": "Nivel de implementación",
+    "submitLevelFooter": "Implemente todos los niveles para agregar la red actual a nuestro <a href='https://github.com/OpenZeppelin/ethernaut'>repositorio de Github</a> como una nueva red compatible.",
     "submitGameFooter": "¡Impresionante! Todo el juego se implementa en esta red. Haga clic aquí para plantear un problema de GitHub y enviarlo :)",
     "nextLevel": "Pasa al siguiente nivel",
     "uLevels": "Niveles",
