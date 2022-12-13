@@ -40,6 +40,7 @@ store.dispatch(actions.connectWeb3(window.web3));
 const container = document.getElementById('root');
 const root = createRoot(container);
 if (!window.web3) {
+  console.log("HELLO");
   //root.render(<h3>Hey, You dont have the supported wallet!</h3>);
   let language = localStorage.getItem("lang");
   let strings = loadTranslations(language);
