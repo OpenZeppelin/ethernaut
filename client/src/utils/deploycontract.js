@@ -52,7 +52,6 @@ export async function deployAndRegisterLevel(level) {
     const levelABI = fetchLevelABI(level);
     const web3 = ethutil.getWeb3();
     const chainId = await web3.eth.getChainId();
-    console.log("here")
     if (!confirmMainnetDeployment(chainId)) {
       return false;
     }
