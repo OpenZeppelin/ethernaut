@@ -27,7 +27,7 @@
     "switchToGoerli": "Switch to Goerli",
     "deployLevel": "Deploy Level",
     "helperDeployAllContracts": "Deploy all the remaining contracts on the current network.",
-    "confirmMainnetDeploy": "You are on the mainnet, are you sure you want to deploy the contracts? We suggest to not deploy the game on mainnet.",
+    "confirmMainnetDeploy": "You are on a mainnet, the game has no monetary value, you should not deploy in this network.",
     "submitLevelFooter": "Deploy all the levels (deployAllContracts() in console) to add the current network to our <a href='https://github.com/OpenZeppelin/ethernaut'>Github repository</a> as a new supported network.",
     "submitGameFooter": "Awesome! Whole game is deployed on this network. Click here to raise a GitHub issue and submit it to us :)",
     "nextLevel": "Go to the next level",

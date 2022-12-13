@@ -31,7 +31,13 @@ async function deploySingleContract(
 }
 
 const confirmMainnetDeployment = async (chainId) => {
-  if (chainId === 1) {
+  if (
+      chainId === 1 || // Eth mainnet
+      chainId === 137 || // Polygon
+      chainId === 10 || // Optmism
+      chainId === 42161 || // Arbitrum
+      chainId === 56 // Binance
+    ) {
     let language = localStorage.getItem("lang");
     const strings = loadTranslations(language);
     return window.confirm(strings.confirmMainnetDeploy);
