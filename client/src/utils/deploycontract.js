@@ -30,18 +30,21 @@ async function deploySingleContract(
   return contract;
 }
 
-const confirmMainnetDeployment = async (chainId) => {
+const confirmMainnetDeployment = (chainId) => {
   if (
-      chainId === 1 || // Eth mainnet
-      chainId === 137 || // Polygon
-      chainId === 10 || // Optmism
-      chainId === 42161 || // Arbitrum
-      chainId === 56 // Binance
+    chainId === 1 ||
+    chainId === 1 || // Eth mainnet
+    chainId === 137 || // Polygon
+    chainId === 10 || // Optmism
+    chainId === 42161 || // Arbitrum
+    chainId === 56 // Binance
     ) {
     let language = localStorage.getItem("lang");
     const strings = loadTranslations(language);
-    return window.confirm(strings.confirmMainnetDeploy);
+    const res = window.confirm(strings.confirmMainnetDeploy);
+    return res;
   }
+  return true;
 }
 
 export async function deployAndRegisterLevel(level) {
@@ -120,6 +123,7 @@ export async function deployAdminContracts() {
 
     // -- refresh page after deploying contracts
     document.location.replace(document.location.origin);
+    return true;
   } catch (err) {
     // TODO maybe refresh the page if they fail to deploy the contracts
     console.log(err);
