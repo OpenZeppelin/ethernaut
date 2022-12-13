@@ -10,6 +10,7 @@ import {
   updateCachedContract,
 } from "./contractutil";
 import { CORE_CONTRACT_NAMES } from "../constants.js";
+import { loadTranslations } from "../utils/translations";
 
 const logger = (text) => {
   console.log(colors.cyan(`<<  ${text.toUpperCase()}  >>`));
@@ -29,11 +30,22 @@ async function deploySingleContract(
   return contract;
 }
 
+const confirmMainnetDeployment = async (chainId) => {
+  if (chainId === 1) {
+    let language = localStorage.getItem("lang");
+    const strings = loadTranslations(language);
+    return window.confirm(strings.confirmMainnetDeploy);
+  }
+}
+
 export async function deployAndRegisterLevel(level) {
   try {
     const levelABI = fetchLevelABI(level);
     const web3 = ethutil.getWeb3();
     const chainId = await web3.eth.getChainId();
+    if (!confirmMainnetDeployment(chainId)) {
+      return false;
+    }
     const gasDetails = await getGasFeeDetails({ networkId: chainId, web3: web3 }, 10);
     const from = (await web3.eth.getAccounts())[0];
     const levelContractAddress = await deploySingleContract(
@@ -66,6 +78,9 @@ export async function deployAdminContracts() {
     // -- get instance of metamask injected into the environment
     const web3 = getInjectedProvider();
     const chainId = await web3.eth.getChainId();
+    if (!confirmMainnetDeployment(chainId)) {
+      return false;
+    }
     const gameData = restoreContract(chainId);
 
     const gasDetails = await getGasFeeDetails({ networkId: chainId, web3: web3 }, 10);

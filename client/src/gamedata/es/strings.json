@@ -27,6 +27,7 @@
     "switchToGoerli": "Cambiar a Goerli",
     "deployLevel": "Nivel de implementación",
     "helperDeployAllContracts": "Implemente todos los contratos restantes en la red actual.",
+    "confirmMainnetDeploy": "Está en la red principal, ¿está seguro de que desea implementar los contratos? Sugerimos no implementar el juego en la red principal.",
     "submitLevelFooter": "Implemente todos los niveles (deployAllContracts() en la consola) para agregar la red actual a nuestro <a href='https://github.com/OpenZeppelin/ethernaut'>repositorio de Github</a> como una nueva red compatible.",
     "submitGameFooter": "¡Impresionante! Todo el juego se implementa en esta red. Haga clic aquí para plantear un problema de GitHub y enviarlo :)",
     "nextLevel": "Pasa al siguiente nivel",

@@ -27,6 +27,7 @@
     "switchToGoerli": "ゴエリに乗り換え",
     "deployLevel": "配備レベル",
     "helperDeployAllContracts": "残りのすべてのコントラクトを現在のネットワークにデプロイします。",
+    "confirmMainnetDeploy": "あなたはメインネット上にいます。コントラクトをデプロイしてもよろしいですか?ゲームをメインネットに展開しないことをお勧めします。",
     "submitLevelFooter": "すべてのレベルをデプロイ (コンソールで deployAllContracts()) して、現在のネットワークを新しいサポート対象ネットワークとして <a href='https://github.com/OpenZeppelin/ethernaut'>Github リポジトリ</a> に追加します。",
     "submitGameFooter": "素晴らしい！ゲーム全体がこのネットワーク上に展開されます。ここをクリックして GitHub の問題を提起し、私たちに送信してください :)",
     "nextLevel": "次のレベルへ",
