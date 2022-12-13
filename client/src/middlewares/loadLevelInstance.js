@@ -43,7 +43,7 @@ const loadLevelInstance = (store) => (next) => (action) => {
       parseFloat(action.level.deployFunds, 10).toString(),
       'ether'
     );
-    getGasFeeDetails(state.network).then(gasFeeDetails => {
+    getGasFeeDetails(state.network, 2).then(gasFeeDetails => {
       state.contracts.ethernaut
         .createLevelInstance(action.level.deployedAddress, {
           // 2.5 * estimate is required for level creation to succeed in arbitrum goerli
@@ -73,9 +73,8 @@ const loadLevelInstance = (store) => (next) => (action) => {
   if (!instanceAddress) return;
   console.info(`=> ${strings.instanceAddressMessage}\n${instanceAddress}`);
   const Instance = ethutil.getTruffleContract(
-    require(`contracts/build/contracts/levels/${
-      action.level.instanceContract
-    }/${withoutExtension(action.level.instanceContract)}.json`),
+    require(`contracts/build/contracts/levels/${action.level.instanceContract
+      }/${withoutExtension(action.level.instanceContract)}.json`),
     {
       from: state.player.address,
       gasPrice: 2 * state.network.gasPrice,

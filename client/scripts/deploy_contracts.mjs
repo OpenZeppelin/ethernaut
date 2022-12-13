@@ -1,16 +1,16 @@
-import prompt from 'prompt';
-import colors from 'colors';
-import Web3 from 'web3';
+import prompt from "prompt";
+import colors from "colors";
+import Web3 from "web3";
 import { ethers } from "ethers";
-import fs from 'fs';
-import * as ethutil from '../src/utils/ethutil.js';
-import * as constants from '../src/constants.js';
-import HDWalletProvider from '@truffle/hdwallet-provider';
-import * as gamedata from '../src/gamedata/gamedata.json' assert { type: 'json' };
-import * as EthernautABI from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json' assert { type: 'json' };
-import * as ProxyAdminABI from 'contracts/build/contracts/proxy/ProxyAdmin.sol/ProxyAdmin.json' assert { type: 'json' };
-import * as ImplementationABI from 'contracts/build/contracts/metrics/Statistics.sol/Statistics.json' assert { type: 'json' };
-import * as ProxyStatsABI from 'contracts/build/contracts/proxy/ProxyStats.sol/ProxyStats.json' assert { type: 'json' };
+import fs from "fs";
+import * as ethutil from "../src/utils/ethutil.js";
+import * as constants from "../src/constants.js";
+import HDWalletProvider from "@truffle/hdwallet-provider";
+import * as gamedata from "../src/gamedata/gamedata.json" assert { type: "json" };
+import * as EthernautABI from "contracts/build/contracts/Ethernaut.sol/Ethernaut.json" assert { type: "json" };
+import * as ProxyAdminABI from "contracts/build/contracts/proxy/ProxyAdmin.sol/ProxyAdmin.json" assert { type: "json" };
+import * as ImplementationABI from "contracts/build/contracts/metrics/Statistics.sol/Statistics.json" assert { type: "json" };
+import * as ProxyStatsABI from "contracts/build/contracts/proxy/ProxyStats.sol/ProxyStats.json" assert { type: "json" };
 
 let web3;
 let ethernaut;
@@ -67,7 +67,7 @@ async function exec() {
   if (await confirmDeployment()) {
     await deployContracts(deployData);
     storeDeployData(DEPLOY_DATA_PATH, deployData);
-    console.log('Done');
+    console.log("Done");
     process.exit();
   }
 }
@@ -82,7 +82,7 @@ async function deployContracts(deployData) {
 
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
   if (!from) from = (await web3.eth.getAccounts())[0];
-  console.log('FROM: ', from);
+  console.log("FROM: ", from);
 
   // Deploy/retrieve ethernaut contract
   const Ethernaut = await ethutil.getTruffleContract(EthernautABI.default, {
@@ -95,14 +95,13 @@ async function deployContracts(deployData) {
       console.log(colors.yellow(`  Ethernaut: ${ethernaut.address}`));
       deployData.ethernaut = ethernaut.address;
     } else {
-      console.log('Using deployed Ethernaut.sol:', deployData.ethernaut);
+      console.log("Using deployed Ethernaut.sol:", deployData.ethernaut);
       ethernaut = await Ethernaut.at(deployData.ethernaut);
       // console.log('ethernaut: ', ethernaut);
     }
-  } catch(error) {
-    console.log(error)
+  } catch (error) {
+    console.log(error);
   }
-
 
   // Deploy/retrieve Implementation
   await deployImplementation(from, props, deployData);
@@ -131,7 +130,7 @@ async function deployContracts(deployData) {
             `contracts/build/contracts/levels/${
               level.levelContract
             }/${withoutExtension(level.levelContract)}.json`,
-            'utf-8'
+            "utf-8"
           )
         );
         const Contract = await ethutil.getTruffleContract(LevelABI, { from });
@@ -150,7 +149,6 @@ async function deployContracts(deployData) {
         );
         const tx = await ethernaut.registerLevel(contract.address, props);
         console.log(`Registered ${level.levelContract}!`);
-        // console.log(tx)
       } else {
         console.log(`Using deployed ${level.levelContract}...`);
       }
@@ -176,7 +174,7 @@ async function deployProxyAdmin(from, props, deployData) {
     console.log(colors.yellow(`  ProxyAdmin: ${proxyAdmin.address}`));
     deployData.proxyAdmin = proxyAdmin.address;
   } else {
-    console.log('Using deployed ProxyAdmin.sol:', deployData.proxyAdmin);
+    console.log("Using deployed ProxyAdmin.sol:", deployData.proxyAdmin);
     proxyAdmin = await ProxyAdmin.at(deployData.proxyAdmin);
   }
   return proxyAdmin.address;
@@ -195,7 +193,7 @@ async function deployImplementation(from, props, deployData) {
     console.log(colors.yellow(`  Statistics: ${implementation.address}`));
     deployData.implementation = implementation.address;
   } else {
-    console.log('Using deployed Statistics.sol:', deployData.implementation);
+    console.log("Using deployed Statistics.sol:", deployData.implementation);
     implementation = await Implementation.at(deployData.implementation);
   }
 
@@ -215,7 +213,7 @@ async function deployProxyStats(from, props, deployData) {
     console.log(colors.yellow(`  Proxy: ${proxyStats.address}`));
     deployData.proxyStats = proxyStats.address;
   } else {
-    console.log('Using deployed Proxy.sol:', deployData.proxyStats);
+    console.log("Using deployed Proxy.sol:", deployData.proxyStats);
     proxyStats = await ProxyStats.at(deployData.proxyStats);
   }
 
@@ -246,17 +244,17 @@ async function setStatProxy(from, props) {
 function needsSetProxy(proxy) {
   return (
     proxy === undefined ||
-    proxy === '0x0000000000000000000000000000000000000000'
+    proxy === "0x0000000000000000000000000000000000000000"
   );
 }
 
 function withoutExtension(str) {
-  return str.split('.')[0];
+  return str.split(".")[0];
 }
 
 function needsDeploy(deployAddress) {
   if (constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) return true;
-  return deployAddress === undefined || deployAddress === 'x';
+  return deployAddress === undefined || deployAddress === "x";
 }
 
 function initWeb3() {
@@ -288,15 +286,14 @@ function initWeb3() {
     //   ethutil.setWeb3(web3);
     //   resolve();
     // });
-
-  }).catch((error)=>{
-    console.log(error)
-  })
+  }).catch((error) => {
+    console.log(error);
+  });
 }
 
 function loadDeployData(path) {
   try {
-    return JSON.parse(fs.readFileSync(path, 'utf8'));
+    return JSON.parse(fs.readFileSync(path, "utf8"));
   } catch (err) {
     return {};
   }
@@ -304,7 +301,7 @@ function loadDeployData(path) {
 
 function storeDeployData(path, deployData) {
   console.log(colors.green(`Writing updated deploy data: ${path}`));
-  return fs.writeFileSync(path, JSON.stringify(deployData, null, 2), 'utf8');
+  return fs.writeFileSync(path, JSON.stringify(deployData, null, 2), "utf8");
 }
 
 function confirmDeployment() {
@@ -324,7 +321,7 @@ function confirmDeployment() {
       prompt.start();
       prompt.get(options, (err, res) => {
         if (err) return reject(err);
-        resolve(res.confirmDeployment === 'y');
+        resolve(res.confirmDeployment === "y");
       });
     } else {
       resolve(true);
