@@ -26,6 +26,7 @@
     "deployGame": "Deploy game",
     "switchToGoerli": "Switch to Goerli",
     "deployLevel": "Deploy Level",
+    "helperDeployAllContracts": "Deploy all the remaining contracts on the current network.",
     "submitLevelFooter": "Deploy all the levels to add the current network to our <a href='https://github.com/OpenZeppelin/ethernaut'>Github repository</a> as a new supported network.",
     "submitGameFooter": "Awesome! Whole game is deployed on this network. Click here to raise a GitHub issue and submit it to us :)",
     "nextLevel": "Go to the next level",

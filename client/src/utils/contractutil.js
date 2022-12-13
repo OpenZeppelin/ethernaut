@@ -2,6 +2,7 @@ import * as constants from "../constants";
 import { getWeb3, setWeb3, getTruffleContract } from "./ethutil";
 import { newGithubIssueUrl } from "./github";
 import * as LocalFactoryABI from "contracts/build/contracts/factory/LocalFactory.sol/Factory.json";
+import { deployAdminContracts, deployAndRegisterLevel } from "./deploycontract";
 var levels = require(`../gamedata/gamedata.json`).levels;
 
 
@@ -116,8 +117,8 @@ export const contractsDeploymentStatus = (chainId) => {
   if (!chainId)
     return deployStatus.DEFAULT;
 
-  // if (chainId in constants.ID_TO_NETWORK)
-  //   return deployStatus.DEFAULT;
+  if (chainId in constants.ID_TO_NETWORK)
+    return deployStatus.DEFAULT;
 
   const gamedata = restoreContract(chainId);
   if (!gamedata)
@@ -136,6 +137,37 @@ export const contractsDeploymentStatus = (chainId) => {
   }
 
   return deployStatus.ALL_DEPLOYED;
+}
+
+export const deployRemainingContracts = async () => {
+  const chainId = await window.web3.eth.getChainId();
+
+  try {
+    let gamedata = restoreContract(chainId);
+    if (!gamedata) {
+      const deployed = await deployAdminContracts();
+      if (!deployed) return;
+      gamedata = restoreContract(chainId);
+    }
+
+    for (let contractName of constants.CORE_CONTRACT_NAMES) {
+      if (!gamedata[contractName]) {
+        const deployed = await deployAdminContracts();
+        if (!deployed) return;
+        gamedata = restoreContract(chainId);
+        break;
+      }
+    }
+
+    for (let level of levels) {
+      if (!gamedata[level.deployId]) {
+        const deployed = await deployAndRegisterLevel(level);
+        if (!deployed) return;
+      }
+    }
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 // -- Utils

@@ -54,7 +54,9 @@ export async function deployAndRegisterLevel(level) {
     updateCachedContract(level.deployId, levelContractAddress.address, chainId);
     return levelContractAddress;
   } catch (err) {
-    alert(err.message);
+    console.log(err);
+    return false;
+    // alert(err.message);
   }
   // return contractAddress;
 }
@@ -100,7 +102,8 @@ export async function deployAdminContracts() {
   } catch (err) {
     // TODO maybe refresh the page if they fail to deploy the contracts
     console.log(err);
-    alert(err.message); //todo show a notification prompting the user to click something to restart the process
+    // alert(err.message); //todo show a notification prompting the user to click something to restart the process
+    return false;
   } finally {
     // -- stop the loader
     const elements = document.querySelectorAll(".progress-bar-wrapper");

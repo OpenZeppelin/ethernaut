@@ -242,6 +242,7 @@ function setupConsoleUtils() {
       'getNetworkId()': strings.helperGetNetworkId,
       'toWei(ether)': strings.helperToWei,
       'fromWei(wei)': strings.helperFromWei,
+      'deployAllContracts()': strings.helperDeployAllContracts,
     })
   }
 }
