@@ -13,7 +13,7 @@ import { CORE_CONTRACT_NAMES } from "../constants.js";
 import { loadTranslations } from "../utils/translations";
 
 const logger = (text) => {
-  console.log(colors.cyan(`<<  ${text.toUpperCase()}  >>`));
+  console.dir(colors.cyan(`<<  ${text.toUpperCase()}  >>`));
 };
 
 async function deploySingleContract(
@@ -38,7 +38,7 @@ const confirmMainnetDeployment = (chainId) => {
     chainId === 10 || // Optmism
     chainId === 42161 || // Arbitrum
     chainId === 56 // Binance
-    ) {
+  ) {
     let language = localStorage.getItem("lang");
     const strings = loadTranslations(language);
     const res = window.confirm(strings.confirmMainnetDeploy);
