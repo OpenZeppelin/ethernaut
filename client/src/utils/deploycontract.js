@@ -37,6 +37,7 @@ const confirmMainnetDeployment = (chainId) => {
     const res = window.confirm(strings.confirmMainnetDeploy);
     return res;
   }
+  return true;
 }
 
 export async function deployAndRegisterLevel(level) {
@@ -115,6 +116,7 @@ export async function deployAdminContracts() {
 
     // -- refresh page after deploying contracts
     document.location.replace(document.location.origin);
+    return true;
   } catch (err) {
     // TODO maybe refresh the page if they fail to deploy the contracts
     console.log(err);
