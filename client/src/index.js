@@ -89,31 +89,32 @@ if (!window.web3) {
     <Provider store={store}>
       <Router history={syncHistoryWithStore(history, store)}>
         <Suspense fallback={<div>Loading...</div>}>
-          <MediaQuery minWidth={880.1}>
-            <Header></Header>
-            <Routes>
-              <Route path={constants.PATH_HELP} element={<Help />} />
-              <Route path={constants.PATH_LEVEL} element={<Level />} />
-              <Route path={constants.PATH_STATS} element={<Stats />} />
-              <Route exact path="/" element={<App />} />
-              <Route path="/" element={<NotFound404 />} />
-            </Routes>
-          </MediaQuery>
-          <MediaQuery maxWidth={885}>
-            <Header></Header>
-            <div className="unfitScreenSize">
-              <h3>You need a larger screen to play</h3>
-              <a href={constants.PATH_ROOT}>
-                <img
-                  id="the-ethernaut"
-                  src="../../imgs/the-ethernaut.svg"
-                  alt="The-Ethernaut"
-                  className="the-ethernaut"
-                />
-              </a>
-            </div>
-          </MediaQuery>
-        </Suspense>
+            <MediaQuery minWidth={880.1}>
+              <Header></Header>
+              <Routes>
+                <Route path={constants.PATH_HELP} element={<Help/>} />
+                <Route path={constants.PATH_LEVEL} element={<Level/>} />
+                <Route path={constants.PATH_STATS} element={<Stats/>} />
+                <Route exact path="/" element={<App/>} />
+                <Route path="/" element={<NotFound404/>} />
+              </Routes>
+            </MediaQuery>
+            <MediaQuery maxWidth={885}>
+              <Header></Header>
+              <div className="unfitScreenSize">
+                <h3>Screen is too small</h3>
+                <h3>Please switch to desktop view</h3>
+                <a href={constants.PATH_ROOT}>
+                  <img
+                    id="the-ethernaut"
+                    src="../../imgs/the-ethernaut.svg"
+                    alt="The-Ethernaut"
+                    className="the-ethernaut"
+                  />
+                </a>
+              </div>
+            </MediaQuery>
+          </Suspense>
       </Router>
     </Provider>
   );
