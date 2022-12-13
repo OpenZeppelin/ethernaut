@@ -19,16 +19,13 @@ import Header from "./containers/Header";
 import MarkdownComponent from "./components/Markdown";
 import { loadTranslations } from "./utils/translations";
 import Footer from "./components/Footer";
-console.log("HELLO -2");
 
 // For bundle splitting without lazy loading.
 const nonlazy = (component) => lazy(() => component);
-console.log("HELLO -1");
 
 const Level = nonlazy(import("./containers/Level"));
 const Help = nonlazy(import("./containers/Help"));
 const Stats = nonlazy(import("./containers/Stats"));
-console.log("HELLO 0");
 
 Sentry.init({
   dsn: constants.SENTRY_DSN,
@@ -38,13 +35,12 @@ Sentry.init({
   tracesSampleRate: 1.0,
   release: constants.VERSION,
 });
-console.log("HELLO 1");
 // store.dispatch(actions.setNetworkId(id));
 store.dispatch(actions.connectWeb3(window.web3));
 const container = document.getElementById('root');
 const root = createRoot(container);
 if (!window.web3) {
-  console.log("HELLO 2");
+
   //root.render(<h3>Hey, You dont have the supported wallet!</h3>);
   let language = localStorage.getItem("lang");
   let strings = loadTranslations(language);
@@ -79,7 +75,7 @@ if (!window.web3) {
         </section>
       </main>
       {/* Footer */}
-      <Footer></Footer>
+      <Provider store={store}><Footer></Footer></Provider>
     </div>
   )
 } else {
