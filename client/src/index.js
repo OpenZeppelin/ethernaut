@@ -58,6 +58,7 @@ if (!window.web3) {
                 src="../../imgs/the-ethernaut.svg"
                 alt="The-Ethernaut"
                 className="the-ethernaut"
+                style={{ width: "80%"}}
               />
             </a>
           </section>
@@ -65,7 +66,7 @@ if (!window.web3) {
               <center>
                 <hr />
               </center>
-              {parse(strings.info)}
+              <div style={{ width: "150%", marginLeft: "-25%" }}>{parse(strings.info)}</div>
           </section>
          
          <center >
