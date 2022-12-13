@@ -117,8 +117,8 @@ export const contractsDeploymentStatus = (chainId) => {
   if (!chainId)
     return deployStatus.DEFAULT;
 
-  if (chainId in constants.ID_TO_NETWORK)
-    return deployStatus.DEFAULT;
+  // if (chainId in constants.ID_TO_NETWORK)
+  //   return deployStatus.DEFAULT;
 
   const gamedata = restoreContract(chainId);
   if (!gamedata)
