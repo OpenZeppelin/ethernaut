@@ -311,6 +311,7 @@ function mapStateToProps(state) {
   const level = state.gamedata.activeLevel;
 
   return {
+    networkId:state.network.networkId,
     level: level,
     activeLevel: level,
     player: state.player,

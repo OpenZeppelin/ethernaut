@@ -40,6 +40,9 @@ export const setBlockNum = num => ({ type: SET_BLOCK_NUM, blockNum: num })
 export const SET_LANG = "SET_LANG";
 export const setLang = (lang) => ({ type: SET_LANG, lang }) 
 
+export const CLEAR_SOLVED_LEVELS = "CLEAR_SOLVED_LEVELS";
+export const clearSolvedLevels = () => ({ type: CLEAR_SOLVED_LEVELS }) 
+
 export const CHECK_ALL_COMPLETED = "CHECK_ALL_COMPLETED";
 
 
