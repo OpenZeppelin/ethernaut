@@ -24,7 +24,7 @@ class Mosaic extends React.Component {
         <section className="game">
             {levelData.map((level) => {
                 return (
-                    <Link key={level.name} to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`}>
+                    <Link key={level.name} to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress || level.id}`}>
                         <div className="content_img">
                             <img className='level-tile' alt="" src={level.src}/> 
                             <div>

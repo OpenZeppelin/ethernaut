@@ -18,6 +18,8 @@ import NotFound404 from "./components/NotFound404";
 import Header from "./containers/Header";
 import MarkdownComponent from "./components/Markdown";
 import { loadTranslations } from "./utils/translations";
+import Footer from "./components/Footer";
+import parse from "html-react-parser";
 
 // For bundle splitting without lazy loading.
 const nonlazy = (component) => lazy(() => component);
@@ -39,44 +41,67 @@ store.dispatch(actions.connectWeb3(window.web3));
 const container = document.getElementById('root');
 const root = createRoot(container);
 if (!window.web3) {
+
   //root.render(<h3>Hey, You dont have the supported wallet!</h3>);
   let language = localStorage.getItem("lang");
   let strings = loadTranslations(language);
 
   root.render(
     <div>
-      <div className="lines"></div>
-      <main className="boxes">
-        <h3>Setup Metamask</h3>
-        <section>
-          <MarkdownComponent target={strings.setupMetamask} />
-        </section>          
+      {/* Parent container */}
+      <main>
+          {/* Main title and buttons */}
+          <section className="titles">
+            <a href={constants.PATH_ROOT}>
+              <img
+                id="the-ethernaut"
+                src="../../imgs/the-ethernaut.svg"
+                alt="The-Ethernaut"
+                className="the-ethernaut"
+                style={{ width: "80%"}}
+              />
+            </a>
+          </section>
+          <section className="Description">
+              <center>
+                <hr />
+              </center>
+              <div style={{ width: "150%", marginLeft: "-25%" }}>{parse(strings.info)}</div>
+          </section>
+         
+         <center >
+          <div className="boxes">
 
-        <h3>Game Mechanics</h3>
-        <section>
-          <MarkdownComponent target={strings.gameMechanics} />
-        </section>
+            <h3>Setup Metamask</h3>
+            <section>
+              <MarkdownComponent target={strings.setupMetamask} />
+            </section>
 
-        <h3>Using the console</h3>
-        <section>
-          <MarkdownComponent target={strings.usingConsole} />
-        </section>
+            <h3>Game Mechanics</h3>
+            <section>
+              <MarkdownComponent target={strings.gameMechanics} />
+            </section>
 
-        <h3>Beyond the console</h3>
-        <section>
-          <MarkdownComponent target={strings.beyondConsole} />
-        </section>
-        
-        <h3>Troubleshooting</h3>
-        <section>
-          <MarkdownComponent target={strings.troubleshooting} />
-        </section>
+            <h3>Using the console</h3>
+            <section>
+              <MarkdownComponent target={strings.usingConsole} />
+            </section>
+
+            <h3>Beyond the console</h3>
+            <section>
+              <MarkdownComponent target={strings.beyondConsole} />
+            </section>
+
+            <h3>Troubleshooting</h3>
+            <section>
+              <MarkdownComponent target={strings.troubleshooting} />
+            </section>
+            </div>
+          </center>
+         
+          {/* Footer */}
+          <Provider store={store}><Footer></Footer></Provider>
       </main>
-      {/* Footer */}
-      <footer
-        className="footer"
-        dangerouslySetInnerHTML={{ __html: strings.footer }}
-      ></footer>
     </div>
   )
 } else {

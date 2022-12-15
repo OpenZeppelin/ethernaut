@@ -1,16 +1,17 @@
 import * as actions from '../actions';
 import { loadTranslations } from '../utils/translations'
 import { getGasFeeDetails } from '../utils/ethutil'
+//import { getPercentageOfLevelsSolvedByPlayer } from '../utils/statsContract'
 
 let language = localStorage.getItem('lang')
 let strings = loadTranslations(language)
 
 const submitLevelInstance = store => next => async action => {
-  if(action.type !== actions.SUBMIT_LEVEL_INSTANCE) return next(action)
-  if(action.completed) return next(action)
+  if (action.type !== actions.SUBMIT_LEVEL_INSTANCE) return next(action)
+  if (action.completed) return next(action)
 
   const state = store.getState()
-  if(
+  if (
     !state.network.web3 ||
     !state.contracts.ethernaut ||
     !state.contracts.levels[action.level.deployedAddress] ||
@@ -19,7 +20,7 @@ const submitLevelInstance = store => next => async action => {
   ) return next(action)
 
   console.asyncInfo(`@good ${strings.submitLevelMessage}`)
-  const gasFeeDetails = await getGasFeeDetails(state.network)
+  const gasFeeDetails = await getGasFeeDetails(state.network, 2)
   let completed = await submitLevelInstanceUtil(
     state.contracts.ethernaut,
     action.level.deployedAddress,
@@ -27,8 +28,10 @@ const submitLevelInstance = store => next => async action => {
     state.player.address,
     gasFeeDetails
   )
-  if(completed) {
-    console.victory(`@good ${strings.wellDoneMessage}, ${strings.completedLevelMessage}`)
+  if (completed) {
+    console.victory(`@good ${strings.wellDoneMessage}, ${strings.completedLevelMessage}`);
+    // const percentage = await getPercentageOfLevelsSolvedByPlayer(state.player.address, state.network.networkId);
+    // console.log(percentage);
   }
   else {
     console.error(`@bad ${strings.uncompletedLevelMessage} @bad`)
@@ -57,7 +60,7 @@ async function submitLevelInstanceUtil(ethernaut, levelAddress, instanceAddress,
         else return false
       }
     }
-  } catch (error) { 
+  } catch (error) {
     console.error(error)
     return false
   }
