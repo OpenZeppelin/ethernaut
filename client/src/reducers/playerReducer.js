@@ -84,3 +84,12 @@ function restorePlayer(address) {
   //  console.log(`RESTORE PLAYER`, key, data)
   return data
 }
+
+// const clearSolvedStatusOfAllLevels = (levelAddresses) => { 
+//   const output = {}
+//   levelAddresses = Object.keys(levelAddresses);
+//   for (let levelAddress of levelAddresses) { 
+//     output[levelAddress] = false;
+//   }
+//   return output;
+// } 
