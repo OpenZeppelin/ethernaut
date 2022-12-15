@@ -57,7 +57,7 @@ const playerReducer = function(state = initialState, action) {
     case actions.SYNC_PLAYER_PROGRESS:
       newState = {
         ...state,
-        completedLevels: action.completedLevels
+        completedLevels: action.completedLevels || {}
       }
       break
 
