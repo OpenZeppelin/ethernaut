@@ -3,7 +3,7 @@ import { getTruffleContract, getNetworkNamefromId } from './ethutil';
 import Web3 from 'web3';
 
 export const getLevelsSolvedByPlayer = async (playerAddress, networkId) => {
-    if (!playerAddress || networkId) {
+    if (!(playerAddress || networkId)) {
         return;
     }
     const networkName = getNetworkNamefromId(networkId)

@@ -1,6 +1,7 @@
 import * as actions from '../actions';
 import { loadTranslations } from '../utils/translations'
 import { getGasFeeDetails } from '../utils/ethutil'
+//import { getPercentageOfLevelsSolvedByPlayer } from '../utils/statsContract'
 
 let language = localStorage.getItem('lang')
 let strings = loadTranslations(language)
@@ -28,7 +29,9 @@ const submitLevelInstance = store => next => async action => {
     gasFeeDetails
   )
   if (completed) {
-    console.victory(`@good ${strings.wellDoneMessage}, ${strings.completedLevelMessage}`)
+    console.victory(`@good ${strings.wellDoneMessage}, ${strings.completedLevelMessage}`);
+    // const percentage = await getPercentageOfLevelsSolvedByPlayer(state.player.address, state.network.networkId);
+    // console.log(percentage);
   }
   else {
     console.error(`@bad ${strings.uncompletedLevelMessage} @bad`)
