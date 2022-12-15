@@ -47,7 +47,7 @@ const loadEthernautContract = store => next => action => {
       store.dispatch(actions.syncPlayerProgress())
 
       // Auto-restore previoius instance
-      if (state.gamedata.activeLevel && state.contracts.ethernaut)
+      if (state.gamedata.activeLevel)
         store.dispatch(actions.loadLevelInstance(state.gamedata.activeLevel, true, false))
 
     })

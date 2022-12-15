@@ -54,10 +54,10 @@ const playerReducer = function(state = initialState, action) {
       else newState = state
       break
     
-    case actions.CLEAR_SOLVED_LEVELS:
+    case actions.SYNC_PLAYER_PROGRESS:
       newState = {
         ...state,
-        completedLevels: {}
+        completedLevels: action.completedLevels
       }
       break
 
@@ -84,12 +84,3 @@ function restorePlayer(address) {
   //  console.log(`RESTORE PLAYER`, key, data)
   return data
 }
-
-// const clearSolvedStatusOfAllLevels = (levelAddresses) => { 
-//   const output = {}
-//   levelAddresses = Object.keys(levelAddresses);
-//   for (let levelAddress of levelAddresses) { 
-//     output[levelAddress] = false;
-//   }
-//   return output;
-// } 

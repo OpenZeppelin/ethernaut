@@ -23,15 +23,16 @@ const syncPlayerProgress = store => next => async action => {
     return next(action)
   }
   
-  store.dispatch(actions.clearSolvedLevels())
+  let completedLevels = {}
 
-  levelAddresses.forEach((levelAddress) => { 
-    store.dispatch(actions.submitLevelInstance({
-      deployedAddress: levelAddress,
-    }, true))
-  })
+  for (let levelAddress of levelAddresses) { 
+    completedLevels[levelAddress] = true;
+  }
 
-  next(action)
+  action.completedLevels = completedLevels
+
+  return next(action)
 }
+
 
 export default syncPlayerProgress
