@@ -40,6 +40,8 @@ const loadEthernautContract = store => next => action => {
       window.ethernaut = instance
 
       action.contract = instance
+      
+      next(action)
 
       // Get game data
       store.dispatch(actions.syncPlayerProgress())
@@ -48,7 +50,6 @@ const loadEthernautContract = store => next => action => {
       if (state.gamedata.activeLevel && state.contracts.ethernaut)
         store.dispatch(actions.loadLevelInstance(state.gamedata.activeLevel, true, false))
 
-      next(action)
     })
     .catch((err) => {
       console.log({ err })
