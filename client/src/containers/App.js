@@ -31,6 +31,9 @@ class App extends React.Component {
     let target = this.props.levels[0].deployedAddress;
     for (let i = 0; i < this.props.levels.length; i++) {
       const level = this.props.levels[i];
+      if (!level.deployedAddress) { 
+        return this.props.navigate(`${constants.PATH_LEVEL_ROOT}${i}`);
+      }
       const completed = this.props.completedLevels[level.deployedAddress];
       if (!completed) {
         target = level.deployedAddress;
