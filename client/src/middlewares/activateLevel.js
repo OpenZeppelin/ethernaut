@@ -60,7 +60,10 @@ const activateLevel = store => next => action => {
     store.dispatch(actions.loadLevelInstance(activeLevel, true, false))
 
   window.level = activeLevel.deployedAddress;
-  console.info(`=> ${strings.levelAddressMessage}\n${activeLevel.deployedAddress}`)
+
+  if (activeLevel.deployedAddress) {
+    console.info(`=> ${strings.levelAddressMessage}\n${activeLevel.deployedAddress}`)
+  }
 
   action.activeLevel = activeLevel;
   next(action)
