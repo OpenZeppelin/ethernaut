@@ -21,6 +21,7 @@ contract Statistics is Initializable {
         uint256 noOfInstancesSubmitted_Success;
         uint256 noOfSubmissions_Failed;
     }
+    mapping(address => uint256) internal averageTimeTakenToCompleteLevels;
     mapping(address => uint256) private globalNoOfLevelsCompletedByPlayer;
     mapping(address => uint256) private globalNoOfInstancesCreatedByPlayer;
     mapping(address => uint256) private globalNoOfInstancesCompletedByPlayer;
@@ -31,6 +32,9 @@ contract Statistics is Initializable {
     mapping(address => mapping(address => LevelInstance)) private playerStats;
     mapping(address => bool) private playerExists;
     mapping(address => bool) private levelExists;
+
+    event playerScoreProfile(address indexed player, uint256 indexed averageCompletionTime, uint256 indexed globalLevelsCompleted);
+
     modifier levelExistsCheck(address level) {
         require(doesLevelExist(level), "Level doesn't exist");
         _;
@@ -105,12 +109,18 @@ contract Statistics is Initializable {
             globalNoOfLevelsCompletedByPlayer[player]++;
             levelFirstCompletionTime[player][level] = block.timestamp;
         }
+        uint256 memory averageCompletionTimeByPlayer;
+        uint memory globalLevelsSolvedByPlayer;
         playerStats[player][level].timeSubmitted.push(block.timestamp);
         playerStats[player][level].timeCompleted = block.timestamp;
         playerStats[player][level].isCompleted = true;
         levelStats[level].noOfInstancesSubmitted_Success++;
         globalNoOfInstancesCompleted++;
         globalNoOfInstancesCompletedByPlayer[player]++;
+        calculateAverageTimeTakenToCompleteLevelsByPlayer(player, level);
+        averageCompletionTimeByPlayer = averageTimeTakenToCompleteLevels[player];
+        globalLevelsSolvedByPlayer = globalNoOfLevelsCompletedByPlayer[player];
+        emit playerScoreProfile(player, averageCompletionTimeByPlayer, globalLevelsSolvedByPlayer);
     }
 
     function submitFailure(
@@ -259,6 +269,23 @@ contract Statistics is Initializable {
             levels.length;
     }
 
+    // Function to calculate the average time elapsed for all player's completed levels on first successful submission
+    function calculateAverageTimeTakenToCompleteLevelsByPlayer(address player, address level) private returns(uint256) {
+        uint256 lastAverageTime = averageTimeTakenToCompleteLevelsByPlayer[player];
+        uint256 newAverageTimeTakenToCompleteLevels;
+        uint256 timeTakenForThisSuccessfulSubmission;
+        timeTakenForThisSuccessfulSubmission = levelFirstCompletionTime[player][level] - levelFirstInstanceCreationTime[player][level];
+
+        //now, set the average time value in the mapping via evaluating its current value;
+        if (averageTimeTakenToCompleteLevels[player] == 0) {
+        averageTimeTakenToCompleteLevels[player] == timeTakenForThisSuccessfulSubmission;
+        } else {
+        newAverageTimeTakenToCompleteLevels = (lastAverageTime + timeTakenForThisSuccessfulSubmission) / 2;
+        averageTimeTakenToCompleteLevelsByPlayer[player] = newAverageTimeTakenToCompleteLevels;
+        }
+        return averageTimeTakenToCompleteLevelsByPlayer[player];
+    }
+
     // Game specific metrics
     function getTotalNoOfLevelInstancesCreated() public view returns (uint256) {
         return globalNoOfInstancesCreated;
@@ -312,6 +339,10 @@ contract Statistics is Initializable {
         return playerExists[player];
     }
 
+    function getTotalNoOfEthernautLevels() public view returns(uint256) {
+        return levels.length;
+    }
+
     
     /**
      * @dev This empty reserved space is put in place to allow future versions to add new
@@ -320,3 +351,4 @@ contract Statistics is Initializable {
      */
     uint256[45] private __gap;
 }
+
