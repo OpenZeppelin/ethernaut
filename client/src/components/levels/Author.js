@@ -1,5 +1,5 @@
 import React from 'react'
-import { loadTranslations } from '../utils/translations'
+import { loadTranslations } from '../../utils/translations'
 
 class Author extends React.Component {
 
@@ -15,7 +15,7 @@ class Author extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.author !== prevProps.author) {
-      const data = require(`../gamedata/authors.json`).authors;
+      const data = require(`../../gamedata/authors.json`).authors;
       const authorData = data[this.props.author];
       if(!authorData) return null;
       this.setState({
@@ -32,7 +32,7 @@ class Author extends React.Component {
   }
 
   fetchAuthorData(author) {
-    const data = require(`../gamedata/authors.json`).authors;
+    const data = require(`../../gamedata/authors.json`).authors;
     const authorData = data[author];
     if(!authorData) return;
     this.setState({

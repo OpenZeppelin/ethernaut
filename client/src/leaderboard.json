@@ -1,0 +1,2690 @@
+[
+    {
+        "player": "0x378F454810CCC1d7Ea9ee3750f1ee70A7FB15AD4",
+        "totalTimeTakenToCompleteLevels": 208392,
+        "totalNumberOfLevelsCompleted": 28,
+        "playerScore": 93.34676954969481,
+        "alias": ""
+    },
+    {
+        "player": "0xa3e5656f3CFefDDcBA4EC0c9A43d6748409b2EA8",
+        "totalTimeTakenToCompleteLevels": 228144,
+        "totalNumberOfLevelsCompleted": 21,
+        "playerScore": 70.00920471281297,
+        "alias": ""
+    },
+    {
+        "player": "0x1Ec586072CfEDA4a009EFD4dbB5621a922262689",
+        "totalTimeTakenToCompleteLevels": 256740,
+        "totalNumberOfLevelsCompleted": 20,
+        "playerScore": 66.6744566487497,
+        "alias": ""
+    },
+    {
+        "player": "0xe4903136F4c169FFb3860e46a7A5f192a6C52Bc2",
+        "totalTimeTakenToCompleteLevels": 98088,
+        "totalNumberOfLevelsCompleted": 14,
+        "playerScore": 46.680939564472716,
+        "alias": ""
+    },
+    {
+        "player": "0xB2a61F4dE7d8C1985cb5565CFCBD7F1A18CBF123",
+        "totalTimeTakenToCompleteLevels": 13740,
+        "totalNumberOfLevelsCompleted": 13,
+        "playerScore": 43.427947598253276,
+        "alias": ""
+    },
+    {
+        "player": "0x1c79EdcaC6F24D7C3069339FFD09dA5DaF4E487f",
+        "totalTimeTakenToCompleteLevels": 95172,
+        "totalNumberOfLevelsCompleted": 12,
+        "playerScore": 40.01260875047283,
+        "alias": ""
+    },
+    {
+        "player": "0xebcFdE7A9056cbbAc0900184ac4Da6B5017cEA5b",
+        "totalTimeTakenToCompleteLevels": 347748,
+        "totalNumberOfLevelsCompleted": 12,
+        "playerScore": 40.003450774698926,
+        "alias": ""
+    },
+    {
+        "player": "0x40b2D40Fad4518A27e61413A3AD26c9db8109937",
+        "totalTimeTakenToCompleteLevels": 13140,
+        "totalNumberOfLevelsCompleted": 11,
+        "playerScore": 36.75038051750381,
+        "alias": ""
+    },
+    {
+        "player": "0xba7216C8d4220330dc3c81811B13aa7e3B95573C",
+        "totalTimeTakenToCompleteLevels": 6360,
+        "totalNumberOfLevelsCompleted": 10,
+        "playerScore": 33.490566037735846,
+        "alias": ""
+    },
+    {
+        "player": "0xC833bD3a6BCC62A009bF82A554663163961D17da",
+        "totalTimeTakenToCompleteLevels": 13164,
+        "totalNumberOfLevelsCompleted": 10,
+        "playerScore": 33.409298085688235,
+        "alias": ""
+    },
+    {
+        "player": "0x066e7a421Fdd36f2263938aB328D8b2F09d9fCE0",
+        "totalTimeTakenToCompleteLevels": 22368,
+        "totalNumberOfLevelsCompleted": 10,
+        "playerScore": 33.37804005722461,
+        "alias": ""
+    },
+    {
+        "player": "0x7F49254D67b2142A7595fD689c5CF422F25e0306",
+        "totalTimeTakenToCompleteLevels": 39972,
+        "totalNumberOfLevelsCompleted": 10,
+        "playerScore": 33.358350845591914,
+        "alias": ""
+    },
+    {
+        "player": "0x178Ab3A4C68A03d00891c1D18fD9E02B7Ab6a168",
+        "totalTimeTakenToCompleteLevels": 73632,
+        "totalNumberOfLevelsCompleted": 10,
+        "playerScore": 33.34691438504998,
+        "alias": ""
+    },
+    {
+        "player": "0xe9fDaB88Ee82245493aeE036dCa8c510B1985419",
+        "totalTimeTakenToCompleteLevels": 99900,
+        "totalNumberOfLevelsCompleted": 10,
+        "playerScore": 33.34334334334334,
+        "alias": ""
+    },
+    {
+        "player": "0x47F3d3963133903a74A625962f42Fe36e95f2cDD",
+        "totalTimeTakenToCompleteLevels": 129612,
+        "totalNumberOfLevelsCompleted": 10,
+        "playerScore": 33.34104866833318,
+        "alias": ""
+    },
+    {
+        "player": "0x7Fb8134848aDe56fF213eC49edBbB1D830853289",
+        "totalTimeTakenToCompleteLevels": 20484,
+        "totalNumberOfLevelsCompleted": 9,
+        "playerScore": 30.043936731107205,
+        "alias": ""
+    },
+    {
+        "player": "0x7a5C0D1c66D668441C96D301D989a67Ba6352284",
+        "totalTimeTakenToCompleteLevels": 31056,
+        "totalNumberOfLevelsCompleted": 9,
+        "playerScore": 30.028979907264297,
+        "alias": ""
+    },
+    {
+        "player": "0xb9e380AA1B93c921De0847D6d21EB1DEF32C6e90",
+        "totalTimeTakenToCompleteLevels": 69948,
+        "totalNumberOfLevelsCompleted": 9,
+        "playerScore": 30.01286670097787,
+        "alias": ""
+    },
+    {
+        "player": "0xaAc2AB9C92101D51c77a2841F8fecd74983e697F",
+        "totalTimeTakenToCompleteLevels": 88380,
+        "totalNumberOfLevelsCompleted": 9,
+        "playerScore": 30.010183299389,
+        "alias": ""
+    },
+    {
+        "player": "0x353d11433c9abeD1D93E9f725D36E7ddb1Fcc886",
+        "totalTimeTakenToCompleteLevels": 151464,
+        "totalNumberOfLevelsCompleted": 9,
+        "playerScore": 30.00594200602123,
+        "alias": ""
+    },
+    {
+        "player": "0xED882B7edE4A9ea007a74F1DcC19c0F45D4785C4",
+        "totalTimeTakenToCompleteLevels": 13236,
+        "totalNumberOfLevelsCompleted": 8,
+        "playerScore": 26.727107887579326,
+        "alias": ""
+    },
+    {
+        "player": "0xCaA295131d74F1fD93dA2AA6CB43AEa06b4424Bb",
+        "totalTimeTakenToCompleteLevels": 14544,
+        "totalNumberOfLevelsCompleted": 8,
+        "playerScore": 26.72167216721672,
+        "alias": ""
+    },
+    {
+        "player": "0x04b24656E4B114e4eF83f40a1161d1804e684D89",
+        "totalTimeTakenToCompleteLevels": 18480,
+        "totalNumberOfLevelsCompleted": 8,
+        "playerScore": 26.70995670995671,
+        "alias": ""
+    },
+    {
+        "player": "0xB3890dB67fe0aD620c0eb012994D213Ab4EB8544",
+        "totalTimeTakenToCompleteLevels": 32724,
+        "totalNumberOfLevelsCompleted": 8,
+        "playerScore": 26.691113555800023,
+        "alias": ""
+    },
+    {
+        "player": "0x72E2204785a64DFc3ead757D6F0bB0428516C266",
+        "totalTimeTakenToCompleteLevels": 49080,
+        "totalNumberOfLevelsCompleted": 8,
+        "playerScore": 26.682966585167073,
+        "alias": ""
+    },
+    {
+        "player": "0x07D35fe1C7fdBACe5070D9ebDE483952de362Db6",
+        "totalTimeTakenToCompleteLevels": 334668,
+        "totalNumberOfLevelsCompleted": 8,
+        "playerScore": 26.66905709539006,
+        "alias": ""
+    },
+    {
+        "player": "0x04dfa364501774Ffc8bEB3842de5F6ce866FEb4D",
+        "totalTimeTakenToCompleteLevels": 14016,
+        "totalNumberOfLevelsCompleted": 7,
+        "playerScore": 23.383276255707763,
+        "alias": ""
+    },
+    {
+        "player": "0x41ED91e3Dbc508B92D38F69369EEB2139CBf9731",
+        "totalTimeTakenToCompleteLevels": 22200,
+        "totalNumberOfLevelsCompleted": 7,
+        "playerScore": 23.364864864864863,
+        "alias": ""
+    },
+    {
+        "player": "0xfb7152792A9FE864E1a35a68f7E8B5e9401685Bb",
+        "totalTimeTakenToCompleteLevels": 68196,
+        "totalNumberOfLevelsCompleted": 7,
+        "playerScore": 23.34359786497742,
+        "alias": ""
+    },
+    {
+        "player": "0x77A70Afe0E2543947C3b8D868Dd15BEaE49CF9F1",
+        "totalTimeTakenToCompleteLevels": 117492,
+        "totalNumberOfLevelsCompleted": 7,
+        "playerScore": 23.339291185782862,
+        "alias": ""
+    },
+    {
+        "player": "0xC562213Ae57A30fd747e4726A12354B006D22FcA",
+        "totalTimeTakenToCompleteLevels": 5388,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.111358574610247,
+        "alias": ""
+    },
+    {
+        "player": "0xfDdaC5195C68d0AeC061298f5bD4B14a1336ffcA",
+        "totalTimeTakenToCompleteLevels": 5412,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.110864745011085,
+        "alias": ""
+    },
+    {
+        "player": "0x2Fd83d9e88A2d2cbb3Eaf1e11F6aC0312272cC3F",
+        "totalTimeTakenToCompleteLevels": 5904,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.101626016260163,
+        "alias": ""
+    },
+    {
+        "player": "0x314110ce9B7200895Dd50191D62EB8b0000EF742",
+        "totalTimeTakenToCompleteLevels": 6852,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.087565674255693,
+        "alias": ""
+    },
+    {
+        "player": "0x359bfB5160946a55f03c080c2DC6975C8F970d5C",
+        "totalTimeTakenToCompleteLevels": 9936,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.060386473429954,
+        "alias": ""
+    },
+    {
+        "player": "0x3ba8a1E7e125374692D5C4546b37d10Dd4E8C302",
+        "totalTimeTakenToCompleteLevels": 11268,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.05324813631523,
+        "alias": ""
+    },
+    {
+        "player": "0x8F04eb9Deb3919C5813F80F1E0aeC95883Ea5fe5",
+        "totalTimeTakenToCompleteLevels": 18000,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.033333333333335,
+        "alias": ""
+    },
+    {
+        "player": "0x23222baFA6D9b0A09f27F832d54d77c8C142FC77",
+        "totalTimeTakenToCompleteLevels": 19896,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.03015681544029,
+        "alias": ""
+    },
+    {
+        "player": "0xd0BBb3D31FAfD9c0Fe3b2a885bDcC5613eA1BD56",
+        "totalTimeTakenToCompleteLevels": 31332,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.019149751053238,
+        "alias": ""
+    },
+    {
+        "player": "0xc237F9159FD72E4dD888C6e84325c28dcd8b13b2",
+        "totalTimeTakenToCompleteLevels": 68736,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.00872905027933,
+        "alias": ""
+    },
+    {
+        "player": "0x4eFE395F3A03E3c6117A65E119291FFF2B79E033",
+        "totalTimeTakenToCompleteLevels": 73836,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.008126117341135,
+        "alias": ""
+    },
+    {
+        "player": "0x09D2943C126A446b8d81077adC473F0cFb36a357",
+        "totalTimeTakenToCompleteLevels": 91944,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.006525711302533,
+        "alias": ""
+    },
+    {
+        "player": "0xC12171f27617734fDa78DD13d3E24762F6481684",
+        "totalTimeTakenToCompleteLevels": 98196,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.006110228522548,
+        "alias": ""
+    },
+    {
+        "player": "0x3736306384bd666D6166e639Cf1b36EBaa818875",
+        "totalTimeTakenToCompleteLevels": 162096,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.003701510216167,
+        "alias": ""
+    },
+    {
+        "player": "0x6E3468Ce9bCc4F4e5106abf4821a62dB4d6A9e03",
+        "totalTimeTakenToCompleteLevels": 166692,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.003599452883165,
+        "alias": ""
+    },
+    {
+        "player": "0x42748b9E955410CEb6b4B165711C1f78bA92c8BF",
+        "totalTimeTakenToCompleteLevels": 177456,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.003381119826887,
+        "alias": ""
+    },
+    {
+        "player": "0x0bae3B8E702eA3e9F85594ca69Baa9aA3f2F901B",
+        "totalTimeTakenToCompleteLevels": 208056,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.002883838966433,
+        "alias": ""
+    },
+    {
+        "player": "0x13D7D86B709ae39F863c5945D222DFFCa10BEdF3",
+        "totalTimeTakenToCompleteLevels": 211284,
+        "totalNumberOfLevelsCompleted": 6,
+        "playerScore": 20.002839779633103,
+        "alias": ""
+    },
+    {
+        "player": "0xf45f1b22d9b3a4fA2dEa5B95B8ef6433a2e425ED",
+        "totalTimeTakenToCompleteLevels": 4152,
+        "totalNumberOfLevelsCompleted": 5,
+        "playerScore": 16.78709055876686,
+        "alias": ""
+    },
+    {
+        "player": "0x9A7eD3946173cd03De4e942fa41d66a53Bb03F29",
+        "totalTimeTakenToCompleteLevels": 4236,
+        "totalNumberOfLevelsCompleted": 5,
+        "playerScore": 16.78470254957507,
+        "alias": ""
+    },
+    {
+        "player": "0x00000000f77ca00f7B0A2399A20c4fD3C0aD255e",
+        "totalTimeTakenToCompleteLevels": 4824,
+        "totalNumberOfLevelsCompleted": 5,
+        "playerScore": 16.770315091210612,
+        "alias": ""
+    },
+    {
+        "player": "0x59a5CD1C8b1993e4F48Cbb0D5B64d568ffa5f7FE",
+        "totalTimeTakenToCompleteLevels": 5592,
+        "totalNumberOfLevelsCompleted": 5,
+        "playerScore": 16.75608011444921,
+        "alias": ""
+    },
+    {
+        "player": "0x71c7d4C0398A0579033528DEd52B48E1250429Ab",
+        "totalTimeTakenToCompleteLevels": 52884,
+        "totalNumberOfLevelsCompleted": 5,
+        "playerScore": 16.67612132213902,
+        "alias": ""
+    },
+    {
+        "player": "0xFE73a31eED82b7109F59Ffd2096aFbA84A6f42E5",
+        "totalTimeTakenToCompleteLevels": 72588,
+        "totalNumberOfLevelsCompleted": 5,
+        "playerScore": 16.67355485755221,
+        "alias": ""
+    },
+    {
+        "player": "0x1e4CCfDC68C40317890E4a953d5598a7Bd599E40",
+        "totalTimeTakenToCompleteLevels": 161448,
+        "totalNumberOfLevelsCompleted": 5,
+        "playerScore": 16.66976363906645,
+        "alias": ""
+    },
+    {
+        "player": "0xCBe4347ceFBf18C0E4fEC08A23Cd197d0e7a7aAE",
+        "totalTimeTakenToCompleteLevels": 187980,
+        "totalNumberOfLevelsCompleted": 5,
+        "playerScore": 16.669326524098306,
+        "alias": ""
+    },
+    {
+        "player": "0xF46021986578a16cFC3B61252937C71D341E79F8",
+        "totalTimeTakenToCompleteLevels": 284280,
+        "totalNumberOfLevelsCompleted": 5,
+        "playerScore": 16.66842549598987,
+        "alias": ""
+    },
+    {
+        "player": "0x9c0C308D2Ee659524DCf1D17Be48DEB651870d36",
+        "totalTimeTakenToCompleteLevels": 416292,
+        "totalNumberOfLevelsCompleted": 5,
+        "playerScore": 16.66786774667781,
+        "alias": ""
+    },
+    {
+        "player": "0xe80B0bC3c4fB1Df2Ec56cD67F5a6007097c73E04",
+        "totalTimeTakenToCompleteLevels": 2868,
+        "totalNumberOfLevelsCompleted": 4,
+        "playerScore": 13.472803347280335,
+        "alias": ""
+    },
+    {
+        "player": "0xf7fF46c69C1a6a20ac2e57CEa68fAA66361dB142",
+        "totalTimeTakenToCompleteLevels": 11052,
+        "totalNumberOfLevelsCompleted": 4,
+        "playerScore": 13.3695258776692,
+        "alias": ""
+    },
+    {
+        "player": "0xB3b1292ED00c0fB7f308A3bA99ac4537e7AE1D60",
+        "totalTimeTakenToCompleteLevels": 18468,
+        "totalNumberOfLevelsCompleted": 4,
+        "playerScore": 13.354992419319906,
+        "alias": ""
+    },
+    {
+        "player": "0xCafCd1c6d5075855871b2b831A3504F6d9782C41",
+        "totalTimeTakenToCompleteLevels": 22980,
+        "totalNumberOfLevelsCompleted": 4,
+        "playerScore": 13.350739773716274,
+        "alias": ""
+    },
+    {
+        "player": "0x1104A6b9E59302bE2B6692f178a9E9b392750Ac0",
+        "totalTimeTakenToCompleteLevels": 25284,
+        "totalNumberOfLevelsCompleted": 4,
+        "playerScore": 13.349153614934345,
+        "alias": ""
+    },
+    {
+        "player": "0x813cD7d11c6cB1Cd46E999c787fC8749Bc84902c",
+        "totalTimeTakenToCompleteLevels": 29388,
+        "totalNumberOfLevelsCompleted": 4,
+        "playerScore": 13.346944331019465,
+        "alias": ""
+    },
+    {
+        "player": "0x75189c012234cb15a00Ee8Bf86daB8107059Ef8C",
+        "totalTimeTakenToCompleteLevels": 30216,
+        "totalNumberOfLevelsCompleted": 4,
+        "playerScore": 13.3465713529256,
+        "alias": ""
+    },
+    {
+        "player": "0x63dDb621D405bBA46d38cf0007442300c8fE2f59",
+        "totalTimeTakenToCompleteLevels": 48708,
+        "totalNumberOfLevelsCompleted": 4,
+        "playerScore": 13.341545536667487,
+        "alias": ""
+    },
+    {
+        "player": "0xEc1e497ef335811e018Ed9937c9763919Ec42917",
+        "totalTimeTakenToCompleteLevels": 51300,
+        "totalNumberOfLevelsCompleted": 4,
+        "playerScore": 13.341130604288498,
+        "alias": ""
+    },
+    {
+        "player": "0x16E46654d2F2148e3848842aa957F8dc8bDAFEa2",
+        "totalTimeTakenToCompleteLevels": 155508,
+        "totalNumberOfLevelsCompleted": 4,
+        "playerScore": 13.335905548267613,
+        "alias": ""
+    },
+    {
+        "player": "0x163e0934D4B1EF0f279989cc81071eC7429CFCfF",
+        "totalTimeTakenToCompleteLevels": 540,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.555555555555555,
+        "alias": ""
+    },
+    {
+        "player": "0x54eB82E4Ec25eb173E1668dd5aB0943904d87331",
+        "totalTimeTakenToCompleteLevels": 564,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.53191489361702,
+        "alias": ""
+    },
+    {
+        "player": "0xCEC65F951c4cDe69b39a2d5266c61Bb28fFCe8fd",
+        "totalTimeTakenToCompleteLevels": 828,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.36231884057971,
+        "alias": ""
+    },
+    {
+        "player": "0xA1AE28aAaeC5b01Eadb37d97304164A3Be161D06",
+        "totalTimeTakenToCompleteLevels": 912,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.328947368421053,
+        "alias": ""
+    },
+    {
+        "player": "0x72f40b6fCef3dfcbebeafCA72e0AB13cDF55AcD1",
+        "totalTimeTakenToCompleteLevels": 996,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.301204819277109,
+        "alias": ""
+    },
+    {
+        "player": "0x884ba7391637BfCE1D0B8C3aF6723477f6541e0e",
+        "totalTimeTakenToCompleteLevels": 1296,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.231481481481481,
+        "alias": ""
+    },
+    {
+        "player": "0x794089c95952a4F2c381e25c36245F265c2Ae965",
+        "totalTimeTakenToCompleteLevels": 1668,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.179856115107915,
+        "alias": ""
+    },
+    {
+        "player": "0x7cD3520414C65208b56b11570AC95cDBEDAD78fc",
+        "totalTimeTakenToCompleteLevels": 1728,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.17361111111111,
+        "alias": ""
+    },
+    {
+        "player": "0x00413F42c4003736b7AA03a9b90214B27cF721b4",
+        "totalTimeTakenToCompleteLevels": 2604,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.11520737327189,
+        "alias": ""
+    },
+    {
+        "player": "0x5FD7d6382De0D4c4A00B19Ed10c11dfD96C27340",
+        "totalTimeTakenToCompleteLevels": 2724,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.110132158590309,
+        "alias": ""
+    },
+    {
+        "player": "0xf252AF9ece8Bf5Ae977Df71c397530D589385EFe",
+        "totalTimeTakenToCompleteLevels": 2820,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.106382978723405,
+        "alias": ""
+    },
+    {
+        "player": "0x24a83Bb9e421D16075F9bB5508b32Ddcd9949111",
+        "totalTimeTakenToCompleteLevels": 3192,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.093984962406017,
+        "alias": ""
+    },
+    {
+        "player": "0xF1127512bAe6A044EA17207475A362f6C5F00632",
+        "totalTimeTakenToCompleteLevels": 3204,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.093632958801498,
+        "alias": ""
+    },
+    {
+        "player": "0xe6B701BF06A9977cCccC17E2B156e3533E657131",
+        "totalTimeTakenToCompleteLevels": 4308,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.069637883008358,
+        "alias": ""
+    },
+    {
+        "player": "0xaa6e5F7E88c15BBD2077c7005ef631FB7e71c211",
+        "totalTimeTakenToCompleteLevels": 4464,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.06720430107527,
+        "alias": ""
+    },
+    {
+        "player": "0x23BFcB0073C8f76d1ec8Ef1643A36dA925F62d2B",
+        "totalTimeTakenToCompleteLevels": 4728,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.063451776649748,
+        "alias": ""
+    },
+    {
+        "player": "0xfc854524613dA7244417908d199857754189633c",
+        "totalTimeTakenToCompleteLevels": 4968,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.060386473429952,
+        "alias": ""
+    },
+    {
+        "player": "0x61d715C235F5Dbf185e523b95D310A1Ec5Cb94e0",
+        "totalTimeTakenToCompleteLevels": 5940,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.050505050505052,
+        "alias": ""
+    },
+    {
+        "player": "0x545A8cCAEDF71143A865Bbc7AF78a3193EFdB076",
+        "totalTimeTakenToCompleteLevels": 5940,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.050505050505052,
+        "alias": ""
+    },
+    {
+        "player": "0x6aE85FCDCDdb5988c88C9EE4504528E5A719ceF0",
+        "totalTimeTakenToCompleteLevels": 6912,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.043402777777779,
+        "alias": ""
+    },
+    {
+        "player": "0x8Ff966Ab0DadaDC70C901dD5cDc2C708d3A229AA",
+        "totalTimeTakenToCompleteLevels": 7272,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.041254125412543,
+        "alias": ""
+    },
+    {
+        "player": "0x90C32e6B29794Fd7f5BbA2BBEE74e924078B3f9b",
+        "totalTimeTakenToCompleteLevels": 10080,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.029761904761905,
+        "alias": ""
+    },
+    {
+        "player": "0xdDEB3bd3C653855049a3c31dfc65c55803Ad71d9",
+        "totalTimeTakenToCompleteLevels": 12984,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.023105360443624,
+        "alias": ""
+    },
+    {
+        "player": "0xC2bF1DE8Ea815eb7B39087b72FdCa3079cAbd877",
+        "totalTimeTakenToCompleteLevels": 20616,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.01455180442375,
+        "alias": ""
+    },
+    {
+        "player": "0x578cb0D29df07D4560e6F087B1A8eB2F2b3d3Be1",
+        "totalTimeTakenToCompleteLevels": 29988,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.01000400160064,
+        "alias": ""
+    },
+    {
+        "player": "0x3C97eA2B5D22e048999665752A25a9B60B15EC97",
+        "totalTimeTakenToCompleteLevels": 35220,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.008517887563885,
+        "alias": ""
+    },
+    {
+        "player": "0xE61a3def0921b2585e60fD870264990646B30B5c",
+        "totalTimeTakenToCompleteLevels": 60516,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.004957366646838,
+        "alias": ""
+    },
+    {
+        "player": "0xc614d9a56c9EaFbFc50B993F70386b0fb0B37A24",
+        "totalTimeTakenToCompleteLevels": 84012,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.003570918440223,
+        "alias": ""
+    },
+    {
+        "player": "0x0F2d76692cA422Ad79141Ac9d90b1c5a8Ed9d3C8",
+        "totalTimeTakenToCompleteLevels": 252468,
+        "totalNumberOfLevelsCompleted": 3,
+        "playerScore": 10.001188269404441,
+        "alias": ""
+    },
+    {
+        "player": "0xfDF67c1b6137540F99471caB4b855a937F0287b0",
+        "totalTimeTakenToCompleteLevels": 396,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 7.171717171717172,
+        "alias": ""
+    },
+    {
+        "player": "0x38137cD5171B1BDCF1Af72A1827eD6928c76D474",
+        "totalTimeTakenToCompleteLevels": 1008,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.865079365079366,
+        "alias": ""
+    },
+    {
+        "player": "0xDb71c48E28fc7C099bdd4c51A72DA8615B4Bc53c",
+        "totalTimeTakenToCompleteLevels": 1128,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.843971631205674,
+        "alias": ""
+    },
+    {
+        "player": "0xC3F6e18b429b6BAf1bD31B1E504aee7827C7AAb5",
+        "totalTimeTakenToCompleteLevels": 1272,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.823899371069182,
+        "alias": ""
+    },
+    {
+        "player": "0x3D720dF9a4045808C671298FDb956f043E6C9fFC",
+        "totalTimeTakenToCompleteLevels": 1272,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.823899371069182,
+        "alias": ""
+    },
+    {
+        "player": "0x29820d0fE80E57260998E9f8D68fD633B9Bc7348",
+        "totalTimeTakenToCompleteLevels": 1632,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.78921568627451,
+        "alias": ""
+    },
+    {
+        "player": "0x939CaC66A13a8F777cc898B81c98eF50eC97796D",
+        "totalTimeTakenToCompleteLevels": 1656,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.787439613526571,
+        "alias": ""
+    },
+    {
+        "player": "0xa935CEC3c5Ef99D7F1016674DEFd455Ef06776C5",
+        "totalTimeTakenToCompleteLevels": 1680,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.785714285714286,
+        "alias": ""
+    },
+    {
+        "player": "0x364ddC8A9790319Ef41fe2B5D2841C124D60a58e",
+        "totalTimeTakenToCompleteLevels": 1728,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.782407407407407,
+        "alias": ""
+    },
+    {
+        "player": "0xcCa7A4AC10ac4ce410804ae1506F0ba4d706c225",
+        "totalTimeTakenToCompleteLevels": 1896,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.772151898734177,
+        "alias": ""
+    },
+    {
+        "player": "0x2880FDa3BFB15A02b30B047B0Cc3E90eFd7fe24B",
+        "totalTimeTakenToCompleteLevels": 1932,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.770186335403727,
+        "alias": ""
+    },
+    {
+        "player": "0xCc730e705903CAcB1FC3acdeBeA8a2EAd3Dc8989",
+        "totalTimeTakenToCompleteLevels": 1968,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.7682926829268295,
+        "alias": ""
+    },
+    {
+        "player": "0xC053E83E5CeC5194d151eca0FdbBf49516F8f0A2",
+        "totalTimeTakenToCompleteLevels": 2016,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.765873015873016,
+        "alias": ""
+    },
+    {
+        "player": "0x52fA64FA8156A910938abf21f8329ED2dD4088f5",
+        "totalTimeTakenToCompleteLevels": 2160,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.7592592592592595,
+        "alias": ""
+    },
+    {
+        "player": "0x2477d97E71F7738d48e86aF5a107616F71F43263",
+        "totalTimeTakenToCompleteLevels": 2220,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.756756756756757,
+        "alias": ""
+    },
+    {
+        "player": "0x117AA3b737bF33A682969ff5eEf65C07FDC03F5f",
+        "totalTimeTakenToCompleteLevels": 2304,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.753472222222221,
+        "alias": ""
+    },
+    {
+        "player": "0x30fEED084eb78AA4C9Dfbfc657dCEF098C6Bb41f",
+        "totalTimeTakenToCompleteLevels": 2364,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.751269035532995,
+        "alias": ""
+    },
+    {
+        "player": "0x466423dFa221116352f6c86117ea7618Afe60C31",
+        "totalTimeTakenToCompleteLevels": 2868,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.7364016736401675,
+        "alias": ""
+    },
+    {
+        "player": "0x967E6BecF4b34F411cc82F058e23fE65cb6B47eC",
+        "totalTimeTakenToCompleteLevels": 3072,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.731770833333334,
+        "alias": ""
+    },
+    {
+        "player": "0x133Be5C955ebE1F7402A464720ea1C3dbD838D9e",
+        "totalTimeTakenToCompleteLevels": 3120,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.730769230769231,
+        "alias": ""
+    },
+    {
+        "player": "0x10E18adFaeE9B93D3de16A1AC387ed10ED4C08b0",
+        "totalTimeTakenToCompleteLevels": 3132,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.730523627075351,
+        "alias": ""
+    },
+    {
+        "player": "0x575c5046CfBC1deF86174d23520b9eb86dd6C2F9",
+        "totalTimeTakenToCompleteLevels": 3288,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.727493917274939,
+        "alias": ""
+    },
+    {
+        "player": "0x8834c41d4f44cb44Bd1d19A8570898F574Ff43A5",
+        "totalTimeTakenToCompleteLevels": 3588,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.722408026755852,
+        "alias": ""
+    },
+    {
+        "player": "0x0e1b86C66cfC92F732b551eE5b5a4409A3BADADd",
+        "totalTimeTakenToCompleteLevels": 3960,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.717171717171717,
+        "alias": ""
+    },
+    {
+        "player": "0x3Bd208F4bC181439b0a6aF00C414110b5F9d2656",
+        "totalTimeTakenToCompleteLevels": 4764,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.708648194794291,
+        "alias": ""
+    },
+    {
+        "player": "0x8B6E5e6c0602ffCbfcA0ab8e860dd3931983e671",
+        "totalTimeTakenToCompleteLevels": 5328,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.7042042042042045,
+        "alias": ""
+    },
+    {
+        "player": "0x41a2f52f9d865d6aB326Ea454Ac9C44F784935dd",
+        "totalTimeTakenToCompleteLevels": 5496,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.703056768558952,
+        "alias": ""
+    },
+    {
+        "player": "0x51E7b1b1B6E6d839Ed4926C402bE083F0cd4e4F5",
+        "totalTimeTakenToCompleteLevels": 20220,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.6765578635014835,
+        "alias": ""
+    },
+    {
+        "player": "0x55eaD5f548CbB19c227C7f9d3DbD88882C075a78",
+        "totalTimeTakenToCompleteLevels": 21624,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.67591564927858,
+        "alias": ""
+    },
+    {
+        "player": "0x815667Ca7e44607c2598f8CAcB82a2C55d176fff",
+        "totalTimeTakenToCompleteLevels": 25500,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.674509803921569,
+        "alias": ""
+    },
+    {
+        "player": "0x663c0AcA1533530AEbb03B791F0E78b050b866dD",
+        "totalTimeTakenToCompleteLevels": 26304,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.674270072992701,
+        "alias": ""
+    },
+    {
+        "player": "0xB14c48DFA7BA492Ae0De3c521Ce17c5aEA66ed04",
+        "totalTimeTakenToCompleteLevels": 71508,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.6694635565251446,
+        "alias": ""
+    },
+    {
+        "player": "0x80d2D79D37Ed74D0eace8EF8c90c85d9595921C3",
+        "totalTimeTakenToCompleteLevels": 87684,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.668947584508006,
+        "alias": ""
+    },
+    {
+        "player": "0x9e233e647336aDaB8FCbE1b1f79cf2595F8E2fba",
+        "totalTimeTakenToCompleteLevels": 188004,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.667730473819705,
+        "alias": ""
+    },
+    {
+        "player": "0x385b52f6e28920c638ccDADE12be41a9fA139263",
+        "totalTimeTakenToCompleteLevels": 431544,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.667130118829134,
+        "alias": ""
+    },
+    {
+        "player": "0x2d012166B921910F9202Bc261c4C5cB875cf98b1",
+        "totalTimeTakenToCompleteLevels": 472464,
+        "totalNumberOfLevelsCompleted": 2,
+        "playerScore": 6.667089979342341,
+        "alias": ""
+    },
+    {
+        "player": "0x88d7E31015d379319c7E736245489645CDD36a9d",
+        "totalTimeTakenToCompleteLevels": 120,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 4.166666666666666,
+        "alias": ""
+    },
+    {
+        "player": "0x8aC8215492Ce132Eb4d1db7EcE3eF0caF670deFf",
+        "totalTimeTakenToCompleteLevels": 156,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.974358974358974,
+        "alias": ""
+    },
+    {
+        "player": "0x680ED4D4a8620AA829D56ae5478E4D0C4171F028",
+        "totalTimeTakenToCompleteLevels": 252,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.7301587301587302,
+        "alias": ""
+    },
+    {
+        "player": "0xeeeE9DedE520e5B52985C9feaF53959C3318edfa",
+        "totalTimeTakenToCompleteLevels": 264,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.7121212121212124,
+        "alias": ""
+    },
+    {
+        "player": "0xA6dACB5D8a2371970be5b2C899C9Be2F835050A8",
+        "totalTimeTakenToCompleteLevels": 264,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.7121212121212124,
+        "alias": ""
+    },
+    {
+        "player": "0x96564B0744A524B792B4dD61340C9D44ed74ff52",
+        "totalTimeTakenToCompleteLevels": 288,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.680555555555556,
+        "alias": ""
+    },
+    {
+        "player": "0x18a42091f186e97E6179566e3D5615426560ba93",
+        "totalTimeTakenToCompleteLevels": 312,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.653846153846154,
+        "alias": ""
+    },
+    {
+        "player": "0xF152e3DcB9f01e7D1bc1aA1F5461bC5862FB2700",
+        "totalTimeTakenToCompleteLevels": 324,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.641975308641975,
+        "alias": ""
+    },
+    {
+        "player": "0x1980ac871453340bE0e313C2f7A126DBBA9Ec490",
+        "totalTimeTakenToCompleteLevels": 336,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.6309523809523805,
+        "alias": ""
+    },
+    {
+        "player": "0x78672a780df114DF27e23c5Eef328ac52FbDb13A",
+        "totalTimeTakenToCompleteLevels": 336,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.6309523809523805,
+        "alias": ""
+    },
+    {
+        "player": "0xF5EFd35A06B96efF7EDaDfd10dE49aE1CCf86375",
+        "totalTimeTakenToCompleteLevels": 348,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.620689655172414,
+        "alias": ""
+    },
+    {
+        "player": "0x68602191769C32A01fCFb7beD38150fD51b8B713",
+        "totalTimeTakenToCompleteLevels": 360,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.6111111111111107,
+        "alias": ""
+    },
+    {
+        "player": "0x06214f2E1e1896739D92F3526Bd496DC028Bd7F9",
+        "totalTimeTakenToCompleteLevels": 384,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.5937499999999996,
+        "alias": ""
+    },
+    {
+        "player": "0x3D46DdA98c11b7aB4FAa8935AFf6E9629ACB91d0",
+        "totalTimeTakenToCompleteLevels": 408,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.5784313725490193,
+        "alias": ""
+    },
+    {
+        "player": "0x16A7D3d770d3EEB0c5341e5A43F40245DA903eA6",
+        "totalTimeTakenToCompleteLevels": 408,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.5784313725490193,
+        "alias": ""
+    },
+    {
+        "player": "0x95045076fC93A14a4E9B576599479cb4f58A1B11",
+        "totalTimeTakenToCompleteLevels": 420,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.571428571428571,
+        "alias": ""
+    },
+    {
+        "player": "0xF1469Bb3aD70D5AD2E9283dab20a37173068Db58",
+        "totalTimeTakenToCompleteLevels": 444,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.558558558558558,
+        "alias": ""
+    },
+    {
+        "player": "0x1Dbfe17Db4f121A028d0dDbEb742deC14E1bCFA3",
+        "totalTimeTakenToCompleteLevels": 456,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.552631578947368,
+        "alias": ""
+    },
+    {
+        "player": "0x38E57B3e89a2a41C9d86F06D66bDDE465Cb188fd",
+        "totalTimeTakenToCompleteLevels": 468,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.547008547008547,
+        "alias": ""
+    },
+    {
+        "player": "0xD9C055EBB562056FC195A254Da53ce92ef60c359",
+        "totalTimeTakenToCompleteLevels": 480,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.5416666666666665,
+        "alias": ""
+    },
+    {
+        "player": "0x8048d7292f92d0ade407b65239D2dA73BabC00a4",
+        "totalTimeTakenToCompleteLevels": 504,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.5317460317460316,
+        "alias": ""
+    },
+    {
+        "player": "0xbC004A68f3E000f41F6Fb6B2cf6c1C28c45A8eA7",
+        "totalTimeTakenToCompleteLevels": 564,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.5106382978723407,
+        "alias": ""
+    },
+    {
+        "player": "0xbebc68e5673b8C81AE4854F14D8D558E2174Cfb6",
+        "totalTimeTakenToCompleteLevels": 564,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.5106382978723407,
+        "alias": ""
+    },
+    {
+        "player": "0x7F46E1f9C8a8EF6aaaC08E26A7475A274304B40C",
+        "totalTimeTakenToCompleteLevels": 576,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.5069444444444446,
+        "alias": ""
+    },
+    {
+        "player": "0x32466Aa64E0525E731b41b884DAB8fff3B9c5448",
+        "totalTimeTakenToCompleteLevels": 600,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4999999999999996,
+        "alias": ""
+    },
+    {
+        "player": "0x6EC3D0c93d604b644C3F6381a73A6A26c5dd1A70",
+        "totalTimeTakenToCompleteLevels": 612,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.496732026143791,
+        "alias": ""
+    },
+    {
+        "player": "0x1133830C73B2251DB9373e1B668D01E9dd2B99B1",
+        "totalTimeTakenToCompleteLevels": 624,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4935897435897436,
+        "alias": ""
+    },
+    {
+        "player": "0xb2052Eb9730b6AfEc7ae47B5bfFE492c0c0E511b",
+        "totalTimeTakenToCompleteLevels": 624,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4935897435897436,
+        "alias": ""
+    },
+    {
+        "player": "0x24E2f7Df654B9Dd15E97707EdDd76EdDc69B8C31",
+        "totalTimeTakenToCompleteLevels": 672,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.482142857142857,
+        "alias": ""
+    },
+    {
+        "player": "0x87c38B4f7079CE5b83426849DC060F9fEAF9A715",
+        "totalTimeTakenToCompleteLevels": 744,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.467741935483871,
+        "alias": ""
+    },
+    {
+        "player": "0x2Ee0D9ad9B65Ee00Af2921022d7769418680eD87",
+        "totalTimeTakenToCompleteLevels": 744,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.467741935483871,
+        "alias": ""
+    },
+    {
+        "player": "0x58c42a6545f374af648657723c258E47a6aa9656",
+        "totalTimeTakenToCompleteLevels": 756,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4656084656084656,
+        "alias": ""
+    },
+    {
+        "player": "0x65089F276a33F3364F6dFCA0C22A9E2542E25db4",
+        "totalTimeTakenToCompleteLevels": 780,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4615384615384617,
+        "alias": ""
+    },
+    {
+        "player": "0x8d76bABc6762ecECE263761E6823D4b039090b59",
+        "totalTimeTakenToCompleteLevels": 792,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.45959595959596,
+        "alias": ""
+    },
+    {
+        "player": "0x183eD05C61AbE5027fe74C2A693ADcf88E2Cf93A",
+        "totalTimeTakenToCompleteLevels": 792,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.45959595959596,
+        "alias": ""
+    },
+    {
+        "player": "0x712F4b97a2851aD5a1D222A476eE8D22aEE5Cd55",
+        "totalTimeTakenToCompleteLevels": 792,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.45959595959596,
+        "alias": ""
+    },
+    {
+        "player": "0xbfA8C07C2DAdd74F0644C9F5E13028C87DFcaCa1",
+        "totalTimeTakenToCompleteLevels": 804,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.45771144278607,
+        "alias": ""
+    },
+    {
+        "player": "0x80915E89Ffe836216866d16Ec4F693053f205179",
+        "totalTimeTakenToCompleteLevels": 804,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.45771144278607,
+        "alias": ""
+    },
+    {
+        "player": "0xb77099f59b1453697573a4Df5Ed5BE6B4c16342e",
+        "totalTimeTakenToCompleteLevels": 828,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4541062801932365,
+        "alias": ""
+    },
+    {
+        "player": "0x6265aaFC8D25B36f97181C44d0EB6693f00EbA17",
+        "totalTimeTakenToCompleteLevels": 840,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4523809523809526,
+        "alias": ""
+    },
+    {
+        "player": "0x50dbFC5D125dF1835BEe19eCEE63E46cdafD715d",
+        "totalTimeTakenToCompleteLevels": 900,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4444444444444446,
+        "alias": ""
+    },
+    {
+        "player": "0x313693044c9E3F6956F0e89BDa54e8e192493D28",
+        "totalTimeTakenToCompleteLevels": 912,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4429824561403506,
+        "alias": ""
+    },
+    {
+        "player": "0x1Ff71BFF6956d21D9Ee3CCDC4A257EF5Afe5Df33",
+        "totalTimeTakenToCompleteLevels": 912,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4429824561403506,
+        "alias": ""
+    },
+    {
+        "player": "0x6B040871Bfa4Bd8fbc96dB942A91D6ddf3f72f8C",
+        "totalTimeTakenToCompleteLevels": 912,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4429824561403506,
+        "alias": ""
+    },
+    {
+        "player": "0x890630B4A7c19AA6336223Da4c2F594545113B6d",
+        "totalTimeTakenToCompleteLevels": 924,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4415584415584415,
+        "alias": ""
+    },
+    {
+        "player": "0xC344C2ba4FC72cfB4631b1928881703891F430ac",
+        "totalTimeTakenToCompleteLevels": 948,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.438818565400844,
+        "alias": ""
+    },
+    {
+        "player": "0x69E82a5A4AB38ffF29646D982d143b01daAC48E7",
+        "totalTimeTakenToCompleteLevels": 984,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4349593495934956,
+        "alias": ""
+    },
+    {
+        "player": "0x512816C256438546bd1456736b70bFa1EaC93c51",
+        "totalTimeTakenToCompleteLevels": 996,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4337349397590358,
+        "alias": ""
+    },
+    {
+        "player": "0x59C0A7a0FCeeECcd5f58e29d0979Cec238eB408b",
+        "totalTimeTakenToCompleteLevels": 1044,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.42911877394636,
+        "alias": ""
+    },
+    {
+        "player": "0x5056A091A9674EB1bDFcE49a689b175Bd69E81A2",
+        "totalTimeTakenToCompleteLevels": 1056,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4280303030303028,
+        "alias": ""
+    },
+    {
+        "player": "0x9BA358E22FB5BEBC42401dDcB7814cEb02cc684a",
+        "totalTimeTakenToCompleteLevels": 1092,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4249084249084247,
+        "alias": ""
+    },
+    {
+        "player": "0x25549a401f9C04c51d13202f6C87A2c244325A5C",
+        "totalTimeTakenToCompleteLevels": 1104,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4239130434782608,
+        "alias": ""
+    },
+    {
+        "player": "0x72b33dD23D2e8630F29DEB37214A39cc86bD04E1",
+        "totalTimeTakenToCompleteLevels": 1176,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4183673469387754,
+        "alias": ""
+    },
+    {
+        "player": "0xC55087AaCB1335EEC7671Cb70A3b293D1Ee81DED",
+        "totalTimeTakenToCompleteLevels": 1176,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4183673469387754,
+        "alias": ""
+    },
+    {
+        "player": "0xBF7BF3d445aEc7B0c357163d5594DB8ca7C12D31",
+        "totalTimeTakenToCompleteLevels": 1212,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.415841584158416,
+        "alias": ""
+    },
+    {
+        "player": "0x5F5153c5642d88d7d1f36198697dbf76c75273d6",
+        "totalTimeTakenToCompleteLevels": 1236,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4142394822006468,
+        "alias": ""
+    },
+    {
+        "player": "0x17bAe7728Ce7dc071F29b5622D70cCc67DfB1962",
+        "totalTimeTakenToCompleteLevels": 1248,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4134615384615383,
+        "alias": ""
+    },
+    {
+        "player": "0x0Cb38950DE9c36c8D2D7B0f33b1B1B6058527fb9",
+        "totalTimeTakenToCompleteLevels": 1296,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4104938271604937,
+        "alias": ""
+    },
+    {
+        "player": "0x7cAF8b08f18DBfeD37F87c454c21611B2Fd68C50",
+        "totalTimeTakenToCompleteLevels": 1332,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.408408408408408,
+        "alias": ""
+    },
+    {
+        "player": "0xF26Cf3B013BCEd17462c18DcEfbbEbAAE64524E0",
+        "totalTimeTakenToCompleteLevels": 1416,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.403954802259887,
+        "alias": ""
+    },
+    {
+        "player": "0x22c688A8bc69d40ffeB2BB90e534f0b91DEeFdb2",
+        "totalTimeTakenToCompleteLevels": 1440,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.4027777777777777,
+        "alias": ""
+    },
+    {
+        "player": "0x8a186eb3AbD9C9d8117ED58aC52ff16ad08e1F0B",
+        "totalTimeTakenToCompleteLevels": 1476,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.401084010840108,
+        "alias": ""
+    },
+    {
+        "player": "0x66c7bE851fc1D042BAF6c720f3242CF5e29aaAfD",
+        "totalTimeTakenToCompleteLevels": 1512,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3994708994708995,
+        "alias": ""
+    },
+    {
+        "player": "0x5f2cFa351B7d4b973d341fdB2cB154794c0a899c",
+        "totalTimeTakenToCompleteLevels": 1740,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3908045977011496,
+        "alias": ""
+    },
+    {
+        "player": "0x687Cd25653766eCd94CD0C8022E092d8B9Be77C9",
+        "totalTimeTakenToCompleteLevels": 1788,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.389261744966443,
+        "alias": ""
+    },
+    {
+        "player": "0x58F51aD645AAB9cEFc282F9630E2Ca0F15B3aF62",
+        "totalTimeTakenToCompleteLevels": 1788,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.389261744966443,
+        "alias": ""
+    },
+    {
+        "player": "0x562F8727A58602A50f3839D67F3a401330Ab27b6",
+        "totalTimeTakenToCompleteLevels": 1800,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3888888888888884,
+        "alias": ""
+    },
+    {
+        "player": "0xff1514e5a4E71702E4390cd160c33F30B529f881",
+        "totalTimeTakenToCompleteLevels": 1944,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.38477366255144,
+        "alias": ""
+    },
+    {
+        "player": "0x241a2FDbfbb57Dbf8A2f4C4d2A5EbC1101e8Be5f",
+        "totalTimeTakenToCompleteLevels": 2052,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3820662768031187,
+        "alias": ""
+    },
+    {
+        "player": "0x4FCD0B4388f19bD68515d8A6f7398ACd3E506AEb",
+        "totalTimeTakenToCompleteLevels": 2088,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.381226053639846,
+        "alias": ""
+    },
+    {
+        "player": "0x1A24f7B01087665AF51EfC816aC1a96D813C6db5",
+        "totalTimeTakenToCompleteLevels": 2136,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3801498127340825,
+        "alias": ""
+    },
+    {
+        "player": "0x96108c628315971BF1bB2f154e23cc5552eA4AdD",
+        "totalTimeTakenToCompleteLevels": 2148,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3798882681564244,
+        "alias": ""
+    },
+    {
+        "player": "0xa0258FD97800ca38115a4B91f3DA52e442df4Ae0",
+        "totalTimeTakenToCompleteLevels": 2160,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3796296296296298,
+        "alias": ""
+    },
+    {
+        "player": "0x79e96687C0F6B551Fda4d3640c37A5341fd137B5",
+        "totalTimeTakenToCompleteLevels": 2184,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.379120879120879,
+        "alias": ""
+    },
+    {
+        "player": "0xefDD4C11efD4df6F1173150e89102D343ae50AA4",
+        "totalTimeTakenToCompleteLevels": 2208,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3786231884057973,
+        "alias": ""
+    },
+    {
+        "player": "0x209fB18d50cA1cFC85972703c0051d8758afD970",
+        "totalTimeTakenToCompleteLevels": 2268,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.377425044091711,
+        "alias": ""
+    },
+    {
+        "player": "0x0900A818b8889e0EB8e668F40CbD72B59677FCEc",
+        "totalTimeTakenToCompleteLevels": 2532,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3728278041074247,
+        "alias": ""
+    },
+    {
+        "player": "0xb994E20b5d805fEf5373B36F54311F2bEfa65C73",
+        "totalTimeTakenToCompleteLevels": 2544,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3726415094339623,
+        "alias": ""
+    },
+    {
+        "player": "0x81889b144A96AC625416954603c3276c841708b2",
+        "totalTimeTakenToCompleteLevels": 2592,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.371913580246914,
+        "alias": ""
+    },
+    {
+        "player": "0x25c074d5F80840bE51aF84B6AA9179540562AC5b",
+        "totalTimeTakenToCompleteLevels": 2868,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3682008368200838,
+        "alias": ""
+    },
+    {
+        "player": "0xBC0cB952D2b4e9abf2aE21e994D849Ce19aA44ac",
+        "totalTimeTakenToCompleteLevels": 3048,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.366141732283465,
+        "alias": ""
+    },
+    {
+        "player": "0xC1d7D3C3F4Eb4b6ab715d14E70939a5c865C9Bd4",
+        "totalTimeTakenToCompleteLevels": 3108,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3655083655083655,
+        "alias": ""
+    },
+    {
+        "player": "0xE407D650Db255A3F1509e6ABb2a254F28993526c",
+        "totalTimeTakenToCompleteLevels": 3216,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3644278606965172,
+        "alias": ""
+    },
+    {
+        "player": "0x3AdFd275B91cA3D8509944F59a41e3e8C35FEDFb",
+        "totalTimeTakenToCompleteLevels": 3900,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3589743589743595,
+        "alias": ""
+    },
+    {
+        "player": "0x0feE1E7d4429666eb2b6F2239563ccDd86B70038",
+        "totalTimeTakenToCompleteLevels": 4032,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3581349206349205,
+        "alias": ""
+    },
+    {
+        "player": "0xd2Aa98590a874AF15C13A66bE4eAEfABDC3247EC",
+        "totalTimeTakenToCompleteLevels": 4128,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3575581395348837,
+        "alias": ""
+    },
+    {
+        "player": "0x34CfE6f849a0579D8818159D4963a1F42B850149",
+        "totalTimeTakenToCompleteLevels": 4152,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.357418111753372,
+        "alias": ""
+    },
+    {
+        "player": "0x9A06d3B341783c0bE87c40C3e0464cC3C911DeF1",
+        "totalTimeTakenToCompleteLevels": 4512,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.355496453900709,
+        "alias": ""
+    },
+    {
+        "player": "0x5Cf6d67794A4C164EDED823452360A51855f5d3d",
+        "totalTimeTakenToCompleteLevels": 4680,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3547008547008548,
+        "alias": ""
+    },
+    {
+        "player": "0xc116bC5533297751aECc52CE15137bd6396D0359",
+        "totalTimeTakenToCompleteLevels": 4848,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.353960396039604,
+        "alias": ""
+    },
+    {
+        "player": "0xFda36841E8e8dF4dECdCB30617C706D265E2Dc10",
+        "totalTimeTakenToCompleteLevels": 4908,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.353708231458843,
+        "alias": ""
+    },
+    {
+        "player": "0x78C206B6d21a5DAd5585803570D8555f21071C8c",
+        "totalTimeTakenToCompleteLevels": 5004,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.353317346123102,
+        "alias": ""
+    },
+    {
+        "player": "0x3792284D1f05D9Fe3413d55633F2794544ed69E8",
+        "totalTimeTakenToCompleteLevels": 6564,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3485679463741618,
+        "alias": ""
+    },
+    {
+        "player": "0x6E40E58291B32BB3c4e62A7AFd6CFb91f1eCe2e9",
+        "totalTimeTakenToCompleteLevels": 10656,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3427177177177176,
+        "alias": ""
+    },
+    {
+        "player": "0x4bC5f73A9A3f7210aD9Bc3f0DAD3F1Ae66F20c91",
+        "totalTimeTakenToCompleteLevels": 11820,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3417935702199664,
+        "alias": ""
+    },
+    {
+        "player": "0xe64e049cB93a4Cd60756fb07712D85A284c2484f",
+        "totalTimeTakenToCompleteLevels": 15984,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3395895895895893,
+        "alias": ""
+    },
+    {
+        "player": "0x32E47b254C50c619D6632aC880f0328833eb7f26",
+        "totalTimeTakenToCompleteLevels": 19416,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.338483724763082,
+        "alias": ""
+    },
+    {
+        "player": "0x396EF2AE0C9f09cc8Dd0a4613b2d14f71De90df7",
+        "totalTimeTakenToCompleteLevels": 29496,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3367236235421753,
+        "alias": ""
+    },
+    {
+        "player": "0x09902A56d04a9446601a0d451E07459dC5aF0820",
+        "totalTimeTakenToCompleteLevels": 54564,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.335166043545194,
+        "alias": ""
+    },
+    {
+        "player": "0xDA9D77B7Dc97Cc34D7Ed33Bbd22D1F934De1203f",
+        "totalTimeTakenToCompleteLevels": 62400,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.334935897435897,
+        "alias": ""
+    },
+    {
+        "player": "0x36d9FE0A1aF6e4f078c3Cf304a7cD486cE7a6224",
+        "totalTimeTakenToCompleteLevels": 82044,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.334552191506996,
+        "alias": ""
+    },
+    {
+        "player": "0x7FAE3eD506B75DeFDC58F04146942221aBc303e4",
+        "totalTimeTakenToCompleteLevels": 88632,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.334461594006679,
+        "alias": ""
+    },
+    {
+        "player": "0x5c7920FEF17dc99472Aa54F140ee621Cc48e4aA1",
+        "totalTimeTakenToCompleteLevels": 89580,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3344496539406117,
+        "alias": ""
+    },
+    {
+        "player": "0x3C4f1C7Ab126a94016CA8F4e770522810aa61954",
+        "totalTimeTakenToCompleteLevels": 105948,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.334277192585042,
+        "alias": ""
+    },
+    {
+        "player": "0x263c0a1ff85604f0ee3f4160cAa445d0bad28dF7",
+        "totalTimeTakenToCompleteLevels": 126792,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.334122026626286,
+        "alias": ""
+    },
+    {
+        "player": "0xD3731A3d3352344C20ddF08DF867a1C725665035",
+        "totalTimeTakenToCompleteLevels": 174204,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3339073729650295,
+        "alias": ""
+    },
+    {
+        "player": "0x81F881595436353D6FFDD522A00D4BB099fa8EAA",
+        "totalTimeTakenToCompleteLevels": 417612,
+        "totalNumberOfLevelsCompleted": 1,
+        "playerScore": 3.3335727900539256,
+        "alias": ""
+    },
+    {
+        "player": "0xafaF84B9938b31B357DAdDe97e38772B63fcaE92",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x87176364A742aa3cd6a41De1A2E910602881AB7d",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x232Cc14bF0c27fc01BDdd84AC2D1A00d31349261",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x6CD891176708e01FfB60504Ba15D44c74a81FeD5",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xB884A0700CdAC15766707c838E1EbA1Cd699c553",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x908bF87Dc2c28D4A8E84ba2A3DB54aE90d7b486D",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x8FBF8c717fD49714d864F81D26A2348E85a833dd",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x63A5A9CB58C33066D73AC57AB85adf861983ED73",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x81f46b132424aB6fde3943b352A6Fb17eb37Bc82",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xAe9535ab04B0D306276Aa3742E415Faf05A7c6D4",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x0F1CD12F75508aa0420dA9cD9798D9cD93627bb3",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x6f303666138C6F074DbF80749f50Bba5749702A4",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x34249B6aB47e75F708BA822949a72bf89bBcb2A1",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xeeDd6c93d335967B797AcFe7741172C8617B17DA",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xFF613131cD48c30C8759F8bf0fB1547B5D8513E3",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xA7D4B01b5E74E4efa40820fE6948D7DC3Ba3B91e",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xAf94227ADBccAE8f7CDA30Bf84Fe28a85a4e5CD1",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x3C10B49ab6c319e4DC485c408D1699e95c5a6379",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x1bbdE895b69d7c5bD912122500Ad0542D5239df1",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x0F28506EFEeA23CEAdcBFa641337424976315B15",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x3854e1450e6eDC5Fe8526A8daf8f48Efc259f9fF",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xbcB84C2fB9aC8155D48540c1B3153a0B9A82a6f6",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x735CFbfD1b396CeB6DE57ACc19beE013943400c0",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xdFBE4C18c693FadD657533eD1591c5CD80C61831",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x38Ba28Edb35c661297F49FDc91d935aefdCE4403",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x000C0de00009B0036758Ff24b7210146A0929010",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xC2C948772895C1C39e21FD1CcF3c26BB992Fa6a2",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x26b2fEC482B98D731Bd03eD9cc9aaA36f3b08fa6",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x1fFcF26cA117E9eC65B9b7E7d84AE07FB4adacE3",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x26E35e9568bcfA684b1687483A1239bA3352B943",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x537Df8463a09D0370DeE4dE077178300340b0030",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x6840cbC907C374e9Cf6291f8d69eD3f36CFD91D5",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xa4dC052d3749ED6DC96e1b0d824Caa8349cEd9ee",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x1f2AFBd9C55AB4eb5bBC1c8e8239e7839223CE74",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xf958F4B68d9a7D42CD1D505757d1e555c7bA5816",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x91Aa5Df5B42Ef16B658b1D2231D73e442CD9c6ED",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x6B49F17126Aa9314444d60853de733F1b348EB38",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x9D55256b8165020915895B25Fb3b729792B2b69b",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xAE3FBe8029a6AeC1B7c5d1dDcB5B8710f4E86237",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x34B4ab0479D10FdbAA3b52C8371C7B1BE5c73bb7",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xFe93E737E94aF65FAA6b2f56D250AD055E6eBdEB",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x2C29ccCED78EacD4E75bA78707A54cf10b171C3a",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x4f5249fc5550518ee047cc2B28592f618021d7B1",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xe42B1F6BE2DDb834615943F2b41242B172788E7E",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xE177DdEa55d5A724515AF1D909a36543cBC4d93E",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xBC62f0Ef98cC40Bd8B21e279a6dBff1b3586Ffed",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x95AD25F3AaB7e4070aBd761d8d6037e7fC32003A",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x91C75cE2b8FF65213C950e10B2DeF3d07Ca8Ec12",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x8724c96B81fDc16Ac44a84E573C5E24493f0DAB7",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x53204918C6307519E05B6b2C0fe92f490886042a",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x87CCEBF12a17aC0FA768d73a5899BD5B5CE8072a",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x656E83e3b39BC98f706EDC2E66509E7B5d26e4cA",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xb0754B937bD306fE72264274A61BC03F43FB685F",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xC895Eb09EF244A9911bd60D6415bf72D9e9531A2",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x8a5722860c6691F2a25d141D73e678bF1078aac3",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x65EdA2B6E940ccd72dd07b2384DC76f18E90Dacb",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xB6a8B54041B528E92a2E90C295aA7854C156Dfc9",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x997C1a628Ba5C3a14Fe4D1724fCCEBf3246D67A3",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x07E6F73dCd30aB40AF88cB032302b0AFFBF6D374",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xB232c7dcD3Fb4197462a7367Be50AFfF0E233F6e",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xe3EE90cbf2593dE2E6EE59F0a27B3028b8Ed3Aa0",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xEF78d565e88ddA9210335e3684B1D8724cE9CbEA",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x89dD8eAb00705d08e44878a3Fe8362a8f736DCC6",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x7cfd4AC3393CeF908C4F5aF53147394439B2FAf0",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x85dAbaa40e0f455dA1a3E170A6911d88a7A90737",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xef13567e7A2858c3D13c5B9B3CB283fFd69D5C70",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x8F4CCBbffAcFfC769F18BD9Ea3e36d8294D392C7",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x09dcC50De6755d705510A59E4E46223a5EB9432a",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x4517495c0854721F13C51CA991924d0F0E062e2a",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xfDe25edd8C903ad624c93BCe9bc53A3D645dE072",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x4ba16C5bd800ADb8e733a7A3441262DE89A24D97",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x2d06a65184C8d39f5046de72373628B9DfA7bB17",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x4F79FD8DbF2677DDb85E45230Eb7d46B562769f5",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x0BaB1eB11C7722eeAf7EF3226AF58B366bB6850D",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x171C21E76665BFd44CA3E77eb1422fBcd920DbD7",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x07B27bAf94b95A52Dcd508d0E73093eeE4Da621d",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x55bf3DC405848e72216b5135e4E62B41D8554c03",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x5b8f22DBb6D5BcDb2AE47374e1629a7d462f2cF9",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x87a6e0A7b9bA44a1933bD85c1d431E0BD2dd4B5a",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xD732931c0fBEfcd235d731b10463318c2A11D6f7",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x708dF04E03AC02c440937Be6e631FA8B46CB89bC",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x71ad84397a4be1449D4A28462a119A8bAb2973dC",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x711A696693933be1D25D68e9838E590e39aA2836",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x5b12e2584f39b888d9E8653da37351B4777cBc00",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xcaB631048db74ccB19021Bd913ca0FEa56e207f0",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x1DcfBD3A3112f929a9fC13DB383B72a0Bb9eab4d",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x9f83A101Eb0C068c02f558c63c508fC8e0E2B63A",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x3815BF3b06d96c6528Ad75AFd0Fc9BB45559ddCF",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xc9579af493B9c63cB0807893F4cee13860F36845",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x07Ea38cD7F6035e68a793409f9C78f1310aBb55D",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x0d3D56806fe6eeDe410Ea9722da9a6f65FD24799",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x52b4e705eAA31662eCb86B12f8581ACcDff98789",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xdC7aC507415Ed65A3321E4c05E0a7DB833146941",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x830275D2EefACb03A8437b1DD6D0da15dE55C33a",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x89cF08d2045b3cBF16F91E505ee43d31546d5A4f",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x98e6E1b8C55D0e1E14e40Cfa04843C54C8DBf6Bb",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xF185087bE41f7Ae83690998f97C8c512b3a55f00",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x62Bb362d63f14449398B79EBC46574F859A6045D",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xeaA69187B854168E7a02888d6DC1193fc53e181a",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x3fCB92bd10B45B5a4135fdCD7483D2630192dC77",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xfC4F626a3dfa723E4b501FeE03D1eC5f9f55dcE4",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xD1E362bfB9927735a7A82f2BA6Be605013d70a85",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x542639665778f421125Aed1d1E5bAec6b7b6fb8C",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x8Cc787A7174C0fF8533C516afa670700a54e6dbD",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x4dDd407bdfdD35f74131E38E7dBdf7baf4e8CBdE",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xa0047f49548509F1C45CcaAB3e2867Bc3C0432d3",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xC6f7B59Ee090D7313E05e1600D9AD27A8456D600",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x9b21e1B804E77915F613969BC09Ec9d7E35023E3",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xf09597552cAE81E22684f24D238AF50Dc29610a8",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xDD729E175f45Dc53181bbBb90aD7128D4482AF33",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xBbd3b61B47D93469C757121b8C5A0a1e40B6bFBA",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x8656D273630865bB4887E00d86a338A214Ac4b50",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x5f05953624a2170b9d5c691127B0Ab7a5BA86F57",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xa186A46Ca022BC1bdcF938ff148b1E0d8959E533",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x6247B884F8D8c91A505e099db602d9C8Eb49A211",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x4d88759cd1F45144194de91Bc11fa62FF2Df59Fc",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x8B70e081B1cd8FCA0866a23976740a70F144f5c3",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x88416CFB7B807667C3DBC47Ec0D80a19d77365de",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xF936996Bb797466740e55022C5a5d76B76FBf4A1",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xF52E2737a77A6C45d588F4eD9A14aBAD942d5F11",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x936cCcCD96aeD22E7581424c6Aa385DB14b1691F",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x57c4122dA87217D952E385BD7143Ee030339BEe0",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x4f611BBBb41600E99A9E24b16FcbC9D30317ee6E",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x4066ECe66d6758A17f99fc39387d5a509b18f1f8",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x618d6E87c3a1Ea87a69eEFD1FeB29d7bDEF38539",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x1F7fA48Ffb50136193A9Eaa37A320E270313B75A",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xEd6a35E2c6D965a9B4aCde63BD64d692d6b1832B",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xBe5C4d9fE64bf589e29f0CFb826fbe089b02541C",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xD1D922B55f1E040A994885821baf504eed905447",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x98206c6890D9ce7187Ac81Cd867911F7162996D7",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x8DBe4B09d226e047907fdBBa9320936C133D8F18",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x10654DEb8070eD4C632Fe2Fa719EbC5B1eE7eB4d",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x2Ddd4F55917FF66700880C8cA4cAB69bCF9aa677",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x1718724AeC24b2Ef11c60754DC99272E5b9d14FF",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x6A541B199F0505413970ff014FE5e50AdC93f457",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x0de3543205ca552FBBc0548f095A75a84A1d8563",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x1b7C81DbAF6f34E878686CE6FA9463c48E2185C7",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xE05cCbcbCb088D8Ae063401249366348cf0eD6C4",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x1a782f516bA3b203148C2630E333644846F67138",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x9eBAe0a8fB967ecB8B1995C2414a07046694E555",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x7d4efE53512f2c48eA66699EEfeC66Daef59BCE9",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x37EbD8faCa6555594Fe6eF84ef20B4Be34496953",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0xc59dFC955c26493c3E5Ac068A308CB787CCE34e6",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    },
+    {
+        "player": "0x780709DffaD3AaF57bF38F2D035980Be389dc8FF",
+        "totalTimeTakenToCompleteLevels": 0,
+        "totalNumberOfLevelsCompleted": 0,
+        "playerScore": 0,
+        "alias": ""
+    }
+]

@@ -1,5 +1,5 @@
 import React from 'react'
-import loadText from '../utils/textloader'
+import loadText from '../../utils/textloader'
 import 'highlight.js/styles/vs2015-css.mjs'
 import hljs from 'highlight.js'
 

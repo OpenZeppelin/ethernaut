@@ -13,8 +13,13 @@ import "./utils/^^";
 import * as Sentry from "@sentry/browser";
 import { Integrations } from "@sentry/tracing";
 import App from "./containers/App";
-import NotFound404 from "./components/NotFound404";
+import NotFound404 from "./components/not-found/NotFound404";
 import Header from "./containers/Header";
+import MarkdownComponent from "./components/common/Markdown";
+import { loadTranslations } from "./utils/translations";
+import Footer from "./components/common/Footer";
+import parse from "html-react-parser";
+import Leaderboard from "./containers/Leaderboard";
 
 // For bundle splitting without lazy loading.
 const nonlazy = (component) => lazy(() => component);
@@ -45,7 +50,43 @@ if (!window.ethereum) {
   window.ethereum.request({ method: "eth_chainId" }).then((res) => {
     store.dispatch(actions.setNetworkId(parseInt(res)));
     store.dispatch(actions.loadGamedata());
-  });
+  })
+
+  // View entry point.
+  root.render(
+    <Provider store={store}>
+      <Router history={syncHistoryWithStore(history, store)}>
+        <Suspense fallback={<div>Loading...</div>}>
+            <MediaQuery minWidth={880.1}>
+              <Header></Header>
+              <Routes>
+                <Route path={constants.PATH_HELP} element={<Help/>} />
+                <Route path={constants.PATH_LEVEL} element={<Level/>} />
+                <Route path={constants.PATH_STATS} element={<Stats />} />
+                <Route path={constants.PATH_LEADERBOARD} element={<Leaderboard/>} />
+                <Route exact path="/" element={<App/>} />
+                <Route path="/" element={<NotFound404/>} />
+              </Routes>
+            </MediaQuery>
+            <MediaQuery maxWidth={885}>
+              <Header></Header>
+              <div className="unfitScreenSize">
+                <h3>Screen is too small</h3>
+                <h3>Please switch to desktop view</h3>
+                <a href={constants.PATH_ROOT}>
+                  <img
+                    id="the-ethernaut"
+                    src="../../imgs/the-ethernaut.svg"
+                    alt="The-Ethernaut"
+                    className="the-ethernaut"
+                  />
+                </a>
+              </div>
+            </MediaQuery>
+          </Suspense>
+      </Router>
+    </Provider>
+  );
 }
 
 // View entry point.

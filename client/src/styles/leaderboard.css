@@ -1,0 +1,121 @@
+.leaderboard-title {
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 35px;
+    margin-bottom:10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.leaderboard-list {
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+.leaderboard-tile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:5px;
+}
+
+.leaderboard-rank {
+    flex:2;
+    text-align: center;
+}
+
+.leaderboard-player {
+    flex:4;
+    text-align:center;
+    cursor: pointer;
+}
+
+.leaderboard-levels-solved {
+    flex:2;
+    text-align:center;
+}
+
+.leaderboard-score {
+    flex:2;
+    text-align: center;
+}
+
+.leaderboard-header {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.leaderboard-body {
+    font-family: Helvetica, sans-serif;
+}
+
+.leaderboard-pagination-container {
+   display: flex;
+   justify-content: center;
+   margin:30px 0px;
+}
+
+.leaderboard-pagination-container li {
+   float: left;
+   list-style-type: none;
+}
+
+.leaderboard-pagination-page-item {
+    padding:0px 10px;
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight:lighter;
+}
+
+.leaderboard-pagination-page-item:hover {
+    color: var(--secondary-color);
+}
+
+.leaderboard-pagination-selected-page-item {
+    text-decoration: underline;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.leaderboard-pagination-selected-page-item:hover {
+    color: var(--secondary-color);
+}
+
+.leaderboard-button-link {
+    background-color: var(--secondary-color);
+    padding:5px;
+    color: var(--primary-color);;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.leaderboard-button-link:hover {
+   text-decoration: none;
+   color: var(--primary-color);
+}
+
+.leaderboard-search-input {
+    padding:6px;
+    border: 2px solid var(--secondary-color);
+    width:350px;  
+    margin-bottom: 20px; 
+    font-size: 15px;
+    background-color: var(--primary-color) ;
+    color: var(--secondary-color);
+    border-radius: 3px;
+}
+
+.leaderboard-search-input::placeholder {
+    color: var(--secondary-color);
+}
+
+.leaderboard-search-input:focus {
+    outline-width: 0;
+}
+
+.leaderboard-search-container {
+    text-align: center;
+}
+
+.leaderboard-list-container {
+    min-height:500px;
+}
