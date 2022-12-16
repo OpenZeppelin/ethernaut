@@ -1,7 +1,7 @@
 import React from "react";
-import { loadTranslations } from "../utils/translations";
+import { loadTranslations } from "../../utils/translations";
 import { connect } from "react-redux";
-import { contractsDeploymentStatus, raiseIssue, deployStatus } from "../utils/contractutil";
+import { contractsDeploymentStatus, raiseIssue, deployStatus } from "../../utils/contractutil";
 
 export const Footer = (props) => {
     let language = localStorage.getItem("lang");

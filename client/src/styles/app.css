@@ -518,6 +518,21 @@ footer {
   }
 }
 
+.leader-icon {
+  width: 30px;
+  height:35px;
+  cursor: pointer;
+  fill: var(--secondary-color);
+  margin-right:10px;
+}
+
+.tooltip-container {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding:5px 10px;
+  border-radius: 5px;
+}
+
 @media only screen and (max-width: 956px) {
   .toggle {
     display: none;
