@@ -1,7 +1,7 @@
 import * as ethjs from 'ethereumjs-util';
 import TruffleContract from '@truffle/contract';
-import * as constants from "../constants";
-import { NETWORKS_INGAME } from '../constants'
+import * as constants from "../constants.js";
+import { NETWORKS_INGAME } from '../constants.js'
 
 let web3;
 let duplicateTransactions = new Map();
