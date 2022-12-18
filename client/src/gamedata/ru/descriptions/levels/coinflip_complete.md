@@ -1,6 +1,5 @@
-Generating random numbers in solidity can be tricky. There currently isn't a native way to generate them, and everything you use in smart contracts is publicly visible, including the local variables and state variables marked as private. Miners also have control over things like blockhashes, timestamps, and whether to include certain transactions - which allows them to bias these values in their favor. 
+Генерация случайных чисел в solidity может быть непростой задачей. В настоящее время не существует встроенного способа их создания, и все, что вы используете в смарт-контрактах, является общедоступным, включая локальные переменные и переменные состояния, помеченные как приватные (private). Майнеры также могут контролировать хэши блоков, их временные метки и включать или не включать определенные транзакции в блоки, что позволяет им смещать эти значения в свою пользу.
 
-To get cryptographically proven random numbers, you can use [Chainlink VRF](https://docs.chain.link/docs/get-a-random-number), which uses an oracle, the LINK token, and an on-chain contract to verify that the number is truly random. 
+Чтобы получить криптографически проверенные случайные числа, вы можете использовать [Chainlink VRF](https://docs.chain.link/docs/get-a-random-number), который использует оракулы (oracle), токен LINK и он-чейн контракт для доказательства того, что число действительно случайное.
 
-Some other options include using Bitcoin block headers (verified through [BTC Relay](http://btcrelay.org)), [RANDAO](https://github.com/randao/randao), or [Oraclize](http://www.oraclize.it/)).
-
+Другие варианты включают использование заголовков блоков биткойнов (проверенных через [BTC Relay](http://btcrelay.org)), [RANDAO](https://github.com/randao/randao), или [Oraclize](http://www.oraclize.it/)).
