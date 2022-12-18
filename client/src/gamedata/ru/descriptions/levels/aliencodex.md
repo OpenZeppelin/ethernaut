@@ -1,7 +1,7 @@
-You've uncovered an Alien contract. Claim ownership to complete the level.
+Вы раскрыли инопланетный контракт. Заберите владение им, чтобы пройти уровень.
 
 &nbsp;
-Things that might help
-* Understanding how array storage works
-* Understanding [ABI specifications](https://solidity.readthedocs.io/en/v0.4.21/abi-spec.html)
-* Using a very `underhanded` approach
+Вещи, которые могут помочь
+* Понимание того, как работает хранение массивов
+* Понимание [спецификаций ABI](https://solidity.readthedocs.io/en/v0.4.21/abi-spec.html)
+* Использование очень `хитрого` подхода
