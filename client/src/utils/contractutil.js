@@ -175,6 +175,9 @@ export const verifyContract = async (contractAddress, level, chainId) => {
   if (!network.explorer || !level.verificationDetails)
     return;
 
+  const contractFile = await fetch(`contracts/levels/${level.instanceContract}`);
+  const contractCode = await contractFile.text();
+
   const headers = new Headers();
   headers.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -182,7 +185,7 @@ export const verifyContract = async (contractAddress, level, chainId) => {
   urlencoded.append("apikey", network.explorer.apiKey);
   urlencoded.append("module", "contract");
   urlencoded.append("action", "verifysourcecode");
-  urlencoded.append("sourceCode", level.verificationDetails.contractCode);
+  urlencoded.append("sourceCode", contractCode);
   urlencoded.append("contractaddress", contractAddress);
   urlencoded.append("codeformat", "solidity-single-file");
   urlencoded.append("contractname", level.verificationDetails.contractName);

@@ -215,7 +215,6 @@
         "optimization": "1",
         "runs": "1000",
         "licenseTypeId": "3",
-        "contractCode": "// SPDX-License-Identifier: MIT\n        pragma solidity ^0.8.0;\n        \n        contract GatekeeperOne {\n        \n          address public entrant;\n        \n          modifier gateOne() {\n            require(msg.sender != tx.origin);\n            _;\n          }\n        \n          modifier gateTwo() {\n            require(gasleft() % 8191 == 0);\n            _;\n          }\n        \n          modifier gateThree(bytes8 _gateKey) {\n              require(uint32(uint64(_gateKey)) == uint16(uint64(_gateKey)), \"GatekeeperOne: invalid gateThree part one\");\n              require(uint32(uint64(_gateKey)) != uint64(_gateKey), \"GatekeeperOne: invalid gateThree part two\");\n              require(uint32(uint64(_gateKey)) == uint16(uint160(tx.origin)), \"GatekeeperOne: invalid gateThree part three\");\n            _;\n          }\n        \n          function enter(bytes8 _gateKey) public gateOne gateTwo gateThree(_gateKey) returns (bool) {\n            entrant = tx.origin;\n            return true;\n          }\n        }\n        ",
         "constructorArguements": ""
       }
     },
