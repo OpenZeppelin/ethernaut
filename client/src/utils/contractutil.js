@@ -189,6 +189,7 @@ export const verifyContract = async (contractAddress, level, chainId) => {
   urlencoded.append("compilerversion", level.verificationDetails.compilerVersion);
   urlencoded.append("optimizationUsed", level.verificationDetails.optimization);
   urlencoded.append("runs", level.verificationDetails.runs);
+  urlencoded.append("constructorArguements", level.verificationDetails.constructorArguements);
   urlencoded.append("licenseType", level.verificationDetails.licenseTypeId);
 
   const requestOptions = {
