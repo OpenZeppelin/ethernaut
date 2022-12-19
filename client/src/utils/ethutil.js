@@ -241,10 +241,16 @@ export const getGasFeeDetails = async (network, multiplier) => {
       gasPrice: multiplier * gasPrice
     }
   }
-} 
+}
 
-export const getNetworkNamefromId = (networkId) => { 
-    const networkObjectsList = Object.values(NETWORKS_INGAME);
-    const networkName = networkObjectsList.filter(Boolean).find(network => network.id === `${networkId}`)?.name;
-    return networkName;
+export const getNetworkFromId = (networkId) => {
+  const networkObjectsList = Object.values(NETWORKS_INGAME);
+  for (let network of networkObjectsList)
+    if (network && network.id === networkId.toString())
+      return network;
+}
+
+export const getNetworkNamefromId = (networkId) => {
+  const network = getNetworkFromId(networkId);
+  return network.name
 }
