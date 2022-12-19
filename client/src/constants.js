@@ -64,6 +64,10 @@ export const NETWORKS_INGAME = {
     currencySymbol: "ETH",
     rpcUrl: `https://eth-goerli.public.blastapi.io`,
     blockExplorer: "https://goerli.etherscan.io",
+    explorer: {
+      apiKey: `${process.env.REACT_APP_GOERLI_EXPLORER_API_KEY}`,
+      apiHost: `https://api-goerli.etherscan.io`,
+    },
   },
   MUMBAI: {
     name: "mumbai-polygon",
@@ -72,6 +76,10 @@ export const NETWORKS_INGAME = {
     currencySymbol: "MATIC",
     rpcUrl: `https://matic-mumbai.chainstacklabs.com`,
     blockExplorer: "https://mumbai.polygonscan.com",
+    explorer: {
+      apiKey: `${process.env.REACT_APP_MUMBAI_EXPLORER_API_KEY}`,
+      apiHost: `https://api-testnet.polygonscan.com`,
+    },
   },
   SEPOLIA: {
     name: "sepolia",
@@ -80,6 +88,10 @@ export const NETWORKS_INGAME = {
     currencySymbol: "SEP",
     rpcUrl: `https://rpc.sepolia.org`,
     blockExplorer: "https://sepolia.etherscan.io",
+    explorer: {
+      apiKey: `${process.env.REACT_APP_SEPOLIA_EXPLORER_API_KEY}`,
+      apiHost: `https://api-sepolia.etherscan.io`,
+    },
   },
   OPTIMISM_GOERLI: {
     name: "goerli-optimism",
@@ -88,6 +100,10 @@ export const NETWORKS_INGAME = {
     currencySymbol: "ETH",
     rpcUrl: `https://goerli.optimism.io`,
     blockExplorer: "https://goerli-optimism.etherscan.io",
+    explorer: {
+      apiKey: `${process.env.REACT_APP_OPTIMISM_GOERLI_EXPLORER_API_KEY}`,
+      apiHost: `https://api-goerli-optimistic.etherscan.io`,
+    },
   },
   ARBITRUM_GOERLI: {
     name: "goerli-arbitrum",
@@ -96,6 +112,10 @@ export const NETWORKS_INGAME = {
     currencySymbol: "ETH",
     rpcUrl: `https://goerli-rollup.arbitrum.io/rpc`,
     blockExplorer: "https://goerli.arbiscan.io",
+    explorer: {
+      apiKey: `${process.env.REACT_APP_ARBITRUM_GOERLI_EXPLORER_API_KEY}`,
+      apiHost: `https://api-goerli.arbiscan.io`,
+    },
   },
 };
 
