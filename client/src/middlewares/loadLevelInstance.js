@@ -2,6 +2,7 @@ import * as ethutil from '../utils/ethutil';
 import * as actions from '../actions';
 import { loadTranslations } from '../utils/translations';
 import { getGasFeeDetails } from '../utils/ethutil'
+import { verifyContract } from '../utils/contractutil';
 
 let language = localStorage.getItem('lang');
 let strings = loadTranslations(language);
@@ -62,6 +63,11 @@ const loadLevelInstance = (store) => (next) => (action) => {
           }
           if (!instanceAddress) {
             showErr(strings.transactionNoLogsMessage)
+          } else {
+            // Wait for the contract to index in the explorer
+            setTimeout(() => {
+              verifyContract(instanceAddress, action.level, state.network.networkId);
+            }, 30000);
           }
         }).catch((error) => {
           showErr(error)
