@@ -9,7 +9,7 @@ import {
   restoreContract,
   updateCachedContract,
 } from "./contractutil";
-import { CORE_CONTRACT_NAMES } from "../constants.js";
+import { CORE_CONTRACT_NAMES, ID_TO_NETWORK } from "../constants.js";
 import { loadTranslations } from "../utils/translations";
 
 const logger = (text) => {
@@ -135,3 +135,19 @@ export async function deployAdminContracts() {
     elements[0].style.display = "none";
   }
 }
+
+export const getDeployData = (networkId) => {
+  const active_network = ID_TO_NETWORK[networkId];
+  const network = active_network;
+  let gameData = {};
+
+  try {
+    // try importing the game data file
+    gameData = require(`../gamedata/deploy.${network}.json`);
+  } catch (err) {
+    // if there's an error then check localstorage if data exists for this chain
+    gameData = restoreContract(networkId);
+  }
+
+  return gameData;
+};

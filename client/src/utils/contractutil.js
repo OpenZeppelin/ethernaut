@@ -1,5 +1,5 @@
 import * as constants from "../constants";
-import { getWeb3, setWeb3, getTruffleContract } from "./ethutil";
+import { getWeb3, setWeb3, getTruffleContract, getNetworkFromId } from "./ethutil";
 import { newGithubIssueUrl } from "./github";
 import * as LocalFactoryABI from "contracts/build/contracts/factory/LocalFactory.sol/Factory.json";
 import { deployAdminContracts, deployAndRegisterLevel } from "./deploycontract";
@@ -167,6 +167,48 @@ export const deployRemainingContracts = async () => {
     }
   } catch (e) {
     console.error(e);
+  }
+}
+
+export const verifyContract = async (contractAddress, level, chainId) => {
+  const network = getNetworkFromId(chainId);
+  if (!network.explorer || !level.verificationDetails)
+    return;
+
+  const contractFile = await fetch(`contracts/levels/${level.instanceContract}`);
+  const contractCode = await contractFile.text();
+
+  const headers = new Headers();
+  headers.append("Content-Type", "application/x-www-form-urlencoded");
+
+  const urlencoded = new URLSearchParams();
+  urlencoded.append("apikey", network.explorer.apiKey);
+  urlencoded.append("module", "contract");
+  urlencoded.append("action", "verifysourcecode");
+  urlencoded.append("sourceCode", contractCode);
+  urlencoded.append("contractaddress", contractAddress);
+  urlencoded.append("codeformat", "solidity-single-file");
+  urlencoded.append("contractname", level.verificationDetails.contractName);
+  urlencoded.append("compilerversion", level.verificationDetails.compilerVersion);
+  urlencoded.append("optimizationUsed", level.verificationDetails.optimization);
+  urlencoded.append("runs", level.verificationDetails.runs);
+  urlencoded.append("constructorArguements", level.verificationDetails.constructorArguements);
+  urlencoded.append("licenseType", level.verificationDetails.licenseTypeId);
+
+  const requestOptions = {
+    method: 'POST',
+    headers: headers,
+    body: urlencoded,
+  };
+
+  try {
+    const response = await fetch(`${network.explorer.apiHost}/api`, requestOptions);
+    const result = await response.json();
+    if (result.status !== '1') {
+      throw new Error(result.result);
+    }
+  } catch (e) {
+    console.log('<< Game Instance Verification >>\n', e);
   }
 }
 
