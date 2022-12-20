@@ -1,7 +1,6 @@
 import * as actions from '../actions';
-import * as constants from '../constants';
-import { restoreContract } from '../utils/contractutil';
 import { loadTranslations } from '../utils/translations'
+import { getDeployData } from '../utils/deploycontract'
 // import { store, history } from "./../store";
 let language = localStorage.getItem('lang')
 let strings = loadTranslations(language)
@@ -35,21 +34,5 @@ const loadGameData = store => next => action => {
 
   next(action)
 }
-
-const getDeployData = (networkId) => {
-  const active_network = constants.ID_TO_NETWORK[networkId];
-  const network = active_network;
-  let gameData = {};
-
-  try {
-    // try importing the game data file
-    gameData = require(`../gamedata/deploy.${network}.json`);
-  } catch (err) {
-    // if there's an error then check localstorage if data exists for this chain
-    gameData = restoreContract(networkId);
-  }
-
-  return gameData;
-};
 
 export default loadGameData

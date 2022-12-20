@@ -49,7 +49,7 @@ If you would like to contribute in another way, please reach out to us via email
 - A `description file` in [the descriptions directory](./client/src/gamedata/en/descriptions/levels) that the UI presents to the player and describes the level's objectives with some narrative and tips.
 - A `description completion file` also located in [the descriptions directory](./client/src/gamedata/en/descriptions/levels) that the UI presents to the player when the level is passed, further information about the player, historical insights, further explanations or just a congrats message.
 - A `tests file` in the [`test directory`](./contracts/test/levels/) that performs unit tests on the level.
-- A `json entry` for the level in [gamedata.json](client/src/gamedata/gamedata.json) that appends metadata to the level. The UI uses this metadata to display the level's title, difficulty, etc, but also to determine if sources are shown, the default gas for the creation of an instance, etc. NOTE: "deployId" **must** be unique and is also used by the deployment script.
+- A `json entry` for the level in [gamedata.json](client/src/gamedata/gamedata.json) that appends metadata to the level. The UI uses this metadata to display the level's title, difficulty, etc, but also to determine if sources are shown, the default gas for the creation of an instance, instance contract verification on explorers, etc. NOTE: "deployId" **must** be unique and is also used by the deployment script.
 - Optionally, an `author entry` in [authors.json](client/src/gamedata/authors.json). You can specify opt-in information about yourself in this file.
 
 #### Example level development: King
