@@ -2,6 +2,7 @@ import * as ethutil from '../utils/ethutil';
 import * as actions from '../actions';
 import { loadTranslations } from '../utils/translations';
 import { getGasFeeDetails } from '../utils/ethutil'
+import { verifyContract } from '../utils/contractutil';
 
 let language = localStorage.getItem('lang');
 let strings = loadTranslations(language);
@@ -43,7 +44,7 @@ const loadLevelInstance = (store) => (next) => (action) => {
       parseFloat(action.level.deployFunds, 10).toString(),
       'ether'
     );
-    getGasFeeDetails(state.network).then(gasFeeDetails => {
+    getGasFeeDetails(state.network, 2).then(gasFeeDetails => {
       state.contracts.ethernaut
         .createLevelInstance(action.level.deployedAddress, {
           // 2.5 * estimate is required for level creation to succeed in arbitrum goerli
@@ -62,6 +63,11 @@ const loadLevelInstance = (store) => (next) => (action) => {
           }
           if (!instanceAddress) {
             showErr(strings.transactionNoLogsMessage)
+          } else {
+            // Wait for the contract to index in the explorer
+            setTimeout(() => {
+              verifyContract(instanceAddress, action.level, state.network.networkId);
+            }, 30000);
           }
         }).catch((error) => {
           showErr(error)
@@ -73,9 +79,8 @@ const loadLevelInstance = (store) => (next) => (action) => {
   if (!instanceAddress) return;
   console.info(`=> ${strings.instanceAddressMessage}\n${instanceAddress}`);
   const Instance = ethutil.getTruffleContract(
-    require(`contracts/build/contracts/levels/${
-      action.level.instanceContract
-    }/${withoutExtension(action.level.instanceContract)}.json`),
+    require(`contracts/build/contracts/levels/${action.level.instanceContract
+      }/${withoutExtension(action.level.instanceContract)}.json`),
     {
       from: state.player.address,
       gasPrice: 2 * state.network.gasPrice,
