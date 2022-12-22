@@ -24,7 +24,16 @@ const loadGameData = store => next => action => {
       action.ethernautAddress = deployData.ethernaut
       action.levels = levelsOut;
     } else {
-      console.log("Network ID is not set until now!")
+      const data = require(`../gamedata/gamedata.json`);
+      const levelsIn = data.levels;
+      const levelsOut = [];
+      for (let i = 0; i < levelsIn.length; i++) {
+        const level = levelsIn[i];
+        level.idx = i;
+        levelsOut.push(level);
+      }
+      action.levels = levelsOut;
+      // console.log("Network ID is not set until now!")
     }
     // Load levels and add a bit of post processing...
 
