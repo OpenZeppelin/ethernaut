@@ -20,7 +20,6 @@ contract Statistics is Initializable {
         uint256 noOfInstancesSubmitted_Success;
         uint256 noOfSubmissions_Failed;
     }
-    mapping(address => uint256) private averageTimeTakenToCompleteLevels;
     mapping(address => uint256) private globalNoOfLevelsCompletedByPlayer;
     mapping(address => uint256) private globalNoOfInstancesCreatedByPlayer;
     mapping(address => uint256) private globalNoOfInstancesCompletedByPlayer;
@@ -31,6 +30,7 @@ contract Statistics is Initializable {
     mapping(address => mapping(address => LevelInstance)) private playerStats;
     mapping(address => bool) private playerExists;
     mapping(address => bool) private levelExists;
+    mapping(address => uint256) private averageTimeTakenToCompleteLevels;
     event playerScoreProfile(address indexed player, uint256 indexed averageCompletionTime, uint256 indexed globalLevelsCompleted);
     modifier levelExistsCheck(address level) {
         require(doesLevelExist(level), "Level doesn't exist");
