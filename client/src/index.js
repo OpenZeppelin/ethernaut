@@ -16,10 +16,6 @@ import { Integrations } from "@sentry/tracing";
 import App from "./containers/App";
 import NotFound404 from "./components/NotFound404";
 import Header from "./containers/Header";
-import MarkdownComponent from "./components/Markdown";
-import { loadTranslations } from "./utils/translations";
-import Footer from "./components/Footer";
-import parse from "html-react-parser";
 
 // For bundle splitting without lazy loading.
 const nonlazy = (component) => lazy(() => component);
