@@ -174,12 +174,6 @@ class Header extends React.Component {
             </ul>
             <a className="logo-container" href="https://openzeppelin.com">
               <img
-                id="christmas-hat"
-                className="christmas-hat"
-                src="../../imgs/christmas-hat.png"
-                alt="christmas-hat"
-              />
-              <img
                 id="logo"
                 className="logo"
                 src="../../imgs/oz-logo.svg"
