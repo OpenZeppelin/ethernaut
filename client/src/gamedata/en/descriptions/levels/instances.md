@@ -52,7 +52,7 @@ To play the game, you will need test ether. The easiest way to get some testnet 
 Once you see some coins in your balance, move on to the next step.
 
 #### 7. Getting a level instance
-When playing a level, you don't interact directly with the ethernaut contract. Instead, you ask it to generate a **level instance** for you. To do so, click the blue button at the bottom of the page. Go do it now and come back!
+When playing a level, you don't interact directly with the ethernaut contract. Instead, you ask it to generate a **level instance** for you. To do so, click the "Get New Instance" button at the bottom of the page. Go do it now and come back!
 
 You should be prompted by MetaMask to authorize the transaction. Do so, and you should see some messages in the console. Note that this is deploying a new contract in the blockchain and might take a few seconds, so please be patient when requesting new level instances!
 
