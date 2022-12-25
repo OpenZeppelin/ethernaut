@@ -61,7 +61,7 @@ const getlevelsdata = (props, source) => {
                     `../../imgs/Level${levels[i].deployId}.svg`
                 ) : (
                     source !== 'mosaic' ?
-                    `../../imgs/BigLevel${levels[i].deployId}.svg` :
+                    `../../imgs/BigLevel${levels[i].deployId}.png` :
                     `../../imgs/Level${levels[i].deployId}.png`
                 )
                 
