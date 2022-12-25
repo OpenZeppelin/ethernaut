@@ -259,7 +259,7 @@ class Level extends React.Component {
                 )}
 
                 {/* DEPLOY OR CREATE */}
-                <button
+                {this.props.web3 && <button
                   type="button"
                   className="button-actions"
                   onClick={
@@ -271,7 +271,7 @@ class Level extends React.Component {
                   {level.deployedAddress
                     ? strings.getNewInstance
                     : strings.deployLevel}
-                </button>
+                </button>}
 
               </div>
             )}
@@ -311,7 +311,8 @@ function mapStateToProps(state) {
   const level = state.gamedata.activeLevel;
 
   return {
-    networkId:state.network.networkId,
+    web3: state.network.web3,
+    networkId: state.network.networkId,
     level: level,
     activeLevel: level,
     player: state.player,

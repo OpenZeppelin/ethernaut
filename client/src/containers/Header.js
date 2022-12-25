@@ -18,9 +18,11 @@ class Header extends React.Component {
       chainId: 0
     };
 
-    window.ethereum.request({ method: 'eth_chainId' }).then((id)=> {
-      this.setState({chainId: Number(id)})
-    });
+    if (this.props.web3) {
+      window.ethereum.request({ method: 'eth_chainId' }).then((id) => {
+        this.setState({ chainId: Number(id) })
+      });
+    }
   }
 
   static propTypes = {
@@ -41,11 +43,11 @@ class Header extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    
+
     if (prevProps && this.props.location !== prevProps.location) {
 
       let elements = document.getElementsByClassName("level-tile");
-      if(elements.length !== 0) {
+      if (elements.length !== 0) {
         for (let i = 0; i < elements.length; i++) {
           let element = elements[i];
           if (element && element.style) element.style.filter = this.state.dark ? this.svgFilter() : null;
@@ -54,7 +56,7 @@ class Header extends React.Component {
 
       // Change The Ethernaut logo
       var theEthernaut = document.getElementById("the-ethernaut");
-      if(theEthernaut && theEthernaut.style) theEthernaut.style.filter = this.state.dark
+      if (theEthernaut && theEthernaut.style) theEthernaut.style.filter = this.state.dark
         ? this.svgFilter()
         : null;
 
@@ -65,10 +67,10 @@ class Header extends React.Component {
 
       // Change all custom images
       var imageElements = document.getElementsByClassName("custom-img");
-      if(imageElements.length !== 0) {
+      if (imageElements.length !== 0) {
         for (let i = 0; i < imageElements.length; i++) {
           let element = imageElements[i];
-          if(imageElements.length === 0) element = imageElements;
+          if (imageElements.length === 0) element = imageElements;
           if (element && element.style) element.style.filter = this.state.dark ? this.svgFilter() : null;
         }
       }
@@ -90,60 +92,66 @@ class Header extends React.Component {
 
   toggleDarkMode() {
     var documentElement = document.documentElement;
-    if(documentElement && documentElement.style) {
+    if (documentElement && documentElement.style) {
 
-    var pink = getComputedStyle(document.documentElement).getPropertyValue(
-      "--pink"
-    );
-    var black = getComputedStyle(document.documentElement).getPropertyValue(
-      "--black"
-    );
+      var pink = getComputedStyle(document.documentElement).getPropertyValue(
+        "--pink"
+      );
+      var black = getComputedStyle(document.documentElement).getPropertyValue(
+        "--black"
+      );
 
-    var newPrimary = this.state.dark ? pink : black;
-    var newSecondary = this.state.dark ? black : pink;
+      var newPrimary = this.state.dark ? pink : black;
+      var newSecondary = this.state.dark ? black : pink;
 
-  
-    document.documentElement.style.setProperty("--primary-color", newPrimary);
-    document.documentElement.style.setProperty(
-      "--secondary-color",
-      newSecondary
-    );
 
-    // Change OpenZeppelin logo
-    var theLogo = document.getElementById("logo")
-    if(theLogo && theLogo.style) theLogo.style.filter = !this.state.dark
-      ? this.svgFilter()
-      : null;
+      document.documentElement.style.setProperty("--primary-color", newPrimary);
+      document.documentElement.style.setProperty(
+        "--secondary-color",
+        newSecondary
+      );
 
-    // Change The Ethernaut logo
-    var theEthernaut = document.getElementById("the-ethernaut");
-    if(theEthernaut && theEthernaut.style) theEthernaut.style.filter = !this.state.dark
-      ? this.svgFilter()
-      : null;
+      // Change OpenZeppelin logo
+      var theLogo = document.getElementById("logo")
+      if (theLogo && theLogo.style) theLogo.style.filter = !this.state.dark
+        ? this.svgFilter()
+        : null;
 
-    // Change Arrow
-    let isArrowInPage = document.getElementById("arrow");
-    if (isArrowInPage && isArrowInPage.style)
-      isArrowInPage.style.filter = !this.state.dark ? this.svgFilter() : null;
+      // Change OpenZeppelin logo
+      var theChristmashat = document.getElementById("christmas-hat")
+      if (theChristmashat && theChristmashat.style) theChristmashat.style.filter = !this.state.dark
+        ? this.svgFilter()
+        : null;
 
-    // Change Mosaic and levels logo
-    let elements = document.getElementsByClassName("level-tile");
-    for (let i = 0; i < elements.length; i++) {
-      let element = elements[i];
-      if (element && element.style) element.style.filter = !this.state.dark ? this.svgFilter() : null;
+      // Change The Ethernaut logo
+      var theEthernaut = document.getElementById("the-ethernaut");
+      if (theEthernaut && theEthernaut.style) theEthernaut.style.filter = !this.state.dark
+        ? this.svgFilter()
+        : null;
+
+      // Change Arrow
+      let isArrowInPage = document.getElementById("arrow");
+      if (isArrowInPage && isArrowInPage.style)
+        isArrowInPage.style.filter = !this.state.dark ? this.svgFilter() : null;
+
+      // Change Mosaic and levels logo
+      let elements = document.getElementsByClassName("level-tile");
+      for (let i = 0; i < elements.length; i++) {
+        let element = elements[i];
+        if (element && element.style) element.style.filter = !this.state.dark ? this.svgFilter() : null;
+      }
+
+      // Change all custom images
+      elements = document.getElementsByClassName("custom-img");
+      for (let i = 0; i < elements.length; i++) {
+        let element = elements[i];
+        if (element && element.style) element.style.filter = !this.state.dark ? this.svgFilter() : null;
+      }
+
+      this.setState({
+        dark: !this.state.dark,
+      });
     }
-
-    // Change all custom images
-    elements = document.getElementsByClassName("custom-img");
-    for (let i = 0; i < elements.length; i++) {
-      let element = elements[i];
-      if (element && element.style) element.style.filter = !this.state.dark ? this.svgFilter() : null;
-    }
-
-    this.setState({
-      dark: !this.state.dark,
-    });
-  }
   }
 
   render() {
@@ -172,10 +180,10 @@ class Header extends React.Component {
             </ul>
             <a className="logo-container" href="https://openzeppelin.com">
               <img
-                id="logo"
-                className="logo"
-                src="../../imgs/oz-logo.svg"
-                alt="logo"
+                id="christmas-hat"
+                className="christmas-hat"
+                src="../../imgs/christmas-hat.png"
+                alt="christmas-hat"
               />
             </a>
             <ul className="header-ul">
@@ -247,23 +255,23 @@ class Header extends React.Component {
                   </a>
                 </div>
               </li>
-              <li className="dropdown">
+              {this.props.web3 && <li className="dropdown">
                 <div className="icon-buttons" href="/">
-                <i className="fas fa-network-wired"></i>
+                  <i className="fas fa-network-wired"></i>
                 </div>
                 <div className="dropdown-content">
-                      {Object.values(constants.NETWORKS_INGAME).map((network) => {
-                      if(
-                        network && 
-                        network.name !== 'local'
-                      ) {
-                        if(Number(network.id) === this.state.chainId) return false; // filter out current network
-                        return (
+                  {Object.values(constants.NETWORKS_INGAME).map((network) => {
+                    if (
+                      network &&
+                      network.name !== 'local'
+                    ) {
+                      if (Number(network.id) === this.state.chainId) return false; // filter out current network
+                      return (
                         <a id={network.name} key={network.name}
                           onClick={(e) => {
                             e.preventDefault();
-                            
-                            async function changeNetwork(){
+
+                            async function changeNetwork() {
                               const elements = document.querySelectorAll('.progress-bar-wrapper');
                               elements[0].style.display = 'flex';
                               try {
@@ -275,7 +283,7 @@ class Header extends React.Component {
                                   method: 'wallet_switchEthereumChain',
                                   params: [{ chainId: `0x${Number(network.id).toString(16)}` }],
                                 });
-                                
+
                               } catch (switchError) {
                                 // This error code indicates that the chain has not been added to MetaMask.
                                 if (switchError.code === 4902) {
@@ -289,7 +297,7 @@ class Header extends React.Component {
                                           rpcUrls: [network.rpcUrl],
                                           nativeCurrency: {
                                             name: network.currencyName,
-                                            symbol: network.currencySymbol, 
+                                            symbol: network.currencySymbol,
                                             decimals: 18
                                           },
                                           blockExplorerUrls: [network.blockExplorer]
@@ -297,30 +305,31 @@ class Header extends React.Component {
                                       ],
                                     });
                                   } catch (addError) {
-                                    if(addError.code === 4001) {
+                                    if (addError.code === 4001) {
                                       //User has rejected changing the request
                                       elements[0].style.display = 'none';
                                     }
                                     console.error("Can't add nor switch to the selected network")
                                   }
-                                } else if(switchError.code === 4001) {
+                                } else if (switchError.code === 4001) {
                                   //User has rejected changing the request
                                   elements[0].style.display = 'none';
                                 }
-                            }}
+                              }
+                            }
 
                             changeNetwork.bind(this)()
                           }}
                           href="/"
-                          >
+                        >
                           {network.name}
                         </a>
-                        )
-                      }
-                      return null
+                      )
+                    }
+                    return null
                   })}
                 </div>
-              </li>
+              </li>}
               <input
                 onClick={() => {
                   this.toggleDarkMode();
@@ -331,15 +340,19 @@ class Header extends React.Component {
             </ul>
           </header>
           <ProgressBar
-                height="100"
-                width="100"
-                borderColor={this.state.dark ? getComputedStyle(document.documentElement).getPropertyValue("--pink") : getComputedStyle(document.documentElement).getPropertyValue("--black")}
-                barColor={this.state.dark ? getComputedStyle(document.documentElement).getPropertyValue("--pink") : getComputedStyle(document.documentElement).getPropertyValue("--black")}
-                ariaLabel="progress-bar-loading"
-                wrapperStyle={{}}
-                wrapperClass="progress-bar-wrapper"
-                visible={true}
-            />
+            height="100"
+            width="100"
+            borderColor={this.state.dark ? getComputedStyle(document.documentElement).getPropertyValue("--pink") : getComputedStyle(document.documentElement).getPropertyValue("--black")}
+            barColor={this.state.dark ? getComputedStyle(document.documentElement).getPropertyValue("--pink") : getComputedStyle(document.documentElement).getPropertyValue("--black")}
+            ariaLabel="progress-bar-loading"
+            wrapperStyle={{}}
+            wrapperClass="progress-bar-wrapper"
+            visible={true}
+          />
+          {!this.props.web3 &&
+            <div style={{ backgroundColor: "#eddfd6", border: "none" }} class="alert alert-warning">
+              <strong>{strings.warning}! </strong><span>{strings.warningMessage}</span>
+            </div>}
         </center>
       </div>
     );
@@ -347,7 +360,7 @@ class Header extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { allLevelsCompleted: state.player.allLevelsCompleted };
+  return { web3: state.network.web3, allLevelsCompleted: state.player.allLevelsCompleted };
 }
 
 function mapDispatchToProps(dispatch) {
