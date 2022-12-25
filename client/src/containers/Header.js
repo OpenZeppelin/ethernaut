@@ -118,8 +118,8 @@ class Header extends React.Component {
         : null;
 
       // Change OpenZeppelin logo
-      var theLogo = document.getElementById("christmas-hat")
-      if (theLogo && theLogo.style) theLogo.style.filter = !this.state.dark
+      var theChristmashat = document.getElementById("christmas-hat")
+      if (theChristmashat && theChristmashat.style) theChristmashat.style.filter = !this.state.dark
         ? this.svgFilter()
         : null;
 
