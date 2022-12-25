@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import { createRoot } from 'react-dom/client';
+import { createRoot } from "react-dom/client";
 import MediaQuery from "react-responsive";
 import { Provider } from "react-redux";
 import { store, history } from "./store";
@@ -16,10 +16,6 @@ import { Integrations } from "@sentry/tracing";
 import App from "./containers/App";
 import NotFound404 from "./components/NotFound404";
 import Header from "./containers/Header";
-import MarkdownComponent from "./components/Markdown";
-import { loadTranslations } from "./utils/translations";
-import Footer from "./components/Footer";
-import parse from "html-react-parser";
 
 // For bundle splitting without lazy loading.
 const nonlazy = (component) => lazy(() => component);
@@ -38,114 +34,55 @@ Sentry.init({
 });
 // store.dispatch(actions.setNetworkId(id));
 store.dispatch(actions.connectWeb3(window.web3));
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = createRoot(container);
 if (!window.web3) {
-
   //root.render(<h3>Hey, You dont have the supported wallet!</h3>);
-  let language = localStorage.getItem("lang");
-  let strings = loadTranslations(language);
+  // let language = localStorage.getItem("lang");
+  // let strings = loadTranslations(language);
+  // store.dispatch(actions.setNetworkId(parseInt("5")));
+  store.dispatch(actions.loadGamedata());
+} else {
+  window.ethereum.request({ method: "eth_chainId" }).then((res) => {
+    store.dispatch(actions.setNetworkId(parseInt(res)));
+    store.dispatch(actions.loadGamedata());
+  });
+}
 
-  root.render(
-    <div>
-      {/* Parent container */}
-      <main>
-          {/* Main title and buttons */}
-          <section className="titles">
+// View entry point.
+root.render(
+  <Provider store={store}>
+    <Router history={syncHistoryWithStore(history, store)}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <MediaQuery minWidth={880.1}>
+          <Header></Header>
+          <Routes>
+            <Route path={constants.PATH_HELP} element={<Help />} />
+            <Route path={constants.PATH_LEVEL} element={<Level />} />
+            <Route path={constants.PATH_STATS} element={<Stats />} />
+            <Route exact path="/" element={<App />} />
+            <Route path="/" element={<NotFound404 />} />
+          </Routes>
+        </MediaQuery>
+        <MediaQuery maxWidth={885}>
+          <Header></Header>
+          <div className="unfitScreenSize">
+            <h3>Screen is too small</h3>
+            <h3>Please switch to desktop view</h3>
             <a href={constants.PATH_ROOT}>
               <img
                 id="the-ethernaut"
                 src="../../imgs/the-ethernaut.svg"
                 alt="The-Ethernaut"
                 className="the-ethernaut"
-                style={{ width: "80%"}}
               />
             </a>
-          </section>
-          <section className="Description">
-              <center>
-                <hr />
-              </center>
-              <div style={{ width: "150%", marginLeft: "-25%" }}>{parse(strings.info)}</div>
-          </section>
-         
-         <center >
-          <div className="boxes">
-
-            <h3>Setup Metamask</h3>
-            <section>
-              <MarkdownComponent target={strings.setupMetamask} />
-            </section>
-
-            <h3>Game Mechanics</h3>
-            <section>
-              <MarkdownComponent target={strings.gameMechanics} />
-            </section>
-
-            <h3>Using the console</h3>
-            <section>
-              <MarkdownComponent target={strings.usingConsole} />
-            </section>
-
-            <h3>Beyond the console</h3>
-            <section>
-              <MarkdownComponent target={strings.beyondConsole} />
-            </section>
-
-            <h3>Troubleshooting</h3>
-            <section>
-              <MarkdownComponent target={strings.troubleshooting} />
-            </section>
-            </div>
-          </center>
-         
-          {/* Footer */}
-          <Provider store={store}><Footer></Footer></Provider>
-      </main>
-    </div>
-  )
-} else {
-  window.ethereum.request({ method: 'eth_chainId' }).then((res) => {
-    store.dispatch(actions.setNetworkId(parseInt(res)));
-    store.dispatch(actions.loadGamedata());
-  })
-
-
-  // View entry point.
-  root.render(
-    <Provider store={store}>
-      <Router history={syncHistoryWithStore(history, store)}>
-        <Suspense fallback={<div>Loading...</div>}>
-            <MediaQuery minWidth={880.1}>
-              <Header></Header>
-              <Routes>
-                <Route path={constants.PATH_HELP} element={<Help/>} />
-                <Route path={constants.PATH_LEVEL} element={<Level/>} />
-                <Route path={constants.PATH_STATS} element={<Stats/>} />
-                <Route exact path="/" element={<App/>} />
-                <Route path="/" element={<NotFound404/>} />
-              </Routes>
-            </MediaQuery>
-            <MediaQuery maxWidth={885}>
-              <Header></Header>
-              <div className="unfitScreenSize">
-                <h3>Screen is too small</h3>
-                <h3>Please switch to desktop view</h3>
-                <a href={constants.PATH_ROOT}>
-                  <img
-                    id="the-ethernaut"
-                    src="../../imgs/the-ethernaut.svg"
-                    alt="The-Ethernaut"
-                    className="the-ethernaut"
-                  />
-                </a>
-              </div>
-            </MediaQuery>
-          </Suspense>
-      </Router>
-    </Provider>
-  );
-}
+          </div>
+        </MediaQuery>
+      </Suspense>
+    </Router>
+  </Provider>
+);
 
 // Post-load actions.
 window.addEventListener("load", async () => {

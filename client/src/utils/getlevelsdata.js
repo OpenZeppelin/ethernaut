@@ -35,24 +35,36 @@ const getlevelsdata = (props, source) => {
         // Level completed
         levelComplete = props.player?.completedLevels[levels[i].deployedAddress] > 0
 
-        var isMissingImage;
+        var isMissingSVGImage;
+        var isMissingPNGImage;
 
         try {
-            isMissingImage = require(`../../public/imgs/Level${levels[i].deployId}.svg`) ? false : true;
+            isMissingSVGImage = require(`../../public/imgs/Level${levels[i].deployId}.svg`) ? false : true;
         } catch (error) {
-            isMissingImage = true;
+            isMissingSVGImage = true;
         }
-
+        try {
+            isMissingPNGImage = require(`../../public/imgs/Level${levels[i].deployId}.png`) ? false : true;
+        } catch (error) {
+            isMissingPNGImage = true;
+        }
         var object = {
             name: levels[i].name,
-            src: isMissingImage ? (
+            src: isMissingSVGImage && isMissingPNGImage ? (
                 source !== 'mosaic' ?
                     `../../imgs/BigDefault.svg` :
                     `../../imgs/Default.svg`
             ) : (
-                source !== 'mosaic' ?
+                isMissingPNGImage ? (
+                    source !== 'mosaic' ?
                     `../../imgs/BigLevel${levels[i].deployId}.svg` :
                     `../../imgs/Level${levels[i].deployId}.svg`
+                ) : (
+                    source !== 'mosaic' ?
+                    `../../imgs/BigLevel${levels[i].deployId}.png` :
+                    `../../imgs/Level${levels[i].deployId}.png`
+                )
+                
             ),
             difficulty: difficulty,
             deployedAddress: levels[i].deployedAddress,
