@@ -117,6 +117,12 @@ class Header extends React.Component {
         ? this.svgFilter()
         : null;
 
+      // Change OpenZeppelin logo
+      var theLogo = document.getElementById("christmas-hat")
+      if (theLogo && theLogo.style) theLogo.style.filter = !this.state.dark
+        ? this.svgFilter()
+        : null;
+
       // Change The Ethernaut logo
       var theEthernaut = document.getElementById("the-ethernaut");
       if (theEthernaut && theEthernaut.style) theEthernaut.style.filter = !this.state.dark
@@ -174,10 +180,10 @@ class Header extends React.Component {
             </ul>
             <a className="logo-container" href="https://openzeppelin.com">
               <img
-                id="logo"
-                className="logo"
-                src="../../imgs/oz-logo.svg"
-                alt="logo"
+                id="christmas-hat"
+                className="christmas-hat"
+                src="../../imgs/christmas-hat.png"
+                alt="christmas-hat"
               />
             </a>
             <ul className="header-ul">

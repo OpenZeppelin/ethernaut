@@ -73,6 +73,16 @@ ul {
   max-width: 90%;
 }
 
+.christmas-hat {
+  color: var(--secondary-color);
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%;
+  margin-top: -15%;
+}
+
 .logo-container {
   padding-left: 4em;
 }
@@ -328,7 +338,7 @@ nav li {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  bottom: 1px;
+  bottom: 2px;
   right: 1px;
   background: var(--secondary-color);
   font-weight: bold;
