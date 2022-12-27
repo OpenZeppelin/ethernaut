@@ -109,11 +109,12 @@ contract Statistics is Initializable {
         levelStats[level].noOfInstancesSubmitted_Success++;
         globalNoOfInstancesCompleted++;
         globalNoOfInstancesCompletedByPlayer[player]++;
-        updateAverageTimeTakenToCompleteLevelsByPlayer(player, level);
+        uint256 totalNoOfLevelsCompletedByPlayer = getTotalNoOfLevelsCompletedByPlayer(player);
+        updateAverageTimeTakenToCompleteLevelsByPlayer(player, level, totalNoOfLevelsCompletedByPlayer);
         emit playerScoreProfile(
             player, 
             getAverageTimeTakenToCompleteLevels(player), 
-            getTotalNoOfLevelsCompletedByPlayer(player)
+            totalNoOfLevelsCompletedByPlayer
         );
     }
     function submitFailure(
@@ -252,7 +253,7 @@ contract Statistics is Initializable {
             levels.length;
     }
     // Function to update the average time elapsed for all player's completed levels on first successful submission
-    function updateAverageTimeTakenToCompleteLevelsByPlayer(address player, address level) private {
+    function updateAverageTimeTakenToCompleteLevelsByPlayer(address player, address level, uint256 totalNoOfLevelsCompletedByPlayer) private {
         uint256 lastAverageTime = averageTimeTakenToCompleteLevels[player];
         uint256 newAverageTimeTakenToCompleteLevels;
         uint256 timeTakenForThisSuccessfulSubmission;
@@ -261,7 +262,7 @@ contract Statistics is Initializable {
         if (averageTimeTakenToCompleteLevels[player] == 0) {
             averageTimeTakenToCompleteLevels[player] = timeTakenForThisSuccessfulSubmission;
         } else {
-            newAverageTimeTakenToCompleteLevels = ((lastAverageTime * (getTotalNoOfLevelsCompletedByPlayer(player)-1)) + timeTakenForThisSuccessfulSubmission)/getTotalNoOfLevelsCompletedByPlayer(player);
+            newAverageTimeTakenToCompleteLevels = ((lastAverageTime * (totalNoOfLevelsCompletedByPlayer-1)) + timeTakenForThisSuccessfulSubmission)/totalNoOfLevelsCompletedByPlayer;
             averageTimeTakenToCompleteLevels[player] = newAverageTimeTakenToCompleteLevels;
         }
     }
@@ -321,5 +322,5 @@ contract Statistics is Initializable {
      * variables without shifting down storage in the inheritance chain.
      * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
      */
-    uint256[45] private __gap;
+    uint256[44] private __gap;
 }
