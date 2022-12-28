@@ -123,3 +123,16 @@
     margin-bottom: 2em;
     display: block
 }
+
+@media only screen and (max-width: 885px) {
+    .button-sequence {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    .level-selector-nav {
+        width: 100%;
+    }
+    .level-img-view {
+        width: 100%;
+    }
+}
