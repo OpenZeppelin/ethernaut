@@ -110,10 +110,10 @@ contract Statistics is Initializable {
         globalNoOfInstancesCompleted++;
         globalNoOfInstancesCompletedByPlayer[player]++;
         uint256 totalNoOfLevelsCompletedByPlayer = getTotalNoOfLevelsCompletedByPlayer(player);
-        updateAverageTimeTakenToCompleteLevelsByPlayer(player, level, totalNoOfLevelsCompletedByPlayer);
+        uint256 newAverageTimeTakenToCompleteLevels = updateAverageTimeTakenToCompleteLevelsByPlayer(player, level, totalNoOfLevelsCompletedByPlayer);
         emit playerScoreProfile(
             player, 
-            getAverageTimeTakenToCompleteLevels(player), 
+            newAverageTimeTakenToCompleteLevels, 
             totalNoOfLevelsCompletedByPlayer
         );
     }
@@ -253,7 +253,7 @@ contract Statistics is Initializable {
             levels.length;
     }
     // Function to update the average time elapsed for all player's completed levels on first successful submission
-    function updateAverageTimeTakenToCompleteLevelsByPlayer(address player, address level, uint256 totalNoOfLevelsCompletedByPlayer) private {
+    function updateAverageTimeTakenToCompleteLevelsByPlayer(address player, address level, uint256 totalNoOfLevelsCompletedByPlayer) private returns (uint256) {
         uint256 lastAverageTime = averageTimeTakenToCompleteLevels[player];
         uint256 newAverageTimeTakenToCompleteLevels;
         uint256 timeTakenForThisSuccessfulSubmission;
@@ -265,6 +265,7 @@ contract Statistics is Initializable {
             newAverageTimeTakenToCompleteLevels = ((lastAverageTime * (totalNoOfLevelsCompletedByPlayer-1)) + timeTakenForThisSuccessfulSubmission)/totalNoOfLevelsCompletedByPlayer;
             averageTimeTakenToCompleteLevels[player] = newAverageTimeTakenToCompleteLevels;
         }
+        return newAverageTimeTakenToCompleteLevels;
     }
     // Game specific metrics
     function getTotalNoOfLevelInstancesCreated() public view returns (uint256) {
