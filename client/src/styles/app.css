@@ -522,6 +522,9 @@ footer {
 
 
 @media only screen and (max-width: 885px) {
+  .appcontainer{
+    width: 100vw;
+  }
   .dropdown {
     display: none;
   }
@@ -548,5 +551,27 @@ footer {
 
   .boxes {
     width: 100%;
+  }
+
+  .source-code {
+    /* add a padding of 40px ;> */
+    width: calc(100vw - 40px);
+  }
+
+  .author-section-border{
+    padding: 0;
+  }
+
+  .author-section {
+    width: 100%;
+    margin: 0;
+  }
+
+  .game {
+    justify-content: center;
+  }
+
+  .the-ethernaut {
+    width: 60%;
   }
 }
