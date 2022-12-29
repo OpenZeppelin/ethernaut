@@ -90,7 +90,7 @@ class App extends React.Component {
     }
 
     return (
-      <div>
+      <div className="appcontainer">
         {/* Parent container */}
         <main>
           {/* Main title and buttons */}
