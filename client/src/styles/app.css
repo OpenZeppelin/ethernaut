@@ -532,7 +532,7 @@ footer {
   .helpcontainer{
     width: calc(100vw - 40px);
   }
-  .header-ul > .dropdown:last-of-type{
+  .header-ul > .dropdown.chains{
     display: none;
   }
 

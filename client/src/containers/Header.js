@@ -255,7 +255,7 @@ class Header extends React.Component {
                   </a>
                 </div>
               </li>
-              {this.props.web3 && <li className="dropdown">
+              {this.props.web3 && <li className="dropdown chains">
                 <div className="icon-buttons" href="/">
                   <i className="fas fa-network-wired"></i>
                 </div>
