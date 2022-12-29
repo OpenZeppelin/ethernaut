@@ -6,6 +6,7 @@ export const getLevelsSolvedByPlayer = async (playerAddress, networkId) => {
     if (!(playerAddress || networkId)) {
         return;
     }
+
     const levelAddresses = getLevelAddressesInNetwork(networkId)
     const proxyStatsAddress = getProxyStatsContractAddressInNetwork(networkId)
     const statsContract = await getStatsContract(proxyStatsAddress, playerAddress)
@@ -20,7 +21,42 @@ export const getPercentageOfLevelsSolvedByPlayer = async (playerAddress, network
     const proxyStatsAddress = getProxyStatsContractAddressInNetwork(networkId)
     const statsContract = await getStatsContract(proxyStatsAddress, playerAddress)
     return await getPercentageOfLevelsSolved(statsContract, playerAddress)
+}
 
+export const getTotalPlayers = async (networkId) => {
+    if (!networkId) {
+        return
+    }
+    const proxyStatsAddress = getProxyStatsContractAddressInNetwork(networkId)
+    const statsContract = await getStatsContract(proxyStatsAddress)
+    return await getTotalNumberOfPlayers(statsContract)
+}
+
+export const getTotalFailures = async (networkId) => {
+    if (!networkId) {
+        return
+    }
+    const proxyStatsAddress = getProxyStatsContractAddressInNetwork(networkId)
+    const statsContract = await getStatsContract(proxyStatsAddress)
+    return await getFailedSubmissions(statsContract)
+}
+
+export const getTotalCompleted = async (networkId) => {
+    if (!networkId) {
+        return
+    }
+    const proxyStatsAddress = getProxyStatsContractAddressInNetwork(networkId)
+    const statsContract = await getStatsContract(proxyStatsAddress)
+    return await getCompletedLevels(statsContract)
+}
+
+export const getTotalCreated = async (networkId) => {
+    if (!networkId) {
+        return
+    }
+    const proxyStatsAddress = getProxyStatsContractAddressInNetwork(networkId)
+    const statsContract = await getStatsContract(proxyStatsAddress)
+    return await getLevelsCreated(statsContract)
 }
 
 export const checkIfPlayerExist = async (playerAddress, networkId) => {
@@ -33,9 +69,29 @@ export const checkIfPlayerExist = async (playerAddress, networkId) => {
 }
 
 const getPercentageOfLevelsSolved = async (statsContract, playerAddress) => {
-    const response = await statsContract.getPercentageOfLevelsCompleted(playerAddress)
+    const response = await statsContract.getTotalNoOfPlayers(playerAddress)
     const roundedPercentage = (Web3.utils.fromWei(response.toString()) * 100).toFixed(2)
     return roundedPercentage
+}
+
+const getTotalNumberOfPlayers = async (statsContract) => {
+    const response = await statsContract.getTotalNoOfPlayers()
+    return response
+}
+
+const getFailedSubmissions = async (statsContract) => {
+    const response = await statsContract.getTotalNoOfFailedSubmissions()
+    return response
+}
+
+const getCompletedLevels = async (statsContract) => {
+    const response = await statsContract.getTotalNoOfLevelInstancesCompleted()
+    return response
+}
+
+const getLevelsCreated = async (statsContract) => {
+    const response = await statsContract.getTotalNoOfLevelInstancesCreated()
+    return response
 }
 
 

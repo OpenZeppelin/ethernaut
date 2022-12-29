@@ -38,9 +38,6 @@ class Mosaic extends React.Component {
                   {`${level.completed ? ' ✔' : ''}`}{' '}
                   {level.name}
                   <br /> {level.difficulty}
-                  {/* { moment.duration(moment().diff(moment(level.creationDate))).asDays() < 14 &&
-                                      <img style={{width: '30px', height: '30px'}} src='../../imgs/new.png' alt='new'/>
-                                } */}
                 </div>
               </div>
             </Link>
