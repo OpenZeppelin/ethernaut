@@ -529,6 +529,9 @@ footer {
     display: flex;
     margin-right: 20px;
   }
+  .helpcontainer{
+    width: calc(100vw - 40px);
+  }
   .header-ul > .dropdown:last-of-type{
     display: none;
   }
