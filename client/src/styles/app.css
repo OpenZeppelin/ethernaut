@@ -525,7 +525,11 @@ footer {
   .appcontainer{
     width: 100vw;
   }
-  .dropdown {
+  .header-ul{
+    display: flex;
+    margin-right: 20px;
+  }
+  .header-ul > .dropdown:last-of-type{
     display: none;
   }
 
