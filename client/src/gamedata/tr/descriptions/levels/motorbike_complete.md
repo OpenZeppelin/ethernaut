@@ -4,6 +4,6 @@ This doesn't mean that you shouldn't watch out for vulnerabilities that can be e
 
 This was a slightly simplified version of what has really been discovered after months of the release of UUPS pattern. 
 
-Takeways: never leaves implementation contracts uninitialized ;) 
+Takeways: never leave implementation contracts uninitialized ;) 
 
 If you're interested in what happened, read more [here](https://forum.openzeppelin.com/t/uupsupgradeable-vulnerability-post-mortem/15680).
