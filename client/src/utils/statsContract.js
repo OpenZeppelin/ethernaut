@@ -1,6 +1,7 @@
 import { getTruffleContract } from './ethutil';
 import { getDeployData } from './deploycontract';
 import Web3 from 'web3';
+import { getLevelDetailsByAddress } from './getlevelsdata';
 
 export const getLevelsSolvedByPlayer = async (playerAddress, networkId) => {
     if (!(playerAddress || networkId)) {
@@ -11,7 +12,11 @@ export const getLevelsSolvedByPlayer = async (playerAddress, networkId) => {
     const proxyStatsAddress = getProxyStatsContractAddressInNetwork(networkId)
     const statsContract = await getStatsContract(proxyStatsAddress, playerAddress)
     const listOfLevelsSolved = await getListOfLevelsSolvedByPlayer(statsContract, levelAddresses, playerAddress, 5)
-    return listOfLevelsSolved
+    const levelDetails = listOfLevelsSolved.map(oneLevel => {
+        return getLevelDetailsByAddress(oneLevel, networkId);
+    });
+
+    return levelDetails
 }
 
 export const getPercentageOfLevelsSolvedByPlayer = async (playerAddress, networkId) => {
