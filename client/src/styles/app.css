@@ -2,6 +2,7 @@
 @import "./page.css";
 @import "./level.css";
 @import "./hubspot.css";
+@import "./stats.css";
 @import url(https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,700,400italic,700italic);
 
 /* General */
@@ -522,7 +523,17 @@ footer {
 
 
 @media only screen and (max-width: 885px) {
-  .dropdown {
+  .appcontainer{
+    width: 100vw;
+  }
+  .header-ul{
+    display: flex;
+    margin-right: 20px;
+  }
+  .helpcontainer{
+    width: calc(100vw - 40px);
+  }
+  .header-ul > .dropdown.chains{
     display: none;
   }
 
@@ -548,5 +559,27 @@ footer {
 
   .boxes {
     width: 100%;
+  }
+
+  .source-code {
+    /* add a padding of 40px ;> */
+    width: calc(100vw - 40px);
+  }
+
+  .author-section-border{
+    padding: 0;
+  }
+
+  .author-section {
+    width: 100%;
+    margin: 0;
+  }
+
+  .game {
+    justify-content: center;
+  }
+
+  .the-ethernaut {
+    width: 60%;
   }
 }

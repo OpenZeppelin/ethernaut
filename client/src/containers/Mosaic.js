@@ -24,11 +24,14 @@ class Mosaic extends React.Component {
       <section className="game">
         {levelData.map((level) => {
           return (
-            <Link key={level.name} to={
-              this.props.web3
-                ? `${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`
-                : `${constants.PATH_LEVEL_ROOT}${level.id}`
-            }>
+            <Link
+              key={level.name}
+              to={
+                this.props.web3 && level.deployedAddress //on read only mode in custom network this field 'deployedAddress' isnt present
+                  ? `${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`
+                  : `${constants.PATH_LEVEL_ROOT}${level.id}`
+              }
+            >
               <div className="content_img">
                 <img className='level-tile' alt="" src={level.src} />
                 <div>
