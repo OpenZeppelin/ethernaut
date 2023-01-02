@@ -1,5 +1,4 @@
-
-
+/* styles for statistics component */
 section.statisticscomponent{
     background-color: var(--secondary-color);
     display: flex;
@@ -8,6 +7,7 @@ section.statisticscomponent{
 
     padding: 24px;
     border-radius: 8px;
+    max-width: 290px;
 }
 
 .statisticscomponent__header{
@@ -24,21 +24,107 @@ section.statisticscomponent{
     font-size: 24px;
     font-weight: bold;
 }
+/* styles for statistics component */
+
+/* styles for panel component */
+section.statisticspanel{
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+    gap: 15px;
+    padding: 24px;
+    border-radius: 8px;
+}
+/* styles for panel component */
+
+
+/* input relates styles */
+.stats-input-container{
+    position: relative;
+}
+
+.stats-input-container::before{
+    content: "Search player";
+    position: absolute;
+    height: 38px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius:  0.375rem 0 0 0.375rem;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+}
+
+input.stats-input.form-control{
+    outline: none;
+    border: 1px solid white;
+    transition: 300ms;
+    padding-left: 130px;
+}
+
+input.stats-input.form-control:focus{
+    outline: none;
+    box-shadow: none;
+    border: 1px solid var(--secondary-color);
+}
+
+/* input relates styles */
+
 
 .stats-header{
     display: grid;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 10px;
 }
 
+.stats-content{
+    margin-top: 20px;
+}
 
-@media only screen and (max-width: 885px) {
+/* level completes stats */
+.player-stats-results {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.player-stats-results > div{
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
+}
+/* level completes stats */
+
+
+/* mobile responsive breakpoint styles */
+@media only screen and (max-width: 600px) {
+    section.statisticscomponent{
+        max-width: 290px;
+    }
+    section.statisticspanel{
+        width: 100%;
+    }
     .stats-page{
         width: calc(100vw - 40px);
     }
     .stats-header{
         text-align: center;
+        margin-bottom: 30px;
+    }
+    .stats-input-container::before{
+        content: "🔎";
+    }
+    input.stats-input.form-control{
+        padding-left: 50px;
     }
 }
+/* mobile responsive breakpoint styles */
