@@ -116,11 +116,6 @@ class Stats extends React.Component {
         <Statistic heading="Total number of instances solved" value={this.state.totalCompleted} />
         <Statistic heading="Total number of instances failed" value={this.state.totalFailures} />
       </div>
-       {/* <div>Total number of players: {this.state.totalPlayers ? this.state.totalPlayers : 0}</div>
-       <div>Total number of instances created: {this.state.totalCreated ? this.state.totalCreated : 0}</div>
-       <div>Total number of instances solved: {this.state.totalCompleted ? this.state.totalCompleted : 0}</div>
-       <div>Total number of instances failed: {this.state.totalFailures ? this.state.totalFailures : 0}</div>
-       <div></div> */}
        <div className="stats-content">
         <form>
            <label>Search player</label>
