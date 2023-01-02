@@ -25,7 +25,7 @@ const setNetwork = store => next => action => {
   //This will trigger reload if the network is changed 
   if (store.getState().network.networkId !== undefined && store.getState().network.networkId !== action.id) {
     elements[0].style.display = 'flex';
-    document.location.replace(document.location.origin)
+    document.location.replace(`${document.location.origin}${document.location.pathname.indexOf('level') > 0 ? '' : document.location.pathname}`)
     return;
   }
 
