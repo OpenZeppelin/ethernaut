@@ -6,6 +6,7 @@ import * as actions from '../actions';
 import { getLevelsSolvedByPlayer, checkIfPlayerExist, getTotalCompleted, getTotalFailures, getTotalCreated, getTotalPlayers } from '../utils/statsContract'
 import { validateAddress } from '../utils/ethutil'
 import Statistic from '../components/Statistic';
+import StatisticPanel from '../components/Panel';
 
 class Stats extends React.Component {
 
@@ -116,32 +117,37 @@ class Stats extends React.Component {
         <Statistic heading="Total number of instances solved" value={this.state.totalCompleted} />
         <Statistic heading="Total number of instances failed" value={this.state.totalFailures} />
       </div>
-       <div className="stats-content">
+       <div>
         <form>
-           <label>Search player</label>
-           <div className="form-group">
+           <div className="stats-input-container form-group">
              <input
                type="text"
-               className="form-control"
-               placeholder="player address"
+               className="stats-input form-control"
+               placeholder="Player address"
                onChange={async(evt) => {
                  await this.updatePlayerStats(evt.target.value);
                }}
              />
            </div>
         </form>
-       </div>
-       <div className="player-stats-results">
-          {
-            this.state.solvedLevels.map(
-              (level) => (
-                <div key={level}>
-                  {level}
-                </div>
-              )
-            )
-          }
+
+        <div className="stats-content">
+          <StatisticPanel show={this.state.solvedLevels.length} title="Levels Completed">
+            <div className="player-stats-results">
+                {
+                  this.state.solvedLevels.map(
+                    (level) => (
+                      <div key={level.name}>
+                        <span>{level.name}</span>
+                        <span>{level.difficultyCircles}</span>
+                      </div>
+                    )
+                  )
+                }
+            </div>
+          </StatisticPanel>
         </div>
+       </div>
      </div> 
 
 }}
