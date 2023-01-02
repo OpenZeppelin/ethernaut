@@ -5,6 +5,7 @@ import '../styles/page.css'
 import * as actions from '../actions';
 import { getLevelsSolvedByPlayer, checkIfPlayerExist, getTotalCompleted, getTotalFailures, getTotalCreated, getTotalPlayers } from '../utils/statsContract'
 import { validateAddress } from '../utils/ethutil'
+import Statistic from '../components/Statistic';
 
 class Stats extends React.Component {
 
@@ -31,10 +32,11 @@ class Stats extends React.Component {
 
   }
 
-  componentDidUpdate() {
-    setTimeout(()=>{
-      if(!this.state.collectedGlobals) this.collectsGlobalStats()
-    }, 3000)
+  componentDidUpdate(prevProps, prevState ) {
+    // if(!this.state.chainId) return;
+    if (this.props.web3 && prevProps.web3 !== this.props.web3) {
+      this.collectsGlobalStats();
+    }
   }
 
   async collectsGlobalStats() {
@@ -108,11 +110,17 @@ class Stats extends React.Component {
           </div>
         </div>
       </div>
-       <div>Total number of players: {this.state.totalPlayers ? this.state.totalPlayers : 0}</div>
+      <div className='stats-header'>
+        <Statistic heading="Total number of players" value={this.state.totalPlayers} />
+        <Statistic heading="Total number of instances created" value={this.state.totalCreated} />
+        <Statistic heading="Total number of instances solved" value={this.state.totalCompleted} />
+        <Statistic heading="Total number of instances failed" value={this.state.totalFailures} />
+      </div>
+       {/* <div>Total number of players: {this.state.totalPlayers ? this.state.totalPlayers : 0}</div>
        <div>Total number of instances created: {this.state.totalCreated ? this.state.totalCreated : 0}</div>
        <div>Total number of instances solved: {this.state.totalCompleted ? this.state.totalCompleted : 0}</div>
        <div>Total number of instances failed: {this.state.totalFailures ? this.state.totalFailures : 0}</div>
-       <div></div>
+       <div></div> */}
        <div className="stats-page">
         <form>
            <label>Search player</label>
