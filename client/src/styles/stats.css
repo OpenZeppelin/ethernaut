@@ -1,3 +1,5 @@
+
+
 section.statisticscomponent{
     background-color: var(--secondary-color);
     display: flex;
@@ -33,8 +35,10 @@ section.statisticscomponent{
 
 
 @media only screen and (max-width: 885px) {
+    .stats-page{
+        width: calc(100vw - 40px);
+    }
     .stats-header{
-        grid-template-columns: 1fr;
         text-align: center;
     }
 }

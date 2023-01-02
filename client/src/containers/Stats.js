@@ -100,7 +100,7 @@ class Stats extends React.Component {
   }
 
   render() {
-      return <div className="page-container">
+      return <div className="stats-page page-container">
       <div className="row text-center">
         <div className="col">
           <div className="counter">
@@ -121,7 +121,7 @@ class Stats extends React.Component {
        <div>Total number of instances solved: {this.state.totalCompleted ? this.state.totalCompleted : 0}</div>
        <div>Total number of instances failed: {this.state.totalFailures ? this.state.totalFailures : 0}</div>
        <div></div> */}
-       <div className="stats-page">
+       <div className="stats-content">
         <form>
            <label>Search player</label>
            <div className="form-group">
