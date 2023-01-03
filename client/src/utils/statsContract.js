@@ -74,7 +74,7 @@ export const checkIfPlayerExist = async (playerAddress, networkId) => {
 }
 
 const getPercentageOfLevelsSolved = async (statsContract, playerAddress) => {
-    const response = await statsContract.getTotalNoOfPlayers(playerAddress)
+    const response = await statsContract.getPercentageOfLevelsCompleted(playerAddress)
     const roundedPercentage = (Web3.utils.fromWei(response.toString()) * 100).toFixed(2)
     return roundedPercentage
 }

@@ -19,7 +19,7 @@ export const getLevelDetailsByAddress = (levelAddress, chainId) => {
     const levelId = addressToId[levelAddress];
     const currentLevel = allLevels[levelId];
     // include the difficulty circles to give more context
-    const difficultyCircles = drawDifficultyCircle(currentLevel.difficulty)
+    const difficultyCircles = drawDifficultyCircle(currentLevel?.difficulty)
     return {...currentLevel, difficultyCircles};
 };
 
