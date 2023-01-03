@@ -296,7 +296,7 @@ class Header extends React.Component {
                   </a>
                   <a
                     onClick={() => {
-                      this.changeLanguage("cn_simplified");
+                      this.changeLanguage("zh_cn");
                     }}
                     href="/"
                   >
@@ -309,6 +309,14 @@ class Header extends React.Component {
                     href="/"
                   >
                     {strings.french}
+                  </a>
+                  <a
+                    onClick={() => {
+                      this.changeLanguage("zh_tw");
+                    }}
+                    href="/"
+                  >
+                    {strings.chinese_traditional}
                   </a>
                   <a
                     onClick={() => {
