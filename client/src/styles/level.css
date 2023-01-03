@@ -107,12 +107,6 @@
 
 
 
-.level-selector-nav:hover .level-selector-dropdown-content{
-    display: block;
-    /* position: absolute; */
-    z-index: 1;
-    background-color: var(--primary-color);
-}
 
 .level-img-view {
     position: relative;
