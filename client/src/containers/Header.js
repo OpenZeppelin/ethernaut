@@ -265,6 +265,14 @@ class Header extends React.Component {
                   </a>
                   <a
                     onClick={() => {
+                      this.changeLanguage("ar");
+                    }}
+                    href="/"
+                  >
+                    {strings.arabic}
+                  </a>
+                  <a
+                    onClick={() => {
                       this.changeLanguage("tr");
                     }}
                     href="/"
