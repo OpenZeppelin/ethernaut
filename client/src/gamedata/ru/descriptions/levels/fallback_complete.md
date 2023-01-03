@@ -1,5 +1,5 @@
-You know the basics of how ether goes in and out of contracts, including the usage of the fallback method.
+Вы знаете основы того, как эфир попадает в контракты и выходит из них, включая использование резервного метода fallback.
 
-You've also learnt about OpenZeppelin's Ownable contract, and how it can be used to restrict the usage of some methods to a privileged address.
+Вы также узнали о собственном контракте OpenZeppelin и о том, как его можно использовать, чтобы ограничить использование некоторых методов для непривилегированных адресов.
 
-Move on to the next level when you're ready!
+Переходите на следующий уровень, когда будете готовы!
