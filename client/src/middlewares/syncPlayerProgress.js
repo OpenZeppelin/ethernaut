@@ -17,7 +17,9 @@ const syncPlayerProgress = store => next => async action => {
     return next(action)
   }
 
-  const levelAddresses = await getLevelsSolvedByPlayer(state.player.address, state.network.networkId)
+  let levelsSolved = await getLevelsSolvedByPlayer(state.player.address, state.network.networkId)
+
+  let levelAddresses = levelsSolved.map(level => level.deployedAddress)
 
   if (levelAddresses.length === 0) { 
     return next(action)
