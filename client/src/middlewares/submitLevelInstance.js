@@ -1,7 +1,7 @@
 import * as actions from '../actions';
 import { loadTranslations } from '../utils/translations'
 import { getGasFeeDetails } from '../utils/ethutil'
-//import { getPercentageOfLevelsSolvedByPlayer } from '../utils/statsContract'
+import { getPercentageOfLevelsSolvedByPlayer } from '../utils/statsContract'
 
 let language = localStorage.getItem('lang')
 let strings = loadTranslations(language)
@@ -30,8 +30,18 @@ const submitLevelInstance = store => next => async action => {
   )
   if (completed) {
     console.victory(`@good ${strings.wellDoneMessage}, ${strings.completedLevelMessage}`);
-    // const percentage = await getPercentageOfLevelsSolvedByPlayer(state.player.address, state.network.networkId);
-    // console.log(percentage);
+    const percentage = await getPercentageOfLevelsSolvedByPlayer(state.player.address, state.network.networkId);
+    if(percentage) {
+      if( Number(percentage) < 51 && Number(percentage) >= 49) {
+        console.info(`${strings.FifthyPercentMessage}`)
+      } else if ( Number(percentage) < 76 && Number(percentage) > 74) {
+        console.info(`${strings.SeventyFivePercentMessage}`)
+      } else if ( Number(percentage) < 91 && Number(percentage) > 89) {
+        console.info(`${strings.NinetyPercentMessage}`)
+      } else if ( Number(percentage) > 99 ) {
+        console.info(`${strings.HundredPercentMessage}`)
+      }
+    }
   }
   else {
     console.error(`@bad ${strings.uncompletedLevelMessage} @bad`)

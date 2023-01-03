@@ -9,6 +9,7 @@
   "ethernautHelp": "Comment jouer",
   "footer": "développé avec <span aria-hidden='true' class='fa fa-heart' style='color: red;'></span> et <span aria-hidden='true' class='fa fa-flash' style='color: yellow;'></span> by the <a href='https://openzeppelin.com'>OpenZeppelin</a> team",
   "english": "English",
+  "arabic": "عربي",
   "spanish": "Español",
   "japanese": "日本語",
   "turkish": "Türkçe",
@@ -98,5 +99,9 @@
   "beyondConsole": "Certains niveaux nécessiteront de travailler en dehors de la console du navigateur.Autrement dit, rédiger du code de solidité et le déployer dans le réseau pour attaquer le contrat d'instance du niveau avec un autre contrat.Cela peut être fait de plusieurs manières, par exemple:\n\n1) Utilisez Remix pour écrire le code et le déployer dans le réseau correspondant voir [Remix Solidity IDE](https://remix.ethereum.org/).\n\n2) Configurer un projet de truffe local pour développer et déployer les contrats d'attaque.Voir [Truffle Framework](http://trouffleframework.com/).",
   "troubleshooting": "Parfois,\n\n (a) l'état de l'application ou (b) l'état du plugin Metamask\n\ncan devient un peu gâché, spécialement après le changement de réseaux, le déverrouillage, etc. Si ce que vous voyez n'a pas beaucoup de sens, essayez de rafraîchir l'application, de le rafraîchir durement, de désactiver et de réactiver votre plugin Metamask ou même de redémarrer votre navigateur.\n\nif Vous trouvez des problèmes, veuillez nous le faire savoir à ethernaut@zeppelin.solutions",
   "poweredBy": "créé par ",
-  "setupMetamask": "Si vous ne l'avez pas déjà, installez l'extension [Metamask Browser](https://metamask.io/) (dans Chrome, Firefox, Brave ou Opera sur votre machine de bureau).\n\nEnsemble le portefeuille de l'extension et utilisez le sélecteur de réseau pour pointer vers le réseau préféré en haut à gauche de l'interface de l'extension.Vous pouvez également utiliser le bouton d'interface utilisateur pour basculer entre les réseaux.Si vous sélectionnez un réseau non pris en charge, le jeu vous informera et vous amènera au Goerli TestNet par défaut.\n\nUne fois fait, revenez ici et rechargez la page Web"
+  "setupMetamask": "Si vous ne l'avez pas déjà, installez l'extension [Metamask Browser](https://metamask.io/) (dans Chrome, Firefox, Brave ou Opera sur votre machine de bureau).\n\nEnsemble le portefeuille de l'extension et utilisez le sélecteur de réseau pour pointer vers le réseau préféré en haut à gauche de l'interface de l'extension.Vous pouvez également utiliser le bouton d'interface utilisateur pour basculer entre les réseaux.Si vous sélectionnez un réseau non pris en charge, le jeu vous informera et vous amènera au Goerli TestNet par défaut.\n\nUne fois fait, revenez ici et rechargez la page Web",
+  "FifthyPercentMessage": "Awesome work! You’re halfway through Ethernaut and getting pretty good at breaking things. Working as a Blockchain Security Researcher at OpenZeppelin could be fun... https://grnh.se/fdbf1c043us",
+  "SeventyFivePercentMessage": "75%: Good work anon…you’re deep down the rabbit hole now....who knows where it will take you... https://grnh.se/d4a786e43us",
+  "NinetyPercentMessage": "90%: You’re almost there anon! Just a few more challenges left until you complete Ethernaut! Have you considered a career in Blockchain Security?https://grnh.se/cfcca8c83us",
+  "HundredPercentMessage": "100%: Congratulations! Your journey down the web3 rabbit hole is impressive and should be celebrated! You now have the skills to break smart contracts! What’s next from here anon? Apply to be a Blockchain Security Researcher at OpenZeppelin, and contribute to securing the top protocols in web3! https://grnh.se/26c05aac3us"
 }
