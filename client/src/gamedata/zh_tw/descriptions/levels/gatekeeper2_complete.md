@@ -1,1 +1,0 @@
-啟程吧！現在你通過了守衛的考驗了，你現在有了加入 [theCyber](https://etherscan.io/address/thecyber.eth#code) 的資格了，這是一個在以太坊主網上的去中心化社群。透過 [reddit](https://www.reddit.com/user/0age) 或 [email](mailto:0age@protonmail.com) 聯絡作者並獲得通關密語，然後在合約 [gatekeepertwo.thecyber.eth](https://etherscan.io/address/gatekeepertwo.thecyber.eth#code) 注冊 (注意合約只有 128 個名額)。
