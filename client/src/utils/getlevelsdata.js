@@ -1,6 +1,45 @@
-import { getLevelKey } from "./contractutil";
+import { onPredeployedNetwork } from "../middlewares/setNetwork";
+import { getLevelKey, restoreContract } from "./contractutil";
 
 var levels = require(`../gamedata/gamedata.json`).levels;
+
+
+export const getLevelDetailsByAddress = (levelAddress, chainId) => {
+    const constants = require("../constants");
+    const allLevels = require("client/src/gamedata/gamedata.json").levels;
+    // If we are on a predeployed chain, fetch address from constants
+    const gamedata = onPredeployedNetwork(chainId)
+    ? require(`client/src/gamedata/deploy.${constants.ID_TO_NETWORK[chainId]}.json`)
+    : restoreContract("77");
+    // If we are not fetch from localstorage
+    // based on the index fetch the level name and difficulty
+    const addressToId = Object.fromEntries(
+      Object.entries(gamedata).map((a) => a.reverse())
+    );
+    const levelId = addressToId[levelAddress];
+    const currentLevel = allLevels[levelId];
+    // include the difficulty circles to give more context
+    const difficultyCircles = drawDifficultyCircle(currentLevel.difficulty)
+    return {...currentLevel, difficultyCircles};
+};
+
+export const drawDifficultyCircle = (levelDifficulty) => {
+    //Put as many ● as difficulty/2 (scaled from 10 to 5) and ○ as the rest up to 5
+    var numberOfFullCircles = Math.ceil(levelDifficulty / 2);
+    var numberOfEmptyCircles = 5 - numberOfFullCircles;
+    var emptyCircle = "○";
+    var fullCircle = "●";
+    var difficulty = "";
+    for (var j = 0; j < numberOfFullCircles; j++) {
+      difficulty += fullCircle;
+    }
+  
+    for (var k = 0; k < numberOfEmptyCircles; k++) {
+      difficulty += emptyCircle;
+    }
+
+    return difficulty;
+};
 
 const getlevelsdata = (props, source) => {
     var levelData = [];
@@ -9,20 +48,7 @@ const getlevelsdata = (props, source) => {
     let selectedIndex;
 
     for (var i = 0; i < levels.length; i++) {
-
-        //Put as many ● as difficulty/2 (scaled from 10 to 5) and ○ as the rest up to 5
-        var numberOfFullCircles = Math.ceil(levels[i].difficulty / 2);
-        var numberOfEmptyCircles = 5 - numberOfFullCircles;
-        var emptyCircle = '○';
-        var fullCircle = '●';
-        var difficulty = '';
-        for (var j = 0; j < numberOfFullCircles; j++) {
-            difficulty += fullCircle;
-        }
-
-        for (var k = 0; k < numberOfEmptyCircles; k++) {
-            difficulty += emptyCircle;
-        }
+        var difficulty = drawDifficultyCircle(levels[i].difficulty);
 
         if (props?.activeLevel) {
             const key = getLevelKey(props.params?.address);

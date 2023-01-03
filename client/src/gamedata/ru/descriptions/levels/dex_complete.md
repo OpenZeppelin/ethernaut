@@ -1,15 +1,15 @@
-The integer math portion aside, getting prices or any sort of data from any single source is a massive attack vector in smart contracts. 
+Получение цен или любых данных из любого единственного источника является мощным направлением атак в смарт-контрактах.
 
-You can clearly see from this example, that someone with a lot of capital could manipulate the price in one fell swoop, and cause any applications relying on it to use the the wrong price.
+Из этого примера вы ясно можете видеть, что кто-либо с большим капиталом может одним махом манипулировать ценой и заставить любые приложения, полагающиеся на неё, использовать неправильную цену.
 
-The exchange itself is decentralized, but the price of the asset is centralized, since it comes from 1 dex. This is why we need [oracles](https://betterprogramming.pub/what-is-a-blockchain-oracle-f5ccab8dbd72?source=friends_link&sk=d921a38466df8a9176ed8dd767d8c77d). Oracles are ways to get data into and out of smart contracts. We should be getting our data from multiple independent decentralized sources, otherwise we can run this risk. 
+Сама биржа децентрализована, но цена актива централизована, поскольку она исходит от 1 источника — биржи dex. Вот почему нам нужны [oracles](https://betterprogramming.pub/what-is-a-blockchain-oracle-f5ccab8dbd72?source=friends_link&sk=d921a38466df8a9176ed8dd767d8c77d) ("оракулы"). Оракулы являются инструментами для занесения информации в контракт и получения её оттуда. Нам нужно получать информацию из нескольких независимых децентрализованных источников, чтобы не допустить такой ошибки.
 
-[Chainlink Data Feeds](https://docs.chain.link/docs/get-the-latest-price) are a secure, reliable, way to get decentralized data into your smart contracts. They have a vast library of many different sources, and also offer [secure randomness](https://docs.chain.link/docs/chainlink-vrf), ability to make [any API call](https://docs.chain.link/docs/make-a-http-get-request), [modular oracle network creation](https://docs.chain.link/docs/architecture-decentralized-model), [upkeep, actions, and maintainance](https://docs.chain.link/docs/kovan-keeper-network-beta), and unlimited customization. 
+[Chainlink Data Feeds](https://docs.chain.link/docs/get-the-latest-price) (Каналы данных Chainlink) — безопасный, надёжный способ получения децентрализованных данных из смарт контрактов. Они располагают обширной библиотекой из множества различных источников, а также предлагают [надёжную случайную информацию](https://docs.chain.link/docs/chainlink-vrf), возможность сделать [любой API call](https://docs.chain.link/docs/make-a-http-get-request), [создание модульной сети oracle](https://docs.chain.link/docs/architecture-decentralized-model), [автоматизацию действий смарт-контрактов](https://docs.chain.link/docs/kovan-keeper-network-beta), and unlimited customization. 
 
-[Uniswap TWAP Oracles](https://uniswap.org/docs/v2/core-concepts/oracles/) relies on a time weighted price model called [TWAP](https://en.wikipedia.org/wiki/Time-weighted_average_price#). While the design can be attractive, this protocol heavily depends on the liquidity of the DEX protocol, and if this is too low, prices can be easily manipulated. 
+[Оракулы Uniswap TWAP](https://uniswap.org/docs/v2/core-concepts/oracles/) полагаются на взвешенную по времени ценовую модель, называемую [TWAP](https://en.wikipedia.org/wiki/Time-weighted_average_price#). Хотя такой дизайн может показаться привлекательным, этот протокол сильно зависит от ликвидности DEX (децентрализованной биржи), и, если она слишком низкая, ценами можно легко манипулировать.
 
 
-Here is an example of getting data from a Chainlink data feed (on the kovan testnet):
+Вот пример получения данных из канала данных Chainlink (в тестовой сети kovan):
 ```
 
 pragma solidity ^0.6.7;
@@ -44,4 +44,4 @@ contract PriceConsumerV3 {
     }
 }
 ```
-[Try it on Remix](https://remix.ethereum.org/#version=soljson-v0.6.7+commit.b8d736ae.js&optimize=false&evmVersion=null&gist=0c5928a00094810d2ba01fd8d1083581)
+[Попробуй в IDE Remix](https://remix.ethereum.org/#version=soljson-v0.6.7+commit.b8d736ae.js&optimize=false&evmVersion=null&gist=0c5928a00094810d2ba01fd8d1083581)

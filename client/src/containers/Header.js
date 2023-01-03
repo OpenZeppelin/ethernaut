@@ -233,11 +233,27 @@ class Header extends React.Component {
                   </a>
                   <a
                     onClick={() => {
-                      this.changeLanguage("cn_simplified");
+                      this.changeLanguage("zh_cn");
                     }}
                     href="/"
                   >
                     {strings.chinese_simplified}
+                  </a>
+                  <a
+                    onClick={() => {
+                      this.changeLanguage("zh_tw");
+                    }}
+                    href="/"
+                  >
+                    {strings.chinese_traditional}
+                  </a>
+                  <a
+                    onClick={() => {
+                      this.changeLanguage("fr");
+                    }}
+                    href="/"
+                  >
+                    {strings.french}
                   </a>
                   <a
                     onClick={() => {
@@ -254,6 +270,14 @@ class Header extends React.Component {
                     href="/"
                   >
                     {strings.arabic}
+                  </a>
+                  <a
+                    onClick={() => {
+                      this.changeLanguage("tr");
+                    }}
+                    href="/"
+                  >
+                    {strings.turkish}
                   </a>
                   <a
                     className="contr"
