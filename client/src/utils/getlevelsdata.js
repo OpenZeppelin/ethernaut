@@ -6,11 +6,12 @@ var levels = require(`../gamedata/gamedata.json`).levels;
 
 
 export const getLevelDetailsByAddress = (levelAddress, chainId) => {
+    const constants = require("../constants");
     const allLevels = require("client/src/gamedata/gamedata.json").levels;
     // If we are on a predeployed chain, fetch address from constants
     const gamedata = onPredeployedNetwork(chainId)
-      ? require(`client/src/gamedata/deploy.${ID_TO_NETWORK[chainId]}.json`)
-      : restoreContract("77");
+    ? require(`client/src/gamedata/deploy.${constants.ID_TO_NETWORK[chainId]}.json`)
+    : restoreContract("77");
     // If we are not fetch from localstorage
     // based on the index fetch the level name and difficulty
     const addressToId = Object.fromEntries(
