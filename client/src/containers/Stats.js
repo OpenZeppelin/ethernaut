@@ -98,22 +98,14 @@ class Stats extends React.Component {
   }
 
   render() {
-      return <div className="page-container">
-      <div className="row text-center">
-        <div className="col">
-          <div className="counter">
-            <i className="fa fa-code fa-2x"></i>
-            <h2 className="timer count-title count-number" data-to={this.state.totalPlayers ? this.state.totalPlayers : 0}></h2>
-            <p className="count-text ">Total number of players </p>
-          </div>
-        </div>
+      return <div className="stats-page page-container">
+      <div className='stats-header'>
+        <Statistic heading="Total number of players" value={this.state.totalPlayers} />
+        <Statistic heading="Total number of instances created" value={this.state.totalCreated} />
+        <Statistic heading="Total number of instances solved" value={this.state.totalCompleted} />
+        <Statistic heading="Total number of instances failed" value={this.state.totalFailures} />
       </div>
-       <div>Total number of players: {this.state.totalPlayers ? this.state.totalPlayers : 0}</div>
-       <div>Total number of instances created: {this.state.totalCreated ? this.state.totalCreated : 0}</div>
-       <div>Total number of instances solved: {this.state.totalCompleted ? this.state.totalCompleted : 0}</div>
-       <div>Total number of instances failed: {this.state.totalFailures ? this.state.totalFailures : 0}</div>
-       <div></div>
-       <div className="stats-page">
+       <div>
         <form>
            <label>Search player</label>
            <div className="form-group">
