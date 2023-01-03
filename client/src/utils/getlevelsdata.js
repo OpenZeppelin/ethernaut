@@ -1,4 +1,4 @@
-import { ID_TO_NETWORK } from "../constants";
+import { ID_TO_NETWORK } from "../constants.js";
 import { onPredeployedNetwork } from "../middlewares/setNetwork";
 import { getLevelKey, restoreContract } from "./contractutil";
 
