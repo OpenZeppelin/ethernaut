@@ -102,15 +102,6 @@ class Stats extends React.Component {
 
   render() {
       return <div className="stats-page page-container">
-      <div className="row text-center">
-        <div className="col">
-          <div className="counter">
-            <i className="fa fa-code fa-2x"></i>
-            <h2 className="timer count-title count-number" data-to={this.state.totalPlayers ? this.state.totalPlayers : 0}></h2>
-            <p className="count-text ">Total number of players </p>
-          </div>
-        </div>
-      </div>
       <div className='stats-header'>
         <Statistic heading="Total number of players" value={this.state.totalPlayers} />
         <Statistic heading="Total number of instances created" value={this.state.totalCreated} />
