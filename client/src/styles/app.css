@@ -511,13 +511,6 @@ footer {
   display: none;
 }
 
-
-@media only screen and (max-width: 1029px){
-  :root {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-}
 @media only screen and (max-width: 956px) {
   .toggle {
     display: none;
