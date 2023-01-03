@@ -66,20 +66,6 @@ class Level extends React.Component {
     }
   };
 
-  toggleDropdown = () => {
-    this.setState({
-      dropwDownOpened: !this.state.dropwDownOpened,
-    });
-  };
-
-  closeDropdown = () => {
-    if(this.state.dropwDownOpened){
-      this.setState({
-        dropwDownOpened: false
-      });
-    }
-  }
-
   render() {
     const { level, levelCompleted } = this.props;
     const { submittedIntance } = this.state;
@@ -129,7 +115,7 @@ class Level extends React.Component {
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels);
 
     return (
-      <div onClick={this.closeDropdown}>
+      <div>
         <div className="lines"></div>
         <main>
           {(isDescriptionMissingTranslation ||
@@ -144,8 +130,8 @@ class Level extends React.Component {
               </div>
             )}
 
-          <div onMouseLeave={this.closeDropdown} onClick={e => e.stopPropagation()} className="level-selector-nav">
-            <div onClick={this.toggleDropdown} className="dropdown-menu-bar">
+          <div className="level-selector-nav">
+            <div className="dropdown-menu-bar">
               <p key={level.difficulty}>{selectedLevel.difficulty}</p>
               <p key={level.name}>{level.name}</p>
 
@@ -155,7 +141,7 @@ class Level extends React.Component {
                 </button>
               </div>
             </div>
-            <div style={{display: this.state.dropwDownOpened ? 'block':'none'}} className="level-selector-dropdown-content">
+            <div className="level-selector-dropdown-content">
               {levelData.map((level) => {
                 return (
                   <Link
