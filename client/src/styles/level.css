@@ -30,6 +30,7 @@
     font-weight: bolder;
     font-size: larger;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .button-sequence {
@@ -105,14 +106,11 @@
     color: var(--primary-color);
 }
 
-
-
-.level-selector-nav:hover .level-selector-dropdown-content{
+/* .level-selector-nav:hover .level-selector-dropdown-content{
     display: block;
-    /* position: absolute; */
     z-index: 1;
     background-color: var(--primary-color);
-}
+} */
 
 .level-img-view {
     position: relative;
