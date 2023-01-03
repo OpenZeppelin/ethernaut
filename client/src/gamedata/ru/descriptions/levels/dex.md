@@ -1,15 +1,15 @@
-The goal of this level is for you to hack the basic [DEX](https://en.wikipedia.org/wiki/Decentralized_exchange) contract below and steal the funds by price manipulation.
+Цель этого уровня для тебя — взломать базовый контракт [DEX](https://en.wikipedia.org/wiki/Decentralized_exchange) и своровать средства с помощью манипуляций ценой.
 
-You will start with 10 tokens of `token1` and 10 of `token2`. The DEX contract starts with 100 of each token. 
+Ты начнешь с 10-ю токенами `token1` и 10-ю `token2`. Контракт DEX начинает с 100 каждого токена. 
 
-You will be successful in this level if you manage to drain all of at least 1 of the 2 tokens from the contract, and allow the contract to report a "bad" price of the assets. 
-
-&nbsp;
-### Quick note
-Normally, when you make a swap with an ERC20 token, you have to `approve` the contract to spend your tokens for you. To keep with the syntax of the game, we've just added the `approve` method to the contract itself. So feel free to use `contract.approve(contract.address, <uint amount>)` instead of calling the tokens directly, and it will automatically approve spending the two tokens by the desired amount. Feel free to ignore the `SwappableToken` contract otherwise. 
+Ты успешно завершишь этот уровень, если сможешь опустошить весь баланс хотя бы одного из двух токенов контракта и сделать так, чтобы контракт возвращал "неправильную цену" активов.
 
 &nbsp;
-Things that might help:
-* How is the price of the token calculated?
-* How does the `swap` method work?
-* How do you `approve` a transaction of an ERC20? 
+### Небольшое примечание
+Обычно, когда ты делаешь обмен с токеном ERC20, тебе нужно `approve` (разрешить) контракту тратить за тебя твои токены. Но в игровых условиях, мы просто добавили метод `approve` в сам контракт. Так что можешь пользоваться `contract.approve(contract.address, <uint amount>)` вместо вызовов разрешения на токенах, и это автоматически разрешит трату двух токенов в необходимых количествах. В противном случае, можешь использовать контракт `SwappableToken`. 
+
+&nbsp;
+Вещи, которые могут помочь:
+* Как вычисляется цена токена?
+* Как работает метод `swap`?
+* Как можно `approve` (разрешить) транзакцию ERC20? 
