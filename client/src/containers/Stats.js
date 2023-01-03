@@ -116,7 +116,11 @@ class Stats extends React.Component {
                className="stats-input form-control"
                placeholder="Player address"
                onChange={async(evt) => {
+                 evt.preventDefault();
                  await this.updatePlayerStats(evt.target.value);
+               }}
+               onKeyDown={async(evt) => {
+                if(evt.key === "Enter") evt.preventDefault();
                }}
              />
            </div>
