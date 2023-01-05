@@ -102,6 +102,13 @@ contract Statistics is Initializable {
         if(levelFirstCompletionTime[player][level] == 0) {
             globalNoOfLevelsCompletedByPlayer[player]++;
             levelFirstCompletionTime[player][level] = block.timestamp;
+            uint256 totalNoOfLevelsCompletedByPlayer = globalNoOfLevelsCompletedByPlayer[player];
+            uint256 newAverageTimeTakenToCompleteLevels = updateAverageTimeTakenToCompleteLevelsByPlayer(player, level, totalNoOfLevelsCompletedByPlayer);
+            emit playerScoreProfile(
+                player, 
+                newAverageTimeTakenToCompleteLevels, 
+                totalNoOfLevelsCompletedByPlayer
+            );
         }
         playerStats[player][level].timeSubmitted.push(block.timestamp);
         playerStats[player][level].timeCompleted = block.timestamp;
@@ -109,13 +116,6 @@ contract Statistics is Initializable {
         levelStats[level].noOfInstancesSubmitted_Success++;
         globalNoOfInstancesCompleted++;
         globalNoOfInstancesCompletedByPlayer[player]++;
-        uint256 totalNoOfLevelsCompletedByPlayer = getTotalNoOfLevelsCompletedByPlayer(player);
-        uint256 newAverageTimeTakenToCompleteLevels = updateAverageTimeTakenToCompleteLevelsByPlayer(player, level, totalNoOfLevelsCompletedByPlayer);
-        emit playerScoreProfile(
-            player, 
-            newAverageTimeTakenToCompleteLevels, 
-            totalNoOfLevelsCompletedByPlayer
-        );
     }
     function submitFailure(
         address instance,
