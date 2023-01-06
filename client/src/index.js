@@ -15,10 +15,7 @@ import { Integrations } from "@sentry/tracing";
 import App from "./containers/App";
 import NotFound404 from "./components/not-found/NotFound404";
 import Header from "./containers/Header";
-import MarkdownComponent from "./components/common/Markdown";
-import { loadTranslations } from "./utils/translations";
-import Footer from "./components/common/Footer";
-import parse from "html-react-parser";
+import MediaQuery from "react-responsive";
 import Leaderboard from "./containers/Leaderboard";
 
 // For bundle splitting without lazy loading.
@@ -88,24 +85,6 @@ if (!window.ethereum) {
     </Provider>
   );
 }
-
-// View entry point.
-root.render(
-  <Provider store={store}>
-    <Router history={syncHistoryWithStore(history, store)}>
-      <Suspense fallback={<div>Loading...</div>}>
-          <Header></Header>
-          <Routes>
-            <Route path={constants.PATH_HELP} element={<Help />} />
-            <Route path={constants.PATH_LEVEL} element={<Level />} />
-            <Route path={constants.PATH_STATS} element={<Stats />} />
-            <Route exact path="/" element={<App />} />
-            <Route path="/" element={<NotFound404 />} />
-          </Routes>
-      </Suspense>
-    </Router>
-  </Provider>
-);
 
 // Post-load actions.
 window.addEventListener("load", async () => {
