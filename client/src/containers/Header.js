@@ -117,11 +117,11 @@ class Header extends React.Component {
         ? this.svgFilter()
         : null;
 
-      // Change OpenZeppelin logo
-      var theChristmashat = document.getElementById("christmas-hat")
-      if (theChristmashat && theChristmashat.style) theChristmashat.style.filter = !this.state.dark
-        ? this.svgFilter()
-        : null;
+      // // Change OpenZeppelin logo
+      // var theChristmashat = document.getElementById("christmas-hat")
+      // if (theChristmashat && theChristmashat.style) theChristmashat.style.filter = !this.state.dark
+      //   ? this.svgFilter()
+      //   : null;
 
       // Change The Ethernaut logo
       var theEthernaut = document.getElementById("the-ethernaut");
@@ -179,11 +179,17 @@ class Header extends React.Component {
               </li>
             </ul>
             <a className="logo-container" href="https://openzeppelin.com">
-              <img
+              {/* <img
                 id="christmas-hat"
                 className="christmas-hat"
                 src="../../imgs/christmas-hat.png"
                 alt="christmas-hat"
+              /> */}
+              <img
+                id="logo"
+                className="logo"
+                src="../../imgs/oz-logo.svg"
+                alt="logo"
               />
             </a>
             <ul className="header-ul">

@@ -74,7 +74,7 @@ ul {
   max-width: 90%;
 }
 
-.christmas-hat {
+/* .christmas-hat {
   color: var(--secondary-color);
   cursor: pointer;
   display: block;
@@ -82,7 +82,7 @@ ul {
   margin-right: auto;
   max-width: 80%;
   margin-top: -15%;
-}
+} */
 
 .logo-container {
   padding-left: 4em;
