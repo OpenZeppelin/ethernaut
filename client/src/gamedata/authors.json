@@ -55,7 +55,7 @@
       "websites": ["https://openzeppelin.com"]
     },
     "openzeppelin&forta": {
-      "name": ["OpenZeppelin","Forta"],
+      "name": ["OpenZeppelin", "Forta"],
       "emails": ["ethernaut@zeppelin.solutions", "info@forta.org"],
       "websites": ["https://openzeppelin.com", "https://forta.org"]
     },
@@ -63,6 +63,11 @@
       "name": ["Eric Nordelo"],
       "emails": ["eric.nordelo39@gmail.com"],
       "websites": ["https://www.ericnordelo.com/"]
+    },
+    "KStasi": {
+      "name": ["Anastasiia Kondaurova"],
+      "emails": [],
+      "websites": ["https://www.linkedin.com/in/kstasi/"]
     }
   }
 }
