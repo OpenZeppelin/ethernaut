@@ -446,6 +446,21 @@
       "deployId": "28",
       "instanceGas": 1000000,
       "author": "KStasi"
+    },
+    {
+      "name": "Switch",
+      "created": "2018-11-04",
+      "difficulty": "8",
+      "description": "switch.md",
+      "completedDescription": "switch_complete.md",
+      "levelContract": "SwitchFactory.sol",
+      "instanceContract": "Switch.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "29",
+      "instanceGas": 250000,
+      "author": "AgeManning"
     }
   ]
 }
