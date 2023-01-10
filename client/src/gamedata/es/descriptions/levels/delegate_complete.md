@@ -1,0 +1,3 @@
+El uso de `delegatecall` es particularmente peligroso y ha sido utilizado como vector de ataque en diferentes e históricos hacks. Con él, tu contrato esta prácticamente diciendo "Hola, -otro contrato- o -otra librería-, haz lo que quieras con mi estado". Los delegados tienen total acceso al estado de tu contrato. Esa funcionalidad es muy potente, pero a la vez peligrosa, y tiene que ser usada con extrema precaución.
+
+Diríjanse a [The Parity Wallet Hack Explained](https://blog.openzeppelin.com/on-the-parity-wallet-multisig-hack-405a8c12e8f7) por una precisa descripción de como esa idea ha sido usada para robar 30M de dólares.

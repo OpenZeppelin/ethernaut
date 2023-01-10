@@ -1,0 +1,3 @@
+Es importante recordar que marcar una variable como privada solo evita que otros contratos accedan a ella. Las variables de estado marcadas como privadas y locales son de acceso público.
+
+Para garantizar que los datos sean privados, es necesario cifrarlos antes de colocarlos en la red. En este escenario, la clave de descifrado nunca debe enviarse en la red, ya que será visible para cualquiera que la busque. [zk-SNARKs](https://blog.ethereum.org/2016/12/05/zksnarks-in-a-nutshell/) proporcionan una forma de determinar si alguien posee un parámetro secreto, sin tener que revelar el parámetro.

@@ -1,0 +1,8 @@
+[build]
+  command = "yarn run build:ethernaut"
+  publish = "client/build"
+
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 200

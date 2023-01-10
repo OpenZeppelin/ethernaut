@@ -1,19 +1,18 @@
 # Dependencies
 node_modules/
 
-# Build
-build/
-build_webpack/
-
-# Personal
-.todo
-scripts/testrpc_pid
-.idea/
-.DS_Store
-gamedata/deploy.development.json
-
 # Private stuff
-.env
+client/.env
+contracts/.env
 
-# Misc
-.tern-port
+# Contracts
+contracts/build/
+contracts/cache/
+contracts/node_modules/
+contracts/.openzeppelin/
+
+# Client
+client/build/
+client/node_modules/
+client/src/gamedata/deploy.local.json
+.env

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500px" height="500px" viewBox="0 0 500 500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55 (78076) - https://sketchapp.com -->
+    <title>oz_logo_icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="presentación" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="oz_logo_icon">
+            <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="500" height="500" rx="30"></rect>
+            <g id="Group" transform="translate(137.500000, 125.000000)">
+                <path d="M224.999875,249.999875 L224.999875,184.923649 L154.305726,184.923649 C135.080782,184.923649 117.272539,195.040499 107.426104,211.557346 L84.507391,249.999875 L224.999875,249.999875 Z" id="Stroke-1" fill="#63D2F9"></path>
+                <polygon id="Stroke-3" fill="#4E5EE4" points="0 -1.77635684e-15 0 65.076226 186.202295 65.076226 225 -1.77635684e-15"></polygon>
+                <path d="M89.1144464,101.704213 L0.205019369,250 L75.9537543,250 L182.273563,72.5851047 L140.444774,72.5851047 C119.405266,72.5851047 99.9134122,83.6426401 89.1144464,101.704213 Z" id="Stroke-5" fill="#63B0F9"></path>
+            </g>
+        </g>
+    </g>
+</svg>

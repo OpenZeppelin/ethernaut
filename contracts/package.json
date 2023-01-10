@@ -1,0 +1,45 @@
+{
+  "name": "contracts",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@openzeppelin/contracts": "4.7.3",
+    "@truffle/hdwallet-provider": "^2.0.0",
+    "colors": "^1.4.0",
+    "cross-env": "7.0.3",
+    "ethereumjs-util": "^7.0.10",
+    "hardhat": "^2.9.2",
+    "openzeppelin-contracts-06": "npm:@openzeppelin/contracts@3.4.2",
+    "openzeppelin-contracts-08": "npm:@openzeppelin/contracts@4.7.3",
+    "openzeppelin-test-helpers": "^0.5.1",
+    "prompt": "^1.1.0",
+    "web3": "1.8.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.7",
+    "@nomiclabs/hardhat-ethers": "^2.2.1",
+    "@nomiclabs/hardhat-truffle5": "^2.0.0",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@openzeppelin/contracts-upgradeable": "^4.8.0",
+    "@openzeppelin/hardhat-upgrades": "^1.21.0",
+    "@openzeppelin/truffle-upgrades": "^1.17.0",
+    "ethereum-waffle": "^3.4.4",
+    "ethers": "^5.7.2",
+    "hardhat-gas-reporter": "^1.0.9"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
