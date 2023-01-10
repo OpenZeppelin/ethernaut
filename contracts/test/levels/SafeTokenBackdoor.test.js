@@ -15,7 +15,7 @@ contract('SafeTokenBackdoor', function(accounts) {
   let player = accounts[0]
 
   before(async function() {
-    ethernaut = await Ethernaut.new();
+    ethernaut = await utils.getEthernautWithStatsProxy();
     level = await SafeTokenFactory.new()
     await ethernaut.registerLevel(level.address)
   });
