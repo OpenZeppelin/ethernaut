@@ -205,7 +205,7 @@ function alternateSignature(r, s, v) {
 
   return {
     r: r,
-    s: new BigNumber(order).sub(s).toHexString(),
+    s: BigNumber.from(order).sub(s).toHexString(),
     v: 55 - v, // map 27 to 28 and vice versa
   };
 }
