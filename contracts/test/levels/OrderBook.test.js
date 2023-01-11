@@ -4,7 +4,7 @@ const ethers = require('ethers');
 const OrderBookFactory = artifacts.require('./levels/OrderBookFactory.sol');
 const OrderBook = artifacts.require('./levels/OrderBook.sol');
 const utils = require('../utils/TestUtils');
-const BigNumber = ethers.utils.BigNumber;
+const BigNumber = ethers.BigNumber;
 const BN = Web3.utils.BN;
 
 contract('OrderBook', function () {
@@ -87,8 +87,8 @@ contract('OrderBook', function () {
       address: '0x421244a7a8809c73a9d6806b91e322c85e9574df',
       sellIdx: 3,
       buyIdx: 1,
-      sellAmount: new BigNumber(10).pow(decimals).mul(35),
-      buyAmount: new BigNumber(10).pow(decimals).mul(10),
+      sellAmount: new BigNumber.from(10).pow(decimals).mul(35),
+      buyAmount: new BigNumber.from(10).pow(decimals).mul(10),
       nonce: 3,
       v: 27,
       r: '0x1036d281926e4a2b4d173ee2b3dfc90a21fd7b56b90c448108aced34e873e81f',
@@ -103,8 +103,8 @@ contract('OrderBook', function () {
       address: '0xb9a9B73CE551c06EEA59143B9BEdaA8195F517FF',
       sellIdx: 3,
       buyIdx: 2,
-      sellAmount: new BigNumber(10).pow(decimals).mul(100),
-      buyAmount: new BigNumber(10).pow(decimals).mul(80),
+      sellAmount: new BigNumber.from(10).pow(decimals).mul(100),
+      buyAmount: new BigNumber.from(10).pow(decimals).mul(80),
       nonce: 2,
       v: 28,
       r: '0x303491a774261f8aff19a3e963ac4ad70a81751f6fc2b40d3a65b4a538a2f4c1',
