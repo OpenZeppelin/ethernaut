@@ -1,3 +1,3 @@
-Congratulations! If you solved this level, consider yourself a Master of the Universe. 
+¡Felicidades! Si has resuelto este nivel, puedes considerarte un Master of the Universe.
 
-Go ahead and pierce a random object in the room with your Magnum look. Now, try to move it from afar; Your telekinesis habilities might have just started working.
+Continúa y escoge un objeto aleatorio en la habitación al estilo Magnum. Ahora, intenta moverlo desde lejos; Es posible que tus habilidades de telequinesia hayan comenzado a funcionar.

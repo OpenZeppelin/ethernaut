@@ -1,9 +1,9 @@
-The goal of this level is for you to steal all the funds from the contract.
+El objetivo de este nivel es que robes todos los fondos del contrato.
 
 &nbsp;
-Things that might help:
-* Untrusted contracts can execute code where you least expect it.
-* Fallback methods
-* Throw/revert bubbling
-* Sometimes the best way to attack a contract is with another contract.
-* See the Help page above, section "Beyond the console"
+Cosas que pueden ayudar:
+* Los contratos que no son de confianza pueden ejecutar código donde menos lo esperas.
+* Métodos fallback
+* Throw/revert
+* A veces, la mejor forma de atacar un contrato es con otro contrato.
+* Consulte la página de ayuda anterior, sección "Más allá de la consola"

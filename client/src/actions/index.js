@@ -23,13 +23,13 @@ export const DEACTIVATE_LEVEL = "DEACTIVATE_LEVEL";
 export const deactivateLevel = level => ({ type: DEACTIVATE_LEVEL, level })
 
 export const LOAD_LEVEL_INSTANCE = "LOAD_LEVEL_INSTANCE";
-export const loadLevelInstance = (level, reuse) => ({ type: LOAD_LEVEL_INSTANCE, level, reuse, instance: undefined })
+export const loadLevelInstance = (level, reuse, reset) => ({ type: LOAD_LEVEL_INSTANCE, level, reuse, instance: undefined, reset })
 
 export const SUBMIT_LEVEL_INSTANCE = "SUBMIT_LEVEL_INSTANCE";
 export const submitLevelInstance = (level, completed) => ({ type: SUBMIT_LEVEL_INSTANCE, level, completed })
 
 export const SYNC_PLAYER_PROGRESS = "SYNC_PLAYER_PROGRESS";
-export const syncLevelProgress = () => ({ type: SYNC_PLAYER_PROGRESS })
+export const syncPlayerProgress = () => ({ type: SYNC_PLAYER_PROGRESS })
 
 export const COLLECT_STATS = "COLLECT_STATS";
 export const collectStats = () => ({ type: COLLECT_STATS })
@@ -40,4 +40,9 @@ export const setBlockNum = num => ({ type: SET_BLOCK_NUM, blockNum: num })
 export const SET_LANG = "SET_LANG";
 export const setLang = (lang) => ({ type: SET_LANG, lang }) 
 
+export const CLEAR_SOLVED_LEVELS = "CLEAR_SOLVED_LEVELS";
+export const clearSolvedLevels = () => ({ type: CLEAR_SOLVED_LEVELS }) 
+
 export const CHECK_ALL_COMPLETED = "CHECK_ALL_COMPLETED";
+
+

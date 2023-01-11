@@ -1,4 +1,6 @@
-pragma solidity ^0.6.0;
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
 
 import './base/Level.sol';
 import './Shop.sol';
@@ -11,7 +13,7 @@ contract ShopFactory is Level {
     return address(_shop);
   }
 
-  function validateInstance(address payable _instance, address) override public returns (bool) {
+  function validateInstance(address payable _instance, address) override public view returns (bool) {
     Shop _shop = Shop(_instance);
     return _shop.price() < 100;
   }

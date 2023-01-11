@@ -1,4 +1,6 @@
-pragma solidity ^0.6.0;
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
 
 import './base/Level.sol';
 import './CoinFlip.sol';
@@ -10,7 +12,7 @@ contract CoinFlipFactory is Level {
     return address(new CoinFlip());
   }
 
-  function validateInstance(address payable _instance, address) override public returns (bool) {
+  function validateInstance(address payable _instance, address) override public view returns (bool) {
     CoinFlip instance = CoinFlip(_instance);
     return instance.consecutiveWins() >= 10;
   }

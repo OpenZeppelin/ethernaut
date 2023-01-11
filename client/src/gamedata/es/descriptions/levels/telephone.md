@@ -1,5 +1,5 @@
-Claim ownership of the contract below to complete this level.
+Reclame la propiedad del contrato a continuación para completar este nivel.
 
 &nbsp;
-Things that might help
-* See the Help page above, section "Beyond the console"
+Cosas que pueden ayudar
+* Consulte la página de ayuda anterior, sección "Más allá de la consola"

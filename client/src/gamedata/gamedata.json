@@ -12,7 +12,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "0",
-      "instanceGas": 800000,
+      "instanceGas": 1500000,
       "author": "ajsantander"
     },
     {
@@ -145,7 +145,7 @@
       "instanceContract": "King.sol",
       "revealCode": true,
       "deployParams": [],
-      "deployFunds": 1,
+      "deployFunds": 0.001,
       "deployId": "9",
       "instanceGas": 350000,
       "author": "ajsantander"
@@ -160,7 +160,7 @@
       "instanceContract": "Reentrance.sol",
       "revealCode": true,
       "deployParams": [],
-      "deployFunds": 1,
+      "deployFunds": 0.001,
       "deployId": "10",
       "instanceGas": 350000,
       "author": "ajsantander"
@@ -208,7 +208,15 @@
       "deployFunds": 0,
       "deployId": "13",
       "instanceGas": 400000,
-      "author": "0age"
+      "author": "0age",
+      "verificationDetails": {
+        "contractName": "GatekeeperOne",
+        "compilerVersion": "v0.8.12+commit.f00d7308",
+        "optimization": "1",
+        "runs": "1000",
+        "licenseTypeId": "3",
+        "constructorArguements": ""
+      }
     },
     {
       "name": "Gatekeeper Two",
@@ -265,8 +273,8 @@
       "instanceContract": "Recovery.sol",
       "revealCode": true,
       "deployParams": [],
-      "deployFunds": 1,
-      "deployId": "18",
+      "deployFunds": 0.001,
+      "deployId": "17",
       "instanceGas": 1100000,
       "author": "AgeManning"
     },
@@ -281,7 +289,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "19",
+      "deployId": "18",
       "instanceGas": 200000,
       "author": "ajsantander"
     },
@@ -296,7 +304,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "20",
+      "deployId": "19",
       "instanceGas": 520000,
       "author": "nczhu"
     },
@@ -310,8 +318,8 @@
       "instanceContract": "Denial.sol",
       "revealCode": true,
       "deployParams": [],
-      "deployFunds": 1,
-      "deployId": "21",
+      "deployFunds": 0.001,
+      "deployId": "20",
       "instanceGas": 450000,
       "author": "AgeManning"
     },
@@ -326,7 +334,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "22",
+      "deployId": "21",
       "instanceGas": 250000,
       "author": "34x4p08"
     },
@@ -341,7 +349,7 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "23",
+      "deployId": "22",
       "instanceGas": 3600000,
       "author": "patrickalphac"
     },
@@ -356,37 +364,88 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "24",
+      "deployId": "23",
       "instanceGas": 3600000,
       "author": "scottt"
     },
     {
-      "name": "Malleability",
-      "created": "2021-10-08",
+      "name": "Puzzle Wallet",
+      "created": "2021-10-05",
       "difficulty": "7",
-      "description": "signaturecoin.md",
-      "completedDescription": "signaturecoin_complete.md",
-      "levelContract": "SignatureCoinFactory.sol",
-      "instanceContract": "SignatureCoin.sol",
+      "description": "puzzle_wallet.md",
+      "completedDescription": "puzzle_wallet_complete.md",
+      "levelContract": "PuzzleWalletFactory.sol",
+      "instanceContract": "PuzzleWallet.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0.001,
+      "deployId": "24",
+      "instanceGas": 3600000,
+      "author": "openzeppelin"
+    },
+    {
+      "name": "Motorbike",
+      "created": "2021-10-07",
+      "difficulty": "6",
+      "description": "motorbike.md",
+      "completedDescription": "motorbike_complete.md",
+      "levelContract": "MotorbikeFactory.sol",
+      "instanceContract": "Motorbike.sol",
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "25",
-      "instanceGas": 3600000
+      "instanceGas": 2000000,
+      "author": "openzeppelin"
     },
     {
-      "name": "Orderbook",
-      "created": "2021-10-08",
-      "difficulty": "7",
-      "description": "orderbook.md",
-      "completedDescription": "orderbook_complete.md",
-      "levelContract": "OrderBookFactory.sol",
-      "instanceContract": "OrderBook.sol",
+      "name": "DoubleEntryPoint",
+      "created": "2022-03-21",
+      "difficulty": "4",
+      "description": "doubleentrypoint.md",
+      "completedDescription": "doubleentrypoint_complete.md",
+      "levelContract": "DoubleEntryPointFactory.sol",
+      "instanceContract": "DoubleEntryPoint.sol",
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "26",
-      "instanceGas": 3600000
+      "instanceGas": 5000000,
+      "poweredBy": {
+        "src": "../../imgs/forta.svg",
+        "href": "https://forta.org"
+      },
+      "author": "openzeppelin&forta"
+    },
+    {
+      "name": "Good Samaritan",
+      "created": "2022-8-4",
+      "difficulty": "5",
+      "description": "goodsamaritan.md",
+      "completedDescription": "goodsamaritan_complete.md",
+      "levelContract": "GoodSamaritanFactory.sol",
+      "instanceContract": "GoodSamaritan.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "27",
+      "instanceGas": 2500000,
+      "author": "ericnordelo"
+    },
+    {
+      "name": "Gatekeeper Three",
+      "created": "2019-02-02",
+      "difficulty": "6",
+      "description": "gatekeeper3.md",
+      "completedDescription": "gatekeeper3_complete.md",
+      "levelContract": "GatekeeperThreeFactory.sol",
+      "instanceContract": "GatekeeperThree.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "28",
+      "instanceGas": 1000000,
+      "author": "KStasi"
     }
   ]
 }

@@ -1,4 +1,6 @@
-pragma solidity ^0.6.0;
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
 
 import "./MagicNum.sol";
 import "./base/Level.sol";
@@ -13,7 +15,7 @@ contract MagicNumFactory is Level {
     return address(new MagicNum());
   }
 
-  function validateInstance(address payable _instance, address) override public returns (bool) {
+  function validateInstance(address payable _instance, address) override public view returns (bool) {
 
     // Retrieve the instance.
     MagicNum instance = MagicNum(_instance);

@@ -1,7 +1,7 @@
-The goal of this level is for you to hack the basic token contract below.
+El objetivo de este nivel es piratear el contrato de token a continuación.
 
-You are given 20 tokens to start with and you will beat the level if you somehow manage to get your hands on any additional tokens. Preferably a very large amount of tokens.
+Se te dan 20 tokens para empezar y superarás el nivel si de alguna manera consigues tokens adicionales. Preferiblemente una gran cantidad de tokens.
 
 &nbsp;
-Things that might help:
-* What is an odometer?
+Cosas que pueden ayudar:
+* ¿Qué es un odómetro?

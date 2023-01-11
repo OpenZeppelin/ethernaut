@@ -1,5 +1,5 @@
-The contract below represents a very simple game: whoever sends it an amount of ether that is larger than the current prize becomes the new king. On such an event, the overthrown king gets paid the new prize, making a bit of ether in the process! As ponzi as it gets xD
+El contrato a continuación representa un juego muy simple: quien le envíe una cantidad de ether mayor que el premio actual se convierte en el nuevo rey. En tal evento, al rey derrocado se le paga el nuevo premio, ¡ganando un poco de ether en el proceso! Mas Ponzi que eso no hay xD
 
-Such a fun game. Your goal is to break it.
+Un juego tan divertido. Tu objetivo es romperlo.
 
-When you submit the instance back to the level, the level is going to reclaim kingship. You will beat the level if you can avoid such a self proclamation.
+Cuando envías la instancia de nuevo al nivel, el nivel reclamará ser el rey. Superarás el nivel si puedes evitar esa autoproclamación.

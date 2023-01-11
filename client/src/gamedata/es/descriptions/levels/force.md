@@ -1,9 +1,9 @@
-Some contracts will simply not take your money `¯\_(ツ)_/¯`
+Algunos contratos simplemente no aceptan tu dinero `¯ \ _ (ツ) _ / ¯`
 
-The goal of this level is to make the balance of the contract greater than zero.
+El objetivo de este nivel es hacer que el saldo del contrato sea mayor que cero.
 
 &nbsp;
-Things that might help:
-* Fallback methods
-* Sometimes the best way to attack a contract is with another contract.
-* See the Help page above, section "Beyond the console"
+Cosas que pueden ayudar:
+* Métodos fallback
+* A veces, la mejor forma de atacar un contrato es con otro contrato.
+* Consulte la página de ayuda anterior, sección "Más allá de la consola"

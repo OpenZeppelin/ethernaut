@@ -1,15 +1,14 @@
-The integer math portion aside, getting prices or any sort of data from any single source is a massive attack vector in smart contracts. 
+Dejando a un lado la parte matemática, obtener precios o cualquier tipo de datos de una sola fuente es un vector de ataque masivo en los contratos inteligentes.
 
-You can clearly see from this example, that someone with a lot of capital could manipulate the price in one fell swoop, and cause any applications relying on it to use the the wrong price.
+Puedes ver claramente en este ejemplo que alguien con mucho capital podría manipular el precio de una sola vez y hacer que cualquier aplicación que dependa de él use el precio incorrecto.
 
-The exchange itself is decentralized, but the price of the asset is centralized, since it comes from 1 dex. This is why we need [oracles](https://betterprogramming.pub/what-is-a-blockchain-oracle-f5ccab8dbd72?source=friends_link&sk=d921a38466df8a9176ed8dd767d8c77d). Oracles are ways to get data into and out of smart contracts. We should be getting our data from multiple independent decentralized sources, otherwise we can run this risk. 
+El exchange en sí está descentralizado, pero el precio del activo está centralizado, ya que proviene de 1 dex. Es por eso que necesitamos [oráculos](https://betterprogramming.pub/what-is-a-blockchain-oracle-f5ccab8dbd72?source=friends_link&sk=d921a38466df8a9176ed8dd767d8c77d). Los oráculos son formas de introducir y extraer datos de los contratos inteligentes. Deberíamos siempre obtener nuestros datos de múltiples fuentes descentralizadas independientes, de lo contrario, podemos correr este riesgo.
 
-[Chainlink Data Feeds](https://docs.chain.link/docs/get-the-latest-price) are a secure, reliable, way to get decentralized data into your smart contracts. They have a vast library of many different sources, and also offer [secure randomness](https://docs.chain.link/docs/chainlink-vrf), ability to make [any API call](https://docs.chain.link/docs/make-a-http-get-request), [modular oracle network creation](https://docs.chain.link/docs/architecture-decentralized-model), [upkeep, actions, and maintainance](https://docs.chain.link/docs/kovan-keeper-network-beta), and unlimited customization. 
+[Chainlink Data Feeds](https://docs.chain.link/docs/get-the-latest-price) es una forma segura y confiable de obtener datos descentralizados en los contratos inteligentes. Tienen una amplia biblioteca de muchas fuentes diferentes, y también ofrecen [secure randomness](https://docs.chain.link/docs/chainlink-vrf), capacidad para realizar [cualquier llamada API](https://docs.chain.link/docs/make-a-http-get-request), [modular oracle network creation](https://docs.chain.link/docs/architecture-decentralized-model), [upkeep, actions, and maintainance](https://docs.chain.link/docs/kovan-keeper-network-beta) y personalización ilimitada.
 
-[Uniswap TWAP Oracles](https://uniswap.org/docs/v2/core-concepts/oracles/) relies on a time weighted price model called [TWAP](https://en.wikipedia.org/wiki/Time-weighted_average_price#). While the design can be attractive, this protocol heavily depends on the liquidity of the DEX protocol, and if this is too low, prices can be easily manipulated. 
+[Uniswap TWAP Oracles](https://uniswap.org/docs/v2/core-concepts/oracles/) se basa en un modelo de precio ponderado por tiempo llamado [TWAP] (https://en.wikipedia.org/wiki/Time-weighted_average_price#). Si bien el diseño puede ser atractivo, este protocolo depende en gran medida de la liquidez del protocolo DEX y, si es demasiado bajo, los precios se pueden manipular fácilmente.
 
-
-Here is an example of getting data from a Chainlink data feed (on the kovan testnet):
+A continuación, se muestra un ejemplo de cómo obtener datos de un feed de datos de Chainlink (en la red de prueba de kovan):
 ```
 
 pragma solidity ^0.6.7;
@@ -44,4 +43,4 @@ contract PriceConsumerV3 {
     }
 }
 ```
-[Try it on Remix](https://remix.ethereum.org/#version=soljson-v0.6.7+commit.b8d736ae.js&optimize=false&evmVersion=null&gist=0c5928a00094810d2ba01fd8d1083581)
+[Prueba en Remix](https://remix.ethereum.org/#version=soljson-v0.6.7+commit.b8d736ae.js&optimize=false&evmVersion=null&gist=0c5928a00094810d2ba01fd8d1083581)
