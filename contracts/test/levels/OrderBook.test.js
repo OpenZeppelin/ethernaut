@@ -1,18 +1,18 @@
-const ethers = require("ethers");
+/*eslint no-undef: "off"*/
+const ethers = require('ethers');
 
-const OrderBookFactory = artifacts.require("./levels/OrderBookFactory.sol");
-const OrderBook = artifacts.require("./levels/OrderBook.sol");
-const Ethernaut = artifacts.require("./Ethernaut");
-const testUtils = require("../utils/TestUtils");
-const BigNumber = ethers.utils.BigNumber
+const OrderBookFactory = artifacts.require('./levels/OrderBookFactory.sol');
+const OrderBook = artifacts.require('./levels/OrderBook.sol');
+const utils = require('../utils/TestUtils');
+const BigNumber = ethers.utils.BigNumber;
 const BN = Web3.utils.BN;
 
-contract("OrderBook", function () {
+contract('OrderBook', function () {
   let ethernaut, level, instance, implementation;
   let users;
 
   let player = new ethers.Wallet(
-    "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
+    '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80'
   );
   const decimals = 18;
   const scale = new BN(10).pow(new BN(decimals));
@@ -20,22 +20,22 @@ contract("OrderBook", function () {
   let tokens;
 
   beforeEach(async function () {
-    ethernaut = await Ethernaut.new();
+    ethernaut = await utils.getEthernautWithStatsProxy();
     implementation = await OrderBook.new();
     level = await OrderBookFactory.new(implementation.address);
     await ethernaut.registerLevel(level.address);
 
     users = {
-      Alice: generateWallet("Alice"),
-      Bob: generateWallet("Bob"),
-      Charlie: generateWallet("Charlie"),
-      Diane: generateWallet("Diane"),
-      Evelyn: generateWallet("Evelyn"),
+      Alice: generateWallet('Alice'),
+      Bob: generateWallet('Bob'),
+      Charlie: generateWallet('Charlie'),
+      Diane: generateWallet('Diane'),
+      Evelyn: generateWallet('Evelyn'),
     };
   });
 
   beforeEach(async function () {
-    instance = await testUtils.createLevelInstance(
+    instance = await utils.createLevelInstance(
       ethernaut,
       level.address,
       player.address,
@@ -45,7 +45,7 @@ contract("OrderBook", function () {
     tokens = await instance.getWhitelistedTokens();
   });
 
-  describe("Initialization", async function () {
+  describe('Initialization', async function () {
     // these are the balances after the factory has run the setup trades
     const initialScenarioBalances = {
       Alice: [70, 75, 90],
@@ -56,7 +56,7 @@ contract("OrderBook", function () {
     };
 
     Object.keys(initialScenarioBalances).map((name) =>
-    initialScenarioBalances[name].map((balance, idx) => {
+      initialScenarioBalances[name].map((balance, idx) => {
         it(`should give ${name} ${balance} units of token ${idx}`, async function () {
           const totalBalance = await instance.getTotalBalance(
             users[name].address,
@@ -67,8 +67,8 @@ contract("OrderBook", function () {
       })
     );
 
-    it("should not be completed", async function () {
-      const isComplete = await testUtils.submitLevelInstance(
+    it('should not be completed', async function () {
+      const isComplete = await utils.submitLevelInstance(
         ethernaut,
         level.address,
         instance.address,
@@ -78,21 +78,21 @@ contract("OrderBook", function () {
     });
   });
 
-  describe("Malleability attack", async function () {
+  describe('Malleability attack', async function () {
     // this is the first transaction we want to replay
     // it will force Evelyn to accept Diane's old offer, which will give Diane an extra 35 token[2]
     // so we can replay the next transaction
     // the details can be taken from the contract events
     const target0 = {
-      address: "0x421244a7a8809c73a9d6806b91e322c85e9574df",
+      address: '0x421244a7a8809c73a9d6806b91e322c85e9574df',
       sellIdx: 3,
       buyIdx: 1,
       sellAmount: new BigNumber(10).pow(decimals).mul(35),
       buyAmount: new BigNumber(10).pow(decimals).mul(10),
       nonce: 3,
       v: 27,
-      r: "0x1036d281926e4a2b4d173ee2b3dfc90a21fd7b56b90c448108aced34e873e81f",
-      s: "0x563eb8893d741a3a0de1ce5710ba1f0ba25426cb05fc36c2bcfeeb040faab0c5",
+      r: '0x1036d281926e4a2b4d173ee2b3dfc90a21fd7b56b90c448108aced34e873e81f',
+      s: '0x563eb8893d741a3a0de1ce5710ba1f0ba25426cb05fc36c2bcfeeb040faab0c5',
     };
 
     // this is the second transaction we want to replay
@@ -100,15 +100,15 @@ contract("OrderBook", function () {
     // note that this is much better than current market price
     // the details can be taken from the contract events
     const target1 = {
-      address: "0xb9a9B73CE551c06EEA59143B9BEdaA8195F517FF",
+      address: '0xb9a9B73CE551c06EEA59143B9BEdaA8195F517FF',
       sellIdx: 3,
       buyIdx: 2,
       sellAmount: new BigNumber(10).pow(decimals).mul(100),
       buyAmount: new BigNumber(10).pow(decimals).mul(80),
       nonce: 2,
       v: 28,
-      r: "0x303491a774261f8aff19a3e963ac4ad70a81751f6fc2b40d3a65b4a538a2f4c1",
-      s: "0x18a892cd45a22eb91b7c5393c7bce3e8a56ba3328d8531e108a5ecccb16c0d52",
+      r: '0x303491a774261f8aff19a3e963ac4ad70a81751f6fc2b40d3a65b4a538a2f4c1',
+      s: '0x18a892cd45a22eb91b7c5393c7bce3e8a56ba3328d8531e108a5ecccb16c0d52',
     };
 
     beforeEach(async function () {
@@ -143,8 +143,15 @@ contract("OrderBook", function () {
       const sellAmountBN = scale.mul(new BN(80));
       const buyAmountBN = scale.mul(new BN(100));
       const encoding = encoder.encode(
-        ["address", "uint256", "uint256", "uint256", "uint256", "uint256"],
-        [player.address, 2, 3, sellAmountBN.toString(), buyAmountBN.toString(), 1]
+        ['address', 'uint256', 'uint256', 'uint256', 'uint256', 'uint256'],
+        [
+          player.address,
+          2,
+          3,
+          sellAmountBN.toString(),
+          buyAmountBN.toString(),
+          1,
+        ]
       );
       const message = ethers.utils.keccak256(encoding);
       const hash = ethers.utils.arrayify(message);
@@ -165,13 +172,16 @@ contract("OrderBook", function () {
       await instance.withdraw(tokens[2], buyAmountBN, { from: player.address });
     });
 
-    it("should retrieve 100 units of token 2", async function () {
-      const balance = await instance.getExternalBalance(player.address, tokens[2]);
+    it('should retrieve 100 units of token 2', async function () {
+      const balance = await instance.getExternalBalance(
+        player.address,
+        tokens[2]
+      );
       assert(balance.eq(scale.mul(new BN(100))));
     });
 
-    it("should complete the challenge", async function () {
-      const isComplete = await testUtils.submitLevelInstance(
+    it('should complete the challenge', async function () {
+      const isComplete = await utils.submitLevelInstance(
         ethernaut,
         level.address,
         instance.address,
@@ -191,7 +201,7 @@ function generateWallet(seed) {
 function alternateSignature(r, s, v) {
   // This is a property of the secp256k1 elliptic curve
   const order =
-    "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141";
+    '0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141';
 
   return {
     r: r,

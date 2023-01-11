@@ -1,4 +1,5 @@
-pragma solidity ^0.6.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
 import "./base/Level.sol";
 import "./OrderBook.sol";
@@ -18,9 +19,8 @@ contract OrderBookFactory is Level {
     ///To hold deployed token addresses
     address[3] public tokenAdds = [address(0xA), address(0xB), address(0xC)];
 
-
     ///Dummy user addresses and their initial 3 token balances in 2 arrays. This also sets the initial balance for the player (msg.sender)
-    address payable[6] USERS = [
+    address[6] USERS = [
         0xE3EeaDaD850BCf71390961945d3Bae854C41d276,
         0xf8f398e1b3Be169f4A1aEA3553ad8c3550B58a5d,
         0xF0902f8573acfD685978450Bc2485c002471D4B0,
@@ -41,7 +41,7 @@ contract OrderBookFactory is Level {
     ///This level will be successful if the challenger achieves this many TokenC tokens
     uint256 VERIFY_THRESHOLD_TOKEN_C = 100 * scalar;
 
-    constructor(address implementation) public {
+    constructor(address implementation) {
         ///Setup checks
         require(
             USERS.length == INITIAL_TOKEN_BALANCES.length,
@@ -51,10 +51,11 @@ contract OrderBookFactory is Level {
         _implementation = implementation;
     }
 
-    function createInstance(address) public override payable returns (address) {
-
+    function createInstance(address) public payable override returns (address) {
         ///Deploy orderBook instance, which is really a proxy of a deployed OrderBook
-        OrderBook orderBook_instance = OrderBook(address(new OrderBookProxy(_implementation)));
+        OrderBook orderBook_instance = OrderBook(
+            address(new OrderBookProxy(_implementation))
+        );
 
         // initialize that newly created proxy instance
         orderBook_instance.initialize();
@@ -86,10 +87,12 @@ contract OrderBookFactory is Level {
     ///Does the player have enough TokenC tokens
     function validateInstance(address payable _instance, address _player)
         public
+        view
         override
         returns (bool)
     {
         return
-        OrderBook(_instance).getExternalBalance(_player, tokenAdds[2]) >= VERIFY_THRESHOLD_TOKEN_C;
+            OrderBook(_instance).getExternalBalance(_player, tokenAdds[2]) >=
+            VERIFY_THRESHOLD_TOKEN_C;
     }
 }

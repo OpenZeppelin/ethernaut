@@ -1,18 +1,14 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
-pragma experimental ABIEncoderV2;
+pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract OrderBook {
     using SafeMath for uint256;
-    
-    event TokenWhitelisted(
-        address indexed token,
-        uint256 index
-    );
 
-    event OrderFilled (
+    event TokenWhitelisted(address indexed token, uint256 index);
+
+    event OrderFilled(
         address indexed user,
         address indexed tokenIn,
         address indexed tokenOut,
@@ -32,17 +28,9 @@ contract OrderBook {
         bytes32 s
     );
 
-    event Deposit(
-        address indexed user,
-        address indexed token,
-        uint256 amount
-    );
+    event Deposit(address indexed user, address indexed token, uint256 amount);
 
-    event Withdraw(
-        address indexed user,
-        address indexed token,
-        uint256 amount
-    );
+    event Withdraw(address indexed user, address indexed token, uint256 amount);
 
     struct VerifiedSignature {
         address signer;
@@ -322,7 +310,7 @@ contract OrderBook {
         return _balancesReserved[user][token];
     }
 
-        /**
+    /**
      * Get the total balance that the user has inside the order book
      * @param user for balance inquiry
      * @param token for balance inquiry
@@ -443,7 +431,11 @@ contract OrderBook {
         _decreaseExternalBalance(user, token, amount);
     }
 
-    function _deposit(address user, address token, uint256 amount) private {
+    function _deposit(
+        address user,
+        address token,
+        uint256 amount
+    ) private {
         _increaseAvailableBalance(user, token, amount);
         emit Deposit(user, token, amount);
     }
@@ -453,7 +445,9 @@ contract OrderBook {
         address token,
         uint256 amount
     ) private {
-        _balancesAvailable[user][token] = _balancesAvailable[user][token].add(amount);
+        _balancesAvailable[user][token] = _balancesAvailable[user][token].add(
+            amount
+        );
     }
 
     function _decreaseAvailableBalance(
@@ -461,7 +455,9 @@ contract OrderBook {
         address token,
         uint256 amount
     ) private {
-        _balancesAvailable[user][token] = _balancesAvailable[user][token].sub(amount);
+        _balancesAvailable[user][token] = _balancesAvailable[user][token].sub(
+            amount
+        );
     }
 
     function _increaseReserveBalance(
@@ -469,7 +465,9 @@ contract OrderBook {
         address token,
         uint256 amount
     ) private {
-        _balancesReserved[user][token] = _balancesReserved[user][token].add(amount);
+        _balancesReserved[user][token] = _balancesReserved[user][token].add(
+            amount
+        );
     }
 
     function _decreaseReserveBalance(
@@ -477,7 +475,9 @@ contract OrderBook {
         address token,
         uint256 amount
     ) private {
-        _balancesReserved[user][token] = _balancesReserved[user][token].sub(amount);
+        _balancesReserved[user][token] = _balancesReserved[user][token].sub(
+            amount
+        );
     }
 
     function _increaseExternalBalance(
@@ -485,7 +485,9 @@ contract OrderBook {
         address token,
         uint256 amount
     ) private {
-        _balancesExternal[user][token] = _balancesExternal[user][token].add(amount);
+        _balancesExternal[user][token] = _balancesExternal[user][token].add(
+            amount
+        );
     }
 
     function _decreaseExternalBalance(
@@ -493,33 +495,191 @@ contract OrderBook {
         address token,
         uint256 amount
     ) private {
-        _balancesExternal[user][token] = _balancesExternal[user][token].sub(amount);
+        _balancesExternal[user][token] = _balancesExternal[user][token].sub(
+            amount
+        );
     }
-
-
 
     // the function below is used only to set up the scenario
     function setupScenario() external {
-
         require(msg.sender == _owner);
 
         ///Setup trades
-        placeOrder(0xE3EeaDaD850BCf71390961945d3Bae854C41d276, 1, 3, 10000000000000000000, 35000000000000000000, 1, 27, 0x796fb77f8f449caf9fa32c4241f8c08f67b6115aad013ab4054f21f08d595d0a, 0x1536fa7a5528b563c1180b0e22562754068e417173d270f41583cde1747f63c5);
-        placeOrder(0xb9a9B73CE551c06EEA59143B9BEdaA8195F517FF, 1, 3, 10000000000000000000, 35000000000000000000, 1, 28, 0xda654da61dd9c44f0f51fa81befd225261451a71114826fa067661b09023fafb, 0x30936a5bd7e2cdf7719c9aef514124e4285b0e752a4ed28e147d3340e114ba93);
-        placeOrder(0xE3EeaDaD850BCf71390961945d3Bae854C41d276, 2, 3, 45000000000000000000, 65000000000000000000, 2, 27, 0x807347916985693a9953efbe480f7114decfae746f9c98495c1372601194b130, 0x75acb4c862172d07487add961c604fb1294385bee27b45fed95c9b521b5b0198);
-        placeOrder(0xf8f398e1b3Be169f4A1aEA3553ad8c3550B58a5d, 1, 2, 15000000000000000000, 40000000000000000000, 1, 28, 0xee56a323e26efd80a101f2db48c4808ce49f92da90b72ff6fe0ad91c3b6a3987, 0x7405b790af41fc2cbefc0f96a5cec62f80bcc639d392a2580cc13af765160c69);
-        placeOrder(0xF0902f8573acfD685978450Bc2485c002471D4B0, 2, 1, 45000000000000000000, 15000000000000000000, 1, 27, 0xd1c2f516e1cfd12b20b7b3bd1fc2e2a3e1a84d1c68dc95f0e53149a4b23165d3, 0x69983ccdc22751e74d18310d9dc526d8059fb88b675cf03a363a407ab59f2657);
-        placeOrder(0xF0902f8573acfD685978450Bc2485c002471D4B0, 3, 1, 55000000000000000000, 20000000000000000000, 2, 28, 0x3c3ad10607ffd06a1cf8b90c051e2597f780cc0466f1e619e5177f0e805909bb, 0x70c72727a27d60a2b2f8dfdb3787408d8852eab1aa60d8d886a091f3ceb9725b);
-        placeOrder(0xb9a9B73CE551c06EEA59143B9BEdaA8195F517FF, 3, 2, 100000000000000000000, 80000000000000000000, 2, 28, 0x303491a774261f8aff19a3e963ac4ad70a81751f6fc2b40d3a65b4a538a2f4c1, 0x18a892cd45a22eb91b7c5393c7bce3e8a56ba3328d8531e108a5ecccb16c0d52);
-        placeOrder(0x421244A7A8809c73a9D6806b91E322c85e9574df, 1, 2, 15000000000000000000, 45000000000000000000, 1, 27, 0xd4d3f754d33c10d935e7c50c112e97ea4040333829eb5c90a337ef6c4f7d3a6c, 0x4ea451d00c9eb3d17752d7bd08a321c8db38da0e6aaef088dad3edc669295ae1);
-        placeOrder(0x421244A7A8809c73a9D6806b91E322c85e9574df, 2, 3, 80000000000000000000, 100000000000000000000, 2, 27, 0xc19b651dfd49b573eeb4e643e2551d862a8bf85737fbf38293ef8210ebe9c7a8, 0x1ec2df1020c9ab7102fae8affca82522eca388fa627374c1699fa3250213c534);
-        placeOrder(0x421244A7A8809c73a9D6806b91E322c85e9574df, 3, 1, 35000000000000000000, 10000000000000000000, 3, 27, 0x1036d281926e4a2b4d173ee2b3dfc90a21fd7b56b90c448108aced34e873e81f, 0x563eb8893d741a3a0de1ce5710ba1f0ba25426cb05fc36c2bcfeeb040faab0c5);
-        placeOrder(0xE3EeaDaD850BCf71390961945d3Bae854C41d276, 1, 3, 20000000000000000000, 55000000000000000000, 3, 28, 0x6be7be29bc95413cbfeba734e309d70ab203110c1988029b117418126bb8c91c, 0x0f8a5caaee09baf6247353d66ced59ce0ec534d3817397b2f60d1f8869c4bbb9);
-        placeOrder(0xE3EeaDaD850BCf71390961945d3Bae854C41d276, 1, 3, 20000000000000000000, 55000000000000000000, 4, 28, 0x4bd75675db408eda4a5b9335f34f49a1ec5e42ca29ba01331b2acba983fb0449, 0x7bd35f2193e9293203fb1c32042581c273ddb57ce540d5faf91d131c5b167d99);
-        placeOrder(0xb9a9B73CE551c06EEA59143B9BEdaA8195F517FF, 2, 1, 40000000000000000000, 15000000000000000000, 3, 27, 0x347b01aa24d1a1abcb184c06dfcddb35642f9d30b9094118773bc23a5a5840aa, 0x272a8fd029df047d72ae46755b34784ad02f71fc2cb6d25d787ac0312e7bab34);
-        placeOrder(0xf8f398e1b3Be169f4A1aEA3553ad8c3550B58a5d, 1, 2, 35000000000000000000, 80000000000000000000, 2, 27, 0xa7910bae6403166b76f0855180f264202ab01458b574e00211e7d0c7c66b8690, 0x7a89cd54bed193cbce9a7634fcfac76eee7fd2afb10a2a5be292c5e075fa4221);
-        placeOrder(0xE3EeaDaD850BCf71390961945d3Bae854C41d276, 2, 3, 30000000000000000000, 32000000000000000000, 5, 28, 0x2cf44235bfdf5701739720552e6fde0ae5ba90ebc62b82844b947af0dc0cc53b, 0x1b68e3f6e46d73e4d5a04b4215f6500d543cfbf12a09328c0303bf997c4176a6);
-        placeOrder(0x421244A7A8809c73a9D6806b91E322c85e9574df, 3, 2, 70000000000000000000, 80000000000000000000, 4, 28, 0x1563d2fd843b778fdab9be9045ed32e1d8319cf95762740a0b026f159193c89b, 0x77b28cd62da14933761197660041e3150c894d1e16eb560be20a9de08e8fbe66);
-
+        placeOrder(
+            0xE3EeaDaD850BCf71390961945d3Bae854C41d276,
+            1,
+            3,
+            10000000000000000000,
+            35000000000000000000,
+            1,
+            27,
+            0x796fb77f8f449caf9fa32c4241f8c08f67b6115aad013ab4054f21f08d595d0a,
+            0x1536fa7a5528b563c1180b0e22562754068e417173d270f41583cde1747f63c5
+        );
+        placeOrder(
+            0xb9a9B73CE551c06EEA59143B9BEdaA8195F517FF,
+            1,
+            3,
+            10000000000000000000,
+            35000000000000000000,
+            1,
+            28,
+            0xda654da61dd9c44f0f51fa81befd225261451a71114826fa067661b09023fafb,
+            0x30936a5bd7e2cdf7719c9aef514124e4285b0e752a4ed28e147d3340e114ba93
+        );
+        placeOrder(
+            0xE3EeaDaD850BCf71390961945d3Bae854C41d276,
+            2,
+            3,
+            45000000000000000000,
+            65000000000000000000,
+            2,
+            27,
+            0x807347916985693a9953efbe480f7114decfae746f9c98495c1372601194b130,
+            0x75acb4c862172d07487add961c604fb1294385bee27b45fed95c9b521b5b0198
+        );
+        placeOrder(
+            0xf8f398e1b3Be169f4A1aEA3553ad8c3550B58a5d,
+            1,
+            2,
+            15000000000000000000,
+            40000000000000000000,
+            1,
+            28,
+            0xee56a323e26efd80a101f2db48c4808ce49f92da90b72ff6fe0ad91c3b6a3987,
+            0x7405b790af41fc2cbefc0f96a5cec62f80bcc639d392a2580cc13af765160c69
+        );
+        placeOrder(
+            0xF0902f8573acfD685978450Bc2485c002471D4B0,
+            2,
+            1,
+            45000000000000000000,
+            15000000000000000000,
+            1,
+            27,
+            0xd1c2f516e1cfd12b20b7b3bd1fc2e2a3e1a84d1c68dc95f0e53149a4b23165d3,
+            0x69983ccdc22751e74d18310d9dc526d8059fb88b675cf03a363a407ab59f2657
+        );
+        placeOrder(
+            0xF0902f8573acfD685978450Bc2485c002471D4B0,
+            3,
+            1,
+            55000000000000000000,
+            20000000000000000000,
+            2,
+            28,
+            0x3c3ad10607ffd06a1cf8b90c051e2597f780cc0466f1e619e5177f0e805909bb,
+            0x70c72727a27d60a2b2f8dfdb3787408d8852eab1aa60d8d886a091f3ceb9725b
+        );
+        placeOrder(
+            0xb9a9B73CE551c06EEA59143B9BEdaA8195F517FF,
+            3,
+            2,
+            100000000000000000000,
+            80000000000000000000,
+            2,
+            28,
+            0x303491a774261f8aff19a3e963ac4ad70a81751f6fc2b40d3a65b4a538a2f4c1,
+            0x18a892cd45a22eb91b7c5393c7bce3e8a56ba3328d8531e108a5ecccb16c0d52
+        );
+        placeOrder(
+            0x421244A7A8809c73a9D6806b91E322c85e9574df,
+            1,
+            2,
+            15000000000000000000,
+            45000000000000000000,
+            1,
+            27,
+            0xd4d3f754d33c10d935e7c50c112e97ea4040333829eb5c90a337ef6c4f7d3a6c,
+            0x4ea451d00c9eb3d17752d7bd08a321c8db38da0e6aaef088dad3edc669295ae1
+        );
+        placeOrder(
+            0x421244A7A8809c73a9D6806b91E322c85e9574df,
+            2,
+            3,
+            80000000000000000000,
+            100000000000000000000,
+            2,
+            27,
+            0xc19b651dfd49b573eeb4e643e2551d862a8bf85737fbf38293ef8210ebe9c7a8,
+            0x1ec2df1020c9ab7102fae8affca82522eca388fa627374c1699fa3250213c534
+        );
+        placeOrder(
+            0x421244A7A8809c73a9D6806b91E322c85e9574df,
+            3,
+            1,
+            35000000000000000000,
+            10000000000000000000,
+            3,
+            27,
+            0x1036d281926e4a2b4d173ee2b3dfc90a21fd7b56b90c448108aced34e873e81f,
+            0x563eb8893d741a3a0de1ce5710ba1f0ba25426cb05fc36c2bcfeeb040faab0c5
+        );
+        placeOrder(
+            0xE3EeaDaD850BCf71390961945d3Bae854C41d276,
+            1,
+            3,
+            20000000000000000000,
+            55000000000000000000,
+            3,
+            28,
+            0x6be7be29bc95413cbfeba734e309d70ab203110c1988029b117418126bb8c91c,
+            0x0f8a5caaee09baf6247353d66ced59ce0ec534d3817397b2f60d1f8869c4bbb9
+        );
+        placeOrder(
+            0xE3EeaDaD850BCf71390961945d3Bae854C41d276,
+            1,
+            3,
+            20000000000000000000,
+            55000000000000000000,
+            4,
+            28,
+            0x4bd75675db408eda4a5b9335f34f49a1ec5e42ca29ba01331b2acba983fb0449,
+            0x7bd35f2193e9293203fb1c32042581c273ddb57ce540d5faf91d131c5b167d99
+        );
+        placeOrder(
+            0xb9a9B73CE551c06EEA59143B9BEdaA8195F517FF,
+            2,
+            1,
+            40000000000000000000,
+            15000000000000000000,
+            3,
+            27,
+            0x347b01aa24d1a1abcb184c06dfcddb35642f9d30b9094118773bc23a5a5840aa,
+            0x272a8fd029df047d72ae46755b34784ad02f71fc2cb6d25d787ac0312e7bab34
+        );
+        placeOrder(
+            0xf8f398e1b3Be169f4A1aEA3553ad8c3550B58a5d,
+            1,
+            2,
+            35000000000000000000,
+            80000000000000000000,
+            2,
+            27,
+            0xa7910bae6403166b76f0855180f264202ab01458b574e00211e7d0c7c66b8690,
+            0x7a89cd54bed193cbce9a7634fcfac76eee7fd2afb10a2a5be292c5e075fa4221
+        );
+        placeOrder(
+            0xE3EeaDaD850BCf71390961945d3Bae854C41d276,
+            2,
+            3,
+            30000000000000000000,
+            32000000000000000000,
+            5,
+            28,
+            0x2cf44235bfdf5701739720552e6fde0ae5ba90ebc62b82844b947af0dc0cc53b,
+            0x1b68e3f6e46d73e4d5a04b4215f6500d543cfbf12a09328c0303bf997c4176a6
+        );
+        placeOrder(
+            0x421244A7A8809c73a9D6806b91E322c85e9574df,
+            3,
+            2,
+            70000000000000000000,
+            80000000000000000000,
+            4,
+            28,
+            0x1563d2fd843b778fdab9be9045ed32e1d8319cf95762740a0b026f159193c89b,
+            0x77b28cd62da14933761197660041e3150c894d1e16eb560be20a9de08e8fbe66
+        );
     }
 }
