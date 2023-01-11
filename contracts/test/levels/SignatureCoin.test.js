@@ -33,7 +33,7 @@ contract('SignatureCoin', function (accounts) {
     // the signature corresponds to an arbitrary token transfer
     decimals = 18;
     scale = new BN(10).pow(new BN(decimals));
-    amount = new ethers.BigNumber.from(10).pow(decimals).mul(5);
+    amount = ethers.BigNumber.from(10).pow(decimals).mul(5);
     nonce = 1;
     const encoder = new ethers.utils.AbiCoder();
     const encoding = encoder.encode(
@@ -110,7 +110,7 @@ contract('SignatureCoin', function (accounts) {
     beforeEach(async function () {
       altSig = {
         r: sig.r,
-        s: new ethers.BigNumber.from(order).sub(sig.s).toHexString(),
+        s: ethers.BigNumber.from(order).sub(sig.s).toHexString(),
         v: 55 - sig.v, // map 27 to 28 and vice versa
       };
 
