@@ -96,7 +96,6 @@ class Stats extends React.Component {
       // woth noting that the sort is 'inplace'
       stats?.levelsSolved.sort((a, b) => +a.difficulty - +b.difficulty)
       this.setState({
-        ...this.state.solvedLevels,
         solvedLevels: stats?.levelsSolved
       })
     }
