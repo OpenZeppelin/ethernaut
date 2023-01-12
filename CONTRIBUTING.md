@@ -35,7 +35,7 @@ Currently, we are reviewing contributions of the following types:
 
 <!-- no toc -->
 - [Level Development](#level-development)
-- [Translations and Additional Languages](#translationsadditional-languages)
+- [Translations and Additional Languages](#translations-and-additional-languages)
 - [Documentation Updates and Corrections](#documentation-updates-and-corrections)
 
 If you would like to contribute in another way, please reach out to us via email: [ethernaut@zeppelin.solutions](mailto:ethernaut@zeppelin.solutions)
