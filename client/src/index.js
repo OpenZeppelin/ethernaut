@@ -46,27 +46,26 @@ if (!window.ethereum) {
   window.ethereum.request({ method: "eth_chainId" }).then((res) => {
     store.dispatch(actions.setNetworkId(parseInt(res)));
     store.dispatch(actions.loadGamedata());
-  })
-
-  // View entry point.
-  root.render(
-    <Provider store={store}>
-      <Router history={syncHistoryWithStore(history, store)}>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Header></Header>
-          <Routes>
-            <Route path={constants.PATH_HELP} element={<Help />} />
-            <Route path={constants.PATH_LEVEL} element={<Level />} />
-            <Route path={constants.PATH_STATS} element={<Stats />} />
-            <Route path={constants.PATH_LEADERBOARD} element={<Leaderboard />} />
-            <Route exact path="/" element={<App />} />
-            <Route path="/" element={<NotFound404 />} />
-          </Routes>
-        </Suspense>
-      </Router>
-    </Provider>
-  );
+  })  
 }
+
+root.render(
+  <Provider store={store}>
+    <Router history={syncHistoryWithStore(history, store)}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Header></Header>
+        <Routes>
+          <Route path={constants.PATH_HELP} element={<Help />} />
+          <Route path={constants.PATH_LEVEL} element={<Level />} />
+          <Route path={constants.PATH_STATS} element={<Stats />} />
+          <Route path={constants.PATH_LEADERBOARD} element={<Leaderboard />} />
+          <Route exact path="/" element={<App />} />
+          <Route path="/" element={<NotFound404 />} />
+        </Routes>
+      </Suspense>
+    </Router>
+  </Provider>
+);
 
 // Post-load actions.
 window.addEventListener("load", async () => {
