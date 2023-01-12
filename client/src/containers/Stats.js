@@ -97,7 +97,6 @@ class Stats extends React.Component {
 
       var stats = await this.collectPlayerStats(playerAddress);
       this.setState({
-        ...this.state.solvedLevels,
         solvedLevels: stats?.levelsSolved
       })
     }
