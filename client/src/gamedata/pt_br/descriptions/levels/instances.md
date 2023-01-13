@@ -26,7 +26,7 @@ Você também pode ver o seu saldo atual de ether digitando:
 
 `help()`
 
-Estes comandos serão super úteis durante o jogo.
+Estes comandos serão úteis durante o jogo.
 
 #### 4. O contrato ethernaut
 Digite o seguinte comando no console:
