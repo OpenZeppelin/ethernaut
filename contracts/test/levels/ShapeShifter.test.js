@@ -50,32 +50,10 @@ contract("ShapeShifter", function (accounts) {
         });
 
         await attacker.deploySmallContract();
-        console.log("Deployed small contract");
         await attacker.registerContract();
-        console.log("Registered contract");
-
-        const changingContractAddress = await attacker.changingContract();
-        console.log("Changing contract address: ", changingContractAddress);
-
-        const codeBefore = await ethers.provider.getCode(changingContractAddress)
-        console.log("Code length before: ", codeBefore.length);
-
         await attacker.destroyContract();
-        console.log("Destroyed contract");
-
-        await ethers.provider.send("evm_mine", []);
-        await ethers.provider.send("evm_mine", []);
-        const codeAfterDestroy = await ethers.provider.getCode(changingContractAddress)
-        console.log("Code length after destory", codeAfterDestroy.length);
-
         await attacker.deployLargeContract();
-        console.log("Deployed large contract");
-
-        const codeAfterRedeploy = await ethers.provider.getCode(changingContractAddress)
-        console.log("Code length after destory", codeAfterRedeploy.length);
-
         await attacker.unlock();
-        console.log("Unlocked");
 
         const completed = await utils.submitLevelInstance(
             ethernaut,
