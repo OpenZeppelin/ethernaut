@@ -1,4 +1,4 @@
-Este nível orienta você no básico de como jogar o jogo.
+Este nível mostra os passos para aprender a jogar o jogo.
 
 &nbsp;
 #### 1. Configure o MetaMask
