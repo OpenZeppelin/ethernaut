@@ -8,7 +8,7 @@ Configure a carteira da extensão e use o seletor de rede para apontar para a re
 #### 2. Abra o console do navegador
 Abra o console do seu navegador: `Tools > Developer Tools`.
 
-Você deve ver algumas mensagens do jogo. Uma delas deve indicar o endereço do seu jogador. Isso será importante durante o jogo! Você sempre pode ver o endereço do seu jogador digitando o seguinte comando:
+Você vai ver algumas mensagens do jogo. Uma delas deve indicar o endereço do seu jogador. Isso será importante durante o jogo! Você sempre pode ver o endereço do seu jogador digitando o seguinte comando:
 
 `player`
 
