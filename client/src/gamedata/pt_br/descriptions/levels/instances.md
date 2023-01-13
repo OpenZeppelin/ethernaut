@@ -49,7 +49,7 @@ Você pode ver quem é o dono do contrato ethernaut.
 #### 6. Obtenha ether para testes
 Para jogar o jogo, você vai precisar de alguns ethers de teste. A maneira mais fácil de obter ether na testnet é atráves de um faucet válido para a rede escolhida.
 
-Depois de ver algum valor no seu saldo, passe para a próxima etapa.
+Depois de obter algum valor no seu saldo, passe para a próxima etapa.
 
 #### 7. Obtendo a instância de um nível
 Ao jogar um nível, você não interage diretamente com o contrato ethernaut. Em vez disso, você solicita que ele gere a **instância de um nível** para você. Para fazer isso, clique no botão azul na parte inferior da página. Que tal fazer isso agora e voltar depois?
