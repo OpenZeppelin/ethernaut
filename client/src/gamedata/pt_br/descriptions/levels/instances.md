@@ -47,7 +47,7 @@ Entre outras coisas, a ABI do contrato expõe todos os métodos públicos do `Et
 Você pode ver quem é o dono do contrato ethernaut.
 
 #### 6. Obtenha ether para testes
-Para jogar o jogo, você vai precisar de alguns ethers de teste. A maneira mais fácil de obter  ether na testnet é atráves de um faucet válido para a rede escolhida.
+Para jogar o jogo, você vai precisar de alguns ethers de teste. A maneira mais fácil de obter ether na testnet é atráves de um faucet válido para a rede escolhida.
 
 Depois de ver algum valor no seu saldo, passe para a próxima etapa.
 
