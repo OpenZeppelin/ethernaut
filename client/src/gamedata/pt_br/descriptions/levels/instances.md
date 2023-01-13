@@ -54,7 +54,7 @@ Depois de ver algum valor no seu saldo, passe para a próxima etapa.
 #### 7. Obtendo a instância de um nível
 Ao jogar um nível, você não interage diretamente com o contrato ethernaut. Em vez disso, você solicita que ele gere a **instância de um nível** para você. Para fazer isso, clique no botão azul na parte inferior da página. Que tal fazer isso agora e voltar depois?
 
-O MetaMask deve solicitar para que você autorize a transação. Faça isso e você verá algumas mensagens no console. Note que isso está fazendo o deploy de um novo contrato na blockchain e pode levar alguns segundos, então por favor seja paciente quando solicitar novas instâncias dos níveis!
+O MetaMask deve solicitar que você autorize a transação. Faça isso e você verá algumas mensagens no console. Note que isso está fazendo o deploy de um novo contrato na blockchain e pode levar alguns segundos, então por favor seja paciente quando solicitar novas instâncias dos níveis!
 
 #### 8. Inspecionando o contrato
 Assim como você fez com o contrato ethernaut, você pode inspecionar a ABI desse contrato através do console usando a variável `contract`.
