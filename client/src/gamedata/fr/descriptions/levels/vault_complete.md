@@ -1,0 +1,3 @@
+Il est important de se rappeler que le fait de marquer une variable comme privée empêche uniquement les autres contrats d'y accéder. Les variables d'état marquées comme variables privées et locales sont toujours accessibles au public.
+
+Pour s'assurer que les données sont privées, elles doivent être cryptées avant d'être placées sur la blockchain. Dans ce scénario, la clé de déchiffrement ne doit jamais être envoyée en chaîne, car elle sera alors visible pour quiconque la recherche. Les [zk-SNARKs](https://blog.ethereum.org/2016/12/05/zksnarks-in-a-nutshell/) fournissent un moyen de déterminer si quelqu'un possède un paramètre secret, sans jamais avoir à révéler le paramètre.
