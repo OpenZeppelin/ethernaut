@@ -33,7 +33,7 @@ Digite o seguinte comando no console:
 
 `ethernaut`
 
-Este é o principal contrato inteligente do jogo. Você não precisa interagir com ele diretamente pelo console (pois o jogo fará isso para você) mas você pode se você quiser. Brincar com este objeto agora é uma ótima maneira de aprender como interagir com os outros contratos inteligentes do jogo.
+Este é o principal contrato inteligente do jogo. Você não precisa interagir com ele diretamente pelo console (pois o jogo fará isso por você), mas você pode se quiser. Brincar com este objeto agora é uma ótima maneira de aprender a interagir com os outros contratos inteligentes do jogo.
 
 Vá em frente e expanda o objeto ethernaut para ver o que tem dentro.
 
