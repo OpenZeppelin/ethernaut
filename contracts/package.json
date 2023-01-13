@@ -10,7 +10,7 @@
     "ethereumjs-util": "^7.0.10",
     "hardhat": "^2.9.2",
     "openzeppelin-contracts-06": "npm:@openzeppelin/contracts@3.4.2",
-    "openzeppelin-contracts-08": "npm:@openzeppelin/contracts@4.7.3",
+    "openzeppelin-contracts-08": "npm:@openzeppelin/contracts@4.8.1",
     "openzeppelin-test-helpers": "^0.5.1",
     "prompt": "^1.1.0",
     "web3": "1.8.0"
