@@ -12,7 +12,7 @@ Você vai ver algumas mensagens do jogo. Uma delas deve indicar o endereço do s
 
 `player`
 
-Fique atento a avisos e erros, eles podem fornecer informações importantes durante o jogo.
+Preste atenção aos avisos e erros. Eles podem oferecer informações importantes durante o jogo.
 
 #### 3. Use os helpers do console
 
