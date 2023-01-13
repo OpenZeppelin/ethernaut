@@ -1,6 +1,6 @@
 import React from 'react'
 import loadText from '../utils/textloader'
-import 'highlight.js/styles/atom-one-dark.css'
+import 'highlight.js/styles/vs2015-css.mjs'
 import hljs from 'highlight.js'
 
 class Code extends React.Component {
@@ -36,11 +36,12 @@ class Code extends React.Component {
 
   async loadContents(target) {
     if (!this._isMounted) return;
-    if(this.state.target === target) return
+    let targetText = typeof target == 'string' ? target : target.default;
+    if(this.state.target === targetText) return
     try {
-      const text = await loadText(target);
+      const text = await loadText(targetText);
       this.setState({
-        target: target,
+        target: targetText,
         source: text,
       });
     } catch (e) {

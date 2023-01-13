@@ -1,16 +1,14 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import '@openzeppelin/contracts/math/SafeMath.sol';
-import '@openzeppelin/contracts/access/Ownable.sol';
+import "openzeppelin-contracts-08/token/ERC20/IERC20.sol";
+import "openzeppelin-contracts-08/token/ERC20/ERC20.sol";
+import 'openzeppelin-contracts-08/access/Ownable.sol';
 
 contract Dex is Ownable {
-  using SafeMath for uint;
   address public token1;
   address public token2;
-  constructor() public {}
+  constructor() {}
 
   function setTokens(address _token1, address _token2) public onlyOwner {
     token1 = _token1;
@@ -46,12 +44,12 @@ contract Dex is Ownable {
 
 contract SwappableToken is ERC20 {
   address private _dex;
-  constructor(address dexInstance, string memory name, string memory symbol, uint256 initialSupply) public ERC20(name, symbol) {
+  constructor(address dexInstance, string memory name, string memory symbol, uint256 initialSupply) ERC20(name, symbol) {
         _mint(msg.sender, initialSupply);
         _dex = dexInstance;
   }
 
-  function approve(address owner, address spender, uint256 amount) public returns(bool){
+  function approve(address owner, address spender, uint256 amount) public {
     require(owner != _dex, "InvalidApprover");
     super._approve(owner, spender, amount);
   }

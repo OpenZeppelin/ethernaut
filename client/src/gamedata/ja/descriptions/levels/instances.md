@@ -1,13 +1,9 @@
 このレベルでは、ゲームをプレイするための基本的な方法を説明します。
 
-&nbsp;
+#### 1. Set up MetaMask
 
-#### 1. MetaMask の設定
-
-まだお持ちでない方は、[MetaMask ブラウザ拡張機能](https://metamask.io/)をインストールしてください（デスクトップマシンの Chrome、Firefox、Brave、Opera にインストール）。
-拡張機能のウォレットを設定し、ネットワークセレクターを使って、拡張機能のインターフェースの上にある「Rinkeby test network」を指定します。
-
-&nbsp;
+If you don't have it already, install the [MetaMask browser extension](https://metamask.io/) (in Chrome, Firefox, Brave or Opera on your desktop machine).
+Set up the extension's wallet and use the network selector to point to the preferred network in the top left of the extension's interface. Alternatively you can use the UI button to switch between networks. If you select an unsupported network, the game will notify you and bring you to the default Goerli testnet.
 
 #### 2. ブラウザのコンソールを開く
 
@@ -20,8 +16,6 @@ player
 ```
 
 ゲーム中に重要な情報が得られる可能性があるので、警告やエラーに注意してください。
-
-&nbsp;
 
 #### 3. コンソールヘルパーを使う
 
@@ -41,8 +35,6 @@ help()
 
 これらは、ゲームプレイ中に超便利です。
 
-&nbsp;
-
 #### 4. ethernaut のコントラクト
 
 コンソールで以下のコマンドを入力します。
@@ -54,8 +46,6 @@ ethernaut
 これはこのゲームのメインのスマートコントラクトです。コンソールから直接操作する必要はありませんが（このアプリがやってくれるので）、やりたければできます。今、このオブジェクトを使って遊ぶことは、ゲームの他のスマートコントラクトとのやりとりを学ぶのに最適な方法です。
 
 ethernaut オブジェクトを展開して、中身を見てみましょう。
-
-&nbsp;
 
 #### 5. ABI とのインタラクト
 
@@ -71,15 +61,11 @@ ethernaut.owner()
 
 ethernaut コントラクトの owner が誰であるかを見ることができます。
 
-&nbsp;
-
 #### 6. テスト用 ether の入手
 
-ゲームをプレイするには、テスト用の ether が必要です。テストネットの ether を入手する最も簡単な方法は、[これに](https://faucet.rinkeby.io/), [これに](https://faucets.chain.link/rinkeby) または [これに fauset](https://faucet.paradigm.xyz/).
+To play the game, you will need test ether. The easiest way to get some testnet ether is via a valid faucet for your chosen network.
 
-残高に ether が表示されたら、次のステップに進んでください。
-
-&nbsp;
+Once you see some coins in your balance, move on to the next step.
 
 #### 7. レベルインスタンスの取得
 
@@ -87,13 +73,9 @@ ethernaut コントラクトの owner が誰であるかを見ることができ
 
 MetaMask からトランザクションを承認するよう促されるはずです。そうすると、コンソールにいくつかのメッセージが表示されるはずです。これはブロックチェーンに新しいコントラクトをデプロイするもので、数秒かかることがありますので、新しいレベルのインスタンスをリクエストする際には気長にお待ちください
 
-&nbsp;
-
 #### 8. コントラクトの検査
 
 ethernaut コントラクトで行ったように、`contract`変数を使ってコンソールからこのコントラクトの ABI を調べることができます。
-
-&nbsp;
 
 #### 9. コントラクトとインタラクトしてレベルをクリアする
 
