@@ -22,6 +22,8 @@
     "network": "cd contracts && hardhat node",
     "build:ethernaut": "yarn compile:contracts && yarn --cwd client build",
     "start:ethernaut": "cd client && yarn start",
-    "test:contracts": "cd contracts && hardhat test"
+    "test:contracts": "cd contracts && hardhat test",
+    "leaderboard:oldCrawler": "node client/leaderboard/scripts/crawlers/crawlHistoricalData/index.js",
+    "leaderboard:newCrawler": "node client/leaderboard/scripts/crawlers/crawlNewData/index.cjs"
   }
 }
