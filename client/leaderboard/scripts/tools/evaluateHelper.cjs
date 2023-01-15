@@ -154,17 +154,12 @@ const evaluateTotalDifficultyFaced = (playerProfile, network) => {
 
 const evaluateDifficultyInThisStatisticsEmit = async (network, log, web3, nodeProvider) => {
   const decodedAddress = await evaluateDecodedLevelAddress(network, log, web3, nodeProvider)
-  console.log("--------------------- decoded address is " + decodedAddress)
-  console.log("blockHash is " + log.blockHash)
   const difficultyMap = require(`../../networks/${String(network.name).toLowerCase()}/difficultyMap${network.name}.json`);
 
   const thisDifficultyProfileIndex = difficultyMap.findIndex(
     (matchingLevel) =>
       decodedAddress == matchingLevel.address
   );
-  console.log("difficulty profile index is " + thisDifficultyProfileIndex);
-  console.log("difficulty faced here was " + difficultyMap[thisDifficultyProfileIndex].difficulty)
-  console.log("level name here is " + difficultyMap[thisDifficultyProfileIndex].name)
   return difficultyMap[thisDifficultyProfileIndex].difficulty;
 }
 
