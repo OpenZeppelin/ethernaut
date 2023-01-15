@@ -1,0 +1,171 @@
+[
+  {
+    "player": "0x01BC480913e709cba367F1c71D8dAaBd84A6dCAE",
+    "levels": [
+      {
+        "levelAddress": "0x2a24869323C0B13Dff24E196Ba072dC790D52479",
+        "isCompleted": true,
+        "timeCreated": 1668648219,
+        "timeSolved": 1668652221,
+        "timeTaken": 4002
+      }
+    ]
+  },
+  {
+    "player": "0xA12f64cA80Bd24DbcC49F022E2cF06B94e5A50D3",
+    "levels": [
+      {
+        "levelAddress": "0x0AFc648f6D22390d6642Ebc7e1579fC480FE2278",
+        "isCompleted": true,
+        "timeCreated": 1668658245,
+        "timeSolved": 1668662723,
+        "timeTaken": 4478
+      },
+      {
+        "levelAddress": "0xB4802b28895ec64406e45dB504149bfE79A38A57",
+        "isCompleted": true,
+        "timeCreated": 1668672325,
+        "timeSolved": 1668672661,
+        "timeTaken": 336
+      }
+    ]
+  },
+  {
+    "player": "0xF9d5230B1AA44Dba47a96682D0CdC8Be5d38f34f",
+    "levels": [
+      {
+        "levelAddress": "0x2a24869323C0B13Dff24E196Ba072dC790D52479",
+        "isCompleted": true,
+        "timeCreated": 1668668374,
+        "timeSolved": 1668668986,
+        "timeTaken": 612
+      },
+      {
+        "levelAddress": "0xD2e5e0102E55a5234379DD796b8c641cd5996Efd",
+        "isCompleted": false,
+        "timeCreated": 1668672195,
+        "timeSolved": null,
+        "timeTaken": 0
+      }
+    ]
+  },
+  {
+    "player": "0x68Ead86e7a6f6622DDFFCAc727333b121F931D5a",
+    "levels": [
+      {
+        "levelAddress": "0x2a24869323C0B13Dff24E196Ba072dC790D52479",
+        "isCompleted": false,
+        "timeCreated": 1668684516,
+        "timeSolved": null,
+        "timeTaken": 0
+      },
+      {
+        "levelAddress": "0x3049C00639E6dfC269ED1451764a046f7aE500c6",
+        "isCompleted": false,
+        "timeCreated": 1668680196,
+        "timeSolved": null,
+        "timeTaken": 0
+      }
+    ]
+  },
+  {
+    "player": "0x91856baBA20a9E58c6B6AE68215fA9086B7F9a55",
+    "levels": [
+      {
+        "levelAddress": "0x3049C00639E6dfC269ED1451764a046f7aE500c6",
+        "isCompleted": false,
+        "timeCreated": 1668682482,
+        "timeSolved": null,
+        "timeTaken": 0
+      },
+      {
+        "levelAddress": "0x2a24869323C0B13Dff24E196Ba072dC790D52479",
+        "isCompleted": false,
+        "timeCreated": 1668682602,
+        "timeSolved": null,
+        "timeTaken": 0
+      }
+    ]
+  },
+  {
+    "player": "0x1C6818Ebca20c3e8FD1a4f432dFc8e98561CF73d",
+    "levels": [
+      {
+        "levelAddress": "0x2a24869323C0B13Dff24E196Ba072dC790D52479",
+        "isCompleted": false,
+        "timeCreated": 1668684726,
+        "timeSolved": null,
+        "timeTaken": 0
+      }
+    ]
+  },
+  {
+    "player": "0x68442589f40E8Fc3a9679dE62884c85C6E524888",
+    "levels": [
+      {
+        "levelAddress": "0x36E92B2751F260D6a4749d7CA58247E7f8198284",
+        "isCompleted": false,
+        "timeCreated": 1668692574,
+        "timeSolved": null,
+        "timeTaken": 0
+      }
+    ]
+  },
+  {
+    "player": "0xC9cc07F1dc7781120a7749DBA0079eA0282358c1",
+    "levels": [
+      {
+        "levelAddress": "0xb4B157C7c4b0921065Dded675dFe10759EecaA6D",
+        "isCompleted": false,
+        "timeCreated": 1668694654,
+        "timeSolved": null,
+        "timeTaken": 0
+      },
+      {
+        "levelAddress": "0xcAac6e4994c2e21C5370528221c226D1076CfDAB",
+        "isCompleted": false,
+        "timeCreated": 1668695380,
+        "timeSolved": null,
+        "timeTaken": 0
+      }
+    ]
+  },
+  {
+    "player": "0x313693044c9E3F6956F0e89BDa54e8e192493D28",
+    "levels": [
+      {
+        "levelAddress": "0x3049C00639E6dfC269ED1451764a046f7aE500c6",
+        "isCompleted": false,
+        "timeCreated": 1668693586,
+        "timeSolved": "not yet solved",
+        "timeTaken": 0
+      },
+      {
+        "levelAddress": "0x2a24869323C0B13Dff24E196Ba072dC790D52479",
+        "isCompleted": false,
+        "timeCreated": 1668695892,
+        "timeSolved": null,
+        "timeTaken": 0
+      }
+    ]
+  },
+  {
+    "player": "0x735CFbfD1b396CeB6DE57ACc19beE013943400c0",
+    "levels": [
+      {
+        "levelAddress": "0x3049C00639E6dfC269ED1451764a046f7aE500c6",
+        "isCompleted": false,
+        "timeCreated": 1668695410,
+        "timeSolved": null,
+        "timeTaken": 0
+      },
+      {
+        "levelAddress": "0x2a24869323C0B13Dff24E196Ba072dC790D52479",
+        "isCompleted": false,
+        "timeCreated": 1668696197,
+        "timeSolved": null,
+        "timeTaken": 0
+      }
+    ]
+  }
+]
