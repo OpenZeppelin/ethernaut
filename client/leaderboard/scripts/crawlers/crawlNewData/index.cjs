@@ -12,9 +12,7 @@ const freshEntriesCrawlPath = "client/leaderboard/boards/freshEntriesCrawl.json"
 
 
 const crawlForFreshEntriesAndUpdatePlayersBoard = async () => {
-
   fs.writeFileSync(freshEntriesCrawlPath, JSON.stringify([]));
-
   for (network of networks) {
     await crawlForFreshEntries(network, web3, logger, freshEntriesCrawlPath);
     await logger(
@@ -24,9 +22,7 @@ const crawlForFreshEntriesAndUpdatePlayersBoard = async () => {
   await logger(
     "Did you bring your towel, punk?! Fresh entries were crawled and the allPlayersBoard is ready to be updated!!"
   );
-  
   updatePlayersBoard();
-
   await logger(
     ".........deck the halls, ya filthy animal! The allPlayersBoard is now updated! Let's #writeLeaderBoard !"
   );

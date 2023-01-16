@@ -8,16 +8,13 @@ const processFilteredData = (filteredData) => {
     const existingPlayerRecordIndex = processedData.findIndex(
       (filteredGame) => filteredGame.player === player
     );
-
     if (!!existingPlayerRecord) {
       // player exists already, check levels
-
       // has player done level yet?
       const existingEntryForLevel = existingPlayerRecord.levels.find(
         (existingLevel) => game.level === existingLevel.levelAddress
       );
       let updatedLevels = [];
-
       // if there is existing level entry for user, and it is not completed, lets update level array if not add a new level
       if (existingEntryForLevel && !existingEntryForLevel.isCompleted) {
         updatedLevels = existingPlayerRecord.levels.map((existingLevel) => {
@@ -67,8 +64,6 @@ const processFilteredData = (filteredData) => {
         console.log("adding new level");
       }
       existingPlayerRecord.levels = updatedLevels;
-      console.log("existing playerRecord updated");
-
       // overwrite original player record with player containing new level records
       processedData[existingPlayerRecordIndex] = existingPlayerRecord;
     } else {
@@ -86,18 +81,14 @@ const processFilteredData = (filteredData) => {
             : "not yet solved",
         timeTaken: 0,
       };
-
       const newProcessedEntry = {
         player,
         levels: [newLevel],
       };
-
       processedData.push(newProcessedEntry);
       console.log("newProcessedEntry written");
     }
   });
-
   return processedData;
 };
-
 module.exports = processFilteredData;

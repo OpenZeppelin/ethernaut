@@ -27,9 +27,7 @@ const generateNetworkBoard = async (network, log) => {
   const toBlock = network.toBlock;
   const switchoverBlock = network.switchoverBlock;
   const mappingData = require(`../../../networks/${String(network.name).toLowerCase()}/levelsMapping.json`);
-
   const nodeProvider = initialiseNodeProvider(network, logger);
-
   const blockchainLogs = await callBlockChain(
     network,
     nodeProvider,
@@ -38,11 +36,8 @@ const generateNetworkBoard = async (network, log) => {
     switchoverBlock,
     log
   );
-
   await logger("Cwor blimey, " + blockchainLogs.length + " logs have been found");
-
   const web3 = new Web3();
-
   const filteredLogs = await filterLogs(
     blockchainLogs,
     nodeProvider,
@@ -51,21 +46,15 @@ const generateNetworkBoard = async (network, log) => {
     web3,
     mappingData
   );
-
   const filteredDataPath = `../../../networks/${String(network.name).toLowerCase()}/filtered${network.name}Data.json`;
   fs.writeFileSync(filteredDataPath, JSON.stringify(filteredLogs));
-
   await logger("gracious me, " + filteredLogs.length + " logs have been written");
-
   const processedData = processFilteredData(filteredLogs);
-
   await logger(
     "golly gosh, " + processedData.length + " logs have been processed"
   );
-
   const processedDataPath = `../../../networks/${String(network.name).toLowerCase()}/${network.name}PlayersBoard.json`;
   fs.writeFileSync(processedDataPath, JSON.stringify(processedData));
-
   await logger(
     "oh my, scores on the doors for " + network.name + " have been compiled"
   );

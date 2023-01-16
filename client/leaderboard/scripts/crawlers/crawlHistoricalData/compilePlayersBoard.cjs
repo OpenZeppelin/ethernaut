@@ -11,16 +11,12 @@ const compileAllPlayersBoard = async (networks, logger) => {
     const networkBoard = JSON.parse(networkBoardJson);
     const networkBoardWithTotals = evaluateHistoricalProfile(networkBoard, network);
     networkBoardWithTotals.forEach((profile) => {
-      
         allPlayers.push(profile);
-      
     });
-
     await logger(
       `ohhh this is exciting - we have moved the ${network.name} network board to the global all players board!`
     );
   }
-
   fs.writeFileSync(dataPath, JSON.stringify(allPlayers));
 };
 
