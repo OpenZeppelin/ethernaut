@@ -15,7 +15,7 @@ You can find the current, official version at: [ethernaut.openzeppelin.com](http
 
 There are three components to Ethernaut that are needed to run/deploy in order to work with it locally:
 
-- Test Network - A testnet that is running locally, like gnache, hardhat network, geth, etc
+- Test Network - A testnet that is running locally, like ganache, hardhat network, geth, etc
 - Contract Deployment - In order to work with the contracts, they must be deployed to the locally running testnet
 - The Client/Frontend - This is a React app that runs locally and can be accessed on localhost:3000
 
@@ -41,7 +41,7 @@ In order to install, build, and run Ethernaut locally, follow these instructions
     yarn compile:contracts
     ```
 
-5. Set client/src/constants.js ACTIVE_NETWORK to NETWORKS.LOCAL
+5. Set `client/src/constants.js` `ACTIVE_NETWORK` to `NETWORKS.LOCAL`
 6. Deploy contracts
 
     ```bash
@@ -54,12 +54,12 @@ In order to install, build, and run Ethernaut locally, follow these instructions
     yarn start:ethernaut
     ```
 
-### Running locally (ropsten network)
+### Running locally (goerli network)
 
 The same as using the local network but steps 2, 3 and 6 are not necessary.
 
 In this case, replace point 5 with:
-5. Set client/src/constants.js ACTIVE_NETWORK to NETWORKS.ROPSTEN
+5. Set `client/src/constants.js` `ACTIVE_NETWORK` to `NETWORKS.GOERLI`
 
 ### Running tests
 
@@ -75,17 +75,20 @@ yarn build:ethernaut
 
 ### Deploying
 
-To deploy the contracts on ropsten, first set the ACTIVE_NETWORK variable in constants.js and then edit gamedata.json. This file keeps a history of all level instances in each level data's deployed_ropsten array. To deploy a new instance, add an "x" entry to the array, like so:
+You will normally need to deploy it on a local network, for this you can just run `yarn deploy:contracts` and all the contracts will be deployed on your local node running on `localhost:8545` and you will be able to check each level address in the `deploy.local.json` file.
+
+To deploy the contracts on Goerli, first set the `ACTIVE_NETWORK` variable in `constants.js` and then edit `deploy.goerli.json`. This file keeps a history of all level and contract instances. To deploy a new instance, add an "x" entry to the array, like so:
 
 ```json
-"deployed_ropsten": [
-  "x",
-  "0x4b1d5eb6cd2849c7890bcacd63a6855d1c0e79d5",
-  "0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c"
-],
+{
+  "0": "x",
+  "1": "0x4b1d5eb6cd2849c7890bcacd63a6855d1c0e79d5",
+  "2": "0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c",
+  ...
+},
 ```
 
-Then run `yarn deploy:contracts`. This action will effectively deploy a new version of the level data item whose deployed_ropsten array was updated, and will point the ethernaut dapp to use this new deployed contract instance for the level.
+Then run `yarn deploy:contracts`.
 
 ## Contributing
 

@@ -1,8 +1,8 @@
 这一关可以帮助你初步了解如何体验这个游戏
 
-#### 1. Set up MetaMask
-If you don't have it already, install the [MetaMask browser extension](https://metamask.io/) (in Chrome, Firefox, Brave or Opera on your desktop machine).
-Set up the extension's wallet and use the network selector to point to the preferred network in the top left of the extension's interface. Alternatively you can use the UI button to switch between networks. If you select an unsupported network, the game will notify you and bring you to the default Goerli testnet.
+#### 1. 配置MetaMask
+如果你还没有，请安装[MetaMask浏览器扩展](https://metamask.io/)（在电脑上的Chrome、Firefox、Brave或Opera浏览器中)。
+配置好浏览器扩展的钱包，然后在扩展界面的左上角选择偏好的网络，或者你也可以用网页界面的按钮来切换网络。如果你选择了一个不支持的网络，这个游戏将提示你并且为你切换到默认的Goerli测试网络。
 
 #### 2. 打开浏览器的控制台
 打开浏览器控制台: `Tools > Developer Tools`.
@@ -48,10 +48,10 @@ ethernaut.owner()
 ######  如果你使用的是 Chrome v62, 可以使用 `await ethernaut.owner()`.
 你可以看到这个 ethernaut 合约的所有者是谁, 当然不是你，哈哈 XD.
 
-#### 6. 获得测试ether
-To play the game, you will need test ether. The easiest way to get some testnet ether is via a valid faucet for your chosen network.
+#### 6. 获得测试以太币
+你需要用测试以太币来体验这个游戏。获得测试网络以太币最容易的方法就是通过你选择的网络的有效的水龙头领取。
 
-Once you see some coins in your balance, move on to the next step.
+当你看到你的余额中有些币的时候继续到下一步。
 
 #### 7. 获得这个关卡的实例
 当进行这个关卡的时候，你不直接和 ethernaut 合约互动。而是请求生成一个 **level instance** .为了完成这个步骤，你需要点击页面下方的蓝色按钮. 去点他点他点他，然后再回来!

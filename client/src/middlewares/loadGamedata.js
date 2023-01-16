@@ -1,6 +1,6 @@
 import * as actions from '../actions';
-import * as constants from '../constants';
 import { loadTranslations } from '../utils/translations'
+import { getDeployData } from '../utils/deploycontract'
 // import { store, history } from "./../store";
 let language = localStorage.getItem('lang')
 let strings = loadTranslations(language)
@@ -11,11 +11,8 @@ const loadGameData = store => next => action => {
   try {
     const network_id = store.getState().network.networkId
     if (network_id) {
-
-      const active_network = constants.ID_TO_NETWORK[network_id]
-      const network = active_network;
       const data = require(`../gamedata/gamedata.json`)
-      const deployData = require(`../gamedata/deploy.${network}.json`)
+      const deployData = getDeployData(network_id);
       const levelsIn = data.levels;
       const levelsOut = [];
       for (let i = 0; i < levelsIn.length; i++) {
@@ -27,7 +24,16 @@ const loadGameData = store => next => action => {
       action.ethernautAddress = deployData.ethernaut
       action.levels = levelsOut;
     } else {
-      console.log("Network ID is not set until now!")
+      const data = require(`../gamedata/gamedata.json`);
+      const levelsIn = data.levels;
+      const levelsOut = [];
+      for (let i = 0; i < levelsIn.length; i++) {
+        const level = levelsIn[i];
+        level.idx = i;
+        levelsOut.push(level);
+      }
+      action.levels = levelsOut;
+      // console.log("Network ID is not set until now!")
     }
     // Load levels and add a bit of post processing...
 

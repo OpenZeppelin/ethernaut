@@ -3,7 +3,7 @@ Contract addresses are deterministic and are calculated by `keccak256(address, n
 
 Because of this, one can send ether to a pre-determined address (which has no private key) and later create a contract at that address which recovers the ether. This is a non-intuitive and somewhat secretive way to (dangerously) store ether without holding a private key. 
 
-An interesting [blog post](http://martin.swende.se/blog/Ethereum_quirks_and_vulns.html) by Martin Swende details potential use cases of this. 
+An interesting [blog post](https://swende.se/blog/Ethereum_quirks_and_vulns.html) by Martin Swende details potential use cases of this. 
 
 If you're going to implement this technique, make sure you don't miss the nonce, or your funds will be lost forever. 
 

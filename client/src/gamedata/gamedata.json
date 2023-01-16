@@ -12,7 +12,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "0",
-      "instanceGas": 800000,
+      "instanceGas": 1500000,
       "author": "ajsantander"
     },
     {
@@ -208,7 +208,15 @@
       "deployFunds": 0,
       "deployId": "13",
       "instanceGas": 400000,
-      "author": "0age"
+      "author": "0age",
+      "verificationDetails": {
+        "contractName": "GatekeeperOne",
+        "compilerVersion": "v0.8.12+commit.f00d7308",
+        "optimization": "1",
+        "runs": "1000",
+        "licenseTypeId": "3",
+        "constructorArguements": ""
+      }
     },
     {
       "name": "Gatekeeper Two",
@@ -387,7 +395,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "25",
-      "instanceGas": 5000000,
+      "instanceGas": 2000000,
       "author": "openzeppelin"
     },
     {
@@ -403,7 +411,10 @@
       "deployFunds": 0,
       "deployId": "26",
       "instanceGas": 5000000,
-      "poweredBy": {"src": "../../imgs/forta.svg", "href": "https://forta.org"},
+      "poweredBy": {
+        "src": "../../imgs/forta.svg",
+        "href": "https://forta.org"
+      },
       "author": "openzeppelin&forta"
     },
     {
@@ -418,8 +429,23 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "27",
-      "instanceGas": 10000000,
+      "instanceGas": 2500000,
       "author": "ericnordelo"
+    },
+    {
+      "name": "Gatekeeper Three",
+      "created": "2019-02-02",
+      "difficulty": "6",
+      "description": "gatekeeper3.md",
+      "completedDescription": "gatekeeper3_complete.md",
+      "levelContract": "GatekeeperThreeFactory.sol",
+      "instanceContract": "GatekeeperThree.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "28",
+      "instanceGas": 1000000,
+      "author": "KStasi"
     }
   ]
 }

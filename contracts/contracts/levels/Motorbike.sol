@@ -2,8 +2,8 @@
 
 pragma solidity <0.7.0;
 
-import "@openzeppelin/contracts/utils/Address.sol";
-import "@openzeppelin/contracts/proxy/Initializable.sol";
+import "openzeppelin-contracts-06/utils/Address.sol";
+import "openzeppelin-contracts-06/proxy/Initializable.sol";
 
 contract Motorbike {
     // keccak-256 hash of "eip1967.proxy.implementation" subtracted by 1

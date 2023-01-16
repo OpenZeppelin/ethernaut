@@ -1,5 +1,5 @@
-This level exploits the fact that the EVM doesn't validate an array's ABI-encoded length vs its actual payload. 
+Этот уровень эксплойтит факт того, что EVM не проверяет соответствие длины массива в кодировке ABI его фактической используемости. 
 
-Additionally, it exploits the arithmetic underflow of array length, by expanding the array's bounds to the entire storage area of `2^256`. The user is then able to modify all contract storage.
+Кроме того, он использует арифметический недостаток способа хранения длины массива, расширяя границы массива до всей области storage `2 ^ 256`. Затем пользователь может изменить весь storage контракта.
 
-Both vulnerabilities are inspired by 2017's [Underhanded coding contest](https://medium.com/@weka/announcing-the-winners-of-the-first-underhanded-solidity-coding-contest-282563a87079)
+Обе уязвимости вдохновлены [Underhanded coding contest](https://medium.com/@weka/announcing-the-winners-of-the-first-underhanded-solidity-coding-contest-282563a87079)
