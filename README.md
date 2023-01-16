@@ -75,17 +75,20 @@ yarn build:ethernaut
 
 ### Deploying
 
-To deploy the contracts on goerli, first set the ACTIVE_NETWORK variable in constants.js and then edit gamedata.json. This file keeps a history of all level instances in each level data's deployed_goerli array. To deploy a new instance, add an "x" entry to the array, like so:
+You will normally need to deploy it on a local network, for this you can just run `yarn deploy:contracts` and all the contracts will be deployed on your local node running on `localhost:8545` and you will be able to check each level address in the `deploy.local.json` file.
+
+To deploy the contracts on Goerli, first set the `ACTIVE_NETWORK` variable in `constants.js` and then edit `deploy.goerli.json`. This file keeps a history of all level and contract instances. To deploy a new instance, add an "x" entry to the array, like so:
 
 ```json
-"deployed_goerli": [
-  "x",
-  "0x4b1d5eb6cd2849c7890bcacd63a6855d1c0e79d5",
-  "0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c"
-],
+{
+  "0": "x",
+  "1": "0x4b1d5eb6cd2849c7890bcacd63a6855d1c0e79d5",
+  "2": "0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c",
+  ...
+},
 ```
 
-Then run `yarn deploy:contracts`. This action will effectively deploy a new version of the level data item whose deployed_goerli array was updated, and will point the ethernaut dapp to use this new deployed contract instance for the level.
+Then run `yarn deploy:contracts`.
 
 ## Contributing
 
