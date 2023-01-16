@@ -21,7 +21,7 @@ const filterLogs = async (
         eventType:
           String(log.topics[0]) ===
           evaluateCurrentSolveInstanceHex(
-            /*fromBlock*/ log.blockNumber,
+            log.blockNumber,
             switchoverBlock
           )
             ? "LevelCompleted"
@@ -37,13 +37,11 @@ const filterLogs = async (
           mappingDataPath
         ),
       };
-      // console.log("filteredLog.level", filteredLog.level, log.blockNumber);
       filteredData.push(filteredLog);
     } catch (error) {
       console.log(error);
     }
   }
-
   return filteredData;
 };
 

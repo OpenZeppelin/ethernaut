@@ -2,9 +2,7 @@ const networkDataPath = "../../../utils/networkDetails.json";
 const fs = require("fs");
 
 const updateNetworkDetails = async (network, upperBlock) => {
-  
   const networkDetails = require(networkDataPath);
-
   const updatedNetworkDetails = networkDetails.map((networkDetail) => {
     if (networkDetail.name === network.name) {
       return {
@@ -14,7 +12,6 @@ const updateNetworkDetails = async (network, upperBlock) => {
     }
     return networkDetail;
   });
-
   console.log("Updating lastFromBlock in networkDetails for ", network.name);
   fs.writeFileSync(networkDataPath, JSON.stringify(updatedNetworkDetails));
 };

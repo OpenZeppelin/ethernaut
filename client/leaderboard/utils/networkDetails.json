@@ -1,17 +1,5 @@
 [
   {
-    "name": "Goerli",
-    "networkDecleration": "Network.eth-goerli",
-    "oldAddress": "0x42E7014a9D1f6765e76fA2e69532d808F2fe27E3",
-    "newAddress": "0xD2e5e0102E55a5234379DD796b8c641cd5996Efd",
-    "fromBlock": 7535901,
-    "switchoverBlock": 7968901,
-    "toBlock": 8214762,
-    "lastFrom": 8214763,
-    "statisticsAddress": "0x7ae0655F0Ee1e7752D7C62493CEa1E69A810e2ed",
-    "deployName": "goerli"
-  },
-  {
     "name": "Mumbai",
     "networkDecleration": "Network.polygon-mumbai",
     "oldAddress": "0xe04f955e4Cf9858F8f8d60C09aBf16DF23D4672b",
@@ -22,6 +10,18 @@
     "lastFrom": 30249172,
     "statisticsAddress": "0x96f08DD768b09cb6cD90591fED6A768F40C48a49",
     "deployName": "mumbai-polygon"
+  },
+  {
+    "name": "Goerli",
+    "networkDecleration": "Network.eth-goerli",
+    "oldAddress": "0x42E7014a9D1f6765e76fA2e69532d808F2fe27E3",
+    "newAddress": "0xD2e5e0102E55a5234379DD796b8c641cd5996Efd",
+    "fromBlock": 7535901,
+    "switchoverBlock": 7968901,
+    "toBlock": 8214762,
+    "lastFrom": 8214763,
+    "statisticsAddress": "0x7ae0655F0Ee1e7752D7C62493CEa1E69A810e2ed",
+    "deployName": "goerli"
   },
   {
     "name": "Arbitrum",
