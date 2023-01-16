@@ -458,9 +458,9 @@
       "revealCode": true,
       "deployParams": [],
       "deployFunds": 0,
-      "deployId": "29",
+      "deployId": "32",
       "instanceGas": 1500000,
       "author": "ckoopmann"
-    },
+    }
   ]
 }
