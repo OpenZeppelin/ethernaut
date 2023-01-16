@@ -41,7 +41,7 @@ In order to install, build, and run Ethernaut locally, follow these instructions
     yarn compile:contracts
     ```
 
-5. Set client/src/constants.js ACTIVE_NETWORK to NETWORKS.LOCAL
+5. Set `client/src/constants.js` `ACTIVE_NETWORK` to `NETWORKS.LOCAL`
 6. Deploy contracts
 
     ```bash
@@ -59,7 +59,7 @@ In order to install, build, and run Ethernaut locally, follow these instructions
 The same as using the local network but steps 2, 3 and 6 are not necessary.
 
 In this case, replace point 5 with:
-5. Set client/src/constants.js ACTIVE_NETWORK to NETWORKS.GOERLI
+5. Set `client/src/constants.js` `ACTIVE_NETWORK` to `NETWORKS.GOERLI`
 
 ### Running tests
 
