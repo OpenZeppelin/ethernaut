@@ -12,7 +12,7 @@ const updateNetworkDetails = async (network, upperBlock) => {
     }
     return networkDetail;
   });
-  console.log("Updating lastFromBlock in networkDetails for ", network.name);
+  console.log("[NETWORK DETAILS UPDATE TRIGGERED FOR ", network.name, "]");
   fs.writeFileSync(networkDataPath, JSON.stringify(updatedNetworkDetails));
 };
 

@@ -61,7 +61,6 @@ const processFilteredData = (filteredData) => {
             timeTaken: 0,
           },
         ];
-        console.log("adding new level");
       }
       existingPlayerRecord.levels = updatedLevels;
       // overwrite original player record with player containing new level records
@@ -86,7 +85,6 @@ const processFilteredData = (filteredData) => {
         levels: [newLevel],
       };
       processedData.push(newProcessedEntry);
-      console.log("newProcessedEntry written");
     }
   });
   return processedData;

@@ -66,11 +66,11 @@ const evaluateHistoricalProfile = (processedData, network) =>
       },
       0
     );
-    const averageTimeTakenToCompleteALevel = totalTimeTakenToCompleteLevels / levelCompletedCounter;
+    const averageTimeTakenToCompleteALevel = Math.round(totalTimeTakenToCompleteLevels / levelCompletedCounter) ;
     const totalDifficultyFacedByPlayer = evaluateTotalDifficultyFaced(profile, network)
     return {
       player: profile.player,
-      averageTimeTakenToCompleteALevel,
+      averageTimeTakenToCompleteALevel: averageTimeTakenToCompleteALevel ? averageTimeTakenToCompleteALevel : 0,
       totalNumberOfLevelsCompleted: levelCompletedCounter,
       totalDifficultyFaced: totalDifficultyFacedByPlayer,
       alias: "",
@@ -91,6 +91,7 @@ const useScoreEquation = (averageTimeTakenToCompleteALevel, totalDifficultyFaced
         (difficultyFacedParameter * totalDifficultyFacedByPlayer / totalDifficultyInEthernautGame) +
         (timeTakenParameter / averageTimeTakenToCompleteALevel));
   }
+  return score;
 }
 
 const reCalculateScores = (board) => {
@@ -98,27 +99,27 @@ const reCalculateScores = (board) => {
     const score = useScoreEquation(player.averageTimeTakenToCompleteALevels, player.totalNumberOfLevelsCompleted, player.totalDifficultyFaced);
     return {
       ...player,
-      playerScore: score,
+      score,
     };
   })
   return boardWithScores;
 }
 
-const evaluateNewPlayerScore = (
-  averageTimeTakenToCompleteALevel,
-  totalNumberOfLevelsCompleted
-) => {
-  const totalNumberOfEthernautLevels = evaluateCurrentNumberOfEthernautLevels();
-  let score = 0;
-  if (totalNumberOfLevelsCompleted) {
-    score =
-      100 *
-      ((0.9 * totalNumberOfLevelsCompleted) / totalNumberOfEthernautLevels +
-        (15 * totalNumberOfLevelsCompleted) /
-        (averageTimeTakenToCompleteALevel * totalNumberOfLevelsCompleted));
-  }
-  return score;
-};
+// const evaluateNewPlayerScore = (
+//   averageTimeTakenToCompleteALevel,
+//   totalNumberOfLevelsCompleted
+// ) => {
+//   const totalNumberOfEthernautLevels = evaluateCurrentNumberOfEthernautLevels();
+//   let score = 0;
+//   if (totalNumberOfLevelsCompleted) {
+//     score =
+//       100 *
+//       ((0.9 * totalNumberOfLevelsCompleted) / totalNumberOfEthernautLevels +
+//         (15 * totalNumberOfLevelsCompleted) /
+//         (averageTimeTakenToCompleteALevel * totalNumberOfLevelsCompleted));
+//   }
+//   return score;
+// };
 
 const evaluateCurrentNumberOfEthernautLevels = () => {
   const ethernautLevels = require("../../../src/gamedata/gamedata.json");
@@ -131,7 +132,6 @@ const evaluateTotalDifficultyInEthernautGame = () => {
   gameData.forEach((level) => {
     totalDifficulty += parseInt(level.difficulty);
   });
-  console.log(totalDifficulty)
   return totalDifficulty
 }
 
@@ -153,18 +153,19 @@ const evaluateTotalDifficultyFaced = (playerProfile, network) => {
 };
 
 const evaluateDifficultyInThisStatisticsEmit = async (network, log, web3, nodeProvider) => {
-  const decodedAddress = await evaluateDecodedLevelAddress(network, log, web3, nodeProvider)
-  console.log("--------------------- decoded address is " + decodedAddress)
-  console.log("blockHash is " + log.blockHash)
+  const decodedAddress = await evaluateDecodedLevelAddress(network, log, web3, nodeProvider);
   const difficultyMap = require(`../../networks/${String(network.name).toLowerCase()}/difficultyMap${network.name}.json`);
-
-  const thisDifficultyProfileIndex = difficultyMap.findIndex(
-    (matchingLevel) =>
-      decodedAddress == matchingLevel.address
-  );
-  console.log("difficulty profile index is " + thisDifficultyProfileIndex);
-  console.log("difficulty faced here was " + difficultyMap[thisDifficultyProfileIndex].difficulty)
-  console.log("level name here is " + difficultyMap[thisDifficultyProfileIndex].name)
+  let thisDifficultyProfileIndex = 0;
+  //sometimes, errors related to RPC downtime occur. This is a workaround to prevent the script from crashing
+  try {
+    returnedIndexValue = difficultyMap.findIndex(
+      (matchingLevel) =>
+        decodedAddress == matchingLevel.address
+    );
+    if (returnedIndexValue >= 0) {
+      thisDifficultyProfileIndex = returnedIndexValue;
+    }
+  } catch (error) {console.log("difficulty indexing error is defaulted to 0 and returned error " + error)}
   return difficultyMap[thisDifficultyProfileIndex].difficulty;
 }
 
@@ -200,10 +201,10 @@ const evaluateDecodedLevelAddress = async (network, log, web3, nodeProvider) => 
 };
 
 const evaluateIfThisPlayerHasAlreadyCompletedThisLevel = (player, levelAddress, networkBoard) => {
-  const doesPlayerExist = networkBoard.find((entry) => player.address == entry.address);
+  const doesPlayerExist = networkBoard.find((entry) => player == entry.address);
   const evaluator = false;
   if (doesPlayerExist) {
-    const indexOfExistingPlayer = networkBoard.findIndex((player) => player.address == address);
+    const indexOfExistingPlayer = networkBoard.findIndex((player) => player == entry.address);
     const existingEntry = networkBoard[indexOfExistingPlayer];
     const existingEntryLevelsArray = existingEntry.levels;
     existingEntryLevelsArray.forEach((level) => {
@@ -220,7 +221,7 @@ module.exports = {
   evaluateIfWeHavePassedReDeployment,
   returnCurrentLevel,
   evaluateHistoricalProfile,
-  evaluateNewPlayerScore,
+  // evaluateNewPlayerScore,
   evaluateCurrentNumberOfEthernautLevels,
   evaluateTotalDifficultyFaced,
   evaluateTotalDifficultyInEthernautGame,

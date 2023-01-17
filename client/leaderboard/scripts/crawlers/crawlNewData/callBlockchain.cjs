@@ -1,3 +1,4 @@
+const fs = require("fs");
 const initialiseNodeProvider = require("../crawlHistoricalData/initialiseNodeProvider.cjs");
 const reduceReturnedLogs = require("./reduceReturnedLogs.cjs");
 const {
@@ -44,7 +45,7 @@ const callBlockChain = async (network, web3, logger, upperBlock) => {
         );
         const additionalDifficultyFaced = await evaluateDifficultyInThisStatisticsEmit(network, log, web3, nodeProvider);
         const decodedLevelAddress = await evaluateDecodedLevelAddress(network, log, web3, nodeProvider);
-        try {
+        try { 
           let playerEntry = {
             player: topic1Array.player,
             averageTimeTakenToCompleteALevel: topic2Array.time,
@@ -54,6 +55,7 @@ const callBlockChain = async (network, web3, logger, upperBlock) => {
             alias: "",
           };
           logs.push(playerEntry);
+          console.log(".")
         } catch (error) {
           console.log(error);
         }
@@ -63,7 +65,11 @@ const callBlockChain = async (network, web3, logger, upperBlock) => {
     }
   } while (nextToBlock < upperBlock);
   console.log(`BOOM! The action added new entries from ${network.name}...`);
+  console.log("logs are " + logs.length + " long. Here they are: " + JSON.stringify(logs));
+  // fs.writeFileSync("../../", JSON.stringify(logs));
   const reducedLogs = reduceReturnedLogs(logs, network)
+  // fs.writeFileSync("../../../boards/roughReducedCrawlDrop.json", JSON.stringify(logs));
+  console.log("reduced logs are " + reducedLogs.length + " long. Here they are: " + JSON.stringify(reducedLogs))
   return reducedLogs;
 };
 
