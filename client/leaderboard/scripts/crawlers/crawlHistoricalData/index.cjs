@@ -1,21 +1,21 @@
-const callBlockChain = require("./callBlockchain.js");
+const callBlockChain = require("./callBlockchain.cjs");
 const filterLogs = require("./filterLogs.cjs");
 const processFilteredData = require("./processFilteredData.cjs");
 const initialiseNodeProvider = require("./initialiseNodeProvider.cjs");
-const compileAllPlayersBoard = require("./compilePlayersBoard.cjs");
+const compileNetworkPlayersBoard = require("./compileNetworkPlayersBoard.cjs");
 const consoleCustomiser = require("../../../utils/consoleCustomiser.cjs");
-const { logger } = consoleCustomiser({ delay: 0, randomized: true });
+const { logger } = consoleCustomiser({ delay: 50, randomized: true });
 const Web3 = require("web3");
 const networks = require("../../../utils/networkDetails.json");
 const fs = require("fs");
 
 const generateAllBoards = async () => {
 
-  for (network of networks) {
-      await generateNetworkBoard(network, log);
-  }
+  // for (network of networks) {
+  //     await generateNetworkBoard(network, log); 
+  // }
 
-  compileAllPlayersBoard(networks, logger);
+  compileNetworkPlayersBoard(networks, logger);
   await logger(
     "prais'ed be! the players played the players game and got written on the #allPlayersBoard. right on!"
   );
