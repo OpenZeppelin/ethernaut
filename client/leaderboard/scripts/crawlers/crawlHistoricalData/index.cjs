@@ -17,7 +17,7 @@ const generateAllBoards = async () => {
 
   compileNetworkPlayersBoard(networks, logger);
   await logger(
-    "prais'ed be! the players played the players game and got written on the #allPlayersBoard. right on!"
+    "prais'ed be! the players played the players game and got written on the #NetworkPlayersBoard. right on!"
   );
 
 };
@@ -46,14 +46,14 @@ const generateNetworkBoard = async (network, log) => {
     web3,
     mappingData
   );
-  const filteredDataPath = `../../../networks/${String(network.name).toLowerCase()}/filtered${network.name}Data.json`;
+  const filteredDataPath = `client/leaderboard/networks/${String(network.name).toLowerCase()}/filtered${network.name}Data.json`;
   fs.writeFileSync(filteredDataPath, JSON.stringify(filteredLogs));
   await logger("gracious me, " + filteredLogs.length + " logs have been written");
   const processedData = processFilteredData(filteredLogs);
   await logger(
     "golly gosh, " + processedData.length + " logs have been processed"
   );
-  const processedDataPath = `../../../networks/${String(network.name).toLowerCase()}/${network.name}PlayersBoard.json`;
+  const processedDataPath = `client/leaderboard/networks/${String(network.name).toLowerCase()}/${network.name}PlayersBoard.json`;
   fs.writeFileSync(processedDataPath, JSON.stringify(processedData));
   await logger(
     "oh my, scores on the doors for " + network.name + " have been compiled"

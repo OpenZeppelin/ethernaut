@@ -53,7 +53,7 @@ const returnCurrentLevel = (
   return result;
 };
 
-const evaluateHistoricalProfile = (processedData, network) =>
+const evaluateHistoricalPlayersProfile = (processedData, network) =>
   processedData.map((profile) => {
     let levelCompletedCounter = 0;
     const totalTimeTakenToCompleteLevels = profile.levels.reduce(
@@ -78,25 +78,30 @@ const evaluateHistoricalProfile = (processedData, network) =>
   });
 
 const useScoreEquation = (averageTimeTakenToCompleteALevel, totalDifficultyFacedByPlayer, totalNumberOfLevelsCompleted) => {
+
+
   const volumeCompletedParameter = 0.8; //approx. 80% of total attainable score
   const difficultyFacedParameter = 0.1; //approx 10% of total attainable score
   const timeTakenParameter = 15; // NOTA.BENE this value has been iterated BY HAND to represent the remaining 10% of total attainable score. The average block time for Ethereum was used as a starting value, and modified slightly thereafter to yield satisfactory score balance
-  const totalDifficultyInEthernautGame = evaluateTotalDifficultyInEthernautGame()
+  const totalDifficultyInEthernautGame = evaluateTotalDifficultyInEthernautGame();
+
   const totalNumberOfEthernautLevels = evaluateCurrentNumberOfEthernautLevels();
+
   let score = 0;
-  if (totalNumberOfLevelsCompleted) {
+  if (totalNumberOfLevelsCompleted, totalDifficultyFacedByPlayer, averageTimeTakenToCompleteALevel) {
     score =
       100 *
-      ((volumeCompletedParameter * totalNumberOfLevelsCompleted / totalNumberOfEthernautLevels) +
-        (difficultyFacedParameter * totalDifficultyFacedByPlayer / totalDifficultyInEthernautGame) +
-        (timeTakenParameter / averageTimeTakenToCompleteALevel));
-  }
+      (volumeCompletedParameter * (totalNumberOfLevelsCompleted / totalNumberOfEthernautLevels) +
+        difficultyFacedParameter * (totalDifficultyFacedByPlayer / totalDifficultyInEthernautGame) +
+      (timeTakenParameter / averageTimeTakenToCompleteALevel));
+  };
+
   return score;
 }
 
 const reCalculateScores = (board) => {
   const boardWithScores = board.map((player) => {
-    const score = useScoreEquation(player.averageTimeTakenToCompleteALevels, player.totalNumberOfLevelsCompleted, player.totalDifficultyFaced);
+    const score = useScoreEquation(player.averageTimeTakenToCompleteALevel, player.totalDifficultyFaced, player.totalNumberOfLevelsCompleted);
     return {
       ...player,
       score,
@@ -105,29 +110,15 @@ const reCalculateScores = (board) => {
   return boardWithScores;
 }
 
-// const evaluateNewPlayerScore = (
-//   averageTimeTakenToCompleteALevel,
-//   totalNumberOfLevelsCompleted
-// ) => {
-//   const totalNumberOfEthernautLevels = evaluateCurrentNumberOfEthernautLevels();
-//   let score = 0;
-//   if (totalNumberOfLevelsCompleted) {
-//     score =
-//       100 *
-//       ((0.9 * totalNumberOfLevelsCompleted) / totalNumberOfEthernautLevels +
-//         (15 * totalNumberOfLevelsCompleted) /
-//         (averageTimeTakenToCompleteALevel * totalNumberOfLevelsCompleted));
-//   }
-//   return score;
-// };
-
 const evaluateCurrentNumberOfEthernautLevels = () => {
-  const ethernautLevels = require("../../../src/gamedata/gamedata.json");
+  const ethernautLevelsObject = require("../../../src/gamedata/gamedata.json");
+  const ethernautLevels = ethernautLevelsObject["levels"];
   return ethernautLevels.length;
 };
 
 const evaluateTotalDifficultyInEthernautGame = () => {
-  const gameData = require("../../../src/gamedata/gamedata.json");
+  const gameDataObject = require("../../../src/gamedata/gamedata.json");
+  const gameData = gameDataObject["levels"];
   let totalDifficulty = 0;
   gameData.forEach((level) => {
     totalDifficulty += parseInt(level.difficulty);
@@ -220,8 +211,7 @@ module.exports = {
   evaluateCurrentSolveInstanceHex,
   evaluateIfWeHavePassedReDeployment,
   returnCurrentLevel,
-  evaluateHistoricalProfile,
-  // evaluateNewPlayerScore,
+  evaluateHistoricalPlayersProfile,
   evaluateCurrentNumberOfEthernautLevels,
   evaluateTotalDifficultyFaced,
   evaluateTotalDifficultyInEthernautGame,

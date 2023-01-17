@@ -1,6 +1,6 @@
 const fs = require("fs");
-const leaderBoardPath = ".../../../boards/leaderboard.json";
-const testBoardPath = ".../../../boards/testBoard.json";
+const leaderBoardPath = "client/leaderboard/boards/leaderboard.json";
+const testBoardPath = "client/leaderboard/boards/testBoard.json";
 
 const fetchAndAddAliases = () => {
   const aliasArray = [];

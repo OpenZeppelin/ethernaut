@@ -4,7 +4,7 @@ const networks = require("./networkDetails.json");
 
 const createDifficultyMaps = () => {
   for (network of networks) {
-    const difficultyMapPath = `../networks/${String(network.name).toLowerCase()}/difficultyMap${network.name}.json`;
+    const difficultyMapPath = `client/leaderboard/networks/${String(network.name).toLowerCase()}/difficultyMap${network.name}.json`;
     const difficultyMap = mapLevels(network);
     fs.writeFileSync(difficultyMapPath, JSON.stringify(difficultyMap));
   }
