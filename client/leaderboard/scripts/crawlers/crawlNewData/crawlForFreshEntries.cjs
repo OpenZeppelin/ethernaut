@@ -8,20 +8,15 @@ const crawlForFreshEntries = async (network, web3, logger) => {
 
   
   const upperBlock = await returnLatestBlock(network);
-  let logs = await callBlockChain(network, web3, logger, upperBlock);
-  //const lastFreshEntriesBoard = JSON.parse(fs.readFileSync(freshEntriesCrawlPath)) ? JSON.parse(fs.readFileSync(freshEntriesCrawlPath)) : [];
-  // const freshEntriesCrawl = lastFreshEntriesBoard.concat(logs);
-  const freshEntriesCrawlPath = `../../../networks/${String(network.name).toLowerCase}/${network.name}NetworkBoard.json`
+  let logs = await callBlockChain(network, web3, upperBlock);
+  const freshEntriesCrawlPath = `client/leaderboard/networks/${String(network.name).toLowerCase()}/lastCrawl${network.name}.json`
   
   await logger(
     `Buckle up, chuck, we're adding ${logs.length} emit profiles to lastCrawl${network.name}!`
   );
   fs.writeFileSync(freshEntriesCrawlPath, JSON.stringify(logs));
   await updateNetworkPlayersBoard(network, logger);
-  if (process.env.ENVIRONMENT == "PROD") {
-    await updateNetworkDetails(network, upperBlock);
-  }
-
+  await updateNetworkDetails(network, upperBlock);
   
 };
 

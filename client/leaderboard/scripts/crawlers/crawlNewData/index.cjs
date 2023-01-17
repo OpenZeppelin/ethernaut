@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { Network, Alchemy, Utils } = require("alchemy-sdk");
+// const { Network, Alchemy, Utils } = require("alchemy-sdk");
 const crawlForFreshEntries = require("./crawlForFreshEntries.cjs");
 const consoleCustomiser = require("../../../utils/consoleCustomiser.cjs");
 const { logger } = consoleCustomiser({ delay: 50, randomized: true });
@@ -10,7 +10,6 @@ const networks = require("../../../utils/networkDetails.json");
 
 
 const crawlForFreshEntriesAndUpdateNetworkBoard = async () => {
-  
   
   for (network of networks) {
     await crawlForFreshEntries(network, web3, logger);
@@ -28,7 +27,5 @@ const crawlForFreshEntriesAndUpdateNetworkBoard = async () => {
   // );
 
 };
-
-crawlForFreshEntriesAndUpdateNetworkBoard();
 
 module.exports = crawlForFreshEntriesAndUpdateNetworkBoard;

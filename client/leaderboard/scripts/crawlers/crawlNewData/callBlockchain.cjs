@@ -6,9 +6,9 @@ const {
   evaluateDecodedLevelAddress
 } = require("../../tools/evaluateHelper.cjs");
 
-const callBlockChain = async (network, web3, logger, upperBlock) => {
+const callBlockChain = async (network, web3, upperBlock) => {
   let logs = [];
-  await logger(
+  console.log(
     "Now, hold onto your horses! The " +
       network.name +
       " crawl has been initiated. Please wait some moments..."
@@ -48,14 +48,13 @@ const callBlockChain = async (network, web3, logger, upperBlock) => {
         try { 
           let playerEntry = {
             player: topic1Array.player,
-            averageTimeTakenToCompleteALevel: topic2Array.time,
-            totalNumberOfLevelsCompleted: topic3Array.number,
+            averageTimeTakenToCompleteALevel: parseInt(topic2Array.time),
+            totalNumberOfLevelsCompleted: parseInt(topic3Array.number),
             levelFacedOnThisAttempt: decodedLevelAddress,
-            additionalDifficultyFaced,
+            additionalDifficultyFaced: parseInt(additionalDifficultyFaced),
             alias: "",
           };
           logs.push(playerEntry);
-          console.log(".")
         } catch (error) {
           console.log(error);
         }
@@ -64,12 +63,7 @@ const callBlockChain = async (network, web3, logger, upperBlock) => {
       nextToBlock = lastFromBlock + incrementer;
     }
   } while (nextToBlock < upperBlock);
-  console.log(`BOOM! The action added new entries from ${network.name}...`);
-  console.log("logs are " + logs.length + " long. Here they are: " + JSON.stringify(logs));
-  // fs.writeFileSync("../../", JSON.stringify(logs));
   const reducedLogs = reduceReturnedLogs(logs, network)
-  // fs.writeFileSync("../../../boards/roughReducedCrawlDrop.json", JSON.stringify(logs));
-  console.log("reduced logs are " + reducedLogs.length + " long. Here they are: " + JSON.stringify(reducedLogs))
   return reducedLogs;
 };
 

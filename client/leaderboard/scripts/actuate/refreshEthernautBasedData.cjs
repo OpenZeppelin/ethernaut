@@ -1,9 +1,9 @@
-const { createDifficultyMaps } = require("../../utils/mapLevels.cjs")
+const createDifficultyMaps = require("../../utils/mapLevels.cjs");
 
-const refreshEthernautBasedData = async (logger) => {
-    await logger("it has begun...refreshing levelsObjects across all networks");
+const refreshEthernautBasedData = async () => {
+    console.log("it has begun...refreshing difficultyMaps across all networks");
     createDifficultyMaps();
-    await logger("feeling fresh? get ready to crawl, baby");
+    console.log("feeling fresh? ...get ready to crawl, baby...");
 };
 
 module.exports = refreshEthernautBasedData;
