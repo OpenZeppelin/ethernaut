@@ -13,6 +13,7 @@ import getlevelsdata from "../utils/getlevelsdata";
 import { withRouter } from "../hoc/withRouter";
 import { getLevelKey } from "../utils/contractutil";
 import { deployAndRegisterLevel } from "../utils/deploycontract";
+import {  svgFilter } from "../utils/svg";
 
 class Level extends React.Component {
   constructor(props) {
@@ -77,6 +78,21 @@ class Level extends React.Component {
       this.setState({
         dropwDownOpened: false
       });
+    }
+  }
+
+  handleImageLoad = () => { 
+    const styles = getComputedStyle(document.documentElement);
+
+    const bgColor = styles.getPropertyValue('--primary-color');
+    const black = styles.getPropertyValue('--black');
+
+    const isCurrentlyDarkMode = bgColor === black;
+
+    if (isCurrentlyDarkMode) { 
+      let levelTiles = document.getElementsByClassName("level-tile");
+      const levelTile = levelTiles[0]
+      levelTile.style.filter = svgFilter();
     }
   }
 
@@ -178,7 +194,7 @@ class Level extends React.Component {
             </div>
           </div>
 
-          <section>
+          <section onLoad={this.handleImageLoad}>
             <img
               alt=""
               className="level-tile level-img-view"
