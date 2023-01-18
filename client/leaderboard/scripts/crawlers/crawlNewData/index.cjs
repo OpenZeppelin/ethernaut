@@ -1,5 +1,4 @@
 const fs = require("fs");
-// const { Network, Alchemy, Utils } = require("alchemy-sdk");
 const crawlForFreshEntries = require("./crawlForFreshEntries.cjs");
 const consoleCustomiser = require("../../../utils/consoleCustomiser.cjs");
 const { logger } = consoleCustomiser({ delay: 50, randomized: true });
