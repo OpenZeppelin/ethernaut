@@ -11,10 +11,9 @@ const fs = require("fs");
 
 const generateAllBoards = async () => {
 
-  // for (network of networks) {
-  //     await generateNetworkBoard(network, log); 
-  // }
-
+  for (network of networks) {
+      await generateNetworkBoard(network, log); 
+  }
   compileNetworkPlayersBoard(networks, logger);
   await logger(
     "prais'ed be! the players played the players game and got written on the #NetworkPlayersBoard. right on!"

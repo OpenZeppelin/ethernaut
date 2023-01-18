@@ -1,7 +1,5 @@
 const leaderBoardPath = "client/leaderboard/boards/leaderBoard.json";
-const testLeaderBoardPath = "client/leaderboard/boards/testLeaderBoard.json";
 const allPlayersBoardPath = "client/leaderboard/boards/allPlayersBoard.json";
-const testPlayersBoardPath = "client/leaderboard/boards/allPlayersBoard.json";
 const fs = require("fs");
 const networks = require("../../utils/networkDetails.json");
 const { reCalculateScores } = require("../tools/evaluateHelper.cjs");
@@ -13,8 +11,6 @@ const writeLeaderBoards = async (logger) => {
     const networkLeaderBoardPath = `client/leaderboard/boards/networkleaderboards/${network.name}LeaderBoard.json`;
     const networkPlayersBoard = require(`../../networks/${String(network.name)}/${network.name}PlayersBoard.json`);
     let playersBoardWithScores = reCalculateScores(networkPlayersBoard);
-    console.log(playersBoardWithScores)
-
     let networkLeaderBoard = playersBoardWithScores.sort((a, b) => {
       return b.score - a.score;
     });
@@ -28,22 +24,21 @@ const writeLeaderBoards = async (logger) => {
     const networkLeaderBoard = require(`../../boards/networkleaderboards/${network.name}LeaderBoard.json`);
     allPlayersBoard = [...allPlayersBoard, ...networkLeaderBoard];
   }
-  fs.writeFileSync(testPlayersBoardPath, JSON.stringify(allPlayersBoard));
+  fs.writeFileSync(allPlayersBoardPath, JSON.stringify(allPlayersBoard));
 
 
   // 3. write global leaderboard
   let allPlayersUnsorted = require(allPlayersBoardPath);
   let trimmedAllPlayersUnsorted = allPlayersUnsorted.map((player) => {
-    if (player.totalNumberOfLevelsCompleted >= 4) {
+    if (player.totalNumberOfLevelsCompleted >= 4 && player.score < 100) {
       return player;
     }
   })
   let leaderBoard = trimmedAllPlayersUnsorted.sort((a, b) => {
       return b.playerScore - a.playerScore;
     });
-  fs.writeFileSync(testLeaderBoardPath, JSON.stringify(leaderBoard));
-
-  await logger(
+  fs.writeFileSync(leaderBoardPath, JSON.stringify(leaderBoard));
+  console.log(
     "button up your mittens, because the leaders have come forth! Leader board written from historical data."
   );
 };

@@ -2,7 +2,7 @@ const networkDataPath = "client/leaderboard/utils/networkDetails.json";
 const fs = require("fs");
 
 const updateNetworkDetails = async (network, upperBlock) => {
-  const networkDetails = require(networkDataPath);
+  const networkDetails = JSON.parse(fs.readFileSync(networkDataPath));
   const updatedNetworkDetails = networkDetails.map((networkDetail) => {
     if (networkDetail.name === network.name) {
       return {
@@ -10,9 +10,12 @@ const updateNetworkDetails = async (network, upperBlock) => {
         lastFrom: upperBlock + 1,
       };
     }
-    return networkDetail;
+    if (networkDetail.name !== network.name) {
+      return networkDetail;
+    }
+    
   });
-  console.log("[NETWORK DETAILS UPDATE TRIGGERED FOR ", network.name, "]");
+  console.log("[NETWORK DETAILS UPDATE TRIGGERED FOR ", network.name, "]. LAST UPPER BLOCK RECORDED IS " + upperBlock);
   fs.writeFileSync(networkDataPath, JSON.stringify(updatedNetworkDetails));
 };
 
