@@ -20,41 +20,42 @@ class Stats extends React.Component {
       totalCreated: 0,
       totalFailures: 0,
       totalPlayers: 0,
-      collectedGlobals: false,
       chainId: 0,
       lang: localStorage.getItem("lang"),
     }
+  }
 
+  componentDidMount() { 
+    this.getChainIdAndCollectStats()
+  }
+
+  componentDidUpdate(_prevProps, prevState) {
+    if (this.state.chainId !== prevState.chainId) { 
+      this.getChainIdAndCollectStats()
+    }
+  }
+
+  getChainIdAndCollectStats = () => {
     if (this.props.web3) {
       window.ethereum.request({ method: 'eth_chainId' }).then((id) => {
-        this.setState({ chainId: Number(id) });
+        this.setState({ chainId: Number(id) }, () => { 
+          this.collectsGlobalStats(Number(id));
+        });
       });
     }
-
   }
 
-  componentDidUpdate(prevProps, prevState ) {
-    // if(!this.state.chainId) return;
-    if (this.props.web3 && prevProps.web3 !== this.props.web3) {
-      this.collectsGlobalStats();
-    }
-  }
-
-  async collectsGlobalStats() {
-    
-    var completed = await getTotalCompleted(this.state.chainId);
+  async collectsGlobalStats(chainId) {
+    const [completed, created, failures, totalPlayers] = await Promise.all([
+      getTotalCompleted(chainId),
+      getTotalCreated(chainId),
+      getTotalFailures(chainId),
+      getTotalPlayers(chainId)
+    ])
     if(completed) this.setState({totalCompleted: completed.toNumber()});
-
-    var created = await getTotalCreated(this.state.chainId);
     if(created) this.setState({totalCreated: created.toNumber()});
-
-    var failures = await getTotalFailures(this.state.chainId);
     if(failures) this.setState({totalFailures: failures.toNumber()});
-
-    var totalPlayers = await getTotalPlayers(this.state.chainId);
     if(totalPlayers) this.setState({totalPlayers: totalPlayers.toNumber()});
-    this.setState({collectedGlobals: true});
-
   }
 
   async collectPlayerStats(playerAddress) {
