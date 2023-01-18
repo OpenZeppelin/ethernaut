@@ -20,7 +20,6 @@ class Stats extends React.Component {
       totalCreated: 0,
       totalFailures: 0,
       totalPlayers: 0,
-      collectedGlobals: false,
       chainId: 0,
       lang: localStorage.getItem("lang"),
     }
@@ -30,31 +29,27 @@ class Stats extends React.Component {
         this.setState({ chainId: Number(id) });
       });
     }
-
   }
 
   componentDidUpdate(prevProps, prevState ) {
-    // if(!this.state.chainId) return;
     if (this.props.web3 && prevProps.web3 !== this.props.web3) {
       this.collectsGlobalStats();
     }
   }
 
   async collectsGlobalStats() {
-    
-    var completed = await getTotalCompleted(this.state.chainId);
-    if(completed) this.setState({totalCompleted: completed.toNumber()});
-
-    var created = await getTotalCreated(this.state.chainId);
-    if(created) this.setState({totalCreated: created.toNumber()});
-
-    var failures = await getTotalFailures(this.state.chainId);
-    if(failures) this.setState({totalFailures: failures.toNumber()});
-
-    var totalPlayers = await getTotalPlayers(this.state.chainId);
-    if(totalPlayers) this.setState({totalPlayers: totalPlayers.toNumber()});
-    this.setState({collectedGlobals: true});
-
+    const [completed, created, failures, totalPlayers] = await Promise.all([
+      getTotalCompleted(this.state.chainId),
+      getTotalCreated(this.state.chainId),
+      getTotalFailures(this.state.chainId),
+      getTotalPlayers(this.state.chainId)
+    ])
+    this.setState({
+      totalCompleted: completed ? completed.toNumber() : 0,
+      totalCreated: created ? created.toNumber() : 0,
+      totalFailures: failures ? failures.toNumber() : 0,
+      totalPlayers: totalPlayers ? totalPlayers.toNumber() : 0,
+    })
   }
 
   async collectPlayerStats(playerAddress) {
