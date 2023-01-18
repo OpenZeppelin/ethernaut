@@ -1,6 +1,5 @@
 const fs = require("fs");
 const leaderBoardPath = "client/leaderboard/boards/leaderboard.json";
-const testBoardPath = "client/leaderboard/boards/testBoard.json";
 
 const fetchAndAddAliases = () => {
   const aliasArray = [];
@@ -23,7 +22,7 @@ const fetchAndAddAliases = () => {
       }
     });
 
-    fs.writeFileSync(testBoardPath, JSON.stringify(newLeaderBoard));
+    fs.writeFileSync(leaderBoardPath, JSON.stringify(newLeaderBoard));
   };
 
   addAliases(aliasArray);
