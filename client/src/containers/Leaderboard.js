@@ -100,11 +100,13 @@ function Leaderboard() {
             <div className='leaderboard-list-container'>
                 <LeaderList players={currentItems} />
             </div>
-            <ReactPaginate
-                onPageChange={handlePageClick}
-                pageCount={pageCount}
-                {...reactPaginateProps}
-            />
+            <div className='leaderboard-outer-container'>
+                <ReactPaginate
+                    onPageChange={handlePageClick}
+                    pageCount={pageCount}
+                    {...reactPaginateProps}
+                />
+            </div>
          </div>
     )
 }

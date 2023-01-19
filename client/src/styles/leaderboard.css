@@ -68,8 +68,14 @@
 
 .leaderboard-pagination-container {
    display: flex;
-   justify-content: center;
+   justify-content: space-between;
    margin:30px 0px;
+   width:400px;
+}
+
+.leaderboard-outer-container {
+    display: flex;
+    justify-content: center;
 }
 
 .leaderboard-pagination-container li {
