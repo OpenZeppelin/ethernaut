@@ -7,6 +7,7 @@ import { getLevelsSolvedByPlayer, checkIfPlayerExist, getTotalCompleted, getTota
 import { validateAddress } from '../utils/ethutil'
 import Statistic from '../components/Statistic';
 import StatisticPanel from '../components/Panel';
+import Footer from '../components/Footer';
 
 class Stats extends React.Component {
 
@@ -91,6 +92,9 @@ class Stats extends React.Component {
       this.setState({playerFilter: playerAddress});
 
       var stats = await this.collectPlayerStats(playerAddress);
+      // sort the levels and display in acending level of difficulty
+      // woth noting that the sort is 'inplace'
+      stats?.levelsSolved.sort((a, b) => +a.difficulty - +b.difficulty)
       this.setState({
         ...this.state.solvedLevels,
         solvedLevels: stats?.levelsSolved
@@ -141,6 +145,8 @@ class Stats extends React.Component {
           </StatisticPanel>
         </div>
        </div>
+       {/* footer */}
+       <Footer></Footer>
      </div> 
 
 }}
