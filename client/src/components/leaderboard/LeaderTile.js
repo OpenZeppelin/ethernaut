@@ -3,7 +3,7 @@ import Tooltip from "../utils/Tooltip";
 function LeaderTile(props) { 
     const { rank, leader } = props;
 
-    let { player, playerScore, alias, totalNumberOfLevelsCompleted } = leader;
+    let { player, score, alias, totalNumberOfLevelsCompleted } = leader;
 
     if (alias) { 
         player = alias;
@@ -25,7 +25,7 @@ function LeaderTile(props) {
                 <div className="leaderboard-levels-solved">
                     {totalNumberOfLevelsCompleted}
                 </div>
-                <div className="leaderboard-score">{playerScore.toFixed(2)}</div>
+                <div className="leaderboard-score">{score.toFixed(2)}</div>
             </div>
         </>
     )
