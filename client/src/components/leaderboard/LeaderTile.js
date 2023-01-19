@@ -15,10 +15,7 @@ function LeaderTile(props) {
     const handleClick = () => { 
         navigator.clipboard.writeText(player);
         toast("Address copied")
-    }
-
-    console.log(getPlayerAddress())
-    
+    }    
     return (
         <>
             {Toast}
