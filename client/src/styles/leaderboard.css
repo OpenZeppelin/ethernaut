@@ -12,10 +12,10 @@
     text-align: center;
     color: var(--secondary-color);
     background-color: var(--primary-color);
-    font-size: 48px;
+    font-size: 55px;
     margin-bottom:3px;
     font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
+    transform: scale(0.85,1);
 }
 
 .leaderboard-search-outer-container {
@@ -100,7 +100,7 @@
 
 .leaderboard-button-link {
     background-color: var(--secondary-color);
-    padding:5px;
+    padding:7px;
     color: var(--primary-color);;
     text-decoration: none;
     border-radius: 3px;
