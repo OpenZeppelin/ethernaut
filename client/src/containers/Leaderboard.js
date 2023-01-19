@@ -6,6 +6,7 @@ import ReactPaginate from 'react-paginate';
 import Search from "../components/leaderboard/Search";
 import { getNetworkNamefromId } from "../utils/ethutil";
 import networkDetails from "client/leaderboard/utils/networkDetails.json";
+import Footer from "../components/common/Footer";
 
 const playersPerPage = 20;
 
@@ -110,6 +111,7 @@ function Leaderboard() {
                         />
                     </div>
                 </div>
+            <Footer />
         </main>
     )
 }

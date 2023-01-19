@@ -188,7 +188,7 @@ class Header extends React.Component {
             </a>
             <ul className="header-ul">
               {
-                window.location.pathname === constants.PATH_ROOT && this.state.chainId!==0 &&
+                window.location.pathname === constants.PATH_ROOT && !!this.props.web3 &&
                   <Link to={constants.PATH_LEADERBOARD}>
                     <LeaderIcon />
                   </Link>
