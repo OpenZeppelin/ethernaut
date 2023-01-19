@@ -42,11 +42,14 @@ function Leaderboard() {
 
     return (
         <div className='leaderboard-body'>
-            <div className="leaderboard-title">Leaderboard</div>
-            <Search
-                searchKeyword={searchKeyword}
-                onKeywordChange={updateSearchResult}
-            />
+            <div className="leaderboard-heading">
+                <div className="leaderboard-title">Leaderboard</div>
+                <Search
+                    searchKeyword={searchKeyword}
+                    onKeywordChange={updateSearchResult}
+                />
+            </div>
+
             <Headers />
             <div className='leaderboard-list-container'>
                 <LeaderList players={currentItems} />
