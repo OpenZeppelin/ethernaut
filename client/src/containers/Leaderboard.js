@@ -14,7 +14,7 @@ function Leaderboard() {
     const [playersWithRank, setPlayersWithRank] = useState([])
     const [searchResult, setSearchResult] = useState([])
     const [searchKeyword, setSearchKeyword] = useState('')
-    const [currentNetwork, setCurrentNetwork] = useState('')
+    const [currentNetworkName, setCurrentNetworkName] = useState('')
 
     const pageCount = Math.ceil(searchResult.length / playersPerPage);
     const endOffset = offset + playersPerPage;
@@ -25,34 +25,37 @@ function Leaderboard() {
             return;
         }
         const networkName = getNetworkNamefromId(Number(networkId))
-        setCurrentNetwork(networkName)
+        setCurrentNetworkName(networkName)
     }, [])
 
-    useEffect(() => {
-        handleNetworkChange(window.ethereum.chainId)
+    const initateCurrentlySelectedChain = useCallback(async () => { 
+        const networkId = await window.ethereum.request({ method: 'eth_chainId' })
+        handleNetworkChange(networkId)
     }, [handleNetworkChange])
+
+    // During the initial render
+    useEffect(() => { 
+        initateCurrentlySelectedChain()
+    }, [initateCurrentlySelectedChain])
 
     useEffect(() => {
         window.ethereum.on('networkChanged', handleNetworkChange)
+        return () => { 
+            window.ethereum.removeListener('networkChanged', handleNetworkChange)
+        }
     }, [handleNetworkChange])
 
+    // When network changes
     useEffect(() => { 
-        if (window.ethereum.chainId) {
-            setCurrentNetwork(getNetworkNamefromId(Number(window.ethereum.chainId)))
-        }
-    }, [])
-
-    useEffect(() => { 
-        if (!currentNetwork) { 
+        if (!currentNetworkName) { 
             return;
         }
-        debugger;
-        const leaderboardNetworkName = getLeaderboardNetworkNameFromNetworkName(currentNetwork)
-        const response = require(`client/leaderboard/boards/networkleaderboards/${leaderboardNetworkName}LeaderBoard.json`)
-        const playersWithRank = response.map(assignRank)
+        const leaderboardNetworkName = getLeaderboardNetworkNameFromNetworkName(currentNetworkName)
+        const playersWithoutRank = require(`client/leaderboard/boards/networkleaderboards/${leaderboardNetworkName}LeaderBoard.json`)
+        const playersWithRank = playersWithoutRank.map(assignRank)
         setPlayersWithRank(playersWithRank)
         setSearchResult(playersWithRank)
-    }, [currentNetwork])
+    }, [currentNetworkName])
 
     const getLeaderboardNetworkNameFromNetworkName = (networkName) => {
         const targetNetwork = networkDetails.find((network) => { 
@@ -93,7 +96,6 @@ function Leaderboard() {
                     onKeywordChange={updateSearchResult}
                 />
             </div>
-
             <Headers />
             <div className='leaderboard-list-container'>
                 <LeaderList players={currentItems} />
