@@ -1,7 +1,7 @@
-This instance represents a Good Samaritan that is wealthy and ready to donate some coins to anyone requesting it.
+Cette instance représente un bon samaritain riche et prêt à donner des jetons à quiconque en fait la demande.
 
-Would you be able to drain all the balance from his Wallet?
+Seriez-vous capable de vider tout le solde (balance) de son portefeuille ?
 
-Things that might help:
+Voici un conseil:
 
 - [Solidity Custom Errors](https://blog.soliditylang.org/2021/04/21/custom-errors/)

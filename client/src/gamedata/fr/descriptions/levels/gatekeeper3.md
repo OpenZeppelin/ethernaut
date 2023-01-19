@@ -1,6 +1,6 @@
-Cope with gates and become an entrant.
+Faites face aux portes et devenez un participant (entrant).
 
-##### Things that might help:
-* Recall return values of low-level functions.
-* Be attentive with semantic.
-* Refresh how storage works in Ethereum.
+##### Voici quelques conseils:
+* Rappeler les return values des fonctions de low-level.
+* Soyez attentif à la sémantique.
+* Rappelez-vous comment fonctionne le stockage (storage) dans Ethereum.
