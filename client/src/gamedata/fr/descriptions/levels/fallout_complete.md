@@ -1,8 +1,8 @@
-That was silly wasn't it? Real world contracts must be much more secure than this and so must it be much harder to hack them right?
+C'était facile n'est-ce pas ? Les contrats du monde réel doivent être beaucoup plus sûrs que cela et il doit donc être beaucoup plus difficile de les pirater, n'est-ce pas ?
 
-Well... Not quite.
+Eh bien... Pas tout à fait.
 
-The story of Rubixi is a very well known case in the Ethereum ecosystem. The company changed its name from 'Dynamic Pyramid' to 'Rubixi' but somehow they didn't rename the constructor method of its contract:
+L'histoire de Rubixi est un cas très connu dans l'écosystème Ethereum. L'entreprise a changé son nom de "Dynamic Pyramid" en "Rubixi", mais d'une manière ou d'une autre, ils n'ont pas renommé la méthode constructeur de son contrat :
 
 ```
 contract Rubixi {
@@ -12,4 +12,4 @@ contract Rubixi {
   ...
 ```
 
-This allowed the attacker to call the old constructor and claim ownership of the contract, and steal some funds. Yep. Big mistakes can be made in smartcontractland.
+Cela a permis à l'attaquant d'appeler l'ancien constructeur et de revendiquer la propriété du contrat, et de voler des fonds. Ouais. De grosses erreurs peuvent être commises dans la terredessmartcontracts.

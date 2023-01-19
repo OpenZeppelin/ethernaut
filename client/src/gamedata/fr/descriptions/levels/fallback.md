@@ -1,12 +1,12 @@
-Look carefully at the contract's code below.
+Regardez attentivement le code du contrat ci-dessous.
 
-You will beat this level if
-1) you claim ownership of the contract
-2) you reduce its balance to 0
+Vous battrez ce niveau si
+1) vous revendiquez la propriété du contrat
+2) vous réduisez son solde à 0
 
 &nbsp;
-Things that might help
-* How to send ether when interacting with an ABI
-* How to send ether outside of the ABI
-* Converting to and from wei/ether units (see `help()` command)
-* Fallback methods
+Voici quelques conseils:
+* Comment envoyer de l'éther lors de l'interaction avec un ABI
+* Comment envoyer de l'éther en dehors de l'ABI
+* Conversion vers et depuis les unités wei/ether (voir la commande `help()`)
+* Méthodes de fallback
