@@ -88,26 +88,28 @@ function Leaderboard() {
     }
 
     return (
-        <div className='leaderboard-body'>
-            <div className="leaderboard-heading">
-                <div className="leaderboard-title">Leaderboard</div>
-                <Search
-                    searchKeyword={searchKeyword}
-                    onKeywordChange={updateSearchResult}
-                />
-            </div>
-            <Headers />
-            <div className='leaderboard-list-container'>
-                <LeaderList players={currentItems} />
-            </div>
-            <div className='leaderboard-outer-container'>
-                <ReactPaginate
-                    onPageChange={handlePageClick}
-                    pageCount={pageCount}
-                    {...reactPaginateProps}
-                />
-            </div>
-         </div>
+        <main className="boxes">
+            <div className='leaderboard-body'>
+                    <div className="leaderboard-heading">
+                        <div className="leaderboard-title">Leaderboard</div>
+                        <Search
+                            searchKeyword={searchKeyword}
+                            onKeywordChange={updateSearchResult}
+                        />
+                    </div>
+                    <Headers />
+                    <div className='leaderboard-list-container'>
+                        <LeaderList players={currentItems} />
+                    </div>
+                    <div className='leaderboard-outer-container'>
+                        <ReactPaginate
+                            onPageChange={handlePageClick}
+                            pageCount={pageCount}
+                            {...reactPaginateProps}
+                        />
+                    </div>
+                </div>
+        </main>
     )
 }
 
