@@ -1,4 +1,3 @@
-import { getPlayerAddress } from "../../utils/ethutil";
 import { useToast } from "../utils/Toast";
 import Tooltip from "../utils/Tooltip";
 
