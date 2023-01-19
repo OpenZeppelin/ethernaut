@@ -1,3 +1,4 @@
+import { getPlayerAddress } from "../../utils/ethutil";
 import { useToast } from "../utils/Toast";
 import Tooltip from "../utils/Tooltip";
 
@@ -15,6 +16,8 @@ function LeaderTile(props) {
         navigator.clipboard.writeText(player);
         toast("Address copied")
     }
+
+    console.log(getPlayerAddress())
     
     return (
         <>
@@ -30,6 +33,7 @@ function LeaderTile(props) {
                     {totalNumberOfLevelsCompleted}
                 </div>
                 <div className="leaderboard-score">{score.toFixed(2)}</div>
+                <div className="leaderboard-edit-player">{player === '' ? "✍️" : ""}</div>
             </div>
         </>
     )

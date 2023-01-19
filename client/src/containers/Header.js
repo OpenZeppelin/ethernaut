@@ -398,7 +398,7 @@ class Header extends React.Component {
             visible={true}
           />
           {!this.props.web3 &&
-            <div style={{ backgroundColor: "#eddfd6", border: "none" }} class="alert alert-warning">
+            <div style={{ backgroundColor: "#eddfd6", border: "none" }} className="alert alert-warning">
               <strong>{strings.warning}! </strong><span>{strings.warningMessage}</span>
             </div>}
         </center>

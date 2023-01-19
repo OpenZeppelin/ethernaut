@@ -41,6 +41,10 @@
     cursor: pointer;
 }
 
+.leaderboard-edit-player {
+    position: absolute;
+}
+
 .leaderboard-levels-solved {
     flex:2;
     text-align:center;
