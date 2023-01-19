@@ -70,7 +70,7 @@
    display: flex;
    justify-content: space-between;
    margin:30px 0px;
-   width:400px;
+   width:420px;
 }
 
 .leaderboard-outer-container {
@@ -171,18 +171,12 @@
     padding-top: 10px;
 }
 
-/* @media only screen and (max-width: 600px) {
-    .leaderboard-title {
-        font-size: 32px;
+@media only screen and (max-width: 600px) {
+    .leaderboard-pagination-container {
+        width: 100%;
     }
-    .leaderboard-header {
-        font-size: 16px;
+    .leaderboard-outer-container {
+        display: flex;
+        justify-content: center;
     }
-    .leaderboard-heading {
-        margin-top: 30px;
-        margin-bottom: 5px;
-    }
-    .tooltip-container{
-        left: -60px;
-    }
-} */
+}
