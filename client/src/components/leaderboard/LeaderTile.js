@@ -1,7 +1,9 @@
+import { useToast } from "../utils/Toast";
 import Tooltip from "../utils/Tooltip";
 
 function LeaderTile(props) { 
     const { rank, leader } = props;
+    const { toast, Toast } = useToast()
 
     let { player, score, alias, totalNumberOfLevelsCompleted } = leader;
 
@@ -11,10 +13,12 @@ function LeaderTile(props) {
 
     const handleClick = () => { 
         navigator.clipboard.writeText(player);
+        toast("Address copied")
     }
     
     return (
         <>
+            {Toast}
             <div className='leaderboard-tile'>
                 <div className="leaderboard-rank">{rank}</div>
                 <div className="leaderboard-player">
