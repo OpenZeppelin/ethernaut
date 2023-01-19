@@ -85,6 +85,7 @@ function Leaderboard() {
         setSearchKeyword(keyword)
         const result = playersWithRank.filter(isKeywordMatching(keyword))
         setSearchResult(result)
+        setOffset(0)
     }
 
     return (
