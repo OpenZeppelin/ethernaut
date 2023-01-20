@@ -53,7 +53,7 @@ function Leaderboard() {
         }
         const leaderboardNetworkName = getLeaderboardNetworkNameFromNetworkName(currentNetworkName)
         const playersWithoutRank = require(`client/leaderboard/boards/networkleaderboards/${leaderboardNetworkName}LeaderBoard.json`)
-        const playersWithRank = playersWithoutRank.map(assignRank)
+        const playersWithRank = playersWithoutRank.map(assignRank).filter(isScoreNonZero)
         setPlayersWithRank(playersWithRank)
         setSearchResult(playersWithRank)
     }, [currentNetworkName])
@@ -136,6 +136,8 @@ const assignRank = ((item, index) => {
     }
 }) 
 
-
+const isScoreNonZero = (player) => { 
+    return player.score !== 0
+}
 
 export default Leaderboard;
