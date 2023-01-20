@@ -32,10 +32,10 @@ Sentry.init({
   release: constants.VERSION,
 });
 // store.dispatch(actions.setNetworkId(id));
-store.dispatch(actions.connectWeb3(window.web3));
+store.dispatch(actions.connectWeb3(window.ethereum));
 const container = document.getElementById("root");
 const root = createRoot(container);
-if (!window.web3) {
+if (!window.ethereum) {
   //root.render(<h3>Hey, You dont have the supported wallet!</h3>);
   // let language = localStorage.getItem("lang");
   // let strings = loadTranslations(language);

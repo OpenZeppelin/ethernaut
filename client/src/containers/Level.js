@@ -110,7 +110,6 @@ class Level extends React.Component {
     let description = null;
     let language = localStorage.getItem("lang");
     let strings = loadTranslations(language);
-
     let isDescriptionMissingTranslation = false;
 
     try {

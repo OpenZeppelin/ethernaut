@@ -78,8 +78,8 @@ class Header extends React.Component {
     }
   }
 
-  changeLanguage(e) {
-    var value = e?.target?.value ? e.target.value : e;
+  changeLanguage(e, value) {
+    e.preventDefault();
     this.props.setLang(value);
   }
 
@@ -207,80 +207,80 @@ class Header extends React.Component {
                 </div>
                 <div className="dropdown-content">
                   <a
-                    onClick={() => {
-                      this.changeLanguage("en");
+                    onClick={(e) => {
+                      this.changeLanguage(e,"en");
                     }}
                     href="/"
                   >
                     {strings.english}
                   </a>
                   <a
-                    onClick={() => {
-                      this.changeLanguage("es");
+                    onClick={(e) => {
+                      this.changeLanguage(e,"es");
                     }}
                     href="/"
                   >
                     {strings.spanish}
                   </a>
                   <a
-                    onClick={() => {
-                      this.changeLanguage("pt_br");
+                    onClick={(e) => {
+                      this.changeLanguage(e,"pt_br");
                     }}
                     href="/"
                   >
                     {strings.portuguese}
                   </a>
                   <a
-                    onClick={() => {
-                      this.changeLanguage("ja");
+                    onClick={(e) => {
+                      this.changeLanguage(e,"ja");
                     }}
                     href="/"
                   >
                     {strings.japanese}
                   </a>
                   <a
-                    onClick={() => {
-                      this.changeLanguage("zh_cn");
+                    onClick={(e) => {
+                      this.changeLanguage(e,"zh_cn");
                     }}
                     href="/"
                   >
                     {strings.chinese_simplified}
                   </a>
                   <a
-                    onClick={() => {
-                      this.changeLanguage("zh_tw");
+                    onClick={(e) => {
+                      this.changeLanguage(e,"zh_tw");
                     }}
                     href="/"
                   >
                     {strings.chinese_traditional}
                   </a>
                   <a
-                    onClick={() => {
-                      this.changeLanguage("fr");
+                    onClick={(e) => {
+                      this.changeLanguage(e,"fr");
                     }}
                     href="/"
                   >
                     {strings.french}
                   </a>
                   <a
-                    onClick={() => {
-                      this.changeLanguage("ru");
+                    onClick={(e) => {
+                      this.changeLanguage(e,"ru");
                     }}
                     href="/"
                   >
                     {strings.russian}
                   </a>
                   <a
-                    onClick={() => {
-                      this.changeLanguage("ar");
+                    onClick={(e) => {
+                      this.changeLanguage(e,"ar");
                     }}
                     href="/"
                   >
                     {strings.arabic}
                   </a>
                   <a
-                    onClick={() => {
-                      this.changeLanguage("tr");
+                    onClick={(e) => {
+                      this.changeLanguage(e,"tr");
                     }}
                     href="/"
                   >
