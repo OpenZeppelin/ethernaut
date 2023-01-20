@@ -7,7 +7,7 @@ const { reCalculateScores } = require("../tools/evaluateHelper.cjs");
 const writeLeaderBoards = async (logger) => {
 
   // 1. compile network leaderboards
-  for (network of networks) {
+  for (let network of networks) {
     const networkLeaderBoardPath = `client/leaderboard/boards/networkleaderboards/${network.name}LeaderBoard.json`;
     const networkPlayersBoard = require(`../../networks/${String(network.name)}/${network.name}PlayersBoard.json`);
     let playersBoardWithScores = reCalculateScores(networkPlayersBoard);

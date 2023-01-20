@@ -12,7 +12,7 @@ const filterLogs = async (
   mappingDataPath
 ) => {
   const filteredData = [];
-  for (log of logs) {
+  for (let log of logs) {
     try {
       let txn = await nodeProvider.getTransaction(log.transactionHash);
       let block = await nodeProvider.getBlock(log.blockNumber);
@@ -29,7 +29,6 @@ const filterLogs = async (
         blockNumber: log.blockNumber,
         timeStamp: block.timestamp,
         level: returnCurrentLevel(
-          fromBlock,
           switchoverBlock,
           txn,
           log,

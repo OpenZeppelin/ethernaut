@@ -127,7 +127,7 @@ const evaluateTotalDifficultyInEthernautGame = () => {
 }
 
 const evaluateTotalDifficultyFaced = (playerProfile, network) => {
-  playerLevelsArray = playerProfile.levels;
+  let playerLevelsArray = playerProfile.levels;
   let difficultyCount = 0;
   const difficultyMap = require(`../../networks/${String(network.name).toLowerCase()}/difficultyMap${network.name}.json`);
   playerLevelsArray.forEach((game) => {
@@ -149,7 +149,7 @@ const evaluateDifficultyInThisStatisticsEmit = async (network, log, web3, nodePr
   let thisDifficultyProfileIndex = 0;
   //sometimes, errors related to RPC downtime occur. This is a workaround to prevent the script from crashing
   try {
-    returnedIndexValue = difficultyMap.findIndex(
+    let returnedIndexValue = difficultyMap.findIndex(
       (matchingLevel) =>
         decodedAddress == matchingLevel.address
     );
@@ -192,14 +192,14 @@ const evaluateDecodedLevelAddress = async (network, log, web3, nodeProvider) => 
 };
 
 const evaluateIfThisPlayerHasAlreadyCompletedThisLevel = (player, levelAddress, networkBoard) => {
-  const doesPlayerExist = networkBoard.find((entry) => player == entry.address);
+  const doesPlayerExist = networkBoard.find((entry) => player === entry.address);
   const evaluator = false;
   if (doesPlayerExist) {
-    const indexOfExistingPlayer = networkBoard.findIndex((player) => player == entry.address);
+    const indexOfExistingPlayer = networkBoard.findIndex((entry) => player === entry.address);
     const existingEntry = networkBoard[indexOfExistingPlayer];
     const existingEntryLevelsArray = existingEntry.levels;
     existingEntryLevelsArray.forEach((level) => {
-      if (level.address == levelAddress) {
+      if (level.address === levelAddress) {
         evaluator = true
       }
     })

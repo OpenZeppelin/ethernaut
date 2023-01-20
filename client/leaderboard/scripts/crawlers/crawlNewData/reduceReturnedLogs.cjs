@@ -1,7 +1,7 @@
 const { evaluateIfThisPlayerHasAlreadyCompletedThisLevel } = require('../../tools/evaluateHelper.cjs');
 
 const reduceReturnedLogs = (logs, network) => {
-    reducedLogs = [];
+    let reducedLogs = [];
     logs.forEach((entry) => {
         const existingEntry = reducedLogs.find((log) => log.player === entry.player);
         const networkBoard = require(`../../../networks/${String(network.name).toLowerCase()}/${network.name}NetworkBoard.json`);

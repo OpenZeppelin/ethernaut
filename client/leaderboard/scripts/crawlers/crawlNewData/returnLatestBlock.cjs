@@ -1,4 +1,3 @@
-const networks = require("../../../utils/networkDetails.json");
 const initialiseNodeProvider = require("../crawlHistoricalData/initialiseNodeProvider.cjs");
 
 let answer = "";

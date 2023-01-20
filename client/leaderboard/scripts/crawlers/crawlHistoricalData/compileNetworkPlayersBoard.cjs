@@ -2,7 +2,7 @@ const fs = require("fs");
 const { evaluateHistoricalPlayersProfile } = require("../../tools/evaluateHelper.cjs")
 
 const compileNetworkPlayersBoard = async (networks) => {
-  for (network of networks) {
+  for (let network of networks) {
     let allPlayers = [];
     const networkBoard = require(`../../../networks/${String(network.name).toLowerCase()}/${network.name}NetworkBoard.json`);
     const networkBoardWithTotals = evaluateHistoricalPlayersProfile(networkBoard, network);

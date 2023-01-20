@@ -10,15 +10,13 @@ const networks = require("../../../utils/networkDetails.json");
 const fs = require("fs");
 
 const generateAllBoards = async () => {
-
-  for (network of networks) {
-      await generateNetworkBoard(network, log); 
+  for (let network of networks) {
+      await generateNetworkBoard(network, logger); 
   }
   compileNetworkPlayersBoard(networks, logger);
   await logger(
     "prais'ed be! the players played the players game and got written on the #NetworkPlayersBoard. right on!"
   );
-
 };
 
 const generateNetworkBoard = async (network, log) => {

@@ -1,4 +1,4 @@
-const { Network, Alchemy, Utils } = require("alchemy-sdk");
+const { Alchemy } = require("alchemy-sdk");
 const Web3 = require("web3");
 require('dotenv').config();
 
@@ -50,10 +50,9 @@ const resolveNetworkApiKey = (network) => {
 }
 
 const initialiseAlchemy = (network) => {
-
   const apiKey = resolveNetworkApiKey(network);
-  if(apiKey == 0) throw new Error(`API KEY for ${network.name} is missing`)
-  if(apiKey == -1) throw new Error(`Unkown network ${network.name}`)
+  if(apiKey === 0) throw new Error(`API KEY for ${network.name} is missing`)
+  if(apiKey === -1) throw new Error(`Unkown network ${network.name}`)
   const settings = {
     apiKey: apiKey,
     network: network.networkDecleration.split(".")[1],
@@ -61,10 +60,11 @@ const initialiseAlchemy = (network) => {
   const alchemy = new Alchemy(settings);
   return alchemy.core;
 };
-  const initialiseInfuraForSepolia = () => {
+
+const initialiseInfuraForSepolia = (network) => {
   const apiKey = resolveNetworkApiKey(network);
-  if(apiKey == 0) throw new Error(`API KEY for ${network.name} is missing`)
-  if(apiKey == -1) throw new Error(`Unkown network ${network.name}`)
+  if(apiKey === 0) throw new Error(`API KEY for ${network.name} is missing`)
+  if(apiKey === -1) throw new Error(`Unkown network ${network.name}`)
   const infuraWeb3 = new Web3(
     new Web3.providers.HttpProvider(
       `https://sepolia.infura.io/v3/${apiKey}`
