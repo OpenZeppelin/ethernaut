@@ -12,7 +12,7 @@ const setPlayerAddress = store => next => action => {
 
   // Full reload if player existed and is changing
   if(state.player.address) {
-    document.location.reload()
+    document.location.replace(`${document.location.origin}${document.location.pathname}`)
   }
 
   if(!action.address) {
