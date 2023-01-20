@@ -53,12 +53,20 @@ const playerReducer = function(state = initialState, action) {
       }
       else newState = state
       break
+    
+    case actions.SYNC_PLAYER_PROGRESS:
+      newState = {
+        ...state,
+        completedLevels: action.completedLevels || {}
+      }
+      break
 
     default:
       newState = state;
   }
   return newState
 }
+
 
 export default playerReducer
 
@@ -73,6 +81,6 @@ function cachePlayer(data) {
 function restorePlayer(address) {
   const key = constants.STORAGE_PLAYER_DATA_KEY + address
   const data = JSON.parse(window.localStorage.getItem(key))
-  // console.log(`RESTORE PLAYER`, key, data)
+  //  console.log(`RESTORE PLAYER`, key, data)
   return data
 }

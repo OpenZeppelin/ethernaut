@@ -7,3 +7,7 @@ export function validateEmail(email) {
 export function validateNotEmpty(value) {
   return !!(value && value.trim());
 }
+
+export function formatNumberWithComma(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

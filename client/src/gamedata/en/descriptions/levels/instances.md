@@ -3,7 +3,7 @@ This level walks you through the very basics of how to play the game.
 &nbsp;
 #### 1. Set up MetaMask
 If you don't have it already, install the [MetaMask browser extension](https://metamask.io/) (in Chrome, Firefox, Brave or Opera on your desktop machine).
-Set up the extension's wallet and use the network selector to point to the 'Rinkeby test network' in the top left of the extension's interface.
+Set up the extension's wallet and use the network selector to point to the preferred network in the top left of the extension's interface. Alternatively you can use the UI button to switch between networks. If you select an unsupported network, the game will notify you and bring you to the default Goerli testnet.
 
 #### 2. Open the browser's console
 Open your browser's console: `Tools > Developer Tools`.
@@ -47,12 +47,12 @@ Among other things, the contract's ABI exposes all of `Ethernaut.sol`'s public m
 You can see who the owner of the ethernaut contract is.
 
 #### 6. Get test ether
-To play the game, you will need test ether. The easiest way to get some testnet ether is via [this](https://faucet.rinkeby.io/), [this](https://faucets.chain.link/rinkeby) or [this faucet](https://faucet.paradigm.xyz/). Those are Rinkeby faucets where the game was originally deployed. If you're on a different network be sure to find your test money needed to run the game.
+To play the game, you will need test ether. The easiest way to get some testnet ether is via a valid faucet for your chosen network.
 
-Once you see some ether in your balance, move on to the next step.
+Once you see some coins in your balance, move on to the next step.
 
 #### 7. Getting a level instance
-When playing a level, you don't interact directly with the ethernaut contract. Instead, you ask it to generate a **level instance** for you. To do so, click the blue button at the bottom of the page. Go do it now and come back!
+When playing a level, you don't interact directly with the ethernaut contract. Instead, you ask it to generate a **level instance** for you. To do so, click the "Get New Instance" button at the bottom of the page. Go do it now and come back!
 
 You should be prompted by MetaMask to authorize the transaction. Do so, and you should see some messages in the console. Note that this is deploying a new contract in the blockchain and might take a few seconds, so please be patient when requesting new level instances!
 

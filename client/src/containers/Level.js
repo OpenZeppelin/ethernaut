@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import CodeComponent from "../components/Code";
+import Footer from "../components/Footer";
 import Author from "../components/Author";
 import MarkdownComponent from "../components/Markdown";
 import * as actions from "../actions";
@@ -9,6 +10,10 @@ import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
 import { Link } from "react-router-dom";
 import getlevelsdata from "../utils/getlevelsdata";
+import { withRouter } from "../hoc/withRouter";
+import { getLevelKey } from "../utils/contractutil";
+import { deployAndRegisterLevel } from "../utils/deploycontract";
+import {  svgFilter } from "../utils/svg";
 
 class Level extends React.Component {
   constructor(props) {
@@ -21,7 +26,7 @@ class Level extends React.Component {
   }
 
   componentDidMount() {
-    this.props.activateLevel(this.props.match.params.address);
+    this.props.activateLevel(this.props.params.address);
   }
 
   componentWillUnmount() {
@@ -31,8 +36,9 @@ class Level extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.level.deployedAddress !== this.props.match.params.address) {
-      this.props.activateLevel(this.props.match.params.address);
+    const key = getLevelKey(this.props.params.address);
+    if (this.props.level?.[key] !== this.props.params.address) {
+      this.props.activateLevel(this.props.params.address);
     }
     var codeElement = document.getElementsByClassName("hljs")[0];
     var black = getComputedStyle(document.documentElement).getPropertyValue(
@@ -42,10 +48,57 @@ class Level extends React.Component {
       codeElement.style.background = black;
   }
 
-  render() {
-    const { requestedInstance, submittedIntance } = this.state;
+  // use arrow function to prevent this binding
+  deployFactoryContract = async () => {
+    const levelFactory = await deployAndRegisterLevel(this.props.level);
+    if (!levelFactory) return;
+    this.props.loadGameData();
+    this.props.activateLevel(levelFactory.address);
+  };
 
+  createInstance = (evt) => {
+    if (!this.state.requestedInstance) {
+      this.props.loadLevelInstance(this.props.level, false, true);
+      this.setState({ requestedInstance: true });
+      setTimeout(
+        () => this.setState({ requestedInstance: false }),
+        2000
+      );
+    }
+  };
+
+  toggleDropdown = () => {
+    this.setState({
+      dropwDownOpened: !this.state.dropwDownOpened,
+    });
+  };
+
+  closeDropdown = () => {
+    if(this.state.dropwDownOpened){
+      this.setState({
+        dropwDownOpened: false
+      });
+    }
+  }
+
+  handleImageLoad = () => { 
+    const styles = getComputedStyle(document.documentElement);
+
+    const bgColor = styles.getPropertyValue('--primary-color');
+    const black = styles.getPropertyValue('--black');
+
+    const isCurrentlyDarkMode = bgColor === black;
+
+    if (isCurrentlyDarkMode) { 
+      let levelTiles = document.getElementsByClassName("level-tile");
+      const levelTile = levelTiles[0]
+      levelTile.style.filter = svgFilter();
+    }
+  }
+
+  render() {
     const { level, levelCompleted } = this.props;
+    const { submittedIntance } = this.state;
 
     var [levelData, selectedLevel] = getlevelsdata(this.props, "levelPage");
 
@@ -92,23 +145,23 @@ class Level extends React.Component {
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels);
 
     return (
-      <div>
+      <div onClick={this.closeDropdown}>
         <div className="lines"></div>
         <main>
           {(isDescriptionMissingTranslation ||
             isCompleteDescriptionMissingTranslation) && (
-            <div style={{ textAlign: "center" }}>
-              <p>
-                {strings.levelNotTranslated}
-                <a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">
-                  {strings.contributeTranslation}
-                </a>
-              </p>
-            </div>
-          )}
+              <div style={{ textAlign: "center" }}>
+                <p>
+                  {strings.levelNotTranslated}
+                  <a href="https://github.com/openzeppelin/ethernaut#adding-new-languages">
+                    {strings.contributeTranslation}
+                  </a>
+                </p>
+              </div>
+            )}
 
-          <div className="level-selector-nav">
-            <div className="dropdown-menu-bar">
+          <div onMouseLeave={this.closeDropdown} onClick={e => e.stopPropagation()} className="level-selector-nav">
+            <div onClick={this.toggleDropdown} className="dropdown-menu-bar">
               <p key={level.difficulty}>{selectedLevel.difficulty}</p>
               <p key={level.name}>{level.name}</p>
 
@@ -118,12 +171,13 @@ class Level extends React.Component {
                 </button>
               </div>
             </div>
-            <div className="level-selector-dropdown-content">
+            <div style={{display: this.state.dropwDownOpened ? 'block':'none'}} className="level-selector-dropdown-content">
               {levelData.map((level) => {
                 return (
                   <Link
                     key={level.name}
-                    to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`}
+                    to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress || level.id
+                      }`}
                   >
                     <div className="level-selector-dropdown-content-item">
                       <p key={level.name}>
@@ -140,7 +194,7 @@ class Level extends React.Component {
             </div>
           </div>
 
-          <section>
+          <section onLoad={this.handleImageLoad}>
             <img
               alt=""
               className="level-tile level-img-view"
@@ -203,8 +257,8 @@ class Level extends React.Component {
                   <button
                     type="button"
                     className="button-actions"
-                    onClick={(evt) =>
-                      this.props.history.push(
+                    onClick={() =>
+                      this.props.navigate(
                         `${constants.PATH_LEVEL_ROOT}${nextLevelId}`
                       )
                     }
@@ -234,52 +288,51 @@ class Level extends React.Component {
                   </button>
                 )}
 
-                {/* CREATE */}
-                <button
+                {/* DEPLOY OR CREATE */}
+                {this.props.web3 && <button
                   type="button"
                   className="button-actions"
-                  onClick={(evt) => {
-                    if (!requestedInstance) {
-                      this.props.loadLevelInstance(level, false, true);
-                      this.setState({ requestedInstance: true });
-                      setTimeout(
-                        () => this.setState({ requestedInstance: false }),
-                        2000
-                      );
-                    }
-                  }}
+                  onClick={
+                    level.deployedAddress
+                      ? this.createInstance
+                      : this.deployFactoryContract
+                  }
                 >
-                  {strings.getNewInstance}
-                </button>
+                  {level.deployedAddress
+                    ? strings.getNewInstance
+                    : strings.deployLevel}
+                </button>}
+
               </div>
             )}
           </section>
 
           <section className="descriptors">
-            <div className="boxes">
-              {/* AUTHOR */}
-              {level.author && <Author author={level.author} />}
+            <div className="boxes author-section-border">
+              <div className="author-section">
+                {/* AUTHOR */}
+                {level.author && <Author author={level.author} />}
+              </div>
             </div>
           </section>
         </main>
 
         {/* Footer */}
-        <footer
-          className="footer"
-          dangerouslySetInnerHTML={{ __html: strings.footer }}
-        ></footer>
+        <Footer></Footer>
       </div>
     );
   }
 }
 
 function findNextLevelId(level, list) {
+  // check if we are a predeployed chain to know which key to use
   for (let i = 0; i < list.length; i++) {
     const otherLevel = list[i];
     if (level.deployedAddress === otherLevel.deployedAddress) {
       if (i < list.length - 1) {
-        return list[i + 1].deployedAddress;
-      } else return list[0].deployedAddress;
+        const listItem = list[i + 1];
+        return listItem.deployedAddress || listItem.deployId;
+      } else return list[0].deployedAddress || list[0].deployId;
     }
   }
 }
@@ -288,6 +341,8 @@ function mapStateToProps(state) {
   const level = state.gamedata.activeLevel;
 
   return {
+    web3: state.network.web3,
+    networkId: state.network.networkId,
     level: level,
     activeLevel: level,
     player: state.player,
@@ -306,9 +361,10 @@ function mapDispatchToProps(dispatch) {
       deactivateLevel: actions.deactivateLevel,
       loadLevelInstance: actions.loadLevelInstance,
       submitLevelInstance: actions.submitLevelInstance,
+      loadGameData: actions.loadGamedata,
     },
     dispatch
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Level);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Level));

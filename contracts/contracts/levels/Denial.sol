@@ -1,13 +1,9 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
-
-import '@openzeppelin/contracts/math/SafeMath.sol';
-
+pragma solidity ^0.8.0;
 contract Denial {
 
-    using SafeMath for uint256;
     address public partner; // withdrawal partner - pay the gas, split the withdraw
-    address payable public constant owner = address(0xA9E);
+    address public constant owner = address(0xA9E);
     uint timeLastWithdrawn;
     mapping(address => uint) withdrawPartnerBalances; // keep track of partners balances
 
@@ -17,14 +13,14 @@ contract Denial {
 
     // withdraw 1% to recipient and 1% to owner
     function withdraw() public {
-        uint amountToSend = address(this).balance.div(100);
+        uint amountToSend = address(this).balance / 100;
         // perform a call without checking return
         // The recipient can revert, the owner will still get their share
         partner.call{value:amountToSend}("");
-        owner.transfer(amountToSend);
+        payable(owner).transfer(amountToSend);
         // keep track of last withdrawal time
-        timeLastWithdrawn = now;
-        withdrawPartnerBalances[partner] = withdrawPartnerBalances[partner].add(amountToSend);
+        timeLastWithdrawn = block.timestamp;
+        withdrawPartnerBalances[partner] +=  amountToSend;
     }
 
     // allow deposit of funds

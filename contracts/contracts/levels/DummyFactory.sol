@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
 import './base/Level.sol';
 import './Dummy.sol';
@@ -11,7 +11,7 @@ contract DummyFactory is Level {
     return address(new Dummy());
   }
 
-  function validateInstance(address payable _instance, address _player) override public returns (bool) {
+  function validateInstance(address payable _instance, address _player) override public view returns (bool) {
     _player;
     Dummy instance = Dummy(_instance);
     return instance.completed();

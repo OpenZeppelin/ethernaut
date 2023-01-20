@@ -9,7 +9,6 @@ const initialState = {
 
 const networkReducer = function(state = initialState, action) {
   switch(action.type) {
-
     case actions.CONNECT_WEB3:
       return { ...state, web3: action.web3 }
 
