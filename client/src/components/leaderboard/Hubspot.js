@@ -29,13 +29,13 @@ class HubspotForm extends React.Component{
     const spans = form.querySelectorAll("span");
     const legends = form.querySelectorAll(".hs-field-desc");
     const buttons = form.querySelectorAll(".leaderboard-alias-submit-button");
+    const inputs = form.querySelectorAll("input");
 
     const emailElement = spans[0];
     const usernameElement = spans[2]
     const addressElement = spans[4]
     const label = legends[1]
-
-    console.log(buttons)
+    const addressInput = inputs[3]
 
     const styles = getComputedStyle(document.documentElement);
 
@@ -55,6 +55,9 @@ class HubspotForm extends React.Component{
     buttons[0].style.padding = '8px';
     buttons[0].style.borderRadius = '5px';
     buttons[0].style.cursor = 'pointer';
+
+    addressInput.disabled = true;
+    addressInput.value = this.props.currentUser;
   }
 
   render() {

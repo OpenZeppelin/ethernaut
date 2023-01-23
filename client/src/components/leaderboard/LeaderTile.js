@@ -16,8 +16,6 @@ function LeaderTile(props) {
         toast("Address copied")
     }    
 
-    console.log(currentUser)
-
     return (
         <>
             {Toast}

@@ -23,7 +23,7 @@ function LeaderList(props) {
 
     return (
         <>
-        <AliasModal onClose={handleClose} show={show} />
+            <AliasModal currentUser={currentUser} onClose={handleClose} show={show} />
         <div>
             {players.slice(0,20).map((leader) =>
                 <LeaderTile

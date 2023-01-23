@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react"
 import HubspotForm from "./Hubspot";
 
 export default function AliasModal(props) { 
-    const { show, onClose } = props;
+    const { show, onClose, currentUser } = props;
     const modalEl = useRef(null);
 
     useEffect(() => {
@@ -29,6 +29,7 @@ export default function AliasModal(props) {
                         portalId="23757576"
                         formId="cfcce456-f7de-4449-a871-dacd139bddf7"
                         region="na1"
+                        currentUser={currentUser}
                     />
                 </div>
             </div>
