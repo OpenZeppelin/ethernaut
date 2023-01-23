@@ -55,7 +55,7 @@ contract MockedUniswapV2Factory {
     require(tokenA != tokenB, "UniswapV2: IDENTICAL_ADDRESSES");
     (address token0, address token1) = tokenA < tokenB ? (tokenA, tokenB) : (tokenB, tokenA);
     require(token0 != address(0), "UniswapV2: ZERO_ADDRESS");
-    require(getPair[token0][token1] == address(0), 'UniswapV2: PAIR_EXISTS');
+    require(getPair[token0][token1] == address(0), "UniswapV2: PAIR_EXISTS");
     bytes memory bytecode = type(UniswapV2Pair).creationCode;
     bytes32 salt = keccak256(abi.encodePacked(token0, token1));
     assembly {
@@ -69,19 +69,34 @@ contract MockedUniswapV2Factory {
 }
 
 contract MockedUniswapV2Router {
+  modifier ensure(uint256 deadline) {
+    require(deadline >= block.timestamp, "UniswapV2Router: EXPIRED");
+    _;
+  }
+
   function addLiquidity(
-        address tokenA,
-        address tokenB,
-        uint amountADesired,
-        uint amountBDesired,
-        uint amountAMin,
-        uint amountBMin,
-        address to,
-        uint deadline
-    ) external virtual override ensure(deadline) returns (uint amountA, uint amountB, uint liquidity) {
-        address pair = IUniswapV2Factory.getPair(tokenA, tokenB);
-        TransferHelper.safeTransferFrom(tokenA, msg.sender, pair, amountADesired);
-        TransferHelper.safeTransferFrom(tokenB, msg.sender, pair, amountBDesired);
-        liquidity = IUniswapV2Pair(pair).mint(to);
-    }
+    address tokenA,
+    address tokenB,
+    uint256 amountADesired,
+    uint256 amountBDesired,
+    uint256 amountAMin,
+    uint256 amountBMin,
+    address to,
+    uint256 deadline
+  )
+    external
+    virtual
+    override
+    ensure(deadline)
+    returns (
+      uint256 amountA,
+      uint256 amountB,
+      uint256 liquidity
+    )
+  {
+    address pair = IUniswapV2Factory.getPair(tokenA, tokenB);
+    TransferHelper.safeTransferFrom(tokenA, msg.sender, pair, amountADesired);
+    TransferHelper.safeTransferFrom(tokenB, msg.sender, pair, amountBDesired);
+    liquidity = IUniswapV2Pair(pair).mint(to);
+  }
 }
