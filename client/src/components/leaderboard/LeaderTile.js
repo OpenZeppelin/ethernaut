@@ -2,7 +2,7 @@ import { useToast } from "../utils/Toast";
 import Tooltip from "../utils/Tooltip";
 
 function LeaderTile(props) { 
-    const { rank, leader } = props;
+    const { rank, leader, onAliasEdit, currentUser } = props;
     const { toast, Toast } = useToast()
 
     let { player, score, alias, totalNumberOfLevelsCompleted } = leader;
@@ -15,6 +15,9 @@ function LeaderTile(props) {
         navigator.clipboard.writeText(player);
         toast("Address copied")
     }    
+
+    console.log(currentUser)
+
     return (
         <>
             {Toast}
@@ -29,8 +32,13 @@ function LeaderTile(props) {
                     {totalNumberOfLevelsCompleted}
                 </div>
                 <div className="leaderboard-score">{score.toFixed(2)}</div>
-                <div className="leaderboard-edit-player">{player === '' ? "✍️" : ""}</div>
+                <div onClick={onAliasEdit} className='leaderboard-alias-edit'>
+                    {
+                        currentUser.toLowerCase() === player.toLowerCase() && <i className="leaderboard-edit-icon fa-solid fa-pen-to-square"></i>
+                    }
+                </div>
             </div>
+             
         </>
     )
 }
