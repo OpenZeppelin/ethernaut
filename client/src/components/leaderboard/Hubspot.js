@@ -1,4 +1,7 @@
 import React from "react";
+import Filter from "bad-words"
+
+const filter = new Filter()
 
 class HubspotForm extends React.Component{
   constructor() { 
@@ -31,7 +34,7 @@ class HubspotForm extends React.Component{
     const buttons = form.querySelectorAll(".leaderboard-alias-submit-button");
     const inputs = form.querySelectorAll("input");
 
-    const emailElement = spans[0];
+    const emailElement = spans[0]
     const usernameElement = spans[2]
     const addressElement = spans[4]
     const label = legends[1]
@@ -58,13 +61,23 @@ class HubspotForm extends React.Component{
 
     addressInput.disabled = true;
     addressInput.value = this.props.currentUser;
+
+    form.addEventListener('submit', (event) => { 
+      const alias = event.srcElement[1].value
+      if (filter.isProfane(alias)) { 
+        alert("Please do not use offensive words in your alias")
+        event.stopPropagation()
+      }
+    })
   }
 
   render() {
     return (
-      <div>
-        <div ref={this.formRef} id="hubspotForm" />
-      </div>
+      <>
+        <div>
+          <div ref={this.formRef} id="hubspotForm" />
+        </div>
+      </>
     );
   }
 }
