@@ -75,8 +75,8 @@ contract MockedUniswapV2Router {
   }
 
   function addLiquidity(
-    address tokenA,
-    address tokenB,
+    IERC20 tokenA,
+    IERC20 tokenB,
     uint256 amountADesired,
     uint256 amountBDesired,
     uint256 amountAMin,
@@ -88,15 +88,10 @@ contract MockedUniswapV2Router {
     virtual
     override
     ensure(deadline)
-    returns (
-      uint256 amountA,
-      uint256 amountB,
-      uint256 liquidity
-    )
   {
     address pair = IUniswapV2Factory.getPair(tokenA, tokenB);
-    TransferHelper.safeTransferFrom(tokenA, msg.sender, pair, amountADesired);
-    TransferHelper.safeTransferFrom(tokenB, msg.sender, pair, amountBDesired);
+    tokenA.transferFrom(msg.sender, pair, amountADesired);
+    tokenB.transferFrom(msg.sender, pair, amountADesired);
     liquidity = IUniswapV2Pair(pair).mint(to);
   }
 }
