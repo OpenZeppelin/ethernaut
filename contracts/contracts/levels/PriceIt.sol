@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
-import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol';
-import '@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol';
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
+import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol";
+import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
 
 contract PriceIt {
   IUniswapV2Factory public constant uniFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
@@ -29,14 +29,14 @@ contract PriceIt {
 
   function getTokenPrice(uint256 inputAmount, address inputToken) private view returns (uint256) {
     IUniswapV2Pair pair = IUniswapV2Pair(uniFactory.getPair(address(token0), address(token1)));
-    (uint resA, uint resB, ) = pair.getReserves();
+    (uint256 resA, uint256 resB, ) = pair.getReserves();
     (address tokenA, address tokenB) = (pair.token0(), pair.token1());
     if (inputToken == tokenA) {
       return uniRouter.getAmountOut(inputAmount, resA, resB);
     } else if (inputToken == tokenB) {
       return uniRouter.getAmountOut(inputAmount, resB, resA);
     } else {
-      revert('Input token is not part of the token0/token1 pair.');
+      revert("Input token is not part of the token0/token1 pair.");
     }
   }
 }

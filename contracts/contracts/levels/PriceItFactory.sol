@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.6.12;
 
-import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
-import '@openzeppelin/contracts/access/Ownable.sol';
-import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
-import './PriceIt.sol';
-import './base/Level.sol';
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@uniswap/v2-core/contracts/UniswapV2Pair.sol";
+import "./PriceIt.sol";
+import "./base/Level.sol";
 
 contract PriceItFactory is Level {
   IUniswapV2Factory private constant uniFactory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
@@ -13,9 +14,9 @@ contract PriceItFactory is Level {
   uint256 private constant amount = 100000 ether;
 
   function createInstance(address) public payable override returns (address) {
-    TestingERC20 token0 = new TestingERC20('Token 0', 'TZERO');
-    TestingERC20 token1 = new TestingERC20('Token 1', 'TONE');
-    TestingERC20 token2 = new TestingERC20('Token 2', 'TTWO');
+    TestingERC20 token0 = new TestingERC20("Token 0", "TZERO");
+    TestingERC20 token1 = new TestingERC20("Token 1", "TONE");
+    TestingERC20 token2 = new TestingERC20("Token 2", "TTWO");
     PriceIt level = new PriceIt(token0, token1, token2);
     token0.mint(address(level), amount);
     token1.mint(address(level), amount);
@@ -44,5 +45,20 @@ contract TestingERC20 is Ownable, ERC20 {
 
   function mint(address account, uint256 amount) external onlyOwner {
     _mint(account, amount);
+  }
+}
+
+contract MockedUniswapV2Factory {
+  function createPair(address tokenA, address tokenB) external returns (address pair) {
+    require(tokenA != tokenB, "UniswapV2: IDENTICAL_ADDRESSES");
+    (address token0, address token1) = tokenA < tokenB ? (tokenA, tokenB) : (tokenB, tokenA);
+    require(token0 != address(0), "UniswapV2: ZERO_ADDRESS");
+    bytes memory bytecode = type(UniswapV2Pair).creationCode;
+    bytes32 salt = keccak256(abi.encodePacked(token0, token1));
+    assembly {
+      pair := create2(0, add(bytecode, 32), mload(bytecode), salt)
+    }
+    IUniswapV2Pair(pair).initialize(token0, token1);
+    return pair;
   }
 }
