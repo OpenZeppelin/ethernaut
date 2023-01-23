@@ -67,3 +67,21 @@ contract MockedUniswapV2Factory {
     return pair;
   }
 }
+
+contract MockedUniswapV2Router {
+  function addLiquidity(
+        address tokenA,
+        address tokenB,
+        uint amountADesired,
+        uint amountBDesired,
+        uint amountAMin,
+        uint amountBMin,
+        address to,
+        uint deadline
+    ) external virtual override ensure(deadline) returns (uint amountA, uint amountB, uint liquidity) {
+        address pair = IUniswapV2Factory.getPair(tokenA, tokenB);
+        TransferHelper.safeTransferFrom(tokenA, msg.sender, pair, amountADesired);
+        TransferHelper.safeTransferFrom(tokenB, msg.sender, pair, amountBDesired);
+        liquidity = IUniswapV2Pair(pair).mint(to);
+    }
+}
