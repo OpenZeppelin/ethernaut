@@ -446,6 +446,17 @@
       "deployId": "28",
       "instanceGas": 1000000,
       "author": "KStasi"
+    },
+    {
+      "name": "Price It",
+      "created": "2022-05-22",
+      "difficulty": "4",
+      "description": "price_it.md",
+      "completedDescription": "price_it_complete.md",
+      "levelContract": "PriceItFactory.sol",
+      "instanceContract": "PriceIt.sol",
+      "instanceGas": 11000000,
+      "author": "itaylevyofficial"
     }
   ]
 }
