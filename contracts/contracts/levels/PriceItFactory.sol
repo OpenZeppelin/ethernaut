@@ -69,9 +69,15 @@ contract MockedUniswapV2Factory {
 }
 
 contract MockedUniswapV2Router {
+  address public immutable override factory;
+
   modifier ensure(uint256 deadline) {
     require(deadline >= block.timestamp, "UniswapV2Router: EXPIRED");
     _;
+  }
+
+  constructor(address _factory) public {
+    factory = _factory;
   }
 
   function addLiquidity(
@@ -83,13 +89,8 @@ contract MockedUniswapV2Router {
     uint256 amountBMin,
     address to,
     uint256 deadline
-  )
-    external
-    virtual
-    override
-    ensure(deadline)
-  {
-    address pair = IUniswapV2Factory.getPair(tokenA, tokenB);
+  ) external virtual override ensure(deadline) {
+    address pair = IUniswapV2Factory(factory).getPair(tokenA, tokenB);
     tokenA.transferFrom(msg.sender, pair, amountADesired);
     tokenB.transferFrom(msg.sender, pair, amountADesired);
     liquidity = IUniswapV2Pair(pair).mint(to);
