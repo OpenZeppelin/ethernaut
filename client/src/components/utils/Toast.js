@@ -12,7 +12,7 @@ const style = {
     fontSize: '15px',
 }
 
-export function useToast() { 
+export function useToast(time) { 
     const [message, setMessage] = useState("") 
     const [currentPos, setCurrentPos] = useState('-200%');
     
@@ -29,7 +29,7 @@ export function useToast() {
             setCurrentPos('25%')
             setTimeout(() => {
                 setCurrentPos('-200%')
-            } , 1000)
+            } , time*1000 || 1000)
         }
     }
 }

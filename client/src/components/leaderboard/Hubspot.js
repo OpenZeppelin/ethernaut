@@ -1,5 +1,6 @@
 import React from "react";
 import Filter from "bad-words"
+import { useToast } from "../utils/Toast";
 
 const filter = new Filter()
 
@@ -22,7 +23,8 @@ class HubspotForm extends React.Component{
           target: "#hubspotForm",
           ...this.props,
           onFormReady: this.onFormReady,
-          submitButtonClass: "leaderboard-alias-submit-button"
+          submitButtonClass: "leaderboard-alias-submit-button",
+          onFormSubmitted: this.onFormSubmitted
         });
       }
     });
@@ -42,19 +44,19 @@ class HubspotForm extends React.Component{
 
     const styles = getComputedStyle(document.documentElement);
 
-    const bgColor = styles.getPropertyValue('--secondary-color');
-    const textColor = styles.getPropertyValue('--primary-color');
+    const textColor = styles.getPropertyValue('--secondary-color');
+    const bgColor = styles.getPropertyValue('--primary-color');
 
-    emailElement.style.color = bgColor;
-    usernameElement.style.color = bgColor;
-    addressElement.style.color = bgColor;
+    emailElement.style.color = textColor;
+    usernameElement.style.color = textColor;
+    addressElement.style.color = textColor;
     
-    label.style.color = bgColor;
+    label.style.color = textColor;
     label.style.opacity = 0.7;
 
-    buttons[0].style.backgroundColor = bgColor;
+    buttons[0].style.backgroundColor = textColor;
     buttons[0].style.border = "none";
-    buttons[0].style.color = textColor;
+    buttons[0].style.color = bgColor;
     buttons[0].style.padding = '8px';
     buttons[0].style.borderRadius = '5px';
     buttons[0].style.cursor = 'pointer';
@@ -65,10 +67,16 @@ class HubspotForm extends React.Component{
     form.addEventListener('submit', (event) => { 
       const alias = event.srcElement[1].value
       if (filter.isProfane(alias)) { 
-        alert("Please do not use offensive words in your alias")
+        this.props.toast("Please don't use offensive words in your alias")
         event.stopPropagation()
       }
     })
+  }
+
+  onFormSubmitted = (form) => { 
+    const styles = getComputedStyle(document.documentElement);
+    const textColor = styles.getPropertyValue('--secondary-color');
+    form.style.color = textColor;
   }
 
   render() {
@@ -82,4 +90,17 @@ class HubspotForm extends React.Component{
   }
 }
 
-export default HubspotForm;
+
+function WithToast(Component) {
+  return function WrappedComponent(props) {
+    const { Toast, toast } = useToast(2)
+    return (
+      <>
+        {Toast}
+        <Component toast={toast} {...props} />
+      </>
+    );
+  };
+}
+
+export default WithToast(HubspotForm);
