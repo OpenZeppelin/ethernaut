@@ -85,8 +85,11 @@ const useScoreEquation = (averageTimeTakenToCompleteALevel, totalDifficultyFaced
   let timeScoreContribution = 0;
   const totalNumberOfEthernautLevels = evaluateCurrentNumberOfEthernautLevels();
 
+  // If less than 15 seconds, set to 15 seconds, so that timeScoreContribution is 0.1 * 1
+  averageTimeTakenToCompleteALevel = Math.max(averageTimeTakenToCompleteALevel, 15)
+
   if (averageTimeTakenToCompleteALevel !== 0) {
-    timeScoreContribution = 0.1 * (1/averageTimeTakenToCompleteALevel)
+    timeScoreContribution = 0.1 * (15/averageTimeTakenToCompleteALevel)
   }
 
   let score = 0;
