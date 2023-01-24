@@ -79,23 +79,24 @@ const evaluateHistoricalPlayersProfile = (processedData, network) =>
 
 const useScoreEquation = (averageTimeTakenToCompleteALevel, totalDifficultyFacedByPlayer, totalNumberOfLevelsCompleted) => {
 
-
   const volumeCompletedParameter = 0.8; //approx. 80% of total attainable score
   const difficultyFacedParameter = 0.1; //approx 10% of total attainable score
-  const timeTakenParameter = 15; // NOTA.BENE this value has been iterated BY HAND to represent the remaining 10% of total attainable score. The average block time for Ethereum was used as a starting value, and modified slightly thereafter to yield satisfactory score balance
   const totalDifficultyInEthernautGame = evaluateTotalDifficultyInEthernautGame();
-
+  let timeScoreContribution = 0;
   const totalNumberOfEthernautLevels = evaluateCurrentNumberOfEthernautLevels();
 
-  averageTimeTakenToCompleteALevel = Math.max(averageTimeTakenToCompleteALevel, timeTakenParameter)
+  if (averageTimeTakenToCompleteALevel !== 0) {
+    timeScoreContribution = 0.1 * (1/averageTimeTakenToCompleteALevel)
+  }
 
   let score = 0;
   if (totalNumberOfLevelsCompleted && totalDifficultyFacedByPlayer && averageTimeTakenToCompleteALevel) {
     score =
-      100 *
-      (volumeCompletedParameter * (totalNumberOfLevelsCompleted / totalNumberOfEthernautLevels) +
-        difficultyFacedParameter * (totalDifficultyFacedByPlayer / totalDifficultyInEthernautGame) +
-      (timeTakenParameter / averageTimeTakenToCompleteALevel));
+      100 * (
+      (volumeCompletedParameter * (totalNumberOfLevelsCompleted / totalNumberOfEthernautLevels)) +
+      (difficultyFacedParameter * (totalDifficultyFacedByPlayer / totalDifficultyInEthernautGame)) +
+      timeScoreContribution
+    )
   };
 
   return score;
