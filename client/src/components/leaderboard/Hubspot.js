@@ -25,7 +25,7 @@ class HubspotForm extends React.Component{
           onFormReady: this.onFormReady,
           submitButtonClass: "leaderboard-alias-submit-button",
           onFormSubmitted: this.onFormSubmitted,
-          onFormSubmit:this.onFormSubmit
+          // onFormSubmit:this.onFormSubmit
         });
       }
     });
@@ -80,10 +80,10 @@ class HubspotForm extends React.Component{
     form.style.color = textColor;
   }
 
-  onFormSubmit = (_,values) => { 
-    console.log(`values`)
-    console.log(values)
-  }
+  // onFormSubmit = (_,values) => { 
+  //   console.log(`values`)
+  //   console.log(values)
+  // }
 
   render() {
     return (
