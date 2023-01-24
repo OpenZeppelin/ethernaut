@@ -25,7 +25,7 @@ export default function AliasModal(props) {
             <div className='leaderboard-alias-modal'>
                 <div ref={modalEl} className="leaderboard-modal-body">
                     <div onClick={onClose} className='leaderboard-close-button'>
-                        <i class="fa-sharp fa-solid fa-xmark"></i>
+                        <i className="fa-sharp fa-solid fa-xmark"></i>
                     </div>
                     <h3>Leaderboard alias submission</h3>
                     <HubspotForm

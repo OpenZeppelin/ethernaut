@@ -87,8 +87,10 @@ const useScoreEquation = (averageTimeTakenToCompleteALevel, totalDifficultyFaced
 
   const totalNumberOfEthernautLevels = evaluateCurrentNumberOfEthernautLevels();
 
+  averageTimeTakenToCompleteALevel = Math.max(averageTimeTakenToCompleteALevel, timeTakenParameter)
+
   let score = 0;
-  if (totalNumberOfLevelsCompleted, totalDifficultyFacedByPlayer, averageTimeTakenToCompleteALevel) {
+  if (totalNumberOfLevelsCompleted && totalDifficultyFacedByPlayer && averageTimeTakenToCompleteALevel) {
     score =
       100 *
       (volumeCompletedParameter * (totalNumberOfLevelsCompleted / totalNumberOfEthernautLevels) +

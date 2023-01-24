@@ -24,7 +24,8 @@ class HubspotForm extends React.Component{
           ...this.props,
           onFormReady: this.onFormReady,
           submitButtonClass: "leaderboard-alias-submit-button",
-          onFormSubmitted: this.onFormSubmitted
+          onFormSubmitted: this.onFormSubmitted,
+          onFormSubmit:this.onFormSubmit
         });
       }
     });
@@ -61,22 +62,27 @@ class HubspotForm extends React.Component{
     buttons[0].style.borderRadius = '5px';
     buttons[0].style.cursor = 'pointer';
 
-    addressInput.disabled = true;
     addressInput.value = this.props.currentUser;
+    addressInput.disabled = true;
 
     form.addEventListener('submit', (event) => { 
-      const alias = event.srcElement[1].value
+      const alias = event.srcElement[1].value;
       if (filter.isProfane(alias)) { 
-        this.props.toast("Please don't use offensive words in your alias")
-        event.stopPropagation()
+        this.props.toast("Please don't use offensive words in your alias");
+        event.stopPropagation();
       }
     })
   }
 
-  onFormSubmitted = (form) => { 
+  onFormSubmitted = (form, values) => { 
     const styles = getComputedStyle(document.documentElement);
     const textColor = styles.getPropertyValue('--secondary-color');
     form.style.color = textColor;
+  }
+
+  onFormSubmit = (_,values) => { 
+    console.log(`values`)
+    console.log(values)
   }
 
   render() {
