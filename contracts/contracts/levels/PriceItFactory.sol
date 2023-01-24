@@ -95,4 +95,17 @@ contract MockedUniswapV2Router {
     tokenB.transferFrom(msg.sender, pair, amountADesired);
     liquidity = IUniswapV2Pair(pair).mint(to);
   }
+
+  function getAmountOut(
+    uint256 amountIn,
+    uint256 reserveIn,
+    uint256 reserveOut
+  ) public pure virtual override returns (uint256 amountOut) {
+    require(amountIn > 0, "UniswapV2Library: INSUFFICIENT_INPUT_AMOUNT");
+    require(reserveIn > 0 && reserveOut > 0, "UniswapV2Library: INSUFFICIENT_LIQUIDITY");
+    uint256 amountInWithFee = amountIn.mul(997);
+    uint256 numerator = amountInWithFee.mul(reserveOut);
+    uint256 denominator = reserveIn.mul(1000).add(amountInWithFee);
+    amountOut = numerator / denominator;
+  }
 }
