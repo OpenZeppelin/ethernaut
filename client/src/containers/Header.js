@@ -195,9 +195,11 @@ class Header extends React.Component {
                   }
                 >
                   <button>
-                    {window.location.pathname !== constants.PATH_ROOT
-                      ? strings.home
-                      : strings.ethernautHelp}
+                    {window.location.pathname !== constants.PATH_ROOT ? (
+                      <i className="fas fa-home"></i>
+                    ) : (
+                      <i className="fas fa-question"></i>
+                    )}
                   </button>
                 </Link>
               </li>

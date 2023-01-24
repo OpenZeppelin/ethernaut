@@ -71,7 +71,7 @@ ul {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  max-width: 90%;
+  max-width: 80%;
 }
 
 /* .christmas-hat {
@@ -176,6 +176,11 @@ nav li {
   text-decoration: none;
   padding-right: 5px;
   font-family: helvetica, sans-serif;
+}
+
+.nav-links button i:hover{
+  outline: none;
+  background: transparent;
 }
 
 .icon-buttons {
