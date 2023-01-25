@@ -2,7 +2,6 @@ const {
   evaluateCurrentSolveInstanceHex,
   returnCurrentLevel,
 } = require("../../tools/evaluateHelper.cjs");
-let i = 0;
 const filterLogs = async (
   logs,
   nodeProvider,
@@ -13,8 +12,6 @@ const filterLogs = async (
 ) => {
   const filteredData = [];
   for (let log of logs) {
-    i++;
-    console.log(i)
     try {
       let txn = await nodeProvider.getTransaction(log.transactionHash);
       let block = await nodeProvider.getBlock(log.blockNumber);
@@ -38,7 +35,7 @@ const filterLogs = async (
           mappingDataPath
         ),
       };
-      filteredData.push(filteredLog);
+      filteredData.push({ ...filteredLog, index:log.index });
     } catch (error) {
       console.log(error);
     }
@@ -64,6 +61,7 @@ const filterLogsInParallel = async (
 ) => { 
   const noOfParallelCalls = 10;
   const sizeOfChunk = Math.ceil(logs.length / noOfParallelCalls);
+  logs = logs.map((item, index) => ({ ...item, index }));
   const chunkedLogs = chunkArray(logs, sizeOfChunk); 
   const filteredData = []; 
   const promises = chunkedLogs.map(async (chunk) => { 
@@ -71,7 +69,7 @@ const filterLogsInParallel = async (
     filteredData.push(...filteredChunk); 
   }); 
   await Promise.all(promises); 
-  return filteredData; 
+  return filteredData.sort((a, b) => a.index - b.index);
 }
 
 module.exports = filterLogsInParallel;
