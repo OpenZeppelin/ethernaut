@@ -17,9 +17,15 @@ const fetchAndAddAliases = () => {
     const leaderBoard = JSON.parse(fs.readFileSync(leaderBoardPath));
 
     const newLeaderBoard = leaderBoard.map((entry) => {
-      if (lastAliasArray.player === entry.player) {
-        lastAliasArray.alias = entry.alias;
+      for(let i = 0; i < aliasArray.length; i++) {
+        if(entry.player === aliasArray[i].player) {
+          return {
+            ...entry,
+            alias: aliasArray[i].alias
+          }
+        }
       }
+      return entry;
     });
 
     fs.writeFileSync(leaderBoardPath, JSON.stringify(newLeaderBoard));
