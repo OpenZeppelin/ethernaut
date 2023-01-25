@@ -25,6 +25,7 @@ class HubspotForm extends React.Component{
           onFormReady: this.onFormReady,
           submitButtonClass: "leaderboard-alias-submit-button",
           onFormSubmitted: this.onFormSubmitted,
+          onFormSubmit:this.onFormSubmit
         });
       }
     });
@@ -61,8 +62,8 @@ class HubspotForm extends React.Component{
     buttons[0].style.borderRadius = '5px';
     buttons[0].style.cursor = 'pointer';
 
-    addressInput.value = this.props.currentUser;
     addressInput.disabled = true;
+    setNativeValue(addressInput, this.props.currentUser);
 
     form.addEventListener('submit', (event) => { 
       const alias = event.srcElement[1].value;
@@ -77,6 +78,10 @@ class HubspotForm extends React.Component{
     const styles = getComputedStyle(document.documentElement);
     const textColor = styles.getPropertyValue('--secondary-color');
     form.style.color = textColor;
+  }
+
+  onFormSubmit = (form, values) => { 
+    console.log(values)
   }
 
   render() {
@@ -101,6 +106,20 @@ function WithToast(Component) {
       </>
     );
   };
+}
+
+function setNativeValue(element, value) {
+    let lastValue = element.value;
+    element.value = value;
+    let event = new Event("input", { target: element, bubbles: true });
+    // React 15
+    event.simulated = true;
+    // React 16
+    let tracker = element._valueTracker;
+    if (tracker) {
+        tracker.setValue(lastValue);
+    }
+    element.dispatchEvent(event);
 }
 
 export default WithToast(HubspotForm);

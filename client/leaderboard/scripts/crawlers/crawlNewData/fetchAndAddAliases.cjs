@@ -1,13 +1,29 @@
 const fs = require("fs");
 const leaderBoardPath = "client/leaderboard/boards/leaderboard.json";
+const dotenv = require("dotenv");
+const axios = require("axios");
+
+dotenv.config();
 
 const fetchAndAddAliases = async () => {
   const aliasArray = await fetchAliases();
-  await addAliases(aliasArray)
+  console.log(aliasArray)
+  // await addAliases(aliasArray)
 };
 
-const fetchAliases = () => {
-  return []
+const fetchAliases = async () => {
+  const response = await axios.post('https://api.hubapi.com/crm/v3/objects/companies/search',
+    {
+      limit:100
+    },
+    {
+      headers: {
+        'Authorization': `Bearer ${process.env.HUBSPOT_SECRET}`,
+        'Content-Type': 'application/json'
+      }
+    }
+  )
+  return response.data.results.map(entry=>entry.properties)
 };
 
 const addAliases = async (aliasArray) => {
@@ -27,5 +43,7 @@ const addAliases = async (aliasArray) => {
 
   fs.writeFileSync(leaderBoardPath, JSON.stringify(newLeaderBoard));
 };
+
+fetchAndAddAliases()
 
 module.exports = fetchAndAddAliases;
