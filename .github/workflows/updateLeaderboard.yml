@@ -2,8 +2,8 @@ name: "update leaderboard"
 
 on:
   schedule:
-    # Every 5 hours
-    - cron: "0 */5 * * *"
+    # Runs every 5 minutes
+    - cron: "5/5 * * * *"
 
   push:
     branches: [ "master" ]
@@ -12,6 +12,13 @@ jobs:
   crawl:
     runs-on: ubuntu-latest
     steps:
+      env:
+        HUBSPOT_SECRET: ${{ secrets.HUBSPOT_SECRET }}
+        GOERLI_API_KEY: ${{ secrets.GOERLI_API_KEY }}
+        SEPOLIA_API_KEY: ${{ secrets.SEPOLIA_API_KEY }}
+        ARB_GOERLI_API_KEY: ${{ secrets.ARB_GOERLI_API_KEY }}
+        OPT_GOERLI_API_KEY: ${{ secrets.OPT_GOERLI_API_KEY }}
+        MUMBAI_API_KEY: ${{ secrets.MUMBAI_API_KEY }}
     - uses: actions/checkout@v3
       with:
         ref: ${{ github.head_ref }}
