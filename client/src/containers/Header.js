@@ -9,6 +9,7 @@ import { loadTranslations } from "../utils/translations";
 import PropTypes from "prop-types";
 import { ProgressBar } from 'react-loader-spinner';
 import {  svgFilter } from "../utils/svg";
+import LeaderIcon from "../components/leaderboard/LeaderIcon";
 
 class Header extends React.Component {
   constructor(props) {
@@ -186,6 +187,12 @@ class Header extends React.Component {
               />
             </a>
             <ul className="header-ul">
+              {
+                window.location.pathname === constants.PATH_ROOT && !!this.props.web3 &&
+                  <Link to={constants.PATH_LEADERBOARD}>
+                    <LeaderIcon />
+                  </Link>
+              }
               <li className="nav-links">
                 <Link
                   to={
@@ -391,7 +398,7 @@ class Header extends React.Component {
             visible={true}
           />
           {!this.props.web3 &&
-            <div style={{ backgroundColor: "#eddfd6", border: "none" }} class="alert alert-warning">
+            <div style={{ backgroundColor: "#eddfd6", border: "none" }} className="alert alert-warning">
               <strong>{strings.warning}! </strong><span>{strings.warningMessage}</span>
             </div>}
         </center>
