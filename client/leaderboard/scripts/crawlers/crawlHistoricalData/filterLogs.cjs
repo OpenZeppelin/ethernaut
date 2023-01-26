@@ -56,7 +56,7 @@ const filterLogsInParallel = async (
   web3,
   mappingDataPath
 ) => {
-  const noOfParallelCalls = 10;
+  const noOfParallelCalls = 15;
   const sizeOfChunk = Math.ceil(logs.length / noOfParallelCalls);
   logs = logs.map((item, index) => ({ ...item, index }));
   const chunkedLogs = chunkArray(logs, sizeOfChunk);
