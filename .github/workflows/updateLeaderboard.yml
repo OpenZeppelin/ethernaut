@@ -2,8 +2,8 @@ name: "update leaderboard"
 
 on:
   schedule:
-    # Every 5 hours
-    - cron: "0 */5 * * *"
+    # Runs every 5 minutes
+    - cron: "5/5 * * * *"
 
   push:
     branches: [ "master" ]
@@ -18,6 +18,13 @@ jobs:
         fetch-depth: 0
     - run: yarn
     - run: yarn "leaderboard:triggerNextCrawl"
+      env:
+        HUBSPOT_SECRET: ${{ secrets.HUBSPOT_SECRET }}
+        GOERLI_API_KEY: ${{ secrets.GOERLI_API_KEY }}
+        SEPOLIA_API_KEY: ${{ secrets.SEPOLIA_API_KEY }}
+        ARB_GOERLI_API_KEY: ${{ secrets.ARB_GOERLI_API_KEY }}
+        OPT_GOERLI_API_KEY: ${{ secrets.OPT_GOERLI_API_KEY }}
+        MUMBAI_API_KEY: ${{ secrets.MUMBAI_API_KEY }}
     - name: Commit files
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
