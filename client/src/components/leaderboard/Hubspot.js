@@ -95,6 +95,10 @@ class HubspotForm extends React.Component{
     form.style.color = textColor;
   }
 
+  onFormSubmit = (form, data) => { 
+    console.log(data)
+  }
+
   render() {
     return (
       <>
