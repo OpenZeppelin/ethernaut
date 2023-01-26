@@ -1,0 +1,29 @@
+name: "update leaderboard"
+
+on:
+  schedule:
+    # Every 5 hours
+    - cron: "0 */5 * * *"
+
+  push:
+    branches: [ "master" ]
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
+        fetch-depth: 0
+    - run: yarn
+    - run: yarn "leaderboard:triggerNextCrawl"
+    - name: Commit files
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -a -m "Add changes"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        force_with_lease: true

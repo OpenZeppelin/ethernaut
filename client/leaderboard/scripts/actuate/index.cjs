@@ -2,6 +2,7 @@ const refreshEthernautBasedData = require("./refreshEthernautBasedData.cjs");
 const crawlForFreshEntriesAndUpdateNetworkBoard = require("../crawlers/crawlNewData/index.cjs");
 const writeLeaderBoards = require("./writeLeaderBoards.cjs");
 const consoleCustomiser = require("../../utils/consoleCustomiser.cjs");
+const { default: fetchAndAddAliases } = require("../crawlers/crawlNewData/fetchAndAddAliases.cjs");
 const { logger } = consoleCustomiser({ delay: 50, randomized: true });
 
 const trigger = async () => {
@@ -16,6 +17,8 @@ const trigger = async () => {
 
   await logger("gather round, all ye faithful! The crawl was a success! See you next cron job, git hubber!")
 
+  await fetchAndAddAliases()
+  await logger("get your magnifying glass out, Sherlock, because the leader board now belies.... the ALIASES!")
 };
 
 trigger();
