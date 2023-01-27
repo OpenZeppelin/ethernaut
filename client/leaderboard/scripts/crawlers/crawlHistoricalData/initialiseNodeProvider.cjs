@@ -55,12 +55,12 @@ const initialiseAlchemy = (network) => {
   return alchemy.core;
 };
 
-const initialiseInfuraForSepolia = (network) => {
+const initialiseInfura = (network) => {
   const apiKey = resolveNetworkApiKey(network);
   if (apiKey === 0) throw new Error(`API KEY for ${network.name} is missing`);
   if (apiKey === -1) throw new Error(`Unkown network ${network.name}`);
   const infuraWeb3 = new Web3(
-    new Web3.providers.HttpProvider(`https://sepolia.infura.io/v3/${apiKey}`)
+    new Web3.providers.HttpProvider(`https://${network.name.toLoweCase()}.infura.io/v3/${apiKey}`)
   );
   return {
     ...infuraWeb3.eth,
@@ -70,7 +70,7 @@ const initialiseInfuraForSepolia = (network) => {
 
 const initialiseNodeProvider = (network) =>
   network.name === "Sepolia"
-    ? initialiseInfuraForSepolia(network)
+    ? initialiseInfura(network)
     : initialiseAlchemy(network);
 
 module.exports = initialiseNodeProvider;
