@@ -10,9 +10,9 @@ const trigger = async () => {
    * NB fetchAndAddAliases is not yet functional, contained within scripts/crawlers/crawlNewData/crawlForFreshEntriesAndUpdateNetworkBoard()
    */
 
-  refreshEthernautBasedData();
+  await refreshEthernautBasedData();
   await crawlForFreshEntriesAndUpdateNetworkBoard();
-  writeLeaderBoards(logger);  
+  await writeLeaderBoards(logger);  
 
   await logger("gather round, all ye faithful! The crawl was a success! See you next cron job, git hubber!")
 };

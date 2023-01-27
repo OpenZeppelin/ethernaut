@@ -17,7 +17,9 @@ const callBlockChain = async (network, web3, upperBlock) => {
   const incrementer = 2000;
   let lastFromBlock = network.lastFrom;
   let nextToBlock = network.lastFrom + incrementer;
+  console.log(`Upper block - ${upperBlock}`)
   do {
+    console.log(`nextToBlock - ${nextToBlock}`)
     const logDump = await nodeProvider.getLogs({
       fromBlock: lastFromBlock,
       toBlock: nextToBlock,
@@ -27,7 +29,7 @@ const callBlockChain = async (network, web3, upperBlock) => {
       ],
     });
     if (logDump) {
-      for (log of logDump) {
+      for (let log of logDump) {
         let dataArray1 = [{ type: "address", name: "player" }];
         let dataArray2 = [{ type: "uint256", name: "time" }];
         let dataArray3 = [{ type: "uint256", name: "number" }];
