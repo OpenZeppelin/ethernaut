@@ -82,7 +82,10 @@ const addAliases = async (aliasArray) => {
   const leaderBoard = JSON.parse(fs.readFileSync(leaderBoardPath));
 
   const newLeaderBoard = leaderBoard.map((entry) => {
-    for(let i = 0; i < aliasArray.length; i++) {
+    for (let i = 0; i < aliasArray.length; i++) {
+      if (!entry) { 
+        continue;
+      }
       if(entry.player === aliasArray[i].player) {
         return {
           ...entry,
