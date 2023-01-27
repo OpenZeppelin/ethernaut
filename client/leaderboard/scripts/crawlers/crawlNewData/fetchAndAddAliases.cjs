@@ -13,6 +13,7 @@ const fetchAndAddAliases = async () => {
 
 const eliminateDuplicates = (aliasArray) => {
   const addressToIndicesMapping = getAddressToIndicesMapping(aliasArray);
+  delete addressToIndicesMapping[null]
   const finalResults = []
   Object.keys(addressToIndicesMapping).forEach((address) => {
     const indices = addressToIndicesMapping[address];
