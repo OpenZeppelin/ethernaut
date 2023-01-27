@@ -5,7 +5,7 @@ on:
     - cron: 5/5 * * * *
   push:
     branches:
-      - master
+      - leaderboard-integration-new
 jobs:
   crawl:
     runs-on: ubuntu-latest
