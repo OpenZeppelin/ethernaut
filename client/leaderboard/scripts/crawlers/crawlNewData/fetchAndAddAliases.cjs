@@ -20,22 +20,23 @@ const eliminateDuplicates = (aliasArray) => {
     if (indices.length === 1) {
       finalResults.push(aliasArray[indices[0]]);
     } else {
-      const entryWithLastCreatedDate = getEntryWithLastCreatedDate(indices.map((index) => aliasArray[index]));
-      finalResults.push(entryWithLastCreatedDate);
+      const entryWithLastUpdatedDate = getEntryWithLastUpdatedDate(indices.map((index) => aliasArray[index]));
+      finalResults.push(entryWithLastUpdatedDate);
     }
   });
   return finalResults
 }
 
-const getEntryWithLastCreatedDate = (aliasArray) => { 
-  let entryWithLastCreatedDate = aliasArray[0];
-  for (let i = 1; i < aliasArray.length; i++) { 
-
-    if (Date.parse(aliasArray[i].createdate) > Date.parse(entryWithLastCreatedDate.createdate)) { 
-      entryWithLastCreatedDate = aliasArray[i];
+const getEntryWithLastUpdatedDate = (aliasArray) => { 
+  let entryWithLastUpdatedDate = aliasArray[0];
+  for (let i = 1; i < aliasArray.length; i++) {
+    const date1 = Date.parse(aliasArray[i].lastmodifieddate);
+    const date2 = Date.parse(entryWithLastUpdatedDate.lastmodifieddate);
+    if (date1 > date2) { 
+      entryWithLastUpdatedDate = aliasArray[i];
     }
   }
-  return entryWithLastCreatedDate;
+  return entryWithLastUpdatedDate;
 }
 
 const getAddressToIndicesMapping = (aliasArray) => { 
