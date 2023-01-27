@@ -1,7 +1,6 @@
 ---
 name: update leaderboard
-on:
-
+on: [workflow_dispatch]
 jobs:
   crawl:
     runs-on: ubuntu-latest
