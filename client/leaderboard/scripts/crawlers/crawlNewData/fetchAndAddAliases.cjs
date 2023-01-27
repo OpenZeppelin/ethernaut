@@ -1,5 +1,5 @@
 const fs = require("fs");
-const leaderBoardPath = "client/leaderboard/boards/leaderboard.json";
+const leaderBoardPath = `${__dirname}/../../../boards/leaderBoard.json`;
 const dotenv = require("dotenv");
 const axios = require("axios");
 
@@ -13,6 +13,7 @@ const fetchAndAddAliases = async () => {
 
 const eliminateDuplicates = (aliasArray) => {
   const addressToIndicesMapping = getAddressToIndicesMapping(aliasArray);
+  delete addressToIndicesMapping[null]
   const finalResults = []
   Object.keys(addressToIndicesMapping).forEach((address) => {
     const indices = addressToIndicesMapping[address];
