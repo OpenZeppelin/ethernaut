@@ -1,5 +1,5 @@
 const fs = require("fs");
-const leaderBoardPath = "client/leaderboard/boards/leaderboard.json";
+const leaderBoardPath = "client/leaderboard/boards/leaderBoard.json";
 const dotenv = require("dotenv");
 const axios = require("axios");
 
