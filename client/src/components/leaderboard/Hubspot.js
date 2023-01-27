@@ -61,7 +61,7 @@ class HubspotForm extends React.Component{
     buttons[0].style.borderRadius = '5px';
     buttons[0].style.cursor = 'pointer';
 
-    addressInput.disabled = true;
+    addressInput.style.pointerEvents = 'none';
     setNativeValue(addressInput, this.props.currentUser);
 
     form.addEventListener('submit', (event) => { 
