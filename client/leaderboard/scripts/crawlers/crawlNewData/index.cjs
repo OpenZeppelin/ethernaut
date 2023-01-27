@@ -4,7 +4,7 @@ const { logger } = consoleCustomiser({ delay: 50, randomized: true });
 const Web3 = require("web3");
 const web3 = new Web3();
 const networks = require("../../../utils/networkDetails.json");
-const fetchAndAddAliases = require("../fetchAndAddAliases.cjs");
+const fetchAndAddAliases = require("./fetchAndAddAliases.cjs");
 
 const crawlForFreshEntriesAndUpdateNetworkBoard = async () => {
   

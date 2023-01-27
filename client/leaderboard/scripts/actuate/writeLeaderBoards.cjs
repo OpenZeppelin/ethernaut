@@ -20,7 +20,7 @@ const writeLeaderBoards = async (logger) => {
 
   // 2. compile global players board
   let allPlayersBoard = [];
-  for (network of networks) {
+  for (let network of networks) {
     const networkLeaderBoard = require(`../../boards/networkleaderboards/${network.name}LeaderBoard.json`);
     allPlayersBoard = [...allPlayersBoard, ...networkLeaderBoard];
   }
