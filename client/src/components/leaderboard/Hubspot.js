@@ -96,6 +96,10 @@ class HubspotForm extends React.Component{
     element.style.position = 'relative'
     element.style.fontSize = '17px'
     outerElement.insertAdjacentElement('afterbegin', element)
+
+    // change the height of modal
+    const modal = document.querySelector('.leaderboard-modal-body')
+    modal.style.height = '150px'
   }
 
   render() {
