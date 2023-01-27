@@ -66,7 +66,7 @@ const getFetchAliasRequest = async (after) => {
   const response = await axios.post('https://api.hubapi.com/crm/v3/objects/contacts/search',
     {
       limit: 100,
-      properties: ["email", "ethernaut_address", "ethernaut_alias"],
+      properties: ["ethernaut_address", "ethernaut_alias"],
       after
     },
     {
