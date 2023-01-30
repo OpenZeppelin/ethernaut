@@ -12,36 +12,77 @@ const filterLogs = async (
   mappingDataPath
 ) => {
   const filteredData = [];
-  for (let log of logs) {
-    try {
-      let txn = await nodeProvider.getTransaction(log.transactionHash);
-      let block = await nodeProvider.getBlock(log.blockNumber);
-      const filteredLog = {
-        player: String(txn.from),
-        eventType:
-          String(log.topics[0]) ===
-          evaluateCurrentSolveInstanceHex(
-            log.blockNumber,
-            switchoverBlock
-          )
-            ? "LevelCompleted"
-            : "InstanceCreated",
-        blockNumber: log.blockNumber,
-        timeStamp: block.timestamp,
-        level: returnCurrentLevel(
-          switchoverBlock,
-          txn,
-          log,
-          web3,
-          mappingDataPath
-        ),
-      };
-      filteredData.push(filteredLog);
-    } catch (error) {
-      console.log(error);
-    }
+  const chunkSize = 10;
+  const chunkedLogs = chunkArray(logs, chunkSize);
+  console.log("total no of logs", logs.length);
+  let processedLogsCount = 0;
+  for (let i = 0; i < chunkedLogs.length; i++) {
+    processedLogsCount += chunkedLogs[i].length;
+    console.log("processed logs", processedLogsCount)
+    const chunk = chunkedLogs[i];
+    const promiseArray = chunk.map((log) => getFilteredLog(log, nodeProvider, switchoverBlock, web3, mappingDataPath));
+    const results = await Promise.all(promiseArray);
+    filteredData.push(...results);
   }
   return filteredData;
 };
+
+const chunkArray = (array, size) => { 
+  const chunkedArray = [];
+  let index = 0;
+  while (index < array.length) {
+    chunkedArray.push(array.slice(index, size + index));
+    index += size;
+  }
+  return chunkedArray;
+}
+
+const getFilteredLog = async (
+  log,
+  nodeProvider,
+  switchoverBlock,
+  web3,
+  mappingDataPath
+) => { 
+  const [txn, block] = await getTxnBlockDataWithRetries(log, nodeProvider, switchoverBlock, web3, mappingDataPath, 3);
+  const filteredLog = {
+      player: String(txn.from),
+      eventType:
+        String(log.topics[0]) ===
+        evaluateCurrentSolveInstanceHex(
+          log.blockNumber,
+          switchoverBlock
+        )
+          ? "LevelCompleted"
+          : "InstanceCreated",
+      blockNumber: log.blockNumber,
+      timeStamp: block.timestamp,
+      level: returnCurrentLevel(
+        switchoverBlock,
+        txn,
+        log,
+        web3,
+        mappingDataPath
+      ),
+  };
+  return filteredLog;
+}
+
+const getTxnBlockDataWithRetries = async (log, nodeProvider, switchoverBlock, web3, mappingDataPath, noOfRetries) => { 
+  try {
+    let txn = await nodeProvider.getTransaction(log.transactionHash);
+    let block = await nodeProvider.getBlock(log.blockNumber);
+    return [txn, block]
+  } catch (error) { 
+    if (noOfRetries > 0) {
+      console.log("Retrying getTxnBlockData: ", noOfRetries, " remaining")
+      const result = getTxnBlockDataWithRetries(log, nodeProvider, switchoverBlock, web3, mappingDataPath, noOfRetries - 1);
+      console.log("Retry successful")
+      return result;
+    } else { 
+      throw new Error("Failed to get txn, block");
+    }
+  }
+}
 
 module.exports = filterLogs;
