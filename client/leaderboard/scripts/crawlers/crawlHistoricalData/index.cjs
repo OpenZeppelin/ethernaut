@@ -1,5 +1,5 @@
 const callBlockChain = require("./callBlockchain.cjs");
-const filterLogsInParallel = require("./filterLogs.cjs");
+const filterLogs = require("./filterLogs.cjs");
 const processFilteredData = require("./processFilteredData.cjs");
 const initialiseNodeProvider = require("./initialiseNodeProvider.cjs");
 const compileNetworkPlayersBoard = require("./compileNetworkPlayersBoard.cjs");
@@ -35,7 +35,7 @@ const generateNetworkBoard = async (network, log) => {
   );
   await logger("Cwor blimey, " + blockchainLogs.length + " logs have been found");
   const web3 = new Web3();
-  const filteredLogs = await filterLogsInParallel(
+  const filteredLogs = await filterLogs(
     blockchainLogs,
     nodeProvider,
     fromBlock,
