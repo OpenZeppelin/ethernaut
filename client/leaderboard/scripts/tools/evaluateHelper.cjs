@@ -156,11 +156,11 @@ const evaluateTotalDifficultyFaced = (playerProfile, network) => {
     network.name
   ).toLowerCase()}/difficultyMap${network.name}.json`);
   playerLevelsArray.forEach((game) => {
-    if (game.isCompleted == true) {
+    if (game.isCompleted === true) {
       const thisDifficultyProfile = difficultyMap.find((matchingProfile) => {
-        if (matchingProfile.address == game.levelAddress)
-          return matchingProfile;
+        return matchingProfile.address === game.levelAddress;
       });
+
       difficultyCount += parseInt(thisDifficultyProfile.difficulty);
     }
   });
@@ -186,7 +186,7 @@ const evaluateDifficultyInThisStatisticsEmit = async (
   //sometimes, errors related to RPC downtime occur. This is a workaround to prevent the script from crashing
   try {
     let returnedIndexValue = difficultyMap.findIndex(
-      (matchingLevel) => decodedAddress == matchingLevel.address
+      (matchingLevel) => decodedAddress === matchingLevel.address
     );
     if (returnedIndexValue >= 0) {
       thisDifficultyProfileIndex = returnedIndexValue;
@@ -223,7 +223,7 @@ const evaluateDecodedLevelAddress = async (
         playerTopicArray,
         String(log.topics[1])
       );
-      if (playerArray.player == fromPlayer) {
+      if (playerArray.player === fromPlayer) {
         let levelArray = web3.eth.abi.decodeParameters(
           levelTopicArray,
           String(log.topics[3])
@@ -245,7 +245,7 @@ const evaluateIfThisPlayerHasAlreadyCompletedThisLevel = (
   const doesPlayerExist = networkBoard.find(
     (entry) => player === entry.address
   );
-  const evaluator = false;
+  let evaluator = false;
   if (doesPlayerExist) {
     const indexOfExistingPlayer = networkBoard.findIndex(
       (entry) => player === entry.address

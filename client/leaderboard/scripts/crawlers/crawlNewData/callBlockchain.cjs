@@ -1,9 +1,8 @@
-const fs = require("fs");
 const initialiseNodeProvider = require("../crawlHistoricalData/initialiseNodeProvider.cjs");
 const reduceReturnedLogs = require("./reduceReturnedLogs.cjs");
 const {
   evaluateDifficultyInThisStatisticsEmit,
-  evaluateDecodedLevelAddress
+  evaluateDecodedLevelAddress,
 } = require("../../tools/evaluateHelper.cjs");
 
 const callBlockChain = async (network, web3, upperBlock) => {
@@ -17,9 +16,9 @@ const callBlockChain = async (network, web3, upperBlock) => {
   const incrementer = 2000;
   let lastFromBlock = network.lastFrom;
   let nextToBlock = network.lastFrom + incrementer;
-  console.log(`Upper block - ${upperBlock}`)
+  console.log(`Upper block - ${upperBlock}`);
   do {
-    console.log(`nextToBlock - ${nextToBlock}`)
+    console.log(`nextToBlock - ${nextToBlock}`);
     const logDump = await nodeProvider.getLogs({
       fromBlock: lastFromBlock,
       toBlock: nextToBlock,
@@ -45,9 +44,20 @@ const callBlockChain = async (network, web3, upperBlock) => {
           dataArray3,
           String(log.topics[3])
         );
-        const additionalDifficultyFaced = await evaluateDifficultyInThisStatisticsEmit(network, log, web3, nodeProvider);
-        const decodedLevelAddress = await evaluateDecodedLevelAddress(network, log, web3, nodeProvider);
-        try { 
+        const additionalDifficultyFaced =
+          await evaluateDifficultyInThisStatisticsEmit(
+            network,
+            log,
+            web3,
+            nodeProvider
+          );
+        const decodedLevelAddress = await evaluateDecodedLevelAddress(
+          network,
+          log,
+          web3,
+          nodeProvider
+        );
+        try {
           let playerEntry = {
             player: topic1Array.player,
             averageTimeTakenToCompleteALevel: parseInt(topic2Array.time),
@@ -65,7 +75,7 @@ const callBlockChain = async (network, web3, upperBlock) => {
       nextToBlock = lastFromBlock + incrementer;
     }
   } while (nextToBlock < upperBlock);
-  const reducedLogs = reduceReturnedLogs(logs, network)
+  const reducedLogs = reduceReturnedLogs(logs, network);
   return reducedLogs;
 };
 
