@@ -3,6 +3,9 @@ const {
   returnCurrentLevel,
 } = require("../../tools/evaluateHelper.cjs");
 
+const RETRY_ATTEMPTS = 10;
+const NO_OF_PARALLEL_REQUESTS = 50
+
 const filterLogs = async (
   logs,
   nodeProvider,
@@ -12,8 +15,7 @@ const filterLogs = async (
   mappingDataPath
 ) => {
   const filteredData = [];
-  const chunkSize = 10;
-  const chunkedLogs = chunkArray(logs, chunkSize);
+  const chunkedLogs = chunkArray(logs, NO_OF_PARALLEL_REQUESTS);
   console.log("total no of logs", logs.length);
   let processedLogsCount = 0;
   for (let i = 0; i < chunkedLogs.length; i++) {
@@ -44,7 +46,7 @@ const getFilteredLog = async (
   web3,
   mappingDataPath
 ) => { 
-  const [txn, block] = await getTxnBlockDataWithRetries(log, nodeProvider, switchoverBlock, web3, mappingDataPath, 3);
+  const [txn, block] = await getTxnBlockDataWithRetries(log, nodeProvider, RETRY_ATTEMPTS);
   const filteredLog = {
       player: String(txn.from),
       eventType:
@@ -68,20 +70,25 @@ const getFilteredLog = async (
   return filteredLog;
 }
 
-const getTxnBlockDataWithRetries = async (log, nodeProvider, switchoverBlock, web3, mappingDataPath, noOfRetries) => { 
+const getTxnBlockDataWithRetries = async (log, nodeProvider, noOfRetries) => { 
   try {
     let txn = await nodeProvider.getTransaction(log.transactionHash);
     let block = await nodeProvider.getBlock(log.blockNumber);
     return [txn, block]
   } catch (error) { 
-    if (noOfRetries > 0) {
-      console.log("Retrying getTxnBlockData: ", noOfRetries, " remaining")
-      const result = getTxnBlockDataWithRetries(log, nodeProvider, switchoverBlock, web3, mappingDataPath, noOfRetries - 1);
-      console.log("Retry successful")
-      return result;
-    } else { 
-      throw new Error("Failed to get txn, block");
+    console.log("Retrying getTxnBlockData")
+    for (let i = 0; i < noOfRetries; i++) { 
+      console.log(`Txn :${log.transactionHash}, attempt no:${i + 1}`)
+      try {
+        let txn = await nodeProvider.getTransaction(log.transactionHash);
+        let block = await nodeProvider.getBlock(log.blockNumber);
+        console.log(`Retry successful for ${log.transactionHash}`)
+        return [txn, block]
+      } catch (error) { 
+        console.log("error in getTxnBlockDataWithRetries", error)
+      }
     }
+    throw new Error("getTxnBlockData failed")
   }
 }
 

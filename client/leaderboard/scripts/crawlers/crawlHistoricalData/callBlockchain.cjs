@@ -1,5 +1,7 @@
 const { evaluateIfWeHavePassedReDeployment } = require("../../tools/evaluateHelper.cjs");
 
+const RETRY_ATTEMPTS = 10;
+
 const callBlockChain = async (
   network,
   nodeProvider,
@@ -30,7 +32,7 @@ const callBlockChain = async (
       lastFromBlock,
       nextToBlock,
       address,
-      3
+      RETRY_ATTEMPTS
     )
     logs = logs.concat(logDump);
     lastFromBlock = nextToBlock + 1;
@@ -58,23 +60,26 @@ const getLogsWithRetries = async (
       address,
       topics: [],
     });
+    return logDump;
   } catch (err) { 
-    if (noOfRetries > 0) {
-      console.log("Retrying getLogs: ", noOfRetries, " remaining")
-      logDump = await getLogsWithRetries(
-        nodeProvider,
-        lastFromBlock,
-        nextToBlock,
-        address,
-        noOfRetries - 1
-      );
-      console.log("Retry successful")
-      return logDump;
-    } else {
-      throw new Error("Failed to get logs");
+    console.log("Retrying getLogs")
+    for (let i = 0; i < noOfRetries; i++) {
+      console.log(`from block:${lastFromBlock}, to block:${nextToBlock}, attempt no: `,i + 1)
+      try {
+        logDump = await nodeProvider.getLogs({
+          fromBlock: lastFromBlock,
+          toBlock: nextToBlock,
+          address,
+          topics: [],
+        });
+        console.log(`Retry successful, from block:${lastFromBlock}, to block:${nextToBlock}`)
+        return logDump;
+      } catch (err) {
+        console.log("error in getLogsWithRetries", err)
+      }
     }
+    throw new Error("getLogs failed")
   }
- 
 }
 
 module.exports = callBlockChain;
