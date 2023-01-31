@@ -29,7 +29,7 @@ const filterLogs = async (
     const results = await Promise.all(promiseArray);
     filteredData.push(...results);
   }
-  return filteredData;
+  return filteredData.filter((log) => log !== undefined);
 };
 
 const chunkArray = (array, size) => { 
