@@ -4,7 +4,7 @@ const {
   evaluateDifficultyInThisStatisticsEmit,
   evaluateDecodedLevelAddress,
 } = require("../../tools/evaluateHelper.cjs");
-const { default: callFunctionWithRetry } = require("../../tools/callFunctionWithRetry.cjs");
+const callFunctionWithRetry = require("../../tools/callFunctionWithRetry.cjs");
 
 const callBlockChain = async (network, web3, upperBlock) => {
   let logs = [];
