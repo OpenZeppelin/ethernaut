@@ -27,13 +27,12 @@ const callBlockChain = async (
     )
       ? network.oldAddress
       : network.newAddress;
-    const logDump = await getLogsWithRetries(
-      nodeProvider,
-      lastFromBlock,
-      nextToBlock,
+    const logDump = await nodeProvider.getLogs({
+      fromBlock: lastFromBlock,
+      toBlock: nextToBlock,
       address,
-      RETRY_ATTEMPTS
-    )
+      topics: [],
+    });
     logs = logs.concat(logDump);
     lastFromBlock = nextToBlock + 1;
     nextToBlock =
@@ -45,41 +44,5 @@ const callBlockChain = async (
   return logs;
 };
 
-const getLogsWithRetries = async (
-  nodeProvider,
-  lastFromBlock,
-  nextToBlock,
-  address,
-  noOfRetries
-) => { 
-  let logDump;
-  try {
-    logDump = await nodeProvider.getLogs({
-      fromBlock: lastFromBlock,
-      toBlock: nextToBlock,
-      address,
-      topics: [],
-    });
-    return logDump;
-  } catch (err) { 
-    console.log("Retrying getLogs")
-    for (let i = 0; i < noOfRetries; i++) {
-      console.log(`from block:${lastFromBlock}, to block:${nextToBlock}, attempt no: `,i + 1)
-      try {
-        logDump = await nodeProvider.getLogs({
-          fromBlock: lastFromBlock,
-          toBlock: nextToBlock,
-          address,
-          topics: [],
-        });
-        console.log(`Retry successful, from block:${lastFromBlock}, to block:${nextToBlock}`)
-        return logDump;
-      } catch (err) {
-        console.log("error in getLogsWithRetries", err)
-      }
-    }
-    throw new Error("getLogs failed")
-  }
-}
 
 module.exports = callBlockChain;

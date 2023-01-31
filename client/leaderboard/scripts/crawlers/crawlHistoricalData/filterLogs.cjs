@@ -46,7 +46,10 @@ const getFilteredLog = async (
   web3,
   mappingDataPath
 ) => { 
-  const [txn, block] = await getTxnBlockDataWithRetries(log, nodeProvider, RETRY_ATTEMPTS);
+  
+  let txn = await nodeProvider.getTransaction(log.transactionHash);
+  let block = await nodeProvider.getBlock(log.blockNumber);
+
   const filteredLog = {
       player: String(txn.from),
       eventType:
@@ -70,26 +73,5 @@ const getFilteredLog = async (
   return filteredLog;
 }
 
-const getTxnBlockDataWithRetries = async (log, nodeProvider, noOfRetries) => { 
-  try {
-    let txn = await nodeProvider.getTransaction(log.transactionHash);
-    let block = await nodeProvider.getBlock(log.blockNumber);
-    return [txn, block]
-  } catch (error) { 
-    console.log("Retrying getTxnBlockData")
-    for (let i = 0; i < noOfRetries; i++) { 
-      console.log(`Txn :${log.transactionHash}, attempt no:${i + 1}`)
-      try {
-        let txn = await nodeProvider.getTransaction(log.transactionHash);
-        let block = await nodeProvider.getBlock(log.blockNumber);
-        console.log(`Retry successful for ${log.transactionHash}`)
-        return [txn, block]
-      } catch (error) { 
-        console.log("error in getTxnBlockDataWithRetries", error)
-      }
-    }
-    throw new Error("getTxnBlockData failed")
-  }
-}
 
 module.exports = filterLogs;
