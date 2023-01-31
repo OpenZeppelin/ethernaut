@@ -20,7 +20,8 @@ const callBlockChain = async (network, web3, upperBlock) => {
   console.log(`Upper block - ${upperBlock}`);
   do {
     console.log(`nextToBlock - ${nextToBlock}`);
-    const promise = nodeProvider.getLogs({
+    // eslint-disable-next-line no-loop-func
+    const promise = () => nodeProvider.getLogs({
       fromBlock: lastFromBlock,
       toBlock: nextToBlock,
       address: network.statisticsAddress,
@@ -28,7 +29,7 @@ const callBlockChain = async (network, web3, upperBlock) => {
         "0x18f89fb58208351d054bc0794e723a333ae0a74acd73825a9f31d89af0c67551",
       ],
     });
-    const logDump = await callFunctionWithRetry(promise, 5);
+    const logDump = await callFunctionWithRetry(promise);
     if (logDump) {
       for (let log of logDump) {
         let dataArray1 = [{ type: "address", name: "player" }];
