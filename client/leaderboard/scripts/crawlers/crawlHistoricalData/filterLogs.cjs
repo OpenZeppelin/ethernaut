@@ -1,9 +1,9 @@
+const callFunctionWithRetry = require("../../tools/callFunctionWithRetry.cjs");
 const {
   evaluateCurrentSolveInstanceHex,
   returnCurrentLevel,
 } = require("../../tools/evaluateHelper.cjs");
 
-const RETRY_ATTEMPTS = 10;
 const NO_OF_PARALLEL_REQUESTS = 50
 
 const filterLogs = async (
@@ -22,7 +22,10 @@ const filterLogs = async (
     processedLogsCount += chunkedLogs[i].length;
     console.log("processed logs", processedLogsCount)
     const chunk = chunkedLogs[i];
-    const promiseArray = chunk.map((log) => getFilteredLog(log, nodeProvider, switchoverBlock, web3, mappingDataPath));
+    const promiseArray = chunk.map(async (log) => {
+      const promise = getFilteredLog(log, nodeProvider, switchoverBlock, web3, mappingDataPath)
+      return callFunctionWithRetry(promise, 5)
+    });
     const results = await Promise.all(promiseArray);
     filteredData.push(...results);
   }
@@ -46,10 +49,11 @@ const getFilteredLog = async (
   web3,
   mappingDataPath
 ) => { 
-  
+
   let txn = await nodeProvider.getTransaction(log.transactionHash);
   let block = await nodeProvider.getBlock(log.blockNumber);
 
+  
   const filteredLog = {
       player: String(txn.from),
       eventType:

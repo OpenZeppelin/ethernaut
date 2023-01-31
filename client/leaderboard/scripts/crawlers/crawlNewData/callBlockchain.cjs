@@ -4,6 +4,7 @@ const {
   evaluateDifficultyInThisStatisticsEmit,
   evaluateDecodedLevelAddress,
 } = require("../../tools/evaluateHelper.cjs");
+const { default: callFunctionWithRetry } = require("../../tools/callFunctionWithRetry.cjs");
 
 const callBlockChain = async (network, web3, upperBlock) => {
   let logs = [];
@@ -19,7 +20,7 @@ const callBlockChain = async (network, web3, upperBlock) => {
   console.log(`Upper block - ${upperBlock}`);
   do {
     console.log(`nextToBlock - ${nextToBlock}`);
-    const logDump = await nodeProvider.getLogs({
+    const promise = nodeProvider.getLogs({
       fromBlock: lastFromBlock,
       toBlock: nextToBlock,
       address: network.statisticsAddress,
@@ -27,6 +28,7 @@ const callBlockChain = async (network, web3, upperBlock) => {
         "0x18f89fb58208351d054bc0794e723a333ae0a74acd73825a9f31d89af0c67551",
       ],
     });
+    const logDump = await callFunctionWithRetry(promise, 5);
     if (logDump) {
       for (let log of logDump) {
         let dataArray1 = [{ type: "address", name: "player" }];

@@ -1,6 +1,5 @@
 const { evaluateIfWeHavePassedReDeployment } = require("../../tools/evaluateHelper.cjs");
-
-const RETRY_ATTEMPTS = 10;
+const callFunctionWithRetry = require("../../tools/callFunctionWithRetry.cjs");
 
 const callBlockChain = async (
   network,
@@ -27,14 +26,20 @@ const callBlockChain = async (
     )
       ? network.oldAddress
       : network.newAddress;
-    const logDump = await nodeProvider.getLogs({
+    
+    const promise = nodeProvider.getLogs({
       fromBlock: lastFromBlock,
       toBlock: nextToBlock,
       address,
       topics: [],
     });
+
+    const logDump = await callFunctionWithRetry(promise, 5);
+
     logs = logs.concat(logDump);
+
     lastFromBlock = nextToBlock + 1;
+
     nextToBlock =
       nextToBlock + incrementer + 1 > upperBlock
         ? upperBlock
@@ -43,6 +48,5 @@ const callBlockChain = async (
   await logger(`jee whizz! the total logs returned are ${logs.length}`);
   return logs;
 };
-
 
 module.exports = callBlockChain;
