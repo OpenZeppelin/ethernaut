@@ -29,8 +29,8 @@ export default function AliasModal(props) {
                     </div>
                     <h3>Leaderboard alias submission</h3>
                     <HubspotForm
-                        portalId="23757576"
-                        formId="cfcce456-f7de-4449-a871-dacd139bddf7"
+                        portalId="7795250"
+                        formId="5c2762b1-ad80-4a47-9ef5-91f98d9e9419"
                         region="na1"
                         currentUser={currentUser}
                     />
