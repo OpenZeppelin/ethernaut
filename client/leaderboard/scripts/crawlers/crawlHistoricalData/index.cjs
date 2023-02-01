@@ -27,7 +27,7 @@ const generateNetworkBoard = async (network, log) => {
     network.name
   ).toLowerCase()}/levelsMapping.json`);
   const nodeProvider = initialiseNodeProvider(network, logger);
-  console.log("Caling blockchain for " + network.name);
+  console.log("Calling blockchain for logs", network.name);
   const blockchainLogs = await callBlockChain(
     network,
     nodeProvider,
@@ -40,7 +40,7 @@ const generateNetworkBoard = async (network, log) => {
     "Cwor blimey, " + blockchainLogs.length + " logs have been found"
   );
   const web3 = new Web3();
-  console.log("Filtering logs for " + network.name);
+  console.log("Filtering logs", network.name);
   const filteredLogs = await filterLogs(
     blockchainLogs,
     nodeProvider,

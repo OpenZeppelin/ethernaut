@@ -1,8 +1,13 @@
 const {
+  default: callFunctionWithRetry,
+} = require("../../tools/callFunctionWithRetry.cjs");
+const {
   evaluateCurrentSolveInstanceHex,
   returnCurrentLevel,
 } = require("../../tools/evaluateHelper.cjs");
 
+const NO_OF_PARALLEL_REQUESTS = 50;
+let i = 0;
 const filterLogs = async (
   logs,
   nodeProvider,
@@ -12,33 +17,63 @@ const filterLogs = async (
   mappingDataPath
 ) => {
   const filteredData = [];
-  for (let log of logs) {
-    try {
-      let txn = await nodeProvider.getTransaction(log.transactionHash);
-      let block = await nodeProvider.getBlock(log.blockNumber);
-      const filteredLog = {
-        player: String(txn.from),
-        eventType:
-          String(log.topics[0]) ===
-          evaluateCurrentSolveInstanceHex(log.blockNumber, switchoverBlock)
-            ? "LevelCompleted"
-            : "InstanceCreated",
-        blockNumber: log.blockNumber,
-        timeStamp: block.timestamp,
-        level: returnCurrentLevel(
-          switchoverBlock,
-          txn,
-          log,
-          web3,
-          mappingDataPath
-        ),
-      };
-      filteredData.push(filteredLog);
-    } catch (error) {
-      console.log(error);
-    }
+  const chunkedLogs = chunkArray(logs, NO_OF_PARALLEL_REQUESTS);
+  console.log("total no of logs", logs.length);
+  let processedLogsCount = 0;
+  for (let i = 0; i < chunkedLogs.length; i++) {
+    console.log(i);
+    i++;
+    processedLogsCount += chunkedLogs[i].length;
+    console.log("processed logs", processedLogsCount);
+    const chunk = chunkedLogs[i];
+    const promiseArray = chunk.map(async (log) => {
+      const promise = getFilteredLog(
+        log,
+        nodeProvider,
+        switchoverBlock,
+        web3,
+        mappingDataPath
+      );
+      return callFunctionWithRetry(promise, 5);
+    });
+    const results = await Promise.all(promiseArray);
+    filteredData.push(...results);
   }
   return filteredData;
+};
+
+const chunkArray = (array, size) => {
+  const chunkedArray = [];
+  let index = 0;
+  while (index < array.length) {
+    chunkedArray.push(array.slice(index, size + index));
+    index += size;
+  }
+  return chunkedArray;
+};
+
+const getFilteredLog = async (
+  log,
+  nodeProvider,
+  switchoverBlock,
+  web3,
+  mappingDataPath
+) => {
+  let txn = await nodeProvider.getTransaction(log.transactionHash);
+  let block = await nodeProvider.getBlock(log.blockNumber);
+
+  const filteredLog = {
+    player: String(txn.from),
+    eventType:
+      String(log.topics[0]) ===
+      evaluateCurrentSolveInstanceHex(log.blockNumber, switchoverBlock)
+        ? "LevelCompleted"
+        : "InstanceCreated",
+    blockNumber: log.blockNumber,
+    timeStamp: block.timestamp,
+    level: returnCurrentLevel(switchoverBlock, txn, log, web3, mappingDataPath),
+  };
+  return filteredLog;
 };
 
 module.exports = filterLogs;
