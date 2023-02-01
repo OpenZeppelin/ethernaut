@@ -8,7 +8,6 @@ const { logger } = consoleCustomiser({ delay: 50, randomized: true });
 const Web3 = require("web3");
 const networks = require("../../../utils/networkDetails.json");
 const fs = require("fs");
-const data = require("./checkpoint.cjs")
 
 const generateAllBoards = async () => {
   for (let network of networks) {
