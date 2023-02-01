@@ -5,11 +5,8 @@ function LeaderTile(props) {
     const { rank, leader, onAliasEdit, currentUser } = props;
     const { toast, Toast } = useToast()
 
-    let { player, score, alias, totalNumberOfLevelsCompleted } = leader;
+    let { player, score, totalNumberOfLevelsCompleted } = leader;
 
-    if (alias) { 
-        player = alias;
-    }
 
     const handleClick = () => { 
         navigator.clipboard.writeText(player);

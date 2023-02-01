@@ -73,8 +73,7 @@ function Leaderboard() {
     const isKeywordMatching = (keyword) => (player) => { 
         keyword = keyword.toLowerCase()
         return (
-            player.player.toLowerCase().includes(keyword) ||
-            player.alias.toLowerCase().includes(keyword)
+            player.player.toLowerCase().includes(keyword)
         )
     }
 
