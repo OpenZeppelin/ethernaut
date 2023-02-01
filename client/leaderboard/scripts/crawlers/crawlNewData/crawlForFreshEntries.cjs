@@ -15,7 +15,8 @@ const crawlForFreshEntries = async (network, web3, logger) => {
   fs.writeFileSync(freshEntriesCrawlPath, JSON.stringify(logs));
   await updateNetworkPlayersBoard(network, logger);
   await updateNetworkDetails(network, upperBlock);
-  
+  // Fixes difficulty recalculation bug
+  fs.writeFileSync(freshEntriesCrawlPath, JSON.stringify([]));
 };
 
 module.exports = crawlForFreshEntries;

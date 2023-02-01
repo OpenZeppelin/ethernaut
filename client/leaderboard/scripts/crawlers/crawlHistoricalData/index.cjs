@@ -56,14 +56,14 @@ const generateNetworkBoard = async (network, log) => {
   await logger(
     "gracious me, " + filteredLogs.length + " logs have been written"
   );
-  const processedData = processFilteredData(filteredLogs);
+  const networkData = processFilteredData(filteredLogs);
   await logger(
-    "golly gosh, " + processedData.length + " logs have been processed"
+    "golly gosh, " + networkData.length + " logs have been processed"
   );
-  const processedDataPath = `client/leaderboard/networks/${String(
+  const networkDataPath = `client/leaderboard/networks/${String(
     network.name
-  ).toLowerCase()}/${network.name}PlayersBoard.json`;
-  fs.writeFileSync(processedDataPath, JSON.stringify(processedData));
+  ).toLowerCase()}/${network.name}NetworkBoard.json`;
+  fs.writeFileSync(networkDataPath, JSON.stringify(networkData));
   await logger(
     "oh my, scores on the doors for " + network.name + " have been compiled"
   );
