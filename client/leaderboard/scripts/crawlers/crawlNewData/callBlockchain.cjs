@@ -6,6 +6,8 @@ const {
 } = require("../../tools/evaluateHelper.cjs");
 const callFunctionWithRetry = require("../../tools/callFunctionWithRetry.cjs");
 
+const NO_OF_PARALLEL_CALLS = 10;
+
 const callBlockChain = async (network, web3, upperBlock) => {
   let logs = [];
   console.log(
@@ -31,48 +33,15 @@ const callBlockChain = async (network, web3, upperBlock) => {
     });
     const logDump = await callFunctionWithRetry(promise);
     if (logDump) {
-      for (let log of logDump) {
-        let dataArray1 = [{ type: "address", name: "player" }];
-        let dataArray2 = [{ type: "uint256", name: "time" }];
-        let dataArray3 = [{ type: "uint256", name: "number" }];
-        const topic1Array = web3.eth.abi.decodeParameters(
-          dataArray1,
-          String(log.topics[1])
-        );
-        const topic2Array = web3.eth.abi.decodeParameters(
-          dataArray2,
-          String(log.topics[2])
-        );
-        const topic3Array = web3.eth.abi.decodeParameters(
-          dataArray3,
-          String(log.topics[3])
-        );
-        const additionalDifficultyFaced =
-          await evaluateDifficultyInThisStatisticsEmit(
-            network,
-            log,
-            web3,
-            nodeProvider
-          );
-        const decodedLevelAddress = await evaluateDecodedLevelAddress(
-          network,
-          log,
-          web3,
-          nodeProvider
-        );
-        try {
-          let playerEntry = {
-            player: topic1Array.player,
-            averageTimeTakenToCompleteALevel: parseInt(topic2Array.time),
-            totalNumberOfLevelsCompleted: parseInt(topic3Array.number),
-            levelFacedOnThisAttempt: decodedLevelAddress,
-            additionalDifficultyFaced: parseInt(additionalDifficultyFaced),
-            alias: "",
-          };
-          logs.push(playerEntry);
-        } catch (error) {
-          console.log(error);
-        }
+      const chunkedLogs = chunk(logDump, NO_OF_PARALLEL_CALLS);
+      for (let i = 0; i < chunkedLogs.length; i++) { 
+        const results = await Promise.all(
+          chunkedLogs[i].map(
+            (log) => getPlayerEntry({ log, web3, network, nodeProvider }) 
+          )
+        )
+        const filteredResults = results.filter(result => result !== undefined)
+        logs.push(...filteredResults);
       }
       lastFromBlock = nextToBlock + 1;
       nextToBlock = lastFromBlock + incrementer;
@@ -81,5 +50,59 @@ const callBlockChain = async (network, web3, upperBlock) => {
   const reducedLogs = reduceReturnedLogs(logs, network);
   return reducedLogs;
 };
+
+const chunk = (arr, size) => { 
+  const chunked_arr = [];
+  let index = 0;
+  while (index < arr.length) {
+    chunked_arr.push(arr.slice(index, size + index));
+    index += size;
+  }
+  return chunked_arr;
+}
+
+const getPlayerEntry = async ({ log, web3, network, nodeProvider }) => { 
+  let dataArray1 = [{ type: "address", name: "player" }];
+  let dataArray2 = [{ type: "uint256", name: "time" }];
+  let dataArray3 = [{ type: "uint256", name: "number" }];
+  const topic1Array = web3.eth.abi.decodeParameters(
+    dataArray1,
+    String(log.topics[1])
+  );
+  const topic2Array = web3.eth.abi.decodeParameters(
+    dataArray2,
+    String(log.topics[2])
+  );
+  const topic3Array = web3.eth.abi.decodeParameters(
+    dataArray3,
+    String(log.topics[3])
+  );
+  const additionalDifficultyFaced =
+    await evaluateDifficultyInThisStatisticsEmit(
+      network,
+      log,
+      web3,
+      nodeProvider
+    );
+  const decodedLevelAddress = await evaluateDecodedLevelAddress(
+    network,
+    log,
+    web3,
+    nodeProvider
+  );
+  try {
+    let playerEntry = {
+      player: topic1Array.player,
+      averageTimeTakenToCompleteALevel: parseInt(topic2Array.time),
+      totalNumberOfLevelsCompleted: parseInt(topic3Array.number),
+      levelFacedOnThisAttempt: decodedLevelAddress,
+      additionalDifficultyFaced: parseInt(additionalDifficultyFaced),
+      alias: "",
+    };
+    return playerEntry;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 module.exports = callBlockChain;

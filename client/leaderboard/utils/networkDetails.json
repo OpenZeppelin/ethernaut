@@ -7,7 +7,7 @@
         "fromBlock": 635119,
         "switchoverBlock": 1375826,
         "toBlock": 3661699,
-        "lastFrom": 5760724,
+        "lastFrom": 4731108,
         "statisticsAddress": "0x57d122d0355973dA78acF5138aE664548bB2CA2b",
         "deployName": "goerli-arbitrum"
     },
@@ -19,7 +19,7 @@
         "fromBlock": 7535901,
         "switchoverBlock": 7968901,
         "toBlock": 8214762,
-        "lastFrom": 8385725,
+        "lastFrom": 8329320,
         "statisticsAddress": "0x7ae0655F0Ee1e7752D7C62493CEa1E69A810e2ed",
         "deployName": "goerli"
     },
@@ -31,7 +31,7 @@
         "fromBlock": 28218131,
         "switchoverBlock": 29198563,
         "toBlock": 30249171,
-        "lastFrom": 31473031,
+        "lastFrom": 31083461,
         "statisticsAddress": "0x96f08DD768b09cb6cD90591fED6A768F40C48a49",
         "deployName": "mumbai-polygon"
     },
@@ -43,7 +43,7 @@
         "fromBlock": 1888074,
         "switchoverBlock": 2750524,
         "toBlock": 3783655,
-        "lastFrom": 4700698,
+        "lastFrom": 4285994,
         "statisticsAddress": "0x33eD4F045d2Fe3A69E614043cAe47d9114b77FaD",
         "deployName": "goerli-optimism"
     },
@@ -55,7 +55,7 @@
         "fromBlock": 2033550,
         "switchoverBlock": 2306395,
         "toBlock": 2569443,
-        "lastFrom": 2776748,
+        "lastFrom": 2710627,
         "statisticsAddress": "0x57d122d0355973dA78acF5138aE664548bB2CA2b",
         "deployName": "sepolia"
     }
