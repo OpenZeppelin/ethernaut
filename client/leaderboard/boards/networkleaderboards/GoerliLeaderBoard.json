@@ -696,6 +696,14 @@
     "score": 67.8342117046237
   },
   {
+    "player": "0xE94eE0D98415D86ddbA0df1e8b733B4A332D3fbD",
+    "averageTimeTakenToCompleteALevel": 180720,
+    "totalNumberOfLevelsCompleted": 21,
+    "totalDifficultyFaced": 130,
+    "alias": "",
+    "score": 67.7063005862644
+  },
+  {
     "player": "0xa62C7e54109b7a5E7b262b0f9b16f5e7B6A38f08",
     "averageTimeTakenToCompleteALevel": 1905,
     "totalNumberOfLevelsCompleted": 22,
@@ -760,6 +768,14 @@
     "score": 66.47916495810703
   },
   {
+    "player": "0xFbAD768340a24E06384591537d7D2F80693d6aDB",
+    "averageTimeTakenToCompleteALevel": 41776,
+    "totalNumberOfLevelsCompleted": 21,
+    "totalDifficultyFaced": 112,
+    "alias": "",
+    "score": 66.35567769266005
+  },
+  {
     "player": "0xF9d5230B1AA44Dba47a96682D0CdC8Be5d38f34f",
     "averageTimeTakenToCompleteALevel": 31680,
     "totalNumberOfLevelsCompleted": 21,
@@ -808,28 +824,12 @@
     "score": 63.896862081810845
   },
   {
-    "player": "0xE94eE0D98415D86ddbA0df1e8b733B4A332D3fbD",
-    "averageTimeTakenToCompleteALevel": 182627,
-    "totalNumberOfLevelsCompleted": 20,
-    "totalDifficultyFaced": 116,
-    "alias": "",
-    "score": 63.8950396506229
-  },
-  {
     "player": "0xE12C5dad65B5FB66c339C9f8EBdC18F48C7f0164",
     "averageTimeTakenToCompleteALevel": 170865,
     "totalNumberOfLevelsCompleted": 22,
     "totalDifficultyFaced": 37,
     "alias": "",
     "score": 63.47248794568222
-  },
-  {
-    "player": "0xFbAD768340a24E06384591537d7D2F80693d6aDB",
-    "averageTimeTakenToCompleteALevel": 43818,
-    "totalNumberOfLevelsCompleted": 20,
-    "totalDifficultyFaced": 102,
-    "alias": "",
-    "score": 62.845009976153165
   },
   {
     "player": "0x8fdc6d58f8bD827ff354D1F927fD43673da29c45",
@@ -1256,6 +1256,14 @@
     "score": 54.34042536042883
   },
   {
+    "player": "0x3F862dc7466D7c31b81EC05246bF960FFDe8daE2",
+    "averageTimeTakenToCompleteALevel": 8317,
+    "totalNumberOfLevelsCompleted": 17,
+    "totalDifficultyFaced": 98,
+    "alias": "",
+    "score": 54.2830081260541
+  },
+  {
     "player": "0xf423EEB9EB6be5761031E8E83F8CE22f26Cb6a5D",
     "averageTimeTakenToCompleteALevel": 1106,
     "totalNumberOfLevelsCompleted": 17,
@@ -1384,20 +1392,20 @@
     "score": 51.18649040998739
   },
   {
+    "player": "0x9641AFDc269eF44359d201DC5BAE75c0baEbCdC9",
+    "averageTimeTakenToCompleteALevel": 28526,
+    "totalNumberOfLevelsCompleted": 15,
+    "totalDifficultyFaced": 130,
+    "alias": "",
+    "score": 51.159004795846805
+  },
+  {
     "player": "0x1ACA9dc19d6360f8C07AF35e3bbDbD2114BCA620",
     "averageTimeTakenToCompleteALevel": 150299,
     "totalNumberOfLevelsCompleted": 16,
     "totalDifficultyFaced": 92,
     "alias": "",
     "score": 51.0562222781976
-  },
-  {
-    "player": "0x3F862dc7466D7c31b81EC05246bF960FFDe8daE2",
-    "averageTimeTakenToCompleteALevel": 8794,
-    "totalNumberOfLevelsCompleted": 16,
-    "totalDifficultyFaced": 86,
-    "alias": "",
-    "score": 50.621153532392306
   },
   {
     "player": "0x76B37Dec80c504B5F179Cc26B352Bafcd7Ba86BC",
@@ -1814,14 +1822,6 @@
     "totalDifficultyFaced": 102,
     "alias": "",
     "score": 43.65172382555891
-  },
-  {
-    "player": "0x9641AFDc269eF44359d201DC5BAE75c0baEbCdC9",
-    "averageTimeTakenToCompleteALevel": 32396,
-    "totalNumberOfLevelsCompleted": 13,
-    "totalDifficultyFaced": 102,
-    "alias": "",
-    "score": 43.535872099107486
   },
   {
     "player": "0x3Bb8c84b59A1C298d232e653e020b067ad13E2fA",
@@ -2640,6 +2640,14 @@
     "score": 36.26159152659113
   },
   {
+    "player": "0x33689413Ea642806eb9957480471f1D78E606026",
+    "averageTimeTakenToCompleteALevel": 1661,
+    "totalNumberOfLevelsCompleted": 11,
+    "totalDifficultyFaced": 76,
+    "alias": "",
+    "score": 36.14942034444204
+  },
+  {
     "player": "0xA14Ff4621F83E2b5CFcb2081E5CC60819FC21A10",
     "averageTimeTakenToCompleteALevel": 42180,
     "totalNumberOfLevelsCompleted": 12,
@@ -2942,14 +2950,6 @@
     "totalDifficultyFaced": 33,
     "alias": "",
     "score": 32.82943705237128
-  },
-  {
-    "player": "0x33689413Ea642806eb9957480471f1D78E606026",
-    "averageTimeTakenToCompleteALevel": 1758,
-    "totalNumberOfLevelsCompleted": 10,
-    "totalDifficultyFaced": 68,
-    "alias": "",
-    "score": 32.784313083520864
   },
   {
     "player": "0x14cA5311aA13A78207e09b170E37674A3e7fC3d2",
@@ -6712,6 +6712,14 @@
     "score": 8.76794047927701
   },
   {
+    "player": "0x9676bE176d75558149b4C179E19eabDa048199Ac",
+    "averageTimeTakenToCompleteALevel": 3668,
+    "totalNumberOfLevelsCompleted": 3,
+    "totalDifficultyFaced": 6,
+    "alias": "",
+    "score": 8.767884108797922
+  },
+  {
     "player": "0xec92E25d54824d5Be3a5bDAB7546715DB2F4C620",
     "averageTimeTakenToCompleteALevel": 564,
     "totalNumberOfLevelsCompleted": 3,
@@ -8072,6 +8080,14 @@
     "score": 5.795771390779696
   },
   {
+    "player": "0xf097FF731E42eeDCe7C0964D6C1b756Ce6288d2D",
+    "averageTimeTakenToCompleteALevel": 1188,
+    "totalNumberOfLevelsCompleted": 2,
+    "totalDifficultyFaced": 2,
+    "alias": "",
+    "score": 5.793879945422596
+  },
+  {
     "player": "0x9232158F33F1beE6cCfE7ed65B16522530C9686c",
     "averageTimeTakenToCompleteALevel": 3054,
     "totalNumberOfLevelsCompleted": 2,
@@ -8382,6 +8398,14 @@
     "totalDifficultyFaced": 2,
     "alias": "",
     "score": 5.685272686391608
+  },
+  {
+    "player": "0x7595C1B36110c1cddB021626d2f43E25BdF6Cd16",
+    "averageTimeTakenToCompleteALevel": 16230,
+    "totalNumberOfLevelsCompleted": 2,
+    "totalDifficultyFaced": 2,
+    "alias": "",
+    "score": 5.6768594633374185
   },
   {
     "player": "0x8A8E1456ca2139005775db88D6eBa305c742F2c7",
@@ -11400,14 +11424,6 @@
     "score": 0
   },
   {
-    "player": "0x7595C1B36110c1cddB021626d2f43E25BdF6Cd16",
-    "averageTimeTakenToCompleteALevel": 0,
-    "totalNumberOfLevelsCompleted": 1,
-    "totalDifficultyFaced": 0,
-    "alias": "",
-    "score": 0
-  },
-  {
     "player": "0x8A29E06d5D33c8a8b0C18ACb2EEedC8104F12CC1",
     "averageTimeTakenToCompleteALevel": 0,
     "totalNumberOfLevelsCompleted": 1,
@@ -12961,14 +12977,6 @@
   },
   {
     "player": "0x847FaD5f4CA657133d3F71062c94639a060a3236",
-    "averageTimeTakenToCompleteALevel": 0,
-    "totalNumberOfLevelsCompleted": 1,
-    "totalDifficultyFaced": 0,
-    "alias": "",
-    "score": 0
-  },
-  {
-    "player": "0x9676bE176d75558149b4C179E19eabDa048199Ac",
     "averageTimeTakenToCompleteALevel": 0,
     "totalNumberOfLevelsCompleted": 1,
     "totalDifficultyFaced": 0,

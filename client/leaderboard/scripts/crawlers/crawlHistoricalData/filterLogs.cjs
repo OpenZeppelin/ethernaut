@@ -1,8 +1,5 @@
 const callFunctionWithRetry = require("../../tools/callFunctionWithRetry.cjs");
 const {
-  default: callFunctionWithRetry,
-} = require("../../tools/callFunctionWithRetry.cjs");
-const {
   evaluateCurrentSolveInstanceHex,
   returnCurrentLevel,
 } = require("../../tools/evaluateHelper.cjs");
