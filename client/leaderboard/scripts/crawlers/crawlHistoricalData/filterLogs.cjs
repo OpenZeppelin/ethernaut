@@ -22,7 +22,7 @@ const filterLogs = async (
     processedLogsCount += chunkedLogs[i].length;
     console.log("processed logs", processedLogsCount);
     const chunk = chunkedLogs[i];
-    const promiseArray = chunk.map(async (log) => {
+    const promiseArray = chunk.map((log) => {
       const promise = () =>
         getFilteredLog(
           log,
