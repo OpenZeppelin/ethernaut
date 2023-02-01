@@ -2,6 +2,7 @@ const oldSolveInstanceHex =
   "0x9dfdf7e3e630f506a3dfe38cdbe34e196353364235df33e5a3b588488d9a1e78";
 const newSolveInstanceHex =
   "0x5038a30b900118d4e513ba62ebd647a96726a6f81b8fda73c21e9da45df5423d";
+const callFunctionWithRetry = require("../tools/callFunctionWithRetry.cjs");
 
 const evaluateIfWeHavePassedReDeployment = (check, switchoverBlock) => {
   if (check > switchoverBlock) return true;
@@ -208,13 +209,18 @@ const evaluateDecodedLevelAddress = async (
   let levelAddress = "";
   try {
     let block = log.blockNumber;
-    const logsFromEthernaut = await nodeProvider.getLogs({
+    
+    const promise1 = () => nodeProvider.getLogs({
       fromBlock: block,
       toBlock: block,
       address: network.newAddress,
       topics: [newSolveInstanceHex],
     });
-    let txn = await nodeProvider.getTransaction(String(log.transactionHash));
+    const logsFromEthernaut = await callFunctionWithRetry(promise1)
+    
+    const promise2 = () => nodeProvider.getTransaction(String(log.transactionHash));
+    let txn = await callFunctionWithRetry(promise2)
+    
     let fromPlayer = String(txn.from);
     const playerTopicArray = [{ type: "address", name: "player" }];
     const levelTopicArray = [{ type: "address", name: "level" }];

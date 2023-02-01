@@ -1,3 +1,4 @@
+const callFunctionWithRetry = require("../../tools/callFunctionWithRetry.cjs");
 const {
   default: callFunctionWithRetry,
 } = require("../../tools/callFunctionWithRetry.cjs");
@@ -25,19 +26,20 @@ const filterLogs = async (
     console.log("processed logs", processedLogsCount);
     const chunk = chunkedLogs[i];
     const promiseArray = chunk.map(async (log) => {
-      const promise = getFilteredLog(
-        log,
-        nodeProvider,
-        switchoverBlock,
-        web3,
-        mappingDataPath
-      );
-      return callFunctionWithRetry(promise, 5);
+      const promise = () =>
+        getFilteredLog(
+          log,
+          nodeProvider,
+          switchoverBlock,
+          web3,
+          mappingDataPath
+        );
+      return callFunctionWithRetry(promise);
     });
     const results = await Promise.all(promiseArray);
     filteredData.push(...results);
   }
-  return filteredData;
+  return filteredData.filter((log) => log !== undefined);
 };
 
 const chunkArray = (array, size) => {

@@ -1,4 +1,6 @@
-const { evaluateIfWeHavePassedReDeployment } = require("../../tools/evaluateHelper.cjs");
+const {
+  evaluateIfWeHavePassedReDeployment,
+} = require("../../tools/evaluateHelper.cjs");
 const callFunctionWithRetry = require("../../tools/callFunctionWithRetry.cjs");
 
 const callBlockChain = async (
@@ -26,15 +28,18 @@ const callBlockChain = async (
     )
       ? network.oldAddress
       : network.newAddress;
-    
-    const promise = nodeProvider.getLogs({
-      fromBlock: lastFromBlock,
-      toBlock: nextToBlock,
-      address,
-      topics: [],
-    });
 
-    const logDump = await callFunctionWithRetry(promise, 5);
+    // eslint-disable-next-line no-loop-func
+    const promise = () => {
+      return nodeProvider.getLogs({
+        fromBlock: lastFromBlock,
+        toBlock: nextToBlock,
+        address,
+        topics: [],
+      });
+    };
+
+    const logDump = await callFunctionWithRetry(promise);
 
     logs = logs.concat(logDump);
 

@@ -4,7 +4,9 @@ const {
   evaluateDifficultyInThisStatisticsEmit,
   evaluateDecodedLevelAddress,
 } = require("../../tools/evaluateHelper.cjs");
-const { default: callFunctionWithRetry } = require("../../tools/callFunctionWithRetry.cjs");
+const callFunctionWithRetry = require("../../tools/callFunctionWithRetry.cjs");
+
+const NO_OF_PARALLEL_CALLS = 10;
 
 const callBlockChain = async (network, web3, upperBlock) => {
   let logs = [];
@@ -20,58 +22,29 @@ const callBlockChain = async (network, web3, upperBlock) => {
   console.log(`Upper block - ${upperBlock}`);
   do {
     console.log(`nextToBlock - ${nextToBlock}`);
-    const promise = nodeProvider.getLogs({
-      fromBlock: lastFromBlock,
-      toBlock: nextToBlock,
-      address: network.statisticsAddress,
-      topics: [
-        "0x18f89fb58208351d054bc0794e723a333ae0a74acd73825a9f31d89af0c67551",
-      ],
-    });
-    const logDump = await callFunctionWithRetry(promise, 5);
+    // eslint-disable-next-line no-loop-func
+    const promise = () =>
+      nodeProvider.getLogs({
+        fromBlock: lastFromBlock,
+        toBlock: nextToBlock,
+        address: network.statisticsAddress,
+        topics: [
+          "0x18f89fb58208351d054bc0794e723a333ae0a74acd73825a9f31d89af0c67551",
+        ],
+      });
+    const logDump = await callFunctionWithRetry(promise);
     if (logDump) {
-      for (let log of logDump) {
-        let dataArray1 = [{ type: "address", name: "player" }];
-        let dataArray2 = [{ type: "uint256", name: "time" }];
-        let dataArray3 = [{ type: "uint256", name: "number" }];
-        const topic1Array = web3.eth.abi.decodeParameters(
-          dataArray1,
-          String(log.topics[1])
+      const chunkedLogs = chunk(logDump, NO_OF_PARALLEL_CALLS);
+      for (let i = 0; i < chunkedLogs.length; i++) {
+        const results = await Promise.all(
+          chunkedLogs[i].map((log) =>
+            getPlayerEntry({ log, web3, network, nodeProvider })
+          )
         );
-        const topic2Array = web3.eth.abi.decodeParameters(
-          dataArray2,
-          String(log.topics[2])
+        const filteredResults = results.filter(
+          (result) => result !== undefined
         );
-        const topic3Array = web3.eth.abi.decodeParameters(
-          dataArray3,
-          String(log.topics[3])
-        );
-        const additionalDifficultyFaced =
-          await evaluateDifficultyInThisStatisticsEmit(
-            network,
-            log,
-            web3,
-            nodeProvider
-          );
-        const decodedLevelAddress = await evaluateDecodedLevelAddress(
-          network,
-          log,
-          web3,
-          nodeProvider
-        );
-        try {
-          let playerEntry = {
-            player: topic1Array.player,
-            averageTimeTakenToCompleteALevel: parseInt(topic2Array.time),
-            totalNumberOfLevelsCompleted: parseInt(topic3Array.number),
-            levelFacedOnThisAttempt: decodedLevelAddress,
-            additionalDifficultyFaced: parseInt(additionalDifficultyFaced),
-            alias: "",
-          };
-          logs.push(playerEntry);
-        } catch (error) {
-          console.log(error);
-        }
+        logs.push(...filteredResults);
       }
       lastFromBlock = nextToBlock + 1;
       nextToBlock = lastFromBlock + incrementer;
@@ -79,6 +52,60 @@ const callBlockChain = async (network, web3, upperBlock) => {
   } while (nextToBlock < upperBlock);
   const reducedLogs = reduceReturnedLogs(logs, network);
   return reducedLogs;
+};
+
+const chunk = (arr, size) => {
+  const chunked_arr = [];
+  let index = 0;
+  while (index < arr.length) {
+    chunked_arr.push(arr.slice(index, size + index));
+    index += size;
+  }
+  return chunked_arr;
+};
+
+const getPlayerEntry = async ({ log, web3, network, nodeProvider }) => {
+  let dataArray1 = [{ type: "address", name: "player" }];
+  let dataArray2 = [{ type: "uint256", name: "time" }];
+  let dataArray3 = [{ type: "uint256", name: "number" }];
+  const topic1Array = web3.eth.abi.decodeParameters(
+    dataArray1,
+    String(log.topics[1])
+  );
+  const topic2Array = web3.eth.abi.decodeParameters(
+    dataArray2,
+    String(log.topics[2])
+  );
+  const topic3Array = web3.eth.abi.decodeParameters(
+    dataArray3,
+    String(log.topics[3])
+  );
+  const additionalDifficultyFaced =
+    await evaluateDifficultyInThisStatisticsEmit(
+      network,
+      log,
+      web3,
+      nodeProvider
+    );
+  const decodedLevelAddress = await evaluateDecodedLevelAddress(
+    network,
+    log,
+    web3,
+    nodeProvider
+  );
+  try {
+    let playerEntry = {
+      player: topic1Array.player,
+      averageTimeTakenToCompleteALevel: parseInt(topic2Array.time),
+      totalNumberOfLevelsCompleted: parseInt(topic3Array.number),
+      levelFacedOnThisAttempt: decodedLevelAddress,
+      additionalDifficultyFaced: parseInt(additionalDifficultyFaced),
+      alias: "",
+    };
+    return playerEntry;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 module.exports = callBlockChain;

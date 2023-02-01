@@ -7,7 +7,6 @@ const networks = require("../../../utils/networkDetails.json");
 const fetchAndAddAliases = require("./fetchAndAddAliases.cjs");
 
 const crawlForFreshEntriesAndUpdateNetworkBoard = async () => {
-  
   for (let network of networks) {
     await crawlForFreshEntries(network, web3, logger);
     await logger(
