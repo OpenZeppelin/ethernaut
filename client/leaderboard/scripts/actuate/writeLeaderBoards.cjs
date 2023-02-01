@@ -10,7 +10,7 @@ const writeLeaderBoards = async (logger) => {
     const networkLeaderBoardPath = `client/leaderboard/boards/networkleaderboards/${network.name}LeaderBoard.json`;
 
     const networkPlayersBoard = require(`../../networks/${String(
-      network.name
+      network.name.toLowerCase()
     )}/${network.name}PlayersBoard.json`);
 
     let playersBoardWithScores = reCalculateScores(networkPlayersBoard);
