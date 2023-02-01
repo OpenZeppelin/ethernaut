@@ -7,7 +7,7 @@ const {
 } = require("../../tools/evaluateHelper.cjs");
 
 const NO_OF_PARALLEL_REQUESTS = 50;
-let i = 0;
+
 const filterLogs = async (
   logs,
   nodeProvider,
@@ -21,8 +21,6 @@ const filterLogs = async (
   console.log("total no of logs", logs.length);
   let processedLogsCount = 0;
   for (let i = 0; i < chunkedLogs.length; i++) {
-    console.log(i);
-    i++;
     processedLogsCount += chunkedLogs[i].length;
     console.log("processed logs", processedLogsCount);
     const chunk = chunkedLogs[i];
