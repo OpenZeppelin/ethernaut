@@ -1,6 +1,6 @@
 [
   {
-    "name": "arbitrum",
+    "name": "Arbitrum",
     "networkDecleration": "Network.arb-goerli",
     "oldAddress": "0xD991431D8b033ddCb84dAD257f4821E9d5b38C33",
     "newAddress": "0xa3e7317E591D5A0F1c605be1b3aC4D2ae56104d6",
@@ -12,7 +12,7 @@
     "deployName": "goerli-arbitrum"
   },
   {
-    "name": "goerli",
+    "name": "Goerli",
     "networkDecleration": "Network.eth-goerli",
     "oldAddress": "0x42E7014a9D1f6765e76fA2e69532d808F2fe27E3",
     "newAddress": "0xD2e5e0102E55a5234379DD796b8c641cd5996Efd",
@@ -24,7 +24,7 @@
     "deployName": "goerli"
   },
   {
-    "name": "mumbai",
+    "name": "Mumbai",
     "networkDecleration": "Network.polygon-mumbai",
     "oldAddress": "0xe04f955e4Cf9858F8f8d60C09aBf16DF23D4672b",
     "newAddress": "0x73379d8B82Fda494ee59555f333DF7D44483fD58",
@@ -36,7 +36,7 @@
     "deployName": "mumbai-polygon"
   },
   {
-    "name": "optimism",
+    "name": "Optimism",
     "networkDecleration": "Network.opt-goerli",
     "oldAddress": "0xDCa6065818935c33D6AF9AbDB7d5f679BB43508A",
     "newAddress": "0xB4802b28895ec64406e45dB504149bfE79A38A57",
@@ -48,7 +48,7 @@
     "deployName": "goerli-optimism"
   },
   {
-    "name": "sepolia",
+    "name": "Sepolia",
     "networkDecleration": "Network.SEPOLIA",
     "oldAddress": "0xD991431D8b033ddCb84dAD257f4821E9d5b38C33",
     "newAddress": "0xa3e7317E591D5A0F1c605be1b3aC4D2ae56104d6",
