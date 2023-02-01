@@ -8,9 +8,11 @@ const writeLeaderBoards = async (logger) => {
   // 1. compile network leaderboards
   for (let network of networks) {
     const networkLeaderBoardPath = `client/leaderboard/boards/networkleaderboards/${network.name}LeaderBoard.json`;
+
     const networkPlayersBoard = require(`../../networks/${String(
       network.name
     )}/${network.name}PlayersBoard.json`);
+
     let playersBoardWithScores = reCalculateScores(networkPlayersBoard);
     let networkLeaderBoard = playersBoardWithScores.sort((a, b) => {
       return b.score - a.score;
