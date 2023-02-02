@@ -101,6 +101,4 @@ const addAliases = async (aliasArray) => {
   fs.writeFileSync(leaderBoardPath, JSON.stringify(newLeaderBoard));
 };
 
-fetchAndAddAliases()
-
 module.exports = fetchAndAddAliases;
