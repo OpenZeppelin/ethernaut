@@ -1,4 +1,4 @@
-const DEFAULT_MAX_RETRIES = 5;
+const DEFAULT_MAX_RETRIES = 10;
 
 const callFunctionWithRetry = async (
   promise,
