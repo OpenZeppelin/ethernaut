@@ -3,7 +3,7 @@ name: update leaderboard
 on:
   schedule:
     # Runs every 2 hours
-    - cron: "*/30 * * * *"
+    - cron: "0 */2 * * *"
   workflow_dispatch:
 jobs:
   crawl:
