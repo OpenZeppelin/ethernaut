@@ -1,6 +1,9 @@
 ---
 name: update leaderboard
-on: [workflow_dispatch]
+on:
+  schedule:
+    # Runs every 2 hours
+    - cron: 0 */2 * * *
 jobs:
   crawl:
     runs-on: ubuntu-latest
