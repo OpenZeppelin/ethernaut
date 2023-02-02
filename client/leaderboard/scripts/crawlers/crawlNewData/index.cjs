@@ -17,7 +17,7 @@ const crawlForFreshEntriesAndUpdateNetworkBoard = async () => {
     ".........deck the halls, ya filthy animal! The allPlayersBoard is now updated! Let's #writeLeaderBoard !"
   );
 
-  await fetchAndAddAliases();
+  // await fetchAndAddAliases();
   await logger(
     "get your magnifying glass out, Sherlock, because the leader board now belies.... the ALIASES!"
   );
