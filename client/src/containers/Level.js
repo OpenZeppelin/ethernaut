@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import CodeComponent from "../components/Code";
-import Footer from "../components/Footer";
-import Author from "../components/Author";
-import MarkdownComponent from "../components/Markdown";
+import CodeComponent from "../components/levels/Code";
+import Footer from "../components/common/Footer";
+import Author from "../components/levels/Author";
+import MarkdownComponent from "../components/common/Markdown";
 import * as actions from "../actions";
 import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";

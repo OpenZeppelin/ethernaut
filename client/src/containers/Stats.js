@@ -7,7 +7,7 @@ import { getLevelsSolvedByPlayer, checkIfPlayerExist, getTotalCompleted, getTota
 import { validateAddress } from '../utils/ethutil'
 import Statistic from '../components/Statistic';
 import StatisticPanel from '../components/Panel';
-import Footer from '../components/Footer';
+import Footer from "../components/common/Footer";
 
 class Stats extends React.Component {
 
@@ -96,7 +96,6 @@ class Stats extends React.Component {
       // woth noting that the sort is 'inplace'
       stats?.levelsSolved.sort((a, b) => +a.difficulty - +b.difficulty)
       this.setState({
-        ...this.state.solvedLevels,
         solvedLevels: stats?.levelsSolved
       })
     }

@@ -163,6 +163,7 @@ export const PATH_HELP = "/help";
 export const PATH_LEVEL_ROOT = `${PATH_ROOT}level/`;
 export const PATH_LEVEL = `${PATH_LEVEL_ROOT}:address`;
 export const PATH_STATS = `${PATH_ROOT}stats`;
+export const PATH_LEADERBOARD = `${PATH_ROOT}leaderboard`
 
 // RELEASE SENSITIVE
 // -----------------------------------------------------------------------------------------
