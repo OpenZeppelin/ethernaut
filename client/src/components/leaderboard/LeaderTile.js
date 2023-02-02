@@ -5,7 +5,7 @@ function LeaderTile(props) {
     const { rank, leader, onAliasEdit, currentUser } = props;
     const { toast, Toast } = useToast()
 
-    let { player, score, totalNumberOfLevelsCompleted } = leader;
+    let { player, score, totalNumberOfLevelsCompleted, alias } = leader;
 
 
     const handleClick = () => { 
@@ -19,9 +19,13 @@ function LeaderTile(props) {
             <div className='leaderboard-tile'>
                 <div className="leaderboard-rank">{rank}</div>
                 <div className="leaderboard-player">
-                    <Tooltip content={player}>
-                        <div onClick={handleClick}>{player.split("").slice(0, 18).join("")}...</div>
-                    </Tooltip>
+                    {
+                        alias ?
+                            <div>{alias}</div> :
+                            <Tooltip content={player}>
+                                <div onClick={handleClick}>{player.split("").slice(0, 18).join("")}...</div>
+                            </Tooltip>
+                    }
                 </div>
                 <div className="leaderboard-levels-solved">
                     {totalNumberOfLevelsCompleted}

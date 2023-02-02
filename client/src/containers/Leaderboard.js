@@ -7,6 +7,7 @@ import Search from "../components/leaderboard/Search";
 import { getNetworkNamefromId } from "../utils/ethutil";
 import networkDetails from "client/leaderboard/utils/networkDetails.json";
 import Footer from "../components/common/Footer";
+import aliases from "client/leaderboard/boards/aliases.json";
 
 const playersPerPage = 20;
 
@@ -53,7 +54,7 @@ function Leaderboard() {
         }
         const leaderboardNetworkName = getLeaderboardNetworkNameFromNetworkName(currentNetworkName)
         const playersWithoutRank = require(`client/leaderboard/boards/networkleaderboards/${leaderboardNetworkName}LeaderBoard.json`)
-        const playersWithRank = playersWithoutRank.map(assignRank).filter(isScoreNonZero)
+        const playersWithRank = playersWithoutRank.map(assignRank).filter(isScoreNonZero).map(assignAlias)
         setPlayersWithRank(playersWithRank)
         setSearchResult(playersWithRank)
     }, [currentNetworkName])
@@ -70,10 +71,11 @@ function Leaderboard() {
         setOffset(newOffset);
     };
  
-    const isKeywordMatching = (keyword) => (player) => { 
+    const isKeywordMatching = (keyword) => (player) => {
         keyword = keyword.toLowerCase()
         return (
-            player.player.toLowerCase().includes(keyword)
+            player.player.toLowerCase().includes(keyword) ||
+            player.alias.toLowerCase().includes(keyword)
         )
     }
 
@@ -84,6 +86,7 @@ function Leaderboard() {
         }
         setSearchKeyword(keyword)
         const result = playersWithRank.filter(isKeywordMatching(keyword))
+        console.log(result)
         setSearchResult(result)
         setOffset(0)
     }
@@ -134,6 +137,15 @@ const assignRank = ((item, index) => {
         rank:index+1
     }
 }) 
+
+const assignAlias = (player) => {
+    const alias = aliases[player.player.toLowerCase()]
+    if(!alias) return player
+    return {
+        ...player,
+        alias:alias
+    }
+}
 
 const isScoreNonZero = (player) => { 
     return player.score !== 0

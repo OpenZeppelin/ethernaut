@@ -95,7 +95,7 @@ const addAliases = async (aliasArray) => {
 
   for (let i = 0; i < aliasArray.length; i++) {
     if(!leaderBoard[aliasArray[i].ethernaut_address]) {
-      leaderBoard[aliasArray[i].ethernaut_address] = aliasArray[i].ethernaut_alias;
+      leaderBoard[aliasArray[i].ethernaut_address.toLowerCase()] = aliasArray[i].ethernaut_alias;
     }
   }
 
