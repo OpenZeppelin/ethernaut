@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.head_ref }}
+          ref: leaderboard-periodic-update
           fetch-depth: 0
       - run: yarn
       - run: yarn "leaderboard:triggerNextCrawl"
@@ -34,3 +34,4 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           force_with_lease: true
+          branch: leaderboard-periodic-update
