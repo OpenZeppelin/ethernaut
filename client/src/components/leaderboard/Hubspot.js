@@ -37,6 +37,7 @@ class HubspotForm extends React.Component{
     const label = legends[1]
     const addressInput = inputs[2]
     const ethernautAddressLabel = spans[4]
+    const checkboxLabel = spans[5]
 
     const styles = getComputedStyle(document.documentElement);
 
@@ -46,6 +47,7 @@ class HubspotForm extends React.Component{
     emailElement.style.color = textColor;
     usernameElement.style.color = textColor;
     ethernautAddressLabel.style.color = textColor;
+    checkboxLabel.style.color = textColor;
     
     label.style.color = textColor;
     label.style.opacity = 0.7;
