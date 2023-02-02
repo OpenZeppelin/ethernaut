@@ -23,8 +23,8 @@ class Header extends React.Component {
     };
 
     if (this.props.web3) {
-      window.ethereum.request({ method: 'eth_chainId' }).then((id) => {
-        this.setState({ chainId: Number(id) })
+      window.ethereum.request({ method: "eth_chainId" }).then((id) => {
+        this.setState({ chainId: Number(id) });
       });
     }
   }
@@ -63,31 +63,27 @@ class Header extends React.Component {
     // var black = getComputedStyle(document.documentElement).getPropertyValue(
     //   "--black"
     // );
-
     // var primaryColor = getComputedStyle(document.documentElement).getPropertyValue(
     //   "--primary-color"
     // );
-
     // if(primaryColor === black) this.toggleDarkMode()
   }
 
   componentDidUpdate(prevProps) {
-
     if (prevProps && this.props.location !== prevProps.location) {
-
       let elements = document.getElementsByClassName("level-tile");
       if (elements.length !== 0) {
         for (let i = 0; i < elements.length; i++) {
           let element = elements[i];
-          if (element && element.style) element.style.filter = this.state.dark ? svgFilter() : null;
+          if (element && element.style)
+            element.style.filter = this.state.dark ? svgFilter() : null;
         }
       }
 
       // Change The Ethernaut logo
       var theEthernaut = document.getElementById("the-ethernaut");
-      if (theEthernaut && theEthernaut.style) theEthernaut.style.filter = this.state.dark
-        ? svgFilter()
-        : null;
+      if (theEthernaut && theEthernaut.style)
+        theEthernaut.style.filter = this.state.dark ? svgFilter() : null;
 
       // Change Arrow
       let isArrowInPage = document.getElementById("arrow");
@@ -100,7 +96,8 @@ class Header extends React.Component {
         for (let i = 0; i < imageElements.length; i++) {
           let element = imageElements[i];
           if (imageElements.length === 0) element = imageElements;
-          if (element && element.style) element.style.filter = this.state.dark ? svgFilter() : null;
+          if (element && element.style)
+            element.style.filter = this.state.dark ? svgFilter() : null;
         }
       }
     }
@@ -163,7 +160,6 @@ class Header extends React.Component {
   toggleDarkMode() {
     var documentElement = document.documentElement;
     if (documentElement && documentElement.style) {
-
       var pink = getComputedStyle(document.documentElement).getPropertyValue(
         "--pink"
       );
@@ -174,7 +170,6 @@ class Header extends React.Component {
       var newPrimary = this.state.dark ? pink : black;
       var newSecondary = this.state.dark ? black : pink;
 
-
       document.documentElement.style.setProperty("--primary-color", newPrimary);
       document.documentElement.style.setProperty(
         "--secondary-color",
@@ -182,10 +177,9 @@ class Header extends React.Component {
       );
 
       // Change OpenZeppelin logo
-      var theLogo = document.getElementById("logo")
-      if (theLogo && theLogo.style) theLogo.style.filter = !this.state.dark
-        ? svgFilter()
-        : null;
+      var theLogo = document.getElementById("logo");
+      if (theLogo && theLogo.style)
+        theLogo.style.filter = !this.state.dark ? svgFilter() : null;
 
       // // Change OpenZeppelin logo
       // var theChristmashat = document.getElementById("christmas-hat")
@@ -195,9 +189,8 @@ class Header extends React.Component {
 
       // Change The Ethernaut logo
       var theEthernaut = document.getElementById("the-ethernaut");
-      if (theEthernaut && theEthernaut.style) theEthernaut.style.filter = !this.state.dark
-        ? svgFilter()
-        : null;
+      if (theEthernaut && theEthernaut.style)
+        theEthernaut.style.filter = !this.state.dark ? svgFilter() : null;
 
       // Change Arrow
       let isArrowInPage = document.getElementById("arrow");
@@ -208,14 +201,16 @@ class Header extends React.Component {
       let elements = document.getElementsByClassName("level-tile");
       for (let i = 0; i < elements.length; i++) {
         let element = elements[i];
-        if (element && element.style) element.style.filter = !this.state.dark ? svgFilter() : null;
+        if (element && element.style)
+          element.style.filter = !this.state.dark ? svgFilter() : null;
       }
 
       // Change all custom images
       elements = document.getElementsByClassName("custom-img");
       for (let i = 0; i < elements.length; i++) {
         let element = elements[i];
-        if (element && element.style) element.style.filter = !this.state.dark ? svgFilter() : null;
+        if (element && element.style)
+          element.style.filter = !this.state.dark ? svgFilter() : null;
       }
 
       this.setState({
@@ -293,7 +288,6 @@ class Header extends React.Component {
                 onClick={() => this.toggleDropdownState()}
                 className="multi-dropdown__icon"
               >
-                <span>{strings.Menu}</span>
                 <i className="fas fa-bars"></i>
               </div>
               <ul
@@ -301,6 +295,37 @@ class Header extends React.Component {
                   ddOpen ? "--open" : "--closed"
                 }`}
               >
+                <div className="dropdown-pill --left">
+                  <div>
+                    <Link
+                      to={
+                        window.location.pathname !== constants.PATH_ROOT
+                          ? constants.PATH_ROOT
+                          : constants.PATH_HELP
+                      }
+                    >
+                      <div className="filled-icon">
+                        {window.location.pathname !== constants.PATH_ROOT ? (
+                          <>
+                            <i className="fas fa-home"></i>
+                          </>
+                        ) : (
+                          <>
+                            <i className="fas fa-question"></i>
+                          </>
+                        )}
+                      </div>
+                    </Link>
+                    <input
+                      onClick={() => {
+                        this.toggleDarkMode();
+                      }}
+                      className="toggle --small"
+                      type="checkbox"
+                    />
+                  </div>
+                </div>
+
                 <div
                   className={`single-dropdown --${
                     this.props.web3 && "--hidden"
@@ -359,40 +384,6 @@ class Header extends React.Component {
                       </a>
                     </div>
                   </div>
-                </div>
-
-                <div
-                  onClick={() => {
-                    this.toggleDarkMode();
-                  }}
-                  className="dropdown-pill --left"
-                >
-                  <input className="toggle --small" type="checkbox" />
-                  <span>{strings.ToggleDarkMode}</span>
-                </div>
-
-                <div className="dropdown-pill --left">
-                  <Link
-                    to={
-                      window.location.pathname !== constants.PATH_ROOT
-                        ? constants.PATH_ROOT
-                        : constants.PATH_HELP
-                    }
-                  >
-                    <div>
-                      {window.location.pathname !== constants.PATH_ROOT ? (
-                        <>
-                          <i className="fas fa-home"></i>
-                          <span>{strings.Home}</span>
-                        </>
-                      ) : (
-                        <>
-                          <i className="fas fa-question"></i>
-                          <span>{strings.Help}</span>
-                        </>
-                      )}
-                    </div>
-                  </Link>
                 </div>
               </ul>
             </div>
@@ -551,8 +542,24 @@ class Header extends React.Component {
           <ProgressBar
             height="100"
             width="100"
-            borderColor={this.state.dark ? getComputedStyle(document.documentElement).getPropertyValue("--pink") : getComputedStyle(document.documentElement).getPropertyValue("--black")}
-            barColor={this.state.dark ? getComputedStyle(document.documentElement).getPropertyValue("--pink") : getComputedStyle(document.documentElement).getPropertyValue("--black")}
+            borderColor={
+              this.state.dark
+                ? getComputedStyle(document.documentElement).getPropertyValue(
+                    "--pink"
+                  )
+                : getComputedStyle(document.documentElement).getPropertyValue(
+                    "--black"
+                  )
+            }
+            barColor={
+              this.state.dark
+                ? getComputedStyle(document.documentElement).getPropertyValue(
+                    "--pink"
+                  )
+                : getComputedStyle(document.documentElement).getPropertyValue(
+                    "--black"
+                  )
+            }
             ariaLabel="progress-bar-loading"
             wrapperStyle={{}}
             wrapperClass="progress-bar-wrapper"
@@ -569,7 +576,10 @@ class Header extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { web3: state.network.web3, allLevelsCompleted: state.player.allLevelsCompleted };
+  return {
+    web3: state.network.web3,
+    allLevelsCompleted: state.player.allLevelsCompleted,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
