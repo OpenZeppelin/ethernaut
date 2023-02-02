@@ -156,6 +156,7 @@ header {
 
 .header-ul {
   padding: 4px 0px;
+  margin-bottom: 0;
 }
 
 .hiring {
@@ -633,13 +634,21 @@ footer {
 }
 
 .toggle.--small {
-  width: 30px;
-  height: 15px;
+  width: 35px;
+  height: 20px;
 }
 
 .toggle:before {
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
+}
+
+.filled-icon{
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 5px;
 }
 /* --------- styles for multi dropdowns --------------*/
 @media only screen and (max-width: 1029px){
@@ -658,7 +667,7 @@ footer {
     padding-left: 3em;
   }
   .multi-dropdown__dropdown{
-    margin-left: -10.8em;
+    margin-left: -13.8em;
   }
   
 }

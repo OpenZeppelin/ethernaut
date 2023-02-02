@@ -90,8 +90,5 @@
   "setupMetamask": "Se você ainda não tem, instale o [MetaMask browser extension](https://metamask.io/) (no Chrome, Firefox, Brave ou Opera em seu computador). \n\nConfigure a carteira da extensão e use o seletor de rede para apontar para a rede preferida no canto superior esquerdo da interface da extensão. Alternativamente, você pode usar o botão para alternar entre as redes. Se você selecionar uma rede não suportada, o jogo irá notificá-lo e levá-lo para o Goerli testnet padrão. \n\nUma vez feito, volte aqui e recarregue a página",
   "Menu": "Menu",
   "Networks": "Redes",
-  "Languages": "línguas",
-  "ToggleDarkMode": "Alternar modo escuro",
-  "Help": "Ajuda",
-  "Home": "Casa"
+  "Languages": "línguas"
 }
