@@ -1,5 +1,5 @@
 const fs = require("fs");
-const leaderBoardPath = `${__dirname}/../../../boards/leaderBoard.json`;
+const leaderBoardPath = `../../../boards/aliases.json`;
 const dotenv = require("dotenv");
 const axios = require("axios");
 
@@ -68,7 +68,17 @@ const getFetchAliasRequest = async (after) => {
     {
       limit: 100,
       properties: ["ethernaut_address", "ethernaut_alias"],
-      after
+      after,
+      filterGroups: [
+        {
+          filters: [
+            {
+              propertyName: "ethernaut_address",
+              operator: "HAS_PROPERTY"
+            }
+          ]
+        }
+      ]
     },
     {
       headers: {
@@ -81,24 +91,20 @@ const getFetchAliasRequest = async (after) => {
 }
 
 const addAliases = async (aliasArray) => {
-  const leaderBoard = JSON.parse(fs.readFileSync(leaderBoardPath));
+  const leaderBoard = require(leaderBoardPath);
 
-  const newLeaderBoard = leaderBoard.map((entry) => {
-    for (let i = 0; i < aliasArray.length; i++) {
-      if (!entry) { 
-        continue;
-      }
-      if(entry.player === aliasArray[i].player) {
-        return {
-          ...entry,
-          alias: aliasArray[i].alias
-        }
-      }
+  for (let i = 0; i < aliasArray.length; i++) {
+    if(!leaderBoard[aliasArray[i].ethernaut_address]) {
+      leaderBoard[aliasArray[i].ethernaut_address] = aliasArray[i].ethernaut_alias;
     }
-    return entry;
-  });
+  }
 
-  fs.writeFileSync(leaderBoardPath, JSON.stringify(newLeaderBoard));
+  fs.writeFileSync(leaderBoardPath, JSON.stringify(leaderBoard));
 };
+
+fetchAndAddAliases()
+
+module.exports = fetchAndAddAliases;
+
 
 module.exports = fetchAndAddAliases;
