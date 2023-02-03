@@ -240,7 +240,7 @@ class Header extends React.Component {
     };
     const ddOpen = Boolean(this.state.multiDDOpen);
     return (
-      <div>
+      <div onClick={() => this.closeDropdown()}>
         <div className="lines">
           <center>
             <hr className="top" />
