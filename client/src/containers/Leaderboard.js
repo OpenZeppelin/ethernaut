@@ -5,7 +5,7 @@ import { useEffect, useState, useCallback } from "react";
 import ReactPaginate from 'react-paginate';
 import Search from "../components/leaderboard/Search";
 import { getNetworkNamefromId } from "../utils/ethutil";
-import networkDetails from "client/leaderboard/utils/networkDetails.json";
+import { NETWORKS } from "client/src/constants";
 import Footer from "../components/common/Footer";
 import axios from "axios";
 
@@ -82,10 +82,11 @@ function Leaderboard() {
     }, [fetchAndUpdate])
 
     const getLeaderboardNetworkNameFromNetworkName = (networkName) => {
-        const targetNetwork = networkDetails.find((network) => { 
-            return networkName === network.deployName
-        })
-        return targetNetwork.name
+        const networks = Object.values(NETWORKS)
+        const network = networks.find(network => network?.name === networkName)
+        let leaderboardNetworkName = network.name.split("-")[0]
+        leaderboardNetworkName = capitaliseFirstLetter(leaderboardNetworkName)
+        return leaderboardNetworkName;
     }
 
     const handlePageClick = (event) => {
@@ -170,6 +171,10 @@ const assignAlias = (player) => {
 
 const isScoreNonZero = (player) => { 
     return player.score !== 0
+}
+
+const capitaliseFirstLetter = (string) => { 
+    return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
 export default Leaderboard;
