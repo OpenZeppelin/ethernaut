@@ -8,6 +8,7 @@ import { getNetworkNamefromId } from "../utils/ethutil";
 import networkDetails from "client/leaderboard/utils/networkDetails.json";
 import Footer from "../components/common/Footer";
 import aliases from "client/leaderboard/boards/aliases.json";
+import axios from "axios";
 
 const playersPerPage = 20;
 
@@ -47,17 +48,22 @@ function Leaderboard() {
         }
     }, [handleNetworkChange])
 
-    // When network changes
-    useEffect(() => { 
+    const fetchAndUpdate = useCallback(async () => { 
         if (!currentNetworkName) { 
             return;
         }
         const leaderboardNetworkName = getLeaderboardNetworkNameFromNetworkName(currentNetworkName)
-        const playersWithoutRank = require(`client/leaderboard/boards/networkleaderboards/${leaderboardNetworkName}LeaderBoard.json`)
-        const playersWithRank = playersWithoutRank.map(assignRank).filter(isScoreNonZero).map(assignAlias)
+        const response = await axios.get(`https://raw.githubusercontent.com/OpenZeppelin/ethernaut/leaderboard-periodic-update/client/leaderboard/boards/networkleaderboards/${leaderboardNetworkName}LeaderBoard.json`)
+        const result = response.data
+        const playersWithRank = result.map(assignRank).filter(isScoreNonZero).map(assignAlias)
         setPlayersWithRank(playersWithRank)
         setSearchResult(playersWithRank)
     }, [currentNetworkName])
+
+    // When network changes
+    useEffect(() => { 
+        fetchAndUpdate()
+    }, [fetchAndUpdate])
 
     const getLeaderboardNetworkNameFromNetworkName = (networkName) => {
         const targetNetwork = networkDetails.find((network) => { 
