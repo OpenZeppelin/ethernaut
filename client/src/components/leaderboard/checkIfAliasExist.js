@@ -1,20 +1,14 @@
-export const checkIfAliasIsPresent = (alias) => {
+import axios from "axios";
+
+export const checkIfAliasIsPresent = async (alias) => {
     try {
-        const leaderBoardList = require("client/leaderboard/boards/leaderBoard.json");
-        const foundAlias = leaderBoardList.find((entry) => {
-            if (entry) {
-                return entry.alias === alias
-            } else {
-                return false;
-            }
-        });
-        if (foundAlias) {
+        const response = await axios.get('https://raw.githubusercontent.com/OpenZeppelin/ethernaut/leaderboard-periodic-update/client/leaderboard/boards/aliases.json')
+        const aliases = response.data
+        if (aliases[alias]) { 
             return true;
-        } else {
-            return false;
         }
+        return false;
     } catch (err) { 
-        debugger;
         console.log(err)
     }
 }
