@@ -1,20 +1,15 @@
-export const checkIfAliasIsPresent = (alias) => {
+import axios from "axios";
+import { ALIAS_PATH } from "../../constants";
+
+export const checkIfAliasIsPresent = async (alias) => {
     try {
-        const leaderBoardList = require("client/leaderboard/boards/leaderBoard.json");
-        const foundAlias = leaderBoardList.find((entry) => {
-            if (entry) {
-                return entry.alias === alias
-            } else {
-                return false;
-            }
-        });
-        if (foundAlias) {
+        const response = await axios.get(ALIAS_PATH)
+        const aliases = response.data
+        if (aliases[alias]) { 
             return true;
-        } else {
-            return false;
         }
+        return false;
     } catch (err) { 
-        debugger;
         console.log(err)
     }
 }

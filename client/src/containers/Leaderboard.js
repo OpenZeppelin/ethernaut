@@ -5,11 +5,25 @@ import { useEffect, useState, useCallback } from "react";
 import ReactPaginate from 'react-paginate';
 import Search from "../components/leaderboard/Search";
 import { getNetworkNamefromId } from "../utils/ethutil";
-import networkDetails from "client/leaderboard/utils/networkDetails.json";
+import { NETWORKS } from "client/src/constants";
 import Footer from "../components/common/Footer";
-import aliases from "client/leaderboard/boards/aliases.json";
+import axios from "axios";
+import { ALIAS_PATH, getLeaderboardPath } from "client/src/constants";
 
 const playersPerPage = 20;
+
+let aliases = {}
+
+const fetchAliases = async () => {
+    try {
+        const response = await axios.get(ALIAS_PATH)
+        aliases = response.data
+    } catch (err) { 
+        console.log("Failed to fetch aliases")
+    }
+}   
+
+fetchAliases()
 
 function Leaderboard() { 
     const [offset, setOffset] = useState(0);
@@ -47,23 +61,33 @@ function Leaderboard() {
         }
     }, [handleNetworkChange])
 
-    // When network changes
-    useEffect(() => { 
-        if (!currentNetworkName) { 
-            return;
+    const fetchAndUpdate = useCallback(async () => { 
+        try {
+            if (!currentNetworkName) {
+                return;
+            }
+            const leaderboardNetworkName = getLeaderboardNetworkNameFromNetworkName(currentNetworkName)
+            const response = await axios.get(getLeaderboardPath(leaderboardNetworkName))
+            const result = response.data
+            const playersWithRank = result.map(assignRank).filter(isScoreNonZero).map(assignAlias)
+            setPlayersWithRank(playersWithRank)
+            setSearchResult(playersWithRank)
+        } catch (err) { 
+            console.log("Failed to fetch leaderboard")
         }
-        const leaderboardNetworkName = getLeaderboardNetworkNameFromNetworkName(currentNetworkName)
-        const playersWithoutRank = require(`client/leaderboard/boards/networkleaderboards/${leaderboardNetworkName}LeaderBoard.json`)
-        const playersWithRank = playersWithoutRank.map(assignRank).filter(isScoreNonZero).map(assignAlias)
-        setPlayersWithRank(playersWithRank)
-        setSearchResult(playersWithRank)
     }, [currentNetworkName])
 
+    // When network changes
+    useEffect(() => { 
+        fetchAndUpdate()
+    }, [fetchAndUpdate])
+
     const getLeaderboardNetworkNameFromNetworkName = (networkName) => {
-        const targetNetwork = networkDetails.find((network) => { 
-            return networkName === network.deployName
-        })
-        return targetNetwork.name
+        const networks = Object.values(NETWORKS)
+        const network = networks.find(network => network?.name === networkName)
+        let leaderboardNetworkName = network.name.split("-")[0]
+        leaderboardNetworkName = capitaliseFirstLetter(leaderboardNetworkName)
+        return leaderboardNetworkName;
     }
 
     const handlePageClick = (event) => {
@@ -86,7 +110,6 @@ function Leaderboard() {
         }
         setSearchKeyword(keyword)
         const result = playersWithRank.filter(isKeywordMatching(keyword))
-        console.log(result)
         setSearchResult(result)
         setOffset(0)
     }
@@ -149,6 +172,10 @@ const assignAlias = (player) => {
 
 const isScoreNonZero = (player) => { 
     return player.score !== 0
+}
+
+const capitaliseFirstLetter = (string) => { 
+    return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
 export default Leaderboard;
