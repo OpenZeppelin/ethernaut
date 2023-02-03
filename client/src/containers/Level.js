@@ -144,7 +144,7 @@ class Level extends React.Component {
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels);
 
     return (
-      <div onClick={this.closeDropdown}>
+      <main onClick={this.closeDropdown}>
         <div className="lines"></div>
         <main>
           {(isDescriptionMissingTranslation ||
@@ -318,7 +318,7 @@ class Level extends React.Component {
 
         {/* Footer */}
         <Footer></Footer>
-      </div>
+      </main>
     );
   }
 }

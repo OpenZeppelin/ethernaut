@@ -72,6 +72,7 @@ ul {
   margin-left: auto;
   margin-right: auto;
   max-width: 80%;
+  padding-top: 10px;
 }
 
 /* .christmas-hat {
@@ -84,9 +85,6 @@ ul {
   margin-top: -15%;
 } */
 
-.logo-container {
-  padding-left: 4em;
-}
 
 .lines {
   margin-bottom: 4%;
@@ -156,6 +154,7 @@ header {
 
 .header-ul {
   padding: 4px 0px;
+  margin-bottom: 0;
 }
 
 .hiring {
@@ -477,8 +476,8 @@ footer {
   margin-right: 10px;
   appearance: none;
   vertical-align: middle;
-  width: 40px;
-  height: 25px;
+  width: 30px;
+  height: 15px;
   display: inline-block;
   position: relative;
   border-radius: 50px;
@@ -495,8 +494,8 @@ footer {
   display: block;
   position: relative;
   z-index: 2;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   background: var(--primary-color);
   left: 2px;
   top: 2.5px;
@@ -516,6 +515,148 @@ footer {
   display: none;
 }
 
+
+/* --------- styles for multi dropdowns --------------*/
+.multi-dropdown{
+  padding: 4px 9px;
+}
+
+.multi-dropdown__icon{
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  padding: 4px 9px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 500ms;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 20px;
+}
+
+.multi-dropdown__icon:hover{
+  opacity: 0.90;
+}
+
+.multi-dropdown__dropdown{
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: solid 10px var(--secondary-color);
+  width: 18em;
+  border-radius: 6px;
+  position: absolute;
+  margin-left: -15.8em;
+  z-index: 10;
+  list-style-type: none;
+  margin-top: 5px;
+}
+
+.multi-dropdown__dropdown.--closed{
+  display: none;
+}
+
+.multi-dropdown__dropdown > div{
+  background-color: var(--primary-color);
+  color:  var(--secondary-color);
+  margin-bottom: 7px;
+  transition: 300ms;
+}
+.multi-dropdown__dropdown > div:last-of-type{
+  margin-bottom: 0;
+}
+
+.multi-dropdown__dropdown div:hover{
+  opacity: 0.95;
+}
+
+.single-dropdown{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+}
+
+.single-dropdown.--hidden{
+  display: none;
+}
+
+.single-dropdown p {
+  font-weight: 500;
+  text-transform: capitalize;
+  display: flex;
+  gap: 10%;
+  padding-left: 10px;
+  padding-top: 3px;
+  cursor: pointer;
+  margin-bottom: 0;
+  align-items: center;
+}
+.single-dropdown > div {
+  margin-top: 15px;
+  text-align: left;
+  padding: 0 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.single-dropdown > div.hide{
+  display: none;
+}
+
+.dropdown-pill{
+  background-color:  var(--secondary-color);
+  color:  var(--primary-color);
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+  line-height: 16px;
+}
+
+.dropdown-pill a, .dropdown-pill span{
+  text-decoration: none;
+  color:  var(--secondary-color);
+}
+
+.dropdown-pill div{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.dropdown-pill.--left{
+  text-align: left;
+}
+
+
+.single-dropdown a{
+  text-decoration: none;
+  color:  var(--primary-color);;
+}
+
+.toggle.--small {
+  width: 35px;
+  height: 20px;
+}
+
+.toggle:before {
+  width: 15px;
+  height: 15px;
+}
+
+.filled-icon{
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.filled-icon svg{
+  fill: var(--primary-color);
+  display: inline-block;
+  height: 16px;
+}
+/* --------- styles for multi dropdowns --------------*/
 @media only screen and (max-width: 1029px){
   :root {
     margin-left: 10%;
@@ -528,7 +669,7 @@ footer {
   height:35px;
   cursor: pointer;
   fill: var(--secondary-color);
-  margin-right:10px;
+  margin-right: 0px;
 }
 
 .tooltip-container {
@@ -539,13 +680,17 @@ footer {
 }
 
 @media only screen and (max-width: 956px) {
-  .toggle {
+  /* .toggle {
     display: none;
-  }
+  } */
 
   .logo-container {
     padding-left: 3em;
   }
+  .multi-dropdown__dropdown{
+    margin-left: -15.8em;
+  }
+  
 }
 
 
@@ -564,9 +709,9 @@ footer {
     display: none;
   }
 
-  .toggle {
+  /* .toggle {
     display: none;
-  }
+  } */
 
   .help-button {
     display: none;
