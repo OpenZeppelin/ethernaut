@@ -72,6 +72,7 @@ ul {
   margin-left: auto;
   margin-right: auto;
   max-width: 80%;
+  padding-top: 10px;
 }
 
 /* .christmas-hat {
@@ -84,9 +85,6 @@ ul {
   margin-top: -15%;
 } */
 
-.logo-container {
-  padding-left: 4em;
-}
 
 .lines {
   margin-bottom: 4%;
@@ -533,6 +531,7 @@ footer {
   display: flex;
   gap: 10px;
   align-items: center;
+  font-size: 20px;
 }
 
 .multi-dropdown__icon:hover{
@@ -543,10 +542,10 @@ footer {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   border: solid 10px var(--secondary-color);
-  min-width: 16em;
+  width: 18em;
   border-radius: 6px;
   position: absolute;
-  margin-left: -10em;
+  margin-left: -15.8em;
   z-index: 10;
   list-style-type: none;
   margin-top: 5px;
@@ -689,7 +688,7 @@ footer {
     padding-left: 3em;
   }
   .multi-dropdown__dropdown{
-    margin-left: -13.8em;
+    margin-left: -15.8em;
   }
   
 }

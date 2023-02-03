@@ -1,4 +1,5 @@
 import React from "react";
+import onClickOutside from 'react-onclickoutside'
 import { connect } from "react-redux";
 import { withRouter } from "../hoc/withRouter";
 import { Link } from "react-router-dom";
@@ -219,6 +220,10 @@ class Header extends React.Component {
     }
   }
 
+  handleClickOutside = () => {
+    this.closeDropdown();
+  }
+
   render() {
     let strings = loadTranslations(this.state.lang);
     const LANGUAGES_MAP = {
@@ -235,7 +240,7 @@ class Header extends React.Component {
     };
     const ddOpen = Boolean(this.state.multiDDOpen);
     return (
-      <div onClick={() => this.closeDropdown()}>
+      <div>
         <div className="lines">
           <center>
             <hr className="top" />
@@ -600,4 +605,4 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(onClickOutside(Header)));
