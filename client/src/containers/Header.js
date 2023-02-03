@@ -7,8 +7,8 @@ import * as actions from "../actions";
 import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
 import PropTypes from "prop-types";
-import { ProgressBar } from 'react-loader-spinner';
-import {  svgFilter } from "../utils/svg";
+import { ProgressBar } from "react-loader-spinner";
+import { svgFilter } from "../utils/svg";
 import LeaderIcon from "../components/leaderboard/LeaderIcon";
 
 class Header extends React.Component {
@@ -270,26 +270,21 @@ class Header extends React.Component {
                 alt="logo"
               />
             </a>
-            <ul className="header-ul">
-              {
-                window.location.pathname === constants.PATH_ROOT && !!this.props.web3 &&
-                  <Link to={constants.PATH_LEADERBOARD}>
-                    <LeaderIcon />
-                  </Link>
-              }
-              </ul>
 
             {/* ---- Multi Dropdown Container */}
             <div
               onClick={(e) => e.stopPropagation()}
               className="multi-dropdown"
             >
+              {/* dropdown icon */}
               <div
                 onClick={() => this.toggleDropdownState()}
                 className="multi-dropdown__icon"
               >
                 <i className="fas fa-bars"></i>
               </div>
+              {/* dropdown icon */}
+              {/* dropdown content */}
               <ul
                 className={`multi-dropdown__dropdown ${
                   ddOpen ? "--open" : "--closed"
@@ -316,6 +311,14 @@ class Header extends React.Component {
                         )}
                       </div>
                     </Link>
+                    {window.location.pathname === constants.PATH_ROOT &&
+                      !!this.props.web3 && (
+                        <div className="filled-icon">
+                          <Link to={constants.PATH_LEADERBOARD}>
+                            <LeaderIcon />
+                          </Link>
+                        </div>
+                      )}
                     <input
                       onClick={() => {
                         this.toggleDarkMode();
@@ -386,6 +389,7 @@ class Header extends React.Component {
                   </div>
                 </div>
               </ul>
+              {/* dropdown content */}
             </div>
             {/* ---- Multi Dropdown Container */}
             {/* ----------- */}
@@ -565,10 +569,15 @@ class Header extends React.Component {
             wrapperClass="progress-bar-wrapper"
             visible={true}
           />
-          {!this.props.web3 &&
-            <div style={{ backgroundColor: "#eddfd6", border: "none" }} className="alert alert-warning">
-              <strong>{strings.warning}! </strong><span>{strings.warningMessage}</span>
-            </div>}
+          {!this.props.web3 && (
+            <div
+              style={{ backgroundColor: "#eddfd6", border: "none" }}
+              className="alert alert-warning"
+            >
+              <strong>{strings.warning}! </strong>
+              <span>{strings.warningMessage}</span>
+            </div>
+          )}
         </center>
       </div>
     );

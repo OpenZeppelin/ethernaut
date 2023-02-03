@@ -619,8 +619,9 @@ footer {
 }
 
 .dropdown-pill div{
-  display: grid;
-  grid-template-columns: 20% 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .dropdown-pill.--left{
@@ -650,6 +651,12 @@ footer {
   padding: 4px 8px;
   border-radius: 5px;
 }
+
+.filled-icon svg{
+  fill: var(--primary-color);
+  display: inline-block;
+  height: 16px;
+}
 /* --------- styles for multi dropdowns --------------*/
 @media only screen and (max-width: 1029px){
   :root {
@@ -663,7 +670,7 @@ footer {
   height:35px;
   cursor: pointer;
   fill: var(--secondary-color);
-  margin-right:10px;
+  margin-right: 0px;
 }
 
 .tooltip-container {
