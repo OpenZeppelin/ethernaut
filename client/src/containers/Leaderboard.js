@@ -7,10 +7,22 @@ import Search from "../components/leaderboard/Search";
 import { getNetworkNamefromId } from "../utils/ethutil";
 import networkDetails from "client/leaderboard/utils/networkDetails.json";
 import Footer from "../components/common/Footer";
-import aliases from "client/leaderboard/boards/aliases.json";
 import axios from "axios";
 
 const playersPerPage = 20;
+
+let aliases = {}
+
+const fetchAliases = async () => {
+    try {
+        const response = await axios.get('https://raw.githubusercontent.com/OpenZeppelin/ethernaut/leaderboard-periodic-update/client/leaderboard/boards/aliases.json')
+        aliases = response.data
+    } catch (err) { 
+        console.log("Failed to fetch aliases")
+    }
+}   
+
+fetchAliases()
 
 function Leaderboard() { 
     const [offset, setOffset] = useState(0);
@@ -49,15 +61,19 @@ function Leaderboard() {
     }, [handleNetworkChange])
 
     const fetchAndUpdate = useCallback(async () => { 
-        if (!currentNetworkName) { 
-            return;
+        try {
+            if (!currentNetworkName) {
+                return;
+            }
+            const leaderboardNetworkName = getLeaderboardNetworkNameFromNetworkName(currentNetworkName)
+            const response = await axios.get(`https://raw.githubusercontent.com/OpenZeppelin/ethernaut/leaderboard-periodic-update/client/leaderboard/boards/networkleaderboards/${leaderboardNetworkName}LeaderBoard.json`)
+            const result = response.data
+            const playersWithRank = result.map(assignRank).filter(isScoreNonZero).map(assignAlias)
+            setPlayersWithRank(playersWithRank)
+            setSearchResult(playersWithRank)
+        } catch (err) { 
+            console.log("Failed to fetch leaderboard")
         }
-        const leaderboardNetworkName = getLeaderboardNetworkNameFromNetworkName(currentNetworkName)
-        const response = await axios.get(`https://raw.githubusercontent.com/OpenZeppelin/ethernaut/leaderboard-periodic-update/client/leaderboard/boards/networkleaderboards/${leaderboardNetworkName}LeaderBoard.json`)
-        const result = response.data
-        const playersWithRank = result.map(assignRank).filter(isScoreNonZero).map(assignAlias)
-        setPlayersWithRank(playersWithRank)
-        setSearchResult(playersWithRank)
     }, [currentNetworkName])
 
     // When network changes
@@ -92,7 +108,6 @@ function Leaderboard() {
         }
         setSearchKeyword(keyword)
         const result = playersWithRank.filter(isKeywordMatching(keyword))
-        console.log(result)
         setSearchResult(result)
         setOffset(0)
     }
