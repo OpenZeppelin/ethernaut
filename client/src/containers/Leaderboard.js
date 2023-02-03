@@ -8,6 +8,7 @@ import { getNetworkNamefromId } from "../utils/ethutil";
 import { NETWORKS } from "client/src/constants";
 import Footer from "../components/common/Footer";
 import axios from "axios";
+import { ALIAS_PATH, getLeaderboardPath } from "client/src/constants";
 
 const playersPerPage = 20;
 
@@ -15,7 +16,7 @@ let aliases = {}
 
 const fetchAliases = async () => {
     try {
-        const response = await axios.get('https://raw.githubusercontent.com/OpenZeppelin/ethernaut/leaderboard-periodic-update/client/leaderboard/boards/aliases.json')
+        const response = await axios.get(ALIAS_PATH)
         aliases = response.data
     } catch (err) { 
         console.log("Failed to fetch aliases")
@@ -66,7 +67,7 @@ function Leaderboard() {
                 return;
             }
             const leaderboardNetworkName = getLeaderboardNetworkNameFromNetworkName(currentNetworkName)
-            const response = await axios.get(`https://raw.githubusercontent.com/OpenZeppelin/ethernaut/leaderboard-periodic-update/client/leaderboard/boards/networkleaderboards/${leaderboardNetworkName}LeaderBoard.json`)
+            const response = await axios.get(getLeaderboardPath(leaderboardNetworkName))
             const result = response.data
             const playersWithRank = result.map(assignRank).filter(isScoreNonZero).map(assignAlias)
             setPlayersWithRank(playersWithRank)
