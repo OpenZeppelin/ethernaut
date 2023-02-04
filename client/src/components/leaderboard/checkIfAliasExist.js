@@ -4,11 +4,8 @@ import { ALIAS_PATH } from "../../constants";
 export const checkIfAliasIsPresent = async (alias) => {
     try {
         const response = await axios.get(ALIAS_PATH)
-        const aliases = response.data
-        if (aliases[alias]) { 
-            return true;
-        }
-        return false;
+        const aliases = Object.values(response.data)
+        return aliases.includes(alias)
     } catch (err) { 
         console.log(err)
     }
