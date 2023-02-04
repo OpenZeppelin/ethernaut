@@ -2,4 +2,5 @@ Eso es el típico juego del lanzamiento de la moneda donde necesitaras construir
 
 &nbsp;
 Cosas que pueden ayudar
-* Mira la página de Ayuda arriba, en la sección "Más allá de la consola"
+
+- Mira la [página de Ayuda](https://ethernaut.openzeppelin.com/help), en la sección "Más allá de la consola"
