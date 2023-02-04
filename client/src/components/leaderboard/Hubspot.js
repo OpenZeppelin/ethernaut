@@ -62,7 +62,7 @@ class HubspotForm extends React.Component{
     addressInput.style.pointerEvents = 'none';
     setNativeValue(addressInput, this.props.currentUser);
 
-    form.addEventListener('submit', (event) => { 
+    form.addEventListener('submit', async (event) => { 
       const alias = event.srcElement[1].value;
       const email = event.srcElement[0].value;
       if (!(alias && email)) { 
@@ -80,7 +80,7 @@ class HubspotForm extends React.Component{
         event.stopPropagation();
         return;
       }
-      if(checkIfAliasIsPresent(alias)) { 
+      if(await checkIfAliasIsPresent(alias)) { 
         this.props.toast("This alias is already taken");
         event.stopPropagation();
       }
