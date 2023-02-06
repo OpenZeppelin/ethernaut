@@ -355,6 +355,7 @@ class Header extends React.Component {
                               this.changeNetwork(network);
                             }}
                             className="dropdown-pill"
+                            key={network.name}
                           >
                             <a id={network.name} key={network.name} href="/">
                               {network.name}
@@ -375,6 +376,7 @@ class Header extends React.Component {
                   <div className={this.getDDClassName(1)}>
                     {Object.keys(LANGUAGES_MAP).map((languageString) => (
                       <div
+                        key={languageString}
                         onClick={(e) => {
                           this.changeLanguage(e, languageString);
                         }}

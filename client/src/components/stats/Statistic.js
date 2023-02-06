@@ -1,5 +1,5 @@
 import React from "react";
-import { formatNumberWithComma } from "../utils/stringutil";
+import { formatNumberWithComma } from "../../utils/stringutil";
 
 export default function Statistic({
     heading,
