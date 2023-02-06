@@ -446,6 +446,21 @@
       "deployId": "28",
       "instanceGas": 1000000,
       "author": "KStasi"
+    },
+    {
+      "name": "Bets",
+      "created": "2023-01-25",
+      "difficulty": "1",
+      "description": "disrupbet.md",
+      "completedDescription": "disrupbet_complete.md",
+      "levelContract": "DisrupBetFactory.sol",
+      "instanceContract": "DisrupBet.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "29",
+      "instanceGas": 450000,
+      "author": "heavydeveloper"
     }
   ]
 }

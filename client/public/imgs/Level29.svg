@@ -1,0 +1,27 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 135 135" width="135" height="135">
+	<title>Level9-svg</title>
+	<defs>
+		<image width="153" height="208" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJkAAADQCAMAAAAj1TMsAAAAAXNSR0IB2cksfwAAAMNQTFRFAAAA7d/W7d/U9+Sy+eWw//////zz79/O//79/Oit//3379/L//789uK1+uav7t/S8uC+8uDA4M+24tG5//8A0cKvxrqzx7ux0sOv4dC45tW+5NO80MGv//+A3s215NO718ewyLuwyLuvzL6t/9tt5dW92smx4tG44tG5ybuu3Muz5dS91cWv0sKu//9V/8wz/9VVyryt5tW+yrys49K62smxx7uw3M/FtaqWoZFdm41d382r8tGU79vBl4tg4M+v3tHHjGI4IgAAAEF0Uk5TAP////////////////////////wA//+j////+LEA////qvb/AP////D//////wAAALH9rvP0//v///////////92oEyCAAADVklEQVR4nO3Z6XbTMBAFYJl9KVsJAQRtWVrKDt0oS0t5/6cicQM41mizZzRqufeXnUyOvjOS5cQxhkhTOhSCTLWy4rBkWlt74eIii8/+O9KTtaWXLv/Jlavz82vzQ21aW3n9r+zGzfn5yuxoRVt2Srt1e5E77end2dE9bVjFV0C9u4YkbXU59zNhxkyEYA+mvTxsmkkOTKxxj/qybBVkkMXzuFqZhQyyymQS42fInnhLtWXWWwrZIpDlB7L8QJYfR/bUW9qRVXF3ggwyyCCDDDLIIIMMshGyPk1D1tVAli9bq1S2ZvxNU5AtW+qVTZZPNWWdwokLrUTmCFRlLsRDk5CtB2QEo5zMaVlE5qEVlpGIJv6quIw20C8LyDa8Mg+sh5CTPfPJSID3HX6YO5nTGMxhyNA8y4wa238hFpRRQ4dojYBslZAR40Zp7CGW2fMEWAGau2e8SILJ0146Mud/ChomTSMmsy/zwYRp7mT2ZX6YMZtyMKJlW0sFmyGY6f6UkpcttWwtDJObUgLWlcVZYjJ3l51udN5Okonggi1LZYngXrmw7SEsdhvVstcDXby8N4RsOIqR9lYAxiJ7R8DGyxho1CJjgI2XkTAO2ViaHGwsjdjJuGDjZO8FWzaKRnaMDTaC9kEYNpRm3acF3LBhtC3SxQwbIiO+kUnIsmmWXmL8sEya3fa4BGDGfEx3eVbYdPpJAmaS20bfj6Qalkyz3gUmCYvbrO+ClHYZ8znYroBLXObrmrXr/lks4jq12X7o21Bh1zwRh5orl1YSlmMr7ErFabAScHosyNhpurCATBk2y86uc0ewdndHm2W83z60WQayIYEsP5DlB7L8QJYfyPIDWX4gyw9k+YEsP9XKPLAKaJDxwSqWKdMCMGVatbIgTJMWgSnSapVFXVq2vX3iWWM/+3vlYcGn2qrPayGD7L+VtRvVwZe0HJTb1pI2WJUtt1rZQFgBWpWydoDDr8NyKMcb3Czp1jHB+GlsMG4aI4yZBpkujJUGGZvsWyzo2VmRfU9CkFXCsh9JMrIKMsgyZEfHEdbxEXoG2bmV/UySkVXCsqY5ibo8fRWXDY687FcsarJ6ewYZZJBBdsZkzC4+mwCMhyYCY6FVKxOCMdAggwwyyCA7t7LfmMs9vaja6FkAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		tspan { white-space:pre } 
+		.s0 { fill: #1d1d1b;stroke: #eddfd6;stroke-width: .4 } 
+		.s1 { fill: #eddfd6 } 
+		.t2 { font-size: 11px;fill: #1d1d1b;font-family: "Helvetica" } 
+	</style>
+	<g id="a">
+	</g>
+	<g id="b">
+		<g id="c">
+			<g id="Layer">
+				<path id="Layer" class="s0" d="m0.2 0.2h134v134h-134z"/>
+			</g>
+			<path id="Layer" class="s1" d="m0.4 0.4h21.2v21.1h-21.2z"/>
+			<text id="29" style="transform: matrix(1,0,0,1,5.13,15.21)" >
+				<tspan x="0" y="0" class="t2">2</tspan><tspan  y="0" class="t2">9
+</tspan>
+			</text>
+		</g>
+		<use id="img1" href="#img1" transform="matrix(.451,0,0,.451,33,20)"/>
+	</g>
+</svg>
