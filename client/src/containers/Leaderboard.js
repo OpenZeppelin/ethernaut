@@ -83,11 +83,10 @@ function Leaderboard() {
     }, [fetchAndUpdate])
 
     const getLeaderboardNetworkNameFromNetworkName = (networkName) => {
-        const networks = Object.values(NETWORKS)
-        const network = networks.find(network => network?.name === networkName)
-        let leaderboardNetworkName = network.name.split("-")[0]
-        leaderboardNetworkName = capitaliseFirstLetter(leaderboardNetworkName)
-        return leaderboardNetworkName;
+        const networks = Object.entries(NETWORKS)
+        const network = networks.find(network => network[1]?.name === networkName)
+        const leaderboardNetworkName = network[0].toLowerCase().split("_")[0]
+        return capitaliseFirstLetter(leaderboardNetworkName);
     }
 
     const handlePageClick = (event) => {
