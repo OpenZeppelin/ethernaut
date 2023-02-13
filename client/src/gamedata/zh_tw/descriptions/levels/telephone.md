@@ -2,4 +2,4 @@
 
 &nbsp;
 可能會有用的資訊
-* 參閱幫助頁面「控制台之外」章節
+* 參閱幫助頁面 ["Beyond the console"](https://ethernaut.openzeppelin.com/help) 章節

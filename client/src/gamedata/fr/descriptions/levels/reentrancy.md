@@ -6,4 +6,4 @@ Voici quelques conseils:
 * Méthodes de fallback
 * Throw/revert bubbling
 * Parfois, la meilleure façon d'attaquer un contrat est avec un autre contrat.
-* Voir la page d'aide ci-dessus, section "Au-delà de la console" ("Beyond the console")
+* Voir la page ["?"](https://ethernaut.openzeppelin.com/help), section "Au-delà de la console" ("Beyond the console")

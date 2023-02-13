@@ -6,4 +6,4 @@
 * fallback 方法
 * 拋出(throw)/恢復(revert) 的通知
 * 有的時候攻擊一個合約的最好方式是使用另一個合約
-* 查看上方幫助頁面「控制台之外」章節
+* 查看上方幫助頁面 ["Beyond the console"](https://ethernaut.openzeppelin.com/help) 章節

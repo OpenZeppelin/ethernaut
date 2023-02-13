@@ -6,4 +6,4 @@
 * Fallback methods
 * 抛出/恢复 bubbling
 * 有的时候攻击一个合约的最好方式是使用另一个合约.
-* 查看上方帮助页面, "控制台之外" 部分
+* 查看上方帮助页面, ["Beyond the console"](https://ethernaut.openzeppelin.com/help) 部分
