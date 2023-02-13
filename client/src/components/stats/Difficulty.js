@@ -1,5 +1,5 @@
 import React from 'react'
-import { loadTranslations } from '../utils/translations'
+import { loadTranslations } from '../../utils/translations'
 
 const Difficulty = ({level}) => {
   let language = localStorage.getItem('lang')
