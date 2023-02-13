@@ -2,4 +2,4 @@ Il s'agit d'un jeu de lancer de pièces où vous devez construire votre série d
 
 &nbsp;
 Choses qui pourraient aider
-* Voir la page d'aide ci-dessus, section "Au-delà de la console"
+* Voir la page ["?"](https://ethernaut.openzeppelin.com/help), section "Au-delà de la console"

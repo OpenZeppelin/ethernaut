@@ -108,6 +108,7 @@ class Header extends React.Component {
     e.preventDefault();
     this.props.setLang(value);
   }
+
   async changeNetwork(network) {
     const elements = document.querySelectorAll(".progress-bar-wrapper");
     elements[0].style.display = "flex";
@@ -226,6 +227,7 @@ class Header extends React.Component {
 
   render() {
     let strings = loadTranslations(this.state.lang);
+
     const LANGUAGES_MAP = {
       en: strings.english,
       es: strings.spanish,
@@ -238,6 +240,7 @@ class Header extends React.Component {
       ar: strings.arabic,
       tr: strings.turkish,
     };
+    
     const ddOpen = Boolean(this.state.multiDDOpen);
     return (
       <div onClick={() => this.closeDropdown()}>
@@ -252,7 +255,7 @@ class Header extends React.Component {
         <center>
           <header>
             <ul className="header-ul">
-              <li className="nav-links">
+              <li key={"hiring"} className="nav-links">
                 <a
                   className="buttons hiring-button"
                   href="https://grnh.se/dd38880f3us"
@@ -262,12 +265,6 @@ class Header extends React.Component {
               </li>
             </ul>
             <a className="logo-container" href="https://openzeppelin.com">
-              {/* <img
-                id="christmas-hat"
-                className="christmas-hat"
-                src="../../imgs/christmas-hat.png"
-                alt="christmas-hat"
-              /> */}
               <img
                 id="logo"
                 className="logo"
@@ -275,7 +272,6 @@ class Header extends React.Component {
                 alt="logo"
               />
             </a>
-
             {/* ---- Multi Dropdown Container */}
             <div
               onClick={(e) => e.stopPropagation()}
@@ -318,7 +314,7 @@ class Header extends React.Component {
                     </Link>
                     {window.location.pathname === constants.PATH_ROOT &&
                       !!this.props.web3 && (
-                        <div className="filled-icon">
+                        <div className="element-in-row filled-icon">
                           <Link to={constants.PATH_LEADERBOARD}>
                             <LeaderIcon />
                           </Link>
@@ -328,7 +324,7 @@ class Header extends React.Component {
                       onClick={() => {
                         this.toggleDarkMode();
                       }}
-                      className="toggle --small"
+                      className="element-in-row toggle --small"
                       type="checkbox"
                     />
                   </div>
@@ -344,12 +340,12 @@ class Header extends React.Component {
                     <span>{strings.Networks}</span>
                   </p>
                   <div className={this.getDDClassName(2)}>
-                    {Object.values(constants.NETWORKS_INGAME).map((network) => {
+                    {Object.values(constants.NETWORKS_INGAME).map((network, index) => {
                       if (network && network.name !== "local") {
                         if (Number(network.id) === this.state.chainId)
                           return false; // filter out current network
                         return (
-                          <div
+                          <div key={index}
                             onClick={(e) => {
                               e.preventDefault();
                               this.changeNetwork(network);
@@ -373,8 +369,8 @@ class Header extends React.Component {
                     <span>{strings.Languages}</span>
                   </p>
                   <div className={this.getDDClassName(1)}>
-                    {Object.keys(LANGUAGES_MAP).map((languageString) => (
-                      <div
+                    {Object.keys(LANGUAGES_MAP).map((languageString, index) => (
+                      <div key={index}
                         onClick={(e) => {
                           this.changeLanguage(e, languageString);
                         }}
@@ -396,157 +392,6 @@ class Header extends React.Component {
               </ul>
               {/* dropdown content */}
             </div>
-            {/* ---- Multi Dropdown Container */}
-            {/* ----------- */}
-            {/* <ul className="header-ul">
-              <li className="nav-links">
-                <Link
-                  to={
-                    window.location.pathname !== constants.PATH_ROOT
-                      ? constants.PATH_ROOT
-                      : constants.PATH_HELP
-                  }
-                >
-                  <button>
-                    {window.location.pathname !== constants.PATH_ROOT ? (
-                      <i className="fas fa-home"></i>
-                    ) : (
-                      <i className="fas fa-question"></i>
-                    )}
-                  </button>
-                </Link>
-              </li>
-              <li className="dropdown">
-                <div className="icon-buttons" href="/">
-                  <i className="fas fa-globe-americas"></i>
-                </div>
-                <div className="dropdown-content">
-                  <a
-                    onClick={(e) => {
-                      this.changeLanguage(e, "en");
-                    }}
-                    href="/"
-                  >
-                    {strings.english}
-                  </a>
-                  <a
-                    onClick={(e) => {
-                      this.changeLanguage(e, "es");
-                    }}
-                    href="/"
-                  >
-                    {strings.spanish}
-                  </a>
-                  <a
-                    onClick={(e) => {
-                      this.changeLanguage(e, "pt_br");
-                    }}
-                    href="/"
-                  >
-                    {strings.portuguese}
-                  </a>
-                  <a
-                    onClick={(e) => {
-                      this.changeLanguage(e, "ja");
-                    }}
-                    href="/"
-                  >
-                    {strings.japanese}
-                  </a>
-                  <a
-                    onClick={(e) => {
-                      this.changeLanguage(e, "zh_cn");
-                    }}
-                    href="/"
-                  >
-                    {strings.chinese_simplified}
-                  </a>
-                  <a
-                    onClick={(e) => {
-                      this.changeLanguage(e, "zh_tw");
-                    }}
-                    href="/"
-                  >
-                    {strings.chinese_traditional}
-                  </a>
-                  <a
-                    onClick={(e) => {
-                      this.changeLanguage(e, "fr");
-                    }}
-                    href="/"
-                  >
-                    {strings.french}
-                  </a>
-                  <a
-                    onClick={(e) => {
-                      this.changeLanguage(e, "ru");
-                    }}
-                    href="/"
-                  >
-                    {strings.russian}
-                  </a>
-                  <a
-                    onClick={(e) => {
-                      this.changeLanguage(e, "ar");
-                    }}
-                    href="/"
-                  >
-                    {strings.arabic}
-                  </a>
-                  <a
-                    onClick={(e) => {
-                      this.changeLanguage(e, "tr");
-                    }}
-                    href="/"
-                  >
-                    {strings.turkish}
-                  </a>
-                  <a
-                    className="contr"
-                    href="https://github.com/openzeppelin/ethernaut#modify-or-add-new-languages"
-                  >
-                    {strings.contributeTranslation}
-                  </a>
-                </div>
-              </li>
-              {this.props.web3 && (
-                <li className="dropdown chains">
-                  <div className="icon-buttons" href="/">
-                    <i className="fas fa-network-wired"></i>
-                  </div>
-                  <div className="dropdown-content">
-                    {Object.values(constants.NETWORKS_INGAME).map((network) => {
-                      if (network && network.name !== "local") {
-                        if (Number(network.id) === this.state.chainId)
-                          return false; // filter out current network
-                        return (
-                          <a
-                            id={network.name}
-                            key={network.name}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              this.changeNetwork(network);
-                            }}
-                            href="/"
-                          >
-                            {network.name}
-                          </a>
-                        );
-                      }
-                      return null;
-                    })}
-                  </div>
-                </li>
-              )}
-              <input
-                onClick={() => {
-                  this.toggleDarkMode();
-                }}
-                className="toggle"
-                type="checkbox"
-              />
-            </ul> */}
-            {/* ----------- */}
           </header>
           <ProgressBar
             height="100"

@@ -2,4 +2,4 @@ This is a coin flipping game where you need to build up your winning streak by g
 
 &nbsp;
 Things that might help
-* See the Help page above, section "Beyond the console"
+* See the ["?"](https://ethernaut.openzeppelin.com/help) page above in the top right corner menu, section "Beyond the console"

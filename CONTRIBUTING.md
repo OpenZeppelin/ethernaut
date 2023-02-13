@@ -34,9 +34,9 @@ Please follow the steps below. If you're new to git and/or GitHub, we suggest yo
 Currently, we are reviewing contributions of the following types:
 
 <!-- no toc -->
-- [Level Development](#level-development)
-- [Translations and Additional Languages](#translations-and-additional-languages)
-- [Documentation Updates and Corrections](#documentation-updates-and-corrections)
+- [Level development](#level-development)
+- [Translations and additional languages](#translations-and-additional-languages)
+- [Documentation updates and corrections](#documentation-updates-and-corrections)
 
 If you would like to contribute in another way, please reach out to us via email: [ethernaut@zeppelin.solutions](mailto:ethernaut@zeppelin.solutions)
 
@@ -76,10 +76,10 @@ To modify or add a new language to the list of supported ones, follow these step
 2. Copy paste the content you want to translate of any other language into the new directory.
 3. You will need to translate two things:
 
-     - `pages` and `level` descriptions under `descriptions` subdirectory
+     - `levels` descriptions under `descriptions` subdirectory
      - `strings.json`. For this, only the values of the keys in the json must be translated. Do not translate keys (i.e. `nextLevel`).
 
-4. If you are just modifying an already existing language you can stop here and submit a PR. If you're adding a new language go to the next steps. Translations are mantained by the community but we ask to translate at least the `Help` page, the `strings.json` and the `instances.md` and `instances_complete.md` files entirely since those are the most important ones to understand how the game works. Levels which are not translated will default to English in any case.
+4. If you are just modifying an already existing language you can stop here and submit a PR. If you're adding a new language go to the next steps. Translations are mantained by the community but we ask to translate at least the `strings.json` and the `instances.md` and `instances_complete.md` files entirely since those are the most important ones to understand how the game works. Levels which are not translated will default to English in any case.
 5. Add a new key/value in all `strings.json` of all languages for the newly added language. For example, if you're going to add French, add
 
     ```bash
@@ -99,16 +99,21 @@ To modify or add a new language to the list of supported ones, follow these step
     }
     ```
 
-6. Once translation is done, add an entry in `client/src/containers/Headers.js` in the language picker for the user interface so you can select your added language:
+6. Once translation is done, add an entry in `client/src/containers/Headers.js` in the following code snippet for the user interface so you can select your added language:
 
-    ```html
-    <li>
-    <select style={{fontSize: 'small'}} onChange={this.changeLanguage.bind(this)} value={this.state.lang ? this.state.lang : 'en'}>
-        <option value="en">{strings.english}</option>
-        <option value="es">{strings.spanish}</option>
-        ---> ADD AN ENTRY HERE <---
-        </select>
-    </li>
+    ```javascript
+        const LANGUAGES_MAP = {
+        en: strings.english,
+        es: strings.spanish,
+        pt_br: strings.portuguese,
+        ja: strings.japanese,
+        zh_cn: strings.chinese_simplified,
+        zh_tw: strings.chinese_traditional,
+        fr: strings.french,
+        ru: strings.russian,
+        ar: strings.arabic,
+        tr: strings.turkish,
+        };
     ```
 
 7. You can now submit a PR and we will review.

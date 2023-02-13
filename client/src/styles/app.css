@@ -106,6 +106,10 @@ ul {
   text-decoration: none;
 }
 
+.element-in-row {
+  margin-left: 1em;
+}
+
 hr {
   margin-top: 10px;
 }
@@ -619,7 +623,6 @@ footer {
 
 .dropdown-pill div{
   display: flex;
-  justify-content: space-around;
   align-items: center;
 }
 
@@ -654,8 +657,13 @@ footer {
 .filled-icon svg{
   fill: var(--primary-color);
   display: inline-block;
-  height: 16px;
+  height: 13px;
 }
+
+.logo-container {
+  margin-left: -4em;
+}
+
 /* --------- styles for multi dropdowns --------------*/
 @media only screen and (max-width: 1029px){
   :root {
@@ -665,8 +673,7 @@ footer {
 }
 
 .leader-icon {
-  width: 30px;
-  height:35px;
+  width: 10px;
   cursor: pointer;
   fill: var(--secondary-color);
   margin-right: 0px;
@@ -680,13 +687,6 @@ footer {
 }
 
 @media only screen and (max-width: 956px) {
-  /* .toggle {
-    display: none;
-  } */
-
-  .logo-container {
-    padding-left: 3em;
-  }
   .multi-dropdown__dropdown{
     margin-left: -15.8em;
   }
@@ -721,16 +721,16 @@ footer {
     display: none;
   }
 
-  .logo-container {
-    padding-left: 0;
-  }
-
   .progress-bar-wrapper {
     display: none;
   }
 
   .boxes {
     width: 100%;
+  }
+
+  .logo-container {
+    margin-left: 2em;
   }
 
   .source-code {

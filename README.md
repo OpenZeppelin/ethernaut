@@ -21,6 +21,8 @@ There are three components to Ethernaut that are needed to run/deploy in order t
 
 In order to install, build, and run Ethernaut locally, follow these instructions:
 
+0. Be sure to use a compatible Node version. If you use `nvm` you can run `nvm use` at the root level to be sure to select a compatible version.
+
 1. Clone the repo and install dependencies:
 
     ```bash
