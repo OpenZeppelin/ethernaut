@@ -24,8 +24,8 @@ contract DexTwoFactory is Level {
     tokenInstance.approve(instanceAddress, 100);
     tokenInstanceTwo.approve(instanceAddress, 100);
 
-    instance.add_liquidity(tokenInstanceAddress, 100);
-    instance.add_liquidity(tokenInstanceTwoAddress, 100);
+    instance.addLiquidity(tokenInstanceAddress, 100);
+    instance.addLiquidity(tokenInstanceTwoAddress, 100);
 
     tokenInstance.transfer(_player, 10);
     tokenInstanceTwo.transfer(_player, 10);

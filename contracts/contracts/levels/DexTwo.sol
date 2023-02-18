@@ -15,7 +15,7 @@ contract DexTwo is Ownable {
     token2 = _token2;
   }
 
-  function add_liquidity(address token_address, uint amount) public onlyOwner {
+  function addLiquidity(address token_address, uint amount) public onlyOwner {
     IERC20(token_address).transferFrom(msg.sender, address(this), amount);
   }
   
