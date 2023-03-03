@@ -20,7 +20,7 @@
     "@nomiclabs/hardhat-ethers": "^2.2.1",
     "@nomiclabs/hardhat-truffle5": "^2.0.0",
     "@nomiclabs/hardhat-web3": "^2.0.0",
-    "@openzeppelin/contracts-upgradeable": "^4.8.0",
+    "@openzeppelin/contracts-upgradeable": "^4.8.2",
     "@openzeppelin/hardhat-upgrades": "^1.21.0",
     "@openzeppelin/truffle-upgrades": "^1.17.0",
     "ethereum-waffle": "^3.4.4",
