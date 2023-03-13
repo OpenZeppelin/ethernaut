@@ -1,9 +1,3 @@
-Nowadays, paying for DeFi operations is impossible, fact.
-
-A group of friends discovered how to slightly decrease the cost of performing multiple transactions by batching them in one transaction, so they developed a smart contract for doing this. 
-
-They needed this contract to be upgradeable in case the code contained a bug, and they also wanted to prevent people from outside the group from using it. To do so, they voted and assigned two people with special roles in the system:
-The admin, which has the power of updating the logic of the smart contract.
 Hoy en día, pagar por operaciones DeFi es imposible, es un hecho.
 
 Un grupo de amigos descubrió cómo disminuir ligeramente el costo de realizar múltiples transacciones al agruparlas en una sola transacción, por lo que desarrollaron un contrato inteligente para hacer esto.
@@ -20,5 +14,5 @@ Deberá secuestrar esta billetera para convertirte en el administrador del proxy
 
 &nbsp;
 Cosas que podrían ayudar:
-* Comprender cómo funcionan las `delegatecall`s y cómo se comportan `msg.sender` y `msg.value` al realizar una.
+* Comprender cómo funcionan las `delegatecalls` y cómo se comportan `msg.sender` y `msg.value` al realizar una.
 * Conocer los patrones de proxy y la forma en que manejan las variables de storage.
