@@ -1,0 +1,5 @@
+Gerar números aleatórios em solidity pode ser complicado. Atualmente, não há uma maneira nativa de gerá-los e tudo o que você usa em smart contracts é visível publicamente, incluindo as variáveis ​​locais e as variáveis ​​de estado marcadas como privadas. Os mineradores também têm controle sobre coisas como blockhashes, registros de data e hora e se devem incluir certas transações - o que lhes permite influenciar esses valores a seu favor.
+
+Para obter números aleatórios criptograficamente comprovados, você pode usar [Chainlink VRF](https://docs.chain.link/docs/get-a-random-number), que usa um oráculo, o token LINK e um contrato on-chain para verificar se o número é realmente aleatório.
+
+Algumas outras opções incluem o uso de cabeçalhos de bloco Bitcoin (verificado por meio de [BTC Relay](http://btcrelay.org)), [RANDAO](https://github.com/randao/randao) ou [Oraclize](http: //www.oraclize.it/)).
