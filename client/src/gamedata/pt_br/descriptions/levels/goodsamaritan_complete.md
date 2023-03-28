@@ -1,0 +1,3 @@
+Parabéns!
+
+Erros personalizados no Solidity são identificados por sua assinatura de 4 bytes, o mesmo que uma chamada de função. Eles são borbulhados através da cadeia de chamadas até serem capturados por uma instrução `catch` em um bloco `try-catch`, como visto na função `requestDonation()` do `GoodSamaritan`. Por esses motivos, não é seguro assumir que o erro foi emitido pelo alvo imediato da chamada do contrato (ou seja, `Wallet` neste caso). Qualquer outro contrato mais abaixo na cadeia de chamadas pode declarar o mesmo erro - que terá a mesma assinatura - e emiti-lo em um local inesperado, como na função `notify(uint256 amount)` em seu contrato de ataque.
