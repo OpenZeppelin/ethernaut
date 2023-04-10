@@ -1,0 +1,3 @@
+É importante lembrar que marcar uma variável como privada apenas impede que outros contratos a acessem. Variáveis ​​de estado marcadas como privadas e variáveis ​​locais ainda são acessíveis publicamente.
+
+Para garantir que os dados sejam privados, eles precisam ser criptografados antes de serem colocados no blockchain. Nesse cenário, a chave de descriptografia nunca deve ser enviada on-chain, pois ficará visível para qualquer pessoa que queira procurar. [zk-SNARKs](https://blog.ethereum.org/2016/12/05/zksnarks-in-a-nutshell/) fornecem uma maneira de determinar se alguém possui um parâmetro secreto, sem nunca ter que revelar o parâmetro .
