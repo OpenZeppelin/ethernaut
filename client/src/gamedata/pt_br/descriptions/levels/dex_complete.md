@@ -9,40 +9,42 @@ A exchange em si é descentralizada, mas o preço do ativo é centralizado, pois
 [Uniswap TWAP Oracles](https://docs.uniswap.org/contracts/v2/concepts/core-concepts/oracles) depende de um modelo de preço ponderado no tempo chamado [TWAP](https://en.wikipedia.org/wiki/Time-weighted_average_price#). Embora o design possa ser atraente, esse protocolo depende muito da liquidez do protocolo da DEX e, se for muito baixo, os preços podem ser facilmente manipulados.
 
 
-Aqui está um exemplo de obtenção de dados de um feed de dados Chainlink (no kovan testnet):
+Aqui está um exemplo de obtenção de dados de um feed de dados Chainlink (no Sepolia testnet):
 ```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.7;
 
-pragma solidity ^0.6.7;
-
-import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 contract PriceConsumerV3 {
-
     AggregatorV3Interface internal priceFeed;
 
     /**
-     * Network: Kovan
-     * Aggregator: ETH/USD
-     * Address: 0x9326BFA02ADD2366b30bacB125260Af641031331
+     * Network: Sepolia
+     * Aggregator: BTC/USD
+     * Address: 0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43
      */
-    constructor() public {
-        priceFeed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
+    constructor() {
+        priceFeed = AggregatorV3Interface(
+            0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43
+        );
     }
 
     /**
-     * Returns the latest price
+     * Returns the latest price.
      */
     function getLatestPrice() public view returns (int) {
+        // prettier-ignore
         (
-            uint80 roundID, 
+            /* uint80 roundID */,
             int price,
-            uint startedAt,
-            uint timeStamp,
-            uint80 answeredInRound
+            /*uint startedAt*/,
+            /*uint timeStamp*/,
+            /*uint80 answeredInRound*/
         ) = priceFeed.latestRoundData();
         return price;
     }
 }
 ```
 
-[Experimente no Remix](https://remix.ethereum.org/#version=soljson-v0.6.7+commit.b8d736ae.js&optimize=false&evmVersion=null&gist=0c5928a00094810d2ba01fd8d1083581)
+[Experimente no Remix](https://remix.ethereum.org/#url=https://docs.chain.link/samples/PriceFeeds/PriceConsumerV3.sol)
