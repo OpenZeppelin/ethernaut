@@ -7,12 +7,12 @@ El admin, que tiene el poder de actualizar la lógica del contrato.
 El owner, que controla la lista blanca de direcciones autorizadas a utilizar el contrato.
 Los contratos se deployaron y el grupo se incluyó en la lista blanca. Todos aplaudieron sus logros contra los mineros malvados.
 
-Poco sabían, su dinero estaba en riesgo ...
+Poco sabían, su dinero estaba en riesgo...
 
 &nbsp;
 Deberá secuestrar esta billetera para convertirte en el administrador del proxy.
 
 &nbsp;
 Cosas que podrían ayudar:
-* Comprender cómo funcionan las `delegatecalls` y cómo se comportan `msg.sender` y `msg.value` al realizar una.
+* Comprender cómo funciona `delegatecall` y cómo se comportan `msg.sender` y `msg.value` al realizar una.
 * Conocer los patrones de proxy y la forma en que manejan las variables de storage.
