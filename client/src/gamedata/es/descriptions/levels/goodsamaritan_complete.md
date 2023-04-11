@@ -1,0 +1,3 @@
+¡Felicidades!
+
+Los errores personalizados en Solidity se identifican por su ‘selector’, de la misma manera que con las funciones. Se propagan a través de la cadena de llamadas hasta que son capturados por una instrucción `catch` en un bloque `try-catch`, como se ve en la función `requestDonation()` de GoodSamaritan. Por estas razones, no es seguro asumir que el error fue generado por el objetivo inmediato de la llamada de contrato (es decir, Wallet en este caso). Cualquier otro contrato más abajo en la cadena de llamadas puede declarar el mismo error, y ​​lanzarlo en una ubicación inesperada, como en la función `notify(uint256 amount)` en su contrato de atacante.
