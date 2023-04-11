@@ -32,7 +32,7 @@ contract SimpleTrick {
 contract GatekeeperThree {
   address public owner;
   address public entrant;
-  bool public allow_enterance = false;
+  bool public allow_enterance;
   SimpleTrick public trick;
 
   function construct0r() public {
