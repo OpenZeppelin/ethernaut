@@ -24,7 +24,6 @@ class Level extends React.Component {
       dropwDownOpened: false,
     };
     this.containerRef = createRef();
-    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   componentDidMount() {
@@ -82,7 +81,7 @@ class Level extends React.Component {
     }
   };
 
-  handleClickOutside(event) {
+  handleClickOutside = (event) => {
     if (this.containerRef && !this.containerRef.current.contains(event.target)) {
       this.closeDropdown();
     }
@@ -173,7 +172,7 @@ class Level extends React.Component {
 
               <div className="dropdown-menu-bar-button">
                 <button className="dropdown-button">
-                  <i className="fa fa-caret-down"></i>
+                  <i className={`fa fa-caret-${this.state.dropwDownOpened? "up" : "down"}`}></i>
                 </button>
               </div>
             </div>
