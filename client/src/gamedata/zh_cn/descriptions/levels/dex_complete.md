@@ -8,38 +8,44 @@ Chainlink 数据馈送是一种安全、可靠的方式，可以将去中心化�
 
 Uniswap TWAP 预言机依赖于称为 TWAP 的时间加权价格模型。虽然设计很有吸引力，但该协议在很大程度上取决于 DEX 协议的流动性，如果流动性太低，价格很容易被操纵。
 
-以下是从 Chainlink 数据源（在 kovan 测试网上）获取数据的示例：
+以下是从 Chainlink 数据源（在 Sepolia 测试网上）获取数据的示例：
 
 ```
-pragma solidity ^0.6.7;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.7;
 
-import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 contract PriceConsumerV3 {
-
     AggregatorV3Interface internal priceFeed;
 
     /**
-     * Network: Kovan
-     * Aggregator: ETH/USD
-     * Address: 0x9326BFA02ADD2366b30bacB125260Af641031331
+     * Network: Sepolia
+     * Aggregator: BTC/USD
+     * Address: 0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43
      */
-    constructor() public {
-        priceFeed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
+    constructor() {
+        priceFeed = AggregatorV3Interface(
+            0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43
+        );
     }
 
     /**
-     * Returns the latest price
+     * Returns the latest price.
      */
     function getLatestPrice() public view returns (int) {
+        // prettier-ignore
         (
-            uint80 roundID, 
+            /* uint80 roundID */,
             int price,
-            uint startedAt,
-            uint timeStamp,
-            uint80 answeredInRound
+            /*uint startedAt*/,
+            /*uint timeStamp*/,
+            /*uint80 answeredInRound*/
         ) = priceFeed.latestRoundData();
         return price;
     }
 }
+
 ```
+
+[尝试在 Remix 上](https://remix.ethereum.org/#url=https://docs.chain.link/samples/PriceFeeds/PriceConsumerV3.sol)
