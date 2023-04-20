@@ -9,6 +9,7 @@ import * as EthernautABI from "contracts/build/contracts/Ethernaut.sol/Ethernaut
 import * as ProxyStatsABI from "contracts/build/contracts/proxy/ProxyStats.sol/ProxyStats.json" assert { type: "json" };
 import * as ProxyAdminABI from "contracts/build/contracts/proxy/ProxyAdmin.sol/ProxyAdmin.json" assert { type: "json" };
 import * as ImplementationABI from "contracts/build/contracts/metrics/Statistics.sol/Statistics.json" assert { type: "json" };
+import * as SupersederImplementationABI from "contracts/build/contracts/metrics/StatisticsLevelSuperseder.sol/StatisticsLevelSuperseder.json" assert { type: "json" };
 
 import gamedata from "../src/gamedata/gamedata.json" assert { type: "json" };
 
@@ -47,62 +48,59 @@ const DeployData = await loadDeployData(
 //REMEMBER TO INCLUDE CONTRACT COMPILATION IN PACKAGE.JSON SCRIPT//
 
 async function supersede() {
+  // CHECK IF THERE IS A PENDING SUBSTITUTION.
+
   // Print available levels list
   console.log(
     colors.bold.yellow(
-      "\nOpenZeppelin-Ethernaut contract level replacement script, available levels:\n"
+      "\nOpenZeppelin-Ethernaut contract level replacement tool, available levels:\n"
     )
   );
   levels.forEach((level) => {
     console.log(` ${colors.red(level.deployId)}) ${colors.cyan(level.name)}`);
   });
 
-  // Get operator level choice
+  // Get operator's level choice
   console.log(colors.bold.yellow("\nWhich deployId do you want to supersede?"));
-  const LevelToBeSuperseded = await getLevelToBeSupersededData();
+  const LevelToBeSupersededData = await getLevelToBeSupersededData();
 
   // Check if level is registered into ethernaut and is not already superseded
-  if (!(await isLevelRegistered(LevelToBeSuperseded))) {
-    console.log(colors.bold.red("Level is not deployed"));
+  if (!(await isLevelRegistered(LevelToBeSupersededData))) {
+    console.log(colors.bold.red("Level is not registered in Ethernaut"));
     process.exit();
   }
-  if (!(await doesLevelExistsInStatistics(LevelToBeSuperseded))) {
+  if (!(await doesLevelExistsInStatistics(LevelToBeSupersededData))) {
     console.log(colors.bold.red("Level is already superseded"));
     process.exit();
   }
 
   // Print level info
-  await printLevelInfo(LevelToBeSuperseded);
+  await printLevelInfo(LevelToBeSupersededData);
 
   // Confirm substitution by operator
   console.log(colors.bold.yellow("\nConfirm substitution?"));
-  if (!(await operatorConfirmation(LevelToBeSuperseded))) {
+  if (!(await operatorConfirmation(LevelToBeSupersededData))) {
     console.log(colors.bold.red("Substitution not confirmed by operator"));
     process.exit();
   }
 
   // Deploy new version
-  const newLevelContract = await deployLevel(LevelToBeSuperseded);
+  const newLevelContract = await deployLevel(LevelToBeSupersededData);
 
   // Update deploy data object
   const { oldAddress, newAddress } = storeSubstitutionInDeployData(
     newLevelContract,
-    LevelToBeSuperseded
+    LevelToBeSupersededData
   );
 
-  console.log(oldAddress, newAddress);
-
   // Register new address in ethernaut
-  console.log(colors.bold.yellow("\nRegistering level in ethernaut contract..."));
-
-
-  // Backup
-  console.log(colors.bold.yellow("Generating data backup json to allow easy recovery..."));
+  await registerLevelInEthernaut(newAddress, LevelToBeSupersededData);
 
   // Upgrade Statistics
-  console.log(colors.bold.yellow("ugrading statistics contract to statisticsSuperseder..."));
+  await upgradeStatisticsToStatisticsSuperseder();
 
   // Dump Statistics data
+  //
   console.log(colors.bold.yellow("Dumping statistics data..."));
 
   // Check correctness compare backup - onchain data
@@ -112,6 +110,8 @@ async function supersede() {
   console.log(
     colors.bold.yellow("Downgrading statisticsSuperseder contract to original statistics...")
   );
+
+  // PROXY IMPLEMENTATION ADDRESS MUST BE MODIFIED IM DEPLOY.{NETWORK}.DATA
   process.exit();
 }
 
@@ -185,7 +185,7 @@ async function deployLevel(level) {
 
   const props = {
     gasPrice: (await web3.eth.getGasPrice()) * 10,
-    gas: 30000000,
+    gas: 4500000,
   };
 
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
@@ -194,17 +194,15 @@ async function deployLevel(level) {
   const LevelContract = await ethutil.getTruffleContract(LevelABI, { from });
   const newLevelContract = await LevelContract.new(...level.deployParams, props);
   await web3.eth.getTransactionReceipt(newLevelContract.transactionHash);
-  console.log(colors.grey("\n Done!"), "✅");
+  console.log(colors.grey(" Done!"), "✅");
   console.log(" new Address:", colors.bold.green(`${newLevelContract.address}`));
 
   return newLevelContract;
 }
 
 function storeSubstitutionInDeployData(newLevelContract, level) {
-  console.log(colors.gray(` storing substitution of level with deployId: ${level.deployId}`));
-  console.log(
-    colors.gray(` ${DeployData[level.deployId]} --> ${newLevelContract.address}`)
-  );
+  console.log(colors.gray(` register operation in deploy.${constants.NETWORKS.GOERLI.name}.json`));
+  console.log(colors.gray(` ${DeployData[level.deployId]} --> ${newLevelContract.address}`));
 
   if (!DeployData.supersededAddresses) {
     DeployData.supersededAddresses = [];
@@ -217,6 +215,52 @@ function storeSubstitutionInDeployData(newLevelContract, level) {
   DeployData[level.deployId] = newLevelContract.address;
 
   return DeployData.supersededAddresses[i - 1];
+}
+
+async function registerLevelInEthernaut(newAddress, level) {
+  console.log(colors.bold.yellow("\nRegistering level in Ethernaut contract..."));
+  await ethernaut.methods["registerLevel(address)"](newAddress);
+  //Check
+  if (!(await isLevelRegistered(level))) {
+    console.log(colors.bold.red("New address level not registered in Ethernaut"));
+    process.exit();
+  }
+  if (!(await doesLevelExistsInStatistics(level))) {
+    console.log(colors.bold.red("New address level not registered in Statistics"));
+    process.exit();
+  }
+}
+
+async function upgradeStatisticsToStatisticsSuperseder() {
+  console.log(colors.bold.yellow("\nUgrading statistics contract to statisticsSuperseder..."));
+
+  const props = {
+    gasPrice: (await web3.eth.getGasPrice()) * 10,
+    gas: 4500000,
+  };
+  let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
+  if (!from) from = (await web3.eth.getAccounts())[0];
+
+  // Deploy SupersederImplementation
+  console.log(colors.grey(` Deploying StatisticsLevelSuperseder.sol...`));
+  const SupersederImplementationContract = await ethutil.getTruffleContract(
+    SupersederImplementationABI.default,
+    {
+      from,
+    }
+  );
+  const supersederImplementationContract = await SupersederImplementationContract.new(props);
+  await web3.eth.getTransactionReceipt(supersederImplementationContract.transactionHash);
+  console.log(colors.grey(" Done!"), "✅");
+  console.log(` SupersederImplementation: ${supersederImplementationContract.address}`);
+
+  // Upgrade proxy TODO: FIX FUNCTION CALL
+  console.log(colors.grey(` Upgrading Proxy...`));
+  await proxyAdmin.methods
+    .upgrade(proxyStats.address, supersederImplementationContract.address)
+    .send({ from, ...props });
+
+  console.log(colors.grey(` Proxy is upgraded! ✅`));
 }
 
 async function loadGameContracts() {
