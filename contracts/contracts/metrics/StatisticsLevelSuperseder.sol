@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
 contract StatisticsLevelSuperseder is Initializable {
     address public ethernaut;
     address[] public players;
@@ -31,7 +33,37 @@ contract StatisticsLevelSuperseder is Initializable {
     mapping(address => bool) private playerExists;
     mapping(address => bool) private levelExists;
     mapping(address => uint256) private averageTimeTakenToCompleteLevels;
+    
+    /* Level substitution logic storage */
+    bool onMaintenance; 
+    uint256 public usersArrayIndex;
+    address public oldLevelContractAddress;
+    address public newLevelContractAddress;
+    address public operator;
+
+    enum DumpStage{
+        INIT,
+        LEVEL_FIRST_INSTANCE_CREATION_TIME,
+        LEVEL_FRIST_COMPLETION_TIME,
+        PLAYER_STATS,
+        LEVEL_STATS,
+        LEVEL_EXISTS_AND_LEVELS_ARRAY_FIX,
+        DUMP_DONE
+    }
+
+    DumpStage public dumpStage;
+
+    modifier onlyOperator() {
+        require(
+            msg.sender == operator,
+            "Only operator account can call this function"
+        );
+        _;
+    }
+
+    
     event playerScoreProfile(address indexed player, uint256 indexed averageCompletionTime, uint256 indexed globalLevelsCompleted);
+    
     modifier levelExistsCheck(address level) {
         require(doesLevelExist(level), "Level doesn't exist");
         _;
@@ -51,7 +83,7 @@ contract StatisticsLevelSuperseder is Initializable {
         );
         _;
     }
-    function initialize(address _ethernautAddress) public initializer {
+    function initialize(address _ethernautAddress, address _operator) public initializer {
         ethernaut = _ethernautAddress;
     }
     // Protected functions
@@ -60,84 +92,21 @@ contract StatisticsLevelSuperseder is Initializable {
         address level,
         address player
     ) external onlyEthernaut levelExistsCheck(level) {
-        if (!doesPlayerExist(player)) {
-            players.push(player);
-            playerExists[player] = true;
-        }
-        // If it is the first instance of the level
-        if(playerStats[player][level].instance == address(0)) {
-            levelFirstInstanceCreationTime[player][level] = block.timestamp;
-        }
-        playerStats[player][level] = LevelInstance(
-            instance,
-            false,
-            block.timestamp,
-            0,
-            playerStats[player][level].timeSubmitted.length != 0
-                ? playerStats[player][level].timeSubmitted
-                : new uint256[](0)
-        );
-        levelStats[level].noOfInstancesCreated++;
-        globalNoOfInstancesCreated++;
-        globalNoOfInstancesCreatedByPlayer[player]++;
+        revert("Contract locked due maintenance operations");
     }
     function submitSuccess(
         address instance,
         address level,
         address player
     ) external onlyEthernaut levelExistsCheck(level) playerExistsCheck(player) {
-        require(
-            playerStats[player][level].instance != address(0),
-            "Instance for the level is not created"
-        );
-        require(
-            playerStats[player][level].instance == instance,
-            "Submitted instance is not the created one"
-        );
-        require(
-            playerStats[player][level].isCompleted == false,
-            "Level already completed"
-        );
-        // If it is the first submission in the level
-        if(levelFirstCompletionTime[player][level] == 0) {
-            globalNoOfLevelsCompletedByPlayer[player]++;
-            levelFirstCompletionTime[player][level] = block.timestamp;
-            uint256 totalNoOfLevelsCompletedByPlayer = globalNoOfLevelsCompletedByPlayer[player];
-            uint256 newAverageTimeTakenToCompleteLevels = updateAverageTimeTakenToCompleteLevelsByPlayer(player, level, totalNoOfLevelsCompletedByPlayer);
-            emit playerScoreProfile(
-                player, 
-                newAverageTimeTakenToCompleteLevels, 
-                totalNoOfLevelsCompletedByPlayer
-            );
-        }
-        playerStats[player][level].timeSubmitted.push(block.timestamp);
-        playerStats[player][level].timeCompleted = block.timestamp;
-        playerStats[player][level].isCompleted = true;
-        levelStats[level].noOfInstancesSubmitted_Success++;
-        globalNoOfInstancesCompleted++;
-        globalNoOfInstancesCompletedByPlayer[player]++;
+        revert("Contract locked due maintenance operations");
     }
     function submitFailure(
         address instance,
         address level,
         address player
     ) external onlyEthernaut levelExistsCheck(level) playerExistsCheck(player) {
-        require(
-            playerStats[player][level].instance != address(0),
-            "Instance for the level is not created"
-        );
-        require(
-            playerStats[player][level].instance == instance,
-            "Submitted instance is not the created one"
-        );
-        require(
-            playerStats[player][level].isCompleted == false,
-            "Level already completed"
-        );
-        playerStats[player][level].timeSubmitted.push(block.timestamp);
-        levelStats[level].noOfSubmissions_Failed++;
-        globalNoOfFailedSubmissions++;
-        globalNoOfFailedSubmissionsByPlayer[player]++;
+        revert("Contract locked due maintenance operations");
     }
     function saveNewLevel(address level)
         external
@@ -317,7 +286,71 @@ contract StatisticsLevelSuperseder is Initializable {
     function getAverageTimeTakenToCompleteLevels(address player) public view returns(uint256) {
         return averageTimeTakenToCompleteLevels[player];
     }
+
+    /* Level substituition logic */
+    function setOperator(address _operator) public { //called through TUP UpgradeAndCall
+        require(dumpStage == DumpStage.INIT, "Not correct dump stage");
+        operator = _operator;
+        onMaintenance = true;
+        dumpStage = DumpStage.LEVEL_FIRST_INSTANCE_CREATION_TIME;
+    }   
+
+    function setSubstitutionAddresses(address _oldLevelContractAddress, address _newLevelContractAddress) public onlyOperator {
+        require(dumpStage == DumpStage.LEVEL_FIRST_INSTANCE_CREATION_TIME, "Not correct dump stage");
+        require(levelExists[oldLevelContractAddress], "Address to be superseded is not an existing level");
+        require(newLevelContractAddress != address(0), "New level address can't be 0");
+        oldLevelContractAddress = _oldLevelContractAddress;
+        newLevelContractAddress = _newLevelContractAddress;
+    }
+
+    function dumpLevelFirstInstanceCreationTime() public onlyOperator {
+        require(dumpStage == DumpStage.LEVEL_FIRST_INSTANCE_CREATION_TIME, "Not correct dump stage");
+        require(levelExists[oldLevelContractAddress], "Set addresses before starting dump operation");
+
+        address _oldLevelContractAddress = oldLevelContractAddress;
+        address _newLevelContractAddress = newLevelContractAddress;
+        uint256 _usersArrayIndex = usersArrayIndex;
+        address[] memory _players = players;
+        
+        do {
+            levelFirstInstanceCreationTime[_players[_usersArrayIndex]][_newLevelContractAddress] = levelFirstInstanceCreationTime[_players[_usersArrayIndex]][_oldLevelContractAddress];
+            levelFirstInstanceCreationTime[_players[_usersArrayIndex]][_oldLevelContractAddress] = 0;
+            _usersArrayIndex++;
+        } while (gasleft() > 33000 && !(usersArrayIndex == players.length));
+
+        usersArrayIndex = _usersArrayIndex;
+        if(usersArrayIndex == players.length) {
+            dumpStage = DumpStage.LEVEL_FRIST_COMPLETION_TIME;
+            usersArrayIndex = 0;
+        }
+    }
     
+    function dumpLevelFirstCompletionTime() public onlyOperator {
+        require(dumpStage == DumpStage.LEVEL_FRIST_COMPLETION_TIME, "Not correct dump stage");
+
+        dumpStage = DumpStage.PLAYER_STATS;
+    }
+
+    function dumpPlayerStats() public onlyOperator {
+        require(dumpStage == DumpStage.PLAYER_STATS, "Not correct dump stage");
+
+        dumpStage = DumpStage.LEVEL_STATS;
+    }
+    
+    function dumpLevelStats() public onlyOperator {
+        require(dumpStage == DumpStage.LEVEL_STATS, "Not correct dump stage");
+        levelStats[newLevelContractAddress] = levelStats[oldLevelContractAddress];
+
+        dumpStage = DumpStage.LEVEL_EXISTS_AND_LEVELS_ARRAY_FIX;
+    }
+
+    function fixLevelExistAndLevelsArray(uint256 deployId) public onlyOperator {
+        require(dumpStage == DumpStage.LEVEL_EXISTS_AND_LEVELS_ARRAY_FIX, "Not correct dump stage");
+        levelExists[oldLevelContractAddress] = false;
+        
+        dumpStage = DumpStage.DUMP_DONE;
+    }
+
     /**
      * @dev This empty reserved space is put in place to allow future versions to add new
      * variables without shifting down storage in the inheritance chain.
