@@ -44,6 +44,7 @@ contract StatisticsLevelSuperseder is Initializable {
 
     enum DumpStage{
         INIT,
+        SET_ADDRESSES,
         LEVEL_FIRST_INSTANCE_CREATION_TIME,
         LEVEL_FIRST_COMPLETION_TIME,
         PLAYER_STATS,
@@ -295,37 +296,44 @@ contract StatisticsLevelSuperseder is Initializable {
         operator = _operator;
         onMaintenance = true;
 
-        dumpStage = DumpStage.LEVEL_FIRST_INSTANCE_CREATION_TIME;
+        dumpStage = DumpStage.SET_ADDRESSES;
     }   
 
     function setSubstitutionAddresses(address _oldLevelContractAddress, address _newLevelContractAddress) public onlyOperator {
-        require(dumpStage == DumpStage.LEVEL_FIRST_INSTANCE_CREATION_TIME, "Not correct dump stage");
+        require(dumpStage == DumpStage.SET_ADDRESSES, "Not correct dump stage");
         require(levelExists[_oldLevelContractAddress], "Address to be superseded is not an existing level");
         require(_newLevelContractAddress != address(0), "New level address can't be 0");
+        require(_oldLevelContractAddress != _newLevelContractAddress, "Addesses can't be equal");
+        require(_oldLevelContractAddress != levels[levels.length-1], "Old address can't be last level address");
 
         oldLevelContractAddress = _oldLevelContractAddress;
         newLevelContractAddress = _newLevelContractAddress;
     }
 
     function dumpLevelFirstInstanceCreationTime() public onlyOperator {
-        require(dumpStage == DumpStage.LEVEL_FIRST_INSTANCE_CREATION_TIME, "Not correct dump stage");
-        require(levelExists[oldLevelContractAddress], "Set addresses before starting dump operation");
+        require(dumpStage == DumpStage.LEVEL_FIRST_INSTANCE_CREATION_TIME || dumpStage == DumpStage.SET_ADDRESSES, "Not correct dump stage");
+
+        if(dumpStage == DumpStage.SET_ADDRESSES) {
+            dumpStage = DumpStage.LEVEL_FIRST_INSTANCE_CREATION_TIME;
+        }
 
         address _oldLevelContractAddress = oldLevelContractAddress;
         address _newLevelContractAddress = newLevelContractAddress;
         uint256 _usersArrayIndex = usersArrayIndex;
+
         
         do {
             levelFirstInstanceCreationTime[players[_usersArrayIndex]][_newLevelContractAddress] = levelFirstInstanceCreationTime[players[_usersArrayIndex]][_oldLevelContractAddress];
             levelFirstInstanceCreationTime[players[_usersArrayIndex]][_oldLevelContractAddress] = 0;
             _usersArrayIndex++;
-        } while (gasleft() > 33000 && !(usersArrayIndex == players.length));
+        } while (gasleft() > 33000 && !(_usersArrayIndex == players.length));
 
-        usersArrayIndex = _usersArrayIndex;
-
+        
         if(usersArrayIndex == players.length) {
             dumpStage = DumpStage.LEVEL_FIRST_COMPLETION_TIME;
             usersArrayIndex = 0;
+        } else {
+            usersArrayIndex = _usersArrayIndex;
         }
     }
     
@@ -340,13 +348,14 @@ contract StatisticsLevelSuperseder is Initializable {
             levelFirstCompletionTime[players[_usersArrayIndex]][_newLevelContractAddress] = levelFirstCompletionTime[players[_usersArrayIndex]][_oldLevelContractAddress];
             levelFirstCompletionTime[players[_usersArrayIndex]][_oldLevelContractAddress] = 0;
             _usersArrayIndex++;
-        } while (gasleft() > 33000 && !(usersArrayIndex == players.length));
+        } while (gasleft() > 33000 && !(_usersArrayIndex == players.length));
         
-        usersArrayIndex = _usersArrayIndex;
         
         if(usersArrayIndex == players.length) {
             dumpStage = DumpStage.PLAYER_STATS;
             usersArrayIndex = 0;
+        } else {
+            usersArrayIndex = _usersArrayIndex;
         }
     }
 
@@ -362,13 +371,14 @@ contract StatisticsLevelSuperseder is Initializable {
             playerStats[players[_usersArrayIndex]][_newLevelContractAddress] = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress];
             playerStats[players[_usersArrayIndex]][_oldLevelContractAddress] = levelInstanceEmpty;
             _usersArrayIndex++;
-        } while (gasleft() > 33000 && !(usersArrayIndex == players.length));
+        } while (gasleft() > 33000 && !(_usersArrayIndex == players.length));
 
-        usersArrayIndex = _usersArrayIndex;
 
         if(usersArrayIndex == players.length) {
             dumpStage = DumpStage.LEVEL_STATS;
             usersArrayIndex = 0;
+        } {
+            usersArrayIndex = _usersArrayIndex;
         }
         
     }
@@ -404,7 +414,7 @@ contract StatisticsLevelSuperseder is Initializable {
         
         levels[deployId] = newLevelContractAddress;
         levelExists[_oldLevelContractAddress] = false;
-
+        // _TODO reset all storage variables used
         dumpStage = DumpStage.DUMP_DONE;
     }
 
