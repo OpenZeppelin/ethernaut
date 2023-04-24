@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
+
 contract StatisticsLevelSuperseder is Initializable {
     address public ethernaut;
     address[] public players;
@@ -44,7 +45,7 @@ contract StatisticsLevelSuperseder is Initializable {
     enum DumpStage{
         INIT,
         LEVEL_FIRST_INSTANCE_CREATION_TIME,
-        LEVEL_FRIST_COMPLETION_TIME,
+        LEVEL_FIRST_COMPLETION_TIME,
         PLAYER_STATS,
         LEVEL_STATS,
         LEVEL_EXISTS_AND_LEVELS_ARRAY_FIX,
@@ -290,15 +291,18 @@ contract StatisticsLevelSuperseder is Initializable {
     /* Level substituition logic */
     function setOperator(address _operator) public { //called through TUP UpgradeAndCall
         require(dumpStage == DumpStage.INIT, "Not correct dump stage");
+
         operator = _operator;
         onMaintenance = true;
+
         dumpStage = DumpStage.LEVEL_FIRST_INSTANCE_CREATION_TIME;
     }   
 
     function setSubstitutionAddresses(address _oldLevelContractAddress, address _newLevelContractAddress) public onlyOperator {
         require(dumpStage == DumpStage.LEVEL_FIRST_INSTANCE_CREATION_TIME, "Not correct dump stage");
-        require(levelExists[oldLevelContractAddress], "Address to be superseded is not an existing level");
-        require(newLevelContractAddress != address(0), "New level address can't be 0");
+        require(levelExists[_oldLevelContractAddress], "Address to be superseded is not an existing level");
+        require(_newLevelContractAddress != address(0), "New level address can't be 0");
+
         oldLevelContractAddress = _oldLevelContractAddress;
         newLevelContractAddress = _newLevelContractAddress;
     }
@@ -310,44 +314,97 @@ contract StatisticsLevelSuperseder is Initializable {
         address _oldLevelContractAddress = oldLevelContractAddress;
         address _newLevelContractAddress = newLevelContractAddress;
         uint256 _usersArrayIndex = usersArrayIndex;
-        address[] memory _players = players;
         
         do {
-            levelFirstInstanceCreationTime[_players[_usersArrayIndex]][_newLevelContractAddress] = levelFirstInstanceCreationTime[_players[_usersArrayIndex]][_oldLevelContractAddress];
-            levelFirstInstanceCreationTime[_players[_usersArrayIndex]][_oldLevelContractAddress] = 0;
+            levelFirstInstanceCreationTime[players[_usersArrayIndex]][_newLevelContractAddress] = levelFirstInstanceCreationTime[players[_usersArrayIndex]][_oldLevelContractAddress];
+            levelFirstInstanceCreationTime[players[_usersArrayIndex]][_oldLevelContractAddress] = 0;
             _usersArrayIndex++;
         } while (gasleft() > 33000 && !(usersArrayIndex == players.length));
 
         usersArrayIndex = _usersArrayIndex;
+
         if(usersArrayIndex == players.length) {
-            dumpStage = DumpStage.LEVEL_FRIST_COMPLETION_TIME;
+            dumpStage = DumpStage.LEVEL_FIRST_COMPLETION_TIME;
             usersArrayIndex = 0;
         }
     }
     
     function dumpLevelFirstCompletionTime() public onlyOperator {
-        require(dumpStage == DumpStage.LEVEL_FRIST_COMPLETION_TIME, "Not correct dump stage");
+        require(dumpStage == DumpStage.LEVEL_FIRST_COMPLETION_TIME, "Not correct dump stage");
 
-        dumpStage = DumpStage.PLAYER_STATS;
+        address _oldLevelContractAddress = oldLevelContractAddress;
+        address _newLevelContractAddress = newLevelContractAddress;
+        uint256 _usersArrayIndex = usersArrayIndex;
+        
+        do {
+            levelFirstCompletionTime[players[_usersArrayIndex]][_newLevelContractAddress] = levelFirstCompletionTime[players[_usersArrayIndex]][_oldLevelContractAddress];
+            levelFirstCompletionTime[players[_usersArrayIndex]][_oldLevelContractAddress] = 0;
+            _usersArrayIndex++;
+        } while (gasleft() > 33000 && !(usersArrayIndex == players.length));
+        
+        usersArrayIndex = _usersArrayIndex;
+        
+        if(usersArrayIndex == players.length) {
+            dumpStage = DumpStage.PLAYER_STATS;
+            usersArrayIndex = 0;
+        }
     }
 
     function dumpPlayerStats() public onlyOperator {
         require(dumpStage == DumpStage.PLAYER_STATS, "Not correct dump stage");
 
-        dumpStage = DumpStage.LEVEL_STATS;
+        address _oldLevelContractAddress = oldLevelContractAddress;
+        address _newLevelContractAddress = newLevelContractAddress;
+        uint256 _usersArrayIndex = usersArrayIndex;
+        LevelInstance memory levelInstanceEmpty;
+
+        do {
+            playerStats[players[_usersArrayIndex]][_newLevelContractAddress] = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress];
+            playerStats[players[_usersArrayIndex]][_oldLevelContractAddress] = levelInstanceEmpty;
+            _usersArrayIndex++;
+        } while (gasleft() > 33000 && !(usersArrayIndex == players.length));
+
+        usersArrayIndex = _usersArrayIndex;
+
+        if(usersArrayIndex == players.length) {
+            dumpStage = DumpStage.LEVEL_STATS;
+            usersArrayIndex = 0;
+        }
+        
     }
     
     function dumpLevelStats() public onlyOperator {
         require(dumpStage == DumpStage.LEVEL_STATS, "Not correct dump stage");
+
         levelStats[newLevelContractAddress] = levelStats[oldLevelContractAddress];
+        address _oldLevelContractAddress = oldLevelContractAddress;
+        address _newLevelContractAddress = newLevelContractAddress;
+        uint256 _levelsIndex = 0;
+        Level memory levelEmpty;
+
+        do{
+            levelStats[_newLevelContractAddress] = levelStats[_oldLevelContractAddress];
+            levelStats[_oldLevelContractAddress] = levelEmpty;
+            _levelsIndex++;
+        }while(_levelsIndex < levels.length);
 
         dumpStage = DumpStage.LEVEL_EXISTS_AND_LEVELS_ARRAY_FIX;
     }
 
-    function fixLevelExistAndLevelsArray(uint256 deployId) public onlyOperator {
+    function fixLevelExistAndLevelsArray() public onlyOperator {
         require(dumpStage == DumpStage.LEVEL_EXISTS_AND_LEVELS_ARRAY_FIX, "Not correct dump stage");
+
         levelExists[oldLevelContractAddress] = false;
+        address _oldLevelContractAddress = oldLevelContractAddress;
+
+        uint256 deployId = 0;
+        while (levels[deployId] == _oldLevelContractAddress){
+            deployId++;
+        }
         
+        levels[deployId] = newLevelContractAddress;
+        levelExists[_oldLevelContractAddress] = false;
+
         dumpStage = DumpStage.DUMP_DONE;
     }
 
