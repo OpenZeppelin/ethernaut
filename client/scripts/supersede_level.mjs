@@ -18,8 +18,21 @@ let web3;
 let ethernaut;
 let proxyStats;
 let proxyStatsWithImplementationABI;
+let proxyStatsWithSupersederImplementationABI;
 let proxyAdmin;
 let statsImplementation;
+let statsSupersederImplementation;
+
+const DumpStage = {
+  INIT: 0,
+  SET_ADDRESSES: 1,
+  LEVEL_FIRST_INSTANCE_CREATION_TIME: 2,
+  LEVEL_FIRST_COMPLETION_TIME: 3,
+  PLAYER_STATS: 4,
+  LEVEL_STATS: 5,
+  LEVEL_EXISTS_AND_LEVELS_ARRAY_FIX: 6,
+  DUMP_DONE: 7,
+};
 
 // For testing purposes by forking network
 // To run a forked network with ethernaut owner account as hardhat network account add following configuration in hardhat.config.js
@@ -34,7 +47,7 @@ let statsImplementation;
  */
 // then uncomment one of the following lines to get forked network deployment data.
 const DeployData = await loadDeployData(
-  `./client/src/gamedata/deploy.${constants.NETWORKS.GOERLI.name}.json`
+  `./client/src/gamedata/deploy.${constants.NETWORKS.OPTIMISM_GOERLI.name}.json` 
 );
 // const DeployData = await loadDeployData(`./client/src/gamedata/deploy.${constants.NETWORKS.MUMBAI.name}.json`);
 // const DeployData = await loadDeployData(`./client/src/gamedata/deploy.${constants.NETWORKS.SEPOLIA.name}.json`);
@@ -46,74 +59,92 @@ const DeployData = await loadDeployData(
 //const DeployData = await loadDeployData(DEPLOY_DATA_PATH);
 
 // REMEMBER THAT OPERATOR ADDRESS IS HARDCODED IN upgradeStatisticsToStatisticsSuperseder();
-//REMEMBER TO INCLUDE CONTRACT COMPILATION IN PACKAGE.JSON SCRIPT//
+// REMEMBER TO INCLUDE CONTRACT COMPILATION IN PACKAGE.JSON SCRIPT
+// REMEMBER TO CHANGE TO ACTIVE NETWORK JSON FS WRITE PART
 
 async function supersede() {
-  // CHECK IF THERE IS A PENDING SUBSTITUTION.
-  console.log((await web3.eth.getStorageAt(proxyStats.address, 17)).slice(-1));
+  let oldAddress;
+  let newAddress;
+  // check if there is a pending process
+  if ((await web3.eth.getStorageAt(proxyStats.address, 17)).slice(-1) == "1") {
+    console.log(colors.bold.red("Pending level replacement detected, resuming..."));
+    oldAddress = await proxyStatsWithSupersederImplementationABI.methods[
+      "oldLevelContractAddress()"
+    ]();
+    newAddress = await proxyStatsWithSupersederImplementationABI.methods[
+      "newLevelContractAddress()"
+    ]();
+    console.log(colors.grey(` DumpStage: ${(await proxyStatsWithSupersederImplementationABI.methods["dumpStage()"]()).words[0]}`));
+    console.log(colors.gray(` From: ${oldAddress}`));
+    console.log(colors.gray(` To: ${newAddress}`));
+  } else {
+    // Print available levels list
+    console.log(
+      colors.bold.yellow(
+        "\nOpenZeppelin-Ethernaut contract level replacement tool, available levels:\n"
+      )
+    );
+    levels.forEach((level) => {
+      console.log(` ${colors.red(level.deployId)}) ${colors.cyan(level.name)}`);
+    });
 
-  // Print available levels list
-  console.log(
-    colors.bold.yellow(
-      "\nOpenZeppelin-Ethernaut contract level replacement tool, available levels:\n"
-    )
-  );
-  levels.forEach((level) => {
-    console.log(` ${colors.red(level.deployId)}) ${colors.cyan(level.name)}`);
-  });
+    // Get operator's level choice
+    console.log(colors.bold.yellow("\nWhich deployId do you want to supersede?"));
+    const LevelToBeSupersededData = await getLevelToBeSupersededData();
 
-  // Get operator's level choice
-  console.log(colors.bold.yellow("\nWhich deployId do you want to supersede?"));
-  const LevelToBeSupersededData = await getLevelToBeSupersededData();
+    // Check if level is registered into ethernaut and is not already superseded
+    if (!(await isLevelRegistered(LevelToBeSupersededData))) {
+      console.log(colors.bold.red("Level is not registered in Ethernaut"));
+      process.exit();
+    }
+    if (!(await doesLevelExistsInStatistics(LevelToBeSupersededData))) {
+      console.log(colors.bold.red("Level is already superseded"));
+      process.exit();
+    }
 
-  // Check if level is registered into ethernaut and is not already superseded
-  if (!(await isLevelRegistered(LevelToBeSupersededData))) {
-    console.log(colors.bold.red("Level is not registered in Ethernaut"));
-    process.exit();
+    // Print level info
+    await printLevelInfo(LevelToBeSupersededData);
+
+    // Confirm substitution by operator
+    console.log(colors.bold.yellow("\nConfirm substitution?"));
+    if (!(await operatorConfirmation(LevelToBeSupersededData))) {
+      console.log(colors.bold.red("Substitution not confirmed by operator"));
+      process.exit();
+    }
+
+    // Upgrade Statistics
+    await upgradeStatisticsToStatisticsSuperseder();
+
+    // Deploy new version const newLevelContract
+    const newLevelContract = await deployLevel(LevelToBeSupersededData);
+
+    // Update deploy data object
+    const ret = storeSubstitutionInDeployData(newLevelContract, LevelToBeSupersededData);
+
+    oldAddress = ret.oldAddress;
+    newAddress = ret.newAddress;
+
+    // Register new address in ethernaut
+    await registerLevelInEthernaut(newAddress, LevelToBeSupersededData);
+
+    // Set replacement addresses
+    await setSubstitutionAddresses(oldAddress, newAddress);
   }
-  if (!(await doesLevelExistsInStatistics(LevelToBeSupersededData))) {
-    console.log(colors.bold.red("Level is already superseded"));
-    process.exit();
-  }
-
-  // Print level info
-  await printLevelInfo(LevelToBeSupersededData);
-
-  // Confirm substitution by operator
-  console.log(colors.bold.yellow("\nConfirm substitution?"));
-  if (!(await operatorConfirmation(LevelToBeSupersededData))) {
-    console.log(colors.bold.red("Substitution not confirmed by operator"));
-    process.exit();
-  }
-
-  // Upgrade Statistics
-  await upgradeStatisticsToStatisticsSuperseder();
-
-  // Deploy new version const newLevelContract
-  const newLevelContract = await deployLevel(LevelToBeSupersededData);
-
-  // Update deploy data object
-  const { oldAddress, newAddress } = storeSubstitutionInDeployData(
-    newLevelContract,
-    LevelToBeSupersededData
-  );
-
-  // Register new address in ethernaut
-  await registerLevelInEthernaut(newAddress, LevelToBeSupersededData);
-
   // Dump Statistics data
   await dumpData(oldAddress, newAddress);
-  
 
-  // Check correctness compare backup - onchain data
-  console.log(colors.bold.yellow("Checking that the operation was right..."));
+  // Clean used storage slots
+  await cleanStorage();
 
-  // Downgrade Statistics
+  // Check correctness of the operation
+  await checkOperation(oldAddress, newAddress);
+
+  // TODO: Downgrade Statistics
   console.log(
     colors.bold.yellow("Downgrading statisticsSuperseder contract to original statistics...")
   );
 
-  // PROXY IMPLEMENTATION ADDRESS MUST BE MODIFIED IM DEPLOY.{NETWORK}.DATA
+  // TODO: PROXY IMPLEMENTATION ADDRESS MUST BE MODIFIED IN DEPLOY.{NETWORK}.DATA
   process.exit();
 }
 
@@ -189,10 +220,10 @@ async function upgradeStatisticsToStatisticsSuperseder() {
       from,
     }
   );
-  const supersederImplementationContract = await SupersederImplementationContract.new(props);
-  await web3.eth.getTransactionReceipt(supersederImplementationContract.transactionHash);
+  statsSupersederImplementation = await SupersederImplementationContract.new(props);
+  await web3.eth.getTransactionReceipt(statsSupersederImplementation.transactionHash);
   console.log(colors.grey(" Done!"), "✅");
-  console.log(` SupersederImplementation: ${supersederImplementationContract.address}`);
+  console.log(` SupersederImplementation: ${statsSupersederImplementation.address}`);
 
   // Upgrade and set operator and on maintenance flag
   const initEncodedCall = web3.eth.abi.encodeFunctionCall(
@@ -212,7 +243,7 @@ async function upgradeStatisticsToStatisticsSuperseder() {
   console.log(colors.grey(` Upgrading Proxy...`));
   const tx = await proxyAdmin.methods["upgradeAndCall(address,address,bytes)"](
     proxyStats.address,
-    supersederImplementationContract.address,
+    statsSupersederImplementation.address,
     initEncodedCall,
     { from, ...props }
   );
@@ -220,7 +251,6 @@ async function upgradeStatisticsToStatisticsSuperseder() {
   console.log(colors.grey(` Proxy is upgraded! ✅`));
 
   // Check if onMaintenance is true
- 
   if ((await web3.eth.getStorageAt(proxyStats.address, 17)).slice(-1) != "1") {
     console.log(colors.bold.red("Error onMaintenance not set"));
     process.exit();
@@ -259,7 +289,9 @@ async function deployLevel(level) {
 }
 
 function storeSubstitutionInDeployData(newLevelContract, level) {
-  console.log(colors.gray(` registering operation in deploy.${constants.NETWORKS.GOERLI.name}.json`));
+  console.log(
+    colors.gray(` Registering operation in deploy.${constants.NETWORKS.OPTIMISM_GOERLI.name}.json`) ///CHANGE to active network
+  );
   console.log(colors.gray(` ${DeployData[level.deployId]} --> ${newLevelContract.address}`));
 
   if (!DeployData.supersededAddresses) {
@@ -270,20 +302,22 @@ function storeSubstitutionInDeployData(newLevelContract, level) {
     oldAddress: DeployData[level.deployId],
     newAddress: newLevelContract.address,
   });
-  DeployData[level.deployId] = newLevelContract.address;
 
-  storeDeployData(`./client/src/gamedata/deploy.${constants.NETWORKS.GOERLI.name}.json`)
+  DeployData[level.deployId] = newLevelContract.address;
+  DeployData.implementation = statsSupersederImplementation.address;
+
+  storeDeployData(`./client/src/gamedata/deploy.${constants.NETWORKS.OPTIMISM_GOERLI.name}.json`); //CANGE toactive network
   return DeployData.supersededAddresses[i - 1];
 }
 
 async function registerLevelInEthernaut(newAddress, level) {
   console.log(colors.bold.yellow("\nRegistering level in Ethernaut contract..."));
-  
+
   const props = {
     gasPrice: (await web3.eth.getGasPrice()) * 10,
-    gas: 4500000,
-  };  
-  
+    gas: 450000,
+  };
+
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
   if (!from) from = (await web3.eth.getAccounts())[0];
 
@@ -297,11 +331,221 @@ async function registerLevelInEthernaut(newAddress, level) {
     console.log(colors.bold.red("New address level not registered in Statistics"));
     process.exit();
   }
+  console.log(colors.grey(" Done!"), "✅");
 }
 
-async function dumpData(oldAddress, newAddress){
-  console.log(colors.bold.yellow("Dumping statistics data..."));
+async function setSubstitutionAddresses(oldAddress, newAddress) {
+  // Set substitution level addresses
+  console.log(colors.grey(" Setting substitution addresses in StatisticsLevelSuperseder..."));
+  let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
+  if (!from) from = (await web3.eth.getAccounts())[0];
 
+  const props = {
+    gasPrice: (await web3.eth.getGasPrice()) * 10,
+    gas: 450000,
+  };
+  let tx = await proxyStatsWithSupersederImplementationABI.methods[
+    "setSubstitutionAddresses(address,address)"
+  ](oldAddress, newAddress, { from, ...props });
+  await web3.eth.getTransactionReceipt(tx.tx);
+
+  // Check that addresses are correct
+  const oldAddressFromContract = await proxyStatsWithSupersederImplementationABI.methods[
+    "oldLevelContractAddress()"
+  ]();
+  if (oldAddress != oldAddressFromContract) {
+    console.log(colors.bold.red("Old address is not set correctly"));
+    process.exit();
+  }
+
+  const newAddressFromContract = await proxyStatsWithSupersederImplementationABI.methods[
+    "newLevelContractAddress()"
+  ]();
+  if (newAddress != newAddressFromContract) {
+    console.log(colors.bold.red("New address is not set correctly"));
+    process.exit();
+  }
+  console.log(colors.grey(" Done!"), "✅");
+}
+
+async function dumpData(oldAddress, newAddress) {
+  console.log(colors.bold.yellow("\nDumping statistics data..."));
+  let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
+  if (!from) from = (await web3.eth.getAccounts())[0];
+
+  const props = {
+    gasPrice: (await web3.eth.getGasPrice()) * 10,
+    gas: 1550000, // gas can be tuned here 2000000
+  };
+
+  let dumpStage;
+  do {
+    dumpStage = (await proxyStatsWithSupersederImplementationABI.methods["dumpStage()"]()).words[0];
+
+    switch (dumpStage) {
+      case DumpStage.SET_ADDRESSES://1
+      case DumpStage.LEVEL_FIRST_INSTANCE_CREATION_TIME://2
+        // Dump LevelFirstInstanceCreationTime
+        console.log(colors.grey(" Dumping LevelFirstInstanceCreationTime"));
+
+        do {
+          console.log(
+            colors.grey(
+              " Dumped ",
+              (await proxyStatsWithSupersederImplementationABI.methods["usersArrayIndex()"]())
+                .words[0],
+              "Players"
+            )
+          );
+
+          let tx = await proxyStatsWithSupersederImplementationABI.methods[
+            "dumpLevelFirstInstanceCreationTime()"
+          ]({ from, ...props });
+          await web3.eth.getTransactionReceipt(tx.tx);
+
+          dumpStage = await proxyStatsWithSupersederImplementationABI.methods["dumpStage()"]();
+        } while (dumpStage != DumpStage.LEVEL_FIRST_COMPLETION_TIME);
+
+        console.log(colors.grey(" Done!"), "✅");
+        break;
+
+      case DumpStage.LEVEL_FIRST_COMPLETION_TIME://3
+        // Dump levelFirstCompletionTime
+        console.log(colors.grey(" Dumping levelFirstCompletionTime"));
+
+        do {
+          console.log(
+            colors.grey(
+              " Dumped ",
+              (await proxyStatsWithSupersederImplementationABI.methods["usersArrayIndex()"]())
+                .words[0],
+              "Players"
+            )
+          );
+
+          let tx = await proxyStatsWithSupersederImplementationABI.methods[
+            "dumpLevelFirstCompletionTime()"
+          ]({ from, ...props });
+          await web3.eth.getTransactionReceipt(tx.tx);
+
+          dumpStage = await proxyStatsWithSupersederImplementationABI.methods["dumpStage()"]();
+        } while (dumpStage != DumpStage.PLAYER_STATS);
+        console.log(colors.grey(" Done!"), "✅");
+        break;
+
+      case DumpStage.PLAYER_STATS://4
+        // Dump playerStats
+        console.log(colors.grey(" Dumping playerStats"));
+
+        do {
+          console.log(
+            colors.grey(
+              " Dumped ",
+              (await proxyStatsWithSupersederImplementationABI.methods["usersArrayIndex()"]())
+                .words[0],
+              "Players"
+            )
+          );
+          let tx = await proxyStatsWithSupersederImplementationABI.methods["dumpPlayerStats()"]({
+            from,
+            ...props,
+          });
+          await web3.eth.getTransactionReceipt(tx.tx);
+
+          dumpStage = await proxyStatsWithSupersederImplementationABI.methods["dumpStage()"]();
+        } while (dumpStage != DumpStage.LEVEL_STATS);
+        console.log(colors.grey(" Done!"), "✅");
+        break;
+
+      case DumpStage.LEVEL_STATS://5
+        // Dump levelStats
+        console.log(colors.grey(" Dumping levelStats"));
+        {
+          let tx = await proxyStatsWithSupersederImplementationABI.methods["dumpLevelStats()"]({
+            from,
+            ...props,
+          });
+          await web3.eth.getTransactionReceipt(tx.tx);
+        }
+        console.log(colors.grey(" Done!"), "✅");
+        break;
+
+      case DumpStage.LEVEL_EXISTS_AND_LEVELS_ARRAY_FIX://6
+        // Fix levelExist mapping and levels array
+        console.log(colors.grey(" fixing levelExist mapping and levels array"));
+        {
+          let tx = await proxyStatsWithSupersederImplementationABI.methods[
+            "fixLevelExistAndLevelsArray()"
+          ]({
+            from,
+            ...props,
+          });
+          await web3.eth.getTransactionReceipt(tx.tx);
+        }
+        console.log(colors.grey(" Done!"), "✅");
+
+        break;
+    }
+  } while (dumpStage != DumpStage.DUMP_DONE);
+}
+
+async function cleanStorage() {
+  console.log(colors.bold.yellow(" Cleaning used storage slots..."));
+  let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
+  if (!from) from = (await web3.eth.getAccounts())[0];
+
+  const props = {
+    gasPrice: (await web3.eth.getGasPrice()) * 10,
+    gas: 450000,
+  };
+
+  let tx = await proxyStatsWithSupersederImplementationABI.methods["cleanStorage()"]({
+    from,
+    ...props,
+  });
+  await web3.eth.getTransactionReceipt(tx.tx);
+  console.log(colors.grey(" Done!"), "✅");
+}
+
+async function checkOperation(oldAddress, newAddress) {
+  console.log(colors.bold.yellow(" Checking operation..."));
+
+  let totalPlayers = await proxyStatsWithSupersederImplementationABI.methods[
+    "getTotalNoOfPlayers()"
+  ]();
+  let usersArrayIndex = 0;
+  // loop over all users
+  while (usersArrayIndex < totalPlayers) {
+    let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
+      "getPlayerAtIndex(uint256)"
+    ](usersArrayIndex);
+    console.log(userAddress);
+    if (
+      (await proxyStatsWithSupersederImplementationABI.methods[
+        "getLevelFirstInstanceCreationTime(address,address)"
+      ](userAddress, oldAddress)) != "0"
+    ) {
+      console.log(
+        colors.bold.red(
+          `Dump went wrong, levelFirstInstanceCreationTime[${userAddress}][${oldAddress}] != 0`
+        )
+      );
+      process.exit();
+    }
+    if (
+      (await proxyStatsWithSupersederImplementationABI.methods[
+        "getLevelFirstInstanceCreationTime(address,address)"
+      ](userAddress, newAddress)) == "0"
+    ) {
+      console.log(
+        colors.bold.red(
+          `Dump went wrong, levelFirstInstanceCreationTime[${userAddress}][${newAddress}] == 0`
+        )
+      );
+      process.exit();
+    }
+    usersArrayIndex++;
+  }
 }
 
 async function loadGameContracts() {
@@ -320,7 +564,7 @@ async function loadGameContracts() {
   });
   proxyStats = await ProxyStats.at(DeployData.proxyStats);
 
-  // Statistics proxy with implementation ABI to call implementation functions with proxy state
+  // Statistics proxy with implementation ABI to call functions with proxy state
   const ProxyStatsWithImplementationABI = await ethutil.getTruffleContract(
     ImplementationABI.default,
     {
@@ -328,6 +572,17 @@ async function loadGameContracts() {
     }
   );
   proxyStatsWithImplementationABI = await ProxyStatsWithImplementationABI.at(DeployData.proxyStats);
+
+  // Statistics proxy with superseder implementation ABI to call functions with proxy state
+  const ProxyStatsWithSupersederImplementationABI = await ethutil.getTruffleContract(
+    SupersederImplementationABI.default,
+    {
+      from,
+    }
+  );
+  proxyStatsWithSupersederImplementationABI = await ProxyStatsWithSupersederImplementationABI.at(
+    DeployData.proxyStats
+  );
 
   // Statistics proxy admin
   const ProxyAdmin = await ethutil.getTruffleContract(ProxyAdminABI.default, {
@@ -350,12 +605,10 @@ function loadDeployData(path) {
   }
 }
 
-
 function storeDeployData(path) {
   console.log(colors.green(`Writing updated deploy data: ${path}`));
   return fs.writeFileSync(path, JSON.stringify(DeployData, null, 2), "utf8");
 }
-
 
 async function initWeb3() {
   return new Promise(async (resolve, reject) => {
@@ -401,4 +654,3 @@ async function operatorConfirmation() {
   const { confirmSubstitution } = await prompt.get(options);
   return confirmSubstitution === "y" || confirmSubstitution === "Y";
 }
-
