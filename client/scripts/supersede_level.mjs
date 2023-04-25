@@ -12,8 +12,25 @@ import * as ImplementationABI from "contracts/build/contracts/metrics/Statistics
 import * as SupersederImplementationABI from "contracts/build/contracts/metrics/StatisticsLevelSuperseder.sol/StatisticsLevelSuperseder.json" assert { type: "json" };
 
 import gamedata from "../src/gamedata/gamedata.json" assert { type: "json" };
-
 const levels = gamedata.levels;
+
+// For testing purposes in a local fork uncomment one of the following lines to get forked network deployment data.
+// const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.GOERLI.name}.json`;
+// const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.MUMBAI.name}.json`;
+// const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.SEPOLIA.name}.json`;
+const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.OPTIMISM_GOERLI.name}.json`;
+// const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.ARBITRUM_GOERLI.name}.json`;
+
+// For real purposes
+//const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
+
+const DeployData = await loadDeployData(DEPLOY_DATA_PATH);
+
+// Operator address, the account that will perform the data dump (meant to be ethernaut owner).
+//const OPERATOR_ADDRESS = ADDRESSES.ACTIVE_NETWORK.name;
+const OPERATOR_ADDRESS = "0x09902A56d04a9446601a0d451E07459dC5aF0820";
+
+// Contract Objects
 let web3;
 let ethernaut;
 let proxyStats;
@@ -23,6 +40,7 @@ let proxyAdmin;
 let statsImplementation;
 let statsSupersederImplementation;
 
+// Dump stages enum
 const DumpStage = {
   INIT: 0,
   SET_ADDRESSES: 1,
@@ -34,33 +52,6 @@ const DumpStage = {
   DUMP_DONE: 7,
 };
 
-// For testing purposes by forking network
-// To run a forked network with ethernaut owner account as hardhat network account add following configuration in hardhat.config.js
-/*
- require("dotenv").config({ path: __dirname + "/.env" });
- const ownerPrivKey = process.env.PRIV_KEY;
- ...
-    hardhat: {
-    chainId: 1337,
-    accounts: [{ privateKey: ownerPrivKey, balance: "1000000000000000000000" }],
-  },
- */
-// then uncomment one of the following lines to get forked network deployment data.
-const DeployData = await loadDeployData(
-  `./client/src/gamedata/deploy.${constants.NETWORKS.OPTIMISM_GOERLI.name}.json` 
-);
-// const DeployData = await loadDeployData(`./client/src/gamedata/deploy.${constants.NETWORKS.MUMBAI.name}.json`);
-// const DeployData = await loadDeployData(`./client/src/gamedata/deploy.${constants.NETWORKS.SEPOLIA.name}.json`);
-// const DeployData = await loadDeployData(`./client/src/gamedata/deploy.${constants.NETWORKS.OPTIMISM_GOERLI.name}.json`);
-// const DeployData = await loadDeployData(`./client/src/gamedata/deploy.${constants.NETWORKS.ARBITRUM_GOERLI.name}.json`);
-
-// For real purposes
-//const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
-//const DeployData = await loadDeployData(DEPLOY_DATA_PATH);
-
-// REMEMBER THAT OPERATOR ADDRESS IS HARDCODED IN upgradeStatisticsToStatisticsSuperseder();
-// REMEMBER TO INCLUDE CONTRACT COMPILATION IN PACKAGE.JSON SCRIPT
-// REMEMBER TO CHANGE TO ACTIVE NETWORK JSON FS WRITE PART
 
 async function supersede() {
   let oldAddress;
@@ -74,7 +65,13 @@ async function supersede() {
     newAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "newLevelContractAddress()"
     ]();
-    console.log(colors.grey(` DumpStage: ${(await proxyStatsWithSupersederImplementationABI.methods["dumpStage()"]()).words[0]}`));
+    console.log(
+      colors.grey(
+        ` DumpStage: ${
+          (await proxyStatsWithSupersederImplementationABI.methods["dumpStage()"]()).words[0]
+        }`
+      )
+    );
     console.log(colors.gray(` From: ${oldAddress}`));
     console.log(colors.gray(` To: ${newAddress}`));
   } else {
@@ -136,15 +133,12 @@ async function supersede() {
   // Clean used storage slots
   await cleanStorage();
 
-  // Check correctness of the operation
-  await checkOperation(oldAddress, newAddress);
+  // Print edited storage slots
+  await printEditedStorageSlots(oldAddress, newAddress);
 
-  // TODO: Downgrade Statistics
-  console.log(
-    colors.bold.yellow("Downgrading statisticsSuperseder contract to original statistics...")
-  );
+  // Downgrade Statistics
+  await downgradeStatisticsSupersederToStatisticsAndSaveDeployData();
 
-  // TODO: PROXY IMPLEMENTATION ADDRESS MUST BE MODIFIED IN DEPLOY.{NETWORK}.DATA
   process.exit();
 }
 
@@ -237,7 +231,7 @@ async function upgradeStatisticsToStatisticsSuperseder() {
         },
       ],
     },
-    [`0x09902A56d04a9446601a0d451E07459dC5aF0820`] //Hardcoded is BAD!
+    [OPERATOR_ADDRESS]
   );
 
   console.log(colors.grey(` Upgrading Proxy...`));
@@ -289,9 +283,7 @@ async function deployLevel(level) {
 }
 
 function storeSubstitutionInDeployData(newLevelContract, level) {
-  console.log(
-    colors.gray(` Registering operation in deploy.${constants.NETWORKS.OPTIMISM_GOERLI.name}.json`) ///CHANGE to active network
-  );
+  console.log(colors.gray(` Registering operation in ${DEPLOY_DATA_PATH}`));
   console.log(colors.gray(` ${DeployData[level.deployId]} --> ${newLevelContract.address}`));
 
   if (!DeployData.supersededAddresses) {
@@ -306,7 +298,7 @@ function storeSubstitutionInDeployData(newLevelContract, level) {
   DeployData[level.deployId] = newLevelContract.address;
   DeployData.implementation = statsSupersederImplementation.address;
 
-  storeDeployData(`./client/src/gamedata/deploy.${constants.NETWORKS.OPTIMISM_GOERLI.name}.json`); //CANGE toactive network
+  storeDeployData(DEPLOY_DATA_PATH);
   return DeployData.supersededAddresses[i - 1];
 }
 
@@ -375,7 +367,7 @@ async function dumpData(oldAddress, newAddress) {
 
   const props = {
     gasPrice: (await web3.eth.getGasPrice()) * 10,
-    gas: 1550000, // gas can be tuned here 2000000
+    gas: 2000000, // gas can be tuned here 2000000
   };
 
   let dumpStage;
@@ -383,8 +375,8 @@ async function dumpData(oldAddress, newAddress) {
     dumpStage = (await proxyStatsWithSupersederImplementationABI.methods["dumpStage()"]()).words[0];
 
     switch (dumpStage) {
-      case DumpStage.SET_ADDRESSES://1
-      case DumpStage.LEVEL_FIRST_INSTANCE_CREATION_TIME://2
+      case DumpStage.SET_ADDRESSES: //1
+      case DumpStage.LEVEL_FIRST_INSTANCE_CREATION_TIME: //2
         // Dump LevelFirstInstanceCreationTime
         console.log(colors.grey(" Dumping LevelFirstInstanceCreationTime"));
 
@@ -409,7 +401,7 @@ async function dumpData(oldAddress, newAddress) {
         console.log(colors.grey(" Done!"), "✅");
         break;
 
-      case DumpStage.LEVEL_FIRST_COMPLETION_TIME://3
+      case DumpStage.LEVEL_FIRST_COMPLETION_TIME: //3
         // Dump levelFirstCompletionTime
         console.log(colors.grey(" Dumping levelFirstCompletionTime"));
 
@@ -433,7 +425,7 @@ async function dumpData(oldAddress, newAddress) {
         console.log(colors.grey(" Done!"), "✅");
         break;
 
-      case DumpStage.PLAYER_STATS://4
+      case DumpStage.PLAYER_STATS: //4
         // Dump playerStats
         console.log(colors.grey(" Dumping playerStats"));
 
@@ -457,7 +449,7 @@ async function dumpData(oldAddress, newAddress) {
         console.log(colors.grey(" Done!"), "✅");
         break;
 
-      case DumpStage.LEVEL_STATS://5
+      case DumpStage.LEVEL_STATS: //5
         // Dump levelStats
         console.log(colors.grey(" Dumping levelStats"));
         {
@@ -470,7 +462,7 @@ async function dumpData(oldAddress, newAddress) {
         console.log(colors.grey(" Done!"), "✅");
         break;
 
-      case DumpStage.LEVEL_EXISTS_AND_LEVELS_ARRAY_FIX://6
+      case DumpStage.LEVEL_EXISTS_AND_LEVELS_ARRAY_FIX: //6
         // Fix levelExist mapping and levels array
         console.log(colors.grey(" fixing levelExist mapping and levels array"));
         {
@@ -507,10 +499,10 @@ async function cleanStorage() {
   console.log(colors.grey(" Done!"), "✅");
 }
 
-async function checkOperation(oldAddress, newAddress) {
+async function printEditedStorageSlots(oldAddress, newAddress) {
   console.log(colors.bold.yellow(" Checking operation..."));
-
-  let totalPlayers = await proxyStatsWithSupersederImplementationABI.methods[
+  console.log(`old address: ${oldAddress} new address: ${newAddress}`);
+  const totalPlayers = await proxyStatsWithSupersederImplementationABI.methods[
     "getTotalNoOfPlayers()"
   ]();
   let usersArrayIndex = 0;
@@ -519,35 +511,186 @@ async function checkOperation(oldAddress, newAddress) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "getPlayerAtIndex(uint256)"
     ](usersArrayIndex);
-    console.log(userAddress);
-    if (
-      (await proxyStatsWithSupersederImplementationABI.methods[
-        "getLevelFirstInstanceCreationTime(address,address)"
-      ](userAddress, oldAddress)) != "0"
-    ) {
-      console.log(
-        colors.bold.red(
-          `Dump went wrong, levelFirstInstanceCreationTime[${userAddress}][${oldAddress}] != 0`
-        )
-      );
-      process.exit();
-    }
-    if (
-      (await proxyStatsWithSupersederImplementationABI.methods[
-        "getLevelFirstInstanceCreationTime(address,address)"
-      ](userAddress, newAddress)) == "0"
-    ) {
-      console.log(
-        colors.bold.red(
-          `Dump went wrong, levelFirstInstanceCreationTime[${userAddress}][${newAddress}] == 0`
-        )
-      );
-      process.exit();
-    }
+
+    console.log(
+      `old: player ${usersArrayIndex} : ${userAddress}`,
+      (
+        await proxyStatsWithSupersederImplementationABI.methods[
+          "getLevelFirstInstanceCreationTime(address,address)"
+        ](userAddress, oldAddress)
+      ).words[0]
+    );
     usersArrayIndex++;
   }
+
+  usersArrayIndex = 0;
+  // loop over all users
+  while (usersArrayIndex < totalPlayers) {
+    let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
+      "getPlayerAtIndex(uint256)"
+    ](usersArrayIndex);
+
+    console.log(
+      `new: player ${usersArrayIndex} : ${userAddress}`,
+      (
+        await proxyStatsWithSupersederImplementationABI.methods[
+          "getLevelFirstInstanceCreationTime(address,address)"
+        ](userAddress, newAddress)
+      ).words[0]
+    );
+    usersArrayIndex++;
+  }
+
+  console.log("-------------------------------------------------");
+
+  usersArrayIndex = 0;
+  // loop over all users
+  while (usersArrayIndex < totalPlayers) {
+    let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
+      "getPlayerAtIndex(uint256)"
+    ](usersArrayIndex);
+
+    console.log(
+      `old: player ${usersArrayIndex} : ${userAddress}`,
+      (
+        await proxyStatsWithSupersederImplementationABI.methods[
+          "getLevelFirstCompletionTime(address,address)"
+        ](userAddress, oldAddress)
+      ).words[0]
+    );
+    usersArrayIndex++;
+  }
+
+  usersArrayIndex = 0;
+  // loop over all users
+  while (usersArrayIndex < totalPlayers) {
+    let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
+      "getPlayerAtIndex(uint256)"
+    ](usersArrayIndex);
+
+    console.log(
+      `new: player ${usersArrayIndex} : ${userAddress}`,
+      (
+        await proxyStatsWithSupersederImplementationABI.methods[
+          "getLevelFirstCompletionTime(address,address)"
+        ](userAddress, newAddress)
+      ).words[0]
+    );
+    usersArrayIndex++;
+  }
+
+  console.log("-------------------------------------------------");
+
+  usersArrayIndex = 0;
+  // loop over all users
+  while (usersArrayIndex < totalPlayers) {
+    let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
+      "getPlayerAtIndex(uint256)"
+    ](usersArrayIndex);
+
+    console.log(
+      `old: player ${usersArrayIndex} : ${userAddress}`,
+      await proxyStatsWithSupersederImplementationABI.methods["getPlayerStats(address,address)"](
+        userAddress,
+        oldAddress
+      )
+    );
+    usersArrayIndex++;
+  }
+
+  usersArrayIndex = 0;
+  // loop over all users
+  while (usersArrayIndex < totalPlayers) {
+    let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
+      "getPlayerAtIndex(uint256)"
+    ](usersArrayIndex);
+
+    console.log(
+      `new: player ${usersArrayIndex} : ${userAddress}`,
+      await proxyStatsWithSupersederImplementationABI.methods["getPlayerStats(address,address)"](
+        userAddress,
+        newAddress
+      )
+    );
+    usersArrayIndex++;
+  }
+
+  console.log("-------------------------------------------------");
+  console.log("Levels stats");
+
+  console.log(
+    `LevelStats[${oldAddress}]`,
+    await proxyStatsWithSupersederImplementationABI.methods["getLevelStats(address)"](oldAddress)
+  );
+
+  console.log(
+    `LevelStats[${newAddress}]`,
+    await proxyStatsWithSupersederImplementationABI.methods["getLevelStats(address)"](newAddress)
+  );
+
+  console.log("-------------------------------------------------");
+  console.log("Levels Exist");
+
+  console.log(
+    `levelExists[${oldAddress}]`,
+    await proxyStatsWithSupersederImplementationABI.methods["getLevelExists(address)"](oldAddress)
+  );
+
+  console.log(
+    `levelExists[${newAddress}]`,
+    await proxyStatsWithSupersederImplementationABI.methods["getLevelExists(address)"](newAddress)
+  );
+
+  console.log("-------------------------------------------------");
+  console.log("Levels array");
+  let levelsArrayLength = await proxyStatsWithSupersederImplementationABI.methods[
+    "getTotalNoOfEthernautLevels()"
+  ]();
+  console.log(`length ${levelsArrayLength}`);
+  let arrayIndex = 0;
+  do {
+    console.log(
+      `arrayIndex: ${arrayIndex}`,
+      await proxyStatsWithSupersederImplementationABI.methods["getLevelAddress(uint256)"](
+        arrayIndex
+      )
+    );
+    arrayIndex++;
+  } while (arrayIndex < levelsArrayLength);
 }
 
+async function downgradeStatisticsSupersederToStatisticsAndSaveDeployData() {
+  console.log(colors.bold.yellow("\nDowngrading statisticsSuperseder contract to statistics..."));
+
+  const props = {
+    gasPrice: (await web3.eth.getGasPrice()) * 10,
+    gas: 4500000,
+  };
+  let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
+  if (!from) from = (await web3.eth.getAccounts())[0];
+
+  // Deploy Implementation
+  console.log(colors.grey(` Deploying Statistics.sol...`));
+  const ImplementationContract = await ethutil.getTruffleContract(ImplementationABI.default, {
+    from,
+  });
+  statsImplementation = await ImplementationContract.new(props);
+  await web3.eth.getTransactionReceipt(statsImplementation.transactionHash);
+  console.log(colors.grey(" Done!"), "✅");
+  console.log(` Implementation: ${statsImplementation.address}`);
+
+  console.log(colors.grey(` Upgrading Proxy...`));
+  const tx = await proxyAdmin.methods["upgrade(address,address)"](
+    proxyStats.address,
+    statsImplementation.address,
+    { from, ...props }
+  );
+  await web3.eth.getTransactionReceipt(tx.tx);
+  console.log(colors.grey(` Proxy is downgraded! ✅`));
+
+  DeployData.implementation = statsImplementation.address;
+  storeDeployData(DEPLOY_DATA_PATH);
+}
 async function loadGameContracts() {
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
   if (!from) from = (await web3.eth.getAccounts())[0];

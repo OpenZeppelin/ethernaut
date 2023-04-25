@@ -365,13 +365,18 @@ contract StatisticsLevelSuperseder is Initializable {
         address _oldLevelContractAddress = oldLevelContractAddress;
         address _newLevelContractAddress = newLevelContractAddress;
         uint256 _usersArrayIndex = usersArrayIndex;
-        //LevelInstance memory levelInstanceEmpty;
+        LevelInstance memory levelInstanceEmpty;
 
         do {
-            playerStats[players[_usersArrayIndex]][_newLevelContractAddress] = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress];
-            //playerStats[players[_usersArrayIndex]][_oldLevelContractAddress] = levelInstanceEmpty;
+            playerStats[players[_usersArrayIndex]][_newLevelContractAddress].instance = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress].instance;
+            playerStats[players[_usersArrayIndex]][_newLevelContractAddress].isCompleted = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress].isCompleted;
+            playerStats[players[_usersArrayIndex]][_newLevelContractAddress].timeCreated = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress].timeCreated;
+            playerStats[players[_usersArrayIndex]][_newLevelContractAddress].timeCompleted = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress].timeCompleted;
+            playerStats[players[_usersArrayIndex]][_newLevelContractAddress].timeSubmitted = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress].timeSubmitted;
+
+            playerStats[players[_usersArrayIndex]][_oldLevelContractAddress] = levelInstanceEmpty;
             _usersArrayIndex++;
-        } while (gasleft() > 53000 && !(_usersArrayIndex == players.length));
+        } while (gasleft() > 330000 && !(_usersArrayIndex == players.length));
 
 
         if(_usersArrayIndex == players.length) {
@@ -398,15 +403,15 @@ contract StatisticsLevelSuperseder is Initializable {
 
         address _oldLevelContractAddress = oldLevelContractAddress;
 
-        levelExists[_oldLevelContractAddress] = false;
-
         uint256 deployId = 0;
         while (levels[deployId] != _oldLevelContractAddress){
             deployId++;
         }
-        
         levels[deployId] = newLevelContractAddress;
-        levelExists[_oldLevelContractAddress] = false;
+
+        levelExists[_oldLevelContractAddress] = false;      
+        levels.pop();
+        
 
         dumpStage = DumpStage.DUMP_DONE;
     }
@@ -421,6 +426,7 @@ contract StatisticsLevelSuperseder is Initializable {
         dumpStage = DumpStage.INIT;
     }
 
+    // GETTERS USED TO CHECK CHANGED STORAGE SLOTS
     function getPlayerAtIndex(uint256 id) external view returns (address){
         return players[id];
     }
@@ -429,7 +435,25 @@ contract StatisticsLevelSuperseder is Initializable {
         return levelFirstInstanceCreationTime[player][level];
     }
 
+    function getLevelFirstCompletionTime(address player, address level) public view returns (uint256){
+        return levelFirstCompletionTime[player][level];
+    }
+
+    function getPlayerStats(address player, address level) public view returns (LevelInstance memory){
+        return playerStats[player][level];
+    }
     
+    function getLevelStats(address level) public view returns(Level memory){
+        return levelStats[level];
+    }
+
+    function getLevelExists(address level) public view returns(bool){
+        return levelExists[level];
+    }
+
+    function getLevelAddress(uint256 id) public view returns(address){
+        return levels[id];
+    }
     /**
      * @dev This empty reserved space is put in place to allow future versions to add new
      * variables without shifting down storage in the inheritance chain.
