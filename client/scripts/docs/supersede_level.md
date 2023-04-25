@@ -36,6 +36,8 @@ The tool will guide the operator through the process. Operator is the account th
 
 The script contains a commented function `printEditedStorageSlots(oldAddress, newAddress)` that can be uncommented to prompt in the terminal all storage slots edited after the process. 
 
+Ethernaut contract will be halt during the operation, any call to  `createLevelInstance(Level _level)` or  `submitLevelInstance(address payable _instance)` will revet with `"Contract locked due maintenance operations"` string. 
+
 ### **Test in local fork**
 
 - Set ethernaut owner as main account in the hardhat local node by adding following configuration to [`hardhat.config.js`](https://github.com/OpenZeppelin/ethernaut/blob/master/contracts/hardhat.config.js)
