@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import loadText from '../utils/textloader'
+import loadText from '../../utils/textloader'
 
 class Markdown extends React.Component {
 

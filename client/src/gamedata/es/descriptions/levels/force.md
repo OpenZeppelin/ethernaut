@@ -6,4 +6,4 @@ El objetivo de este nivel es hacer que el saldo del contrato sea mayor que cero.
 Cosas que pueden ayudar:
 * Métodos fallback
 * A veces, la mejor forma de atacar un contrato es con otro contrato.
-* Consulte la página de ayuda anterior, sección "Más allá de la consola"
+* Consulte la página ["?"](https://ethernaut.openzeppelin.com/help), sección "Más allá de la consola"

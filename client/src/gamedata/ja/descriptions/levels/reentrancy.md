@@ -7,4 +7,4 @@
 - fallback 関数
 - throw/revert
 - コントラクトを攻撃する最良の方法は、別のコントラクトであることがあります。
-- 上記のヘルプページの "Beyond the console "セクションを参照してください。
+- 上記のヘルプページの ["Beyond the console"](https://ethernaut.openzeppelin.com/help) セクションを参照してください。

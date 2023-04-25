@@ -5,9 +5,9 @@ import '../styles/page.css'
 import * as actions from '../actions';
 import { getLevelsSolvedByPlayer, checkIfPlayerExist, getTotalCompleted, getTotalFailures, getTotalCreated, getTotalPlayers } from '../utils/statsContract'
 import { validateAddress } from '../utils/ethutil'
-import Statistic from '../components/Statistic';
-import StatisticPanel from '../components/Panel';
-import Footer from '../components/Footer';
+import Statistic from '../components/stats/Statistic';
+import StatisticPanel from '../components/stats/Panel';
+import Footer from "../components/common/Footer";
 
 class Stats extends React.Component {
 
@@ -96,7 +96,6 @@ class Stats extends React.Component {
       // woth noting that the sort is 'inplace'
       stats?.levelsSolved.sort((a, b) => +a.difficulty - +b.difficulty)
       this.setState({
-        ...this.state.solvedLevels,
         solvedLevels: stats?.levelsSolved
       })
     }

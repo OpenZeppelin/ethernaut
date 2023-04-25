@@ -1,6 +1,6 @@
 import React from "react";
 import Mosaic from "./Mosaic";
-import Footer from "../components/Footer";
+import Footer from "../components/common/Footer";
 import ReactGA from "react-ga";
 import * as constants from "../constants";
 import { loadTranslations } from "../utils/translations";
