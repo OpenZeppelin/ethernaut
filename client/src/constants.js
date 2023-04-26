@@ -169,7 +169,7 @@ export const PATH_LEADERBOARD = `${PATH_ROOT}leaderboard`
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------
 export const CUSTOM_LOGGING = true; /* TRUE on production */
-export const SHOW_ALL_COMPLETE_DESCRIPTIONS = false; /* FALSE on production */
+export const SHOW_ALL_COMPLETE_DESCRIPTIONS = true; /* FALSE on production */
 export const SHOW_VERSION = true;
 
 // export const ACTIVE_NETWORK = NETWORKS.SEPOLIA
