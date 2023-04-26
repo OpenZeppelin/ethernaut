@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
 contract Instance {
 
@@ -9,7 +9,7 @@ contract Instance {
   bool private cleared = false;
 
   // constructor
-  constructor(string memory _password) public {
+  constructor(string memory _password) {
     password = _password;
   }
 

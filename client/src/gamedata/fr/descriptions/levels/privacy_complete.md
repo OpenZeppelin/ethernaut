@@ -1,0 +1,3 @@
+Rien dans la blockchain Ethereum n'est privé. Le mot clé `private` n'est qu'une construction artificielle du langage Solidity. `getStorageAt(...)` de Web3 peut être utilisé pour lire n'importe quoi depuis le stockage. Cependant, il peut être difficile de lire ce que vous voulez, car plusieurs règles et techniques d'optimisation sont utilisées pour compacter le stockage autant que possible.
+
+Cela ne peut pas être beaucoup plus compliqué que ce qui a été exposé dans ce niveau. Pour en savoir plus, consultez cet excellent article de "Darius": [How to read Ethereum contract storage](https://medium.com/aigang-network/how-to-read-ethereum-contract-storage-44252c8af925) 
