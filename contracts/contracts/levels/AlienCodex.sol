@@ -13,7 +13,7 @@ contract AlienCodex is Ownable {
     _;
   }
   
-  function make_contact() public {
+  function makeContact() public {
     contact = true;
   }
 

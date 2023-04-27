@@ -37,7 +37,7 @@ contract('AlienCodex', function (accounts) {
     });
 
     it('should allow the user to join AlienCodex', async function () {
-      await instance.make_contact();
+      await instance.makeContact();
 
       // Player should have successfully made first contact
       let status = await instance.contact.call();
