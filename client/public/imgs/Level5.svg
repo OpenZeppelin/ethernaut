@@ -1,1 +1,61 @@
-<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 134.89 134.89"><defs><style>.d{stroke-width:.53px;}.d,.e,.f,.g{fill:#eddfd6;}.d,.f,.g{stroke:#1d1d1b;stroke-miterlimit:10;}.h,.i{fill:#1d1d1b;}.f{stroke-width:.5px;}.g{stroke-width:.42px;}.i{font-family:Helvetica, Helvetica;font-size:11.07px;}</style></defs><g id="a"/><g id="b"><g id="c"><g><g><rect class="h" x=".21" y=".21" width="134.46" height="134.46" rx=".21" ry=".21"/><path class="e" d="M134.46,.42V134.46H.42V.42H134.46m0-.42H.42c-.23,0-.42,.19-.42,.42V134.46c0,.23,.19,.42,.42,.42H134.46c.23,0,.42-.19,.42-.42V.42c0-.23-.19-.42-.42-.42h0Z"/></g><rect class="e" x=".42" y=".42" width="21.13" height="21.13"/><text class="i" transform="translate(5.12 15.21)"><tspan x="0" y="0">05</tspan></text><g><circle class="d" cx="71.11" cy="69.49" r="35.98"/><circle class="f" cx="71.11" cy="69.49" r="33.89"/><circle class="g" cx="71.11" cy="69.49" r="28.83"/></g><g><path class="h" d="M92.9,56.37c-.44-2.28-1.54-4.37-3.22-6.05-1.67-1.68-3.77-2.78-6.05-3.22,2.28-.44,4.37-1.54,6.05-3.22,1.68-1.68,2.78-3.77,3.22-6.05,.9,4.67,4.6,8.37,9.27,9.27-2.28,.44-4.38,1.54-6.06,3.22-1.68,1.68-2.78,3.77-3.22,6.05Z"/><path class="e" d="M92.9,38.76c1.11,4.04,4.3,7.23,8.34,8.34-1.98,.54-3.79,1.59-5.27,3.07-1.48,1.48-2.53,3.29-3.07,5.26-.54-1.97-1.59-3.78-3.07-5.26-1.48-1.49-3.29-2.53-5.26-3.07,1.97-.54,3.78-1.59,5.26-3.07,1.49-1.49,2.53-3.3,3.07-5.27m0-3.16c0,3.17-1.29,6.05-3.37,8.13-2.08,2.08-4.95,3.37-8.13,3.37,3.18,0,6.05,1.29,8.13,3.37,2.08,2.08,3.37,4.96,3.37,8.14,0-3.18,1.29-6.05,3.37-8.14,2.08-2.08,4.96-3.37,8.14-3.37-6.35,0-11.5-5.15-11.5-11.5h0Z"/></g><g><polygon class="h" points="70.23 48.87 58.41 68.64 70.23 63.53 82.23 68.64 70.23 48.87"/><polygon class="h" points="59.23 70.74 70.26 66.21 81.4 70.95 70.44 77.34 59.23 70.74"/><polygon class="h" points="58.53 73.15 70.44 89.92 82.35 73.31 70.44 80.23 58.53 73.15"/></g></g></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 134.9 134.9" style="enable-background:new 0 0 134.9 134.9;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#1D1D1B;}
+	.st1{fill:#EDDFD6;}
+	.st2{fill:#222222;}
+	.st3{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.42;stroke-linecap:round;stroke-linejoin:round;}
+	.st4{fill:#1D1D1B;stroke:#EDDFD6;stroke-width:0.42;stroke-miterlimit:10;}
+	.st5{fill:none;stroke:#1D1D1B;stroke-width:0.42;stroke-miterlimit:10;}
+	.st6{fill:#00AEEF;}
+	.st7{enable-background:new    ;}
+	.st8{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.6437;stroke-miterlimit:10;}
+	.st9{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.6073;stroke-miterlimit:10;}
+	.st10{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.5101;stroke-miterlimit:10;}
+	.st11{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.42;stroke-miterlimit:10;}
+	.st12{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.6356;stroke-miterlimit:10;}
+	.st13{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.5996;stroke-miterlimit:10;}
+	.st14{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.5037;stroke-miterlimit:10;}
+	.st15{font-family:'NotoSans-Bold';}
+	.st16{font-size:19px;}
+</style>
+<g id="_x30_5">
+	<rect x="-0.3" y="-0.1" class="st0" width="135.3" height="135.3"/>
+	<g>
+		<g>
+			<circle class="st12" cx="67.3" cy="67.5" r="43.1"/>
+			<circle class="st13" cx="67.3" cy="67.5" r="40.6"/>
+			<circle class="st14" cx="67.3" cy="67.5" r="34.6"/>
+		</g>
+		<g>
+			<path class="st0" d="M93.5,51.8c-0.5-2.7-1.8-5.2-3.9-7.3c-2-2-4.5-3.3-7.3-3.9c2.7-0.5,5.2-1.8,7.3-3.9c2-2,3.3-4.5,3.9-7.3
+				c1.1,5.6,5.5,10,11.1,11.1c-2.7,0.5-5.3,1.8-7.3,3.9C95.3,46.6,94,49.1,93.5,51.8L93.5,51.8z"/>
+			<path class="st1" d="M93.5,30.7c1.3,4.8,5.2,8.7,10,10c-2.4,0.6-4.5,1.9-6.3,3.7c-1.8,1.8-3,3.9-3.7,6.3
+				c-0.6-2.4-1.9-4.5-3.7-6.3c-1.8-1.8-3.9-3-6.3-3.7c2.4-0.6,4.5-1.9,6.3-3.7C91.6,35.2,92.8,33,93.5,30.7 M93.5,26.9
+				c0,3.8-1.5,7.3-4,9.7c-2.5,2.5-5.9,4-9.7,4c3.8,0,7.3,1.5,9.7,4c2.5,2.5,4,5.9,4,9.8c0-3.8,1.5-7.3,4-9.8c2.5-2.5,5.9-4,9.8-4
+				C99.7,40.7,93.5,34.5,93.5,26.9L93.5,26.9L93.5,26.9z"/>
+		</g>
+		<g>
+			<polygon class="st0" points="66.3,42.8 52.1,66.5 66.3,60.4 80.7,66.5 			"/>
+			<polygon class="st0" points="53.1,69 66.3,63.6 79.7,69.3 66.5,76.9 			"/>
+			<polygon class="st0" points="52.3,71.9 66.5,92 80.8,72.1 66.5,80.4 			"/>
+		</g>
+	</g>
+	<g>
+		<path class="st1" d="M-0.1-0.1h28.5v20.2c0,3.8-3.1,6.8-6.8,6.8H-0.1V-0.1z"/>
+		<g>
+			<path class="st0" d="M13.7,14.1c0,1.5-0.2,2.7-0.5,3.7s-0.8,1.8-1.5,2.4C11.1,20.7,10.2,21,9,21c-1.6,0-2.8-0.6-3.6-1.8
+				s-1.1-2.9-1.1-5.1c0-1.5,0.2-2.7,0.5-3.8c0.3-1,0.8-1.8,1.5-2.4C6.9,7.3,7.8,7.1,9,7.1c1.6,0,2.8,0.6,3.6,1.8
+				C13.4,10.1,13.7,11.8,13.7,14.1z M7.1,14.1c0,1.5,0.1,2.7,0.4,3.5c0.3,0.8,0.8,1.2,1.5,1.2c0.7,0,1.2-0.4,1.5-1.2
+				c0.3-0.8,0.4-1.9,0.4-3.5c0-1.5-0.1-2.7-0.4-3.5C10.2,9.8,9.7,9.4,9,9.4c-0.7,0-1.2,0.4-1.5,1.2C7.3,11.3,7.1,12.5,7.1,14.1z"/>
+			<path class="st0" d="M20.2,12.2c0.8,0,1.6,0.2,2.2,0.5c0.6,0.3,1.2,0.8,1.5,1.4c0.4,0.6,0.6,1.4,0.6,2.3c0,1.5-0.5,2.6-1.4,3.5
+				c-0.9,0.8-2.3,1.3-4,1.3c-0.7,0-1.4-0.1-2-0.2s-1.2-0.3-1.6-0.6v-2.5c0.5,0.2,1,0.4,1.7,0.6c0.7,0.2,1.3,0.3,1.9,0.3
+				c0.8,0,1.5-0.2,1.9-0.5c0.4-0.3,0.7-0.9,0.7-1.6c0-1.4-0.9-2.1-2.7-2.1c-0.4,0-0.7,0-1.1,0.1c-0.4,0.1-0.7,0.1-1,0.2l-1.1-0.6
+				l0.5-6.9h7.4v2.4h-4.8l-0.2,2.7c0.2,0,0.4-0.1,0.7-0.1C19.4,12.2,19.7,12.2,20.2,12.2z"/>
+		</g>
+		<text transform="matrix(1 0 0 1 3.9753 -5.5971)" class="st0 st15 st16">05</text>
+	</g>
+</g>
+</svg>
