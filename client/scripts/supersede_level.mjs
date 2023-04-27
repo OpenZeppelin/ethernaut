@@ -15,12 +15,12 @@ import gamedata from "../src/gamedata/gamedata.json" assert { type: "json" };
 const levels = gamedata.levels;
 
 // For testing purposes in a local fork uncomment one of the following lines to get forked network deployment data.
-const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.GOERLI.name}.json`;
+// const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.GOERLI.name}.json`;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.MUMBAI.name}.json`;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.SEPOLIA.name}.json`;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.OPTIMISM_GOERLI.name}.json`;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.ARBITRUM_GOERLI.name}.json`;
-// const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.local.json`;
+const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.local.json`;
 
 // For real purposes
 //const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
@@ -28,8 +28,7 @@ const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.GOER
 const DeployData = await loadDeployData(DEPLOY_DATA_PATH);
 
 // Operator address, the account that will perform the data dump (meant to be ethernaut owner).
-//const OPERATOR_ADDRESS = ADDRESSES.ACTIVE_NETWORK.name;
-const OPERATOR_ADDRESS = "0x09902A56d04a9446601a0d451E07459dC5aF0820";
+const OPERATOR_ADDRESS = ADDRESSES.ACTIVE_NETWORK.name;
 
 // Contract Objects
 let web3;
