@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createRef } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import CodeComponent from "../components/levels/Code";
@@ -13,7 +13,7 @@ import getlevelsdata from "../utils/getlevelsdata";
 import { withRouter } from "../hoc/withRouter";
 import { getLevelKey } from "../utils/contractutil";
 import { deployAndRegisterLevel } from "../utils/deploycontract";
-import {  svgFilter } from "../utils/svg";
+import { svgFilter } from "../utils/svg";
 
 class Level extends React.Component {
   constructor(props) {
@@ -23,16 +23,19 @@ class Level extends React.Component {
       submittedIntance: false,
       dropwDownOpened: false,
     };
+    this.containerRef = createRef();
   }
 
   componentDidMount() {
     this.props.activateLevel(this.props.params.address);
+    document.addEventListener("mousedown", this.handleClickOutside);
   }
 
   componentWillUnmount() {
     if (this.props.activateLevel) {
       this.props.deactivateLevel(this.props.activateLevel);
     }
+    document.removeEventListener("mousedown", this.handleClickOutside);
   }
 
   componentDidUpdate() {
@@ -60,10 +63,7 @@ class Level extends React.Component {
     if (!this.state.requestedInstance) {
       this.props.loadLevelInstance(this.props.level, false, true);
       this.setState({ requestedInstance: true });
-      setTimeout(
-        () => this.setState({ requestedInstance: false }),
-        2000
-      );
+      setTimeout(() => this.setState({ requestedInstance: false }), 2000);
     }
   };
 
@@ -74,10 +74,16 @@ class Level extends React.Component {
   };
 
   closeDropdown = () => {
-    if(this.state.dropwDownOpened){
+    if (this.state.dropwDownOpened) {
       this.setState({
-        dropwDownOpened: false
+        dropwDownOpened: false,
       });
+    }
+  };
+
+  handleClickOutside = (event) => {
+    if (this.containerRef && !this.containerRef.current.contains(event.target)) {
+      this.closeDropdown();
     }
   }
 
@@ -144,7 +150,7 @@ class Level extends React.Component {
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels);
 
     return (
-      <main onClick={this.closeDropdown}>
+      <main>
         <div className="lines"></div>
         <main>
           {(isDescriptionMissingTranslation ||
@@ -159,24 +165,25 @@ class Level extends React.Component {
               </div>
             )}
 
-          <div onMouseLeave={this.closeDropdown} onClick={e => e.stopPropagation()} className="level-selector-nav">
+          <div ref={this.containerRef} onClick={e => e.stopPropagation()} className="level-selector-nav">
             <div onClick={this.toggleDropdown} className="dropdown-menu-bar">
               <p key={level.difficulty}>{selectedLevel.difficulty}</p>
               <p key={level.name}>{level.name}</p>
 
               <div className="dropdown-menu-bar-button">
                 <button className="dropdown-button">
-                  <i className="fa fa-caret-down"></i>
+                  <i className={`fa fa-caret-${this.state.dropwDownOpened? "up" : "down"}`}></i>
                 </button>
               </div>
             </div>
-            <div style={{display: this.state.dropwDownOpened ? 'block':'none'}} className="level-selector-dropdown-content">
+            <div style={{ display: this.state.dropwDownOpened ? 'block' : 'none' }} className="level-selector-dropdown-content">
               {levelData.map((level) => {
                 return (
                   <Link
                     key={level.name}
                     to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress || level.id
                       }`}
+                    onClick={this.closeDropdown}
                   >
                     <div className="level-selector-dropdown-content-item">
                       <p key={level.name}>

@@ -13,6 +13,6 @@ Little did they know, their lunch money was at risk…
 You'll need to hijack this wallet to become the admin of the proxy.
 
 &nbsp;
-Things that might help::
-* Understanding how `delegatecall`s work and how `msg.sender` and `msg.value` behaves when performing one.
+Things that might help:
+* Understanding how `delegatecall` works and how `msg.sender` and `msg.value` behaves when performing one.
 * Knowing about proxy patterns and the way they handle storage variables.

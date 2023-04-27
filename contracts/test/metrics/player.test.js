@@ -2,7 +2,7 @@ const Statistics = artifacts.require('./metrics/Statistics.sol');
 const chai = require('chai');
 const { expect } = chai;
 const { solidity } = require('ethereum-waffle');
-const { ethers } = require('ethers');
+const { ethers } = require('hardhat');
 
 chai.use(solidity);
 

@@ -6,42 +6,45 @@
 
 [Chainlink Data Feeds](https://docs.chain.link/docs/get-the-latest-price) (Каналы данных Chainlink) — безопасный, надёжный способ получения децентрализованных данных из смарт контрактов. Они располагают обширной библиотекой из множества различных источников, а также предлагают [надёжную случайную информацию](https://docs.chain.link/docs/chainlink-vrf), возможность сделать [любой API call](https://docs.chain.link/docs/make-a-http-get-request), [создание модульной сети oracle](https://docs.chain.link/docs/architecture-decentralized-model), [автоматизацию действий смарт-контрактов](https://docs.chain.link/docs/kovan-keeper-network-beta), and unlimited customization. 
 
-[Оракулы Uniswap TWAP](https://uniswap.org/docs/v2/core-concepts/oracles/) полагаются на взвешенную по времени ценовую модель, называемую [TWAP](https://en.wikipedia.org/wiki/Time-weighted_average_price#). Хотя такой дизайн может показаться привлекательным, этот протокол сильно зависит от ликвидности DEX (децентрализованной биржи), и, если она слишком низкая, ценами можно легко манипулировать.
+[Оракулы Uniswap TWAP](https://docs.uniswap.org/contracts/v2/concepts/core-concepts/oracles) полагаются на взвешенную по времени ценовую модель, называемую [TWAP](https://en.wikipedia.org/wiki/Time-weighted_average_price#). Хотя такой дизайн может показаться привлекательным, этот протокол сильно зависит от ликвидности DEX (децентрализованной биржи), и, если она слишком низкая, ценами можно легко манипулировать.
 
 
-Вот пример получения данных из канала данных Chainlink (в тестовой сети kovan):
+Вот пример получения данных из канала данных Chainlink (в тестовой сети Sepolia):
 ```
 
-pragma solidity ^0.6.7;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.7;
 
-import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 contract PriceConsumerV3 {
-
     AggregatorV3Interface internal priceFeed;
 
     /**
-     * Network: Kovan
-     * Aggregator: ETH/USD
-     * Address: 0x9326BFA02ADD2366b30bacB125260Af641031331
+     * Network: Sepolia
+     * Aggregator: BTC/USD
+     * Address: 0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43
      */
-    constructor() public {
-        priceFeed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
+    constructor() {
+        priceFeed = AggregatorV3Interface(
+            0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43
+        );
     }
 
     /**
-     * Returns the latest price
+     * Returns the latest price.
      */
     function getLatestPrice() public view returns (int) {
+        // prettier-ignore
         (
-            uint80 roundID, 
+            /* uint80 roundID */,
             int price,
-            uint startedAt,
-            uint timeStamp,
-            uint80 answeredInRound
+            /*uint startedAt*/,
+            /*uint timeStamp*/,
+            /*uint80 answeredInRound*/
         ) = priceFeed.latestRoundData();
         return price;
     }
 }
 ```
-[Попробуй в IDE Remix](https://remix.ethereum.org/#version=soljson-v0.6.7+commit.b8d736ae.js&optimize=false&evmVersion=null&gist=0c5928a00094810d2ba01fd8d1083581)
+[Попробуй в IDE Remix](https://remix.ethereum.org/#url=https://docs.chain.link/samples/PriceFeeds/PriceConsumerV3.sol)

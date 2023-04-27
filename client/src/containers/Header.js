@@ -336,7 +336,7 @@ class Header extends React.Component {
                   }`}
                 >
                   <p onClick={() => this.setActiveTab(2)}>
-                    <i className="fas fa-globe-americas"></i>
+                    <i className="fas fa-network-wired"></i>
                     <span>{strings.Networks}</span>
                   </p>
                   <div className={this.getDDClassName(2)}>
@@ -365,7 +365,7 @@ class Header extends React.Component {
 
                 <div className="single-dropdown">
                   <p onClick={() => this.setActiveTab(1)}>
-                    <i className="fas fa-0.5x fa-network-wired"></i>
+                    <i className="fas fa-globe-americas"></i>
                     <span>{strings.Languages}</span>
                   </p>
                   <div className={this.getDDClassName(1)}>

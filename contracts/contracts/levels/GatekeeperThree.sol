@@ -32,7 +32,8 @@ contract SimpleTrick {
 contract GatekeeperThree {
   address public owner;
   address public entrant;
-  bool public allow_enterance = false;
+  bool public allow_entrance;
+
   SimpleTrick public trick;
 
   function construct0r() public {
@@ -46,7 +47,7 @@ contract GatekeeperThree {
   }
 
   modifier gateTwo() {
-    require(allow_enterance == true);
+    require(allow_entrance == true);
     _;
   }
 
@@ -58,7 +59,7 @@ contract GatekeeperThree {
 
   function getAllowance(uint _password) public {
     if (trick.checkPassword(_password)) {
-        allow_enterance = true;
+        allow_entrance = true;
     }
   }
 
@@ -67,9 +68,8 @@ contract GatekeeperThree {
     trick.trickInit();
   }
 
-  function enter() public gateOne gateTwo gateThree returns (bool entered) {
+  function enter() public gateOne gateTwo gateThree {
     entrant = tx.origin;
-    return true;
   }
 
   receive () external payable {}
