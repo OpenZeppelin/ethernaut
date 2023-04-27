@@ -1,152 +1,78 @@
 {
   "authors": {
     "ajsantander": {
-      "name": [
-        "Alejandro Santander"
-      ],
-      "emails": [
-        "palebluedot@gmail.com"
-      ],
-      "websites": [
-        "https://github.com/ajsantander"
-      ],
+      "name": ["Alejandro Santander"],
+      "emails": ["palebluedot@gmail.com"],
+      "websites": ["https://github.com/ajsantander"],
       "donate": "0x31a3801499618d3c4b0225b9e06e228d4795b55d"
     },
     "martriay": {
-      "name": [
-        "Martin Triay"
-      ],
-      "emails": [
-        "martriay@gmail.com"
-      ],
-      "websites": [
-        "https://github.com/martriay"
-      ]
+      "name": ["Martin Triay"],
+      "emails": ["martriay@gmail.com"],
+      "websites": ["https://github.com/martriay"]
     },
     "AgeManning": {
-      "name": [
-        "Adrian Manning"
-      ],
-      "emails": [
-        "age@agemanning.com"
-      ],
-      "websites": [
-        "https://github.com/AgeManning"
-      ],
+      "name": ["Adrian Manning"],
+      "emails": ["age@agemanning.com"],
+      "websites": ["https://github.com/AgeManning"],
       "donate": "0x0f44CD2Ca92645Ada2E47155e4dFC0025c3E9EEc"
     },
     "syncikin": {
-      "name": [
-        "Kyle Riley"
-      ],
-      "emails": [
-        "kyle@iosiro.com"
-      ],
-      "websites": [
-        "https://github.com/syncikin"
-      ]
+      "name": ["Kyle Riley"],
+      "emails": ["kyle@iosiro.com"],
+      "websites": ["https://github.com/syncikin"]
     },
     "34x4p08": {
-      "name": [
-        "Ivan Zakharov"
-      ],
-      "emails": [
-        "34x4p08@gmail.com"
-      ],
-      "websites": [
-        "https://github.com/34x4p08"
-      ]
+      "name": ["Ivan Zakharov"],
+      "emails": ["34x4p08@gmail.com"],
+      "websites": ["https://github.com/34x4p08"]
     },
     "0age": {
-      "name": [
-        "0age"
-      ],
-      "emails": [
-        "0age@protonmail.com"
-      ],
-      "websites": [
-        "https://github.com/0age"
-      ]
+      "name": ["0age"],
+      "emails": ["0age@protonmail.com"],
+      "websites": ["https://github.com/0age"]
     },
     "nczhu": {
-      "name": [
-        "Nicole Zhu"
-      ],
-      "emails": [
-        "n@nicole.ai"
-      ],
-      "websites": [
-        "https://github.com/nczhu"
-      ]
+      "name": ["Nicole Zhu"],
+      "emails": ["n@nicole.ai"],
+      "websites": ["https://github.com/nczhu"]
     },
     "patrickalphac": {
-      "name": [
-        "Patrick Collins"
-      ],
-      "emails": [
-        "patrick@alphachain.io"
-      ],
-      "websites": [
-        "http://alphachain.io/blogs/"
-      ],
+      "name": ["Patrick Collins"],
+      "emails": ["patrick@alphachain.io"],
+      "websites": ["http://alphachain.io/blogs/"],
       "donate": "0x874437B5a42aA6E6419eC2447C9e36c278c46532"
     },
     "scottt": {
-      "name": [
-        "Scott Tsai"
-      ],
-      "emails": [
-        "scottt.tw@gmail.com"
-      ],
-      "websites": [
-        "http://scottt.tw"
-      ],
+      "name": ["Scott Tsai"],
+      "emails": ["scottt.tw@gmail.com"],
+      "websites": ["http://scottt.tw"],
       "donate": "scottt.eth"
     },
     "openzeppelin": {
-      "name": [
-        "OpenZeppelin"
-      ],
-      "emails": [
-        "ethernaut@zeppelin.solutions"
-      ],
-      "websites": [
-        "https://openzeppelin.com"
-      ]
+      "name": ["OpenZeppelin"],
+      "emails": ["ethernaut@zeppelin.solutions"],
+      "websites": ["https://openzeppelin.com"]
     },
     "openzeppelin&forta": {
-      "name": [
-        "OpenZeppelin",
-        "Forta"
-      ],
-      "emails": [
-        "ethernaut@zeppelin.solutions",
-        "info@forta.org"
-      ],
-      "websites": [
-        "https://openzeppelin.com",
-        "https://forta.org"
-      ]
+      "name": ["OpenZeppelin", "Forta"],
+      "emails": ["ethernaut@zeppelin.solutions", "info@forta.org"],
+      "websites": ["https://openzeppelin.com", "https://forta.org"]
     },
     "ericnordelo": {
-      "name": [
-        "Eric Nordelo"
-      ],
-      "emails": [
-        "eric.nordelo39@gmail.com"
-      ],
-      "websites": [
-        "https://www.ericnordelo.com/"
-      ]
+      "name": ["Eric Nordelo"],
+      "emails": ["eric.nordelo39@gmail.com"],
+      "websites": ["https://www.ericnordelo.com/"]
     },
     "KStasi": {
-      "name": [
-        "Anastasiia Kondaurova"
-      ],
+      "name": ["Anastasiia Kondaurova"],
       "emails": [],
-      "websites": [
-        "https://www.linkedin.com/in/kstasi/"
-      ]
+      "websites": ["https://www.linkedin.com/in/kstasi/"]
+    },
+    "CallMeGwei": {
+      "name": ["CallMeGwei"],
+      "emails": [],
+      "websites": ["https://www.callmegwei.com/"]
     }
   }
 }
