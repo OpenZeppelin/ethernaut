@@ -15,11 +15,12 @@ import gamedata from "../src/gamedata/gamedata.json" assert { type: "json" };
 const levels = gamedata.levels;
 
 // For testing purposes in a local fork uncomment one of the following lines to get forked network deployment data.
-// const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.GOERLI.name}.json`;
+const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.GOERLI.name}.json`;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.MUMBAI.name}.json`;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.SEPOLIA.name}.json`;
-const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.OPTIMISM_GOERLI.name}.json`;
+// const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.OPTIMISM_GOERLI.name}.json`;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.ARBITRUM_GOERLI.name}.json`;
+// const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.local.json`;
 
 // For real purposes
 //const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
@@ -133,8 +134,8 @@ async function supersede() {
   // Clean used storage slots
   await cleanStorage();
 
-  // Print edited storage slots
-  await printEditedStorageSlots(oldAddress, newAddress);
+  // // Print edited storage slots
+  // // await printEditedStorageSlots(oldAddress, newAddress);
 
   // Downgrade Statistics
   await downgradeStatisticsSupersederToStatisticsAndSaveDeployData();
@@ -200,7 +201,7 @@ async function upgradeStatisticsToStatisticsSuperseder() {
   console.log(colors.bold.yellow("\nUgrading statistics contract to statisticsSuperseder..."));
 
   const props = {
-    gasPrice: (await web3.eth.getGasPrice()) * 10,
+    gasPrice: parseInt(await web3.eth.getGasPrice() * 1.10),
     gas: 4500000,
   };
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
@@ -266,7 +267,7 @@ async function deployLevel(level) {
   );
 
   const props = {
-    gasPrice: (await web3.eth.getGasPrice()) * 10,
+    gasPrice: parseInt(await web3.eth.getGasPrice() * 1.10),
     gas: 4500000,
   };
 
@@ -306,7 +307,7 @@ async function registerLevelInEthernaut(newAddress, level) {
   console.log(colors.bold.yellow("\nRegistering level in Ethernaut contract..."));
 
   const props = {
-    gasPrice: (await web3.eth.getGasPrice()) * 10,
+    gasPrice: parseInt(await web3.eth.getGasPrice() * 1.10),
     gas: 450000,
   };
 
@@ -333,7 +334,7 @@ async function setSubstitutionAddresses(oldAddress, newAddress) {
   if (!from) from = (await web3.eth.getAccounts())[0];
 
   const props = {
-    gasPrice: (await web3.eth.getGasPrice()) * 10,
+    gasPrice: parseInt(await web3.eth.getGasPrice() * 1.10),
     gas: 450000,
   };
   let tx = await proxyStatsWithSupersederImplementationABI.methods[
@@ -366,7 +367,7 @@ async function dumpData(oldAddress, newAddress) {
   if (!from) from = (await web3.eth.getAccounts())[0];
 
   const props = {
-    gasPrice: (await web3.eth.getGasPrice()) * 10,
+    gasPrice: parseInt(await web3.eth.getGasPrice() * 1.10),
     gas: 2000000, // gas can be tuned here 2000000
   };
 
@@ -487,7 +488,7 @@ async function cleanStorage() {
   if (!from) from = (await web3.eth.getAccounts())[0];
 
   const props = {
-    gasPrice: (await web3.eth.getGasPrice()) * 10,
+    gasPrice: parseInt(await web3.eth.getGasPrice() * 1.10),
     gas: 450000,
   };
 
@@ -663,28 +664,20 @@ async function downgradeStatisticsSupersederToStatisticsAndSaveDeployData() {
   console.log(colors.bold.yellow("\nDowngrading statisticsSuperseder contract to statistics..."));
 
   const props = {
-    gasPrice: (await web3.eth.getGasPrice()) * 10,
+    gasPrice: parseInt(await web3.eth.getGasPrice() * 1.10),
     gas: 4500000,
   };
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
   if (!from) from = (await web3.eth.getAccounts())[0];
 
   // Deploy Implementation
-  console.log(colors.grey(` Deploying Statistics.sol...`));
-  const ImplementationContract = await ethutil.getTruffleContract(ImplementationABI.default, {
-    from,
-  });
-  statsImplementation = await ImplementationContract.new(props);
-  await web3.eth.getTransactionReceipt(statsImplementation.transactionHash);
-  console.log(colors.grey(" Done!"), "✅");
-  console.log(` Implementation: ${statsImplementation.address}`);
-
   console.log(colors.grey(` Upgrading Proxy...`));
   const tx = await proxyAdmin.methods["upgrade(address,address)"](
     proxyStats.address,
-    statsImplementation.address,
+    "0x7000E0F2F5A389DF14b50c6F84686123F19b27F6",
     { from, ...props }
   );
+
   await web3.eth.getTransactionReceipt(tx.tx);
   console.log(colors.grey(` Proxy is downgraded! ✅`));
 

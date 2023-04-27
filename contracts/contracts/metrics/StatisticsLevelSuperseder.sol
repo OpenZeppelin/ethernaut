@@ -321,10 +321,16 @@ contract StatisticsLevelSuperseder is Initializable {
         address _newLevelContractAddress = newLevelContractAddress;
         uint256 _usersArrayIndex = usersArrayIndex;
 
-        
+        uint256 timestamp;
+
         do {
-            levelFirstInstanceCreationTime[players[_usersArrayIndex]][_newLevelContractAddress] = levelFirstInstanceCreationTime[players[_usersArrayIndex]][_oldLevelContractAddress];
-            levelFirstInstanceCreationTime[players[_usersArrayIndex]][_oldLevelContractAddress] = 0;
+            timestamp = levelFirstInstanceCreationTime[players[_usersArrayIndex]][_oldLevelContractAddress];
+
+            if(timestamp > 0) {
+                levelFirstInstanceCreationTime[players[_usersArrayIndex]][_newLevelContractAddress] = timestamp;
+                levelFirstInstanceCreationTime[players[_usersArrayIndex]][_oldLevelContractAddress] = 0;
+            }
+
             _usersArrayIndex++;
         } while (gasleft() > 53000 && !(_usersArrayIndex == players.length));
 
@@ -344,9 +350,16 @@ contract StatisticsLevelSuperseder is Initializable {
         address _newLevelContractAddress = newLevelContractAddress;
         uint256 _usersArrayIndex = usersArrayIndex;
         
+        uint256 timestamp;
+
         do {
-            levelFirstCompletionTime[players[_usersArrayIndex]][_newLevelContractAddress] = levelFirstCompletionTime[players[_usersArrayIndex]][_oldLevelContractAddress];
-            levelFirstCompletionTime[players[_usersArrayIndex]][_oldLevelContractAddress] = 0;
+            timestamp = levelFirstCompletionTime[players[_usersArrayIndex]][_oldLevelContractAddress];
+
+            if(timestamp > 0) {
+
+                levelFirstCompletionTime[players[_usersArrayIndex]][_newLevelContractAddress] = timestamp;
+                levelFirstCompletionTime[players[_usersArrayIndex]][_oldLevelContractAddress] = 0;
+            }
             _usersArrayIndex++;
         } while (gasleft() > 53000 && !(_usersArrayIndex == players.length));
         
@@ -367,14 +380,18 @@ contract StatisticsLevelSuperseder is Initializable {
         uint256 _usersArrayIndex = usersArrayIndex;
         LevelInstance memory levelInstanceEmpty;
 
+        LevelInstance memory actualInstance = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress];
         do {
-            playerStats[players[_usersArrayIndex]][_newLevelContractAddress].instance = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress].instance;
-            playerStats[players[_usersArrayIndex]][_newLevelContractAddress].isCompleted = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress].isCompleted;
-            playerStats[players[_usersArrayIndex]][_newLevelContractAddress].timeCreated = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress].timeCreated;
-            playerStats[players[_usersArrayIndex]][_newLevelContractAddress].timeCompleted = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress].timeCompleted;
-            playerStats[players[_usersArrayIndex]][_newLevelContractAddress].timeSubmitted = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress].timeSubmitted;
+            if(actualInstance.instance != address(0)) {
+                playerStats[players[_usersArrayIndex]][_newLevelContractAddress].instance = actualInstance.instance;
+                playerStats[players[_usersArrayIndex]][_newLevelContractAddress].isCompleted = actualInstance.isCompleted;
+                playerStats[players[_usersArrayIndex]][_newLevelContractAddress].timeCreated = actualInstance.timeCreated;
+                playerStats[players[_usersArrayIndex]][_newLevelContractAddress].timeCompleted = actualInstance.timeCompleted;
+                playerStats[players[_usersArrayIndex]][_newLevelContractAddress].timeSubmitted = actualInstance.timeSubmitted;
 
-            playerStats[players[_usersArrayIndex]][_oldLevelContractAddress] = levelInstanceEmpty;
+                playerStats[players[_usersArrayIndex]][_oldLevelContractAddress] = levelInstanceEmpty;
+            }
+
             _usersArrayIndex++;
         } while (gasleft() > 330000 && !(_usersArrayIndex == players.length));
 
