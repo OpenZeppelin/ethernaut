@@ -446,6 +446,21 @@
       "deployId": "28",
       "instanceGas": 1000000,
       "author": "KStasi"
+    },
+    {
+      "name": "SafeToken",
+      "created": "2020-11-20",
+      "difficulty": "6",
+      "description": "safetoken.md",
+      "completedDescription": "safetoken_complete.md",
+      "levelContract": "SafeTokenFactory.sol",
+      "instanceContract": "SafeToken.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "30",
+      "instanceGas": 2000000,
+      "author": "AshiqAmien"
     }
   ]
 }
