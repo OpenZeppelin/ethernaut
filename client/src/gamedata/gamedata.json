@@ -446,6 +446,21 @@
       "deployId": "28",
       "instanceGas": 1000000,
       "author": "KStasi"
+    },
+    {
+      "name": "ShapeShifter",
+      "created": "2023-01-13",
+      "difficulty": "8",
+      "description": "shapeshifter.md",
+      "completedDescription": "shapeshifter_complete.md",
+      "levelContract": "ShapeShifterFactory.sol",
+      "instanceContract": "ShapeShifter.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "32",
+      "instanceGas": 1500000,
+      "author": "ckoopmann"
     }
   ]
 }
