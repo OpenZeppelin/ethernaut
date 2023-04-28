@@ -1,9 +1,9 @@
 Этот уровень поможет тебе освоить основы игры.
 
-#### 1. Set up MetaMask
+#### 1. Установи MetaMask
 
-If you don't have it already, install the [MetaMask browser extension](https://metamask.io/) (in Chrome, Firefox, Brave or Opera on your desktop machine).
-Set up the extension's wallet and use the network selector to point to the preferred network in the top left of the extension's interface. Alternatively you can use the UI button to switch between networks. If you select an unsupported network, the game will notify you and bring you to the default Goerli testnet.
+Если ты этого ещё не сделал, установи [расширение для браузера MetaMask](https://metamask.io/) (В Chrome, Firefox, Brave или Opera на свой компьютер).
+Подготовь свой кошелёк в расширении и выбери желаемую сеть слева вверху в интерфейсе расширения. Вы также можете использовать кнопку пользовательского интерфейса чтобы переключать сети. Если вы выберете неподдерживаемую сеть, игра уведомит вас об этом и переключит кошелёк на стандартную сеть
 
 #### 2. Открой консоль браузера
 

@@ -39,6 +39,29 @@ section.statisticspanel{
     gap: 15px;
     padding: 24px;
     border-radius: 8px;
+
+    height: 250px;
+    width: 100%;
+    /* width: 300px; */
+    overflow-y: scroll;
+}
+
+section.statisticspanel::-webkit-scrollbar {
+    width: 5px;
+    padding: 2px;
+}
+  
+/* Track */
+section.statisticspanel::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+    border-radius: 0px 8px 8px 0px;
+    width: 15px;
+}
+
+/* Handle */
+section.statisticspanel::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 8px 8px 8px 8px;
 }
 /* styles for panel component */
 

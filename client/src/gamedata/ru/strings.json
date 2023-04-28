@@ -1,9 +1,9 @@
 {
   "ethernaut": "Ethernaut",
   "title": "Ethernaut",
-  "hiring": "У нас есть вакансии!",
+  "hiring": "Мы нанимаем",
   "info": "<h2>Ethernaut это Web3/Solidity варгейм на базе Ethereum Virtual Machine, вдохновленный <a href='https://overthewire.org' target='_blank' rel='noopener noreferrer'>overthewire.org</a>. Каждый уровень является смарт-контрактом, который необходимо 'взломать'. Исходный код игры полностью открытый, а все уровни созданы другими игроками. У тебя есть интересная идея для нового уровня? <a href='https://github.com/OpenZeppelin/ethernaut'><button>Будем рады пулл реквестам</button></a>!</h2>",
-  "home": "Домашняя страница",
+  "home": "Назад",
   "help": "Помощь",
   "stats": "Статистика",
   "ethernautHelp": "Правила игры",
@@ -11,6 +11,7 @@
   "english": "English",
   "arabic": "عربي",
   "spanish": "Español",
+  "portuguese": "Português",
   "japanese": "日本語",
   "turkish": "Türkçe",
   "chinese_simplified": "簡體中文",
@@ -103,5 +104,8 @@
   "FifthyPercentMessage": "Awesome work! You’re halfway through Ethernaut and getting pretty good at breaking things. Working as a Blockchain Security Researcher at OpenZeppelin could be fun... https://grnh.se/fdbf1c043us",
   "SeventyFivePercentMessage": "75%: Good work anon…you’re deep down the rabbit hole now....who knows where it will take you... https://grnh.se/d4a786e43us",
   "NinetyPercentMessage": "90%: You’re almost there anon! Just a few more challenges left until you complete Ethernaut! Have you considered a career in Blockchain Security?https://grnh.se/cfcca8c83us",
-  "HundredPercentMessage": "100%: Congratulations! Your journey down the web3 rabbit hole is impressive and should be celebrated! You now have the skills to break smart contracts! What’s next from here anon? Apply to be a Blockchain Security Researcher at OpenZeppelin, and contribute to securing the top protocols in web3! https://grnh.se/26c05aac3us"
+  "HundredPercentMessage": "100%: Congratulations! Your journey down the web3 rabbit hole is impressive and should be celebrated! You now have the skills to break smart contracts! What’s next from here anon? Apply to be a Blockchain Security Researcher at OpenZeppelin, and contribute to securing the top protocols in web3! https://grnh.se/26c05aac3us",
+  "Menu": "Меню",
+  "Networks": "сети",
+  "Languages": "Языки"
 }

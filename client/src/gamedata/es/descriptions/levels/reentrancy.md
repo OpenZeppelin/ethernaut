@@ -6,4 +6,4 @@ Cosas que pueden ayudar:
 * Métodos fallback
 * Throw/revert
 * A veces, la mejor forma de atacar un contrato es con otro contrato.
-* Consulte la página de ayuda anterior, sección "Más allá de la consola"
+* Consulte la página ["?"](https://ethernaut.openzeppelin.com/help), sección "Más allá de la consola"

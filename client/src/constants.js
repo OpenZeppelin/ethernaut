@@ -163,6 +163,7 @@ export const PATH_HELP = "/help";
 export const PATH_LEVEL_ROOT = `${PATH_ROOT}level/`;
 export const PATH_LEVEL = `${PATH_LEVEL_ROOT}:address`;
 export const PATH_STATS = `${PATH_ROOT}stats`;
+export const PATH_LEADERBOARD = `${PATH_ROOT}leaderboard`
 
 // RELEASE SENSITIVE
 // -----------------------------------------------------------------------------------------
@@ -190,3 +191,9 @@ Object.keys(NETWORKS)
 export const ID_TO_NETWORK = id_to_network;
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------
+
+export const ALIAS_PATH = "https://raw.githubusercontent.com/OpenZeppelin/ethernaut-leaderboard/update/boards/aliases.json"
+
+export const getLeaderboardPath = (network) => {
+  return `https://raw.githubusercontent.com/OpenZeppelin/ethernaut-leaderboard/update/boards/networkleaderboards/${network}LeaderBoard.json`
+}

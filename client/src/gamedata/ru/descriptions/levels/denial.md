@@ -1,5 +1,3 @@
-This is a simple wallet that drips funds over time. You can withdraw the funds
-slowly by becoming a withdrawing partner.
+Это простой кошелёк, который постепенно переводит средства. Ты можешь медленно выводить деньги, став партнёром вывода.
 
-If you can deny the owner from withdrawing funds when they call `withdraw()`
-(whilst the contract still has funds, and the transaction is of 1M gas or less) you will win this level.
+Если ты сможешь запретить владельцу выводить средства, когда он вызывает `withdraw()` (пока на контракте ещё есть средства, и транзакция стоит 1 миллион или меньше газа), ты пройдешь этот уровень.

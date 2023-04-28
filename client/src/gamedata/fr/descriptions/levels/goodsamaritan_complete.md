@@ -1,0 +1,3 @@
+Félicitations!
+
+Les erreurs personnalisées dans Solidity sont identifiées par leur ‘selector’ 4-byte, identique à un function call. Ils sont regroupés dans la chaîne d'appel jusqu'à ce qu'ils soient interceptés par une instruction `catch` dans un bloc `try-catch`, comme on le voit dans la fonction `requestDonation()` de GoodSamaritan. Pour ces raisons, il n'est pas prudent de supposer que l'erreur a été générée par la cible immédiate de l'appel de contrat (c'est-à-dire Wallet dans ce cas). Tout autre contrat plus bas dans la chaîne d'appel (call chain) peut déclarer la même erreur et la lancer à un emplacement inattendu, comme dans la fonction `notify (uint256 amount)` de votre contrat d'attaque.

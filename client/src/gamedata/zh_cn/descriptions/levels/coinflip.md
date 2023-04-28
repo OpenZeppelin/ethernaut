@@ -3,4 +3,4 @@
 
 &nbsp;
 这可能能帮助到你
-* 查看上面的帮助页面，“控制台之外” 部分
+* 查看上面的帮助页面，["Beyond the console"](https://ethernaut.openzeppelin.com/help) 部分

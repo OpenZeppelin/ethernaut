@@ -16,7 +16,7 @@ contract('GatekeeperThree', function(accounts) {
     await ethernaut.registerLevel(level.address)
   });
 
-  it('should fail if the player didnt solve the level', async function() {
+  it("should fail if the player didn't solve the level", async function() {
     const instance = await utils.createLevelInstance(ethernaut, level.address, player, GatekeeperThree)
     const completed = await utils.submitLevelInstance(
       ethernaut,
@@ -35,12 +35,7 @@ contract('GatekeeperThree', function(accounts) {
       from: player, value:120000000000000000
     })
     
-    await instance.createTrick()
-    await attacker.HackFirst()
-    const trick = await instance.trick()
-    const password = await web3.eth.getStorageAt(trick, 2)
-    await attacker.HackTwo(parseInt(password, 16))
-    await attacker.HackAll()
+    await attacker.attack()
     
     const completed = await utils.submitLevelInstance(
       ethernaut,

@@ -13,8 +13,9 @@ import "./utils/^^";
 import * as Sentry from "@sentry/browser";
 import { Integrations } from "@sentry/tracing";
 import App from "./containers/App";
-import NotFound404 from "./components/NotFound404";
+import NotFound404 from "./components/not-found/NotFound404";
 import Header from "./containers/Header";
+import Leaderboard from "./containers/Leaderboard";
 
 // For bundle splitting without lazy loading.
 const nonlazy = (component) => lazy(() => component);
@@ -32,10 +33,10 @@ Sentry.init({
   release: constants.VERSION,
 });
 // store.dispatch(actions.setNetworkId(id));
-store.dispatch(actions.connectWeb3(window.web3));
+store.dispatch(actions.connectWeb3(window.ethereum));
 const container = document.getElementById("root");
 const root = createRoot(container);
-if (!window.web3) {
+if (!window.ethereum) {
   //root.render(<h3>Hey, You dont have the supported wallet!</h3>);
   // let language = localStorage.getItem("lang");
   // let strings = loadTranslations(language);
@@ -45,22 +46,22 @@ if (!window.web3) {
   window.ethereum.request({ method: "eth_chainId" }).then((res) => {
     store.dispatch(actions.setNetworkId(parseInt(res)));
     store.dispatch(actions.loadGamedata());
-  });
+  })  
 }
 
-// View entry point.
 root.render(
   <Provider store={store}>
     <Router history={syncHistoryWithStore(history, store)}>
       <Suspense fallback={<div>Loading...</div>}>
-          <Header></Header>
-          <Routes>
-            <Route path={constants.PATH_HELP} element={<Help />} />
-            <Route path={constants.PATH_LEVEL} element={<Level />} />
-            <Route path={constants.PATH_STATS} element={<Stats />} />
-            <Route exact path="/" element={<App />} />
-            <Route path="/" element={<NotFound404 />} />
-          </Routes>
+        <Header></Header>
+        <Routes>
+          <Route path={constants.PATH_HELP} element={<Help />} />
+          <Route path={constants.PATH_LEVEL} element={<Level />} />
+          <Route path={constants.PATH_STATS} element={<Stats />} />
+          <Route path={constants.PATH_LEADERBOARD} element={<Leaderboard />} />
+          <Route exact path="/" element={<App />} />
+          <Route path="/" element={<NotFound404 />} />
+        </Routes>
       </Suspense>
     </Router>
   </Provider>
