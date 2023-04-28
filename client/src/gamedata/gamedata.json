@@ -446,6 +446,21 @@
       "deployId": "28",
       "instanceGas": 1000000,
       "author": "KStasi"
+    },
+    {
+      "name": "Switch-2",
+      "created": "2022-05-21",
+      "difficulty": "2",
+      "description": "switch2.md",
+      "completedDescription": "switch_complete2.md",
+      "levelContract": "SwitchFactory2.sol",
+      "instanceContract": "Switch2.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "32",
+      "instanceGas": 300000,
+      "author": "staa99"
     }
   ]
 }
