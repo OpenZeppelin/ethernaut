@@ -76,8 +76,8 @@ exec();
 
 async function deployContracts(deployData) {
   const props = {
-    gasPrice: (await web3.eth.getGasPrice()) * 10,
-    gas: 30000000,
+    gasPrice: parseInt((await web3.eth.getGasPrice()) * 1.05),
+    gas: 20000000,
   };
 
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
