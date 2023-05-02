@@ -15,20 +15,19 @@ import gamedata from "../src/gamedata/gamedata.json" assert { type: "json" };
 const levels = gamedata.levels;
 
 // For testing purposes in a local fork uncomment one of the following lines to get forked network deployment data.
-// const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.GOERLI.name}.json`;
+const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.GOERLI.name}.json`;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.MUMBAI.name}.json`;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.SEPOLIA.name}.json`;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.OPTIMISM_GOERLI.name}.json`;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.ARBITRUM_GOERLI.name}.json`;
-const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.local.json`;
+// const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.local.json`;
 
 // For real purposes
 //const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
 
 const DeployData = await loadDeployData(DEPLOY_DATA_PATH);
-
 // Operator address, the account that will perform the data dump (meant to be ethernaut owner).
-const OPERATOR_ADDRESS = ADDRESSES.ACTIVE_NETWORK.name;
+const OPERATOR_ADDRESS = constants.ADDRESSES[`${constants.ACTIVE_NETWORK.name}`];
 
 // Contract Objects
 let web3;
@@ -381,6 +380,7 @@ async function dumpData(oldAddress, newAddress) {
         console.log(colors.grey(" Dumping LevelFirstInstanceCreationTime"));
 
         do {
+          console.log("HELLO");
           console.log(
             colors.grey(
               " Dumped ",
@@ -394,7 +394,8 @@ async function dumpData(oldAddress, newAddress) {
             "dumpLevelFirstInstanceCreationTime()"
           ]({ from, ...props });
           await web3.eth.getTransactionReceipt(tx.tx);
-
+          console.log(dumpStage);
+          console.log(...props);
           dumpStage = await proxyStatsWithSupersederImplementationABI.methods["dumpStage()"]();
         } while (dumpStage != DumpStage.LEVEL_FIRST_COMPLETION_TIME);
 
