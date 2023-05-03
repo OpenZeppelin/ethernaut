@@ -36,7 +36,12 @@ The tool will guide the operator through the process. Operator is the account th
 
 The script contains a commented function `printEditedStorageSlots(oldAddress, newAddress)` that can be uncommented to prompt in the terminal all storage slots edited after the process. 
 
-Ethernaut contract will be halt during the operation, any call to  `createLevelInstance(Level _level)` or  `submitLevelInstance(address payable _instance)` will revet with `"Contract locked due maintenance operations"` string. 
+Ethernaut contract will be halt during the operation, any call to  `createLevelInstance(Level _level)` or  `submitLevelInstance(address payable _instance)` will revet with `"Contract locked due maintenance operations"` string.
+
+Original statistics implementation is hardcoded in `downgradeStatisticsSupersederToStatisticsAndSaveDeployData()` function it is not needed to deploy a new instance, ensure that you hardcode the correct address.
+
+Dumping transactions gas usage can be tuned in `dumpData()` function.
+
 
 ### **Test in local fork**
 

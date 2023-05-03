@@ -127,7 +127,7 @@ async function supersede() {
     await setSubstitutionAddresses(oldAddress, newAddress);
   }
   // Dump Statistics data
-  await dumpData(oldAddress, newAddress);
+  await dumpData();
 
   // Clean used storage slots
   await cleanStorage();
@@ -359,7 +359,7 @@ async function setSubstitutionAddresses(oldAddress, newAddress) {
   console.log(colors.grey(" Done!"), "✅");
 }
 
-async function dumpData(oldAddress, newAddress) {
+async function dumpData() {
   console.log(colors.bold.yellow("\nDumping statistics data..."));
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
   if (!from) from = (await web3.eth.getAccounts())[0];
@@ -671,7 +671,7 @@ async function downgradeStatisticsSupersederToStatisticsAndSaveDeployData() {
   console.log(colors.grey(` Upgrading Proxy...`));
   const tx = await proxyAdmin.methods["upgrade(address,address)"](
     proxyStats.address,
-    "0x7000e0f2f5a389df14b50c6f84686123f19b27f6", // Normal Statistic impl:0x7000e0f2f5a389df14b50c6f84686123f19b27f6
+    "0x7000e0f2f5a389df14b50c6f84686123f19b27f6", // Normal Statistic impl GOERI:0x7000e0f2f5a389df14b50c6f84686123f19b27f6
     { from, ...props }
   );
 

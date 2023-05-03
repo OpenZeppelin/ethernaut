@@ -32,7 +32,7 @@ contract SimpleTrick {
 contract GatekeeperThree {
   address public owner;
   address public entrant;
-  bool public allow_entrance;
+  bool public allowEntrance;
 
   SimpleTrick public trick;
 
@@ -47,7 +47,7 @@ contract GatekeeperThree {
   }
 
   modifier gateTwo() {
-    require(allow_entrance == true);
+    require(allowEntrance == true);
     _;
   }
 
@@ -59,7 +59,7 @@ contract GatekeeperThree {
 
   function getAllowance(uint _password) public {
     if (trick.checkPassword(_password)) {
-        allow_entrance = true;
+        allowEntrance = true;
     }
   }
 
