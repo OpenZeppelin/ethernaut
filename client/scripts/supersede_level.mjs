@@ -53,8 +53,8 @@ const DumpStage = {
 
 
 async function supersede() {
-  let oldAddress="0x27bC920e7C426500a0e7D63Bb037800A7288abC1";
-  let newAddress="0x0BC04aa6aaC163A6B3667636D798FA053D43BD11";
+  let oldAddress;
+  let newAddress;
   // check if there is a pending process
   if ((await web3.eth.getStorageAt(proxyStats.address, 17)).slice(-1) == "1") {
     console.log(colors.bold.red("Pending level replacement detected, resuming..."));
@@ -130,13 +130,13 @@ async function supersede() {
   await dumpData(oldAddress, newAddress);
 
   // Clean used storage slots
-  // await cleanStorage();
+  await cleanStorage();
   
   // Print edited storage slots
-  await printEditedStorageSlots(oldAddress, newAddress);
+  // await printEditedStorageSlots(oldAddress, newAddress);
 
   // Downgrade Statistics
-  // await downgradeStatisticsSupersederToStatisticsAndSaveDeployData();
+   await downgradeStatisticsSupersederToStatisticsAndSaveDeployData();
 
   process.exit();
 }
