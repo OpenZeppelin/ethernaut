@@ -679,7 +679,7 @@ async function downgradeStatisticsSupersederToStatisticsAndSaveDeployData() {
   console.log(colors.grey(` Proxy is downgraded! ✅`));
 
   DeployData.implementation = statsImplementation.address;
-  //storeDeployData(DEPLOY_DATA_PATH);
+  storeDeployData(DEPLOY_DATA_PATH);
 }
 async function loadGameContracts() {
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
