@@ -20,15 +20,14 @@ const levels = gamedata.levels;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.SEPOLIA.name}.json`;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.OPTIMISM_GOERLI.name}.json`;
 // const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.NETWORKS.ARBITRUM_GOERLI.name}.json`;
-const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.local.json`;
+// const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.local.json`;
 
 // For real purposes
-//const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
+const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
 
 const DeployData = await loadDeployData(DEPLOY_DATA_PATH);
-
 // Operator address, the account that will perform the data dump (meant to be ethernaut owner).
-const OPERATOR_ADDRESS = ADDRESSES.ACTIVE_NETWORK.name;
+const OPERATOR_ADDRESS = constants.ADDRESSES[`${constants.ACTIVE_NETWORK.name}`];
 
 // Contract Objects
 let web3;
@@ -108,9 +107,9 @@ async function supersede() {
       console.log(colors.bold.red("Substitution not confirmed by operator"));
       process.exit();
     }
-
+ 
     // Upgrade Statistics
-    await upgradeStatisticsToStatisticsSuperseder();
+    await deployAndUpgradeStatisticsToStatisticsSuperseder();
 
     // Deploy new version const newLevelContract
     const newLevelContract = await deployLevel(LevelToBeSupersededData);
@@ -121,7 +120,7 @@ async function supersede() {
     oldAddress = ret.oldAddress;
     newAddress = ret.newAddress;
 
-    // Register new address in ethernaut
+   // Register new address in ethernaut
     await registerLevelInEthernaut(newAddress, LevelToBeSupersededData);
 
     // Set replacement addresses
@@ -132,12 +131,12 @@ async function supersede() {
 
   // Clean used storage slots
   await cleanStorage();
-
-  // // Print edited storage slots
-  // // await printEditedStorageSlots(oldAddress, newAddress);
+  
+  // Print edited storage slots
+  // await printEditedStorageSlots(oldAddress, newAddress);
 
   // Downgrade Statistics
-  await downgradeStatisticsSupersederToStatisticsAndSaveDeployData();
+   await downgradeStatisticsSupersederToStatisticsAndSaveDeployData();
 
   process.exit();
 }
@@ -196,8 +195,8 @@ async function printLevelInfo(level) {
   console.log(` Instances: ${colors.green(InstancesForLevel.toString())}`);
 }
 
-async function upgradeStatisticsToStatisticsSuperseder() {
-  console.log(colors.bold.yellow("\nUgrading statistics contract to statisticsSuperseder..."));
+async function deployAndUpgradeStatisticsToStatisticsSuperseder() {
+  console.log(colors.bold.yellow("\nDeploing and Ugrading statistics contract to statisticsSuperseder..."));
 
   const props = {
     gasPrice: parseInt(await web3.eth.getGasPrice() * 1.10),
@@ -365,11 +364,10 @@ async function dumpData(oldAddress, newAddress) {
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
   if (!from) from = (await web3.eth.getAccounts())[0];
 
-  const props = {
-    gasPrice: parseInt(await web3.eth.getGasPrice() * 1.10),
-    gas: 2000000, // gas can be tuned here 2000000
+  const props = { // gas can be tuned here
+    gasPrice: parseInt(await web3.eth.getGasPrice() * 1.20),
+    gas: 4000000, 
   };
-
   let dumpStage;
   do {
     dumpStage = (await proxyStatsWithSupersederImplementationABI.methods["dumpStage()"]()).words[0];
@@ -394,7 +392,6 @@ async function dumpData(oldAddress, newAddress) {
             "dumpLevelFirstInstanceCreationTime()"
           ]({ from, ...props });
           await web3.eth.getTransactionReceipt(tx.tx);
-
           dumpStage = await proxyStatsWithSupersederImplementationABI.methods["dumpStage()"]();
         } while (dumpStage != DumpStage.LEVEL_FIRST_COMPLETION_TIME);
 
@@ -505,6 +502,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
   const totalPlayers = await proxyStatsWithSupersederImplementationABI.methods[
     "getTotalNoOfPlayers()"
   ]();
+
   let usersArrayIndex = 0;
   // loop over all users
   while (usersArrayIndex < totalPlayers) {
@@ -542,7 +540,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
   }
 
   console.log("-------------------------------------------------");
-
+  
   usersArrayIndex = 0;
   // loop over all users
   while (usersArrayIndex < totalPlayers) {
@@ -581,7 +579,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
 
   console.log("-------------------------------------------------");
 
-  usersArrayIndex = 0;
+ usersArrayIndex = 0;
   // loop over all users
   while (usersArrayIndex < totalPlayers) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
@@ -673,7 +671,7 @@ async function downgradeStatisticsSupersederToStatisticsAndSaveDeployData() {
   console.log(colors.grey(` Upgrading Proxy...`));
   const tx = await proxyAdmin.methods["upgrade(address,address)"](
     proxyStats.address,
-    "0x7000E0F2F5A389DF14b50c6F84686123F19b27F6",
+    "0x7000e0f2f5a389df14b50c6f84686123f19b27f6", // Normal Statistic impl:0x7000e0f2f5a389df14b50c6f84686123f19b27f6
     { from, ...props }
   );
 
