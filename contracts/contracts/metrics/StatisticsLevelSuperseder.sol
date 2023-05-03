@@ -292,10 +292,10 @@ contract StatisticsLevelSuperseder is Initializable {
     /* Level substituition logic */
     function setOperator(address _operator) public { //called through TUP UpgradeAndCall
         require(dumpStage == DumpStage.INIT, "Not correct dump stage");
-
+        usersArrayIndex = 0;
         operator = _operator;
         onMaintenance = true;
-
+        
         dumpStage = DumpStage.SET_ADDRESSES;
     }   
 
@@ -379,9 +379,10 @@ contract StatisticsLevelSuperseder is Initializable {
         address _newLevelContractAddress = newLevelContractAddress;
         uint256 _usersArrayIndex = usersArrayIndex;
         LevelInstance memory levelInstanceEmpty;
-
-        LevelInstance memory actualInstance = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress];
+        LevelInstance memory actualInstance;
+        
         do {
+            actualInstance = playerStats[players[_usersArrayIndex]][_oldLevelContractAddress];
             if(actualInstance.instance != address(0)) {
                 playerStats[players[_usersArrayIndex]][_newLevelContractAddress].instance = actualInstance.instance;
                 playerStats[players[_usersArrayIndex]][_newLevelContractAddress].isCompleted = actualInstance.isCompleted;
@@ -435,7 +436,7 @@ contract StatisticsLevelSuperseder is Initializable {
 
     function cleanStorage() public onlyOperator {
         require(dumpStage == DumpStage.DUMP_DONE, "Not correct dump stage");
-
+        usersArrayIndex = 0;
         oldLevelContractAddress = address(0);
         newLevelContractAddress = address(0);
         operator = address(0);
