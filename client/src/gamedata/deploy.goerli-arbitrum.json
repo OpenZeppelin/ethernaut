@@ -41,6 +41,10 @@
     {
       "oldAddress": "0xB468f8e42AC0fAe675B56bc6FDa9C0563B61A52F",
       "newAddress": "0xDF178ee9Aa730dA21458Bf062bFFc065a89c1543"
+    },
+    {
+      "oldAddress": "0xB468f8e42AC0fAe675B56bc6FDa9C0563B61A52F",
+      "newAddress": "0xDF178ee9Aa730dA21458Bf062bFFc065a89c1543"
     }
   ]
 }
