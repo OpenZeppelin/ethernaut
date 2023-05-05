@@ -56,6 +56,7 @@ async function supersede() {
   let oldAddress;
   let newAddress;
   // check if there is a pending process
+  
   if ((await web3.eth.getStorageAt(proxyStats.address, 17)).slice(-1) == "1") {
     console.log(colors.bold.red("Pending level replacement detected, resuming..."));
     oldAddress = await proxyStatsWithSupersederImplementationABI.methods[
@@ -87,7 +88,6 @@ async function supersede() {
     // Get operator's level choice
     console.log(colors.bold.yellow("\nWhich deployId do you want to supersede?"));
     const LevelToBeSupersededData = await getLevelToBeSupersededData();
-
     // Check if level is registered into ethernaut and is not already superseded
     if (!(await isLevelRegistered(LevelToBeSupersededData))) {
       console.log(colors.bold.red("Level is not registered in Ethernaut"));
@@ -128,15 +128,15 @@ async function supersede() {
   }
   // Dump Statistics data
   await dumpData();
-
+  
   // Clean used storage slots
   await cleanStorage();
   
   // Print edited storage slots
   // await printEditedStorageSlots(oldAddress, newAddress);
-
+  
   // Downgrade Statistics
-   await downgradeStatisticsSupersederToStatisticsAndSaveDeployData();
+  await downgradeStatisticsSupersederToStatisticsAndSaveDeployData();
 
   process.exit();
 }
@@ -188,6 +188,7 @@ async function printLevelInfo(level) {
   ](levelAddress);
 
   console.log(colors.bold.yellow(`\nSelected level data:`));
+  console.log(` Network: ${colors.green(constants.ACTIVE_NETWORK.name)}`);
   console.log(` Name: ${colors.green(level.name)}`);
   console.log(` Address: ${colors.green(levelAddress)}`);
   console.log(` Failed submissions: ${colors.green(FailedSubmissions.toString())}`);
@@ -200,7 +201,7 @@ async function deployAndUpgradeStatisticsToStatisticsSuperseder() {
 
   const props = {
     gasPrice: parseInt(await web3.eth.getGasPrice() * 1.10),
-    gas: 4500000,
+    gas: 45000000,
   };
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
   if (!from) from = (await web3.eth.getAccounts())[0];
@@ -365,7 +366,7 @@ async function dumpData() {
   if (!from) from = (await web3.eth.getAccounts())[0];
 
   const props = { // gas can be tuned here
-    gasPrice: parseInt(await web3.eth.getGasPrice() * 1.20),
+    gasPrice: parseInt(await web3.eth.getGasPrice() * 1.1),
     gas: 4000000, 
   };
   let dumpStage;
@@ -505,7 +506,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
 
   let usersArrayIndex = 0;
   // loop over all users
-  while (usersArrayIndex < totalPlayers) {
+  while (usersArrayIndex < 200) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "getPlayerAtIndex(uint256)"
     ](usersArrayIndex);
@@ -523,7 +524,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
 
   usersArrayIndex = 0;
   // loop over all users
-  while (usersArrayIndex < totalPlayers) {
+  while (usersArrayIndex < 200) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "getPlayerAtIndex(uint256)"
     ](usersArrayIndex);
@@ -543,7 +544,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
   
   usersArrayIndex = 0;
   // loop over all users
-  while (usersArrayIndex < totalPlayers) {
+  while (usersArrayIndex < 200) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "getPlayerAtIndex(uint256)"
     ](usersArrayIndex);
@@ -561,7 +562,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
 
   usersArrayIndex = 0;
   // loop over all users
-  while (usersArrayIndex < totalPlayers) {
+  while (usersArrayIndex < 200) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "getPlayerAtIndex(uint256)"
     ](usersArrayIndex);
@@ -581,7 +582,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
 
  usersArrayIndex = 0;
   // loop over all users
-  while (usersArrayIndex < totalPlayers) {
+  while (usersArrayIndex < 200) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "getPlayerAtIndex(uint256)"
     ](usersArrayIndex);
@@ -598,7 +599,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
 
   usersArrayIndex = 0;
   // loop over all users
-  while (usersArrayIndex < totalPlayers) {
+  while (usersArrayIndex < 200) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "getPlayerAtIndex(uint256)"
     ](usersArrayIndex);
@@ -662,7 +663,7 @@ async function downgradeStatisticsSupersederToStatisticsAndSaveDeployData() {
 
   const props = {
     gasPrice: parseInt(await web3.eth.getGasPrice() * 1.10),
-    gas: 4500000,
+    gas: 450000,
   };
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
   if (!from) from = (await web3.eth.getAccounts())[0];
@@ -671,14 +672,14 @@ async function downgradeStatisticsSupersederToStatisticsAndSaveDeployData() {
   console.log(colors.grey(` Upgrading Proxy...`));
   const tx = await proxyAdmin.methods["upgrade(address,address)"](
     proxyStats.address,
-    "0x7000e0f2f5a389df14b50c6f84686123f19b27f6", // Normal Statistic impl GOERI:0x7000e0f2f5a389df14b50c6f84686123f19b27f6
+    "0x7000e0f2f5a389df14b50c6f84686123f19b27f6", // Set original address 
     { from, ...props }
   );
 
   await web3.eth.getTransactionReceipt(tx.tx);
   console.log(colors.grey(` Proxy is downgraded! ✅`));
 
-  DeployData.implementation = statsImplementation.address;
+  DeployData.implementation = "0x7000e0f2f5a389df14b50c6f84686123f19b27f6"; // Set original address
   storeDeployData(DEPLOY_DATA_PATH);
 }
 async function loadGameContracts() {
@@ -758,8 +759,8 @@ async function initWeb3() {
     }
 
     web3 = new Web3(provider);
-    //ethutil.setWeb3(web3);
-
+    ethutil.setWeb3(web3);
+  
     web3.eth.net.isListening((err, res) => {
       if (err) {
         console.log(" error connecting web3:", err);
