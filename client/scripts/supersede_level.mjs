@@ -133,7 +133,7 @@ async function supersede() {
   await cleanStorage();
   
   // Print edited storage slots
-  // await printEditedStorageSlots(oldAddress, newAddress);
+  await printEditedStorageSlots(oldAddress, newAddress);
   
   // Downgrade Statistics
   await downgradeStatisticsSupersederToStatisticsAndSaveDeployData();
@@ -506,7 +506,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
 
   let usersArrayIndex = 0;
   // loop over all users
-  while (usersArrayIndex < 200) {
+  while (usersArrayIndex < totalPlayers) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "getPlayerAtIndex(uint256)"
     ](usersArrayIndex);
@@ -524,7 +524,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
 
   usersArrayIndex = 0;
   // loop over all users
-  while (usersArrayIndex < 200) {
+  while (usersArrayIndex < totalPlayers) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "getPlayerAtIndex(uint256)"
     ](usersArrayIndex);
@@ -544,7 +544,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
   
   usersArrayIndex = 0;
   // loop over all users
-  while (usersArrayIndex < 200) {
+  while (usersArrayIndex < totalPlayers) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "getPlayerAtIndex(uint256)"
     ](usersArrayIndex);
@@ -562,7 +562,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
 
   usersArrayIndex = 0;
   // loop over all users
-  while (usersArrayIndex < 200) {
+  while (usersArrayIndex < totalPlayers) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "getPlayerAtIndex(uint256)"
     ](usersArrayIndex);
@@ -582,7 +582,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
 
  usersArrayIndex = 0;
   // loop over all users
-  while (usersArrayIndex < 200) {
+  while (usersArrayIndex < totalPlayers) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "getPlayerAtIndex(uint256)"
     ](usersArrayIndex);
@@ -599,7 +599,7 @@ async function printEditedStorageSlots(oldAddress, newAddress) {
 
   usersArrayIndex = 0;
   // loop over all users
-  while (usersArrayIndex < 200) {
+  while (usersArrayIndex < totalPlayers) {
     let userAddress = await proxyStatsWithSupersederImplementationABI.methods[
       "getPlayerAtIndex(uint256)"
     ](usersArrayIndex);
