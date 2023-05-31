@@ -16,7 +16,7 @@
     "dotenv": "^16.0.3",
     "highlight.js": "10.7.2-local",
     "history": "^5.3.0",
-    "html-react-parser": "^3.0.1",
+    "html-react-parser": "^4.0.0",
     "moment": "^2.29.2",
     "rainbow-color": "^2.0.0",
     "react": "18.2.0",
