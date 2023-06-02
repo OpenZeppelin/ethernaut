@@ -1,0 +1,1 @@
+Asumir posiciones en `CALLDATA` con tipos dinámicos puede ser erróneo, especialmente cuando se prefijen las posiciones en el código.
