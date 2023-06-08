@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@openzeppelin/contracts": "4.7.3",
+    "@openzeppelin/contracts": "4.9.1",
     "@truffle/hdwallet-provider": "^2.0.0",
     "colors": "^1.4.0",
     "cross-env": "7.0.3",
