@@ -60,7 +60,7 @@ root.render(
           <Route path={constants.PATH_STATS} element={<Stats />} />
           <Route path={constants.PATH_LEADERBOARD} element={<Leaderboard />} />
           <Route exact path="/" element={<App />} />
-          <Route path="/" element={<NotFound404 />} />
+          <Route path="*" element={<NotFound404 />} />
         </Routes>
       </Suspense>
     </Router>

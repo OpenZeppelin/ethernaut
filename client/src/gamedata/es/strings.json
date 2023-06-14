@@ -30,7 +30,7 @@
   "deployNote": "Nota: si implementa todos los niveles, lo guiaremos para que envíe todo el juego implementado en esta red.",
   "deployGame": "Desplegar juego",
   "switchToGoerli": "Cambiar a Goerli",
-  "deployLevel": "Nivel de implementación",
+  "deployLevel": "Desplegar implementación",
   "helperDeployAllContracts": "Implemente todos los contratos restantes en la red actual.",
   "confirmMainnetDeploy": "Estás en una red principal, el juego no tiene valor monetario, no debes implementarlo en esta red.",
   "submitLevelFooter": "Implemente todos los niveles (deployAllContracts() en la consola) para agregar la red actual a nuestro <a href='https://github.com/OpenZeppelin/ethernaut'>repositorio de Github</a> como una nueva red compatible.",
@@ -107,5 +107,7 @@
   "HundredPercentMessage": "100%: Congratulations! Your journey down the web3 rabbit hole is impressive and should be celebrated! You now have the skills to break smart contracts! What’s next from here anon? Apply to be a Blockchain Security Researcher at OpenZeppelin, and contribute to securing the top protocols in web3! https://grnh.se/26c05aac3us",
   "Menu": "Menú",
   "Networks": "Redes",
-  "Languages": "Idiomas"
+  "Languages": "Idiomas",
+  "PageNotFoundTitle": "Error 404 - Página no encontrada",
+  "PageNotFoundText": "¡Ups! La página que estás buscando no se pudo encontrar."
 }

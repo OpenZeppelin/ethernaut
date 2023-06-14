@@ -177,7 +177,7 @@ export const SHOW_VERSION = true;
 // export const ACTIVE_NETWORK = NETWORKS.MUMBAI
 // export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_GOERLI
 // export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_GOERLI
-// export const ACTIVE_NETWORK = NETWORKS.LOCAL;
+export const ACTIVE_NETWORK = NETWORKS.LOCAL;
 
 let id_to_network = {};
 Object.keys(NETWORKS)

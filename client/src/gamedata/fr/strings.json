@@ -107,5 +107,7 @@
   "HundredPercentMessage": "100%: Congratulations! Your journey down the web3 rabbit hole is impressive and should be celebrated! You now have the skills to break smart contracts! What’s next from here anon? Apply to be a Blockchain Security Researcher at OpenZeppelin, and contribute to securing the top protocols in web3! https://grnh.se/26c05aac3us",
   "Menu": "Menu",
   "Networks": "Réseaux",
-  "Languages": "Langues"
+  "Languages": "Langues",
+  "PageNotFoundTitle": "Erreur 404 - Page non trouvée",
+  "PageNotFoundText": "Oups ! La page que vous recherchez est introuvable."
 }
