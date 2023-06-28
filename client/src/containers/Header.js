@@ -293,7 +293,7 @@ class Header extends React.Component {
               >
                 <div className="dropdown-pill --left">
                   <div>
-                    <Link
+                    <Link onClick={() => this.toggleDropdownState()}
                       to={
                         window.location.pathname !== constants.PATH_ROOT
                           ? constants.PATH_ROOT
@@ -314,8 +314,11 @@ class Header extends React.Component {
                     </Link>
                     {window.location.pathname === constants.PATH_ROOT &&
                       !!this.props.web3 && (
-                        <div className="element-in-row filled-icon">
-                          <Link to={constants.PATH_LEADERBOARD}>
+                        <div
+                             className="element-in-row filled-icon">
+                          <Link 
+                                onClick={() => this.toggleDropdownState()}  
+                                to={constants.PATH_LEADERBOARD}>
                             <LeaderIcon />
                           </Link>
                         </div>
