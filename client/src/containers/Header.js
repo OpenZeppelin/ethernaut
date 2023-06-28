@@ -293,35 +293,37 @@ class Header extends React.Component {
               >
                 <div className="dropdown-pill --left">
                   <div>
-                    <Link onClick={() => this.toggleDropdownState()}
-                      to={
-                        window.location.pathname !== constants.PATH_ROOT
-                          ? constants.PATH_ROOT
-                          : constants.PATH_HELP
-                      }
-                    >
-                      <div className="filled-icon">
-                        {window.location.pathname !== constants.PATH_ROOT ? (
-                          <>
-                            <i className="fas fa-home"></i>
-                          </>
-                        ) : (
-                          <>
-                            <i className="fas fa-question"></i>
-                          </>
-                        )}
-                      </div>
-                    </Link>
+                    <div onClick={() => this.toggleDropdownState()}>
+                      <Link
+                        to={
+                          window.location.pathname !== constants.PATH_ROOT
+                            ? constants.PATH_ROOT
+                            : constants.PATH_HELP
+                        }
+                      >
+                        <div className="filled-icon">
+                          {window.location.pathname !== constants.PATH_ROOT ? (
+                            <>
+                              <i className="fas fa-home"></i>
+                            </>
+                          ) : (
+                            <>
+                              <i className="fas fa-question"></i>
+                            </>
+                          )}
+                        </div>
+                      </Link>
+                    </div>
                     {window.location.pathname === constants.PATH_ROOT &&
                       !!this.props.web3 && (
-                        <div
-                             className="element-in-row filled-icon">
-                          <Link 
-                                onClick={() => this.toggleDropdownState()}  
-                                to={constants.PATH_LEADERBOARD}>
-                            <LeaderIcon />
-                          </Link>
-                        </div>
+                        <Link   onClick={() => this.toggleDropdownState()}
+                        to={constants.PATH_LEADERBOARD}>
+                          <div
+                          className="element-in-row filled-icon">                                
+                                <LeaderIcon />
+                          </div>
+                        </Link>
+                        
                       )}
                     <input
                       onClick={() => {
