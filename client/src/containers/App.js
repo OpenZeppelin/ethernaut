@@ -52,14 +52,14 @@ class App extends React.Component {
       (key) => key !== "LOCAL" && key !== "UNDEFINED"
     );
 
-    // change the network to goreli network
-    async function switchToGoerli() {
+    // change the network to Sepolia network
+    async function switchToSepolia() {
       let elements = document.querySelectorAll('.progress-bar-wrapper');
       const deployWindow = document.querySelectorAll('.deploy-window-bg');
       try {
         await window.ethereum.request({
           method: 'wallet_switchEthereumChain',
-          params: [{ chainId: `0x${Number(constants.NETWORKS.GOERLI.id).toString(16)}` }],//if on wrong network giving option to switch to sepolia network.
+          params: [{ chainId: `0x${Number(constants.NETWORKS.SEPOLIA.id).toString(16)}` }],//if on wrong network giving option to switch to sepolia network.
         });
         deployWindow[0].style.display = 'none';
       } catch (switchError) {
@@ -70,7 +70,7 @@ class App extends React.Component {
               method: 'wallet_addEthereumChain',
               params: [
                 {
-                  chainId: [{ chainId: `0x${Number(constants.NETWORKS.GOERLI.id).toString(16)}` }]
+                  chainId: [{ chainId: `0x${Number(constants.NETWORKS.SEPOLIA.id).toString(16)}` }]
                 },
               ],
             });
@@ -140,9 +140,9 @@ class App extends React.Component {
                 </button>
                 <button
                   className="buttons"
-                  onClick={switchToGoerli}
+                  onClick={switchToSepolia}
                 >
-                  {strings.switchToGoerli}
+                  {strings.switchToSepolia}
                 </button>
               </div>
               <p className="deploy-note">{strings.deployNote}</p>

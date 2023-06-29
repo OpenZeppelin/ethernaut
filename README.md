@@ -56,12 +56,12 @@ In order to install, build, and run Ethernaut locally, follow these instructions
     yarn start:ethernaut
     ```
 
-### Running locally (goerli network)
+### Running locally (sepolia network)
 
 The same as using the local network but steps 2, 3 and 6 are not necessary.
 
 In this case, replace point 5 with:
-5. Set `client/src/constants.js` `ACTIVE_NETWORK` to `NETWORKS.GOERLI`
+5. Set `client/src/constants.js` `ACTIVE_NETWORK` to `NETWORKS.SEPOLIA`
 
 ### Running tests
 
@@ -79,7 +79,7 @@ yarn build:ethernaut
 
 You will normally need to deploy it on a local network, for this you can just run `yarn deploy:contracts` and all the contracts will be deployed on your local node running on `localhost:8545` and you will be able to check each level address in the `deploy.local.json` file.
 
-To deploy the contracts on Goerli, first set the `ACTIVE_NETWORK` variable in `constants.js` and then edit `deploy.goerli.json`. This file keeps a history of all level and contract instances. To deploy a new instance, add an "x" entry to the array, like so:
+To deploy the contracts on Sepolia, first set the `ACTIVE_NETWORK` variable in `constants.js` and then edit `deploy.sepolia.json`. This file keeps a history of all level and contract instances. To deploy a new instance, add an "x" entry to the array, like so:
 
 ```json
 {

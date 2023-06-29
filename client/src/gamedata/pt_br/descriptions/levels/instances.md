@@ -3,7 +3,7 @@ Este nível mostra os passos para aprender a jogar o jogo.
 &nbsp;
 #### 1. Configure o MetaMask
 Se você ainda não instalou, adicione o [MetaMask browser extension](https://metamask.io/) (no Chrome, Firefox, Brave ou Opera no seu computador).
-Configure a carteira da extensão e use o seletor de rede para apontar para a rede preferida no canto superior esquerdo da interface da extensão. Alternativamente, você pode usar o botão para alternar entre as redes. Se você selecionar uma rede não suportada, o jogo irá notificá-lo e levá-lo para a Goerli Testnet padrão.
+Configure a carteira da extensão e use o seletor de rede para apontar para a rede preferida no canto superior esquerdo da interface da extensão. Alternativamente, você pode usar o botão para alternar entre as redes. Se você selecionar uma rede não suportada, o jogo irá notificá-lo e levá-lo para a Sepolia Testnet padrão.
 
 #### 2. Abra o console do navegador
 Abra o console do seu navegador: `Tools > Developer Tools`.
