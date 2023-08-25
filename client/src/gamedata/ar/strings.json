@@ -18,6 +18,7 @@
   "chinese_traditional": "正體中文",
   "french": "Français",
   "russian": "Русский",
+  "vietnamese": "Vietnamese",
   "playNow": "العب الان!",
   "toggleNavigation": "تصفح",
   "levelCompleted": "انتهي المستوى!",
@@ -110,5 +111,4 @@
   "Languages": "اللغات",
   "PageNotFoundTitle": "خطأ 404 - الصفحة غير موجودة",
   "PageNotFoundText": "عفوًا! لا يمكن العثور على الصفحة التي تبحث عنها."
-
 }
