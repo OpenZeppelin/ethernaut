@@ -204,7 +204,7 @@ export const logger = (req, res, next, end) => {
 }
 
 export const attachLogger = () => {
-  if (web3.currentProvider._rpcEngine) {
+  if (web3.currentProvider._rpcEngine && web3.currentProvider._rpcEngine._middleware) {
     web3.currentProvider._rpcEngine._middleware.unshift(logger);
     return;
   }  //If the current provider hasn't an RPC Engine look for other providers
