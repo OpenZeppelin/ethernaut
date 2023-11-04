@@ -205,14 +205,14 @@ export const logger = (req, res, next, end) => {
 
 export const attachLogger = () => {
   if (web3.currentProvider._rpcEngine) {
-    web3.currentProvider._rpcEngine._middleware.unshift(logger);
+    web3.currentProvider._rpcEngine.push(logger);
     return;
   }  //If the current provider hasn't an RPC Engine look for other providers
   else if (web3.currentProvider.providers) {
     var providers = web3.currentProvider.providers;
     for (var i = 0; i < providers.length; i++) {
       if (providers[i]._rpcEngine) {
-        providers[i]._rpcEngine._middleware.unshift(logger);
+        providers[i]._rpcEngine.push(logger);
 
         // Set this provider as current provider
         web3.currentProvider = providers[i];
