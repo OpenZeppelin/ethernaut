@@ -46,6 +46,12 @@ export const NETWORKS = {
     url: `${process.env.ARBITRUM_GOERLI_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
   },
+  HOLESKY: {
+    name: "holesky",
+    id: "17000",
+    url: `${process.env.HOLESKY_HOST}`,
+    privKey: `${process.env.PRIV_KEY}`
+  },
 };
 
 // Networks for operations
@@ -117,6 +123,14 @@ export const NETWORKS_INGAME = {
       apiHost: `https://api-goerli.arbiscan.io`,
     },
   },
+  HOLESKY: {
+    name: "holesky",
+    id: "17000",
+    currencyName: "Holesky-ETH",
+    currencySymbol: "ETH",
+    rpcUrl: "https://ethereum-holesky.publicnode.com",
+    blockExplorer: "https://holesky.etherscan.io",
+  },
 };
 
 // Deprectated networks
@@ -154,6 +168,7 @@ export const ADDRESSES = {
   [NETWORKS.SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.OPTIMISM_GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.ARBITRUM_GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
+  [NETWORKS.HOLESKY.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
 };
 
 // Support EIP-1559
@@ -197,6 +212,7 @@ export const SHOW_VERSION = true;
 // export const ACTIVE_NETWORK = NETWORKS.MUMBAI
 // export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_GOERLI
 // export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_GOERLI
+// export const ACTIVE_NETWORK = NETWORKS.HOLESKY
 // export const ACTIVE_NETWORK = NETWORKS.LOCAL;
 
 let id_to_network = {};
