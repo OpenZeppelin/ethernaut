@@ -461,6 +461,21 @@
       "deployId": "29",
       "instanceGas": 250000,
       "author": "AgeManning"
+    },
+    {
+      "name": "Re-entrance House",
+      "created": "2024-01-08",
+      "difficulty": "6",
+      "description": "reentrance_house.md",
+      "completedDescription": "reentrance_house_completed.md",
+      "levelContract": "ReentranceHouseFactory.sol",
+      "instanceContract": "ReentranceHouse.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "30",
+      "instanceGas": 250000,
+      "author": "clauBv23"
     }
   ]
 }
