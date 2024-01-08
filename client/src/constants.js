@@ -119,6 +119,26 @@ export const NETWORKS_INGAME = {
   },
 };
 
+// Deprectated networks
+// status: {deprecated | deprecation-planned}
+export const NETWORKS_DEPRECATION = {
+  GOERLI: {
+    id: "5",
+    status: "deprecation-planned",
+    date: "jan-2024"
+  },
+  OPTIMISM_GOERLI: {
+    id: "420",
+    status: "deprecation-planned",
+    date: "jan-2024"
+  },
+  ARBITRUM_GOERLI: {
+    id: "421613",
+    status: "deprecation-planned",
+    date: "jan-2024"
+  }
+};
+
 // Web3
 export const Web3 = pkgWeb3;
 

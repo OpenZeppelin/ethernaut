@@ -2,6 +2,7 @@ import * as actions from '../actions';
 import * as constants from '../constants';
 import { deployRemainingContracts, isLocalDeployed } from '../utils/contractutil';
 import { deployAdminContracts } from '../utils/deploycontract';
+import { networkOnDeprecationOrDeprecated } from '../utils/networkDeprecation';
 
 let elements = document.querySelectorAll('.progress-bar-wrapper');
 
@@ -17,7 +18,7 @@ const setNetwork = store => next => action => {
   elements = document.querySelectorAll('.progress-bar-wrapper');
   const hasBeenLocalDeployed = isLocalDeployed(action.id);
 
-  if (!onPredeployedNetwork(action.id) && !hasBeenLocalDeployed) {
+  if ((!onPredeployedNetwork(action.id) || networkOnDeprecationOrDeprecated(action.id)) && !hasBeenLocalDeployed) {
     const deployWindow = document.querySelectorAll('.deploy-window-bg');
     if (deployWindow[0]) deployWindow[0].style.display = 'block';
   }
@@ -38,6 +39,5 @@ export function onPredeployedNetwork(id) {
   onRightNetwork = allNetworkIds.includes(Number(id));
   return onRightNetwork;
 }
-
 
 export default setNetwork
