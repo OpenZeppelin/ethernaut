@@ -37,19 +37,19 @@ contract('ReentranceHouse', function (accounts) {
   describe('instance', function () {
     it('should not be immediately solvable', async function () {
       // make sure the factory fails
-      const ethCompleted = await utils.submitLevelInstance(
+      const completed = await utils.submitLevelInstance(
         ethernaut,
         level.address,
         instance.address,
         player
       );
-      assert.equal(ethCompleted, false);
+      assert.isFalse(completed);
     });
 
     it('should not be bettor', async function () {
       // turnSwitchOn() should revert on standard call from player
      const isBettor = await instance.isBettor(player);
-     assert.equal(isBettor, false);
+     assert.isFalse(isBettor);
     });
 
     it('should allow the player to solve the level', async function() {  

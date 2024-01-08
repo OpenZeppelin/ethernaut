@@ -28,8 +28,6 @@ contract ReentranceHouse {
     function isBettor(address bettor_) external view returns (bool) {
         return s_bettors[bettor_];
     }
-
-    /* really awesome implementation of betting house */
 }
 
 contract Pool is ReentrancyGuard {
