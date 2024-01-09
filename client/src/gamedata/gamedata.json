@@ -474,7 +474,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "30",
-      "instanceGas": 250000,
+      "instanceGas": 5000000,
       "author": "clauBv23"
     }
   ]
