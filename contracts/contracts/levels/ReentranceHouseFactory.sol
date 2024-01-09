@@ -11,16 +11,16 @@ contract ReentranceHouseFactory is Level {
     ) public payable override returns (address) {
         _player;
 
-        PoolToken wrappedToken = new PoolToken("PoolWrappedToken", "PWT");
-        PoolToken depositToken = new PoolToken("PoolDepositToken", "PDT");
+        PoolToken _wrappedToken = new PoolToken("PoolWrappedToken", "PWT");
+        PoolToken _depositToken = new PoolToken("PoolDepositToken", "PDT");
 
-        Pool pool = new Pool(address(wrappedToken), address(depositToken));
+        Pool pool = new Pool(address(_wrappedToken), address(_depositToken));
         ReentranceHouse instance = new ReentranceHouse(address(pool));
-        depositToken.mint(_player, 5);
+        _depositToken.mint(_player, 5);
 
         // set pool as tokens owners
-        wrappedToken.transferOwnership(address(pool));
-        depositToken.transferOwnership(address(pool));
+        _wrappedToken.transferOwnership(address(pool));
+        _depositToken.transferOwnership(address(pool));
 
         return address(instance);
     }
@@ -29,7 +29,6 @@ contract ReentranceHouseFactory is Level {
         address payable _instance,
         address _player
     ) public view override returns (bool) {
-        _player;
         ReentranceHouse instance = ReentranceHouse(_instance);
         return instance.isBettor(_player);
     }

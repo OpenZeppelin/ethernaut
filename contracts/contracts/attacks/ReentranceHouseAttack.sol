@@ -9,16 +9,16 @@ contract ReentranceHouseAttack {
     Pool pool;
     PoolToken depositToken;
 
-    constructor(address payable _target) payable {
-        target = ReentranceHouse(_target);
+    constructor(address payable target_) payable {
+        target = ReentranceHouse(target_);
     }
 
     function setNeededParameters(
-        address payable _pool,
-        address _depositToken
+        address payable pool_,
+        address depositToken_
     ) external {
-        pool = Pool(_pool);
-        depositToken = PoolToken(_depositToken);
+        pool = Pool(pool_);
+        depositToken = PoolToken(depositToken_);
     }
 
     function attack() external payable {
