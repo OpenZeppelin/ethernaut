@@ -130,6 +130,10 @@ export const NETWORKS_INGAME = {
     currencySymbol: "ETH",
     rpcUrl: "https://ethereum-holesky.publicnode.com",
     blockExplorer: "https://holesky.etherscan.io",
+    explorer: {
+      apiKey: `${process.env.REACT_APP_HOLESKY_EXPLORER_API_KEY}`,
+      apiHost: `https://api-holesky.etherscan.io`,
+    },
   },
 };
 
