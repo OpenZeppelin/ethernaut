@@ -16,12 +16,6 @@ export const NETWORKS = {
     url: "http://localhost",
     port: 8545,
   },
-  GOERLI: {
-    name: "goerli",
-    id: "5",
-    url: `${process.env.GOERLI_HOST}`,
-    privKey: `${process.env.PRIV_KEY}`,
-  },
   MUMBAI: {
     name: "mumbai-polygon",
     id: "80001",
@@ -34,22 +28,10 @@ export const NETWORKS = {
     url: `${process.env.SEPOLIA_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
   },
-  OPTIMISM_GOERLI: {
-    name: "goerli-optimism",
-    id: "420",
-    url: `${process.env.OPTIMISM_GOERLI_HOST}`,
-    privKey: `${process.env.PRIV_KEY}`,
-  },
   OPTIMISM_SEPOLIA: {
     name: "sepolia-optimism",
     id: "11155420",
     url: `${process.env.OPTIMISM_SEPOLIA_HOST}`,
-    privKey: `${process.env.PRIV_KEY}`,
-  },
-  ARBITRUM_GOERLI: {
-    name: "goerli-arbitrum",
-    id: "421613",
-    url: `${process.env.ARBITRUM_GOERLI_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
   },
   ARBITRUM_SEPOLIA: {
@@ -75,18 +57,6 @@ export const NETWORKS_INGAME = {
     url: "http://localhost",
     port: 8545,
   },
-  GOERLI: {
-    name: "goerli",
-    id: "5",
-    currencyName: "Goerli-ETH",
-    currencySymbol: "ETH",
-    rpcUrl: `https://eth-goerli.public.blastapi.io`,
-    blockExplorer: "https://goerli.etherscan.io",
-    explorer: {
-      apiKey: `${process.env.REACT_APP_GOERLI_EXPLORER_API_KEY}`,
-      apiHost: `https://api-goerli.etherscan.io`,
-    },
-  },
   MUMBAI: {
     name: "mumbai-polygon",
     id: "80001",
@@ -111,18 +81,6 @@ export const NETWORKS_INGAME = {
       apiHost: `https://api-sepolia.etherscan.io`,
     },
   },
-  OPTIMISM_GOERLI: {
-    name: "goerli-optimism",
-    id: "420",
-    currencyName: "Optimism-ETH",
-    currencySymbol: "ETH",
-    rpcUrl: `https://goerli.optimism.io`,
-    blockExplorer: "https://goerli-optimism.etherscan.io",
-    explorer: {
-      apiKey: `${process.env.REACT_APP_OPTIMISM_GOERLI_EXPLORER_API_KEY}`,
-      apiHost: `https://api-goerli-optimistic.etherscan.io`,
-    },
-  },
   OPTIMISM_SEPOLIA: {
     name: "sepolia-optimism",
     id: "11155420",
@@ -131,20 +89,8 @@ export const NETWORKS_INGAME = {
     rpcUrl: `https://sepolia.optimism.io`,
     blockExplorer: "https://sepolia-optimism.etherscan.io",
     explorer: {
-      apiKey: `${process.env.REACT_APP_OPTIMISM_GOERLI_EXPLORER_API_KEY}`,
+      apiKey: `${process.env.REACT_APP_OPTIMISM_SEPOLIA_EXPLORER_API_KEY}`,
       apiHost: `https://api-sepolia-optimistic.etherscan.io`,
-    },
-  },
-  ARBITRUM_GOERLI: {
-    name: "goerli-arbitrum",
-    id: "421613",
-    currencyName: "Arbitrum-ETH",
-    currencySymbol: "ETH",
-    rpcUrl: `https://goerli-rollup.arbitrum.io/rpc`,
-    blockExplorer: "https://goerli.arbiscan.io",
-    explorer: {
-      apiKey: `${process.env.REACT_APP_ARBITRUM_GOERLI_EXPLORER_API_KEY}`,
-      apiHost: `https://api-goerli.arbiscan.io`,
     },
   },
   ARBITRUM_SEPOLIA: {
@@ -178,17 +124,17 @@ export const NETWORKS_INGAME = {
 export const NETWORKS_DEPRECATION = {
   GOERLI: {
     id: "5",
-    status: "deprecation-planned",
+    status: "deprecated",
     date: "jan-2024"
   },
   OPTIMISM_GOERLI: {
     id: "420",
-    status: "deprecation-planned",
+    status: "deprecated",
     date: "jan-2024"
   },
   ARBITRUM_GOERLI: {
     id: "421613",
-    status: "deprecation-planned",
+    status: "deprecated",
     date: "jan-2024"
   }
 };
@@ -204,11 +150,8 @@ export const GOOGLE_ANALYTICS_ID = "UA-85043059-4";
 export const ADDRESSES = {
   [NETWORKS.LOCAL.name]: undefined,
   [NETWORKS.MUMBAI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
-  [NETWORKS.GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
-  [NETWORKS.OPTIMISM_GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.OPTIMISM_SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
-  [NETWORKS.ARBITRUM_GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.ARBITRUM_SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.HOLESKY.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
 };
@@ -250,11 +193,8 @@ export const SHOW_ALL_COMPLETE_DESCRIPTIONS = false; /* FALSE on production */
 export const SHOW_VERSION = true;
 
 // export const ACTIVE_NETWORK = NETWORKS.SEPOLIA
-// export const ACTIVE_NETWORK = NETWORKS.GOERLI
 // export const ACTIVE_NETWORK = NETWORKS.MUMBAI
-// export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_GOERLI
 // export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_SEPOLIA
-// export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_GOERLI
 // export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_SEPOLIA
 // export const ACTIVE_NETWORK = NETWORKS.HOLESKY
 // export const ACTIVE_NETWORK = NETWORKS.LOCAL;
