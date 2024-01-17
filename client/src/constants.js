@@ -46,6 +46,12 @@ export const NETWORKS = {
     url: `${process.env.ARBITRUM_GOERLI_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
   },
+  ARBITRUM_SEPOLIA: {
+    name: "sepolia-arbitrum",
+    id: "421614",
+    url: `${process.env.ARBITRUM_SEPOLIA_HOST}`,
+    privKey: `${process.env.PRIV_KEY}`,
+  },
   HOLESKY: {
     name: "holesky",
     id: "17000",
@@ -123,6 +129,18 @@ export const NETWORKS_INGAME = {
       apiHost: `https://api-goerli.arbiscan.io`,
     },
   },
+  ARBITRUM_SEPOLIA: {
+    name: "sepolia-arbitrum",
+    id: "421614",
+    currencyName: "Arbitrum-ETH",
+    currencySymbol: "ETH",
+    rpcUrl: `https://sepolia-rollup.arbitrum.io/rpc`,
+    blockExplorer: "https://sepolia.arbiscan.io",
+    explorer: {
+      apiKey: `${process.env.REACT_APP_ARBITRUM_SEPOLIA_EXPLORER_API_KEY}`,
+      apiHost: `https://api-sepolia.arbiscan.io`,
+    },
+  },
   HOLESKY: {
     name: "holesky",
     id: "17000",
@@ -172,6 +190,7 @@ export const ADDRESSES = {
   [NETWORKS.SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.OPTIMISM_GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.ARBITRUM_GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
+  [NETWORKS.ARBITRUM_SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.HOLESKY.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
 };
 
@@ -216,6 +235,7 @@ export const SHOW_VERSION = true;
 // export const ACTIVE_NETWORK = NETWORKS.MUMBAI
 // export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_GOERLI
 // export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_GOERLI
+// export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_SEPOLIA
 // export const ACTIVE_NETWORK = NETWORKS.HOLESKY
 // export const ACTIVE_NETWORK = NETWORKS.LOCAL;
 
