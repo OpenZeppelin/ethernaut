@@ -40,6 +40,12 @@ export const NETWORKS = {
     url: `${process.env.OPTIMISM_GOERLI_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
   },
+  OPTIMISM_SEPOLIA: {
+    name: "sepolia-optimism",
+    id: "11155420",
+    url: `${process.env.OPTIMISM_SEPOLIA_HOST}`,
+    privKey: `${process.env.PRIV_KEY}`,
+  },
   ARBITRUM_GOERLI: {
     name: "goerli-arbitrum",
     id: "421613",
@@ -117,6 +123,18 @@ export const NETWORKS_INGAME = {
       apiHost: `https://api-goerli-optimistic.etherscan.io`,
     },
   },
+  OPTIMISM_SEPOLIA: {
+    name: "sepolia-optimism",
+    id: "11155420",
+    currencyName: "Optimism-ETH",
+    currencySymbol: "ETH",
+    rpcUrl: `https://sepolia.optimism.io`,
+    blockExplorer: "https://sepolia-optimism.etherscan.io",
+    explorer: {
+      apiKey: `${process.env.REACT_APP_OPTIMISM_GOERLI_EXPLORER_API_KEY}`,
+      apiHost: `https://api-sepolia-optimistic.etherscan.io`,
+    },
+  },
   ARBITRUM_GOERLI: {
     name: "goerli-arbitrum",
     id: "421613",
@@ -189,6 +207,7 @@ export const ADDRESSES = {
   [NETWORKS.GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.OPTIMISM_GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
+  [NETWORKS.OPTIMISM_SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.ARBITRUM_GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.ARBITRUM_SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.HOLESKY.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
@@ -234,6 +253,7 @@ export const SHOW_VERSION = true;
 // export const ACTIVE_NETWORK = NETWORKS.GOERLI
 // export const ACTIVE_NETWORK = NETWORKS.MUMBAI
 // export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_GOERLI
+// export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_SEPOLIA
 // export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_GOERLI
 // export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_SEPOLIA
 // export const ACTIVE_NETWORK = NETWORKS.HOLESKY
