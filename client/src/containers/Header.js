@@ -232,6 +232,7 @@ class Header extends React.Component {
       en: strings.english,
       es: strings.spanish,
       pt_br: strings.portuguese,
+      ua: strings.ukrainian,
       ja: strings.japanese,
       zh_cn: strings.chinese_simplified,
       zh_tw: strings.chinese_traditional,
@@ -240,7 +241,7 @@ class Header extends React.Component {
       ar: strings.arabic,
       tr: strings.turkish,
     };
-    
+
     const ddOpen = Boolean(this.state.multiDDOpen);
     return (
       <div onClick={() => this.closeDropdown()}>
@@ -319,11 +320,11 @@ class Header extends React.Component {
                         <Link   onClick={() => this.toggleDropdownState()}
                         to={constants.PATH_LEADERBOARD}>
                           <div
-                          className="element-in-row filled-icon">                                
+                          className="element-in-row filled-icon">
                                 <LeaderIcon />
                           </div>
                         </Link>
-                        
+
                       )}
                     <input
                       onClick={() => {
