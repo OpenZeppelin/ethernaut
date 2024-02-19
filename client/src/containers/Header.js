@@ -246,25 +246,22 @@ class Header extends React.Component {
     return (
       <div onClick={() => this.closeDropdown()}>
         <div>
-
           <section className="descriptors">
             <div className="boxes author-section-border" style={{marginTop: '0', marginBottom: '0', width: '100%'}}>
               <div className="author-section text-center" style={{marginLeft: '0', marginBottom: '0', width: 'auto'}}>
                 <div style={{overflowWrap: 'anywhere'}}>
-    
                   <span style={{fontSize: 'larger'}}>
-                  {parse(strings.ctfInfo)}
+                    {parse(strings.ctfInfo)}
 
-                  <a
-                    className="buttons"
-                    href="https://ctf.openzeppelin.com"
-                    style={{marginLeft: '0.5rem'}}
-                  >
-                    <button>{strings.ctfRegister}</button>
-                  </a>
-                
-                </span>
-    
+                    <a
+                      className="buttons"
+                      href="https://ctf.openzeppelin.com"
+                      style={{marginLeft: '0.5rem'}}
+                    >
+                      <button>{strings.ctfRegister}</button>
+                    </a>
+                  
+                  </span>
                 </div>
               </div>
             </div>
