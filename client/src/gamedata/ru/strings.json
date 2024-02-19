@@ -3,6 +3,7 @@
   "title": "Ethernaut",
   "hiring": "Мы нанимаем",
   "ctfRegister": "Зарегистрироваться!",
+  "ctfInfo": "<strong>Мы проводим Ethernaut CTF:</strong> 48-часовое мероприятие «Захват флага» с призами и испытаниями на блокчейне, которое начнется 16 марта.",
   "info": "<h2>Ethernaut это Web3/Solidity варгейм на базе Ethereum Virtual Machine, вдохновленный <a href='https://overthewire.org' target='_blank' rel='noopener noreferrer'>overthewire.org</a>. Каждый уровень является смарт-контрактом, который необходимо 'взломать'. Исходный код игры полностью открытый, а все уровни созданы другими игроками. У тебя есть интересная идея для нового уровня? <a href='https://github.com/OpenZeppelin/ethernaut'><button>Будем рады пулл реквестам</button></a>!</h2>",
   "home": "Назад",
   "help": "Помощь",

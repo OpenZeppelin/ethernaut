@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import { ProgressBar } from "react-loader-spinner";
 import { svgFilter } from "../utils/svg";
 import LeaderIcon from "../components/leaderboard/LeaderIcon";
+import parse from "html-react-parser";
 
 class Header extends React.Component {
   constructor(props) {
@@ -252,11 +253,10 @@ class Header extends React.Component {
                 <div style={{overflowWrap: 'anywhere'}}>
     
                   <span style={{fontSize: 'larger'}}>
-                  <strong>
-                  Announcing Ethernaut CTF:</strong> A 48-hour capture the flag event with prizes and blockchain challenges, starting 16/03.
+                  {parse(strings.ctfInfo)}
 
                   <a
-                    className="buttons hiring-button"
+                    className="buttons"
                     href="https://ctf.openzeppelin.com"
                     style={{marginLeft: '0.5rem'}}
                   >

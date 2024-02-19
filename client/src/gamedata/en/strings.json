@@ -3,6 +3,7 @@
   "title": "The Ethernaut",
   "hiring": "We're hiring!",
   "ctfRegister": "Register now!",
+  "ctfInfo": "<strong>We are hosting Ethernaut CTF:</strong> A 48-hour capture the flag event with prizes and blockchain challenges, starting 16/03.",
   "info": "<h2>The Ethernaut is a Web3/Solidity based wargame inspired by <a href='https://overthewire.org' target='_blank' rel='noopener noreferrer'>overthewire.org</a>, played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'. The game is 100% open source and all levels are contributions made by other players. Do you have an interesting idea? PRs are <a href='https://github.com/OpenZeppelin/ethernaut'><button>Welcome</button></a></h2>",
   "home": "Home",
   "help": "Help",

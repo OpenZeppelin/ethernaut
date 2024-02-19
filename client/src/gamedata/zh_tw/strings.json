@@ -3,6 +3,7 @@
   "title": "The Ethernaut",
   "hiring": "我們正在招聘！",
   "ctfRegister": "现在注册!",
+  "ctfInfo": "<strong>我们将举办 Ethernaut CTF:</strong> 为期 48 小时的夺旗活动，包含奖品和区块链挑战，将于 16 月 3 日开始。",
   "info": "<h2>以太網是一個基於Web3/固體的戰爭遊戲，靈感來自<a href='https://overthewire.org' target='_blank' rel='noopener noreferrer'>overthewire.org</a>, 在以太坊虛擬機中播放。每個級別都是需要“黑客”的智能合同。該遊戲是100％開源的，所有級別都是其他玩家做出的貢獻。你有一個有趣的主意嗎？PR是<a href='https://github.com/OpenZeppelin/ethernaut'><button>歡迎</button></a></h2>",
   "home": "主頁",
   "help": "幫助",

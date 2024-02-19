@@ -3,6 +3,7 @@
   "title": "الايثرناوت",
   "hiring": "نقوم بالتوظيف!",
   "ctfRegister": "سجل الان!",
+  "ctfInfo": "<strong>نحن نستضيف Ethernaut CTF:</strong> حدث التقاط العلم لمدة 48 ساعة مع جوائز وتحديات blockchain، بدءًا من 16/03.",
   "info": "<h2> لعبة ايثرناوت هي لعبة حرب تستند إلى ويب3 / سوليديتى مستوحاة من <a href='https://overthewire.org' target='_blank' rel='noopener noreferrer'> overthewire.org </a> ، يتم لعبها في آلة إيثريوم اﻻفتراضية. كل مستوى هو عقد ذكي يحتاج إلى اختراق. اللعبة مفتوحة المصدر بنسبة 100٪ وجميع المستويات مساهمات من لاعبين آخرين. هل لديك فكرة شيقة؟ العلاقات العامة <a href='https://github.com/OpenZeppelin/ethernaut'> <button> مرحبًا </ زر> </a> </h2>",
   "home": "الرئيسية",
   "help": "مساعدة",
