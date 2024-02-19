@@ -244,13 +244,31 @@ class Header extends React.Component {
     const ddOpen = Boolean(this.state.multiDDOpen);
     return (
       <div onClick={() => this.closeDropdown()}>
-        <div className="lines">
-          <center>
-            <hr className="top" />
-          </center>
-          <center>
-            <hr className="top" />
-          </center>
+        <div>
+
+          <section className="descriptors">
+            <div className="boxes author-section-border" style={{marginTop: '0', marginBottom: '0', width: '100%'}}>
+              <div className="author-section text-center" style={{marginLeft: '0', marginBottom: '0', width: 'auto'}}>
+                <div style={{overflowWrap: 'anywhere'}}>
+    
+                  <span style={{fontSize: 'larger'}}>
+                  <strong>
+                  Announcing Ethernaut CTF:</strong> A 48-hour capture the flag event with prizes and blockchain challenges, starting 16/03.
+
+                  <a
+                    className="buttons hiring-button"
+                    href="https://ctf.openzeppelin.com"
+                    style={{marginLeft: '0.5rem'}}
+                  >
+                    <button>{strings.ctfRegister}</button>
+                  </a>
+                
+                </span>
+    
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
         <center>
           <header>
