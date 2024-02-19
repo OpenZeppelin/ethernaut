@@ -2,6 +2,7 @@
   "ethernaut": "Ethernaut",
   "title": "The Ethernaut",
   "hiring": "İşe alıyoruz!",
+  "ctfRegister": "Şimdi üye Ol!",
   "info": "<h2>Ethernaut, esinlenerek Web3/Solidity tabanlı bir savaş oyunudur. <a href='https://overthewire.org' target='_blank' rel='noopener noreferrer'>overthewire.org</a>, Ethereum sanal makinesinde oynandı.Her seviye, 'saldırıya uğraması' gereken akıllı bir sözleşmedir.Oyun% 100 açık kaynak ve tüm seviyeler diğer oyuncular tarafından yapılan katkılardır.İlginç bir fikrin var mı?PR'ler <a href='https://github.com/OpenZeppelin/ethernaut'><button>Hoş geldin</button></a></h2>",
   "home": "Anasayfa",
   "help": "Yardım",

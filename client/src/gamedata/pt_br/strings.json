@@ -2,6 +2,7 @@
   "ethernaut": "Ethernaut",
   "title": "Ethernaut",
   "hiring": "Estamos contratando!",
+  "ctfRegister": "Registrar agora!",
   "info": "<h2>O Ethernaut é um jogo baseado em Web3/Solidity inspirado no <a href='https://overthewire.org' target='_blank' rel='noopener noreferrer'>overthewire.org</a>, jogado na Ethereum Virtual Machine. Cada nível é um contrato inteligente que precisa ser 'hackeado'. O jogo é 100% de código aberto e todos os níveis são contribuições feitas por outros jogadores. Você tem uma ideia interessante? PRs são <a href='https://github.com/OpenZeppelin/ethernaut'><button>Bem Vindos</button></a></h2>",
   "home": "Home",
   "help": "Ajuda",

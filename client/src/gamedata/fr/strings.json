@@ -2,6 +2,7 @@
   "ethernaut": "Ethernaut",
   "title": "The Ethernaut",
   "hiring": "Nous embauchons!",
+  "ctfRegister": "S'inscrire maintenant!",
   "info": "<h2> L'Ethernaut est un Wargame basé sur web3 / Solidity inspiré par <a href='https://overthewire.org' target='_blank' rel='noopener noreferrer'>overthewire.org </a>, joué dans leMachine virtuelle Ethereum.Chaque niveau est un contrat intelligent qui doit être «piraté».Le jeu est 100% open source et tous les niveaux sont des contributions apportées par d'autres joueurs.Avez-vous une idée intéressante?Les PRS sont <a href='https://github.com/openzeppelin/ethernaut'><button>Bienvenue</button></a></h2>",
   "home": "Accueil",
   "help": "Aide",
