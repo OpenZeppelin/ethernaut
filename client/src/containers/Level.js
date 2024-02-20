@@ -150,9 +150,8 @@ class Level extends React.Component {
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels);
 
     return (
-      <main>
-        <div className="lines"></div>
-        <main>
+      <main className="main-wrapper">
+        <main className="main-wrapper">
           {(isDescriptionMissingTranslation ||
             isCompleteDescriptionMissingTranslation) && (
               <div style={{ textAlign: "center" }}>
