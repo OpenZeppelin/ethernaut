@@ -2,6 +2,8 @@
   "ethernaut": "Ethernaut",
   "title": "The Ethernaut",
   "hiring": "We're hiring!",
+  "ctfRegister": "今すぐ登録!",
+  "ctfInfo": "<strong>私たちは Ethernaut CTF を主催しています:</strong> 賞品とブロックチェーン チャレンジを備えた 48 時間のキャプチャ ザ フラッグ イベントが 2003 年 16 月から始まります。",
   "info": "<h2>Ethernautは<a href='https://overthewire.org' target='_blank' rel='noopener noreferrer'>overthewire.org</a>にインスパイアされたEthereum仮想マシン(EVM)を使用するWeb3/Solidityハッキングゲームです。各レベルのスマートコントラクトは脆弱性のあるスマートコントラクトです。</p><p>このゲームは100%オープンソースでプレーヤーによって全てのレベルが作成されています。もし新たにゲームのアイデアがあれば<a href='https://github.com/OpenZeppelin/ethernaut'><button>こちらにPRをください！</button></a></h2>",
   "home": "ホーム",
   "help": "ヘルプ",

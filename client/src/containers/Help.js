@@ -11,7 +11,7 @@ class Help extends React.Component {
     let strings = loadTranslations(language);
 
     return (
-      <div className="helpcontainer">
+      <div className="helpcontainer main-wrapper">
         <div className="lines"></div>
         <main className="boxes">
           <h3>Setup Metamask</h3>

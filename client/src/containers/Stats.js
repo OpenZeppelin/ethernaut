@@ -102,7 +102,7 @@ class Stats extends React.Component {
   }
 
   render() {
-      return <div className="stats-page page-container">
+      return <div className="stats-page page-container main-wrapper">
       <div className='stats-header'>
         <Statistic heading="Total number of players" value={this.state.totalPlayers} />
         <Statistic heading="Total number of instances created" value={this.state.totalCreated} />

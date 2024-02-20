@@ -1,5 +1,5 @@
 import React from "react";
-import onClickOutside from 'react-onclickoutside'
+import onClickOutside from "react-onclickoutside";
 import { connect } from "react-redux";
 import { withRouter } from "../hoc/withRouter";
 import { Link } from "react-router-dom";
@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import { ProgressBar } from "react-loader-spinner";
 import { svgFilter } from "../utils/svg";
 import LeaderIcon from "../components/leaderboard/LeaderIcon";
+import parse from "html-react-parser";
 
 class Header extends React.Component {
   constructor(props) {
@@ -223,7 +224,7 @@ class Header extends React.Component {
 
   handleClickOutside = () => {
     this.closeDropdown();
-  }
+  };
 
   render() {
     let strings = loadTranslations(this.state.lang);
@@ -240,18 +241,27 @@ class Header extends React.Component {
       ar: strings.arabic,
       tr: strings.turkish,
     };
-    
+
     const ddOpen = Boolean(this.state.multiDDOpen);
     return (
-      <div onClick={() => this.closeDropdown()}>
-        <div className="lines">
+      <div className="header-container" onClick={() => this.closeDropdown()}>
+        {/* <div className="lines">
           <center>
             <hr className="top" />
           </center>
           <center>
             <hr className="top" />
           </center>
+        </div> */}
+        <div className="top-banner">
+           <div className="top-banner-text">{parse(strings.ctfInfo)}</div>
+            <a
+              href="https://ctf.openzeppelin.com"
+            >
+              <button>{strings.ctfRegister}</button>
+            </a>
         </div>
+
         <center>
           <header>
             <ul className="header-ul">
@@ -316,14 +326,14 @@ class Header extends React.Component {
                     </div>
                     {window.location.pathname === constants.PATH_ROOT &&
                       !!this.props.web3 && (
-                        <Link   onClick={() => this.toggleDropdownState()}
-                        to={constants.PATH_LEADERBOARD}>
-                          <div
-                          className="element-in-row filled-icon">                                
-                                <LeaderIcon />
+                        <Link
+                          onClick={() => this.toggleDropdownState()}
+                          to={constants.PATH_LEADERBOARD}
+                        >
+                          <div className="element-in-row filled-icon">
+                            <LeaderIcon />
                           </div>
                         </Link>
-                        
                       )}
                     <input
                       onClick={() => {
@@ -345,26 +355,29 @@ class Header extends React.Component {
                     <span>{strings.Networks}</span>
                   </p>
                   <div className={this.getDDClassName(2)}>
-                    {Object.values(constants.NETWORKS_INGAME).map((network, index) => {
-                      if (network && network.name !== "local") {
-                        if (Number(network.id) === this.state.chainId)
-                          return false; // filter out current network
-                        return (
-                          <div key={index}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              this.changeNetwork(network);
-                            }}
-                            className="dropdown-pill"
-                          >
-                            <a id={network.name} key={network.name} href="/">
-                              {network.name}
-                            </a>
-                          </div>
-                        );
+                    {Object.values(constants.NETWORKS_INGAME).map(
+                      (network, index) => {
+                        if (network && network.name !== "local") {
+                          if (Number(network.id) === this.state.chainId)
+                            return false; // filter out current network
+                          return (
+                            <div
+                              key={index}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                this.changeNetwork(network);
+                              }}
+                              className="dropdown-pill"
+                            >
+                              <a id={network.name} key={network.name} href="/">
+                                {network.name}
+                              </a>
+                            </div>
+                          );
+                        }
+                        return null;
                       }
-                      return null;
-                    })}
+                    )}
                   </div>
                 </div>
 
@@ -375,7 +388,8 @@ class Header extends React.Component {
                   </p>
                   <div className={this.getDDClassName(1)}>
                     {Object.keys(LANGUAGES_MAP).map((languageString, index) => (
-                      <div key={index}
+                      <div
+                        key={index}
                         onClick={(e) => {
                           this.changeLanguage(e, languageString);
                         }}
@@ -455,4 +469,6 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(onClickOutside(Header)));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(onClickOutside(Header))
+);
