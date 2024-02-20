@@ -729,6 +729,24 @@ footer {
   .appcontainer{
     width: 100vw;
   }
+
+  .top-banner-text {
+    font-size: smaller;
+  }
+
+  .header-container {
+    align-items: center;
+  }
+
+  .top-banner {
+    height: 100px;
+    width: 95%;
+  }
+
+  .multi-dropdown{
+    padding: 4px 9px;
+  }
+
   .header-ul{
     display: flex;
     margin-right: 20px;
