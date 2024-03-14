@@ -8,7 +8,7 @@ import {ProxyStats} from "../proxy/ProxyStats.sol";
 import {ProxyAdmin} from "../proxy/ProxyAdmin.sol";
 import {Level} from "../levels/base/Level.sol";
 
-// deploy all the nexessary contract in steps
+// deploy all the necessary contract in steps
 contract Factory is Ownable {
     Ethernaut public ethernaut;
     ProxyAdmin public proxyAdmin;
