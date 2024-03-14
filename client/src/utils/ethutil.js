@@ -137,7 +137,7 @@ export const validateAddress = (address) => {
   const allLowerCase = raw.toLowerCase() === raw;
   const allUppercase = raw.toUpperCase() === raw;
   if (allLowerCase || allUppercase) {
-    return true; // accepts addreses with no checksum data
+    return true; // accepts address with no checksum data
   }
   else {
     const checksum = ethjs.toChecksumAddress(address);
