@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import { ProgressBar } from "react-loader-spinner";
 import { svgFilter } from "../utils/svg";
 import LeaderIcon from "../components/leaderboard/LeaderIcon";
-import parse from "html-react-parser";
+// import parse from "html-react-parser";
 
 class Header extends React.Component {
   constructor(props) {
@@ -253,14 +253,14 @@ class Header extends React.Component {
             <hr className="top" />
           </center>
         </div> */}
-        <div className="top-banner">
+        {/* <div className="top-banner">
            <div className="top-banner-text">{parse(strings.ctfInfo)}</div>
             <a
               href="https://ctf.openzeppelin.com"
             >
               <button>{strings.ctfRegister}</button>
             </a>
-        </div>
+        </div> */}
 
         <center>
           <header>
