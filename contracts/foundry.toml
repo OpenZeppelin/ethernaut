@@ -1,6 +1,8 @@
 [profile.default]
-src = "src"
-out = "out"
-libs = ["lib"]
+src             = 'src'                                 # The source directory
+out             = 'out'                                 # The output directory
+libs            = ['lib']                               # A list of library directories
+optimizer       = true                                  # Enable or disable the solc optimizer
+optimizer_runs  = 1000                                  # The number of optimizer runs
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
