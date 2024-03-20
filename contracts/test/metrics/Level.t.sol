@@ -6,7 +6,7 @@ import {Utils} from "test/utils/Utils.sol";
 
 import {Statistics} from "src/metrics/Statistics.sol";
 
-contract TestLeaderboard is Test {
+contract TestLevel is Test {
     Statistics stats;
 
     Utils utils;
