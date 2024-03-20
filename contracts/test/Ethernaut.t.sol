@@ -89,7 +89,7 @@ contract TestEthernaut is Test {
 
         address instance = address(uint160(uint256(entries[0].topics[2])));
         Dummy dummy = Dummy(instance);
-        
+
         dummy.setCompleted(true);
         assertTrue(dummy.completed());
 
@@ -98,5 +98,101 @@ contract TestEthernaut is Test {
         vm.prank(user2);
         vm.expectRevert("This instance doesn't belong to the current user");
         ethernaut.submitLevelInstance(payable(instance));
+    }
+
+    /// @notice Should not allow a player to generate 2 completion logs with the same instance.
+    function testDoubleCompletion() public {
+        vm.startPrank(owner);
+        DummyFactory level = new DummyFactory();
+        ethernaut.registerLevel(level);
+        vm.stopPrank();
+
+        vm.startPrank(user);
+        assertTrue(stats.doesLevelExist(address(level)));
+
+        vm.recordLogs();
+        ethernaut.createLevelInstance(level);
+        Vm.Log[] memory entries = vm.getRecordedLogs();
+
+        address instance = address(uint160(uint256(entries[0].topics[2])));
+        Dummy dummy = Dummy(instance);
+
+        dummy.setCompleted(true);
+        assertTrue(dummy.completed());
+
+        ethernaut.submitLevelInstance(payable(instance));
+
+        assertTrue(stats.isLevelCompleted(user, address(level)));
+
+        vm.expectRevert("Level has been completed already");
+        ethernaut.submitLevelInstance(payable(instance));
+    }
+
+    /// @notice Should provide instances and verify completion.
+    function testLevelCompletion() public {
+        vm.startPrank(owner);
+        DummyFactory level = new DummyFactory();
+        ethernaut.registerLevel(level);
+        vm.stopPrank();
+
+        vm.startPrank(user);
+        assertTrue(stats.doesLevelExist(address(level)));
+
+        vm.recordLogs();
+        ethernaut.createLevelInstance(level);
+        Vm.Log[] memory entries = vm.getRecordedLogs();
+
+        address instance = address(uint160(uint256(entries[0].topics[2])));
+        Dummy dummy = Dummy(instance);
+
+        dummy.setCompleted(true);
+        assertTrue(dummy.completed());
+
+        assertFalse(stats.isLevelCompleted(user, address(level)));
+        ethernaut.submitLevelInstance(payable(instance));
+        assertTrue(stats.isLevelCompleted(user, address(level)));
+    }
+
+    /// @notice Should provide instances and verify non-completion.
+    function testLevelNonCompletion() public {
+        vm.startPrank(owner);
+        DummyFactory level = new DummyFactory();
+        ethernaut.registerLevel(level);
+        vm.stopPrank();
+
+        vm.startPrank(user);
+        assertTrue(stats.doesLevelExist(address(level)));
+
+        vm.recordLogs();
+        ethernaut.createLevelInstance(level);
+        Vm.Log[] memory entries = vm.getRecordedLogs();
+
+        address instance = address(uint160(uint256(entries[0].topics[2])));
+        Dummy dummy = Dummy(instance);
+
+        assertFalse(dummy.completed());
+        assertFalse(stats.isLevelCompleted(user, address(level)));
+        ethernaut.submitLevelInstance(payable(instance));
+        assertFalse(stats.isLevelCompleted(user, address(level)));
+    }
+
+    /// @notice Should not provide instances to non-registered level factories.
+    function testNonRegisteredLevel() public {
+        vm.startPrank(owner);
+        DummyFactory level = new DummyFactory();
+        vm.stopPrank();
+
+        vm.startPrank(user);
+        vm.expectRevert("This level doesn't exists");
+        ethernaut.createLevelInstance(level);
+
+        assertFalse(stats.doesLevelExist(address(level)));
+    }
+
+    /// @notice Should not allow anyone but the owner to upload a level.
+    function testUploadLevel() public {
+        DummyFactory level = new DummyFactory();
+        vm.expectRevert("Ownable: caller is not the owner");
+        ethernaut.registerLevel(level);
     }
 }
