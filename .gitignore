@@ -2,13 +2,9 @@
 node_modules/
 
 # Private stuff
-client/.env
+client/.envhttps://github.com/madjianguo/ethernaut/blob/master/.gitignore
 contracts/.env
-
-# Contracts
-contracts/build/
-contracts/cache/
-contracts/node_modules/
+es/
 contracts/.openzeppelin/
 
 # Client
