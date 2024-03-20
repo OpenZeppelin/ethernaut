@@ -14,7 +14,7 @@ contract GoodSamaritan {
         wallet.setCoin(coin);
     }
 
-    function requestDonation() external returns(bool enoughBalance){
+    function requestDonation() external returns (bool enoughBalance) {
         // donate 10 coins to requester
         try wallet.donate10(msg.sender) {
             return true;
@@ -37,19 +37,19 @@ contract Coin {
 
     constructor(address wallet_) {
         // one million coins for Good Samaritan initially
-        balances[wallet_] = 10**6;
+        balances[wallet_] = 10 ** 6;
     }
 
     function transfer(address dest_, uint256 amount_) external {
         uint256 currentBalance = balances[msg.sender];
 
         // transfer only occurs if balance is enough
-        if(amount_ <= currentBalance) {
+        if (amount_ <= currentBalance) {
             balances[msg.sender] -= amount_;
             balances[dest_] += amount_;
 
-            if(dest_.isContract()) {
-                // notify contract 
+            if (dest_.isContract()) {
+                // notify contract
                 INotifyable(dest_).notify(amount_);
             }
         } else {
@@ -68,7 +68,7 @@ contract Wallet {
     error NotEnoughBalance();
 
     modifier onlyOwner() {
-        if(msg.sender != owner) {
+        if (msg.sender != owner) {
             revert OnlyOwner();
         }
         _;

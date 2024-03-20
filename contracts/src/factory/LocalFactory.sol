@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 // import all the abi's required to deploy
+
 import {Ownable} from "openzeppelin-contracts-08/access/Ownable.sol";
 import {Ethernaut} from "../Ethernaut.sol";
 import {Statistics} from "../metrics/Statistics.sol";
@@ -20,11 +21,7 @@ contract Factory is Ownable {
         ethernaut = new Ethernaut();
         proxyAdmin = new ProxyAdmin();
         implementation = new Statistics();
-        proxyStats = new ProxyStats(
-            address(implementation),
-            address(proxyAdmin),
-            address(ethernaut)
-        );
+        proxyStats = new ProxyStats(address(implementation), address(proxyAdmin), address(ethernaut));
         // initialise the ethernaut contract with the proxystats method
         ethernaut.setStatistics(address(proxyStats));
         // here is where statistics seats behind the proxy

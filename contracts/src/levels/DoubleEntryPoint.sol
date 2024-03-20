@@ -5,7 +5,7 @@ import "openzeppelin-contracts-08/access/Ownable.sol";
 import "openzeppelin-contracts-08/token/ERC20/ERC20.sol";
 
 interface DelegateERC20 {
-  function delegateTransfer(address to, uint256 value, address origSender) external returns (bool);
+    function delegateTransfer(address to, uint256 value, address origSender) external returns (bool);
 }
 
 interface IDetectionBot {
@@ -19,24 +19,24 @@ interface IForta {
 }
 
 contract Forta is IForta {
-  mapping(address => IDetectionBot) public usersDetectionBots;
-  mapping(address => uint256) public botRaisedAlerts;
+    mapping(address => IDetectionBot) public usersDetectionBots;
+    mapping(address => uint256) public botRaisedAlerts;
 
-  function setDetectionBot(address detectionBotAddress) external override {
-      usersDetectionBots[msg.sender] = IDetectionBot(detectionBotAddress);
-  }
+    function setDetectionBot(address detectionBotAddress) external override {
+        usersDetectionBots[msg.sender] = IDetectionBot(detectionBotAddress);
+    }
 
-  function notify(address user, bytes calldata msgData) external override {
-    if(address(usersDetectionBots[user]) == address(0)) return;
-    try usersDetectionBots[user].handleTransaction(user, msgData) {
-        return;
-    } catch {}
-  }
+    function notify(address user, bytes calldata msgData) external override {
+        if (address(usersDetectionBots[user]) == address(0)) return;
+        try usersDetectionBots[user].handleTransaction(user, msgData) {
+            return;
+        } catch {}
+    }
 
-  function raiseAlert(address user) external override {
-      if(address(usersDetectionBots[user]) != msg.sender) return;
-      botRaisedAlerts[msg.sender] += 1;
-  } 
+    function raiseAlert(address user) external override {
+        if (address(usersDetectionBots[user]) != msg.sender) return;
+        botRaisedAlerts[msg.sender] += 1;
+    }
 }
 
 contract CryptoVault {
@@ -114,14 +114,16 @@ contract DoubleEntryPoint is ERC20("DoubleEntryPointToken", "DET"), DelegateERC2
         _;
 
         // Check if alarms have been raised
-        if(forta.botRaisedAlerts(detectionBot) > previousValue) revert("Alert has been triggered, reverting");
+        if (forta.botRaisedAlerts(detectionBot) > previousValue) revert("Alert has been triggered, reverting");
     }
 
-    function delegateTransfer(
-        address to,
-        uint256 value,
-        address origSender
-    ) public override onlyDelegateFrom fortaNotify returns (bool) {
+    function delegateTransfer(address to, uint256 value, address origSender)
+        public
+        override
+        onlyDelegateFrom
+        fortaNotify
+        returns (bool)
+    {
         _transfer(origSender, to, value);
         return true;
     }

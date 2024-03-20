@@ -12,17 +12,16 @@ interface IForta {
 }
 
 contract DetectionBot is IDetectionBot {
+    IForta public fortaContract;
 
-  IForta public fortaContract;
+    constructor(address forta) {
+        fortaContract = IForta(forta);
+    }
 
-  constructor(address forta) {
-    fortaContract = IForta(forta);
-  }
-  
-  function handleTransaction(address user, bytes calldata msgData) public override {
-    // Only the Forta contract can call this method
-    require(msg.sender == address(fortaContract), "Unauthorized");
-    fortaContract.raiseAlert(user);
-    msgData;
-  }
+    function handleTransaction(address user, bytes calldata msgData) public override {
+        // Only the Forta contract can call this method
+        require(msg.sender == address(fortaContract), "Unauthorized");
+        fortaContract.raiseAlert(user);
+        msgData;
+    }
 }

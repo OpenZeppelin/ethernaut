@@ -6,11 +6,7 @@ contract DexTwoAttackToken {
         return 1;
     }
 
-    function transferFrom(
-        address,
-        address,
-        uint256
-    ) external pure returns (bool) {
+    function transferFrom(address, address, uint256) external pure returns (bool) {
         return true;
     }
 }
