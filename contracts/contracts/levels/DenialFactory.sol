@@ -11,10 +11,16 @@ contract DenialFactory is Level {
 
   function createInstance(address _player) override public payable returns (address) {
     _player;
-    require(msg.value >= initialDeposit);
+    require(
+      msg.value >= initialDeposit,
+      "Insufficient deposit sent to create an instance."
+    );
     Denial instance = new Denial();
     (bool result,) = address(instance).call{value:msg.value}("");
-    require(result);
+    require(
+      result,
+      "Failed to initialize the Denial instance with the sent Ether."
+    );
     return address(instance);
   }
 

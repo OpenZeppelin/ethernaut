@@ -12,15 +12,12 @@ contract Fallback {
   }
 
   modifier onlyOwner {
-        require(
-            msg.sender == owner,
-            "caller is not the owner"
-        );
-        _;
-    }
+    require(msg.sender == owner, "Caller is not the owner");
+    _;
+  }
 
   function contribute() public payable {
-    require(msg.value < 0.001 ether);
+    require(msg.value < 0.001 ether, "Not enough amount to contribute");
     contributions[msg.sender] += msg.value;
     if(contributions[msg.sender] > contributions[owner]) {
       owner = msg.sender;
@@ -36,7 +33,10 @@ contract Fallback {
   }
 
   receive() external payable {
-    require(msg.value > 0 && contributions[msg.sender] > 0);
+    require(
+      msg.value > 0 && contributions[msg.sender] > 0,
+      "Need to pay more than 0 or pay one time first"
+    );
     owner = msg.sender;
   }
 }
