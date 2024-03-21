@@ -35,9 +35,9 @@ contract Utils is Test {
         vm.roll(targetBlock);
     }
 
-    function createLevelInstance(Ethernaut ethernaut, Level level) public returns (address instance) {
+    function createLevelInstance(Ethernaut ethernaut, Level level, uint256 value) public returns (address instance) {
         vm.recordLogs();
-        ethernaut.createLevelInstance(level);
+        ethernaut.createLevelInstance{value: value}(level);
         Vm.Log[] memory entries = vm.getRecordedLogs();
 
         instance = address(uint160(uint256(entries[0].topics[2])));
