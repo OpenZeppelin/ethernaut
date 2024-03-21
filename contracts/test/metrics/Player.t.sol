@@ -131,6 +131,7 @@ contract TestPlayer is Test {
         stats.createNewInstance(level_instance_1, level_factory_1, user3);
         stats.createNewInstance(level_instance_2, level_factory_1, user3);
         stats.createNewInstance(level_instance_3, level_factory_1, user3);
+        vm.warp(block.timestamp + 3);
         stats.submitSuccess(level_instance_3, level_factory_1, user3);
         assertEq(stats.getTimeElapsedForCompletionOfLevel(user3, level_factory_1), 3);
     }

