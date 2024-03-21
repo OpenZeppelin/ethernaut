@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
+import "forge-std/StdJson.sol";
 
 import {Ethernaut} from "src/Ethernaut.sol";
 import {Statistics} from "src/metrics/Statistics.sol";
@@ -9,6 +10,8 @@ import {ProxyStats} from "src/proxy/ProxyStats.sol";
 import {Level} from "src/levels/base/Level.sol";
 
 contract Utils is Test {
+    using stdJson for string;
+
     bytes32 internal nextUser = keccak256(abi.encodePacked("user address"));
 
     function getNextUserAddress() external returns (address payable) {
@@ -60,5 +63,17 @@ contract Utils is Test {
         Statistics stats = Statistics(address(new ProxyStats(address(new Statistics()), owner, address(ethernaut))));
         ethernaut.setStatistics(address(stats));
         return ethernaut;
+    }
+
+    function getOldFactory(string memory contractName) public returns (address addr) {
+        string memory root = vm.projectRoot();
+        string memory path =
+            string.concat(root, string(abi.encodePacked("/out/", contractName, ".sol/", contractName, ".json")));
+        string memory json = vm.readFile(path);
+        bytes memory code = json.readBytes(".bytecode.object");
+
+        assembly {
+            addr := create(0, add(code, 0x20), mload(code))
+        }
     }
 }

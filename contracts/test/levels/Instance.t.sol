@@ -4,17 +4,15 @@ pragma solidity ^0.8.0;
 import "forge-std/Test.sol";
 import {Utils} from "test/utils/Utils.sol";
 
-import {DummyFactory} from "src/levels/DummyFactory.sol";
+import {King} from "src/levels/King.sol";
+import {KingFactory} from "src/levels/KingFactory.sol";
+import {KingAttack} from "src/attacks/KingAttack.sol";
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-interface Token {
-    function transfer(address, uint256) external returns (bool);
-}
-
-contract TestToken is Test, Utils {
+contract TestKing is Test, Utils {
     Ethernaut ethernaut;
-    Token instance;
+    King instance;
 
     address payable owner;
     address payable player;
@@ -34,12 +32,12 @@ contract TestToken is Test, Utils {
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        DummyFactory factory = DummyFactory(getOldFactory("TokenFactory"));
+        KingFactory factory = new KingFactory();
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Token(payable(createLevelInstance(ethernaut, Level(address(factory)), 0)));
+        instance = King(payable(createLevelInstance(ethernaut, Level(address(factory)), 0.001 ether)));
         vm.stopPrank();
     }
 
@@ -57,7 +55,8 @@ contract TestToken is Test, Utils {
     function testSolve() public {
         vm.startPrank(player);
 
-        instance.transfer(address(instance), 21);
+        KingAttack attacker = new KingAttack();
+        attacker.doYourThing{value: 2.01 ether}(address(instance));
 
         assertTrue(submitLevelInstance(ethernaut, address(instance)));
     }

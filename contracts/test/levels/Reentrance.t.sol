@@ -5,16 +5,13 @@ import "forge-std/Test.sol";
 import {Utils} from "test/utils/Utils.sol";
 
 import {DummyFactory} from "src/levels/DummyFactory.sol";
+import {ReentranceAttack, Reentrance} from "src/attacks/ReentranceAttack.sol";
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-interface Token {
-    function transfer(address, uint256) external returns (bool);
-}
-
-contract TestToken is Test, Utils {
+contract TestReentrance is Test, Utils {
     Ethernaut ethernaut;
-    Token instance;
+    Reentrance instance;
 
     address payable owner;
     address payable player;
@@ -34,12 +31,12 @@ contract TestToken is Test, Utils {
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        DummyFactory factory = DummyFactory(getOldFactory("TokenFactory"));
+        DummyFactory factory = DummyFactory(getOldFactory("ReentranceFactory"));
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Token(payable(createLevelInstance(ethernaut, Level(address(factory)), 0)));
+        instance = Reentrance(payable(createLevelInstance(ethernaut, Level(address(factory)), 0.001 ether)));
         vm.stopPrank();
     }
 
@@ -57,7 +54,9 @@ contract TestToken is Test, Utils {
     function testSolve() public {
         vm.startPrank(player);
 
-        instance.transfer(address(instance), 21);
+        ReentranceAttack attacker = new ReentranceAttack{value: player.balance}(payable(address(instance)));
+        attacker.attack_1_causeOverflow();
+        attacker.attack_2_deplete();
 
         assertTrue(submitLevelInstance(ethernaut, address(instance)));
     }

