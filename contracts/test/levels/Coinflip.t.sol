@@ -37,7 +37,7 @@ contract TestCoinflip is Test, Utils {
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = CoinFlip(createLevelInstance(ethernaut, Level(address(factory))));
+        instance = CoinFlip(createLevelInstance(ethernaut, Level(address(factory)), 0));
         vm.stopPrank();
     }
 

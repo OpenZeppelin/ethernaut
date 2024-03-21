@@ -4,14 +4,15 @@ pragma solidity ^0.8.0;
 import "forge-std/Test.sol";
 import {Utils} from "test/utils/Utils.sol";
 
-import {Delegation} from "src/levels/Delegation.sol";
-import {DelegationFactory} from "src/levels/DelegationFactory.sol";
+import {Shop} from "src/levels/Shop.sol";
+import {ShopFactory} from "src/levels/ShopFactory.sol";
+import {ShopAttack} from "src/attacks/ShopAttack.sol";
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-contract TestDelegation is Test, Utils {
+contract TestShop is Test, Utils {
     Ethernaut ethernaut;
-    Delegation instance;
+    Shop instance;
 
     address payable owner;
     address payable player;
@@ -31,12 +32,12 @@ contract TestDelegation is Test, Utils {
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        DelegationFactory factory = new DelegationFactory();
+        ShopFactory factory = new ShopFactory();
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Delegation(createLevelInstance(ethernaut, Level(address(factory)), 0));
+        instance = Shop(payable(createLevelInstance(ethernaut, Level(address(factory)), 0.001 ether)));
         vm.stopPrank();
     }
 
@@ -46,7 +47,7 @@ contract TestDelegation is Test, Utils {
 
     /// @notice Check the intial state of the level and enviroment.
     function testInit() public {
-        vm.prank(player);
+        vm.startPrank(player);
         assertFalse(submitLevelInstance(ethernaut, address(instance)));
     }
 
@@ -54,8 +55,8 @@ contract TestDelegation is Test, Utils {
     function testSolve() public {
         vm.startPrank(player);
 
-        (bool success,) = address(instance).call(abi.encodeWithSignature("pwn()"));
-        require(success, "call not successful");
+        ShopAttack attacker = new ShopAttack();
+        attacker.attack(instance);
 
         assertTrue(submitLevelInstance(ethernaut, address(instance)));
     }

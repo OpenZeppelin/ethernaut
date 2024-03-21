@@ -4,14 +4,15 @@ pragma solidity ^0.8.0;
 import "forge-std/Test.sol";
 import {Utils} from "test/utils/Utils.sol";
 
-import {Delegation} from "src/levels/Delegation.sol";
-import {DelegationFactory} from "src/levels/DelegationFactory.sol";
+import {GatekeeperTwo} from "src/levels/GatekeeperTwo.sol";
+import {GatekeeperTwoFactory} from "src/levels/GatekeeperTwoFactory.sol";
+import {GatekeeperTwoAttack} from "src/attacks/GatekeeperTwoAttack.sol";
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-contract TestDelegation is Test, Utils {
+contract TestGatekeeperTwo is Test, Utils {
     Ethernaut ethernaut;
-    Delegation instance;
+    GatekeeperTwo instance;
 
     address payable owner;
     address payable player;
@@ -31,12 +32,12 @@ contract TestDelegation is Test, Utils {
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        DelegationFactory factory = new DelegationFactory();
+        GatekeeperTwoFactory factory = new GatekeeperTwoFactory();
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Delegation(createLevelInstance(ethernaut, Level(address(factory)), 0));
+        instance = GatekeeperTwo(payable(createLevelInstance(ethernaut, Level(address(factory)), 0)));
         vm.stopPrank();
     }
 
@@ -46,17 +47,16 @@ contract TestDelegation is Test, Utils {
 
     /// @notice Check the intial state of the level and enviroment.
     function testInit() public {
-        vm.prank(player);
+        vm.startPrank(player);
         assertFalse(submitLevelInstance(ethernaut, address(instance)));
     }
 
     /// @notice Test the solution for the level.
     function testSolve() public {
+        vm.prank(player, player);
+        GatekeeperTwoAttack attacker = new GatekeeperTwoAttack(address(instance));
+
         vm.startPrank(player);
-
-        (bool success,) = address(instance).call(abi.encodeWithSignature("pwn()"));
-        require(success, "call not successful");
-
         assertTrue(submitLevelInstance(ethernaut, address(instance)));
     }
 }

@@ -40,7 +40,7 @@ contract Utils is Test {
         ethernaut.createLevelInstance{value: value}(level);
         Vm.Log[] memory entries = vm.getRecordedLogs();
 
-        instance = address(uint160(uint256(entries[0].topics[2])));
+        instance = address(uint160(uint256(entries[entries.length - 1].topics[2])));
     }
 
     function submitLevelInstance(Ethernaut ethernaut, address instance) public returns (bool) {
