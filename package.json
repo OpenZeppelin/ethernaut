@@ -21,7 +21,7 @@
     "supersede:level": "yarn compile:contracts && node --experimental-json-modules client/scripts/supersede_level.mjs",
     "network": "cd contracts && anvil",
     "build:ethernaut": "yarn compile:contracts && yarn --cwd client build",
-    "build:netlify": "yarn --cwd client build",
+    "build:netlify": "cd client && yarn && yarn --cwd client build",
     "start:ethernaut": "cd client && yarn start",
     "test:contracts": "cd contracts && forge test",
     "leaderboard:oldCrawler": "node client/leaderboard/scripts/crawlers/crawlHistoricalData/index.cjs",
