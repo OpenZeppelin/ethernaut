@@ -1,7 +1,7 @@
 import * as constants from "../constants";
 import { getWeb3, setWeb3, getTruffleContract, getNetworkFromId } from "./ethutil";
 import { newGithubIssueUrl } from "./github";
-import * as LocalFactoryABI from "contracts/build/contracts/factory/LocalFactory.sol/Factory.json";
+import * as LocalFactoryABI from "../contracts/out/LocalFactory.sol/Factory.json";
 import { deployAdminContracts, deployAndRegisterLevel } from "./deploycontract";
 var levels = require(`../gamedata/gamedata.json`).levels;
 
@@ -62,7 +62,7 @@ export function getLevelKey(levelAddress) {
 
 export function fetchLevelABI(level) {
   const contractName = level.levelContract.split(".")[0];
-  return require(`contracts/build/contracts/levels/${level.levelContract}/${contractName}.json`);
+  return require(`../contracts/out/${level.levelContract}/${contractName}.json`);
 }
 
 // write windows finction to transfer ownership to a new user
@@ -175,7 +175,7 @@ export const verifyContract = async (contractAddress, level, chainId) => {
   if (!network.explorer || !level.verificationDetails)
     return;
 
-  const contractFile = await fetch(`contracts/levels/${level.instanceContract}`);
+  const contractFile = await fetch(`../contracts/src/levels/${level.instanceContract}`);
   const contractCode = await contractFile.text();
 
   const headers = new Headers();

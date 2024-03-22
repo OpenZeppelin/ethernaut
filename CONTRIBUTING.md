@@ -44,7 +44,7 @@ If you would like to contribute in another way, please reach out to us via email
 
 *A level is composed of the following elements:*
 
-- A `<Level>Factory.sol` contract, where `<Level>` is replaced by the name of the level, that needs to extend [`Level.sol`](./contracts/contracts/levels/base/Level.sol). This factory contract will be deployed only once and registered on Ethernaut.sol by Ethernaut's owner. Players never interact with the factory directly. The factory is in charge of creating level instances for players to use (1 instance per player) and to check these instances to verify if the player has passed the level. Factories should not have state that can be changed by the player.
+- A `<Level>Factory.sol` contract, where `<Level>` is replaced by the name of the level, that needs to extend [`Level.sol`](./contracts/src/levels/base/Level.sol). This factory contract will be deployed only once and registered on Ethernaut.sol by Ethernaut's owner. Players never interact with the factory directly. The factory is in charge of creating level instances for players to use (1 instance per player) and to check these instances to verify if the player has passed the level. Factories should not have state that can be changed by the player.
 - A `level instance` contract named `<Level>.sol`, where `<Level>` is replaced by the name of the level, that is emitted by the factory for each player that requests it. Instances need to be completely decouppled from Ethernaut's architecture. Factories will emit them and verify them. That is, level instances don't know anything about their factories or Ethernaut. An instance's state can be completely demolished by players and even destroyed since they are not really part of the architecture, just a challenge for a player to use at will.
 - A `description file` in [the descriptions directory](./client/src/gamedata/en/descriptions/levels) that the UI presents to the player and describes the level's objectives with some narrative and tips.
 - A `description completion file` also located in [the descriptions directory](./client/src/gamedata/en/descriptions/levels) that the UI presents to the player when the level is passed, further information about the player, historical insights, further explanations or just a congrats message.
@@ -60,8 +60,8 @@ Let's suppose that we are creating the level "King" (which is already created an
 2. Use the other levels as a basis, eg. duplicate DummyFactory.sol and Dummy.sol.
 3. Rename and modify the contracts to KingFactory.sol and King.sol respectively.
 4. Implement the desired instance and factory logic in solidity. See current levels and notes to understand how the game mechanics work.
-5. Add the test file `contracts/test/levels/King.test.js`. Use other tests files as reference to see how tests might work.
-6. Run `yarn test:contracts` and once all tests pass, register the level in [gamedata.json](client/src/gamedata/gamedata.json).
+5. Add the test file `contracts/test/levels/King.t.sol`. Use other tests files as reference to see how tests might work.
+6. Run `forge test` and once all tests pass, register the level in [gamedata.json](client/src/gamedata/gamedata.json).
 7. The level should now show up in the ui. To start the UI, set the [ACTIVE_NETWORK](client/src/constants.js) to `NETWORKS.LOCAL` and run `yarn start`.
 8. Add a description markdown file, in this case client/src/gamedata/levels/king.md (make sure gamedata.json points to it). This content will now be displayed in the ui for the level.
 9. Add a completed description markdown file, in this case client/src/gamedata/levels/king_complete.md (make sure gamedata.json points to it). The level will display this as additional info once the level is solved, usually to include historical information related to the level.

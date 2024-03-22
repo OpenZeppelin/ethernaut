@@ -1,17 +1,34 @@
 name: Test
-
 on:
   push:
     branches: [master]
   pull_request: {}
 
 jobs:
-  test:
+  tests:
+    name: Foundry tests
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./contracts
+
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16.x
-    - run: yarn
-    - run: yarn test:contracts
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Install dependencies
+        run: forge install
+
+      - name: Check contract sizes
+        run: forge build --sizes --skip test
+        id: build
+
+      - name: Run tests
+        run: forge test -v
+        id: test

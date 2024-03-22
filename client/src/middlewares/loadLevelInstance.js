@@ -79,8 +79,8 @@ const loadLevelInstance = (store) => (next) => (action) => {
   if (!instanceAddress) return;
   console.info(`=> ${strings.instanceAddressMessage}\n${instanceAddress}`);
   const Instance = ethutil.getTruffleContract(
-    require(`contracts/build/contracts/levels/${action.level.instanceContract
-      }/${withoutExtension(action.level.instanceContract)}.json`),
+    require(`../contracts/out/${action.level.instanceContract
+    }/${withoutExtension(action.level.instanceContract)}.json`),
     {
       from: state.player.address,
       gasPrice: 2 * state.network.gasPrice,

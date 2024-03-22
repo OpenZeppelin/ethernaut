@@ -1,5 +1,5 @@
 [build]
-  command = "yarn run build:ethernaut"
+  command = "yarn run build:netlify"
   publish = "client/build"
 
 [[redirects]]

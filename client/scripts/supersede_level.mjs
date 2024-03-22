@@ -5,11 +5,11 @@ import HDWalletProvider from "@truffle/hdwallet-provider";
 import Web3 from "web3";
 import * as ethutil from "../src/utils/ethutil.js";
 import * as constants from "../src/constants.js";
-import * as EthernautABI from "contracts/build/contracts/Ethernaut.sol/Ethernaut.json" assert { type: "json" };
-import * as ProxyStatsABI from "contracts/build/contracts/proxy/ProxyStats.sol/ProxyStats.json" assert { type: "json" };
-import * as ProxyAdminABI from "contracts/build/contracts/proxy/ProxyAdmin.sol/ProxyAdmin.json" assert { type: "json" };
-import * as ImplementationABI from "contracts/build/contracts/metrics/Statistics.sol/Statistics.json" assert { type: "json" };
-import * as SupersederImplementationABI from "contracts/build/contracts/metrics/StatisticsLevelSuperseder.sol/StatisticsLevelSuperseder.json" assert { type: "json" };
+import * as EthernautABI from "../src/contracts/out/Ethernaut.sol/Ethernaut.json" assert { type: "json" };
+import * as ProxyStatsABI from "../src/contracts/out/ProxyStats.sol/ProxyStats.json" assert { type: "json" };
+import * as ProxyAdminABI from "../src/contracts/out/ProxyAdmin.sol/ProxyAdmin.json" assert { type: "json" };
+import * as ImplementationABI from "../src/contracts/out/Statistics.sol/Statistics.json" assert { type: "json" };
+import * as SupersederImplementationABI from "../src/contracts/out/StatisticsLevelSuperseder.sol/StatisticsLevelSuperseder.json" assert { type: "json" };
 
 import gamedata from "../src/gamedata/gamedata.json" assert { type: "json" };
 const levels = gamedata.levels;
@@ -201,7 +201,7 @@ async function deployAndUpgradeStatisticsToStatisticsSuperseder() {
 
   const props = {
     gasPrice: parseInt(await web3.eth.getGasPrice() * 1.10),
-    gas: 45000000,
+    gas: 30000000,
   };
   let from = constants.ADDRESSES[constants.ACTIVE_NETWORK.name];
   if (!from) from = (await web3.eth.getAccounts())[0];
@@ -258,7 +258,7 @@ async function deployLevel(level) {
 
   const LevelABI = JSON.parse(
     fs.readFileSync(
-      `contracts/build/contracts/levels/${level.levelContract}/${
+      `contracts/out/${level.levelContract}/${
         level.levelContract.split(".")[0]
       }.json`,
       "utf-8"
