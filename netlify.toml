@@ -1,5 +1,5 @@
 [build]
-  command = "yarn run init:contracts && yarn run build:ethernaut"
+  command = "yarn run foundry:up && yarn run build:ethernaut"
   publish = "client/build"
 
 [[redirects]]
