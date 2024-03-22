@@ -142,7 +142,7 @@ class Level extends React.Component {
 
     let sourcesFile = null;
     try {
-      sourcesFile = require(`contracts/src/levels/${level.instanceContract}`);
+      sourcesFile = require(`../contracts/src/levels/${level.instanceContract}`);
     } catch (e) {
       console.log(e);
     }

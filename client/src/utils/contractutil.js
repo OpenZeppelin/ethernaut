@@ -176,7 +176,7 @@ export const verifyContract = async (contractAddress, level, chainId) => {
   if (!network.explorer || !level.verificationDetails)
     return;
 
-  const contractFile = await fetch(`contracts/src/levels/${level.instanceContract}`);
+  const contractFile = await fetch(`../contracts/src/levels/${level.instanceContract}`);
   const contractCode = await contractFile.text();
 
   const headers = new Headers();
