@@ -62,7 +62,6 @@ export function getLevelKey(levelAddress) {
 
 export function fetchLevelABI(level) {
   const contractName = level.levelContract.split(".")[0];
-  const path = require('path');
   return require(`../contracts/out/${level.levelContract}/${contractName}.json`);
 }
 
