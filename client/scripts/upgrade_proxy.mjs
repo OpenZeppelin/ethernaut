@@ -4,8 +4,8 @@ import fs from 'fs';
 import * as ethutil from '../src/utils/ethutil.js';
 import * as constants from '../src/constants.js';
 import HDWalletProvider from '@truffle/hdwallet-provider';
-import * as ProxyAdminABI from 'contracts/build/contracts/proxy/ProxyAdmin.sol/ProxyAdmin.json' assert { type: 'json' };
-import * as ImplementationABI from 'contracts/build/contracts/metrics/Statistics.sol/Statistics.json' assert { type: 'json' };
+import * as ProxyAdminABI from 'contracts/out/ProxyAdmin.sol/ProxyAdmin.json' assert { type: 'json' };
+import * as ImplementationABI from 'contracts/out/Statistics.sol/Statistics.json' assert { type: 'json' };
 
 let web3;
 

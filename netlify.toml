@@ -1,5 +1,5 @@
 [build]
-  command = "yarn run build:ethernaut"
+  command = "curl -L https://foundry.paradigm.xyz | bash && foundrup && yarn run build:ethernaut"
   publish = "client/build"
 
 [[redirects]]
