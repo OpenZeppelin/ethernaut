@@ -1,5 +1,5 @@
 [build]
-  command = "yarn run foundry:up && yarn run build:ethernaut"
+  command = "/bin/bash -c 'curl -L https://foundry.paradigm.xyz | bash' && yarn run build:ethernaut"
   publish = "client/build"
 
 [[redirects]]
