@@ -15,6 +15,7 @@
     "**/highlight.js": "10.7.2-local"
   },
   "scripts": {
+    "init:contracts": "curl -L https://foundry.paradigm.xyz | bash && export PATH='~/.foundry/bin:${PATH}' && foundrup",
     "test": "cd contracts && forge t",
     "compile:contracts": "cd contracts && forge b",
     "deploy:contracts": "yarn compile:contracts && node --experimental-json-modules client/scripts/deploy_contracts.mjs",
