@@ -18,7 +18,7 @@ export const getTruffleContract = (jsonABI, defaults = {}) => {
   // // With this, MetaMask v9 deprecation warnings are removed. 
   // const TruffleContract = require('@truffle/contract');
 
-  const truffleContract = TruffleContract(jsonABI);
+  const truffleContract = TruffleContract({ abi: jsonABI.abi });
   if (!defaults.gasPrice) defaults.gasPrice = 2000000000;
   if (!defaults.gas) defaults.gas = 2000000;
   truffleContract.defaults(defaults);
