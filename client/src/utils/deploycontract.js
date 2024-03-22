@@ -1,6 +1,6 @@
 import colors from "colors";
 import * as ethutil from "../utils/ethutil.js";
-import * as LocalFactoryABI from "contracts/out/LocalFactory.sol/Factory.json";
+import * as LocalFactoryABI from "../contracts/out/LocalFactory.sol/Factory.json";
 import { getGasFeeDetails } from "../utils/ethutil.js";
 import {
   cacheContract,

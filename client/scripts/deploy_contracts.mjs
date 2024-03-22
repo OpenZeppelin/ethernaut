@@ -7,10 +7,10 @@ import * as ethutil from "../src/utils/ethutil.js";
 import * as constants from "../src/constants.js";
 import HDWalletProvider from "@truffle/hdwallet-provider";
 import * as gamedata from "../src/gamedata/gamedata.json" assert { type: "json" };
-import * as EthernautABI from "contracts/out/Ethernaut.sol/Ethernaut.json" assert { type: "json" };
-import * as ProxyAdminABI from "contracts/out/ProxyAdmin.sol/ProxyAdmin.json" assert { type: "json" };
-import * as ImplementationABI from "contracts/out/Statistics.sol/Statistics.json" assert { type: "json" };
-import * as ProxyStatsABI from "contracts/out/ProxyStats.sol/ProxyStats.json" assert { type: "json" };
+import * as EthernautABI from "../src/contracts/out/Ethernaut.sol/Ethernaut.json" assert { type: "json" };
+import * as ProxyAdminABI from "../src/contracts/contracts/out/ProxyAdmin.sol/ProxyAdmin.json" assert { type: "json" };
+import * as ImplementationABI from "../src/contracts/contracts/out/Statistics.sol/Statistics.json" assert { type: "json" };
+import * as ProxyStatsABI from "../src/contracts/contracts/out/ProxyStats.sol/ProxyStats.json" assert { type: "json" };
 
 let web3;
 let ethernaut;

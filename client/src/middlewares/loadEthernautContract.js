@@ -1,5 +1,5 @@
 import * as ethutil from '../utils/ethutil'
-import EthernautABI from 'contracts/out/Ethernaut.sol/Ethernaut.json'
+import EthernautABI from '../contracts/out/Ethernaut.sol/Ethernaut.json'
 import * as actions from '../actions';
 import { loadTranslations } from '../utils/translations'
 

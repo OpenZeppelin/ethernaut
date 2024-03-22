@@ -1,7 +1,7 @@
 import * as constants from "../constants";
 import { getWeb3, setWeb3, getTruffleContract, getNetworkFromId } from "./ethutil";
 import { newGithubIssueUrl } from "./github";
-import * as LocalFactoryABI from "contracts/out/LocalFactory.sol/Factory.json";
+import * as LocalFactoryABI from "../contracts/out/LocalFactory.sol/Factory.json";
 import { deployAdminContracts, deployAndRegisterLevel } from "./deploycontract";
 var levels = require(`../gamedata/gamedata.json`).levels;
 
@@ -62,7 +62,8 @@ export function getLevelKey(levelAddress) {
 
 export function fetchLevelABI(level) {
   const contractName = level.levelContract.split(".")[0];
-  return require(`contracts/out/${level.levelContract}/${contractName}.json`);
+  const path = require('path');
+  return require(`../contracts/out/${level.levelContract}/${contractName}.json`);
 }
 
 // write windows finction to transfer ownership to a new user
