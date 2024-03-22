@@ -1,5 +1,5 @@
 [build]
-  command = "yarn && yarn run build:netlify"
+  command = "yarn run build:netlify"
   publish = "client/build"
 
 [[redirects]]
