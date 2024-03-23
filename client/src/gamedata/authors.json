@@ -147,6 +147,16 @@
       "websites": [
         "https://www.linkedin.com/in/kstasi/"
       ]
+    },
+    "Waiandt": {
+      "name": [
+        "Gustavo Waiandt"
+      ],
+      "emails": ["gwdeps@gmail.com"],
+      "websites": [
+        "https://www.linkedin.com/in/gustavo-deps/"
+      ],
+      "donate": "0x101E0434C6E72574f91DA93B8C93CF0fFcff21b2"
     }
   }
 }

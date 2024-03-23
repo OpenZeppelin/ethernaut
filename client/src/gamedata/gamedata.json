@@ -461,6 +461,21 @@
       "deployId": "29",
       "instanceGas": 250000,
       "author": "AgeManning"
+    },
+    {
+      "name": "Stake",
+      "created": "2024-03-23",
+      "difficulty": "4",
+      "description": "stake.md",
+      "completedDescription": "stake_complete.md",
+      "levelContract": "StakeFactory.sol",
+      "instanceContract": "Stake.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0.1,
+      "deployId": "30",
+      "instanceGas": 1300000,
+      "author": "Waiandt"
     }
   ]
 }
