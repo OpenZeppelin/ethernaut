@@ -27,12 +27,6 @@ export const NETWORKS = {
     id: "11155111",
     url: `${process.env.SEPOLIA_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
-  },  
-  SCROLL_SEPOLIA: {
-    name: "sepolia-scroll",
-    id: "534351",
-    url: `${process.env.SCROLL_SEPOLIA_HOST}`,
-    privKey: `${process.env.PRIV_KEY}`,
   },
   OPTIMISM_SEPOLIA: {
     name: "sepolia-optimism",
@@ -85,18 +79,6 @@ export const NETWORKS_INGAME = {
     explorer: {
       apiKey: `${process.env.REACT_APP_SEPOLIA_EXPLORER_API_KEY}`,
       apiHost: `https://api-sepolia.etherscan.io`,
-    },
-  },  
-  SCROLL_SEPOLIA: {
-    name: "sepolia-scroll",
-    id: "534351",
-    currencyName: "Scroll-ETH",
-    currencySymbol: "ETH",
-    rpcUrl: `https://sepolia-rpc.scroll.io`,
-    blockExplorer: "https://sepolia.scrollscan.com",
-    explorer: {
-      apiKey: `${process.env.REACT_APP_SCROLL_SEPOLIA_EXPLORER_API_KEY}`,
-      apiHost: `https://api-sepolia.scrollscan.com/api`,
     },
   },
   OPTIMISM_SEPOLIA: {
@@ -169,7 +151,6 @@ export const ADDRESSES = {
   [NETWORKS.LOCAL.name]: undefined,
   [NETWORKS.MUMBAI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",  
-  [NETWORKS.SCROLL_SEPOLIA.name]: undefined,
   [NETWORKS.OPTIMISM_SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.ARBITRUM_SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.HOLESKY.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
@@ -213,7 +194,6 @@ export const SHOW_VERSION = true;
 
 // export const ACTIVE_NETWORK = NETWORKS.SEPOLIA
 // export const ACTIVE_NETWORK = NETWORKS.MUMBAI
-// export const ACTIVE_NETWORK = NETWORKS.SCROLL_SEPOLIA
 // export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_SEPOLIA
 // export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_SEPOLIA
 // export const ACTIVE_NETWORK = NETWORKS.HOLESKY
