@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
+pragma solidity 0.6.12;
 
 contract HigherOrderAttack {
     function encodedData() public pure returns (bytes memory) {
