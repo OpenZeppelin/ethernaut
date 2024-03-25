@@ -147,6 +147,30 @@
       "websites": [
         "https://www.linkedin.com/in/kstasi/"
       ]
+    },
+    "0xneves&gabrielsdev&R4wd0G&luizfolly&fefeupz": {
+      "name": [
+        "Guilherme Neves",
+        "Gabriel Silva",
+        "R4wd0G",
+        "Luiz Folly",
+        "Rodrigo Feital"
+      ],
+      "emails": [
+        "guihcneves@gmail.com",
+        "gabrielfcomp@gmail.com",
+        "wpa.sys@hotmail.com",
+        "luizfolly@gmail.com",
+        "rodrigo.feital@hotmail.com"
+      ],
+      "websites": [
+        "https://github.com/0xneves",
+        "https://github.com/gabrielsdev",
+        "https://github.com/r4wd0g",
+        "https://github.com/luizfolly",
+        "https://github.com/fefeupz"
+      ],
+      "donate": "0x00000000000d86e4837ba41dacde4b8713d5ccac"
     }
   }
 }
