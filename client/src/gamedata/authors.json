@@ -148,13 +148,14 @@
         "https://www.linkedin.com/in/kstasi/"
       ]
     },
-    "Waiandt": {
+    "Waiandt&Dalvi": {
       "name": [
-        "Gustavo Waiandt"
+        "Gustavo Waiandt","Afonso Dalvi"
       ],
-      "emails": ["gwdeps@gmail.com"],
+      "emails": ["gwdeps@gmail.com","afonsodalvia@gmail.com"],
       "websites": [
-        "https://www.linkedin.com/in/gustavo-deps/"
+        "https://github.com/G-Deps",
+        "https://www.linkedin.com/in/afonso-dalvi-711635112/"
       ],
       "donate": "0x101E0434C6E72574f91DA93B8C93CF0fFcff21b2"
     }
