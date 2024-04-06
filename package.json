@@ -2,7 +2,6 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "contracts",
       "client",
       "deps/hljs"
     ]
@@ -15,15 +14,15 @@
     "**/highlight.js": "10.7.2-local"
   },
   "scripts": {
-    "test": "cd contracts && hardhat test",
-    "compile:contracts": "cd contracts && hardhat clean && hardhat compile",
+    "test:contracts": "cd contracts && forge test",
+    "compile:contracts": "cd contracts && forge build",
     "deploy:contracts": "yarn compile:contracts && node --experimental-json-modules client/scripts/deploy_contracts.mjs",
     "upgrade:proxy": "yarn compile:contracts && node --experimental-json-modules client/scripts/upgrade_proxy.mjs",
     "supersede:level": "yarn compile:contracts && node --experimental-json-modules client/scripts/supersede_level.mjs",
-    "network": "cd contracts && hardhat node",
+    "network": "cd contracts && anvil --block-time 1 --auto-impersonate",
     "build:ethernaut": "yarn compile:contracts && yarn --cwd client build",
+    "build:netlify": "yarn --cwd client build",
     "start:ethernaut": "cd client && yarn start",
-    "test:contracts": "cd contracts && hardhat test",
     "leaderboard:oldCrawler": "node client/leaderboard/scripts/crawlers/crawlHistoricalData/index.cjs",
     "leaderboard:newCrawler": "node client/leaderboard/scripts/crawlers/crawlNewData/index.cjs",
     "leaderboard:triggerNextCrawl": "node client/leaderboard/scripts/actuate/index.cjs"

@@ -5,12 +5,12 @@
   "private": true,
   "dependencies": {
     "@sentry/react": "^7.0.0",
+    "@sentry/tracing": "^7.108.0",
     "@truffle/contract": "^4.3.15",
     "alchemy-sdk": "^2.2.3",
     "axios": "^1.2.4",
     "bad-words": "^3.0.4",
     "bootstrap": "^5.0.0",
-    "contracts": "0.1.0",
     "cross-env": "7.0.3",
     "devtools-detect": "^4.0.0",
     "dotenv": "^16.0.3",
