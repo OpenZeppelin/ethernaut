@@ -24,13 +24,14 @@ contract TestCrowdfunding is Test, Utils {
         address payable[] memory users = createUsers(2);
 
         address initialArtist = users[0];
-        vm.label(owner, "Owner");
+        vm.label(initialArtist, "Initial Artist");
 
         player = users[1];
         vm.label(player, "Player");
 
         (address owner_, uint256 pk) = makeAddrAndKey("owner");
         owner = payable(owner_);
+        vm.label(owner, "Owner");
         string memory projectName = "amazing crowdfunding";
         bytes32 nameHash = keccak256(abi.encodePacked(projectName));
         bytes32 messageHash = keccak256(

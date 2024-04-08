@@ -23,6 +23,10 @@ contract Crowdfunding {
     }
 
     function setArtist(address newArtist, bytes calldata signature) external {
+        require(
+            keccak256(signature) != keccak256(lastSignature),
+            "already used signature"
+        );
         bytes32 nameHash = keccak256(abi.encodePacked(projectName));
         bytes32 messageHash = keccak256(
             abi.encodePacked("\x19Ethereum Signed Message:\n32", nameHash)
