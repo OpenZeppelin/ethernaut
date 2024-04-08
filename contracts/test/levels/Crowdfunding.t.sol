@@ -21,7 +21,7 @@ contract TestCrowdfunding is Test, Utils {
     //////////////////////////////////////////////////////////////*/
 
     function setUp() public {
-        address payable[] memory users = createUsers(2);
+        address payable[] memory users = createUsers(3);
 
         address initialArtist = users[0];
         vm.label(initialArtist, "Initial Artist");
@@ -29,25 +29,12 @@ contract TestCrowdfunding is Test, Utils {
         player = users[1];
         vm.label(player, "Player");
 
-        (address owner_, uint256 pk) = makeAddrAndKey("owner");
-        owner = payable(owner_);
+        owner = users[2];
         vm.label(owner, "Owner");
-        string memory projectName = "amazing crowdfunding";
-        bytes32 nameHash = keccak256(abi.encodePacked(projectName));
-        bytes32 messageHash = keccak256(
-            abi.encodePacked("\x19Ethereum Signed Message:\n32", nameHash)
-        );
-
-        (uint8 v, bytes32 r, bytes32 s) = vm.sign(pk, messageHash);
-        bytes memory signature = abi.encodePacked(r, s, v);
 
         vm.startPrank(owner);
         ethernaut = getEthernautWithStatsProxy(owner);
-        CrowdfundingFactory factory = new CrowdfundingFactory(
-            signature,
-            owner,
-            initialArtist
-        );
+        CrowdfundingFactory factory = new CrowdfundingFactory();
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
