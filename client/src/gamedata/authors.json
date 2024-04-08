@@ -1,152 +1,162 @@
 {
-  "authors": {
-    "ajsantander": {
-      "name": [
-        "Alejandro Santander"
-      ],
-      "emails": [
-        "palebluedot@gmail.com"
-      ],
-      "websites": [
-        "https://github.com/ajsantander"
-      ],
-      "donate": "0x31a3801499618d3c4b0225b9e06e228d4795b55d"
-    },
-    "martriay": {
-      "name": [
-        "Martin Triay"
-      ],
-      "emails": [
-        "martriay@gmail.com"
-      ],
-      "websites": [
-        "https://github.com/martriay"
-      ]
-    },
-    "AgeManning": {
-      "name": [
-        "Adrian Manning"
-      ],
-      "emails": [
-        "age@agemanning.com"
-      ],
-      "websites": [
-        "https://github.com/AgeManning"
-      ],
-      "donate": "0x0f44CD2Ca92645Ada2E47155e4dFC0025c3E9EEc"
-    },
-    "syncikin": {
-      "name": [
-        "Kyle Riley"
-      ],
-      "emails": [
-        "kyle@iosiro.com"
-      ],
-      "websites": [
-        "https://github.com/syncikin"
-      ]
-    },
-    "34x4p08": {
-      "name": [
-        "Ivan Zakharov"
-      ],
-      "emails": [
-        "34x4p08@gmail.com"
-      ],
-      "websites": [
-        "https://github.com/34x4p08"
-      ]
-    },
-    "0age": {
-      "name": [
-        "0age"
-      ],
-      "emails": [
-        "0age@protonmail.com"
-      ],
-      "websites": [
-        "https://github.com/0age"
-      ]
-    },
-    "nczhu": {
-      "name": [
-        "Nicole Zhu"
-      ],
-      "emails": [
-        "n@nicole.ai"
-      ],
-      "websites": [
-        "https://github.com/nczhu"
-      ]
-    },
-    "patrickalphac": {
-      "name": [
-        "Patrick Collins"
-      ],
-      "emails": [
-        "patrick@alphachain.io"
-      ],
-      "websites": [
-        "http://alphachain.io/blogs/"
-      ],
-      "donate": "0x874437B5a42aA6E6419eC2447C9e36c278c46532"
-    },
-    "scottt": {
-      "name": [
-        "Scott Tsai"
-      ],
-      "emails": [
-        "scottt.tw@gmail.com"
-      ],
-      "websites": [
-        "http://scottt.tw"
-      ],
-      "donate": "scottt.eth"
-    },
-    "openzeppelin": {
-      "name": [
-        "OpenZeppelin"
-      ],
-      "emails": [
-        "ethernaut@zeppelin.solutions"
-      ],
-      "websites": [
-        "https://openzeppelin.com"
-      ]
-    },
-    "openzeppelin&forta": {
-      "name": [
-        "OpenZeppelin",
-        "Forta"
-      ],
-      "emails": [
-        "ethernaut@zeppelin.solutions",
-        "info@forta.org"
-      ],
-      "websites": [
-        "https://openzeppelin.com",
-        "https://forta.org"
-      ]
-    },
-    "ericnordelo": {
-      "name": [
-        "Eric Nordelo"
-      ],
-      "emails": [
-        "eric.nordelo39@gmail.com"
-      ],
-      "websites": [
-        "https://www.ericnordelo.com/"
-      ]
-    },
-    "KStasi": {
-      "name": [
-        "Anastasiia Kondaurova"
-      ],
-      "emails": [],
-      "websites": [
-        "https://www.linkedin.com/in/kstasi/"
-      ]
+    "authors": {
+        "ajsantander": {
+            "name": [
+                "Alejandro Santander"
+            ],
+            "emails": [
+                "palebluedot@gmail.com"
+            ],
+            "websites": [
+                "https://github.com/ajsantander"
+            ],
+            "donate": "0x31a3801499618d3c4b0225b9e06e228d4795b55d"
+        },
+        "martriay": {
+            "name": [
+                "Martin Triay"
+            ],
+            "emails": [
+                "martriay@gmail.com"
+            ],
+            "websites": [
+                "https://github.com/martriay"
+            ]
+        },
+        "AgeManning": {
+            "name": [
+                "Adrian Manning"
+            ],
+            "emails": [
+                "age@agemanning.com"
+            ],
+            "websites": [
+                "https://github.com/AgeManning"
+            ],
+            "donate": "0x0f44CD2Ca92645Ada2E47155e4dFC0025c3E9EEc"
+        },
+        "syncikin": {
+            "name": [
+                "Kyle Riley"
+            ],
+            "emails": [
+                "kyle@iosiro.com"
+            ],
+            "websites": [
+                "https://github.com/syncikin"
+            ]
+        },
+        "34x4p08": {
+            "name": [
+                "Ivan Zakharov"
+            ],
+            "emails": [
+                "34x4p08@gmail.com"
+            ],
+            "websites": [
+                "https://github.com/34x4p08"
+            ]
+        },
+        "0age": {
+            "name": [
+                "0age"
+            ],
+            "emails": [
+                "0age@protonmail.com"
+            ],
+            "websites": [
+                "https://github.com/0age"
+            ]
+        },
+        "nczhu": {
+            "name": [
+                "Nicole Zhu"
+            ],
+            "emails": [
+                "n@nicole.ai"
+            ],
+            "websites": [
+                "https://github.com/nczhu"
+            ]
+        },
+        "patrickalphac": {
+            "name": [
+                "Patrick Collins"
+            ],
+            "emails": [
+                "patrick@alphachain.io"
+            ],
+            "websites": [
+                "http://alphachain.io/blogs/"
+            ],
+            "donate": "0x874437B5a42aA6E6419eC2447C9e36c278c46532"
+        },
+        "scottt": {
+            "name": [
+                "Scott Tsai"
+            ],
+            "emails": [
+                "scottt.tw@gmail.com"
+            ],
+            "websites": [
+                "http://scottt.tw"
+            ],
+            "donate": "scottt.eth"
+        },
+        "openzeppelin": {
+            "name": [
+                "OpenZeppelin"
+            ],
+            "emails": [
+                "ethernaut@zeppelin.solutions"
+            ],
+            "websites": [
+                "https://openzeppelin.com"
+            ]
+        },
+        "openzeppelin&forta": {
+            "name": [
+                "OpenZeppelin",
+                "Forta"
+            ],
+            "emails": [
+                "ethernaut@zeppelin.solutions",
+                "info@forta.org"
+            ],
+            "websites": [
+                "https://openzeppelin.com",
+                "https://forta.org"
+            ]
+        },
+        "ericnordelo": {
+            "name": [
+                "Eric Nordelo"
+            ],
+            "emails": [
+                "eric.nordelo39@gmail.com"
+            ],
+            "websites": [
+                "https://www.ericnordelo.com/"
+            ]
+        },
+        "KStasi": {
+            "name": [
+                "Anastasiia Kondaurova"
+            ],
+            "emails": [],
+            "websites": [
+                "https://www.linkedin.com/in/kstasi/"
+            ]
+        },
+        "eduardowestc": {
+            "name": [
+                "Eduardo W. da Cunha"
+            ],
+            "emails": [],
+            "websites": [
+                "https://www.linkedin.com/in/eduardo-westphal-da-cunha/"
+            ],
+            "donate": "0x8FcB647096a5A5B0Ff6B944C5B2f3d2c9e1f65A0"
+        }
     }
-  }
 }
