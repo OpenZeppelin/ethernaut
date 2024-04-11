@@ -13,7 +13,7 @@ contract HigherOrderAttack {
     }
 
     function attack(address victim) public {
-        (bool response, ) = address(victim).call(injectedData());
+        (bool response,) = address(victim).call(injectedData());
         if (!response) revert();
     }
 }

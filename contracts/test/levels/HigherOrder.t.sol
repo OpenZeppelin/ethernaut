@@ -25,7 +25,7 @@ contract HigherOrderAttack {
     }
 
     function attack(address victim) public {
-        (bool response, ) = address(victim).call(injectedData());
+        (bool response,) = address(victim).call(injectedData());
         if (!response) revert();
     }
 }
@@ -36,7 +36,6 @@ contract TestHigherOrder is Test, Utils {
 
     address payable owner;
     address payable player;
-
 
     /*//////////////////////////////////////////////////////////////
                                  HELPERS
@@ -77,6 +76,7 @@ contract TestHigherOrder is Test, Utils {
         vm.startPrank(player, player);
 
         new HigherOrderAttack().attack(address(instance));
+        instance.claimLeadership();
 
         assertTrue(submitLevelInstance(ethernaut, address(instance)));
     }
