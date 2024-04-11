@@ -461,6 +461,21 @@
       "deployId": "29",
       "instanceGas": 250000,
       "author": "AgeManning"
+    },
+    {
+      "name": "BankBuilder",
+      "created": "2024-04-11",
+      "difficulty": "6",
+      "description": "bankbuilder.md",
+      "completedDescription": "bankbuilder_complete.md",
+      "levelContract": "BankBuilderFactory.sol",
+      "instanceContract": "BankBuilder.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0.001,
+      "deployId": "30",
+      "instanceGas": 3600000,
+      "author": "OrangeSantra"
     }
   ]
 }
