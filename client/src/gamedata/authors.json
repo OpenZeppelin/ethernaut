@@ -147,6 +147,18 @@
       "websites": [
         "https://www.linkedin.com/in/kstasi/"
       ]
+    },
+    "OrangeSantra": {
+      "name": [
+        "Orange Santra"
+      ],
+      "emails": [
+        "soliditydevxyz@gmail.com"
+      ],
+      "websites": [
+        "https://twitter.com/0xorangesantra"
+      ],
+      "donate": "0xc67ADEAeCeEE33FD97a7d7C83755dC3759159884"
     }
   }
 }
