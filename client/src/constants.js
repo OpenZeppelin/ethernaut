@@ -215,5 +215,5 @@ export const ID_TO_NETWORK = id_to_network;
 export const ALIAS_PATH = "https://raw.githubusercontent.com/OpenZeppelin/ethernaut-leaderboard/update/boards/aliases.json"
 
 export const getLeaderboardPath = (network) => {
-  return `https://raw.githubusercontent.com/OpenZeppelin/ethernaut-leaderboard/update/boards/networkleaderboards/${network}LeaderBoard.json`
+  return `https://raw.githubusercontent.com/OpenZeppelin/ethernaut-leaderboard/45f592f0dca8f14c9a02c508610ef3b72bae94f9/boards/networkleaderboards/${network}LeaderBoard.json`
 }
