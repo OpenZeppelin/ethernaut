@@ -148,16 +148,29 @@
         "https://www.linkedin.com/in/kstasi/"
       ]
     },
-    "Waiandt&Dalvi": {
+    "0xneves&gabrielsdev&R4wd0G&luizfolly&fefeupz": {
       "name": [
-        "Gustavo Waiandt","Afonso Dalvi"
+        "Guilherme Neves",
+        "Gabriel Silva",
+        "R4wd0G",
+        "Luiz Folly",
+        "Rodrigo Feital"
       ],
-      "emails": ["gwdeps@gmail.com","afonsodalvia@gmail.com"],
+      "emails": [
+        "guihcneves@gmail.com",
+        "gabrielfcomp@gmail.com",
+        "wpa.sys@hotmail.com",
+        "luizfolly@gmail.com",
+        "rodrigo.feital@hotmail.com"
+      ],
       "websites": [
-        "https://github.com/G-Deps",
-        "https://www.linkedin.com/in/afonso-dalvi-711635112/"
+        "https://github.com/0xneves",
+        "https://github.com/gabrielsdev",
+        "https://github.com/r4wd0g",
+        "https://github.com/luizfolly",
+        "https://github.com/fefeupz"
       ],
-      "donate": "0x101E0434C6E72574f91DA93B8C93CF0fFcff21b2"
+      "donate": "0x00000000000d86e4837ba41dacde4b8713d5ccac"
     }
   }
 }
