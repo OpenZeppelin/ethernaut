@@ -15,5 +15,5 @@ client/src/gamedata/deploy.local.json
 .netlify
 
 # Foundry
-contracts/out
-contracts/lib
+contracts/out/
+contracts/lib/

@@ -4,6 +4,7 @@ contract Stake {
 
     uint256 public totalStaked;
     mapping(address => uint256) public UserStake;
+    mapping(address => bool) public Stakers;
     address public WETH;
 
     constructor(address _weth) payable{
@@ -12,18 +13,19 @@ contract Stake {
     }
 
     function StakeETH() public payable {
-        require(msg.value > 1000000000000000, "Don't be cheap");
+        require(msg.value > 0.001 ether, "Don't be cheap");
         totalStaked += msg.value;
         UserStake[msg.sender] += msg.value;
+        Stakers[msg.sender] = true;
     }
-
     function StakeWETH(uint256 amount) public returns (bool){
-        require(amount > 1000000000000000, "Don't be cheap");
+        require(amount >  0.001 ether, "Don't be cheap");
         (,bytes memory allowance) = WETH.call(abi.encodeWithSelector(0xdd62ed3e, msg.sender,address(this)));
         require(bytesToUint(allowance) >= amount,"How am I moving the funds honey?");
         totalStaked += amount;
         UserStake[msg.sender] += amount;
         (bool transfered, ) = WETH.call(abi.encodeWithSelector(0x23b872dd, msg.sender,address(this),amount));
+        Stakers[msg.sender] = true;
         return transfered;
     }
 
@@ -34,7 +36,6 @@ contract Stake {
         (bool success, ) = payable(msg.sender).call{value : amount}("");
         return success;
     }
-
     function bytesToUint(bytes memory data) internal pure returns (uint256) {
         require(data.length >= 32, "Data length must be at least 32 bytes");
         uint256 result;
