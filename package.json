@@ -7,8 +7,7 @@
     ]
   },
   "dependencies": {
-    "@types/highlight.js": "^10.1.0",
-    "highlight.js": "file:deps/hljs",
+    "highlight.js": "^10.7.2",
     "react-loader-spinner": "^5.3.4"
   },
   "resolutions": {
