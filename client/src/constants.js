@@ -12,7 +12,7 @@ export const NETWORKS = {
   UNDEFINED: undefined,
   LOCAL: {
     name: "local",
-    id: "1337",
+    id: "31337",
     url: "http://localhost",
     port: 8545,
   },
@@ -53,7 +53,7 @@ export const NETWORKS_INGAME = {
   UNDEFINED: undefined,
   LOCAL: {
     name: "local",
-    id: "1337",
+    id: "31337",
     url: "http://localhost",
     port: 8545,
   },
