@@ -13,7 +13,3 @@ client/src/gamedata/deploy.local.json
 
 # Local Netlify folder
 .netlify
-
-# Foundry
-contracts/out/
-contracts/lib/
