@@ -4,9 +4,9 @@ To complete this level, the contract state must meet the following conditions:
 
 * The `Stake` contract's ETH balance has to be greater than 0.
 * `totalStaked` must be greater than the `Stake` contract's ETH balance.
-* You must be a stake.
+* You must be a staker.
 * You staked balance must be 0.
 
 Things that might be useful:
-* The specification [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md)
+* [ERC-20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) specification.
 * [OpenZeppelin contracts](https://github.com/OpenZeppelin/openzeppelin-contracts)

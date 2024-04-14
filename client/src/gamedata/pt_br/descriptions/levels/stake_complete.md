@@ -1,1 +1,5 @@
-Ao usar um código que não é seu, é uma boa ideia familiarizar-se com ele para obter uma boa compreensão de como tudo se encaixa. Isso pode ser particularmente importante quando há vários níveis de importações (suas importações têm importações) ou quando você está implementando controles de autorização, por exemplo, quando você está permitindo ou não permitindo que as pessoas façam coisas. Neste exemplo, um desenvolvedor pode olhar o código e pensar que `transfer` é a única maneira de mover os tokens, porém existem outras maneiras de realizar a mesma operação com uma implementação diferente.
+Parabéns, você conseguiu desvendar a máquina `Stake`!
+
+Ao realizar chamadas de baixo nível para contratos externos, é importante validar corretamente os retornos das chamadas externas para determinar se a chamada foi revertida.
+
+Para mais informações, confira o requisito [EEA EthTrust [S] Check External Calls Return](https://entethalliance.github.io/eta-registry/security-levels-spec.html#req-1-check-return), e sempre use [SafeERC20](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/utils/SafeERC20.sol) ao interagir com tokens externos ERC-20."
