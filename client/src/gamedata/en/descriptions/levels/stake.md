@@ -1,5 +1,12 @@
-Stake is a safe to stake native ETH and ERC20 WETH considering the same 1:1 value of the tokens. Can you drain the contract? Complete this level by reducing the contract's ether value to zero.
+Stake is safe for staking native ETH and ERC20 WETH, considering the same 1:1 value of the tokens. Can you drain the contract?
+
+To complete this level, the contract state must meet the following conditions:
+
+* The `Stake` contract's ETH balance has to be greater than 0.
+* `totalStaked` must be greater than the `Stake` contract's ETH balance.
+* You must be a stake.
+* You staked balance must be 0.
 
 Things that might be useful:
 * The specification [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md)
-* The contracts da [OpenZeppelin](https://github.com/OpenZeppelin/zeppelin-solidity/tree/master/contracts)
+* [OpenZeppelin contracts](https://github.com/OpenZeppelin/openzeppelin-contracts)
