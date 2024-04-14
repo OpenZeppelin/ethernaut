@@ -44,7 +44,7 @@ contract TestFallback is Test, Utils {
                                  TESTS
     //////////////////////////////////////////////////////////////*/
 
-    /// @notice Check the intial state of the level and enviroment.
+    /// @notice Check the initial state of the level and environment.
     function testInit() public {
         vm.startPrank(player);
         assertFalse(submitLevelInstance(ethernaut, address(instance)));
