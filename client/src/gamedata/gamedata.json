@@ -481,6 +481,21 @@
         "compilerVersion": "v0.6.12+commit.27d51765",
         "runs": "1000"
       }
+    },
+    {
+      "name": "Stake",
+      "created": "2024-04-13",
+      "difficulty": "6",
+      "description": "stake.md",
+      "completedDescription": "stake_complete.md",
+      "levelContract": "StakeFactory.sol",
+      "instanceContract": "Stake.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "31",
+      "instanceGas": 750000,
+      "author": "GustavoDeps"
     }
   ]
 }

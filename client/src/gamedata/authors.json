@@ -171,6 +171,17 @@
         "https://github.com/fefeupz"
       ],
       "donate": "0x00000000000d86e4837ba41dacde4b8713d5ccac"
+    },
+    "GustavoDeps":{
+      "name": [
+        "Gustavo Deps"
+      ],
+      "websites": [
+        "https://www.linkedin.com/in/gustavo-deps/"
+      ],
+      "emails": [
+        "gwdeps@omnesblockchain.tech"
+      ]
     }
   }
 }
