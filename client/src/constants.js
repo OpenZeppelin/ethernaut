@@ -44,7 +44,13 @@ export const NETWORKS = {
     name: "holesky",
     id: "17000",
     url: `${process.env.HOLESKY_HOST}`,
-    privKey: `${process.env.PRIV_KEY}`
+    privKey: `${process.env.PRIV_KEY}`,
+  },
+  AMOY: {
+    name: "amoy",
+    id: "80002",
+    url: `${process.env.ALL_CAPS_NAME_HOST}`,
+    privKey: `${process.env.PRIV_KEY}`,
   },
 };
 
@@ -117,6 +123,14 @@ export const NETWORKS_INGAME = {
       apiHost: `https://api-holesky.etherscan.io`,
     },
   },
+  AMOY: {
+    name: "amoy",
+    id: "80002",
+    currencyName: "MATIC",
+    currencySymbol: "MATIC",
+    rpcUrl: `https://rpc-amoy.polygon.technology/`,
+    blockExplorer: "https://www.oklink.com/amoy",
+  },
 };
 
 // Deprectated networks
@@ -125,18 +139,18 @@ export const NETWORKS_DEPRECATION = {
   GOERLI: {
     id: "5",
     status: "deprecated",
-    date: "jan-2024"
+    date: "jan-2024",
   },
   OPTIMISM_GOERLI: {
     id: "420",
     status: "deprecated",
-    date: "jan-2024"
+    date: "jan-2024",
   },
   ARBITRUM_GOERLI: {
     id: "421613",
     status: "deprecated",
-    date: "jan-2024"
-  }
+    date: "jan-2024",
+  },
 };
 
 // Web3
@@ -151,17 +165,20 @@ export const ADDRESSES = {
   [NETWORKS.LOCAL.name]: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
   [NETWORKS.MUMBAI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
-  [NETWORKS.OPTIMISM_SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
-  [NETWORKS.ARBITRUM_SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
+  [NETWORKS.OPTIMISM_SEPOLIA.name]:
+    "0x09902A56d04a9446601a0d451E07459dC5aF0820",
+  [NETWORKS.ARBITRUM_SEPOLIA.name]:
+    "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.HOLESKY.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
+  [NETWORKS.AMOY.name]: "0x0917c9EEd9EF51D57AAa27357C5FeE4F3590D42e",
 };
 
 // Support EIP-1559
 export const SUPPORTS_EIP_1559 = [
-  '5', // NETWORKS.GOERLI.id
-  '80001', // NETWORKS.MUMBAI.id
-  '11155111', // NETWORKS.SEPOLIA.id
-]
+  "5", // NETWORKS.GOERLI.id
+  "80001", // NETWORKS.MUMBAI.id
+  "11155111", // NETWORKS.SEPOLIA.id
+];
 
 // Core contract keys
 export const CORE_CONTRACT_NAMES = [
@@ -183,7 +200,7 @@ export const PATH_HELP = "/help";
 export const PATH_LEVEL_ROOT = `${PATH_ROOT}level/`;
 export const PATH_LEVEL = `${PATH_LEVEL_ROOT}:address`;
 export const PATH_STATS = `${PATH_ROOT}stats`;
-export const PATH_LEADERBOARD = `${PATH_ROOT}leaderboard`
+export const PATH_LEADERBOARD = `${PATH_ROOT}leaderboard`;
 
 // RELEASE SENSITIVE
 // -----------------------------------------------------------------------------------------
@@ -197,6 +214,7 @@ export const SHOW_VERSION = true;
 // export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_SEPOLIA
 // export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_SEPOLIA
 // export const ACTIVE_NETWORK = NETWORKS.HOLESKY
+// export const ACTIVE_NETWORK = NETWORKS.AMOY
 // export const ACTIVE_NETWORK = NETWORKS.LOCAL;
 
 let id_to_network = {};
@@ -212,8 +230,9 @@ export const ID_TO_NETWORK = id_to_network;
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------
 
-export const ALIAS_PATH = "https://raw.githubusercontent.com/OpenZeppelin/ethernaut-leaderboard/update/boards/aliases.json"
+export const ALIAS_PATH =
+  "https://raw.githubusercontent.com/OpenZeppelin/ethernaut-leaderboard/update/boards/aliases.json";
 
 export const getLeaderboardPath = (network) => {
-  return `https://raw.githubusercontent.com/OpenZeppelin/ethernaut-leaderboard/update/boards/networkleaderboards/${network}LeaderBoard.json`
-}
+  return `https://raw.githubusercontent.com/OpenZeppelin/ethernaut-leaderboard/update/boards/networkleaderboards/${network}LeaderBoard.json`;
+};
