@@ -36,6 +36,9 @@
 .button-sequence {
     margin-bottom: 2%;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 .level-title {
