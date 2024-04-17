@@ -172,16 +172,16 @@
       ],
       "donate": "0x00000000000d86e4837ba41dacde4b8713d5ccac"
     },
-    "GustavoDeps":{
+    "Waiandt&Dalvi":{
       "name": [
-        "Gustavo Deps"
+        "Gustavo Waiandt","Afonso Dalvi"
       ],
-      "websites": [
-        "https://www.linkedin.com/in/gustavo-deps/"
-      ],
-      "emails": [
-        "gwdeps@omnesblockchain.tech"
-      ]
+      "websites":
+        [
+          "https://github.com/G-Deps",
+          "https://www.linkedin.com/in/afonso-dalvi-711635112/"
+        ],
+      "emails": ["gwdeps@gmail.com","afonsodalvia@gmail.com"]
     }
   }
 }
