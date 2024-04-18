@@ -254,9 +254,9 @@ class Level extends React.Component {
             )}
           </section>
           {/* BUTTONS */}
-          <section className="descriptors button-sequence">
+          <section className="descriptors">
             {level.levelContract && (
-              <div>
+              <div className=" button-sequence">
                 {/* NEXT LEVEL */}
                 {levelCompleted && nextLevelId && (
                   <button
