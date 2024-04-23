@@ -16,12 +16,6 @@ export const NETWORKS = {
     url: "http://localhost",
     port: 8545,
   },
-  MUMBAI: {
-    name: "mumbai-polygon",
-    id: "80001",
-    url: `${process.env.MUMBAI_HOST}`,
-    privKey: `${process.env.PRIV_KEY}`,
-  },
   SEPOLIA: {
     name: "sepolia",
     id: "11155111",
@@ -62,18 +56,6 @@ export const NETWORKS_INGAME = {
     id: "31337",
     url: "http://localhost",
     port: 8545,
-  },
-  MUMBAI: {
-    name: "mumbai-polygon",
-    id: "80001",
-    currencyName: "Mumbai-Matic",
-    currencySymbol: "MATIC",
-    rpcUrl: `https://matic-mumbai.chainstacklabs.com`,
-    blockExplorer: "https://mumbai.polygonscan.com",
-    explorer: {
-      apiKey: `${process.env.REACT_APP_MUMBAI_EXPLORER_API_KEY}`,
-      apiHost: `https://api-testnet.polygonscan.com`,
-    },
   },
   SEPOLIA: {
     name: "sepolia",
@@ -151,6 +133,11 @@ export const NETWORKS_DEPRECATION = {
     status: "deprecated",
     date: "jan-2024",
   },
+  MUMBAI: {
+    id: "80001",
+    status: "deprecated",
+    date: "april-2024",
+  },
 };
 
 // Web3
@@ -163,7 +150,6 @@ export const GOOGLE_ANALYTICS_ID = "UA-85043059-4";
 // Owner addresses
 export const ADDRESSES = {
   [NETWORKS.LOCAL.name]: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-  [NETWORKS.MUMBAI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
   [NETWORKS.OPTIMISM_SEPOLIA.name]:
     "0x09902A56d04a9446601a0d451E07459dC5aF0820",
