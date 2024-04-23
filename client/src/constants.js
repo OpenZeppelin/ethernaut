@@ -129,7 +129,7 @@ export const NETWORKS_INGAME = {
     currencyName: "MATIC",
     currencySymbol: "MATIC",
     rpcUrl: `https://rpc-amoy.polygon.technology/`,
-    blockExplorer: "https://www.oklink.com/amoy",
+    blockExplorer: "https://amoy.polygonscan.com/",
   },
 };
 
