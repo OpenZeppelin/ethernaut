@@ -16,7 +16,7 @@
   "portuguese": "Português",
   "japanese": "日本語",
   "turkish": "Türkçe",
-  "chinese_simplified": "簡體中文",
+  "chinese_simplified": "简体中文",
   "chinese_traditional": "正體中文",
   "french": "Français",
   "russian": "Русский",
@@ -34,7 +34,7 @@
   "deployNote": "注意：如果您部署所有級別，我們將指導您在此網絡上提交整個部署的遊戲。",
   "deployGame": "部署遊戲",
   "switchToSepolia": "切換到Sepolia",
-  "continueAnyway" : "仍然繼續",
+  "continueAnyway": "仍然繼續",
 
   "deployLevel": "部署級別",
   "helperDeployAllContracts": "在當前網絡上部署所有其餘合同。",
