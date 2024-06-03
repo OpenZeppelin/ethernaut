@@ -285,7 +285,7 @@ contract StatisticsLevelSuperseder is Initializable {
         return averageTimeTakenToCompleteLevels[player];
     }
 
-    /* Level substituition logic */
+    /* Level substitution logic */
     function setOperator(address _operator) public {
         //called through TUP UpgradeAndCall
         require(dumpStage == DumpStage.INIT, "Not correct dump stage");
