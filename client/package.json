@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@sentry/react": "^7.0.0",
     "@sentry/tracing": "^7.108.0",
     "@truffle/contract": "4.6.6",
