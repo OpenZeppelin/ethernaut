@@ -9,5 +9,5 @@ To complete this level, the contract state must meet the following conditions:
 
 Things that might be useful:
 
-- [ERC-20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) specification.
+- [ERC-20](https://github.com/ethereum/ercs/blob/master/ERCS/erc-20.md) specification.
 - [OpenZeppelin contracts](https://github.com/OpenZeppelin/openzeppelin-contracts)
