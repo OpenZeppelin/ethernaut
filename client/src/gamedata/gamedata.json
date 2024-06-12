@@ -496,6 +496,21 @@
       "deployId": "31",
       "instanceGas": 750000,
       "author": "Waiandt&Dalvi"
-    }
-  ]
+    },
+        {
+            "name": "Crowdfunding",
+            "created": "2024-04-05",
+            "difficulty": "7",
+            "description": "crowdfunding.md",
+            "completedDescription": "crowdfunding_complete.md",
+            "levelContract": "CrowdfundingFactory.sol",
+            "instanceContract": "Crowdfunding.sol",
+            "revealCode": true,
+            "deployParams": [],
+            "deployFunds": 1,
+            "deployId": "30",
+            "instanceGas": 1000000,
+            "author": "eduardowestc"
+        }
+    ]
 }
