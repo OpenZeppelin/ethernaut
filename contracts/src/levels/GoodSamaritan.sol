@@ -48,7 +48,7 @@ contract Coin {
             balances[msg.sender] -= amount_;
             balances[dest_] += amount_;
 
-            if (dest_.isContract()) {
+            if (dest_.code.length > 0) {
                 // notify contract
                 INotifyable(dest_).notify(amount_);
             }
