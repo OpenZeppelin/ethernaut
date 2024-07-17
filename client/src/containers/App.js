@@ -193,7 +193,7 @@ class App extends React.Component {
               <div className="deploy-window">
                 {/*deploy window*/}
                 <h1>{randGoodIcon()}</h1>
-                <h1>{strings.deployMessageTitle}</h1>
+                <h2>{strings.deployMessageTitle}</h2>
                 <br />
                 {strings.deployMessage}
                 {supportedNetworksList(supportedNetworks)}
@@ -212,11 +212,11 @@ class App extends React.Component {
               <div className="deploy-window">
                 {/*deprecation window*/}
                 <h1>{randBadIcon()}</h1>
-                <h1>
+                <h2>
                   {isDeprecatedNetwork(this.state.chainId)
                     ? strings.deprecatedNetwork
                     : strings.networkBeingDeprecated}
-                </h1>
+                </h2>
                 <br />
                 {strings.deployMessage}
                 {supportedNetworksList(supportedNetworks)}
