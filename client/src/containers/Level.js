@@ -238,7 +238,7 @@ class Level extends React.Component {
 
           <section onLoad={this.handleImageLoad}>
             <img
-              alt=""
+              alt={`${level.name} level  image`}
               className="level-tile level-img-view"
               src={selectedLevel.src}
             />
