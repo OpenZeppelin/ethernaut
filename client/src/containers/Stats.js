@@ -8,6 +8,7 @@ import { validateAddress } from '../utils/ethutil'
 import Statistic from '../components/stats/Statistic';
 import StatisticPanel from '../components/stats/Panel';
 import Footer from "../components/common/Footer";
+import { Helmet } from 'react-helmet';
 
 class Stats extends React.Component {
 
@@ -103,6 +104,42 @@ class Stats extends React.Component {
 
   render() {
       return <div className="stats-page page-container main-wrapper">
+        <Helmet>
+          <title>The Ethernaut - Statistics</title>
+          {/* <!-- Primary Meta Tags --> */}
+          <meta name="title" content="The Ethernaut - Statistics" />
+          <meta
+            name="description"
+            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'. - Statistics"
+          />
+          {/* <!-- Open Graph / Facebook --> */}
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:url"
+            content="https://ethernaut.openzeppelin.com/stats"
+          />
+          <meta property="og:title" content="The Ethernaut - Statistics" />
+          <meta
+            property="og:description"
+            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'. - Statistics"
+          />
+          <meta
+            property="og:image"
+            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
+          />
+          {/* <!-- Twitter --> */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@OpenZeppelin" />
+          <meta name="twitter:title" content="The Ethernaut - Statistics" />
+          <meta
+            name="twitter:description"
+            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'. - Statistics"
+          />
+          <meta
+            name="twitter:image"
+            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
+          />
+        </Helmet>
       <div className='stats-header'>
         <Statistic heading="Total number of players" value={this.state.totalPlayers} />
         <Statistic heading="Total number of instances created" value={this.state.totalCreated} />
