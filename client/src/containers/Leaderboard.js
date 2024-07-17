@@ -9,6 +9,7 @@ import { NETWORKS } from "client/src/constants";
 import Footer from "../components/common/Footer";
 import axios from "axios";
 import { ALIAS_PATH, getLeaderboardPath } from "client/src/constants";
+import { Helmet } from 'react-helmet';
 
 const playersPerPage = 20;
 
@@ -123,6 +124,9 @@ function Leaderboard() {
 
   return (
     <main className="main-wrapper">
+      <Helmet>
+        <title>The Ethernaut - Leaderboard</title>
+      </Helmet>
       <div className="boxes leaderboard-body">
         <div className="leaderboard-heading">
           <div className="leaderboard-title">Leaderboard</div>

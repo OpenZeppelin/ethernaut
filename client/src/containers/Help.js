@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import MarkdownComponent from "../components/common/Markdown";
 import { loadTranslations } from "../utils/translations";
 import Footer from "../components/common/Footer";
+import { Helmet } from 'react-helmet';
 
 class Help extends React.Component {
   render() {
@@ -12,6 +13,9 @@ class Help extends React.Component {
 
     return (
       <div className="helpcontainer main-wrapper">
+        <Helmet>
+          <title>The Ethernaut - Help</title>
+        </Helmet>
         <div className="lines"></div>
         <main className="boxes">
           <h3>Setup Metamask</h3>

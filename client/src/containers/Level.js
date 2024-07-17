@@ -14,6 +14,7 @@ import { withRouter } from "../hoc/withRouter";
 import { getLevelKey } from "../utils/contractutil";
 import { deployAndRegisterLevel } from "../utils/deploycontract";
 import { svgFilter } from "../utils/svg";
+import { Helmet } from 'react-helmet';
 
 class Level extends React.Component {
   constructor(props) {
@@ -151,6 +152,9 @@ class Level extends React.Component {
 
     return (
       <main className="main-wrapper">
+        <Helmet>
+          <title>{`The Ethernaut - ${level.name}`}</title>
+        </Helmet>
         <main className="main-wrapper">
           {(isDescriptionMissingTranslation ||
             isCompleteDescriptionMissingTranslation) && (
