@@ -47,6 +47,13 @@ contract DoubleEntryPointFactory is Level {
     }
 
     function __trySweep(CryptoVault cryptoVault, DoubleEntryPoint instance) external returns (bool, bytes memory) {
+        // emulate a lambda transfer of a user
+        try LegacyToken(instance.delegatedFrom()).transfer(address(cryptoVault), 0) {
+        } catch {
+            // It mustn't revert, if so return true on failure
+            return (true, abi.encode(false));
+        }
+
         try cryptoVault.sweepToken(IERC20(instance.delegatedFrom())) {
             return (true, abi.encode(false));
         } catch {
