@@ -56,7 +56,8 @@ contract TestDoubleEntryPoint is Test, Utils {
         vm.startPrank(player);
 
         Forta forta = instance.forta();
-        DetectionBot bot = new DetectionBot(address(forta));
+        address cryptoVault = instance.cryptoVault();
+        DetectionBot bot = new DetectionBot(address(forta), cryptoVault);
 
         forta.setDetectionBot(address(bot));
 
