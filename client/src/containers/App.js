@@ -14,8 +14,10 @@ import {
   networkOnDeprecationOrDeprecated,
   isDeprecatedNetwork,
   deprecationStatus,
-  deprecationDate
+  deprecationDate,
 } from "../utils/networkDeprecation";
+import { Helmet } from "react-helmet";
+
 
 class App extends React.Component {
   constructor() {
@@ -122,6 +124,42 @@ class App extends React.Component {
 
     return (
       <div className="appcontainer">
+        <Helmet>
+          <title>The Ethernaut</title>
+          {/* <!-- Primary Meta Tags --> */}
+          <meta name="title" content="The Ethernaut" />
+          <meta
+            name="description"
+            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'."
+          />
+          {/* <!-- Open Graph / Facebook --> */}
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:url"
+            content="https://ethernaut.openzeppelin.com/"
+          />
+          <meta property="og:title" content="The Ethernaut" />
+          <meta
+            property="og:description"
+            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'."
+          />
+          <meta
+            property="og:image"
+            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
+          />
+          {/* <!-- Twitter --> */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@OpenZeppelin" />
+          <meta name="twitter:title" content="The Ethernaut" />
+          <meta
+            name="twitter:description"
+            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'."
+          />
+          <meta
+            name="twitter:image"
+            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
+          />
+        </Helmet>
         {/* Parent container */}
         <main>
           {/* Main title and buttons */}
@@ -155,7 +193,7 @@ class App extends React.Component {
               <div className="deploy-window">
                 {/*deploy window*/}
                 <h1>{randGoodIcon()}</h1>
-                <h1>{strings.deployMessageTitle}</h1>
+                <h2>{strings.deployMessageTitle}</h2>
                 <br />
                 {strings.deployMessage}
                 {supportedNetworksList(supportedNetworks)}
@@ -174,9 +212,11 @@ class App extends React.Component {
               <div className="deploy-window">
                 {/*deprecation window*/}
                 <h1>{randBadIcon()}</h1>
-                <h1>
-                  {isDeprecatedNetwork(this.state.chainId)? strings.deprecatedNetwork : strings.networkBeingDeprecated}
-                </h1>
+                <h2>
+                  {isDeprecatedNetwork(this.state.chainId)
+                    ? strings.deprecatedNetwork
+                    : strings.networkBeingDeprecated}
+                </h2>
                 <br />
                 {strings.deployMessage}
                 {supportedNetworksList(supportedNetworks)}
@@ -184,11 +224,11 @@ class App extends React.Component {
                   <button className="buttons" onClick={switchToSepolia}>
                     {strings.switchToSepolia}
                   </button>
-                  {!isDeprecatedNetwork(this.state.chainId) && 
+                  {!isDeprecatedNetwork(this.state.chainId) && (
                     <button className="buttons" onClick={continueAnyway}>
                       {strings.continueAnyway}
                     </button>
-                  }
+                  )}
                 </div>
               </div>
             )}
@@ -223,16 +263,20 @@ function mapDispatchToProps(dispatch) {
 
 function supportedNetworksList(_supportedNetworks) {
   return (
-  <ul>
-    {_supportedNetworks.map((network, idx) => (
-      <li key={idx}>
-        {network}
-        {networkOnDeprecationOrDeprecated(constants.NETWORKS[network].id) 
-          && " (" + deprecationStatus(constants.NETWORKS[network].id) + 
-          " on " + deprecationDate(constants.NETWORKS[network].id) + ")"}
-      </li>
-    ))}
-  </ul>)
+    <ul>
+      {_supportedNetworks.map((network, idx) => (
+        <li key={idx}>
+          {network}
+          {networkOnDeprecationOrDeprecated(constants.NETWORKS[network].id) &&
+            " (" +
+              deprecationStatus(constants.NETWORKS[network].id) +
+              " on " +
+              deprecationDate(constants.NETWORKS[network].id) +
+              ")"}
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

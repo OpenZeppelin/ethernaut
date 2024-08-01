@@ -25,6 +25,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-ga": "^3.3.0",
+    "react-helmet": "^6.1.0",
     "react-markdown": "^8.0.0",
     "react-onclickoutside": "^6.12.2",
     "react-paginate": "^8.1.4",

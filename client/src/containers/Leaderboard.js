@@ -9,6 +9,7 @@ import { NETWORKS } from "client/src/constants";
 import Footer from "../components/common/Footer";
 import axios from "axios";
 import { ALIAS_PATH, getLeaderboardPath } from "client/src/constants";
+import { Helmet } from "react-helmet";
 
 const playersPerPage = 20;
 
@@ -123,6 +124,42 @@ function Leaderboard() {
 
   return (
     <main className="main-wrapper">
+      <Helmet>
+        <title>The Ethernaut - Leaderboard</title>
+        {/* <!-- Primary Meta Tags --> */}
+        <meta name="title" content="The Ethernaut - Leaderboard" />
+        <meta
+          name="description"
+          content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'. - Leaderboard"
+        />
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://ethernaut.openzeppelin.com/leaderboard"
+        />
+        <meta property="og:title" content="The Ethernaut - Leaderboard" />
+        <meta
+          property="og:description"
+          content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'. - Leaderboard"
+        />
+        <meta
+          property="og:image"
+          content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
+        />
+        {/* <!-- Twitter --> */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@OpenZeppelin" />
+        <meta name="twitter:title" content="The Ethernaut - Leaderboard" />
+        <meta
+          name="twitter:description"
+          content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'. - Leaderboard"
+        />
+        <meta
+          name="twitter:image"
+          content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
+        />
+      </Helmet>
       <div className="boxes leaderboard-body">
         <div className="leaderboard-heading">
           <div className="leaderboard-title">Leaderboard</div>
