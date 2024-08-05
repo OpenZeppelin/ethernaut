@@ -50,7 +50,7 @@ contract Ethernaut is Ownable {
 
     function createLevelInstance(Level _level) public payable {
         // Ensure level is registered.
-        require(registeredLevels[address(_level)], "This level doesn't exists");
+        require(registeredLevels[address(_level)], "This level doesn't exist");
 
         // Get level factory to create an instance.
         address instance = _level.createInstance{value: msg.value}(msg.sender);
