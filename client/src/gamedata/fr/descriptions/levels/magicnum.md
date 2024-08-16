@@ -1,4 +1,4 @@
-Pour résoudre ce niveau, il vous suffit de fournir à l'Ethernaut un `Solver`, un contrat qui répond à `whatIsTheMeaningOfLife()` (quel est le sens de la vie?) avec le bon numéro.
+Pour résoudre ce niveau, il vous suffit de fournir à l'Ethernaut un `Solver`, un contrat qui répond à `whatIsTheMeaningOfLife()` (quel est le sens de la vie?) avec le bon numéro de 32 octets.
 
 Facile, n'est ce pas?
 

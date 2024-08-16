@@ -1,4 +1,4 @@
-Para resolver este nível, você só precisa fornecer ao Ethernaut um `Solver`, um contrato que responde `whatIsTheMeaningOfLife()` com o número certo.
+Para resolver este nível, você só precisa fornecer ao Ethernaut um `Solver`, um contrato que responde `whatIsTheMeaningOfLife()` com o número certo de 32 bytes.
 
 Fácil né?
 Então... Não é bem assim.
