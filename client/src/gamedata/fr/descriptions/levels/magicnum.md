@@ -2,9 +2,9 @@ Pour résoudre ce niveau, il vous suffit de fournir à l'Ethernaut un `Solver`, 
 
 Facile, n'est ce pas?
 
-Eh bien...pas vraiment. 
+Eh bien...pas vraiment.
 
-Le code du `Solver` doit être vraiment petit. Vraiment tout petit. Comme vraiment vraiment minuscule : 10 opcodes au maximum.
+Le code du `Solver` doit être vraiment petit. Vraiment tout petit. Comme vraiment vraiment minuscule : 10 octets au maximum.
 
 Indice: Il est peut-être temps de quitter momentanément le confort du compilateur Solidity et de le construire à la main O_o.
 

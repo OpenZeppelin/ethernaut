@@ -25,7 +25,7 @@ contract MagicNumFactory is Level {
         bytes32 magic = solver.whatIsTheMeaningOfLife();
         if (magic != 0x000000000000000000000000000000000000000000000000000000000000002a) return false;
 
-        // Require the solver to have at most 10 opcodes.
+        // Require the solver to have at most 10 bytes.
         uint256 size;
         assembly {
             size := extcodesize(solver)
