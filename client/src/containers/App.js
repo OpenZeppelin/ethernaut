@@ -17,6 +17,8 @@ import {
   deprecationDate,
 } from "../utils/networkDeprecation";
 import { Helmet } from "react-helmet";
+import { store } from "./../store";
+import * as actions from "../../src/actions";
 
 class App extends React.Component {
   constructor() {
@@ -121,10 +123,22 @@ class App extends React.Component {
       deployWindow[0].style.display = "none";
     }
 
+    async function continueInReadOnly(){
+      store.dispatch(actions.loadGamedata());
+      store.dispatch(actions.setGameReadOnly(true));
+      const accountConnectionWindow = document.querySelectorAll(
+        ".account-connection-window-bg"
+      );
+      accountConnectionWindow[0].style.display = "none";
+      console.log(store.getState().gamedata.readOnly)
+    }
+
     async function requestAccounts() {
       await window.ethereum.request({ method: "eth_requestAccounts" });
-      const deployWindow = document.querySelectorAll(".account-connection-window-bg");
-      deployWindow[0].style.display = "none";
+      const accountConnectionWindow = document.querySelectorAll(
+        ".account-connection-window-bg"
+      );
+      accountConnectionWindow[0].style.display = "none";
       window.location.reload();
     }
 
@@ -202,11 +216,14 @@ class App extends React.Component {
               <br />
               <p>{strings.accountNotConnectedMessage}</p>
               <br />
-              <button
-                className="buttons"
-                onClick={requestAccounts}>
-                {strings.connectAccount}
-              </button>
+              <div className="choice-buttons">
+                <button className="buttons" onClick={requestAccounts}>
+                  {strings.connectAccount}
+                </button>
+                <button className="buttons" onClick={continueInReadOnly}>
+                  {strings.continueInReadOnly}
+                </button>
+              </div>
             </div>
           </div>
           {/*not Deployed window*/}

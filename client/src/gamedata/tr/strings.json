@@ -28,6 +28,7 @@
   "getNewInstance": "Yeni durum al",
   "accountNotConnectedTitle": "MetaMask hesabı bağlı değil",
   "accountNotConnectedMessage": "Maceranıza başlamak için MetaMask cüzdanınızı bağlayın! Oyunumuz doğrudan Ethernaut zincir üstü sözleşmeleriyle etkileşime girer, bu da oyundaki eylemlerinizin blok zincirinde kaydedildiği anlamına gelir. MetaMask hesabınızı bağlayarak bu akıllı sözleşmelerle güvenli bir şekilde etkileşime girebilir, zorlukları çözebilir ve oyunda ilerleyebilirsiniz.",
+  "continueInReadOnly" : "salt okunur modu",
   "deployMessageTitle": "Oyun dağıtılmadı",
   "deprecatedNetwork": "Ağ kullanımdan kaldırıldı",
   "networkBeingDeprecated": "Ağ kullanımdan kaldırılıyor",

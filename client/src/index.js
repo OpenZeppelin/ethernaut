@@ -46,7 +46,6 @@ if (!window.ethereum) {
 } else {
   window.ethereum.request({ method: "eth_accounts" }).then((res) => {
     if (res.length !== 0) {
-      console.log(res)
       window.ethereum.request({ method: "eth_chainId" }).then((res) => {
         store.dispatch(actions.setNetworkId(parseInt(res)));
         store.dispatch(actions.loadGamedata());
@@ -79,10 +78,12 @@ root.render(
 // Post-load actions.
 window.addEventListener("load", async () => {
   // Check if any MetaMask account is connected to the frontend
-  const eth_accounts = await window.ethereum.request({ method: "eth_accounts" });
-  const accountConnected = eth_accounts.length !== 0;
-
-  if (window.ethereum && accountConnected) {
+  let accountConnected = false;
+  if(window.ethereum) {
+    const eth_accounts = await window.ethereum.request({ method: "eth_accounts" });
+    accountConnected = eth_accounts.length !== 0;
+  }
+  if (accountConnected) {
     window.web3 = new constants.Web3(window.ethereum);
     try {
       await window.ethereum.request({ method: `eth_requestAccounts` });

@@ -310,13 +310,6 @@ nav li {
   text-align: center;
 } 
 
-.account-connection-window button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: fit-content;
-}
-
 .account-connection-window p {
   font-size: 1.1em;
   text-align: justify;

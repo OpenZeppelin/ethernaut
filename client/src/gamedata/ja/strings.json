@@ -28,6 +28,7 @@
   "getNewInstance": "インスタンスの生成",
   "accountNotConnectedTitle": "MetaMask アカウントが接続されていません",
   "accountNotConnectedMessage": "冒険を始めるには、MetaMask ウォレットを接続してください。私たちのゲームは Ethernaut オンチェーン コントラクトと直接やり取りします。つまり、ゲーム内でのアクションはブロックチェーンに記録されます。MetaMask アカウントをリンクすることで、これらのスマート コントラクトに安全に関与し、課題を解決してゲームを進めることができます。",
+  "continueInReadOnly" : "読み取り専用モード",
   "deployMessageTitle": "ゲームが展開されていません",
   "deployMessage": "現在、ゲームはこれらのネットワークのみをサポートしています:",
   "deprecatedNetwork": "ネットワークは放棄されています",
