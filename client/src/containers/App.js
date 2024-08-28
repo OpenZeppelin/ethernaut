@@ -18,7 +18,6 @@ import {
 } from "../utils/networkDeprecation";
 import { Helmet } from "react-helmet";
 
-
 class App extends React.Component {
   constructor() {
     super();
@@ -122,6 +121,13 @@ class App extends React.Component {
       deployWindow[0].style.display = "none";
     }
 
+    async function requestAccounts() {
+      await window.ethereum.request({ method: "eth_requestAccounts" });
+      const deployWindow = document.querySelectorAll(".account-connection-window-bg");
+      deployWindow[0].style.display = "none";
+      window.location.reload();
+    }
+
     return (
       <div className="appcontainer">
         <Helmet>
@@ -187,6 +193,22 @@ class App extends React.Component {
               </button>
             </ul>
           </section>
+          {/*not Account Connected window*/}
+          <div className="account-connection-window-bg">
+            <div className="account-connection-window">
+              <h1>{randBadIcon()}</h1>
+              <br />
+              <h2>{strings.accountNotConnectedTitle}</h2>
+              <br />
+              <p>{strings.accountNotConnectedMessage}</p>
+              <br />
+              <button
+                className="buttons"
+                onClick={requestAccounts}>
+                {strings.connectAccount}
+              </button>
+            </div>
+          </div>
           {/*not Deployed window*/}
           <div className="deploy-window-bg">
             {!networkOnDeprecationOrDeprecated(this.state.chainId) ? (
@@ -194,7 +216,6 @@ class App extends React.Component {
                 {/*deploy window*/}
                 <h1>{randGoodIcon()}</h1>
                 <h2>{strings.deployMessageTitle}</h2>
-                <br />
                 {strings.deployMessage}
                 {supportedNetworksList(supportedNetworks)}
                 <p className="deploy-note">{strings.deployConfirmation}</p>

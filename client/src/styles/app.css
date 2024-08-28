@@ -275,6 +275,54 @@ nav li {
   margin-bottom: 2em;
 }
 
+.account-connection-window-bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 4;
+  display: none;
+}
+
+.account-connection-window {
+  position: fixed;
+  top: 20%;
+  width: 40%;
+  left: 30%;
+  right: 30%;
+  display: inherit;
+  background-color: var(--primary-color);
+  z-index: 5;
+  padding: 2% 2% 2% 2%;
+  box-shadow: black 0px 0px 60px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 6px;
+}
+
+.account-connection-window h1 {
+  text-align: center;
+} 
+
+.account-connection-window h2 {
+  font-size: 2.5em;
+  text-align: center;
+} 
+
+.account-connection-window button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+.account-connection-window p {
+  font-size: 1.1em;
+  text-align: justify;
+}
+
+
 .deploy-window-bg {
   position: fixed;
   top: 0;
@@ -307,6 +355,14 @@ nav li {
 
 .deploy-window h1 {
   text-align: center;
+}
+
+.deploy-window h2 {
+  font-size: 2.5em;
+}
+
+.deploy-window p {
+  font-size: 1.1em;
 }
 
 .choice-buttons {

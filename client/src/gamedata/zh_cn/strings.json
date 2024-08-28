@@ -26,6 +26,8 @@
   "sources": "源码",
   "submitInstance": "提交该实例",
   "getNewInstance": "生成新实例",
+  "accountNotConnectedTitle": "MetaMask 帐户未连接",
+  "accountNotConnectedMessage": "要开始您的冒险，请连接您的 MetaMask 钱包！我们的游戏直接与 Ethernaut 链上合约交互，这意味着您在游戏中的行为会记录在区块链上。通过链接您的 MetaMask 帐户，您可以安全地与这些智能合约互动，从而让您解决​​挑战并在游戏中取得进展。", 
   "deployMessageTitle": "Game not deployed",
   "deprecatedNetwork": "Network deprecated",
   "networkBeingDeprecated": "Network being deprecated",

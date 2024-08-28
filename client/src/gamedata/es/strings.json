@@ -26,6 +26,8 @@
   "sources": "Código",
   "submitInstance": "Comprueba instancia",
   "getNewInstance": "Nueva instancia",
+  "accountNotConnectedTitle": "Cuenta MetaMask no conectada",
+  "accountNotConnectedMessage": "Para comenzar tu aventura, conecta tu billetera MetaMask. Nuestro juego interactúa directamente con los contratos en cadena de Ethernaut, lo que significa que tus acciones en el juego quedan registradas en la cadena de bloques. Al vincular tu cuenta MetaMask, puedes interactuar de forma segura con estos contratos inteligentes, lo que te permite resolver desafíos y progresar en el juego.",
   "deployMessageTitle": "Juego no desplegado",
   "deprecatedNetwork": "Red obsoleta",
   "networkBeingDeprecated": "Red en desuso",
