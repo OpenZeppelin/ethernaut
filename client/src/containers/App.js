@@ -62,6 +62,37 @@ class App extends React.Component {
     this.props.navigate(`${constants.PATH_LEVEL_ROOT}${target}`);
   }
 
+  async continueAnyway() {
+    const deployWindow = document.querySelectorAll(".deploy-window-bg");
+    deployWindow[0].style.display = "none";
+  }
+
+  async continueInReadOnly() {
+    store.dispatch(actions.loadGamedata());
+    store.dispatch(actions.setGameReadOnly(true));
+    const accountConnectionWindow = document.querySelectorAll(
+      ".account-connection-window-bg"
+    );
+    accountConnectionWindow[0].style.display = "none";
+    console.log(store.getState().gamedata.readOnly);
+  }
+
+  displayConnectionWindow() {
+    const accountConnectionWindow = document.querySelectorAll(
+      ".account-connection-window-bg"
+    );
+    accountConnectionWindow[0].style.display = "block";
+  }
+
+  async requestAccounts() {
+    await window.ethereum.request({ method: "eth_requestAccounts" });
+    const accountConnectionWindow = document.querySelectorAll(
+      ".account-connection-window-bg"
+    );
+    accountConnectionWindow[0].style.display = "none";
+  }
+
+
   render() {
     let language = localStorage.getItem("lang");
     let strings = loadTranslations(language);
@@ -116,30 +147,6 @@ class App extends React.Component {
           if (elements[0]) elements[0].style.display = "none";
         }
       }
-    }
-
-    async function continueAnyway() {
-      const deployWindow = document.querySelectorAll(".deploy-window-bg");
-      deployWindow[0].style.display = "none";
-    }
-
-    async function continueInReadOnly(){
-      store.dispatch(actions.loadGamedata());
-      store.dispatch(actions.setGameReadOnly(true));
-      const accountConnectionWindow = document.querySelectorAll(
-        ".account-connection-window-bg"
-      );
-      accountConnectionWindow[0].style.display = "none";
-      console.log(store.getState().gamedata.readOnly)
-    }
-
-    async function requestAccounts() {
-      await window.ethereum.request({ method: "eth_requestAccounts" });
-      const accountConnectionWindow = document.querySelectorAll(
-        ".account-connection-window-bg"
-      );
-      accountConnectionWindow[0].style.display = "none";
-      window.location.reload();
     }
 
     return (
@@ -200,7 +207,10 @@ class App extends React.Component {
             />
             <ul>
               <button
-                onClick={() => this.navigateToFirstIncompleteLevel()}
+                onClick={async () => {
+                  this.displayConnectionWindow();
+                  this.navigateToFirstIncompleteLevel();
+                }}
                 className="buttons"
               >
                 {strings.playNow}
@@ -217,10 +227,16 @@ class App extends React.Component {
               <p>{strings.accountNotConnectedMessage}</p>
               <br />
               <div className="choice-buttons">
-                <button className="buttons" onClick={requestAccounts}>
+                <button
+                  className="buttons"
+                  onClick={async () => {
+                    await this.requestAccounts();
+                    window.location.reload();
+                  }}
+                >
                   {strings.connectAccount}
                 </button>
-                <button className="buttons" onClick={continueInReadOnly}>
+                <button className="buttons" onClick={this.continueInReadOnly}>
                   {strings.continueInReadOnly}
                 </button>
               </div>
@@ -263,7 +279,7 @@ class App extends React.Component {
                     {strings.switchToSepolia}
                   </button>
                   {!isDeprecatedNetwork(this.state.chainId) && (
-                    <button className="buttons" onClick={continueAnyway}>
+                    <button className="buttons" onClick={this.continueAnyway}>
                       {strings.continueAnyway}
                     </button>
                   )}
