@@ -2,7 +2,7 @@ import React from "react";
 import onClickOutside from "react-onclickoutside";
 import { connect } from "react-redux";
 import { withRouter } from "../hoc/withRouter";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions";
 import * as constants from "../constants";
@@ -344,6 +344,19 @@ class Header extends React.Component {
                       className="element-in-row toggle --small"
                       type="checkbox"
                     />
+                    <div className="connect-button">
+                    {store.getState().gamedata.readOnly && (
+                      <button
+                        className="buttons"
+                        onClick={async () => {
+                          await window.ethereum.request({ method: "eth_requestAccounts" });
+                          window.location.reload();
+                         }}
+                      >
+                        {strings.connectAccount}
+                      </button>
+                    )}
+                    </div>
                   </div>
                 </div>
                 {this.props.web3 && !store.getState().gamedata.readOnly && (

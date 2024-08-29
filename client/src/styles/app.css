@@ -315,6 +315,10 @@ nav li {
   text-align: justify;
 }
 
+.connect-button{
+ margin-left: auto;
+}
+
 
 .deploy-window-bg {
   position: fixed;

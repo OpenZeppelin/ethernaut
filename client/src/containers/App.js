@@ -74,10 +74,9 @@ class App extends React.Component {
       ".account-connection-window-bg"
     );
     accountConnectionWindow[0].style.display = "none";
-    console.log(store.getState().gamedata.readOnly);
   }
 
-  displayConnectionWindow() {
+  async displayConnectionWindow() {
     const accountConnectionWindow = document.querySelectorAll(
       ".account-connection-window-bg"
     );
@@ -91,7 +90,6 @@ class App extends React.Component {
     );
     accountConnectionWindow[0].style.display = "none";
   }
-
 
   render() {
     let language = localStorage.getItem("lang");
@@ -207,9 +205,12 @@ class App extends React.Component {
             />
             <ul>
               <button
-                onClick={async () => {
-                  this.displayConnectionWindow();
-                  this.navigateToFirstIncompleteLevel();
+                onClick={() => {
+                  if (!store.getState().gamedata.readOnly) {
+                    this.navigateToFirstIncompleteLevel();
+                  } else {
+                    this.displayConnectionWindow();
+                  }
                 }}
                 className="buttons"
               >
