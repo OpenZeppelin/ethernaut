@@ -29,6 +29,7 @@
   "accountNotConnectedTitle": "Compte MetaMask non connecté",
   "accountNotConnectedMessage": "Pour commencer votre aventure, connectez votre portefeuille MetaMask ! Notre jeu interagit directement avec les contrats on-chain d'Ethernaut, ce qui signifie que vos actions dans le jeu sont enregistrées sur la blockchain. En liant votre compte MetaMask, vous pouvez interagir en toute sécurité avec ces contrats intelligents, vous permettant de résoudre des défis et de progresser dans le jeu.",
   "continueInReadOnly" : "mode lecture seule",
+  "connectAccount": "Connecter",
   "deployMessageTitle": "Jeu non déployé",
   "deprecatedNetwork": "Réseau obsolète",
   "networkBeingDeprecated": "Réseau désaffecté",
