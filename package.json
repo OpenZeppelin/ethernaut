@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "highlight.js": "^10.7.2",
-    "react-loader-spinner": "^5.3.4"
+    "react-loader-spinner": "^6.0.0"
   },
   "resolutions": {
     "**/highlight.js": "10.7.2-local"
