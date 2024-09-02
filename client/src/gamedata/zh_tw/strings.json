@@ -28,7 +28,6 @@
   "getNewInstance": "產生新實例",
   "accountNotConnectedTitle": "MetaMask 帳戶未連接",
   "accountNotConnectedMessage": "要開始您的冒險，請連接您的 MetaMask 錢包！我們的遊戲直接與 Ethernaut 鏈上合約交互，這意味著您在遊戲中的行為都會記錄在區塊鏈上。透過連結您的 MetaMask 帳戶，您可以安全地使用這些智能合約，從而解決挑戰並在遊戲中取得進展。",
-  "continueInReadOnly" : "唯讀模式",
   "connectAccount": "連接",
   "deployMessageTitle": "遊戲未部署",
   "deprecatedNetwork": "網路已棄用",

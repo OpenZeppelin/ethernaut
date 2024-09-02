@@ -221,6 +221,11 @@ class App extends React.Component {
           {/*not Account Connected window*/}
           <div className="account-connection-window-bg">
             <div className="account-connection-window">
+              <button
+                className="account-connection-close-x fas fa-x "
+                onClick={this.continueInReadOnly}
+              >
+              </button>
               <h1>{randBadIcon()}</h1>
               <br />
               <h2>{strings.accountNotConnectedTitle}</h2>
@@ -236,9 +241,6 @@ class App extends React.Component {
                   }}
                 >
                   {strings.connectAccount}
-                </button>
-                <button className="buttons" onClick={this.continueInReadOnly}>
-                  {strings.continueInReadOnly}
                 </button>
               </div>
             </div>
