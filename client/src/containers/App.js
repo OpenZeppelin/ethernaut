@@ -17,7 +17,8 @@ import {
   deprecationDate,
 } from "../utils/networkDeprecation";
 import { Helmet } from "react-helmet";
-
+import { store } from "./../store";
+import * as actions from "../../src/actions";
 
 class App extends React.Component {
   constructor() {
@@ -59,6 +60,35 @@ class App extends React.Component {
 
     // Navigate to first incomplete level
     this.props.navigate(`${constants.PATH_LEVEL_ROOT}${target}`);
+  }
+
+  async continueAnyway() {
+    const deployWindow = document.querySelectorAll(".deploy-window-bg");
+    deployWindow[0].style.display = "none";
+  }
+
+  async continueInReadOnly() {
+    store.dispatch(actions.loadGamedata());
+    store.dispatch(actions.setGameReadOnly(true));
+    const accountConnectionWindow = document.querySelectorAll(
+      ".account-connection-window-bg"
+    );
+    accountConnectionWindow[0].style.display = "none";
+  }
+
+  async displayConnectionWindow() {
+    const accountConnectionWindow = document.querySelectorAll(
+      ".account-connection-window-bg"
+    );
+    accountConnectionWindow[0].style.display = "block";
+  }
+
+  async requestAccounts() {
+    await window.ethereum.request({ method: "eth_requestAccounts" });
+    const accountConnectionWindow = document.querySelectorAll(
+      ".account-connection-window-bg"
+    );
+    accountConnectionWindow[0].style.display = "none";
   }
 
   render() {
@@ -115,11 +145,6 @@ class App extends React.Component {
           if (elements[0]) elements[0].style.display = "none";
         }
       }
-    }
-
-    async function continueAnyway() {
-      const deployWindow = document.querySelectorAll(".deploy-window-bg");
-      deployWindow[0].style.display = "none";
     }
 
     return (
@@ -180,13 +205,46 @@ class App extends React.Component {
             />
             <ul>
               <button
-                onClick={() => this.navigateToFirstIncompleteLevel()}
+                onClick={() => {
+                  if (!store.getState().gamedata.readOnly) {
+                    this.navigateToFirstIncompleteLevel();
+                  } else {
+                    this.displayConnectionWindow();
+                  }
+                }}
                 className="buttons"
               >
                 {strings.playNow}
               </button>
             </ul>
           </section>
+          {/*not Account Connected window*/}
+          <div className="account-connection-window-bg">
+            <div className="account-connection-window">
+              <button
+                className="account-connection-close-x fas fa-x "
+                onClick={this.continueInReadOnly}
+              >
+              </button>
+              <h1>{randBadIcon()}</h1>
+              <br />
+              <h2>{strings.accountNotConnectedTitle}</h2>
+              <br />
+              <p>{strings.accountNotConnectedMessage}</p>
+              <br />
+              <div className="choice-buttons">
+                <button
+                  className="buttons"
+                  onClick={async () => {
+                    await this.requestAccounts();
+                    window.location.reload();
+                  }}
+                >
+                  {strings.connectAccount}
+                </button>
+              </div>
+            </div>
+          </div>
           {/*not Deployed window*/}
           <div className="deploy-window-bg">
             {!networkOnDeprecationOrDeprecated(this.state.chainId) ? (
@@ -194,7 +252,6 @@ class App extends React.Component {
                 {/*deploy window*/}
                 <h1>{randGoodIcon()}</h1>
                 <h2>{strings.deployMessageTitle}</h2>
-                <br />
                 {strings.deployMessage}
                 {supportedNetworksList(supportedNetworks)}
                 <p className="deploy-note">{strings.deployConfirmation}</p>
@@ -225,7 +282,7 @@ class App extends React.Component {
                     {strings.switchToSepolia}
                   </button>
                   {!isDeprecatedNetwork(this.state.chainId) && (
-                    <button className="buttons" onClick={continueAnyway}>
+                    <button className="buttons" onClick={this.continueAnyway}>
                       {strings.continueAnyway}
                     </button>
                   )}

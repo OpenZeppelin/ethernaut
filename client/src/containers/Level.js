@@ -15,6 +15,7 @@ import { getLevelKey } from "../utils/contractutil";
 import { deployAndRegisterLevel } from "../utils/deploycontract";
 import { svgFilter } from "../utils/svg";
 import { Helmet } from 'react-helmet';
+import { store } from "../store";
 
 class Level extends React.Component {
   constructor(props) {
@@ -331,7 +332,7 @@ class Level extends React.Component {
                 )}
 
                 {/* DEPLOY OR CREATE */}
-                {this.props.web3 && <button
+                { !store.getState().gamedata.readOnly && this.props.web3 && <button
                   type="button"
                   className="button-actions"
                   onClick={

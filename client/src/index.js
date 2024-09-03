@@ -36,6 +36,7 @@ Sentry.init({
 store.dispatch(actions.connectWeb3(window.ethereum));
 const container = document.getElementById("root");
 const root = createRoot(container);
+
 if (!window.ethereum) {
   //root.render(<h3>Hey, You dont have the supported wallet!</h3>);
   // let language = localStorage.getItem("lang");
@@ -43,10 +44,17 @@ if (!window.ethereum) {
   // store.dispatch(actions.setNetworkId(parseInt("5")));
   store.dispatch(actions.loadGamedata());
 } else {
-  window.ethereum.request({ method: "eth_chainId" }).then((res) => {
-    store.dispatch(actions.setNetworkId(parseInt(res)));
-    store.dispatch(actions.loadGamedata());
-  })  
+  window.ethereum.request({ method: "eth_accounts" }).then((res) => {
+    if (res.length !== 0) {
+      window.ethereum.request({ method: "eth_chainId" }).then((res) => {
+        store.dispatch(actions.setNetworkId(parseInt(res)));
+        store.dispatch(actions.loadGamedata());
+      });
+    } else {
+      const accountConnectionWindow = document.querySelectorAll('.account-connection-window-bg');
+      if (accountConnectionWindow[0]) accountConnectionWindow[0].style.display = 'block';
+    }
+  });
 }
 
 root.render(
@@ -69,7 +77,13 @@ root.render(
 
 // Post-load actions.
 window.addEventListener("load", async () => {
-  if (window.ethereum) {
+  // Check if any MetaMask account is connected to the frontend
+  let accountConnected = false;
+  if(window.ethereum) {
+    const eth_accounts = await window.ethereum.request({ method: "eth_accounts" });
+    accountConnected = eth_accounts.length !== 0;
+  }
+  if (accountConnected) {
     window.web3 = new constants.Web3(window.ethereum);
     try {
       await window.ethereum.request({ method: `eth_requestAccounts` });
@@ -79,8 +93,7 @@ window.addEventListener("load", async () => {
       window.web3 = null;
     }
   }
-
-  if (window.web3) {
+  if (window.web3 && accountConnected) {
     ethutil.setWeb3(window.web3);
     // ethutil.attachLogger();
 
