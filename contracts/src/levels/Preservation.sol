@@ -18,12 +18,14 @@ contract Preservation {
 
     // set the time for timezone 1
     function setFirstTime(uint256 _timeStamp) public {
-        timeZone1Library.delegatecall(abi.encodePacked(setTimeSignature, _timeStamp));
+        (bool success, ) = timeZone1Library.delegatecall(abi.encodePacked(setTimeSignature, _timeStamp));
+        require(success);
     }
 
     // set the time for timezone 2
     function setSecondTime(uint256 _timeStamp) public {
-        timeZone2Library.delegatecall(abi.encodePacked(setTimeSignature, _timeStamp));
+        (bool success, ) = timeZone2Library.delegatecall(abi.encodePacked(setTimeSignature, _timeStamp));
+        require(success);
     }
 }
 
