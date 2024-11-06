@@ -511,6 +511,21 @@
       "deployId": "32",
       "instanceGas": 750000,
       "author": "Gianfranco"
+    },
+    {
+      "name": "Magic Animal Carousel",
+      "created": "2024-11-04",
+      "difficulty": "6",
+      "description": "magicanimalcarousel.md",
+      "completedDescription": "magicanimalcarousel_complete.md",
+      "levelContract": "MagicAnimalCarouselFactory.sol",
+      "instanceContract": "MagicAnimalCarousel.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "33",
+      "instanceGas": 750000,
+      "author": "Gianfranco&carlitox477"
     }
   ]
 }

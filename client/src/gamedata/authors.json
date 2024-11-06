@@ -193,6 +193,16 @@
         ],
         "donate" : "gianfrancobazzani.uni.eth",
       "emails": ["bazzanigianfranco@gmail.com"]
+      },
+    "Gianfranco&carlitox477":{
+      "name": [
+        "carlitox477", "Gianfranco"
+      ],
+      "websites":
+        [
+          "www.x.com/carlitox477", "https://github.com/GianfrancoBazzani/" 
+        ],
+      "emails": ["carlitox477.auditor@gmail.com", "bazzanigianfranco@gmail.com"]
     }
   }
 }
