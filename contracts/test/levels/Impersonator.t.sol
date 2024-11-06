@@ -39,7 +39,7 @@ contract TestImpersonator is Test, Utils {
         vm.stopPrank();
 
         vm.startPrank(player);
-        instance = Impersonator(payable(createLevelInstance(ethernaut, Level(address(factory)), 0.001 ether))); // TODO: ethe not required?
+        instance = Impersonator(payable(createLevelInstance(ethernaut, Level(address(factory)), 0)));
         vm.stopPrank();
     }
 
@@ -47,7 +47,7 @@ contract TestImpersonator is Test, Utils {
                                  TESTS
     //////////////////////////////////////////////////////////////*/
 
-    /// @notice Check the intial state of the level and enviroment.º
+    /// @notice Check the intial state of the level and enviroment.
     function testInit() public {
         ECLocker locker0 = instance.lockers(0);
         assertEq(locker0.lockId(), 1337);

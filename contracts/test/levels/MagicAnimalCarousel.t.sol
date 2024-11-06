@@ -9,8 +9,6 @@ import {MagicAnimalCarouselFactory} from "src/levels/MagicAnimalCarouselFactory.
 import {Level} from "src/levels/base/Level.sol";
 import {Ethernaut} from "src/Ethernaut.sol";
 
-import {console} from "forge-std/console.sol"; //TODO. delete
-
 contract TestMagicAnimalCarousel is Test, Utils {
     Ethernaut ethernaut;
     MagicAnimalCarousel instance;
