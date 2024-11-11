@@ -182,6 +182,27 @@
           "https://www.linkedin.com/in/afonso-dalvi-711635112/"
         ],
       "emails": ["gwdeps@gmail.com","afonsodalvia@gmail.com"]
+    },
+    "Gianfranco":{
+      "name": [
+        "Gianfranco"
+      ],
+      "websites":
+        [
+          "https://github.com/GianfrancoBazzani/"
+        ],
+        "donate" : "gianfrancobazzani.uni.eth",
+      "emails": ["bazzanigianfranco@gmail.com"]
+      },
+    "Gianfranco&carlitox477":{
+      "name": [
+        "carlitox477", "Gianfranco"
+      ],
+      "websites":
+        [
+          "www.x.com/carlitox477", "https://github.com/GianfrancoBazzani/" 
+        ],
+      "emails": ["carlitox477.auditor@gmail.com", "bazzanigianfranco@gmail.com"]
     }
   }
 }

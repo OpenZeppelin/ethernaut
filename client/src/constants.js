@@ -43,7 +43,7 @@ export const NETWORKS = {
   AMOY: {
     name: "amoy",
     id: "80002",
-    url: `${process.env.ALL_CAPS_NAME_HOST}`,
+    url: `${process.env.AMOY_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
   },
 };
