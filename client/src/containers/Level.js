@@ -29,6 +29,7 @@ class Level extends React.Component {
   }
 
   componentDidMount() {
+    this.props.loadGameData();
     this.props.activateLevel(this.props.params.address);
     document.addEventListener("mousedown", this.handleClickOutside);
   }
@@ -107,7 +108,6 @@ class Level extends React.Component {
   render() {
     const { level, levelCompleted } = this.props;
     const { submittedIntance } = this.state;
-
     var [levelData, selectedLevel] = getlevelsdata(this.props, "levelPage");
 
     if (!level) return null;
