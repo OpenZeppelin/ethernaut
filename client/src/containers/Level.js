@@ -29,7 +29,6 @@ class Level extends React.Component {
   }
 
   componentDidMount() {
-    this.props.loadGameData();
     this.props.activateLevel(this.props.params.address);
     document.addEventListener("mousedown", this.handleClickOutside);
   }
