@@ -107,7 +107,6 @@ class Level extends React.Component {
   render() {
     const { level, levelCompleted } = this.props;
     const { submittedIntance } = this.state;
-
     var [levelData, selectedLevel] = getlevelsdata(this.props, "levelPage");
 
     if (!level) return null;
