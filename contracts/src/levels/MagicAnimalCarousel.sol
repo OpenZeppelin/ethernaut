@@ -10,7 +10,6 @@ contract MagicAnimalCarousel {
     uint256 public currentCrateId;
     mapping(uint256 crateId => uint256 animalInside) public carousel;
 
-    error InvalidCarouselId();
     error AnimalNameTooLong();
 
     constructor() {
