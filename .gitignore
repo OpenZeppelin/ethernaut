@@ -4,6 +4,7 @@ node_modules/
 # Private stuff
 client/.env
 contracts/.env
+contracts/build
 
 # Client
 client/build/
