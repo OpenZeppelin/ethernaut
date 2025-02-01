@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity 0.8.28;
 
 import "./levels/base/Level.sol";
 import "openzeppelin-contracts-08/access/Ownable.sol";
@@ -20,6 +20,13 @@ contract Ethernaut is Ownable {
     // ----------------------------------
     // Owner interaction
     // ----------------------------------
+
+    //errors
+    error This_level_dont_exists();
+    
+    error This_instance_dont_belongs_to_current_user();
+    error level_already_completed();
+
 
     mapping(address => bool) public registeredLevels;
 
@@ -50,7 +57,7 @@ contract Ethernaut is Ownable {
 
     function createLevelInstance(Level _level) public payable {
         // Ensure level is registered.
-        require(registeredLevels[address(_level)], "This level doesn't exists");
+        require(registeredLevels[address(_level)], This_level_dont_exists());
 
         // Get level factory to create an instance.
         address instance = _level.createInstance{value: msg.value}(msg.sender);
@@ -67,8 +74,8 @@ contract Ethernaut is Ownable {
     function submitLevelInstance(address payable _instance) public {
         // Get player and level.
         EmittedInstanceData storage data = emittedInstances[_instance];
-        require(data.player == msg.sender, "This instance doesn't belong to the current user"); // instance was emitted for this player
-        require(data.completed == false, "Level has been completed already"); // not already submitted
+        require(data.player == msg.sender, This_instance_dont_belongs_to_current_user()); // instance was emitted for this player
+        require(data.completed == false, level_already_completed()); // not already submitted
 
         // Have the level check the instance.
         if (data.level.validateInstance(_instance, msg.sender)) {
