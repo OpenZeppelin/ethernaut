@@ -57,21 +57,24 @@ contract TestImpersonator is Test, Utils {
         assertFalse(submitLevelInstance(ethernaut, address(instance)));
     }
 
-    function testFail_TrySameSignatureOpen() public {
+    function testTrySameSignatureOpen() public {
         vm.startPrank(player);
         ECLocker locker0 = instance.lockers(0);
+        vm.expectRevert();
         locker0.open(v, r, s);
     }
 
-    function testFail_TrySameSignatureChangeController() public {
+    function testTrySameSignatureChangeController() public {
         vm.startPrank(player);
         ECLocker locker0 = instance.lockers(0);
+        vm.expectRevert();
         locker0.changeController(v, r, s, player);
     }
 
-    function testFail_TryRandomSignatureChangeController() public {
+    function testTryRandomSignatureChangeController() public {
         vm.startPrank(player);
         ECLocker locker0 = instance.lockers(0);
+        vm.expectRevert();
         locker0.changeController(28, r, bytes32(uint256(s) + 1), player);
     }
 
