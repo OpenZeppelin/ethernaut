@@ -75,14 +75,15 @@ contract TestMagicAnimalCarousel is Test, Utils {
         //  assertEq(instance.carousel(3), fishEnc | 0 << 160 | uint160(address(player)));
     }
 
-    function testFailOnlyOwnerShouldBeAbleToChangeAnimal() public {
+    function testNonOwnerShouldNotBeAbleToChangeAnimal() public {
         vm.startPrank(player, player);
         instance.setAnimalAndSpin("Echidna");
         vm.stopPrank();
+        vm.expectRevert();
         instance.changeAnimal("Pidgeon", 1);
     }
 
-    function testOnlyOwnerShouldBeAbleToChangeAnimal() public {
+    function testOwnerShouldBeAbleToChangeAnimal() public {
         vm.startPrank(player, player);
 
         string memory pidgeon = "Pidgeon";
