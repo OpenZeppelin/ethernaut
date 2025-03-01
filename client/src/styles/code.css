@@ -1,3 +1,35 @@
-pre > code {
+pre {
     font-family: monospace;
+}
+
+
+ ::-webkit-scrollbar:horizontal {
+    border-radius: 4px;
+    height: 10px;
+    background: rgba(237, 223, 214, 0.5);
+} 
+
+
+::-webkit-scrollbar-track:horizontal {
+    border-radius: 4px;
+    background: rgba(237, 223, 214, 0.7); 
+    margin: 0 10px; 
+}
+
+
+::-webkit-scrollbar-thumb:horizontal {
+    border-radius: 4px;
+    background: rgba(34, 34, 34, 0.8); 
+    border: 1px solid var(--primary-color); 
+}
+
+
+::-webkit-scrollbar-thumb:horizontal:hover {
+    border-radius: 4px;
+    background: var(--secondary-color);
+}
+
+
+pre::-webkit-scrollbar-corner {
+    background: rgba(237, 223, 214, 0.7);
 }
