@@ -93,7 +93,7 @@ class Stats extends React.Component {
       this.setState({playerFilter: playerAddress});
 
       var stats = await this.collectPlayerStats(playerAddress);
-      // sort the levels and display in acending level of difficulty
+      // sort the levels and display in ascending level of difficulty
       // woth noting that the sort is 'inplace'
       stats?.levelsSolved.sort((a, b) => +a.difficulty - +b.difficulty)
       this.setState({
