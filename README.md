@@ -43,7 +43,12 @@ In order to install, build, and run Ethernaut locally, follow these instructions
     yarn compile:contracts
     ```
 
-5. Set `client/src/constants.js` `ACTIVE_NETWORK` to `NETWORKS.LOCAL`
+5. Set `client/src/constants.js` `ACTIVE_NETWORK` to `NETWORKS.LOCAL`. You may run this to verify if the blockchain works:
+
+    ```bash
+    node test.js
+    ```
+
 6. Deploy contracts
 
     ```bash
