@@ -3,7 +3,7 @@ pragma solidity ^0.8.28;
 
 contract MagicAnimalCarousel {
     uint16 constant public MAX_CAPACITY = type(uint16).max;
-    uint256 constant ANIMAL_MASK = uint256(type(uint80).max) << 160 + 16;
+    uint256 constant ANIMAL_MASK = uint256(type(uint80).max) << (160 + 16);
     uint256 constant NEXT_ID_MASK = uint256(type(uint16).max) << 160;
     uint256 constant OWNER_MASK = uint256(type(uint160).max);
 
@@ -21,7 +21,7 @@ contract MagicAnimalCarousel {
         uint256 nextCrateId = (carousel[currentCrateId] & NEXT_ID_MASK) >> 160;
 
         require(encodedAnimal <= uint256(type(uint80).max), AnimalNameTooLong());
-        carousel[nextCrateId] = (carousel[nextCrateId] & ~NEXT_ID_MASK) ^ (encodedAnimal << 160 + 16)
+        carousel[nextCrateId] = (carousel[nextCrateId] & ~NEXT_ID_MASK) ^ (encodedAnimal << (160 + 16));
             | ((nextCrateId + 1) % MAX_CAPACITY) << 160 | uint160(msg.sender);
 
         currentCrateId = nextCrateId;
