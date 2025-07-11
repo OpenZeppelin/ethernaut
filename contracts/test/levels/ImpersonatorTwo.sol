@@ -13,7 +13,6 @@ import {Ethernaut} from "src/Ethernaut.sol";
 contract TestImpersonatorTwo is Test, Utils {
     Ethernaut ethernaut;
     ImpersonatorTwo instance;
-    ImpersonatorTwoFactory factory;
 
     address payable initializer;
     address payable player;
@@ -33,7 +32,7 @@ contract TestImpersonatorTwo is Test, Utils {
 
         vm.startPrank(initializer);
         ethernaut = getEthernautWithStatsProxy(initializer);
-        factory = new ImpersonatorTwoFactory();
+        ImpersonatorTwoFactory factory = new ImpersonatorTwoFactory();
         ethernaut.registerLevel(Level(address(factory)));
         vm.stopPrank();
 
@@ -99,8 +98,6 @@ contract TestImpersonatorTwo is Test, Utils {
         vm.expectRevert();
         levelInstance.setAdmin(signature, player);
     }
-
-    function testCheckNonceRecoverable() public {}
 
     /// @notice Test the solution for the level.
     function testSolve() public {
