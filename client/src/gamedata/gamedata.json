@@ -571,6 +571,21 @@
       "deployId": "36",
       "instanceGas": 5000000,
       "author": "Gianfranco"
+  },
+  {
+      "name": "Impersonator Two",
+      "created": "2025-07-10",
+      "difficulty": "1",
+      "description": "impersonator_two.md",
+      "completedDescription": "impersonator_two_complete.md",
+      "levelContract": "ImpersonatorTwoFactory.sol",
+      "instanceContract": "ImpersonatorTwo.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0.001,
+      "deployId": "34",
+      "instanceGas": 5000000,
+      "author": "jack"
     }
   ]
 }
