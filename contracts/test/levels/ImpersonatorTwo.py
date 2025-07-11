@@ -8,7 +8,7 @@ def sign(sk: SigningKey, digest: str, k: int) -> str:
     return r, s
 
 def format(r: str, s: str, v: int) -> str:
-    return f"0x{r}{s}{hex(v)[2:]}"
+    return f"0x{r.rjust(64, '0')}{s.rjust(64, '0')}{hex(v)[2:]}"
 
 def recover_nonce(r: str, s1: str, s2: str, z1: str, z2: str) -> int:
     r = int(r, base=16)
@@ -42,13 +42,13 @@ if __name__ == "__main__":
     )
 
     r1, s1 = sign(sk, LOCK0_DIGEST, NONCE)
-    lock_signature = format(r1, s1, 28)
+    lock_signature = format(r1, s1, 28) # 28 from empirical tests
     print("Lock signature", lock_signature)
 
     r2, s2 = sign(sk, ADMIN1_DIGEST, NONCE)
     # s2 needs to be flipped to be valid
     s2_flipped = hex(SECP256k1.order - int(s2, base=16))[2:]
-    admin_signature = format(r2, s2_flipped, 27)
+    admin_signature = format(r2, s2_flipped, 27) # 27 from empirical tests
     print("Admin signature: ", admin_signature)
 
     assert r1 == r2, "r values must match"
