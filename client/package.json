@@ -39,7 +39,7 @@
     "redux": "^4.2.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "web3": "1.8.2"
+    "web3": "1.10.4"
   },
   "scripts": {
     "start": "react-scripts start",
