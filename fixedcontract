@@ -1,0 +1,19 @@
+const { expect } = require("chai");
+const { ethers } = require("hardhat");
+
+describe("FixedContract", function () {
+  let FixedContract, fixedContract, owner, addr1;
+
+  beforeEach(async function () {
+    [owner, addr1] = await ethers.getSigners();
+    FixedContract = await ethers.getContractFactory("FixedContract");
+    fixedContract = await FixedContract.deploy();
+    await fixedContract.deployed();
+  });
+
+  it("Should allow deposit and withdraw", async function () {
+    await fixedContract.connect(addr1).deposit({ value: ethers.utils.parseEther("1") });
+    await fixedContract.connect(addr1).withdraw(ethers.utils.parseEther("1"));
+    expect(await fixedContract.balances(addr1.address)).to.equal(0);
+  });
+});
