@@ -526,6 +526,21 @@
       "deployId": "33",
       "instanceGas": 750000,
       "author": "Gianfranco&carlitox477"
+    },
+    {
+      "name": "TimeVault",
+      "created": "2025-08-18",
+      "difficulty": "5",
+      "description": "timevault.md",
+      "completedDescription": "timevault_complete.md",
+      "levelContract": "TimeVaultFactory.sol",
+      "instanceContract": "TimeVault.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "34",
+      "instanceGas": 500000,
+      "author": "Waiting-Chai"
     }
   ]
 }
