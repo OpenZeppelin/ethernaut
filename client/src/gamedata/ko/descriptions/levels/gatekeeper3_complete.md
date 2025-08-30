@@ -1,0 +1,1 @@
+잘하셨습니다! 더 자세한 정보는 [이 링크](https://web3js.readthedocs.io/en/v1.2.9/web3-eth.html?highlight=getStorageAt#getstorageat)와 [이 링크](https://medium.com/loom-network/ethereum-solidity-memory-vs-storage-how-to-initialize-an-array-inside-a-struct-184baf6aa2eb)를 읽어보세요.
