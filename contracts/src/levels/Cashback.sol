@@ -2,6 +2,7 @@
 pragma solidity 0.8.30;
 
 import {IERC20} from "openzeppelin-contracts-v5.4.0/token/ERC20/IERC20.sol";
+import {IERC721} from "openzeppelin-contracts-v5.4.0/token/ERC721/IERC721.sol";
 import {ERC1155} from "openzeppelin-contracts-v5.4.0/token/ERC1155/ERC1155.sol";
 import {TransientSlot} from "openzeppelin-contracts-v5.4.0/utils/TransientSlot.sol";
 
@@ -45,63 +46,65 @@ library CurrencyLibrary {
 }
 
 /*//////////////////////////////////////////////////////////////
-                  SUPER CASHBACK NFT INTERFACE
-//////////////////////////////////////////////////////////////*/
-
-interface SuperCashbackNFT {
-    function mint(uint256 tokenId) external;
-}
-
-/*//////////////////////////////////////////////////////////////
                        CASHBACK CONTRACT
 //////////////////////////////////////////////////////////////*/
 
-contract Cashback is ERC1155 {
+/// @dev keccak256(abi.encode(uint256(keccak256("Cashback")) - 1)) & ~bytes32(uint256(0xff))
+contract Cashback is ERC1155 layout at 0x442a95e7a6e84627e9cbb594ad6d8331d52abc7e6b6ca88ab292e4649ce5ba00 {
     using TransientSlot for *;
 
-    error NotCashback();
-    error NotDelegated();
-    error NotDelegatedToCashback();
-    error NotEOA();
-    error NotUnlocked();
-    error AccountAlreadyRecorded();
-    error InvalidNonce();
+    error CashbackNotCashback();
+    error CashbackIsCashback();
+    error CashbackNotAllowedInCashback();
+    error CashbackOnlyAllowedInCashback();
+    error CashbackNotDelegatedToCashback();
+    error CashbackNotEOA();
+    error CashbackNotUnlocked();
+    error CashbackSuperCashbackNFTMintFailed();
 
     bytes32 internal constant UNLOCKED_TRANSIENT = keccak256("cashback.storage.Unlocked");
     uint256 internal constant BASIS_POINTS = 10000;
     uint256 internal constant SUPERCASHBACK_NONCE = 10000;
     Cashback internal immutable CASHBACK_ACCOUNT = this;
-    SuperCashbackNFT public immutable superCashbackNFT;
+    address public immutable superCashbackNFT;
 
     uint256 public nonce;
     mapping(Currency => uint256 Rate) public cashbackRates;
     mapping(Currency => uint256 MaxCashback) public maxCashback;
 
-    // TODO: Add Fallback and receive functions to include new exploit scenarios, fallback address .
-
     modifier onlyCashback() {
-        require(msg.sender == address(CASHBACK_ACCOUNT), NotCashback());
+        require(msg.sender == address(CASHBACK_ACCOUNT), CashbackNotCashback());
+        _;
+    }
+
+    modifier onlyNotCashback() {
+        require(msg.sender != address(CASHBACK_ACCOUNT), CashbackIsCashback());
+        _;
+    }
+
+    modifier notOnCashback() {
+        require(address(this) != address(CASHBACK_ACCOUNT), CashbackNotAllowedInCashback());
+        _;
+    }
+
+    modifier onlyOnCashback() {
+        require(address(this) == address(CASHBACK_ACCOUNT), CashbackOnlyAllowedInCashback());
         _;
     }
 
     modifier onlyDelegatedToCashback() {
         bytes memory code = msg.sender.code;
-        require(code.length == 23, NotDelegated()); // TODO: If we comment this line possible hack
 
-        bytes3 prefix;
-        address delegate;
+        address payable delegate;
         assembly {
-            prefix := mload(add(code, 0x20))
             delegate := mload(add(code, 0x17))
         }
-        require(prefix == hex"ef0100", NotDelegated()); // TODO: If we comment this line possible hack
-        require(Cashback(delegate) == CASHBACK_ACCOUNT, NotDelegatedToCashback());
-
+        require(Cashback(delegate) == CASHBACK_ACCOUNT, CashbackNotDelegatedToCashback());
         _;
     }
 
     modifier onlyEOA() {
-        require(msg.sender == tx.origin, NotEOA());
+        require(msg.sender == tx.origin, CashbackNotEOA());
         _;
     }
 
@@ -112,9 +115,11 @@ contract Cashback is ERC1155 {
     }
 
     modifier onlyUnlocked() {
-        require(Cashback(msg.sender).isUnlocked(), NotUnlocked());
+        require(Cashback(payable(msg.sender)).isUnlocked(), CashbackNotUnlocked());
         _;
     }
+
+    receive() external payable onlyNotCashback {}
 
     constructor(
         address[] memory cashbackCurrencies,
@@ -128,50 +133,43 @@ contract Cashback is ERC1155 {
             maxCashback[Currency.wrap(cashbackCurrencies[i])] = currenciesMaxCashback[i];
         }
 
-        superCashbackNFT = SuperCashbackNFT(_superCashbackNFT);
+        superCashbackNFT = _superCashbackNFT;
     }
 
     // Implementation Functions
-    function accrueCashback(Currency currency, uint256 amount, uint256 newNonce)
-        external
-        onlyDelegatedToCashback
-        onlyUnlocked
-    {
+    function accrueCashback(Currency currency, uint256 amount) external onlyDelegatedToCashback onlyUnlocked onlyOnCashback{
+        uint256 newNonce = Cashback(payable(msg.sender)).consumeNonce();
         uint256 cashback = (amount * cashbackRates[currency]) / BASIS_POINTS;
 
-        if (cashback == 0) {
+        if (cashback != 0) {
             uint256 _maxCashback = maxCashback[currency];
             if (balanceOf(msg.sender, currency.toId()) + cashback > _maxCashback) {
                 cashback = _maxCashback - balanceOf(msg.sender, currency.toId());
             }
 
-            _mint(msg.sender, uint256(currency.toId()), cashback, "");
-
-            if (SUPERCASHBACK_NONCE == newNonce) {
-                superCashbackNFT.mint(uint256(uint160(msg.sender)));
-            }
+            uint256[] memory ids = new uint256[](1);
+            ids[0] = currency.toId();
+            uint256[] memory values = new uint256[](1);
+            values[0] = cashback;
+            _update(address(0), msg.sender, ids, values);
         }
-
-        Cashback(msg.sender).consumeNonce(newNonce);
+        if (SUPERCASHBACK_NONCE == newNonce) {
+            (bool success,) = superCashbackNFT.call(abi.encodeWithSignature("mint(address)", msg.sender));
+            require(success, CashbackSuperCashbackNFTMintFailed());
+        }
     }
 
-    // Account Functions
-    function payWithCashback(Currency currency, address receiver, uint256 amount) external unlock onlyEOA {
+    // Smart Account Functions
+    function payWithCashback(Currency currency, address receiver, uint256 amount) external unlock onlyEOA notOnCashback {
         currency.transfer(receiver, amount);
-        CASHBACK_ACCOUNT.accrueCashback(currency, amount, nonce);
+        CASHBACK_ACCOUNT.accrueCashback(currency, amount);
     }
 
-    function consumeNonce(uint256 newNonce) external onlyCashback {
-        if (!(nonce++ == newNonce)) {
-            revert InvalidNonce();
-        }
+    function consumeNonce() external onlyCashback notOnCashback returns (uint256) {
+        return ++nonce;
     }
 
     function isUnlocked() public view returns (bool) {
         return UNLOCKED_TRANSIENT.asBoolean().tload();
     }
-
-    // GOALS:
-    // Get max cashback on FREE coin
-    // Get the superCashback NFT.
 }
