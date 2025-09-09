@@ -526,6 +526,21 @@
       "deployId": "33",
       "instanceGas": 750000,
       "author": "Gianfranco&carlitox477"
+    },
+    {
+      "name": "Cashback",
+      "created": "2025-09-10",
+      "difficulty": "8",
+      "description": "cashback.md",
+      "completedDescription": "cashback_complete.md",
+      "levelContract": "CashbackFactory.sol",
+      "instanceContract": "Cashback.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "34",
+      "instanceGas": 750000,
+      "author": "Gianfranco"
     }
   ]
 }
