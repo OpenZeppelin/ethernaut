@@ -2,5 +2,4 @@ forge-std/=lib/forge-std/src/
 openzeppelin-contracts-06/=lib/openzeppelin-contracts-06/contracts/
 openzeppelin-contracts-08/=lib/openzeppelin-contracts-08/contracts/
 openzeppelin-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/
-openzeppelin-upgradeable-v5.4.0/=lib/openzeppelin-contracts-upgradeable-v5.4.0/contracts/
 openzeppelin-contracts-v5.4.0/=lib/openzeppelin-contracts-v5.4.0/contracts/
