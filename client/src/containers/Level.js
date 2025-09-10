@@ -14,6 +14,8 @@ import { withRouter } from "../hoc/withRouter";
 import { getLevelKey } from "../utils/contractutil";
 import { deployAndRegisterLevel } from "../utils/deploycontract";
 import { svgFilter } from "../utils/svg";
+import { Helmet } from 'react-helmet';
+import { store } from "../store";
 
 class Level extends React.Component {
   constructor(props) {
@@ -105,7 +107,6 @@ class Level extends React.Component {
   render() {
     const { level, levelCompleted } = this.props;
     const { submittedIntance } = this.state;
-
     var [levelData, selectedLevel] = getlevelsdata(this.props, "levelPage");
 
     if (!level) return null;
@@ -142,7 +143,7 @@ class Level extends React.Component {
 
     let sourcesFile = null;
     try {
-      sourcesFile = require(`contracts/contracts/levels/${level.instanceContract}`);
+      sourcesFile = require(`../contracts/src/levels/${level.instanceContract}`);
     } catch (e) {
       console.log(e);
     }
@@ -150,9 +151,44 @@ class Level extends React.Component {
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels);
 
     return (
-      <main>
-        <div className="lines"></div>
-        <main>
+      <main className="main-wrapper">
+        <Helmet>
+        <title>{`The Ethernaut - ${level.name}`}</title>
+          {/* <!-- Primary Meta Tags --> */}
+          <meta name="title" content={`The Ethernaut - ${level.name}`} />
+          <meta
+            name="description"
+            content={`Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'. - ${level.name}`}
+          />
+          {/* <!-- Open Graph / Facebook --> */}
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:url"
+            content={`https://ethernaut.openzeppelin.com/level/${level.deployedAddress || level.id}`}
+          />
+          <meta property="og:title" content={`The Ethernaut - ${level.name}`} />
+          <meta
+            property="og:description"
+            content={`Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'. - ${level.name}`}
+          />
+          <meta
+            property="og:image"
+            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
+          />
+          {/* <!-- Twitter --> */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@OpenZeppelin" />
+          <meta name="twitter:title" content={`The Ethernaut - ${level.name}`} />
+          <meta
+            name="twitter:description"
+            content={`Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'. - ${level.name}`}
+          />
+          <meta
+            name="twitter:image"
+            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
+          />
+        </Helmet>
+        <main className="main-wrapper">
           {(isDescriptionMissingTranslation ||
             isCompleteDescriptionMissingTranslation) && (
               <div style={{ textAlign: "center" }}>
@@ -202,7 +238,7 @@ class Level extends React.Component {
 
           <section onLoad={this.handleImageLoad}>
             <img
-              alt=""
+              alt={`${level.name} level  image`}
               className="level-tile level-img-view"
               src={selectedLevel.src}
             />
@@ -255,9 +291,9 @@ class Level extends React.Component {
             )}
           </section>
           {/* BUTTONS */}
-          <section className="descriptors button-sequence">
+          <section className="descriptors">
             {level.levelContract && (
-              <div>
+              <div className=" button-sequence">
                 {/* NEXT LEVEL */}
                 {levelCompleted && nextLevelId && (
                   <button
@@ -295,7 +331,7 @@ class Level extends React.Component {
                 )}
 
                 {/* DEPLOY OR CREATE */}
-                {this.props.web3 && <button
+                { !store.getState().gamedata.readOnly && this.props.web3 && <button
                   type="button"
                   className="button-actions"
                   onClick={

@@ -8,12 +8,29 @@ import parse from "html-react-parser";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { withRouter } from "../hoc/withRouter";
-import { randGoodIcon } from "../utils/^^";
-import { deployAdminContracts } from '../utils/deploycontract';
+import { randGoodIcon, randBadIcon } from "../utils/^^";
+import { deployAdminContracts } from "../utils/deploycontract";
+import {
+  networkOnDeprecationOrDeprecated,
+  isDeprecatedNetwork,
+  deprecationStatus,
+  deprecationDate,
+} from "../utils/networkDeprecation";
+import { Helmet } from "react-helmet";
+import { store } from "./../store";
+import * as actions from "../../src/actions";
 
 class App extends React.Component {
   constructor() {
     super();
+    this.state = {
+      chainId: 0,
+    };
+    if (window.ethereum) {
+      window.ethereum.request({ method: "eth_chainId" }).then((id) => {
+        this.setState({ chainId: Number(id) });
+      });
+    }
 
     // Analytics
     ReactGA.initialize(constants.GOOGLE_ANALYTICS_ID);
@@ -31,7 +48,7 @@ class App extends React.Component {
     let target = this.props.levels[0].deployedAddress;
     for (let i = 0; i < this.props.levels.length; i++) {
       const level = this.props.levels[i];
-      if (!level.deployedAddress) { 
+      if (!level.deployedAddress) {
         return this.props.navigate(`${constants.PATH_LEVEL_ROOT}${i}`);
       }
       const completed = this.props.completedLevels[level.deployedAddress];
@@ -45,6 +62,35 @@ class App extends React.Component {
     this.props.navigate(`${constants.PATH_LEVEL_ROOT}${target}`);
   }
 
+  async continueAnyway() {
+    const deployWindow = document.querySelectorAll(".deploy-window-bg");
+    deployWindow[0].style.display = "none";
+  }
+
+  async continueInReadOnly() {
+    store.dispatch(actions.loadGamedata());
+    store.dispatch(actions.setGameReadOnly(true));
+    const accountConnectionWindow = document.querySelectorAll(
+      ".account-connection-window-bg"
+    );
+    accountConnectionWindow[0].style.display = "none";
+  }
+
+  async displayConnectionWindow() {
+    const accountConnectionWindow = document.querySelectorAll(
+      ".account-connection-window-bg"
+    );
+    accountConnectionWindow[0].style.display = "block";
+  }
+
+  async requestAccounts() {
+    await window.ethereum.request({ method: "eth_requestAccounts" });
+    const accountConnectionWindow = document.querySelectorAll(
+      ".account-connection-window-bg"
+    );
+    accountConnectionWindow[0].style.display = "none";
+  }
+
   render() {
     let language = localStorage.getItem("lang");
     let strings = loadTranslations(language);
@@ -52,45 +98,93 @@ class App extends React.Component {
       (key) => key !== "LOCAL" && key !== "UNDEFINED"
     );
 
-    // change the network to goreli network
-    async function switchToGoerli() {
-      let elements = document.querySelectorAll('.progress-bar-wrapper');
-      const deployWindow = document.querySelectorAll('.deploy-window-bg');
+    // change the network to Sepolia network
+    async function switchToSepolia() {
+      let elements = document.querySelectorAll(".progress-bar-wrapper");
+      const deployWindow = document.querySelectorAll(".deploy-window-bg");
       try {
         await window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: `0x${Number(constants.NETWORKS.GOERLI.id).toString(16)}` }],//if on wrong network giving option to switch to sepolia network.
+          method: "wallet_switchEthereumChain",
+          params: [
+            {
+              chainId: `0x${Number(constants.NETWORKS.SEPOLIA.id).toString(
+                16
+              )}`,
+            },
+          ], //if on wrong network giving option to switch to sepolia network.
         });
-        deployWindow[0].style.display = 'none';
+        deployWindow[0].style.display = "none";
       } catch (switchError) {
         // This error code indicates that the chain has not been added to MetaMask.
         if (switchError.code === 4902) {
           try {
             await window.ethereum.request({
-              method: 'wallet_addEthereumChain',
+              method: "wallet_addEthereumChain",
               params: [
                 {
-                  chainId: [{ chainId: `0x${Number(constants.NETWORKS.GOERLI.id).toString(16)}` }]
+                  chainId: [
+                    {
+                      chainId: `0x${Number(
+                        constants.NETWORKS.SEPOLIA.id
+                      ).toString(16)}`,
+                    },
+                  ],
                 },
               ],
             });
-            deployWindow[0].style.display = 'none';
+            deployWindow[0].style.display = "none";
           } catch (addError) {
             if (addError.code === 4001) {
               //User has rejected changing the request
-              elements[0].style.display = 'none';
+              elements[0].style.display = "none";
             }
-            console.error("Can't add nor switch to the selected network")
+            console.error("Can't add nor switch to the selected network");
           }
         } else if (switchError.code === 4001) {
           //User has rejected changing the request
-          if (elements[0]) elements[0].style.display = 'none';
+          if (elements[0]) elements[0].style.display = "none";
         }
       }
     }
 
     return (
       <div className="appcontainer">
+        <Helmet>
+          <title>The Ethernaut</title>
+          {/* <!-- Primary Meta Tags --> */}
+          <meta name="title" content="The Ethernaut" />
+          <meta
+            name="description"
+            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'."
+          />
+          {/* <!-- Open Graph / Facebook --> */}
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:url"
+            content="https://ethernaut.openzeppelin.com/"
+          />
+          <meta property="og:title" content="The Ethernaut" />
+          <meta
+            property="og:description"
+            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'."
+          />
+          <meta
+            property="og:image"
+            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
+          />
+          {/* <!-- Twitter --> */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@OpenZeppelin" />
+          <meta name="twitter:title" content="The Ethernaut" />
+          <meta
+            name="twitter:description"
+            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'."
+          />
+          <meta
+            name="twitter:image"
+            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
+          />
+        </Helmet>
         {/* Parent container */}
         <main>
           {/* Main title and buttons */}
@@ -111,42 +205,90 @@ class App extends React.Component {
             />
             <ul>
               <button
-                onClick={() => this.navigateToFirstIncompleteLevel()}
+                onClick={() => {
+                  if (!store.getState().gamedata.readOnly) {
+                    this.navigateToFirstIncompleteLevel();
+                  } else {
+                    this.displayConnectionWindow();
+                  }
+                }}
                 className="buttons"
               >
                 {strings.playNow}
               </button>
             </ul>
           </section>
-          {/* Deploy Window */}
-          <div className="deploy-window-bg">
-            <div className="deploy-window">
-              <h1>{randGoodIcon()}</h1>
-              <h1>{strings.deployMessageTitle}</h1>
+          {/*not Account Connected window*/}
+          <div className="account-connection-window-bg">
+            <div className="account-connection-window">
+              <button
+                className="account-connection-close-x fas fa-x "
+                onClick={this.continueInReadOnly}
+              >
+              </button>
+              <h1>{randBadIcon()}</h1>
               <br />
-              {strings.deployMessage}
-              <ul>
-                {supportedNetworks.map((network, idx) =>
-                  <li key={idx}>{network}</li>
-                )}
-              </ul>
-              <p className="deploy-note">{strings.deployConfirmation}</p>
+              <h2>{strings.accountNotConnectedTitle}</h2>
+              <br />
+              <p>{strings.accountNotConnectedMessage}</p>
+              <br />
               <div className="choice-buttons">
                 <button
                   className="buttons"
-                  onClick={deployAdminContracts}
+                  onClick={async () => {
+                    await this.requestAccounts();
+                    window.location.reload();
+                  }}
                 >
-                  {strings.deployGame}
-                </button>
-                <button
-                  className="buttons"
-                  onClick={switchToGoerli}
-                >
-                  {strings.switchToGoerli}
+                  {strings.connectAccount}
                 </button>
               </div>
-              <p className="deploy-note">{strings.deployNote}</p>
             </div>
+          </div>
+          {/*not Deployed window*/}
+          <div className="deploy-window-bg">
+            {!networkOnDeprecationOrDeprecated(this.state.chainId) ? (
+              <div className="deploy-window">
+                {/*deploy window*/}
+                <h1>{randGoodIcon()}</h1>
+                <h2>{strings.deployMessageTitle}</h2>
+                {strings.deployMessage}
+                {supportedNetworksList(supportedNetworks)}
+                <p className="deploy-note">{strings.deployConfirmation}</p>
+                <div className="choice-buttons">
+                  <button className="buttons" onClick={deployAdminContracts}>
+                    {strings.deployGame}
+                  </button>
+                  <button className="buttons" onClick={switchToSepolia}>
+                    {strings.switchToSepolia}
+                  </button>
+                </div>
+                <p className="deploy-note">{strings.deployNote}</p>
+              </div>
+            ) : (
+              <div className="deploy-window">
+                {/*deprecation window*/}
+                <h1>{randBadIcon()}</h1>
+                <h2>
+                  {isDeprecatedNetwork(this.state.chainId)
+                    ? strings.deprecatedNetwork
+                    : strings.networkBeingDeprecated}
+                </h2>
+                <br />
+                {strings.deployMessage}
+                {supportedNetworksList(supportedNetworks)}
+                <div className="choice-buttons">
+                  <button className="buttons" onClick={switchToSepolia}>
+                    {strings.switchToSepolia}
+                  </button>
+                  {!isDeprecatedNetwork(this.state.chainId) && (
+                    <button className="buttons" onClick={this.continueAnyway}>
+                      {strings.continueAnyway}
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
           {/* Levels */}
           <Mosaic></Mosaic>
@@ -174,6 +316,24 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch);
+}
+
+function supportedNetworksList(_supportedNetworks) {
+  return (
+    <ul>
+      {_supportedNetworks.map((network, idx) => (
+        <li key={idx}>
+          {network}
+          {networkOnDeprecationOrDeprecated(constants.NETWORKS[network].id) &&
+            " (" +
+              deprecationStatus(constants.NETWORKS[network].id) +
+              " on " +
+              deprecationDate(constants.NETWORKS[network].id) +
+              ")"}
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

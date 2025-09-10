@@ -8,7 +8,7 @@
         "palebluedot@gmail.com"
       ],
       "websites": [
-        "https://github.com/ajsantander"
+        "https://github.com/theethernaut"
       ],
       "donate": "0x31a3801499618d3c4b0225b9e06e228d4795b55d"
     },
@@ -43,7 +43,7 @@
         "kyle@iosiro.com"
       ],
       "websites": [
-        "https://github.com/syncikin"
+        "https://github.com/kylriley"
       ]
     },
     "34x4p08": {
@@ -54,7 +54,7 @@
         "34x4p08@gmail.com"
       ],
       "websites": [
-        "https://github.com/34x4p08"
+        "https://github.com/chainpioneer"
       ]
     },
     "0age": {
@@ -147,6 +147,62 @@
       "websites": [
         "https://www.linkedin.com/in/kstasi/"
       ]
+    },
+    "0xneves&gabrielsdev&R4wd0G&luizfolly&fefeupz": {
+      "name": [
+        "Guilherme Neves",
+        "Gabriel Silva",
+        "R4wd0G",
+        "Luiz Folly",
+        "Rodrigo Feital"
+      ],
+      "emails": [
+        "guihcneves@gmail.com",
+        "gabrielfcomp@gmail.com",
+        "wpa.sys@hotmail.com",
+        "luizfolly@gmail.com",
+        "rodrigo.feital@hotmail.com"
+      ],
+      "websites": [
+        "https://github.com/0xneves",
+        "https://github.com/gabrielsdev",
+        "https://github.com/r4wd0g",
+        "https://github.com/luizfolly",
+        "https://github.com/fefeupz"
+      ],
+      "donate": "0x00000000000d86e4837ba41dacde4b8713d5ccac"
+    },
+    "Waiandt&Dalvi":{
+      "name": [
+        "Gustavo Waiandt","Afonso Dalvi"
+      ],
+      "websites":
+        [
+          "https://github.com/G-Deps",
+          "https://www.linkedin.com/in/afonso-dalvi-711635112/"
+        ],
+      "emails": ["gwdeps@gmail.com","afonsodalvia@gmail.com"]
+    },
+    "Gianfranco":{
+      "name": [
+        "Gianfranco"
+      ],
+      "websites":
+        [
+          "https://github.com/GianfrancoBazzani/"
+        ],
+        "donate" : "gianfrancobazzani.uni.eth",
+      "emails": ["bazzanigianfranco@gmail.com"]
+      },
+    "Gianfranco&carlitox477":{
+      "name": [
+        "carlitox477", "Gianfranco"
+      ],
+      "websites":
+        [
+          "www.x.com/carlitox477", "https://github.com/GianfrancoBazzani/" 
+        ],
+      "emails": ["carlitox477.auditor@gmail.com", "bazzanigianfranco@gmail.com"]
     }
   }
 }
