@@ -1,1 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 134.46 134.46"><defs><style>.d{fill:#eddfd6;}.e{stroke:#eddfd6;stroke-miterlimit:10;stroke-width:.42px;}.e,.f{fill:#1d1d1b;}.f{font-family:Helvetica, Helvetica;font-size:11.07px;}</style></defs><g id="a"/><g id="b"><g id="c"><g><rect class="e" x=".21" y=".21" width="134.04" height="134.04"/><rect class="d" x=".43" y=".42" width="21.13" height="21.13"/><text class="f" transform="translate(5.13 15.21)"><tspan x="0" y="0">24</tspan></text><path class="d" d="M51.25,43.07h-15.54v27.21h7.06c1.29,0,2.34-1.05,2.34-2.34h0c0-1.69,1.37-3.06,3.06-3.06h0c1.69,0,3.06,1.37,3.06,3.06v14.99c0,1.69-1.37,3.06-3.06,3.06h-1.54c-1.69,0-3.06-1.37-3.06-3.06h0c0-1.85-1.5-3.35-3.35-3.35h-4.98v27.3h22.45c2.38,0,4.31-1.91,4.34-4.29v-.16c.01-1.24-.95-2.22-2.15-2.22h-.31c-2.74,0-4.95-2.23-4.93-4.97v-.15c.02-2.82,2.31-5.09,5.13-5.09h14.73c2.82,0,5.11,2.28,5.12,5.1v.25c0,2.78-2.24,5.04-5.02,5.04h-.16c-1.17,0-2.08,.91-2.08,2.04v.09c0,2.4,1.95,4.35,4.36,4.35h21.77v-22.92c0-1.85,1.5-3.35,3.35-3.35h0c1.79,0,3.23,1.45,3.23,3.23h0c0,1.49,1.21,2.71,2.71,2.71h4.27c1.49,0,2.71-1.21,2.71-2.71v-17.42c0-1.49-1.21-2.71-2.71-2.71h-3.64c-1.49,0-2.71,1.21-2.71,2.71h0c0,1.38-1.12,2.51-2.51,2.51h0c-2.5,0-4.52-2.02-4.52-4.52v-21.34h-18.29c-3.62,0-6.55-2.93-6.55-6.55h2.47c2.22,0,4.02-1.8,4.02-4.02v-1.19c0-2.22-1.8-4.02-4.02-4.02h-17.64c-2.16,0-3.91,1.74-3.91,3.9v.1c0,2.24,1.81,4.04,4.03,4.04h.11c.04,4.26-3.4,7.74-7.67,7.74Z"/></g></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 134.9 134.9" style="enable-background:new 0 0 134.9 134.9;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#1D1D1B;}
+	.st1{fill:#EDDFD6;}
+	.st2{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.42;stroke-linecap:round;stroke-linejoin:round;}
+	.st3{fill:#1D1D1B;stroke:#EDDFD6;stroke-width:0.42;stroke-miterlimit:10;}
+	.st4{fill:none;stroke:#1D1D1B;stroke-width:0.42;stroke-miterlimit:10;}
+	.st5{fill:#00AEEF;}
+	.st6{enable-background:new    ;}
+	.st7{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.6437;stroke-miterlimit:10;}
+	.st8{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.6073;stroke-miterlimit:10;}
+	.st9{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.5101;stroke-miterlimit:10;}
+	.st10{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.42;stroke-miterlimit:10;}
+	.st11{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.6356;stroke-miterlimit:10;}
+	.st12{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.5996;stroke-miterlimit:10;}
+	.st13{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.5037;stroke-miterlimit:10;}
+	.st14{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.422;stroke-miterlimit:10;}
+	.st15{fill:#1D1D1B;stroke:#EDDFD6;stroke-width:0.422;stroke-miterlimit:10;}
+	.st16{fill:none;stroke:#1D1D1B;stroke-width:0.422;stroke-miterlimit:10;}
+	.st17{fill:none;stroke:#EDDFD6;stroke-width:0.422;stroke-linecap:round;stroke-linejoin:round;}
+	.st18{fill:none;stroke:#EDDFD6;stroke-width:17;stroke-miterlimit:10;}
+	.st19{fill:#EDDFD6;stroke:#EDDFD6;stroke-width:0.42;stroke-miterlimit:10;}
+	.st20{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.4786;stroke-miterlimit:10;}
+	.st21{fill:#1D1D1B;stroke:#EDDFD6;stroke-width:0.4786;stroke-miterlimit:10;}
+	.st22{fill:none;stroke:#1D1D1B;stroke-width:0.4786;stroke-miterlimit:10;}
+	.st23{fill:none;stroke:#EDDFD6;stroke-width:0.4786;stroke-miterlimit:10;}
+	.st24{fill:none;stroke:#EDDFD6;stroke-width:0.9265;stroke-miterlimit:10;}
+	.st25{fill:#1D1D1B;stroke:#EDDFD6;stroke-width:0.53;stroke-miterlimit:10;}
+	.st26{fill:#1D1D1B;stroke:#EDDFD6;stroke-width:0.6436;stroke-miterlimit:10;}
+	.st27{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.6436;stroke-miterlimit:10;}
+	.st28{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.6072;stroke-miterlimit:10;}
+	.st29{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.51;stroke-miterlimit:10;}
+	.st30{fill:none;stroke:#EDDFD6;stroke-width:10.3992;stroke-miterlimit:10;}
+	.st31{fill:#1D1D1B;stroke:#1D1D1B;stroke-width:0.42;stroke-linecap:round;stroke-linejoin:round;}
+	.st32{fill:none;stroke:#1D1D1B;stroke-width:0.42;stroke-linecap:round;stroke-miterlimit:10;}
+	.st33{fill:#231F20;}
+	.st34{fill:none;stroke:#231F20;stroke-width:0.3187;}
+	.st35{font-family:'NotoSans-Bold';}
+	.st36{font-size:19px;}
+	.st37{fill:#EBDDD4;}
+	.st38{fill:#222222;}
+	.st39{fill:#DBCAC2;}
+</style>
+<g id="_x32_4">
+	<rect x="-0.1" y="-0.1" class="st0" width="135.2" height="135"/>
+	<path class="st1" d="M50.7,42.5H35.2v27.2h7.1c1.3,0,2.3-1.1,2.3-2.3l0,0c0-1.7,1.4-3.1,3.1-3.1l0,0c1.7,0,3.1,1.4,3.1,3.1v15
+		c0,1.7-1.4,3.1-3.1,3.1h-1.5c-1.7,0-3.1-1.4-3.1-3.1l0,0c0-1.8-1.5-3.3-3.3-3.3h-5v27.3h22.5c2.4,0,4.3-1.9,4.3-4.3v-0.2
+		c0-1.2-1-2.2-2.2-2.2h-0.3c-2.7,0-5-2.2-4.9-5v-0.2c0-2.8,2.3-5.1,5.1-5.1H74c2.8,0,5.1,2.3,5.1,5.1v0.3c0,2.8-2.2,5-5,5h-0.2
+		c-1.2,0-2.1,0.9-2.1,2v0.1c0,2.4,1.9,4.3,4.4,4.3H98V83.3c0-1.8,1.5-3.3,3.3-3.3l0,0c1.8,0,3.2,1.4,3.2,3.2l0,0
+		c0,1.5,1.2,2.7,2.7,2.7h4.3c1.5,0,2.7-1.2,2.7-2.7V65.8c0-1.5-1.2-2.7-2.7-2.7h-3.6c-1.5,0-2.7,1.2-2.7,2.7l0,0
+		c0,1.4-1.1,2.5-2.5,2.5l0,0c-2.5,0-4.5-2-4.5-4.5V42.5H79.9c-3.6,0-6.6-2.9-6.6-6.5h2.5c2.2,0,4-1.8,4-4v-1.2c0-2.2-1.8-4-4-4H58.2
+		c-2.2,0-3.9,1.7-3.9,3.9v0.1c0,2.2,1.8,4,4,4h0.1C58.4,39,55,42.5,50.7,42.5L50.7,42.5z"/>
+	<g>
+		<path class="st1" d="M-0.2-0.2h28.5v20.2c0,3.8-3.1,6.8-6.8,6.8H-0.2V-0.2z"/>
+		<text transform="matrix(1 0 0 1 2.3581 -2.3494)" class="st0 st35 st36">24</text>
+		<g>
+			<path class="st0" d="M13.3,20.3H3.8v-2l3.4-3.4c0.7-0.7,1.2-1.3,1.7-1.8s0.7-0.9,0.9-1.3s0.3-0.8,0.3-1.2c0-0.5-0.1-0.9-0.4-1.2
+				C9.3,9.1,8.9,8.9,8.4,8.9c-0.5,0-1,0.1-1.5,0.4s-1,0.6-1.6,1L3.8,8.5C4.1,8.1,4.6,7.8,5,7.5c0.4-0.3,1-0.5,1.5-0.7
+				s1.3-0.3,2.1-0.3c0.9,0,1.6,0.2,2.3,0.5c0.6,0.3,1.1,0.8,1.5,1.3c0.3,0.6,0.5,1.2,0.5,1.9c0,0.7-0.1,1.4-0.4,2.1
+				c-0.3,0.6-0.7,1.2-1.3,1.8c-0.6,0.6-1.2,1.3-2,2l-1.7,1.6v0.1h5.9V20.3z"/>
+			<path class="st0" d="M24.5,17.5h-1.6v2.8H20v-2.8h-5.8v-2l5.9-8.8h2.6v8.5h1.6V17.5z M20,15.3V13c0-0.3,0-0.6,0-1.1
+				c0-0.4,0-0.8,0-1.2c0-0.4,0-0.6,0-0.7h-0.1c-0.1,0.3-0.2,0.5-0.4,0.7c-0.1,0.2-0.3,0.5-0.4,0.7l-2.5,3.8H20z"/>
+		</g>
+	</g>
+</g>
+</svg>

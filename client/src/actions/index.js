@@ -10,6 +10,9 @@ export const setNetworkId = id => ({ type: SET_NETWORK_ID, id })
 export const SET_PLAYER_ADDRESS = "SET_PLAYER_ADDRESS";
 export const setPlayerAddress = address => ({ type: SET_PLAYER_ADDRESS, address })
 
+export const SET_GAME_READ_ONLY = "SET_GAME_READ_ONLY";
+export const setGameReadOnly = readOnly => ({ type: SET_GAME_READ_ONLY, readOnly })
+
 export const LOAD_GAME_DATA = "LOAD_GAME_DATA";
 export const loadGamedata = () => ({ type: LOAD_GAME_DATA, levels: undefined })
 

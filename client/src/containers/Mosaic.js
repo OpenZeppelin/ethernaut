@@ -33,7 +33,7 @@ class Mosaic extends React.Component {
               }
             >
               <div className="content_img">
-                <img className='level-tile' alt="" src={level.src} />
+                <img className='level-tile' alt={`${level.name} level  icon`} src={level.src} />
                 <div>
                   {`${level.completed ? ' ✔' : ''}`}{' '}
                   {level.name}
