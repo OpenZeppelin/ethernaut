@@ -1,5 +1,5 @@
 import * as ethutil from '../utils/ethutil'
-import EthernautABI from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json'
+import EthernautABI from '../contracts/out/Ethernaut.sol/Ethernaut.json'
 import * as actions from '../actions';
 import { loadTranslations } from '../utils/translations'
 
@@ -46,7 +46,7 @@ const loadEthernautContract = store => next => action => {
       // Get game data
       store.dispatch(actions.syncPlayerProgress())
 
-      // Auto-restore previoius instance
+      // Auto-restore previous instance
       if (state.gamedata.activeLevel)
         store.dispatch(actions.loadLevelInstance(state.gamedata.activeLevel, true, false))
 
