@@ -27,6 +27,7 @@ In order to install, build, and run Ethernaut locally, follow these instructions
 
     ```bash
     git clone git@github.com:OpenZeppelin/ethernaut.git
+    cd ethernaut
     yarn install
     ```
 
