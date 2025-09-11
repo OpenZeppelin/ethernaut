@@ -1,5 +1,5 @@
-Bu seviye, EVM'nin bir dizinin (array) ABI-encoded uzunluğunu gerçek yüküne karşı doğrulamadığı gerçeğinden yararlanır.
+Bu seviye, EVM’nin bir dizinin tanımlanan uzunluğunu gerçek verisiyle kontrol etmemesinden faydalanıyor.
 
-Ek olarak, dizinin (array) sınırlarını tüm `2^256` depolama alanına genişleterek dizi uzunluğunun aritmetik taşmasını kullanır. Kullanıcı daha sonra tüm sözleşme depolamasını değiştirebilir.
+Ayrıca dizinin uzunluğunda meydana gelen alt taşma (underflow) sayesinde dizinin sınırlarını `2^256`’lık tüm depolama alanına kadar genişletebiliyorsun. Böylece kontrattaki tüm verileri değiştirebilirsin.
 
-Her iki güvenlik açığı da 2017'nin [Gereksiz kodlama yarışması]'ndan esinlenmiştir. (https://medium.com/@weka/announcing-the-winners-of-the-first-underhanded-solidity-coding-contest-282563a87079)
+Bu iki güvenlik açığı, 2017’de düzenlenen [Underhanded coding contest](https://medium.com/@weka/announcing-the-winners-of-the-first-underhanded-solidity-coding-contest-282563a87079) etkinliğinden ilham alınarak tasarlandı.
