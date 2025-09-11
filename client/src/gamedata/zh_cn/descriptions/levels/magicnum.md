@@ -1,6 +1,12 @@
-要通过这一关，你需要提供一个Solver合约给Ethernaut，这个合约需要用一个正确的数字响应whatIsTheMeaningOfLife()。
-很简单对吗？注意一个陷阱。
-Solver合约的代码需要很小，至多不超过10个字节。
 
-提示：也许你需要暂时不依靠solidity的编译器，而是手把手实现合约：通过EVM字节码的形式。
-Good luck.
+要通过这个关卡，你只需要向 Ethernaut 提供一个`Solver`合约，其对`whatIsTheMeaningOfLife()`能够返回正确的 32 字节的响应。
+
+容易吧？
+嗯。。。有一个问题。
+
+`Solver`的代码必须非常小，小到最多只能 10 bytes。
+
+提示：是时候离开 solidity 的舒适区了，应该自己手动构建一个编译器了 O_o。
+没错，就是原始的 EVM 字节码。
+
+祝你好运！
