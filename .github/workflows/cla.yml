@@ -1,0 +1,55 @@
+name: "CLA Assistant"
+on:
+  issue_comment:
+    types: [created]
+  pull_request_target:
+    types: [opened,closed,synchronize]
+
+permissions:
+  actions: write
+  contents: write 
+  pull-requests: write
+  statuses: write
+
+jobs:
+  CLAAssistant:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout Private Repo for Allowlist
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
+        with:
+          repository: OpenZeppelin/cla-sigs
+          token: ${{ secrets.CLA_SIGS_ACCESS_PAT }}
+          sparse-checkout: |
+            allowlist.txt
+          sparse-checkout-cone-mode: false
+      - name: Read Allowlist File
+        id: read_allowlist
+        run: |
+          ALLOWLIST=$(cat allowlist.txt)
+          echo "allowlist=$ALLOWLIST" >> $GITHUB_OUTPUT
+      - name: "CLA Assistant"
+        if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I confirm that I have read and hereby agree to the OpenZeppelin Contributor License Agreement') || github.event_name == 'pull_request_target'
+        uses: contributor-assistant/github-action@ca4a40a7d1004f18d9960b404b97e5f30a505a08 #v2.6.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.CLA_SIGS_ACCESS_PAT }}
+        with:
+          path-to-signatures: 'signatures/${{ github.event.repository.name }}/v1_cla.json'
+          path-to-document: 'https://github.com/OpenZeppelin/cla-assistant/blob/main/openzeppelin_2025_cla.md'
+          branch: 'main'
+          allowlist: ${{ steps.read_allowlist.outputs.allowlist }}
+          remote-organization-name: 'OpenZeppelin'
+          remote-repository-name: 'cla-sigs'
+          custom-notsigned-prcomment: >
+            Thank you for your contribution to OpenZeppelin Ethernaut.
+            Before being able to integrate those changes, we would like you to
+            sign our [Contributor License Agreement](https://github.com/OpenZeppelin/cla-assistant/blob/main/openzeppelin_2025_cla.md).
+
+            You can sign the CLA by just posting a Pull Request Comment with the sentence below. Thanks.
+          custom-pr-sign-comment: 'I confirm that I have read and hereby agree to the OpenZeppelin Contributor License Agreement'

@@ -1,3 +1,6 @@
+## March 2024
+- Updated all contracts (challenges, tests, etc.) to use Foundry instead of Hardhat
+
 ## August 2021
 - Filter out repeated log messages for mined transactions
 - Increased Sidebar width

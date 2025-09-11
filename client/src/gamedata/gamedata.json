@@ -461,6 +461,71 @@
       "deployId": "29",
       "instanceGas": 250000,
       "author": "AgeManning"
+    },
+    {
+      "name": "HigherOrder",
+      "created": "2024-03-23",
+      "difficulty": "8",
+      "description": "higherorder.md",
+      "completedDescription": "higherorder_complete.md",
+      "levelContract": "HigherOrderFactory.sol",
+      "instanceContract": "HigherOrder.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "30",
+      "instanceGas": 420000,
+      "author": "0xneves&gabrielsdev&R4wd0G&luizfolly&fefeupz",
+      "verificationDetails": {
+        "contractName": "HigherOrder",
+        "compilerVersion": "v0.6.12+commit.27d51765",
+        "runs": "1000"
+      }
+    },
+    {
+      "name": "Stake",
+      "created": "2024-04-13",
+      "difficulty": "6",
+      "description": "stake.md",
+      "completedDescription": "stake_complete.md",
+      "levelContract": "StakeFactory.sol",
+      "instanceContract": "Stake.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "31",
+      "instanceGas": 750000,
+      "author": "Waiandt&Dalvi"
+    },
+    {
+      "name": "Impersonator",
+      "created": "2024-11-04",
+      "difficulty": "8",
+      "description": "impersonator.md",
+      "completedDescription": "impersonator_complete.md",
+      "levelContract": "ImpersonatorFactory.sol",
+      "instanceContract": "Impersonator.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "32",
+      "instanceGas": 750000,
+      "author": "Gianfranco"
+    },
+    {
+      "name": "Magic Animal Carousel",
+      "created": "2024-11-04",
+      "difficulty": "6",
+      "description": "magicanimalcarousel.md",
+      "completedDescription": "magicanimalcarousel_complete.md",
+      "levelContract": "MagicAnimalCarouselFactory.sol",
+      "instanceContract": "MagicAnimalCarousel.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "33",
+      "instanceGas": 750000,
+      "author": "Gianfranco&carlitox477"
     }
   ]
 }

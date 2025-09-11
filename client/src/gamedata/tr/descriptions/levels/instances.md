@@ -1,84 +1,67 @@
-Bu seviye, oyunun nasıl oynanacağına dair temel bilgilerde size yol gösterir.
+Bu seviye, oyunun nasıl oynanacağına dair temel bilgileri size öğretecek.
 
 &nbsp;
-#### 1. Metamask'ı kurun
-Henüz sahip değilseniz, [MetaMask](https://metamask.io/) tarayıcı uzantısını yükleyin (masaüstü makinenizde Chrome, Firefox, Brave veya Opera'da). Uzantının cüzdanını kurun ve uzantının arayüzünün sol üst köşesindeki 'Rinkeby test ağı'na işaret etmek için ağ seçiciyi kullanın.
+#### 1. MetaMask’i Kurun
+Eğer hâlâ yüklemediyseniz, masaüstü tarayıcınızda (Chrome, Firefox, Brave veya Opera) [MetaMask eklentisini](https://metamask.io/) indirin ve kurun.
+Eklentinin cüzdanını oluşturun ve sol üstteki ağ seçicisinden istediğiniz ağa geçiş yapın. Alternatif olarak arayüzdeki butonu kullanarak ağlar arasında geçiş yapabilirsiniz. Eğer desteklenmeyen bir ağ seçerseniz, oyun size bildirim verecek ve varsayılan Sepolia test ağına yönlendirecektir.
 
-
-&nbsp;
 #### 2. Tarayıcı konsolunu açın
-Tarayıcınızın konsolunu açın: `Araçlar > Geliştirici Araçları`.
+Tarayıcınızın konsolunu açın: `Araçlar (Tools) > Geliştirici Araçları (Developer Tools)`.
 
-Oyundan birkaç mesaj görmelisiniz. Bunlardan biri oyuncunuzun adresini belirtmelidir. Bu oyun sırasında önemli olacak! Aşağıdaki komutu girerek oyuncu adresinizi her zaman görebilirsiniz:
-```
-player
-```
+Konsolda oyundan gelen birkaç mesaj göreceksiniz. Bunlardan biri oyuncu adresinizi gösterecek. Bu adres oyun boyunca çok önemli olacak! Oyuncu adresinizi her zaman şu komutu girerek görebilirsiniz:
 
-Oyun sırasında önemli bilgiler sağlayabileceğinden, uyarılara ve hatalara dikkat edin.
+`player`
 
-&nbsp;
+Uyarılara ve hatalara dikkat edin; çünkü bunlar oyun sırasında size önemli bilgiler verebilir.
+
 #### 3. Konsol yardımcılarını kullanın
 
-Şunu yazarak da mevcut eter bakiyenizi görebilirsiniz:
-```
-getBalance(player)
-```
-###### NOTE: "Beklemede (pending)" olarak okunsa bile gerçek değeri görmek için sözünüzü genişletin. Chrome v62 kullanıyorsanız, daha temiz bir konsol deneyimi için `await getBalance(player)` kullanabilirsiniz.
+Mevcut ether bakiyenizi görmek için şunu yazabilirsiniz:
 
+`getBalance(player)`
 
-Harika! Konsol tipinde başka hangi yardımcı program işlevlerine sahip olduğunuzu görmek için:
-```
-help()
-```
-Bunlar oyun sırasında çok kullanışlı olacak.
+###### NOT: Konsolda “pending” yazsa bile değeri görmek için promise’i genişletmeniz gerekir. Chrome v62 kullanıyorsanız, daha temiz bir konsol deneyimi için `await getBalance(player)` yazabilirsiniz.
 
-&nbsp;
-#### 4. Ethernaut sözleşmesi
-Konsolda aşağıdaki komutu girin:
-```
-ethernaut
-```
-Bu, oyunun ana akıllı sözleşmesidir. Onunla doğrudan konsol üzerinden etkileşim kurmanıza gerek yok (çünkü bu uygulama bunu sizin için yapacak), ancak isterseniz yapabilirsiniz. Şimdi bu nesneyle oynamak, oyunun diğer akıllı sözleşmeleriyle nasıl etkileşime geçileceğini öğrenmenin harika bir yoludur.
+Harika! Konsolda başka hangi yardımcı fonksiyonların olduğunu görmek için şunu yazın:
 
-Devam edin ve içerde ne olduğunu görmek için ethernaut nesnesini genişletin.
+`help()`
 
-&nbsp;
-#### 5. ABI ile etkileşim kurun
-`ethernaut`, blok zincirine dağıtılan `Ethernaut.sol` sözleşmesini saran bir `TruffleContract` nesnesidir.
- 
-Diğer şeylerin yanı sıra, sözleşmenin ABI'si, `Ethernaut.sol`'ün  `owner` gibi tüm genel yöntemlerini ortaya çıkarır. Örneğin aşağıdaki komutu yazın:
-```
-ethernaut.owner()
-```
-###### Chrome v62 kullanıyorsanız `await ethernaut.owner() kullanın`.
-Ethernaut sözleşmesinin sahibinin kim olduğunu görebilirsiniz, ki bu elbette siz değilsiniz =D.
+Bunlar oyun sırasında çok işinize yarayacak.
 
-&nbsp;
-#### 6.Test etherleri alın
-Oyunu oynamak için test eterine ihtiyacınız olacak. Testnet etheri almanın en kolay yolu [bu](https://faucet.rinkeby.io/), [bu](https://faucets.chain.link/rinkeby) or [bu](https://faucet.paradigm.xyz/) faucet den geçer.
+#### 4. Ethernaut kontratı
+Konsola aşağıdaki komutu girin:
 
-Bakiyenizde bir miktar eter gördüğünüzde, bir sonraki adıma geçin.
+`ethernaut`
 
+Bu, oyunun ana akıllı kontratı. Konsol üzerinden onunla doğrudan etkileşime girmen gerekmez (çünkü bu uygulama senin yerine bunu yapacak) ama istersen sen de deneyebilirsin. Bu nesneyle biraz oynamak, oyundaki diğer akıllı kontratlarla nasıl etkileşime gireceğini öğrenmenin harika bir yoludur.
 
-&nbsp;
-#### 7. Durum seviyesi alma
-Bir seviye oynarken, doğrudan ethernaut sözleşmesiyle etkileşime girmezsiniz. Bunun yerine, sizin için bir **durum seviyesi** oluşturmasını istersiniz. Bunu yapmak için sayfanın altındaki mavi düğmeye tıklayın. Git şimdi yap ve geri dön!
+Hadi, ethernaut nesnesini genişlet ve içinde neler olduğuna bir göz at!
 
-MetaMask tarafından işlemi yetkilendirmeniz istenmelidir. Bunu yapın ve konsolda bazı mesajlar görmelisiniz. Bunun blok zincirinde yeni bir sözleşme dağıttığını ve birkaç saniye sürebileceğini unutmayın, bu nedenle lütfen yeni seviye durumları talep ederken sabırlı olun!
+#### 5. ABI ile etkileşim
+`ethernaut`, blockchain’e deploy edilmiş `Ethernaut.sol` kontratını saran bir `TruffleContract` nesnesidir.
 
+Bu kontratın ABI’si, `owner` gibi `Ethernaut.sol` içindeki tüm public metotlara erişim sağlar. Örneğin şu komutları yazabilirsiniz:
 
-&nbsp;
-#### 8. Sözleşmenin incelenmesi
-Tıpkı ethernaut sözleşmesinde yaptığınız gibi, bu sözleşmenin ABI'sini `sözleşme (contract)` değişkenini kullanarak konsol üzerinden inceleyebilirsiniz.
+`ethernaut.owner()` veya Chrome v62 kullanıyorsanız `await ethernaut.owner()`.
 
+Böylece Ethernaut kontratının sahibinin kim olduğunu görebilirsiniz.
 
-&nbsp;
-#### 9. Seviyeyi tamamlamak için sözleşmeyle etkileşime geçin
-Seviyenin detayına yöntemine bakın
-```
-contract.info()
-```
-###### Chrome v62 kullanıyorsanız `await contract.info()` komutunu kullanın.
-Sözleşmedeki seviyeyi tamamlamak için ihtiyacınız olan her şeye sahip olmalısınız. Seviyeyi tamamladığınızı bildiğinizde, sayfanın altındaki turuncu düğmeyi kullanarak sözleşmeyi gönderin. Bu, örneğinizi tamamlayıp tamamlamadığınızı belirleyecek olan ethernaut'a geri gönderir.
+#### 6. Test ether al
+Oyunu oynayabilmek için test ether'a ihtiyacın olacak. Biraz testnet ether almanın en kolay yolu seçtiğin ağ için geçerli bir faucet kullanmaktır.
 
-##### İpucu: Her zaman sözleşmenin ABI'sine bakabileceğinizi unutmayın!
+Bakiyende birkaç coin gördüğünde bir sonraki adıma geçebilirsin.
+
+#### 7. Seviye örneği alma
+Bir seviyeyi oynarken doğrudan ethernaut kontratıyla etkileşime girmezsin. Onun yerine, senden bir **seviye örneği (level instance)** oluşturmasını istersin. Bunu yapmak için sayfanın altındaki “Seviye örneği al” düğmesine tıkla. Hadi şimdi dene ve geri gel!
+
+MetaMask senden işlemi onaylamanı isteyecek. Onayladıktan sonra konsolda bazı mesajlar göreceksin. Bu işlemin aslında blok zincirine yeni bir kontrat deploy ettiğini unutma. Bu yüzden yeni seviye örneği oluştururken birkaç saniye sürebilir — sabırlı ol!
+
+#### 8. Kontratı inceleme
+Tıpkı ethernaut kontratında yaptığın gibi, bu kontratın ABI’sini de konsol üzerinden `contract` değişkenini kullanarak inceleyebilirsin.
+
+#### 9. Seviyeyi tamamlamak için kontratla etkileşime gir
+Seviyenin info metoduna göz at: `contract.info()` veya Chrome v62 kullanıyorsan `await contract.info()`.
+Seviye ile ilgili gerekli tüm bilgiler kontratın içinde olacak.
+Seviyeyi tamamladığından emin olduğunda, sayfanın altındaki gönder butonunu kullanarak kontratı gönder. Bu işlem, örneğini tekrar ethernaut kontratına yollar ve seviyeyi tamamlayıp tamamlamadığını kontrol eder.
+
+##### İpucu: Unutma, kontratın ABI’sine her zaman göz atabilirsin!

@@ -1,8 +1,8 @@
 import React from "react";
-import onClickOutside from 'react-onclickoutside'
+import onClickOutside from "react-onclickoutside";
 import { connect } from "react-redux";
 import { withRouter } from "../hoc/withRouter";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions";
 import * as constants from "../constants";
@@ -11,6 +11,8 @@ import PropTypes from "prop-types";
 import { ProgressBar } from "react-loader-spinner";
 import { svgFilter } from "../utils/svg";
 import LeaderIcon from "../components/leaderboard/LeaderIcon";
+import { store } from "../store";
+// import parse from "html-react-parser";
 
 class Header extends React.Component {
   constructor(props) {
@@ -23,7 +25,7 @@ class Header extends React.Component {
       multiDDOpen: false,
     };
 
-    if (this.props.web3) {
+    if (this.props.web3 && !store.getState().gamedata.readOnly) {
       window.ethereum.request({ method: "eth_chainId" }).then((id) => {
         this.setState({ chainId: Number(id) });
       });
@@ -223,7 +225,7 @@ class Header extends React.Component {
 
   handleClickOutside = () => {
     this.closeDropdown();
-  }
+  };
 
   render() {
     let strings = loadTranslations(this.state.lang);
@@ -232,7 +234,6 @@ class Header extends React.Component {
       en: strings.english,
       es: strings.spanish,
       pt_br: strings.portuguese,
-      ua: strings.ukrainian,
       ja: strings.japanese,
       zh_cn: strings.chinese_simplified,
       zh_tw: strings.chinese_traditional,
@@ -244,15 +245,24 @@ class Header extends React.Component {
 
     const ddOpen = Boolean(this.state.multiDDOpen);
     return (
-      <div onClick={() => this.closeDropdown()}>
-        <div className="lines">
+      <div className="header-container" onClick={() => this.closeDropdown()}>
+        {/* <div className="lines">
           <center>
             <hr className="top" />
           </center>
           <center>
             <hr className="top" />
           </center>
-        </div>
+        </div> */}
+        {/* <div className="top-banner">
+           <div className="top-banner-text">{parse(strings.ctfInfo)}</div>
+            <a
+              href="https://ctf.openzeppelin.com"
+            >
+              <button>{strings.ctfRegister}</button>
+            </a>
+        </div> */}
+
         <center>
           <header>
             <ul className="header-ul">
@@ -316,15 +326,16 @@ class Header extends React.Component {
                       </Link>
                     </div>
                     {window.location.pathname === constants.PATH_ROOT &&
-                      !!this.props.web3 && (
-                        <Link   onClick={() => this.toggleDropdownState()}
-                        to={constants.PATH_LEADERBOARD}>
-                          <div
-                          className="element-in-row filled-icon">
-                                <LeaderIcon />
+                      !!this.props.web3 &&
+                      !store.getState().gamedata.readOnly && (
+                        <Link
+                          onClick={() => this.toggleDropdownState()}
+                          to={constants.PATH_LEADERBOARD}
+                        >
+                          <div className="element-in-row filled-icon">
+                            <LeaderIcon />
                           </div>
                         </Link>
-
                       )}
                     <input
                       onClick={() => {
@@ -333,42 +344,58 @@ class Header extends React.Component {
                       className="element-in-row toggle --small"
                       type="checkbox"
                     />
+                    <div className="connect-button">
+                    {store.getState().gamedata.readOnly && (
+                      <button
+                        className="buttons"
+                        onClick={async () => {
+                          await window.ethereum.request({ method: "eth_requestAccounts" });
+                          window.location.reload();
+                         }}
+                      >
+                        {strings.connectAccount}
+                      </button>
+                    )}
+                    </div>
                   </div>
                 </div>
-
-                <div
-                  className={`single-dropdown --${
-                    this.props.web3 && "--hidden"
-                  }`}
-                >
-                  <p onClick={() => this.setActiveTab(2)}>
-                    <i className="fas fa-network-wired"></i>
-                    <span>{strings.Networks}</span>
-                  </p>
-                  <div className={this.getDDClassName(2)}>
-                    {Object.values(constants.NETWORKS_INGAME).map((network, index) => {
-                      if (network && network.name !== "local") {
-                        if (Number(network.id) === this.state.chainId)
-                          return false; // filter out current network
-                        return (
-                          <div key={index}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              this.changeNetwork(network);
-                            }}
-                            className="dropdown-pill"
-                          >
-                            <a id={network.name} key={network.name} href="/">
-                              {network.name}
-                            </a>
-                          </div>
-                        );
-                      }
-                      return null;
-                    })}
+                {this.props.web3 && !store.getState().gamedata.readOnly && (
+                  <div className={`single-dropdown`}>
+                    <p onClick={() => this.setActiveTab(2)}>
+                      <i className="fas fa-network-wired"></i>
+                      <span>{strings.Networks}</span>
+                    </p>
+                    <div className={this.getDDClassName(2)}>
+                      {Object.values(constants.NETWORKS_INGAME).map(
+                        (network, index) => {
+                          if (network && network.name !== "local") {
+                            if (Number(network.id) === this.state.chainId)
+                              return false; // filter out current network
+                            return (
+                              <div
+                                key={index}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  this.changeNetwork(network);
+                                }}
+                                className="dropdown-pill"
+                              >
+                                <a
+                                  id={network.name}
+                                  key={network.name}
+                                  href="/"
+                                >
+                                  {network.name}
+                                </a>
+                              </div>
+                            );
+                          }
+                          return null;
+                        }
+                      )}
+                    </div>
                   </div>
-                </div>
-
+                )}
                 <div className="single-dropdown">
                   <p onClick={() => this.setActiveTab(1)}>
                     <i className="fas fa-globe-americas"></i>
@@ -376,7 +403,8 @@ class Header extends React.Component {
                   </p>
                   <div className={this.getDDClassName(1)}>
                     {Object.keys(LANGUAGES_MAP).map((languageString, index) => (
-                      <div key={index}
+                      <div
+                        key={index}
                         onClick={(e) => {
                           this.changeLanguage(e, languageString);
                         }}
@@ -425,7 +453,7 @@ class Header extends React.Component {
             wrapperClass="progress-bar-wrapper"
             visible={true}
           />
-          {!this.props.web3 && (
+          {!this.props.web3 && !store.getState().gamedata.readOnly && (
             <div
               style={{ backgroundColor: "#eddfd6", border: "none" }}
               className="alert alert-warning"
@@ -456,4 +484,6 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(onClickOutside(Header)));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(onClickOutside(Header))
+);
