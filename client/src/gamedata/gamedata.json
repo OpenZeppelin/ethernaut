@@ -496,6 +496,36 @@
       "deployId": "31",
       "instanceGas": 750000,
       "author": "Waiandt&Dalvi"
+    },
+    {
+      "name": "Impersonator",
+      "created": "2024-11-04",
+      "difficulty": "8",
+      "description": "impersonator.md",
+      "completedDescription": "impersonator_complete.md",
+      "levelContract": "ImpersonatorFactory.sol",
+      "instanceContract": "Impersonator.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "32",
+      "instanceGas": 750000,
+      "author": "Gianfranco"
+    },
+    {
+      "name": "Magic Animal Carousel",
+      "created": "2024-11-04",
+      "difficulty": "6",
+      "description": "magicanimalcarousel.md",
+      "completedDescription": "magicanimalcarousel_complete.md",
+      "levelContract": "MagicAnimalCarouselFactory.sol",
+      "instanceContract": "MagicAnimalCarousel.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "33",
+      "instanceGas": 750000,
+      "author": "Gianfranco&carlitox477"
     }
   ]
 }

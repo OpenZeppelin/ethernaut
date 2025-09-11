@@ -23,7 +23,7 @@ All this process is required in order to avoid to the users to resolve both vers
 
 ## **Usage**
 
-### **Testnet (mainet for ethernaut XD)**
+### **Testnet (mainnet for ethernaut XD)**
 
 - Select the network in the [`constants.js`](https://github.com/OpenZeppelin/ethernaut/blob/client/src/constants.js) file by uncommenting the `ACTIVE_NETWORK` constant.
 
@@ -36,7 +36,7 @@ The tool will guide the operator through the process. Operator is the account th
 
 The script contains a commented function `printEditedStorageSlots(oldAddress, newAddress)` that can be uncommented to prompt in the terminal all storage slots edited after the process. 
 
-Ethernaut contract will be halt during the operation, any call to  `createLevelInstance(Level _level)` or  `submitLevelInstance(address payable _instance)` will revet with `"Contract locked due maintenance operations"` string.
+Ethernaut contract will be halt during the operation, any call to  `createLevelInstance(Level _level)` or  `submitLevelInstance(address payable _instance)` will revert with `"Contract locked due maintenance operations"` string.
 
 Original statistics implementation is hardcoded in `downgradeStatisticsSupersederToStatisticsAndSaveDeployData()` function it is not needed to deploy a new instance, ensure that you hardcode the correct address.
 

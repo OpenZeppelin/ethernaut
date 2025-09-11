@@ -53,6 +53,7 @@ if (!window.ethereum) {
     } else {
       const accountConnectionWindow = document.querySelectorAll('.account-connection-window-bg');
       if (accountConnectionWindow[0]) accountConnectionWindow[0].style.display = 'block';
+      store.dispatch(actions.loadGamedata());
     }
   });
 }
