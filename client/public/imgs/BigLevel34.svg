@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 493.26 299.05">
+<defs>
+<style>
+.e,.f{fill:none;}
+.f,.g,.h{stroke-miterlimit:10;}
+.f,.g,.h,.i{stroke-width:.42px;}
+.f,.g,.i{stroke:#1d1d1b;}
+.j,.g,.i{fill:#eddfd6;}
+.k,.l,.h{fill:#1d1d1b;}
+.l{opacity:.19;}
+.h{stroke:#eddfd6;}
+.i{stroke-linecap:round;stroke-linejoin:round;}
+.m{clip-path:url(#d);}
+.clock-face{fill:#eddfd6;stroke:#1d1d1b;stroke-width:2;}
+.clock-inner{fill:none;stroke:#1d1d1b;stroke-width:1;}
+.clock-hand{stroke:#1d1d1b;stroke-linecap:round;}
+.hour-hand{stroke-width:4;}
+.minute-hand{stroke-width:3;}
+.second-hand{stroke-width:1;stroke:#ff0000;}
+.clock-center{fill:#1d1d1b;}
+.hour-marker{fill:#1d1d1b;}
+.vault-ring{fill:none;stroke:#1d1d1b;stroke-width:3;}
+.lock-body{fill:#eddfd6;stroke:#1d1d1b;stroke-width:2;}
+.time-text{fill:#1d1d1b;font-family:Arial,sans-serif;font-size:14px;text-anchor:middle;}
+</style>
+<clipPath id="d">
+<rect class="e" x=".21" y=".21" width="492.84" height="298.63"/>
+</clipPath>
+</defs>
+<g id="a"/>
+<g id="b">
+<g id="c">
+<g class="m">
+<rect class="h" x=".21" y=".21" width="492.84" height="298.63"/>
+</g>
+
+<!-- Background Elements -->
+<rect class="g" x="50" y="50" width="80" height="8" transform="rotate(15)"/>
+<rect class="g" x="350" y="80" width="80" height="8" transform="rotate(-20)"/>
+<rect class="g" x="400" y="200" width="80" height="8" transform="rotate(45)"/>
+<rect class="g" x="80" y="220" width="80" height="8" transform="rotate(-10)"/>
+
+<!-- Main Clock Structure -->
+<g transform="translate(246.63, 149.5)">
+<!-- Outer Clock Face -->
+<circle class="clock-face" cx="0" cy="0" r="80"/>
+<circle class="clock-inner" cx="0" cy="0" r="75"/>
+<circle class="clock-inner" cx="0" cy="0" r="70"/>
+
+<!-- Hour Markers -->
+<g class="hour-marker">
+<!-- 12 o'clock -->
+<rect x="-2" y="-75" width="4" height="12"/>
+<!-- 3 o'clock -->
+<rect x="63" y="-2" width="12" height="4"/>
+<!-- 6 o'clock -->
+<rect x="-2" y="63" width="4" height="12"/>
+<!-- 9 o'clock -->
+<rect x="-75" y="-2" width="12" height="4"/>
+
+<!-- Additional hour markers -->
+<rect x="-1.5" y="-70" width="3" height="8" transform="rotate(30)"/>
+<rect x="-1.5" y="-70" width="3" height="8" transform="rotate(60)"/>
+<rect x="-1.5" y="-70" width="3" height="8" transform="rotate(120)"/>
+<rect x="-1.5" y="-70" width="3" height="8" transform="rotate(150)"/>
+<rect x="-1.5" y="-70" width="3" height="8" transform="rotate(210)"/>
+<rect x="-1.5" y="-70" width="3" height="8" transform="rotate(240)"/>
+<rect x="-1.5" y="-70" width="3" height="8" transform="rotate(300)"/>
+<rect x="-1.5" y="-70" width="3" height="8" transform="rotate(330)"/>
+</g>
+
+<!-- Clock Numbers -->
+<text class="time-text" x="0" y="-55">12</text>
+<text class="time-text" x="52" y="5">3</text>
+<text class="time-text" x="0" y="60">6</text>
+<text class="time-text" x="-52" y="5">9</text>
+
+<!-- Clock Hands showing 3:00 (time-based vulnerability reference) -->
+<!-- Hour Hand pointing to 3 -->
+<line class="clock-hand hour-hand" x1="0" y1="0" x2="35" y2="0"/>
+<!-- Minute Hand pointing to 12 -->
+<line class="clock-hand minute-hand" x1="0" y1="0" x2="0" y2="-50"/>
+<!-- Second Hand pointing to 6 -->
+<line class="clock-hand second-hand" x1="0" y1="0" x2="0" y2="40"/>
+
+<!-- Center dot -->
+<circle class="clock-center" cx="0" cy="0" r="4"/>
+
+<!-- Vault-like concentric circles -->
+<circle class="vault-ring" cx="0" cy="0" r="55"/>
+<circle class="vault-ring" cx="0" cy="0" r="45"/>
+<circle class="vault-ring" cx="0" cy="0" r="35"/>
+
+<!-- Time Lock Elements -->
+<g>
+<!-- Lock shackle -->
+<path class="i" d="M-20,-90 C-20,-105 -10,-115 0,-115 C10,-115 20,-105 20,-90 L20,-80" fill="none" stroke-width="3"/>
+<!-- Lock body -->
+<rect class="lock-body" x="-25" y="-85" width="50" height="30" rx="5"/>
+<!-- Keyhole -->
+<circle class="clock-center" cx="0" cy="-70" r="3"/>
+<rect class="clock-center" x="-1" y="-70" width="2" height="8"/>
+</g>
+
+<!-- Decorative gears around the clock -->
+<g opacity="0.3">
+<circle class="g" cx="-100" cy="-30" r="15"/>
+<circle class="g" cx="100" cy="-30" r="12"/>
+<circle class="g" cx="-80" cy="60" r="10"/>
+<circle class="g" cx="90" cy="70" r="8"/>
+</g>
+
+<!-- Time-related symbols -->
+<text class="time-text" x="0" y="110" font-size="12">TIME VAULT</text>
+</g>
+
+<!-- Level Number Badge -->
+<g>
+<path class="j" d="M0,0h60v40c0,8-6,14-14,14H0V0z"/>
+<text class="k" x="30" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" font-weight="bold">34</text>
+</g>
+
+<!-- Shadow effects -->
+<path class="l" d="M150,200 Q200,180 250,200 Q300,220 350,200 L350,250 Q300,270 250,250 Q200,230 150,250 Z"/>
+<path class="l" d="M100,100 Q150,80 200,100 Q250,120 300,100 L280,150 Q230,170 180,150 Q130,130 120,150 Z"/>
+
+</g>
+</g>
+</svg>

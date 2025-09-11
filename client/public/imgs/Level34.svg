@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 134.9 134.9" style="enable-background:new 0 0 134.9 134.9;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#1D1D1B;}
+	.st1{fill:#EDDFD6;}
+	.st2{fill:#222222;}
+	.st3{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.42;stroke-linecap:round;stroke-linejoin:round;}
+	.st4{fill:#1D1D1B;stroke:#EDDFD6;stroke-width:0.42;stroke-miterlimit:10;}
+	.st5{font-family:'NotoSans-Bold';}
+	.st6{font-size:19px;}
+	.st7{fill:none;stroke:#1D1D1B;stroke-width:0.42;stroke-miterlimit:10;}
+	.st8{fill:#00AEEF;}
+	.st9{enable-background:new    ;}
+	.st10{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.6437;stroke-miterlimit:10;}
+	.st11{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.6073;stroke-miterlimit:10;}
+	.st12{fill:#EDDFD6;stroke:#1D1D1B;stroke-width:0.5101;stroke-miterlimit:10;}
+</style>
+<g id="_x33_4">
+	<rect x="-0.2" y="0" class="st0" width="135.6" height="135.4"/>
+	<g>
+		<g>
+			<!-- Clock Face -->
+			<circle class="st1" cx="67.5" cy="75" r="35" stroke="#1D1D1B" stroke-width="2"/>
+			<circle class="st0" cx="67.5" cy="75" r="32" fill="none" stroke="#1D1D1B" stroke-width="0.5"/>
+			
+			<!-- Hour Markers -->
+			<g class="st0">
+				<rect x="66.5" y="45" width="2" height="6"/>
+				<rect x="95" y="74" width="6" height="2"/>
+				<rect x="66.5" y="103" width="2" height="6"/>
+				<rect x="39" y="74" width="6" height="2"/>
+			</g>
+			
+			<!-- Clock Hands -->
+			<g>
+				<!-- Hour Hand -->
+				<line x1="67.5" y1="75" x2="67.5" y2="60" stroke="#1D1D1B" stroke-width="3" stroke-linecap="round"/>
+				<!-- Minute Hand -->
+				<line x1="67.5" y1="75" x2="80" y2="75" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+				<!-- Center Dot -->
+				<circle cx="67.5" cy="75" r="2" class="st0"/>
+			</g>
+			
+			<!-- Vault Door Elements -->
+			<g>
+				<circle class="st3" cx="67.5" cy="75" r="25" fill="none" stroke="#1D1D1B" stroke-width="1.5"/>
+				<circle class="st0" cx="67.5" cy="75" r="3"/>
+				<!-- Combination Lock Numbers -->
+				<text x="67.5" y="58" text-anchor="middle" class="st0" font-family="NotoSans-Bold" font-size="8">12</text>
+				<text x="85" y="79" text-anchor="middle" class="st0" font-family="NotoSans-Bold" font-size="8">3</text>
+				<text x="67.5" y="96" text-anchor="middle" class="st0" font-family="NotoSans-Bold" font-size="8">6</text>
+				<text x="50" y="79" text-anchor="middle" class="st0" font-family="NotoSans-Bold" font-size="8">9</text>
+			</g>
+			
+			<!-- Time Lock Symbol -->
+			<g>
+				<path class="st3" d="M67.5,25c-8,0-14.5,6.5-14.5,14.5v5h3v-5c0-6.3,5.2-11.5,11.5-11.5s11.5,5.2,11.5,11.5v5h3v-5
+					C82,31.5,75.5,25,67.5,25z"/>
+				<rect x="55" y="44.5" width="25" height="15" rx="2" class="st1" stroke="#1D1D1B" stroke-width="1"/>
+			</g>
+		</g>
+	</g>
+	
+	<!-- Level Number -->
+	<g>
+		<path class="st1" d="M0,0h28.5v20.2c0,3.8-3.1,6.8-6.8,6.8H0V0z"/>
+		<g>
+			<!-- 删除这里的1N路径 -->
+		</g>
+		<text transform="matrix(1 0 0 1 4.0553 16.5318)" class="st5 st6">34</text>
+	</g>
+</g>
+</svg>
