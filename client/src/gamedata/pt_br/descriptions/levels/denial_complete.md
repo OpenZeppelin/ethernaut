@@ -2,7 +2,8 @@ Este nível demonstra que as chamadas externas para contratos desconhecidos aind
 criar vetores de ataque de negação de serviço (DDoS) se uma quantidade fixa de gás não for
 especificadas.
 
-Se você estiver usando uma `call` de baixo nível que continua executando no caso de uma chamada externa ser revertida, certifique-se de especificar um limite de gás as ser utilizado. Por exemplo `call.gas(100000).value()`.
+Se você estiver usando uma `call` de baixo nível que continua executando no caso de uma chamada externa ser revertida, certifique-se de especificar um limite de gás as ser utilizado. Por exemplo `<Address>.call{gas: <gasAmount>}(data)
+`.
 
 Normalmente, deve-se seguir o padrão [checks-effects-interactions](http://solidity.readthedocs.io/en/latest/security-considerations.html#use-the-checks-effects-interactions-pattern) para evitar ataques de reentrância. Pode haver outras circunstâncias (como várias chamadas externas no final de uma função) em que problemas como esse podem surgir.
 

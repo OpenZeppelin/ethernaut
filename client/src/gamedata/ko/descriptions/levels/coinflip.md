@@ -2,4 +2,4 @@
 
 &nbsp;
 도움이 될 만한 것들:
-* 우측 상단 메뉴에 있는 “[?](https://ethernaut.openzeppelin.com/help)” 버튼을 클릭해 “Beyond the console” 섹션을 확인해보세요.
+* 우측 상단 메뉴에 있는 ["?"](https://ethernaut.openzeppelin.com/help) 버튼을 클릭해 “Beyond the console” 섹션을 확인해보세요.

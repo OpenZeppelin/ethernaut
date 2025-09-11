@@ -1,6 +1,7 @@
 Ce niveau démontre que les appels externes à des contrats inconnus peuvent encore créer des vecteurs d'attaque par déni de service si une quantité fixe de gaz n'est pas spécifié.
 
-Si vous utilisez un `call` de bas niveau pour continuer l'exécution en cas de retour d'un appel externe, assurez-vous de spécifier une allocation de gaz fixe. Par exemple `call.gas(100000).value()`.
+Si vous utilisez un `call` de bas niveau pour continuer l'exécution en cas de retour d'un appel externe, assurez-vous de spécifier une allocation de gaz fixe. Par exemple `<Address>.call{gas: <gasAmount>}(data)
+`.
 
 En règle générale, il faut suivre le modèle [checks-effects-interactions](http://solidity.readthedocs.io/en/latest/security-considerations.html#use-the-checks-effects-interactions-pattern) pour éviter les attaques de reentrancy, il peut y avoir d'autres circonstances (telles que plusieurs appels externes à la fin d'une fonction) où des problèmes tels que celui-ci peuvent survenir.
 

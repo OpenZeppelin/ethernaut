@@ -8,6 +8,6 @@ Forta는 독립적인 노드 운영자들의 탈중앙 네트워크로 구성되
 
 탐지 봇은 컨트랙트의 최종 구현에 매우 의존적이기 때문에, 컨트랙트가 업그레이드되면 봇과의 연동이 끊어질 수 있습니다. 이런 상황을 대비해 업그레이드를 감지하고 반응하는 전용 봇을 만들 수도 있습니다. 방법은 [여기에서 확인하세요.](https://docs.forta.network/en/latest/quickstart/)
 
-또한 이 레벨은 최근 [OpenZepplin과 Compound 트로토콜의 협업 과정](https://compound.finance/governance/proposals/76) 중 밝혀진 실제 보안 이슈를 기반으로 하고 있습니다. 
+또한 이 레벨은 최근 [OpenZeppelin과 Compound 트로토콜의 협업 과정](https://compound.finance/governance/proposals/76) 중 밝혀진 실제 보안 이슈를 기반으로 하고 있습니다. 
 
-이중 진입점(Doublue Entry Point) 패턴을 사용하는 토큰은 하나의 토큰에 하나의 컨트랙트만 존재한다는 일반적인 전제를 깨트립니다. 이로 인해 여러 프로토콜에서 예기치 않은 문제가 발생할 수 있습니다. 자세한 내용은 다음 회고록에서 확인해보세요: [Compound TUSD 통합 관련 사고 분석 블로그](https://blog.openzeppelin.com/compound-tusd-integration-issue-retrospective/)
+이중 진입점(Double Entry Point) 패턴을 사용하는 토큰은 하나의 토큰에 하나의 컨트랙트만 존재한다는 일반적인 전제를 깨트립니다. 이로 인해 여러 프로토콜에서 예기치 않은 문제가 발생할 수 있습니다. 자세한 내용은 다음 회고록에서 확인해보세요: [Compound TUSD 통합 관련 사고 분석 블로그](https://blog.openzeppelin.com/compound-tusd-integration-issue-retrospective/)

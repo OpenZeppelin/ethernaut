@@ -1,4 +1,4 @@
-이 레벨에서는 `sweepToke`이라는 특별한 기능을 가진 `CryptoVault` 컨트랙트를 다룹니다.`sweepToken` 함수는 일반적으로 컨트랙트에 잘못 전송된 토큰을 회수하는 데 사용되는 함수입니다. 이 컨트랙트는 `underlying` 토큰을 중심으로 작동하며, 해당 토큰은 `CryptoVault`의 핵심 로직에 사용되기 때문에 sweep 대상에서 제외됩니다. 
+이 레벨에서는 `sweepToken`이라는 특별한 기능을 가진 `CryptoVault` 컨트랙트를 다룹니다.`sweepToken` 함수는 일반적으로 컨트랙트에 잘못 전송된 토큰을 회수하는 데 사용되는 함수입니다. 이 컨트랙트는 `underlying` 토큰을 중심으로 작동하며, 해당 토큰은 `CryptoVault`의 핵심 로직에 사용되기 때문에 sweep 대상에서 제외됩니다. 
 
 하지만 그 외의 모든 토큰은 sweep 대상이 될 수 있습니다. 
 

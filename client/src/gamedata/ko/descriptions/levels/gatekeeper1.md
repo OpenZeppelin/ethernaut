@@ -5,4 +5,4 @@ Gatekeeper를 통과하고 참가자로 등록하면, 이 레벨을 통과할 �
 * 이전에 풀었던 Telephone과 Token 레벨에서 배운 내용을 떠올려 보세요.
 * Solidity의 특별한 함수인 `gasleft()`에 대해 더 알고 싶다면, 아래 문서를 참고해보세요.
 * [Units and Global Variables](https://docs.soliditylang.org/en/v0.8.3/units-and-global-variables.html)
-* [Enternal Function Calls](https://docs.soliditylang.org/en/v0.8.3/control-structures.html#external-function-calls)
+* [External Function Calls](https://docs.soliditylang.org/en/v0.8.3/control-structures.html#external-function-calls)

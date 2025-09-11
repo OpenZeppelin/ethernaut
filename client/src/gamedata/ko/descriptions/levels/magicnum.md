@@ -1,4 +1,4 @@
-이 레벨을 해결하려면, Ethernaut에게 `Solver` 컨트랙트를 제공해야 합니다. 이 컨트랙트는 `whatIsTheMeaning0fLife()`를 호출했을 때 올바른 32바이트 숫자를 반환해야 합니다. 
+이 레벨을 해결하려면, Ethernaut에게 `Solver` 컨트랙트를 제공해야 합니다. 이 컨트랙트는 `whatIsTheMeaningOfLife()`를 호출했을 때 올바른 32바이트 숫자를 반환해야 합니다. 
 
 어때요 참 쉽죠?
 음… 그렇지만 문제가 있습니다.

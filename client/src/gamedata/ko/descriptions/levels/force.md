@@ -6,4 +6,4 @@
 도움이 될 만한 것들:
 * Fallback 함수의 동작 방식
 * 때로는, 다른 컨트랙트를 이용한 공격이 가장 효과적일 수 있습니다.
-* 상단의 [“?”](https://ethernaut.openzeppelin.com/help)페이지에서 “Byound the console” 섹션을 참조하세요.
+* 상단의 [“?”](https://ethernaut.openzeppelin.com/help)페이지에서 “Beyond the console” 섹션을 참조하세요.

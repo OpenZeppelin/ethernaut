@@ -1,6 +1,7 @@
 このレベルでは、固定のガス量が指定されていない場合、未知の契約への外部呼び出しでもサービス拒否攻撃が可能なことを示しています。
 
-外部呼び出しがリバートされた場合に実行を継続するために低レベルの `call` を使用している場合は、固定のガス量を指定するようにしてください。例えば、`call.gas(100000).value()`
+外部呼び出しがリバートされた場合に実行を継続するために低レベルの `call` を使用している場合は、固定のガス量を指定するようにしてください。例えば、`<Address>.call{gas: <gasAmount>}(data)
+`
 
 一般的には、リエントランシー攻撃を避けるために、[checks-effects-interactions](http://solidity.readthedocs.io/en/latest/security-considerations.html#use-the-checks-effects-interactions-pattern)パターンに従うべきですが、このような問題が発生する可能性がある他の状況(例えば、関数の最後に複数の外部呼び出しがある場合など)もあります。
 
