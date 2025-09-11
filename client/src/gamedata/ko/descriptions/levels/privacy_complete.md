@@ -1,0 +1,3 @@
+Solidity에서 `private` 키워드는 실제로 저장소를 보호하지 않습니다. 이더리움 블록체인에서 어떤 데이터도 완전히 숨겨지지 않습니다. Web3의 `getStorageAt(...)`함수를 사용하면, 모든 저장소 슬롯의 값을 읽어올 수 있습니다. 단, Solidity는 저장소 공간을 최대한 효율적으로 압축하기 위해 다양한 최적화 기법을 적용하므로, 원하는 데이터를 정확히 찾는 것은 쉽지 않을 수 있습니다. 
+
+이 레벨에서 노출된 방식보다 더 복잡한 경우는 드뭅니다. 더 깊이 알고 싶다면, “Darius”의 훌륭한 글을 참고해보세요: [How to read Ethereum contract storage](https://medium.com/aigang-network/how-to-read-ethereum-contract-storage-44252c8af925)

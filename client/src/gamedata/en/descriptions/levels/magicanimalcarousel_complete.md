@@ -1,0 +1,1 @@
+Congratulations, you’ve broken the magical rule of the carousel! In the realm of low-level data manipulation, it’s crucial to remember the details, especially when working with compacting data in storage slots.

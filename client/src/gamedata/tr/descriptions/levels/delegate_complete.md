@@ -1,0 +1,4 @@
+`delegatecall` kullanımı özellikle risklidir ve geçmişte birçok hack saldırısında kötüye kullanılmıştır. Bu fonksiyon ile kontratın adeta şunu söylüyor: "buyur, -diğer kontrat- ya da -diğer kütüphane-, benim state (durum) değişkenimle istediğini yap." Delegeler kontratının state'ine tam erişime sahiptir `delegatecall` güçlü bir özellik olmasına rağmen çok tehlikelidir ve kullanılacaksa son derece dikkatli olunmalıdır.
+
+
+Bu fikrin geçmişte 30 milyon USD çalmak amacıyla nasıl kullanıldığının detaylı bir açıklaması için [The Parity Wallet Hack Explained](https://blog.openzeppelin.com/on-the-parity-wallet-multisig-hack-405a8c12e8f7) makalesine bakabilirsin.

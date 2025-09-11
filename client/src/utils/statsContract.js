@@ -158,7 +158,7 @@ const getProxyStatsContractAddressInNetwork = (networkId) => {
 }
 
 const getStatsContract = async (proxyStatsAddress, playerAddress) => {
-    const statsABI = require("contracts/build/contracts/metrics/Statistics.sol/Statistics.json");
+    const statsABI = require("../contracts/out/Statistics.sol/Statistics.json");
     let statsContract;
     if (playerAddress) {
         statsContract = getTruffleContract(statsABI, { from: playerAddress });

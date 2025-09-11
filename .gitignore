@@ -5,14 +5,11 @@ node_modules/
 client/.env
 contracts/.env
 
-# Contracts
-contracts/build/
-contracts/cache/
-contracts/node_modules/
-contracts/.openzeppelin/
-
 # Client
 client/build/
 client/node_modules/
 client/src/gamedata/deploy.local.json
 .env
+
+# Local Netlify folder
+.netlify
