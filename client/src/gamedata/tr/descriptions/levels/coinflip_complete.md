@@ -2,4 +2,4 @@ Rastgele sayı üretmek Solidity’de zor olabilir. Şu anda yerleşik (native) 
 
 Kriptografik olarak doğrulanmış rastgele sayılar elde etmek için [Chainlink VRF](https://docs.chain.link/docs/get-a-random-number) kullanabilirsin. Bu sistem bir oracle, LINK tokeni ve zincir üzerindeki bir kontrat aracılığıyla sayının gerçekten rastgele olduğunu doğrular. 
 
-Diğer bazı seçenekler şunlardır: Bitcoin blok başlıklarını kullanmak (doğrulama için [BTC Relay](http://btcrelay.org)), [RANDAO](https://github.com/randao/randao), or [Oraclize](http://www.oraclize.it/)).
+Diğer bazı seçenekler şunlardır: Bitcoin blok başlıklarını kullanmak (doğrulama için [BTC Relay](http://btcrelay.org), [RANDAO](https://github.com/randao/randao), or [Oraclize](http://www.oraclize.it/)).
