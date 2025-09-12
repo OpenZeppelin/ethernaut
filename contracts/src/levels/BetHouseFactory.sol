@@ -6,8 +6,7 @@ import "./BetHouse.sol";
 
 contract BetHouseFactory is Level {
     function createInstance(address _player) public payable override returns (address) {
-        _player;
-
+        
         PoolToken _wrappedToken = new PoolToken("PoolWrappedToken", "PWT");
         PoolToken _depositToken = new PoolToken("PoolDepositToken", "PDT");
 
