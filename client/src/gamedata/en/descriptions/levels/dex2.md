@@ -1,4 +1,4 @@
-This level will ask you to break `DexTwo`, a subtlely modified `Dex` contract from the previous level, in a different way.
+This level will ask you to break `DexTwo`, a subtly modified `Dex` contract from the previous level, in a different way.
 
 You need to drain all balances of token1 and token2 from the `DexTwo` contract to succeed in this level.
 

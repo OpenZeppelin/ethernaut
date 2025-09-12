@@ -12,21 +12,9 @@ export const NETWORKS = {
   UNDEFINED: undefined,
   LOCAL: {
     name: "local",
-    id: "1337",
+    id: "31337",
     url: "http://localhost",
     port: 8545,
-  },
-  GOERLI: {
-    name: "goerli",
-    id: "5",
-    url: `${process.env.GOERLI_HOST}`,
-    privKey: `${process.env.PRIV_KEY}`,
-  },
-  MUMBAI: {
-    name: "mumbai-polygon",
-    id: "80001",
-    url: `${process.env.MUMBAI_HOST}`,
-    privKey: `${process.env.PRIV_KEY}`,
   },
   SEPOLIA: {
     name: "sepolia",
@@ -34,16 +22,28 @@ export const NETWORKS = {
     url: `${process.env.SEPOLIA_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
   },
-  OPTIMISM_GOERLI: {
-    name: "goerli-optimism",
-    id: "420",
-    url: `${process.env.OPTIMISM_GOERLI_HOST}`,
+  OPTIMISM_SEPOLIA: {
+    name: "sepolia-optimism",
+    id: "11155420",
+    url: `${process.env.OPTIMISM_SEPOLIA_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
   },
-  ARBITRUM_GOERLI: {
-    name: "goerli-arbitrum",
-    id: "421613",
-    url: `${process.env.ARBITRUM_GOERLI_HOST}`,
+  ARBITRUM_SEPOLIA: {
+    name: "sepolia-arbitrum",
+    id: "421614",
+    url: `${process.env.ARBITRUM_SEPOLIA_HOST}`,
+    privKey: `${process.env.PRIV_KEY}`,
+  },
+  HOLESKY: {
+    name: "holesky",
+    id: "17000",
+    url: `${process.env.HOLESKY_HOST}`,
+    privKey: `${process.env.PRIV_KEY}`,
+  },
+  AMOY: {
+    name: "amoy",
+    id: "80002",
+    url: `${process.env.AMOY_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
   },
 };
@@ -53,33 +53,9 @@ export const NETWORKS_INGAME = {
   UNDEFINED: undefined,
   LOCAL: {
     name: "local",
-    id: "1337",
+    id: "31337",
     url: "http://localhost",
     port: 8545,
-  },
-  GOERLI: {
-    name: "goerli",
-    id: "5",
-    currencyName: "Goerli-ETH",
-    currencySymbol: "ETH",
-    rpcUrl: `https://eth-goerli.public.blastapi.io`,
-    blockExplorer: "https://goerli.etherscan.io",
-    explorer: {
-      apiKey: `${process.env.REACT_APP_GOERLI_EXPLORER_API_KEY}`,
-      apiHost: `https://api-goerli.etherscan.io`,
-    },
-  },
-  MUMBAI: {
-    name: "mumbai-polygon",
-    id: "80001",
-    currencyName: "Mumbai-Matic",
-    currencySymbol: "MATIC",
-    rpcUrl: `https://matic-mumbai.chainstacklabs.com`,
-    blockExplorer: "https://mumbai.polygonscan.com",
-    explorer: {
-      apiKey: `${process.env.REACT_APP_MUMBAI_EXPLORER_API_KEY}`,
-      apiHost: `https://api-testnet.polygonscan.com`,
-    },
   },
   SEPOLIA: {
     name: "sepolia",
@@ -93,29 +69,49 @@ export const NETWORKS_INGAME = {
       apiHost: `https://api-sepolia.etherscan.io`,
     },
   },
-  OPTIMISM_GOERLI: {
-    name: "goerli-optimism",
-    id: "420",
+  OPTIMISM_SEPOLIA: {
+    name: "sepolia-optimism",
+    id: "11155420",
     currencyName: "Optimism-ETH",
     currencySymbol: "ETH",
-    rpcUrl: `https://goerli.optimism.io`,
-    blockExplorer: "https://goerli-optimism.etherscan.io",
+    rpcUrl: `https://sepolia.optimism.io`,
+    blockExplorer: "https://sepolia-optimism.etherscan.io",
     explorer: {
-      apiKey: `${process.env.REACT_APP_OPTIMISM_GOERLI_EXPLORER_API_KEY}`,
-      apiHost: `https://api-goerli-optimistic.etherscan.io`,
+      apiKey: `${process.env.REACT_APP_OPTIMISM_SEPOLIA_EXPLORER_API_KEY}`,
+      apiHost: `https://api-sepolia-optimistic.etherscan.io`,
     },
   },
-  ARBITRUM_GOERLI: {
-    name: "goerli-arbitrum",
-    id: "421613",
+  ARBITRUM_SEPOLIA: {
+    name: "sepolia-arbitrum",
+    id: "421614",
     currencyName: "Arbitrum-ETH",
     currencySymbol: "ETH",
-    rpcUrl: `https://goerli-rollup.arbitrum.io/rpc`,
-    blockExplorer: "https://goerli.arbiscan.io",
+    rpcUrl: `https://sepolia-rollup.arbitrum.io/rpc`,
+    blockExplorer: "https://sepolia.arbiscan.io",
     explorer: {
-      apiKey: `${process.env.REACT_APP_ARBITRUM_GOERLI_EXPLORER_API_KEY}`,
-      apiHost: `https://api-goerli.arbiscan.io`,
+      apiKey: `${process.env.REACT_APP_ARBITRUM_SEPOLIA_EXPLORER_API_KEY}`,
+      apiHost: `https://api-sepolia.arbiscan.io`,
     },
+  },
+  HOLESKY: {
+    name: "holesky",
+    id: "17000",
+    currencyName: "Holesky-ETH",
+    currencySymbol: "ETH",
+    rpcUrl: "https://ethereum-holesky.publicnode.com",
+    blockExplorer: "https://holesky.etherscan.io",
+    explorer: {
+      apiKey: `${process.env.REACT_APP_HOLESKY_EXPLORER_API_KEY}`,
+      apiHost: `https://api-holesky.etherscan.io`,
+    },
+  },
+  AMOY: {
+    name: "amoy",
+    id: "80002",
+    currencyName: "MATIC",
+    currencySymbol: "MATIC",
+    rpcUrl: `https://rpc-amoy.polygon.technology/`,
+    blockExplorer: "https://amoy.polygonscan.com/",
   },
 };
 
@@ -124,19 +120,24 @@ export const NETWORKS_INGAME = {
 export const NETWORKS_DEPRECATION = {
   GOERLI: {
     id: "5",
-    status: "deprecation-planned",
-    date: "jan-2024"
+    status: "deprecated",
+    date: "jan-2024",
   },
   OPTIMISM_GOERLI: {
     id: "420",
-    status: "deprecation-planned",
-    date: "jan-2024"
+    status: "deprecated",
+    date: "jan-2024",
   },
   ARBITRUM_GOERLI: {
     id: "421613",
-    status: "deprecation-planned",
-    date: "jan-2024"
-  }
+    status: "deprecated",
+    date: "jan-2024",
+  },
+  MUMBAI: {
+    id: "80001",
+    status: "deprecated",
+    date: "april-2024",
+  },
 };
 
 // Web3
@@ -148,20 +149,22 @@ export const GOOGLE_ANALYTICS_ID = "UA-85043059-4";
 
 // Owner addresses
 export const ADDRESSES = {
-  [NETWORKS.LOCAL.name]: undefined,
-  [NETWORKS.MUMBAI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
-  [NETWORKS.GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
+  [NETWORKS.LOCAL.name]: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
   [NETWORKS.SEPOLIA.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
-  [NETWORKS.OPTIMISM_GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
-  [NETWORKS.ARBITRUM_GOERLI.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
+  [NETWORKS.OPTIMISM_SEPOLIA.name]:
+    "0x09902A56d04a9446601a0d451E07459dC5aF0820",
+  [NETWORKS.ARBITRUM_SEPOLIA.name]:
+    "0x09902A56d04a9446601a0d451E07459dC5aF0820",
+  [NETWORKS.HOLESKY.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
+  [NETWORKS.AMOY.name]: "0x09902A56d04a9446601a0d451E07459dC5aF0820",
 };
 
 // Support EIP-1559
 export const SUPPORTS_EIP_1559 = [
-  '5', // NETWORKS.GOERLI.id
-  '80001', // NETWORKS.MUMBAI.id
-  '11155111', // NETWORKS.SEPOLIA.id
-]
+  "5", // NETWORKS.GOERLI.id
+  "80001", // NETWORKS.MUMBAI.id
+  "11155111", // NETWORKS.SEPOLIA.id
+];
 
 // Core contract keys
 export const CORE_CONTRACT_NAMES = [
@@ -183,7 +186,7 @@ export const PATH_HELP = "/help";
 export const PATH_LEVEL_ROOT = `${PATH_ROOT}level/`;
 export const PATH_LEVEL = `${PATH_LEVEL_ROOT}:address`;
 export const PATH_STATS = `${PATH_ROOT}stats`;
-export const PATH_LEADERBOARD = `${PATH_ROOT}leaderboard`
+export const PATH_LEADERBOARD = `${PATH_ROOT}leaderboard`;
 
 // RELEASE SENSITIVE
 // -----------------------------------------------------------------------------------------
@@ -193,10 +196,11 @@ export const SHOW_ALL_COMPLETE_DESCRIPTIONS = false; /* FALSE on production */
 export const SHOW_VERSION = true;
 
 // export const ACTIVE_NETWORK = NETWORKS.SEPOLIA
-// export const ACTIVE_NETWORK = NETWORKS.GOERLI
 // export const ACTIVE_NETWORK = NETWORKS.MUMBAI
-// export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_GOERLI
-// export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_GOERLI
+// export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_SEPOLIA
+// export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_SEPOLIA
+// export const ACTIVE_NETWORK = NETWORKS.HOLESKY
+// export const ACTIVE_NETWORK = NETWORKS.AMOY
 // export const ACTIVE_NETWORK = NETWORKS.LOCAL;
 
 let id_to_network = {};
@@ -212,8 +216,9 @@ export const ID_TO_NETWORK = id_to_network;
 // -----------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------
 
-export const ALIAS_PATH = "https://raw.githubusercontent.com/OpenZeppelin/ethernaut-leaderboard/update/boards/aliases.json"
+export const ALIAS_PATH =
+  "https://raw.githubusercontent.com/OpenZeppelin/ethernaut-leaderboard/update/boards/aliases.json";
 
 export const getLeaderboardPath = (network) => {
-  return `https://raw.githubusercontent.com/OpenZeppelin/ethernaut-leaderboard/update/boards/networkleaderboards/${network}LeaderBoard.json`
-}
+  return `https://raw.githubusercontent.com/OpenZeppelin/ethernaut-leaderboard/update/boards/networkleaderboards/${network}LeaderBoard.json`;
+};

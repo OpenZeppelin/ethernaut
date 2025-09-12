@@ -14,8 +14,11 @@ import {
   networkOnDeprecationOrDeprecated,
   isDeprecatedNetwork,
   deprecationStatus,
-  deprecationDate
+  deprecationDate,
 } from "../utils/networkDeprecation";
+import { Helmet } from "react-helmet";
+import { store } from "./../store";
+import * as actions from "../../src/actions";
 
 class App extends React.Component {
   constructor() {
@@ -57,6 +60,35 @@ class App extends React.Component {
 
     // Navigate to first incomplete level
     this.props.navigate(`${constants.PATH_LEVEL_ROOT}${target}`);
+  }
+
+  async continueAnyway() {
+    const deployWindow = document.querySelectorAll(".deploy-window-bg");
+    deployWindow[0].style.display = "none";
+  }
+
+  async continueInReadOnly() {
+    store.dispatch(actions.loadGamedata());
+    store.dispatch(actions.setGameReadOnly(true));
+    const accountConnectionWindow = document.querySelectorAll(
+      ".account-connection-window-bg"
+    );
+    accountConnectionWindow[0].style.display = "none";
+  }
+
+  async displayConnectionWindow() {
+    const accountConnectionWindow = document.querySelectorAll(
+      ".account-connection-window-bg"
+    );
+    accountConnectionWindow[0].style.display = "block";
+  }
+
+  async requestAccounts() {
+    await window.ethereum.request({ method: "eth_requestAccounts" });
+    const accountConnectionWindow = document.querySelectorAll(
+      ".account-connection-window-bg"
+    );
+    accountConnectionWindow[0].style.display = "none";
   }
 
   render() {
@@ -115,13 +147,44 @@ class App extends React.Component {
       }
     }
 
-    async function continueAnyway() {
-      const deployWindow = document.querySelectorAll(".deploy-window-bg");
-      deployWindow[0].style.display = "none";
-    }
-
     return (
       <div className="appcontainer">
+        <Helmet>
+          <title>The Ethernaut</title>
+          {/* <!-- Primary Meta Tags --> */}
+          <meta name="title" content="The Ethernaut" />
+          <meta
+            name="description"
+            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'."
+          />
+          {/* <!-- Open Graph / Facebook --> */}
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:url"
+            content="https://ethernaut.openzeppelin.com/"
+          />
+          <meta property="og:title" content="The Ethernaut" />
+          <meta
+            property="og:description"
+            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'."
+          />
+          <meta
+            property="og:image"
+            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
+          />
+          {/* <!-- Twitter --> */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@OpenZeppelin" />
+          <meta name="twitter:title" content="The Ethernaut" />
+          <meta
+            name="twitter:description"
+            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'."
+          />
+          <meta
+            name="twitter:image"
+            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
+          />
+        </Helmet>
         {/* Parent container */}
         <main>
           {/* Main title and buttons */}
@@ -142,21 +205,53 @@ class App extends React.Component {
             />
             <ul>
               <button
-                onClick={() => this.navigateToFirstIncompleteLevel()}
+                onClick={() => {
+                  if (!store.getState().gamedata.readOnly) {
+                    this.navigateToFirstIncompleteLevel();
+                  } else {
+                    this.displayConnectionWindow();
+                  }
+                }}
                 className="buttons"
               >
                 {strings.playNow}
               </button>
             </ul>
           </section>
+          {/*not Account Connected window*/}
+          <div className="account-connection-window-bg">
+            <div className="account-connection-window">
+              <button
+                className="account-connection-close-x fas fa-x "
+                onClick={this.continueInReadOnly}
+              >
+              </button>
+              <h1>{randBadIcon()}</h1>
+              <br />
+              <h2>{strings.accountNotConnectedTitle}</h2>
+              <br />
+              <p>{strings.accountNotConnectedMessage}</p>
+              <br />
+              <div className="choice-buttons">
+                <button
+                  className="buttons"
+                  onClick={async () => {
+                    await this.requestAccounts();
+                    window.location.reload();
+                  }}
+                >
+                  {strings.connectAccount}
+                </button>
+              </div>
+            </div>
+          </div>
           {/*not Deployed window*/}
           <div className="deploy-window-bg">
             {!networkOnDeprecationOrDeprecated(this.state.chainId) ? (
               <div className="deploy-window">
                 {/*deploy window*/}
                 <h1>{randGoodIcon()}</h1>
-                <h1>{strings.deployMessageTitle}</h1>
-                <br />
+                <h2>{strings.deployMessageTitle}</h2>
                 {strings.deployMessage}
                 {supportedNetworksList(supportedNetworks)}
                 <p className="deploy-note">{strings.deployConfirmation}</p>
@@ -174,9 +269,11 @@ class App extends React.Component {
               <div className="deploy-window">
                 {/*deprecation window*/}
                 <h1>{randBadIcon()}</h1>
-                <h1>
-                  {isDeprecatedNetwork(this.state.chainId)? strings.deprecatedNetwork : strings.networkBeingDeprecated}
-                </h1>
+                <h2>
+                  {isDeprecatedNetwork(this.state.chainId)
+                    ? strings.deprecatedNetwork
+                    : strings.networkBeingDeprecated}
+                </h2>
                 <br />
                 {strings.deployMessage}
                 {supportedNetworksList(supportedNetworks)}
@@ -184,11 +281,11 @@ class App extends React.Component {
                   <button className="buttons" onClick={switchToSepolia}>
                     {strings.switchToSepolia}
                   </button>
-                  {!isDeprecatedNetwork(this.state.chainId) && 
-                    <button className="buttons" onClick={continueAnyway}>
+                  {!isDeprecatedNetwork(this.state.chainId) && (
+                    <button className="buttons" onClick={this.continueAnyway}>
                       {strings.continueAnyway}
                     </button>
-                  }
+                  )}
                 </div>
               </div>
             )}
@@ -223,16 +320,20 @@ function mapDispatchToProps(dispatch) {
 
 function supportedNetworksList(_supportedNetworks) {
   return (
-  <ul>
-    {_supportedNetworks.map((network, idx) => (
-      <li key={idx}>
-        {network}
-        {networkOnDeprecationOrDeprecated(constants.NETWORKS[network].id) 
-          && " (" + deprecationStatus(constants.NETWORKS[network].id) + 
-          " on " + deprecationDate(constants.NETWORKS[network].id) + ")"}
-      </li>
-    ))}
-  </ul>)
+    <ul>
+      {_supportedNetworks.map((network, idx) => (
+        <li key={idx}>
+          {network}
+          {networkOnDeprecationOrDeprecated(constants.NETWORKS[network].id) &&
+            " (" +
+              deprecationStatus(constants.NETWORKS[network].id) +
+              " on " +
+              deprecationDate(constants.NETWORKS[network].id) +
+              ")"}
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
