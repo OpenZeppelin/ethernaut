@@ -1,0 +1,1 @@
+Seviyeyi geçmek için kasayı aç!
