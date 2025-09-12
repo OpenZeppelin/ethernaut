@@ -526,6 +526,21 @@
       "deployId": "33",
       "instanceGas": 750000,
       "author": "Gianfranco&carlitox477"
+    },
+    {
+      "name": "Bet House",
+      "created": "2024-01-08",
+      "difficulty": "4",
+      "description": "bet_house.md",
+      "completedDescription": "bet_house_completed.md",
+      "levelContract": "BetHouseFactory.sol",
+      "instanceContract": "BetHouse.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "34",
+      "instanceGas": 5000000,
+      "author": "clauBv23"
     }
   ]
 }
