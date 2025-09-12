@@ -2,9 +2,9 @@
 pragma solidity ^0.8.0;
 
 import "./base/Level.sol";
-import "./ReentranceHouse.sol";
+import "./BetHouse.sol";
 
-contract ReentranceHouseFactory is Level {
+contract BetHouseFactory is Level {
     function createInstance(address _player) public payable override returns (address) {
         _player;
 
@@ -12,7 +12,7 @@ contract ReentranceHouseFactory is Level {
         PoolToken _depositToken = new PoolToken("PoolDepositToken", "PDT");
 
         Pool pool = new Pool(address(_wrappedToken), address(_depositToken));
-        ReentranceHouse instance = new ReentranceHouse(address(pool));
+        BetHouse instance = new BetHouse(address(pool));
         _depositToken.mint(_player, 5);
 
         // set pool as tokens owners
@@ -23,7 +23,7 @@ contract ReentranceHouseFactory is Level {
     }
 
     function validateInstance(address payable _instance, address _player) public view override returns (bool) {
-        ReentranceHouse instance = ReentranceHouse(_instance);
+        BetHouse instance = BetHouse(_instance);
         return instance.isBettor(_player);
     }
 

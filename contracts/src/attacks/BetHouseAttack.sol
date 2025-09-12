@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import {ReentranceHouse, Pool, PoolToken} from "../levels/ReentranceHouse.sol";
+import {BetHouse, Pool, PoolToken} from "../levels/BetHouse.sol";
 
-contract ReentranceHouseAttack {
-    ReentranceHouse target;
+contract BetHouseAttack {
+    BetHouse target;
     Pool pool;
     PoolToken depositToken;
     address bettor;
 
     constructor(address target_, address payable pool_, address depositToken_) payable {
-        target = ReentranceHouse(target_);
+        target = BetHouse(target_);
         pool = Pool(pool_);
         depositToken = PoolToken(depositToken_);
         bettor = msg.sender;

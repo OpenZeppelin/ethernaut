@@ -5,7 +5,7 @@ import {ERC20} from "openzeppelin-contracts-08/token/ERC20/ERC20.sol";
 import {Ownable} from "openzeppelin-contracts-08/access/Ownable.sol";
 import {ReentrancyGuard} from "openzeppelin-contracts-08/security/ReentrancyGuard.sol";
 
-contract ReentranceHouse {
+contract BetHouse {
     address public pool;
     uint256 private constant BET_PRICE = 20;
     mapping(address => bool) private bettors;
