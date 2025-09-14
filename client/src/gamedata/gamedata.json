@@ -543,16 +543,16 @@
       "author": "clauBv23"
     },
     {
-      "name": "Impersonator Three",
+      "name": "Elliptic Token",
       "created": "2025-07-10",
-      "difficulty": "6",
-      "description": "impersonator_three.md",
-      "completedDescription": "impersonator_three_complete.md",
-      "levelContract": "ImpersonatorThreeFactory.sol",
-      "instanceContract": "ImpersonatorThree.sol",
+      "difficulty": "8",
+      "description": "elliptic_token.md",
+      "completedDescription": "elliptic_token_complete.md",
+      "levelContract": "EllipticTokenFactory.sol",
+      "instanceContract": "EllipticToken.sol",
       "revealCode": true,
       "deployParams": [],
-      "deployFunds": 0.001,
+      "deployFunds": 0,
       "deployId": "35",
       "instanceGas": 5000000,
       "author": "jack&Gianfranco"
