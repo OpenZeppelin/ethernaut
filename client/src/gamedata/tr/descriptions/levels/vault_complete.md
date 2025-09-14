@@ -1,0 +1,3 @@
+Bir değişkeni private olarak işaretlemenin yalnızca diğer kontratların ona erişmesini engellediğini unutma. Private olarak işaretlenmiş state değişkenleri ve yerel değişkenler hâlâ herkes tarafından okunabilir. 
+
+Verilerin gerçekten gizli kalmasını istiyorsan, blockchain’e eklemeden önce şifrelemen gerekir. Bu durumda, decryption key hiçbir zaman zincire gönderilmemelidir; aksi takdirde anahtar, onu arayan herkes tarafından görülebilir. [zk-SNARKs](https://blog.ethereum.org/2016/12/05/zksnarks-in-a-nutshell/) ise, bir kişinin gizli bir parametreye sahip olup olmadığını, parametreyi hiç ifşa etmeden doğrulamanın bir yolunu sunar.
