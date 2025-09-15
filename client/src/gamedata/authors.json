@@ -212,6 +212,17 @@
           "www.x.com/carlitox477", "https://github.com/GianfrancoBazzani/" 
         ],
       "emails": ["carlitox477.auditor@gmail.com", "bazzanigianfranco@gmail.com"]
+    },
+    "jack&Gianfranco": {
+      "name": [
+        "jack", "Gianfranco"
+      ],
+      "websites": [
+        "https://github.com/jack695", "https://github.com/GianfrancoBazzani/"
+      ],
+      "emails": [
+        "jacquotvincent96@gmail.com","bazzanigianfranco@gmail.com"
+      ]
     }
   }
 }
