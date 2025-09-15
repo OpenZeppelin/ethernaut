@@ -2,7 +2,7 @@ BOB created and owns a new ERC20 token with an elliptic curve–based signed vou
 
 Bob is a lazy developer and “optimized” some steps of the ECDSA algorithm. Can you find the flaw?
 
-Your goal is to steal the $ETK tokens that ALICE (`0xA1CE90808eb98D3e2df25813f04EdCF073816dE6`) just redeemed.
+Your goal is to steal the $ETK tokens that ALICE (`0xA11CE84AcB91Ac59B0A4E2945C9157eF3Ab17D4e`) just redeemed.
 
 &nbsp;
 Things that might help:

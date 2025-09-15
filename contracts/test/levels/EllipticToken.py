@@ -10,10 +10,10 @@ secp256k1 = get_curve('secp256k1')
 
 def main():
     ### Step 1: Recover Alice's public key from the signature  sent as redeemVoucher function call argument receiverSignature that was made when the contract was deployed.
-    r = 0xa48e68e2c70eda26e2ac699d848f9966096ad42663ed0319f85e5c9196fb779e
-    s = 0x4762e70bbf25878db33baed25a7bfc7194d134d1d544f86cf87210204fe128f6
-    alice_address = "0xA1CE90808eb98D3e2df25813f04EdCF073816dE6"
-    voucherHash = "0xf92c8685d7b70988a94b84e271b2e203d30766ca5d073721facc140948c777e6"
+    r = 0xab1dcd2a2a1c697715a62eb6522b7999d04aa952ffa2619988737ee675d9494f 
+    s = 0x2b50ecce40040bcb29b5a8ca1da875968085f22b7c0a50f29a4851396251de12
+    alice_address = "0xA11CE84AcB91Ac59B0A4E2945C9157eF3Ab17D4e"
+    voucherHash = "0x87f1c8cd4c0e19511304b612a9b4996f8c2bd795796636bd25812cd5b0b6a973"
 
     # First, you find the two points R, R′ which have the value r as the x-coordinate. 
     # y is a value such that the curve equation is satisfied y = modular_sqrt(x³ + 7 (mod p)) for secp256k1 curve.

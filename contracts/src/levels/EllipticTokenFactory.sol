@@ -5,8 +5,8 @@ import "./base/Level.sol";
 import "./EllipticToken.sol";
 
 contract EllipticTokenFactory is Level {
-    address constant BOB = 0xB0BD214A47c91869AcdaF3BA2dC502C92FF4808c;
-    address constant ALICE = 0xA1CE90808eb98D3e2df25813f04EdCF073816dE6;
+    address constant BOB = 0xB0B14927389CB009E0aabedC271AC29320156Eb8;
+    address constant ALICE = 0xA11CE84AcB91Ac59B0A4E2945C9157eF3Ab17D4e;
     uint256 constant INITIAL_AMOUNT = 10 ether;
 
     function createInstance(address _player) public payable override returns (address) {
@@ -15,11 +15,12 @@ contract EllipticTokenFactory is Level {
         instance.transferOwnership(BOB);
 
         bytes memory bobSignature =
-            hex"97b0393623179f50da2e57bb7f5abdcf58e26cc3314d04bd0252591b57dd0f90221b11fd0817e08a4fc8dd563b60cc29f21fad4b6da47313f6c65e07b09343321c";
+            hex"085a4f70d03930425d3d92b19b9d4e37672a9224ee2cd68381a9854bb3673ef86b35cfdeee0fb1d2168587fb188eefb4fe046109af063bf85d9d3d6859ceb4451c";
         bytes memory aliceSignature =
-            hex"a48e68e2c70eda26e2ac699d848f9966096ad42663ed0319f85e5c9196fb779e4762e70bbf25878db33baed25a7bfc7194d134d1d544f86cf87210204fe128f61b";
+            hex"ab1dcd2a2a1c697715a62eb6522b7999d04aa952ffa2619988737ee675d9494f2b50ecce40040bcb29b5a8ca1da875968085f22b7c0a50f29a4851396251de121c";
+        bytes32 salt = keccak256("BOB and ALICE are part of the secret sauce");
 
-        instance.redeemVoucher(INITIAL_AMOUNT, ALICE, bobSignature, aliceSignature);
+        instance.redeemVoucher(INITIAL_AMOUNT, ALICE, salt, bobSignature, aliceSignature);
 
         return address(instance);
     }

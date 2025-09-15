@@ -18,8 +18,8 @@ contract TestEllipticToken is Test, Utils {
     uint256 playerKey;
 
     uint256 INITIAL_AMOUNT = 10 ether;
-    address ALICE = 0xA1CE90808eb98D3e2df25813f04EdCF073816dE6;
-    address BOB = 0xB0BD214A47c91869AcdaF3BA2dC502C92FF4808c;
+    address ALICE = 0xA11CE84AcB91Ac59B0A4E2945C9157eF3Ab17D4e;
+    address BOB = 0xB0B14927389CB009E0aabedC271AC29320156Eb8;
 
     /*//////////////////////////////////////////////////////////////
                                  HELPERS
@@ -51,7 +51,8 @@ contract TestEllipticToken is Test, Utils {
     /// @notice Check the intial state of the level and enviroment.
     function testInit() public {
         vm.startPrank(player);
-        assertEq(instance.balanceOf(0xA1CE90808eb98D3e2df25813f04EdCF073816dE6), 10 ether);
+        assertEq(instance.balanceOf(ALICE), 10 ether);
+        assertEq(instance.owner(), BOB);
         assertFalse(submitLevelInstance(ethernaut, address(instance)));
     }
 
@@ -60,10 +61,10 @@ contract TestEllipticToken is Test, Utils {
         vm.startPrank(player, player);
 
         // Spoofed signature generated with EllipticToken.py script
-        bytes32 r = 0xfdc36d21677e3e195676ed6b63bdefa5faf21d9416eacf576330b6c770c3b70e;
-        bytes32 s = 0x50ed65b7216c4c6992c3918da6ef9fdf262791f631f8008e2a024c9db22e5ae7;
+        bytes32 r = 0xd3433fe216c991674d4c7e2186460a412b91c976c44569433a0985dffc099b02;
+        bytes32 s = 0x16417451991575e0cdfc4aaff865deb0843abf95f606aed775fda4e40e047e14;
         uint8 v = 27;
-        uint256 amount = uint256(0xb514af48119b2aaaa2e16b6ba321a45e27eae039b58e985c4bc36455478ddf94);
+        uint256 amount = uint256(0x59e540931475e32e9ace9d434a5667767f569cd3c8316ea28398398bac06df55);
         bytes memory aliceSpoofedSignature = abi.encodePacked(r, s, v);
 
         // Permit acceptance signature
