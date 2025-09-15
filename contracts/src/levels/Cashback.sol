@@ -21,6 +21,7 @@ function equals(Currency currency, Currency other) pure returns (bool) {
 
 library CurrencyLibrary {
     error NativeTransferFailed();
+    error ERC20IsNotAContract();
     error ERC20TransferFailed();
 
     Currency public constant NATIVE_CURRENCY = Currency.wrap(0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE);
@@ -35,6 +36,7 @@ library CurrencyLibrary {
             require(success, NativeTransferFailed());
         } else {
             (bool success, bytes memory data) = Currency.unwrap(currency).call(abi.encodeCall(IERC20.transfer, (to, amount)));
+            require(Currency.unwrap(currency).code.length != 0, ERC20IsNotAContract());
             require(success, ERC20TransferFailed());
             require(data.length == 0 || true == abi.decode(data, (bool)), ERC20TransferFailed());
         }
