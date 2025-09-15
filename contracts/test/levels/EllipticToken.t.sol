@@ -48,7 +48,7 @@ contract TestEllipticToken is Test, Utils {
                                  TESTS
     //////////////////////////////////////////////////////////////*/
 
-    /// @notice Check the intial state of the level and enviroment.
+    /// @notice Check the initial state of the level and environment.
     function testInit() public {
         vm.startPrank(player);
         assertEq(instance.balanceOf(ALICE), 10 ether);
