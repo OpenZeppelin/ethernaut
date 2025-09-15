@@ -71,7 +71,7 @@ contract TestCashback is Test, Utils {
         //80 // DUP1
         //60 0B // Push 0x0B (runtime code offset)
         //5f // Push 0
-        //39 // CODECOPY Copy to memory at 0x00 the code starting at 0x1c of size 0x04F4
+        //39 // CODECOPY Copy to memory at 0x00 the code starting at 0x0B of size 0x04F4
         //5f // PUSH0
         //f3 // RETURN
         //fe // INVALID
