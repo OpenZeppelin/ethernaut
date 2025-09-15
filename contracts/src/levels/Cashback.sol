@@ -34,7 +34,7 @@ library CurrencyLibrary {
             (bool success,) = to.call{value: amount}("");
             require(success, NativeTransferFailed());
         } else {
-            (bool success, bytes memory data) = to.call(abi.encodeCall(IERC20.transfer, (to, amount)));
+            (bool success, bytes memory data) = Currency.unwrap(currency).call(abi.encodeCall(IERC20.transfer, (to, amount)));
             require(success, ERC20TransferFailed());
             require(data.length == 0 || true == abi.decode(data, (bool)), ERC20TransferFailed());
         }
