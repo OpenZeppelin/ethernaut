@@ -85,7 +85,7 @@ contract TestCashback is Test, Utils {
         // 60 17 Push 0x17
         // 56 JUMP to 0x17
         // instance Address
-        // 5B
+        // 5B JUMPDEST
         // type(CashbackAttack).runtimeCode with offset applied to jump instructions
         bytes memory runtimeCodeTampered =
             bytes.concat(hex"601756", abi.encodePacked(instance), hex"5B", runtimeCodeJumpOffset);
