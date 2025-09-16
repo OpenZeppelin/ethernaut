@@ -13,8 +13,8 @@ contract ImpersonatorFactory is Level {
             [
                 uint256(11397568185806560130291530949248708355673262872727946990834312389557386886033),
                 uint256(54405834204020870944342294544757609285398723182661749830189277079337680158706),
-                uint256(27)
-            ]
+                uint256(27)                             
+            ] 
         );
         impersonator.deployNewLock(signature);
         return address(impersonator);
