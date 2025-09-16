@@ -201,7 +201,7 @@ export const SHOW_VERSION = true;
 // export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_SEPOLIA
 // export const ACTIVE_NETWORK = NETWORKS.HOLESKY
 // export const ACTIVE_NETWORK = NETWORKS.AMOY
-// export const ACTIVE_NETWORK = NETWORKS.LOCAL;
+export const ACTIVE_NETWORK = NETWORKS.LOCAL;
 
 let id_to_network = {};
 Object.keys(NETWORKS)
