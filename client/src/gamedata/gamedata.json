@@ -569,7 +569,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "36",
-      "instanceGas": 3000000,
+      "instanceGas": 5000000,
       "author": "Gianfranco"
     }
   ]
