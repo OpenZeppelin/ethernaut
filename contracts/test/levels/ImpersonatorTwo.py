@@ -15,7 +15,7 @@ s_2 = 0x4c3ac03b268ae1d2aca1201e8a936adf578a8b95a49986d54de87cd0ccb68a79
 z_2 = 0x6a0d6cd0c2ca5d901d94d52e8d9484e4452a3668ae20d63088909611a7dccc51
 
 # As can be seen, the r values are the same, meaning that the same random k was used to sign both messages.
-# This is a critical vulnerability in ECDSA, as it allows the recovery of the private key (see the Play Station 3 EDCSA vulnerability).
+# This is a critical vulnerability in ECDSA, as it allows the recovery of the private key (see the Play Station 3 ECDSA vulnerability).
 
 # According to the ECDSA signature generation algorithm:
 # https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Signature_generation_algorithm. 
