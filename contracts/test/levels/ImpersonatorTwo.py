@@ -41,7 +41,7 @@ owner_sk = mod_inverse(r, secp256k1.n) * (s_1 * k - z_1) % secp256k1.n
 # Then we can generate valid signatures to unlock the contract and change the admin to ourselves.
 sk = SigningKey.from_string(bytes.fromhex(hex(owner_sk)[2:]), curve=SECP256k1)
 
-# Set Admin signature
+## Generate Set Admin signature
 SET_ADMIN_2_DIGEST = "a697d71f95302311583a240bee39aefcf3eb87df3ee1ca2f3001e038fde9922e"
 
 set_admin_2_signature = sk.sign_digest(bytes.fromhex(SET_ADMIN_2_DIGEST), k=k)
