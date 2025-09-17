@@ -14,7 +14,6 @@ import { withRouter } from "../hoc/withRouter";
 import { getLevelKey } from "../utils/contractutil";
 import { deployAndRegisterLevel } from "../utils/deploycontract";
 import { svgFilter } from "../utils/svg";
-import { Helmet } from 'react-helmet';
 import { store } from "../store";
 
 class Level extends React.Component {
@@ -152,42 +151,6 @@ class Level extends React.Component {
 
     return (
       <main className="main-wrapper">
-        <Helmet>
-        <title>{`The Ethernaut - ${level.name}`}</title>
-          {/* <!-- Primary Meta Tags --> */}
-          <meta name="title" content={`The Ethernaut - ${level.name}`} />
-          <meta
-            name="description"
-            content={`Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'. - ${level.name}`}
-          />
-          {/* <!-- Open Graph / Facebook --> */}
-          <meta property="og:type" content="website" />
-          <meta
-            property="og:url"
-            content={`https://ethernaut.openzeppelin.com/level/${level.deployedAddress || level.id}`}
-          />
-          <meta property="og:title" content={`The Ethernaut - ${level.name}`} />
-          <meta
-            property="og:description"
-            content={`Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'. - ${level.name}`}
-          />
-          <meta
-            property="og:image"
-            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
-          />
-          {/* <!-- Twitter --> */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@OpenZeppelin" />
-          <meta name="twitter:title" content={`The Ethernaut - ${level.name}`} />
-          <meta
-            name="twitter:description"
-            content={`Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'. - ${level.name}`}
-          />
-          <meta
-            name="twitter:image"
-            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
-          />
-        </Helmet>
         <main className="main-wrapper">
           {(isDescriptionMissingTranslation ||
             isCompleteDescriptionMissingTranslation) && (
@@ -238,7 +201,7 @@ class Level extends React.Component {
 
           <section onLoad={this.handleImageLoad}>
             <img
-              alt={`${level.name} level  image`}
+              alt={`${level.name} level`}
               className="level-tile level-img-view"
               src={selectedLevel.src}
             />
