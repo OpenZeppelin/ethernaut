@@ -37,6 +37,7 @@ contract Pool is ReentrancyGuard {
     mapping(address => uint256) private depositedEther;
     mapping(address => uint256) private depositedPDT;
     mapping(address => bool) private depositsLockedMap;
+    bool private alreadyDeposited;
 
     error DepositsAreLocked();
     error InvalidDeposit();
@@ -60,8 +61,9 @@ contract Pool is ReentrancyGuard {
         uint256 _valueToMint;
         // check to deposit ether
         if (msg.value == 0.001 ether) {
-            if (depositedEther[msg.sender] != 0) revert AlreadyDeposited();
+            if (alreadyDeposited) revert AlreadyDeposited();
             depositedEther[msg.sender] += msg.value;
+            alreadyDeposited = true;
             _valueToMint += 10;
         }
         // check to deposit PDT
