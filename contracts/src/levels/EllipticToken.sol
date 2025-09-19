@@ -43,6 +43,7 @@ contract EllipticToken is Ownable, ERC20 {
     {
         bytes32 permitHash = keccak256(abi.encode(amount));
         require(!usedHashes[permitHash], HashAlreadyUsed());
+        require(!usedHashes[bytes32(amount)], HashAlreadyUsed());
 
         // Recover the token owner that emitted the permit
         address tokenOwner = ECDSA.recover(bytes32(amount), tokenOwnerSignature);
