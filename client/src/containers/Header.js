@@ -2,7 +2,7 @@ import React from "react";
 import onClickOutside from "react-onclickoutside";
 import { connect } from "react-redux";
 import { withRouter } from "../hoc/withRouter";
-import { Link, Navigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions";
 import * as constants from "../constants";
@@ -12,7 +12,6 @@ import { ProgressBar } from "react-loader-spinner";
 import { svgFilter } from "../utils/svg";
 import LeaderIcon from "../components/leaderboard/LeaderIcon";
 import { store } from "../store";
-// import parse from "html-react-parser";
 
 class Header extends React.Component {
   constructor(props) {
@@ -241,6 +240,8 @@ class Header extends React.Component {
       ru: strings.russian,
       ar: strings.arabic,
       tr: strings.turkish,
+      uk: strings.ukrainian,
+      ko: strings.korean,
     };
 
     const ddOpen = Boolean(this.state.multiDDOpen);

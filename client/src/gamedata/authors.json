@@ -148,6 +148,15 @@
         "https://www.linkedin.com/in/kstasi/"
       ]
     },
+    "clauBv23": {
+      "name": [
+        "Claudia Barcelo"
+      ],
+      "emails": ["claudiabarcelovaldes40@gmail.com"],
+      "websites": [
+        "https://github.com/clauBv23"
+      ]
+    },
     "0xneves&gabrielsdev&R4wd0G&luizfolly&fefeupz": {
       "name": [
         "Guilherme Neves",
@@ -203,6 +212,29 @@
           "www.x.com/carlitox477", "https://github.com/GianfrancoBazzani/" 
         ],
       "emails": ["carlitox477.auditor@gmail.com", "bazzanigianfranco@gmail.com"]
+    },
+    "jack&Gianfranco": {
+      "name": [
+        "jack", "Gianfranco"
+      ],
+      "websites": [
+        "https://github.com/jack695", "https://github.com/GianfrancoBazzani/"
+      ],
+      "emails": [
+        "jacquotvincent96@gmail.com","bazzanigianfranco@gmail.com"
+      ]
+    },
+    "jack": {
+      "name": [
+        "jack"
+      ],
+      "websites": [
+        "https://github.com/jack695"
+      ],
+      "emails": [
+        "jacquotvincent96@gmail.com"
+      ]
     }
+
   }
 }

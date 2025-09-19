@@ -1,6 +1,6 @@
-Tebrikler! Eğitimi tamamladınız.
-Aşağıda etkileşimde bulunduğunuz sözleşmenin Solidity koduna bir göz atın.
+Tebrikler! Eğitimi başarıyla tamamladın. 
+Az önce etkileşime girdiğin kontratın Solidity koduna aşağıdan göz atabilirsin.
 
-Artık oyunun tüm bölümlerini tamamlamaya hazırsınız ve şu andan itibaren tek başınızasınız.
+Artık oyundaki tüm seviyeleri tamamlamaya hazırsın ve bundan sonra yoluna tek başına devam edeceksin.
 
-Tanrı aşkına!!
+Bol şans!!

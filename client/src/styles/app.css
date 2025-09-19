@@ -383,7 +383,7 @@ nav li {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 3%;
+  padding-bottom: 2.5%;
 }
 
 .titles ul {
@@ -392,6 +392,7 @@ nav li {
   align-items: center;
   padding: 0px 0px;
   margin-top: 1%;
+  margin-bottom: 0rem;
 }
 
 .main-wrapper {
@@ -407,7 +408,7 @@ nav li {
   align-items: center;
   padding-left: 10%;
   padding-right: 10%;
-  margin-top: 2em;
+  margin-top: 1.5em;
 }
 
 .content_img {

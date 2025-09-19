@@ -11,6 +11,7 @@ contract MagicAnimalCarousel {
     mapping(uint256 crateId => uint256 animalInside) public carousel;
 
     error AnimalNameTooLong();
+    error CrateNotInitialized();
 
     constructor() {
         carousel[0] ^= 1 << 160;
@@ -28,7 +29,10 @@ contract MagicAnimalCarousel {
     }
 
     function changeAnimal(string calldata animal, uint256 crateId) external {
-        address owner = address(uint160(carousel[crateId] & OWNER_MASK));
+        uint256 crate = carousel[crateId];
+        require(crate != 0, CrateNotInitialized());
+        
+        address owner = address(uint160(crate & OWNER_MASK));
         if (owner != address(0)) {
             require(msg.sender == owner);
         }

@@ -16,7 +16,6 @@ import {
   deprecationStatus,
   deprecationDate,
 } from "../utils/networkDeprecation";
-import { Helmet } from "react-helmet";
 import { store } from "./../store";
 import * as actions from "../../src/actions";
 
@@ -149,42 +148,6 @@ class App extends React.Component {
 
     return (
       <div className="appcontainer">
-        <Helmet>
-          <title>The Ethernaut</title>
-          {/* <!-- Primary Meta Tags --> */}
-          <meta name="title" content="The Ethernaut" />
-          <meta
-            name="description"
-            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'."
-          />
-          {/* <!-- Open Graph / Facebook --> */}
-          <meta property="og:type" content="website" />
-          <meta
-            property="og:url"
-            content="https://ethernaut.openzeppelin.com/"
-          />
-          <meta property="og:title" content="The Ethernaut" />
-          <meta
-            property="og:description"
-            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'."
-          />
-          <meta
-            property="og:image"
-            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
-          />
-          {/* <!-- Twitter --> */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@OpenZeppelin" />
-          <meta name="twitter:title" content="The Ethernaut" />
-          <meta
-            name="twitter:description"
-            content="Web3/Solidity based wargame played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'."
-          />
-          <meta
-            name="twitter:image"
-            content="https://ethernaut.openzeppelin.com/imgs/metatag.png"
-          />
-        </Helmet>
         {/* Parent container */}
         <main>
           {/* Main title and buttons */}
