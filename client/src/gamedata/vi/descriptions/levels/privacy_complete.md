@@ -1,0 +1,3 @@
+Không có gì trong blockchain ethereum là riêng tư. Từ khóa private chỉ là một cấu trúc nhân tạo của ngôn ngữ Solidity. `getStorageAt(...)` của Web3 có thể được sử dụng để đọc bất cứ thứ gì từ lưu trữ. Tuy nhiên, có thể khó khăn để đọc những gì bạn muốn, vì một số quy tắc tối ưu hóa và kỹ thuật được sử dụng để nén lưu trữ càng nhiều càng tốt.
+
+Nó không thể phức tạp hơn nhiều so với những gì được phơi bày trong cấp độ này. Để biết thêm, hãy xem bài viết tuyệt vời này của "Darius": [Cách đọc lưu trữ hợp đồng Ethereum](https://medium.com/aigang-network/how-to-read-ethereum-contract-storage-44252c8af925) 
