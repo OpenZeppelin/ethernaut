@@ -1,17 +1,17 @@
-The integer math portion aside, getting prices or any sort of data from any single source is a massive attack vector in smart contracts. 
+Bỏ qua phần toán học số nguyên, việc lấy giá hoặc bất kỳ loại dữ liệu nào từ một nguồn duy nhất là một vector tấn công lớn trong hợp đồng thông minh.
 
-You can clearly see from this example, that someone with a lot of capital could manipulate the price in one fell swoop, and cause any applications relying on it to use the the wrong price. 
+Bạn có thể thấy rõ từ ví dụ này, rằng ai đó có nhiều vốn có thể thao túng giá trong một cú đánh, và khiến bất kỳ ứng dụng nào dựa vào nó sử dụng giá sai.
 
-The exchange itself is decentralized, but the price of the asset is centralized, since it comes from 1 dex. However, if we were to consider tokens that represent actual assets rather than fictitious ones, most of them would have exchange pairs in several dexes and networks. This would decrease the effect on the asset's price in case a specific dex is targeted by an attack like this.
+Bản thân sàn giao dịch là phi tập trung, nhưng giá của tài sản lại tập trung, vì nó đến từ 1 dex. Tuy nhiên, nếu chúng ta xem xét các token đại diện cho tài sản thực tế thay vì tài sản hư cấu, hầu hết chúng sẽ có các cặp trao đổi trong nhiều dex và mạng. Điều này sẽ giảm tác động đến giá tài sản trong trường hợp một dex cụ thể bị tấn công như vậy.
 
-[Oracles](https://betterprogramming.pub/what-is-a-blockchain-oracle-f5ccab8dbd72?source=friends_link&sk=d921a38466df8a9176ed8dd767d8c77d) are used to get data into and out of smart contracts. 
+[Oracles](https://betterprogramming.pub/what-is-a-blockchain-oracle-f5ccab8dbd72?source=friends_link&sk=d921a38466df8a9176ed8dd767d8c77d) được sử dụng để lấy dữ liệu vào và ra khỏi hợp đồng thông minh.
 
-[Chainlink Data Feeds](https://docs.chain.link/docs/get-the-latest-price) are a secure, reliable, way to get decentralized data into your smart contracts. They have a vast library of many different sources, and also offer [secure randomness](https://docs.chain.link/docs/chainlink-vrf), ability to make [any API call](https://docs.chain.link/docs/make-a-http-get-request), [modular oracle network creation](https://docs.chain.link/docs/architecture-decentralized-model), [upkeep, actions, and maintainance](https://docs.chain.link/docs/kovan-keeper-network-beta), and unlimited customization. 
+[Chainlink Data Feeds](https://docs.chain.link/docs/get-the-latest-price) là một cách an toàn, đáng tin cậy để lấy dữ liệu phi tập trung vào hợp đồng thông minh của bạn. Chúng có một thư viện rộng lớn với nhiều nguồn khác nhau, và cũng cung cấp [tính ngẫu nhiên an toàn](https://docs.chain.link/docs/chainlink-vrf), khả năng thực hiện [bất kỳ lệnh gọi API nào](https://docs.chain.link/docs/make-a-http-get-request), [tạo mạng oracle mô-đun](https://docs.chain.link/docs/architecture-decentralized-model), [bảo trì, hành động và duy trì](https://docs.chain.link/docs/kovan-keeper-network-beta), và tùy chỉnh không giới hạn.
 
-[Uniswap TWAP Oracles](https://docs.uniswap.org/contracts/v2/concepts/core-concepts/oracles) relies on a time weighted price model called [TWAP](https://en.wikipedia.org/wiki/Time-weighted_average_price#). While the design can be attractive, this protocol heavily depends on the liquidity of the DEX protocol, and if this is too low, prices can be easily manipulated. 
+[Uniswap TWAP Oracles](https://docs.uniswap.org/contracts/v2/concepts/core-concepts/oracles) dựa vào mô hình giá trọng số thời gian gọi là [TWAP](https://en.wikipedia.org/wiki/Time-weighted_average_price#). Mặc dù thiết kế có thể hấp dẫn, giao thức này phụ thuộc nhiều vào tính thanh khoản của giao thức DEX, và nếu điều này quá thấp, giá có thể dễ dàng bị thao túng. 
 
 
-Here is an example of getting the price of Bitcoin in USD from a Chainlink data feed (on the Sepolia testnet):
+Đây là một ví dụ về việc lấy giá Bitcoin bằng USD từ Chainlink data feed (trên Sepolia testnet):
 
 ```
 // SPDX-License-Identifier: MIT
@@ -50,9 +50,9 @@ contract PriceConsumerV3 {
 }
 
 ```
-[Try it on Remix](https://remix.ethereum.org/#url=https://docs.chain.link/samples/PriceFeeds/PriceConsumerV3.sol)
+[Thử trên Remix](https://remix.ethereum.org/#url=https://docs.chain.link/samples/PriceFeeds/PriceConsumerV3.sol)
 
-Check the Chainlink feed [page](https://data.chain.link/ethereum/mainnet/crypto-usd/btc-usd) to see that the price of Bitcoin is queried from up to 31 different sources.
+Kiểm tra [trang](https://data.chain.link/ethereum/mainnet/crypto-usd/btc-usd) Chainlink feed để xem rằng giá Bitcoin được truy vấn từ tối đa 31 nguồn khác nhau.
 
-You can check also, the [list](https://docs.chain.link/data-feeds/price-feeds/addresses/) all Chainlink price feeds addresses.
+Bạn cũng có thể kiểm tra [danh sách](https://docs.chain.link/data-feeds/price-feeds/addresses/) tất cả địa chỉ Chainlink price feeds.
 

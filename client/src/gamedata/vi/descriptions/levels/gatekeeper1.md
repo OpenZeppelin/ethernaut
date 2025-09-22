@@ -1,5 +1,5 @@
-Make it past the gatekeeper and register as an entrant to pass this level.
+Vượt qua người gác cổng và đăng ký như một người tham gia để vượt qua cấp độ này.
 
-##### Things that might help:
-* Remember what you've learned from the Telephone and Token levels.
-* You can learn more about the special function `gasleft()`, in Solidity's documentation (see [here](https://docs.soliditylang.org/en/v0.8.3/units-and-global-variables.html) and [here](https://docs.soliditylang.org/en/v0.8.3/control-structures.html#external-function-calls)).
+##### Những điều có thể hữu ích:
+* Hãy nhớ những gì bạn đã học từ các cấp độ Telephone và Token.
+* Bạn có thể tìm hiểu thêm về hàm đặc biệt `gasleft()`, trong tài liệu Solidity (xem [đây](https://docs.soliditylang.org/en/v0.8.3/units-and-global-variables.html) và [đây](https://docs.soliditylang.org/en/v0.8.3/control-structures.html#external-function-calls)).

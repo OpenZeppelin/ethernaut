@@ -1,6 +1,6 @@
-NaughtCoin is an ERC20 token and you're already holding all of them. The catch is that you'll only be able to transfer them after a 10 year lockout period. Can you figure out how to get them out to another address so that you can transfer them freely? Complete this level by getting your token balance to 0. 
+NaughtCoin là một token ERC20 và bạn đã nắm giữ tất cả chúng. Cái bẫy là bạn chỉ có thể chuyển chúng sau thời gian khóa 10 năm. Bạn có thể tìm ra cách để chuyển chúng ra địa chỉ khác để bạn có thể chuyển chúng tự do không? Hoàn thành cấp độ này bằng cách đưa số dư token của bạn về 0.
 
 &nbsp;
-Things that might help
-*  The [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) Spec
-*  The [OpenZeppelin](https://github.com/OpenZeppelin/zeppelin-solidity/tree/master/contracts) codebase
+Những điều có thể hữu ích
+*  [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) Spec
+*  [OpenZeppelin](https://github.com/OpenZeppelin/zeppelin-solidity/tree/master/contracts) codebase

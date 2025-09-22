@@ -1,7 +1,7 @@
-Next time, those friends will request an audit before depositing any money on a contract. Congrats!
+Lần sau, những người bạn đó sẽ yêu cầu kiểm toán trước khi gửi tiền vào hợp đồng. Chúc mừng!
 
-Frequently, using proxy contracts is highly recommended to bring upgradeability features and reduce the deployment's gas cost. However, developers must be careful not to introduce storage collisions, as seen in this level.
+Thường xuyên, việc sử dụng hợp đồng proxy được khuyến nghị cao để mang lại tính năng nâng cấp và giảm chi phí gas triển khai. Tuy nhiên, các nhà phát triển phải cẩn thận không để xảy ra va chạm lưu trữ, như được thấy trong cấp độ này.
 
-Furthermore, iterating over operations that consume ETH can lead to issues if it is not handled correctly. Even if ETH is spent, `msg.value` will remain the same, so the developer must manually keep track of the actual remaining amount on each iteration. This can also lead to issues when using a multi-call pattern, as performing multiple `delegatecall`s to a function that looks safe on its own could lead to unwanted transfers of ETH, as `delegatecall`s keep the original `msg.value` sent to the contract.
+Hơn nữa, lặp qua các thao tác tiêu thụ ETH có thể dẫn đến vấn đề nếu không được xử lý đúng cách. Ngay cả khi ETH được chi tiêu, `msg.value` sẽ vẫn giữ nguyên, vì vậy nhà phát triển phải theo dõi thủ công số tiền còn lại thực tế trong mỗi lần lặp. Điều này cũng có thể dẫn đến vấn đề khi sử dụng mẫu multi-call, vì thực hiện nhiều `delegatecall` đến một hàm trông an toàn có thể dẫn đến chuyển ETH không mong muốn, vì `delegatecall` giữ nguyên `msg.value` gốc được gửi đến hợp đồng.
 
-Move on to the next level when you're ready!
+Chuyển sang cấp độ tiếp theo khi bạn sẵn sàng!

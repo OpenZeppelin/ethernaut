@@ -1,5 +1,5 @@
-Claim ownership of the contract below to complete this level.
+Chiếm quyền sở hữu của hợp đồng bên dưới để hoàn thành cấp độ này.
 
 &nbsp;
-Things that might help
-* See the ["?"](https://ethernaut.openzeppelin.com/help) page above, section "Beyond the console"
+Những điều có thể hữu ích
+* Xem trang ["?"](https://ethernaut.openzeppelin.com/help) ở trên, phần "Beyond the console"

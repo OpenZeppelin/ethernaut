@@ -1,13 +1,11 @@
-This contract utilizes a library to store two different times for two different
-timezones. The constructor creates two instances of the library for each time
-to be stored. 
+Hợp đồng này sử dụng một thư viện để lưu trữ hai thời gian khác nhau cho hai múi giờ khác nhau. Constructor tạo hai phiên bản của thư viện cho mỗi thời gian cần được lưu trữ.
 
-The goal of this level is for you to claim ownership of the instance you are given.
+Mục tiêu của cấp độ này là bạn phải chiếm quyền sở hữu của phiên bản được cung cấp.
 
-&nbsp; Things that might help
-* Look into Solidity's documentation on the `delegatecall` low level function,
-  how it works, how it can be used to delegate operations to on-chain.
-  libraries, and what implications it has on execution scope.
-* Understanding what it means for `delegatecall` to be context-preserving. 
-* Understanding how storage variables are stored and accessed. 
-* Understanding how casting works between different data types. 
+&nbsp; Những điều có thể hữu ích
+* Tìm hiểu tài liệu Solidity về hàm cấp thấp `delegatecall`,
+  cách nó hoạt động, cách sử dụng để ủy quyền các thao tác cho
+  thư viện on-chain, và những tác động của nó đến phạm vi thực thi.
+* Hiểu ý nghĩa của việc `delegatecall` bảo toàn ngữ cảnh.
+* Hiểu cách các biến lưu trữ được lưu trữ và truy cập.
+* Hiểu cách casting hoạt động giữa các kiểu dữ liệu khác nhau. 

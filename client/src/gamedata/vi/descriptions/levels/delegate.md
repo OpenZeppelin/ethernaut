@@ -1,7 +1,7 @@
-The goal of this level is for you to claim ownership of the instance you are given.
+Mục tiêu của cấp độ này là bạn phải chiếm quyền sở hữu của phiên bản được cung cấp.
 
 &nbsp;
-Things that might help
-* Look into Solidity's documentation on the `delegatecall` low level function, how it works, how it can be used to delegate operations to on-chain libraries, and what implications it has on execution scope.
-* Fallback methods
-* Method ids
+Những điều có thể hữu ích
+* Tìm hiểu tài liệu Solidity về hàm cấp thấp `delegatecall`, cách nó hoạt động, cách sử dụng để ủy quyền các thao tác cho thư viện on-chain, và những tác động của nó đến phạm vi thực thi.
+* Phương thức fallback
+* ID phương thức

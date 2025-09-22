@@ -1,5 +1,5 @@
-This is a coin flipping game where you need to build up your winning streak by guessing the outcome of a coin flip. To complete this level you'll need to use your psychic abilities to guess the correct outcome 10 times in a row.
+Đây là trò chơi tung đồng xu nơi bạn cần xây dựng chuỗi thắng bằng cách đoán kết quả của việc tung đồng xu. Để hoàn thành cấp độ này, bạn cần sử dụng khả năng tâm linh để đoán đúng kết quả 10 lần liên tiếp.
 
 &nbsp;
-Things that might help
-* See the ["?"](https://ethernaut.openzeppelin.com/help) page above in the top right corner menu, section "Beyond the console"
+Những điều có thể hữu ích
+* Xem trang ["?"](https://ethernaut.openzeppelin.com/help) ở trên trong menu góc trên bên phải, phần "Beyond the console"

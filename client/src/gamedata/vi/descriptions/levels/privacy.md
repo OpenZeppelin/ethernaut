@@ -1,11 +1,11 @@
-The creator of this contract was careful enough to protect the sensitive areas of its storage. 
+Người tạo hợp đồng này đã cẩn thận đủ để bảo vệ các khu vực nhạy cảm của bộ nhớ của nó.
 
-Unlock this contract to beat the level.
+Mở khóa hợp đồng này để thắng cấp độ.
 
-Things that might help:
-* Understanding how storage works
-* Understanding how parameter parsing works
-* Understanding how casting works
+Những điều có thể hữu ích:
+* Hiểu cách lưu trữ hoạt động
+* Hiểu cách phân tích tham số hoạt động
+* Hiểu cách casting hoạt động
 
-Tips:
-* Remember that metamask is just a commodity. Use another tool if it is presenting problems. Advanced gameplay could involve using remix, or your own web3 provider.
+Mẹo:
+* Hãy nhớ rằng metamask chỉ là một hàng hóa. Sử dụng công cụ khác nếu nó gây ra vấn đề. Gameplay nâng cao có thể liên quan đến việc sử dụng remix, hoặc web3 provider của riêng bạn.

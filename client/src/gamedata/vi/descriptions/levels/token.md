@@ -1,7 +1,7 @@
-The goal of this level is for you to hack the basic token contract below.
+Mục tiêu của cấp độ này là bạn phải hack hợp đồng token cơ bản bên dưới.
 
-You are given 20 tokens to start with and you will beat the level if you somehow manage to get your hands on any additional tokens. Preferably a very large amount of tokens.
+Bạn được cung cấp 20 token để bắt đầu và bạn sẽ thắng cấp độ nếu bạn bằng cách nào đó quản lý để có thêm bất kỳ token nào. Tốt nhất là một lượng token rất lớn.
 
 &nbsp;
-Things that might help:
-* What is an odometer?
+Những điều có thể hữu ích:
+* Đồng hồ đo quãng đường là gì?

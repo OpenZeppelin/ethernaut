@@ -1,9 +1,9 @@
-The goal of this level is for you to steal all the funds from the contract.
+Mục tiêu của cấp độ này là bạn phải đánh cắp tất cả tiền từ hợp đồng.
 
 &nbsp;
-Things that might help:
-* Untrusted contracts can execute code where you least expect it.
-* Fallback methods
+Những điều có thể hữu ích:
+* Các hợp đồng không đáng tin cậy có thể thực thi mã ở nơi bạn ít mong đợi nhất.
+* Phương thức fallback
 * Throw/revert bubbling
-* Sometimes the best way to attack a contract is with another contract.
-* See the ["?"](https://ethernaut.openzeppelin.com/help) page above, section "Beyond the console"
+* Đôi khi cách tốt nhất để tấn công một hợp đồng là với một hợp đồng khác.
+* Xem trang ["?"](https://ethernaut.openzeppelin.com/help) ở trên, phần "Beyond the console"

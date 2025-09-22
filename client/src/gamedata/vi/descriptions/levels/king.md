@@ -1,5 +1,5 @@
-The contract below represents a very simple game: whoever sends it an amount of ether that is larger than the current prize becomes the new king. On such an event, the overthrown king gets paid the new prize, making a bit of ether in the process! As ponzi as it gets xD
+Hợp đồng bên dưới đại diện cho một trò chơi rất đơn giản: bất kỳ ai gửi cho nó một lượng ether lớn hơn giải thưởng hiện tại sẽ trở thành vua mới. Trong sự kiện như vậy, vua bị lật đổ sẽ được trả giải thưởng mới, kiếm được một chút ether trong quá trình! Ponzi như nó có thể xD
 
-Such a fun game. Your goal is to break it.
+Một trò chơi thú vị như vậy. Mục tiêu của bạn là phá vỡ nó.
 
-When you submit the instance back to the level, the level is going to reclaim kingship. You will beat the level if you can avoid such a self proclamation.
+Khi bạn gửi phiên bản trở lại cấp độ, cấp độ sẽ tái chiếm vương quyền. Bạn sẽ thắng cấp độ nếu bạn có thể tránh được sự tự tuyên bố như vậy.

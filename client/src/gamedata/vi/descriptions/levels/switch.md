@@ -1,4 +1,4 @@
-Just have to flip the switch. Can't be that hard, right?
+Chỉ cần bật công tắc. Không thể khó đến vậy, phải không?
 
-##### Things that might help:
-Understanding how `CALLDATA` is encoded.
+##### Những điều có thể hữu ích:
+Hiểu cách `CALLDATA` được mã hóa.

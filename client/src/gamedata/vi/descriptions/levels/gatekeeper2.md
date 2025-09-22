@@ -1,6 +1,6 @@
-This gatekeeper introduces a few new challenges. Register as an entrant to pass this level.
+Người gác cổng này giới thiệu một vài thử thách mới. Đăng ký như một người tham gia để vượt qua cấp độ này.
 
-##### Things that might help:
-* Remember what you've learned from getting past the first gatekeeper - the first gate is the same.
-* The `assembly` keyword in the second gate allows a contract to access functionality that is not native to vanilla Solidity. See [here](http://solidity.readthedocs.io/en/v0.4.23/assembly.html) for more information. The `extcodesize` call in this gate will get the size of a contract's code at a given address - you can learn more about how and when this is set in section 7 of the [yellow paper](https://ethereum.github.io/yellowpaper/paper.pdf).
-* The `^` character in the third gate is a bitwise operation (XOR), and is used here to apply another common bitwise operation (see [here](http://solidity.readthedocs.io/en/v0.4.23/miscellaneous.html#cheatsheet)). The Coin Flip level is also a good place to start when approaching this challenge.
+##### Những điều có thể hữu ích:
+* Hãy nhớ những gì bạn đã học từ việc vượt qua người gác cổng đầu tiên - cánh cổng đầu tiên là giống nhau.
+* Từ khóa `assembly` trong cánh cổng thứ hai cho phép hợp đồng truy cập chức năng không có sẵn trong vanilla Solidity. Xem [đây](http://solidity.readthedocs.io/en/v0.4.23/assembly.html) để biết thêm thông tin. Lệnh gọi `extcodesize` trong cánh cổng này sẽ lấy kích thước mã của hợp đồng tại một địa chỉ nhất định - bạn có thể tìm hiểu thêm về cách và khi nào điều này được thiết lập trong phần 7 của [yellow paper](https://ethereum.github.io/yellowpaper/paper.pdf).
+* Ký tự `^` trong cánh cổng thứ ba là một phép toán bitwise (XOR), và được sử dụng ở đây để áp dụng một phép toán bitwise phổ biến khác (xem [đây](http://solidity.readthedocs.io/en/v0.4.23/miscellaneous.html#cheatsheet)). Cấp độ Coin Flip cũng là một nơi tốt để bắt đầu khi tiếp cận thử thách này.

@@ -1,9 +1,9 @@
-The advantage of following an UUPS pattern is to have very minimal proxy to be deployed. The proxy acts as storage layer so any state modification in the implementation contract normally doesn't produce side effects to systems using it, since only the logic is used through delegatecalls.
+Ưu điểm của việc tuân theo mẫu UUPS là có proxy tối thiểu để triển khai. Proxy hoạt động như lớp lưu trữ nên bất kỳ thay đổi trạng thái nào trong hợp đồng triển khai thường không tạo ra tác dụng phụ cho các hệ thống sử dụng nó, vì chỉ logic được sử dụng thông qua delegatecalls.
 
-This doesn't mean that you shouldn't watch out for vulnerabilities that can be exploited if we leave an implementation contract uninitialized.
+Điều này không có nghĩa là bạn không nên đề phòng các lỗ hổng có thể bị khai thác nếu chúng ta để hợp đồng triển khai không được khởi tạo.
 
-This was a slightly simplified version of what has really been discovered after months of the release of UUPS pattern. 
+Đây là phiên bản đơn giản hóa một chút của những gì thực sự đã được phát hiện sau nhiều tháng phát hành mẫu UUPS.
 
-Takeways: never leave implementation contracts uninitialized ;) 
+Bài học: không bao giờ để hợp đồng triển khai không được khởi tạo ;)
 
-If you're interested in what happened, read more [here](https://forum.openzeppelin.com/t/uupsupgradeable-vulnerability-post-mortem/15680).
+Nếu bạn quan tâm đến những gì đã xảy ra, hãy đọc thêm [tại đây](https://forum.openzeppelin.com/t/uupsupgradeable-vulnerability-post-mortem/15680).

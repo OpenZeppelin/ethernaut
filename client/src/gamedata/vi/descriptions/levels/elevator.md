@@ -1,5 +1,5 @@
-This elevator won't let you reach the top of your building. Right?
+Thang máy này sẽ không cho phép bạn lên đến đỉnh tòa nhà. Đúng không?
 
-##### Things that might help:
-* Sometimes solidity is not good at keeping promises.
-* This `Elevator` expects to be used from a `Building`.
+##### Những điều có thể hữu ích:
+* Đôi khi solidity không giỏi giữ lời hứa.
+* `Elevator` này mong đợi được sử dụng từ một `Building`.

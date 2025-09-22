@@ -1,7 +1,7 @@
-This instance represents a Good Samaritan that is wealthy and ready to donate some coins to anyone requesting it.
+Phiên bản này đại diện cho một Người Samaritan Tốt Bụng giàu có và sẵn sàng quyên góp một số coin cho bất kỳ ai yêu cầu.
 
-Would you be able to drain all the balance from his Wallet?
+Bạn có thể rút hết số dư từ Ví của anh ấy không?
 
-Things that might help:
+Những điều có thể hữu ích:
 
 - [Solidity Custom Errors](https://blog.soliditylang.org/2021/04/21/custom-errors/)

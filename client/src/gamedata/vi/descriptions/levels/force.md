@@ -1,9 +1,9 @@
-Some contracts will simply not take your money `¯\_(ツ)_/¯`
+Một số hợp đồng sẽ đơn giản không nhận tiền của bạn `¯\_(ツ)_/¯`
 
-The goal of this level is to make the balance of the contract greater than zero.
+Mục tiêu của cấp độ này là làm cho số dư của hợp đồng lớn hơn không.
 
 &nbsp;
-Things that might help:
-* Fallback methods
-* Sometimes the best way to attack a contract is with another contract.
-* See the ["?"](https://ethernaut.openzeppelin.com/help) page above, section "Beyond the console"
+Những điều có thể hữu ích:
+* Phương thức fallback
+* Đôi khi cách tốt nhất để tấn công một hợp đồng là với một hợp đồng khác.
+* Xem trang ["?"](https://ethernaut.openzeppelin.com/help) ở trên, phần "Beyond the console"

@@ -1,12 +1,12 @@
-Overflows are very common in solidity and must be checked for with control statements such as:
+Overflow rất phổ biến trong solidity và phải được kiểm tra bằng các câu lệnh điều khiển như:
 ```
 if(a + c > a) {
   a = a + c;
 }
 ```
 
-An easier alternative is to use OpenZeppelin's SafeMath library that automatically checks for overflows in all the mathematical operators. The resulting code looks like this:
+Một lựa chọn dễ dàng hơn là sử dụng thư viện SafeMath của OpenZeppelin tự động kiểm tra overflow trong tất cả các toán tử toán học. Mã kết quả trông như thế này:
 ```
 a = a.add(c);
-``` 
-If there is an overflow, the code will revert.
+```
+Nếu có overflow, mã sẽ revert.

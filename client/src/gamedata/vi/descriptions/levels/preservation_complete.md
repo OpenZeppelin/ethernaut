@@ -1,6 +1,6 @@
-As the previous level, `delegate` mentions, the use of `delegatecall` to call
-libraries can be risky. This is particularly true for contract libraries that
-have their own state. This example demonstrates why the `library` keyword
-should be used for building libraries, as it prevents the libraries from
-storing and accessing state variables. 
+Như cấp độ trước, `delegate` đề cập, việc sử dụng `delegatecall` để gọi
+thư viện có thể rủi ro. Điều này đặc biệt đúng với các thư viện hợp đồng có
+trạng thái riêng của chúng. Ví dụ này chứng minh tại sao từ khóa `library`
+nên được sử dụng để xây dựng thư viện, vì nó ngăn các thư viện
+lưu trữ và truy cập các biến trạng thái. 
 

@@ -1,8 +1,8 @@
-Ethernaut's motorbike has a brand new upgradeable engine design.
+Xe máy của Ethernaut có thiết kế động cơ có thể nâng cấp hoàn toàn mới.
 
-Would you be able to `selfdestruct` its engine and make the motorbike unusable ?
+Bạn có thể `selfdestruct` động cơ của nó và làm cho xe máy không sử dụng được không?
 
-Things that might help:
+Những điều có thể hữu ích:
 
 - [EIP-1967](https://eips.ethereum.org/EIPS/eip-1967)
 - [UUPS](https://forum.openzeppelin.com/t/uups-proxies-tutorial-solidity-javascript/7786) upgradeable pattern

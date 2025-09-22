@@ -1,5 +1,5 @@
-Claim ownership of the contract below to complete this level.
+Chiếm quyền sở hữu của hợp đồng bên dưới để hoàn thành cấp độ này.
 
 &nbsp;
-Things that might help
+Những điều có thể hữu ích
 * Solidity Remix IDE

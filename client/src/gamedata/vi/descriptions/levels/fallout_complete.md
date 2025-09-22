@@ -1,8 +1,8 @@
-That was silly wasn't it? Real world contracts must be much more secure than this and so must it be much harder to hack them right?
+Điều đó thật ngớ ngẩn phải không? Các hợp đồng thực tế phải an toàn hơn nhiều so với điều này và vì vậy phải khó hack hơn nhiều phải không?
 
-Well... Not quite.
+Chà... Không hẳn vậy.
 
-The story of Rubixi is a very well known case in the Ethereum ecosystem. The company changed its name from 'Dynamic Pyramid' to 'Rubixi' but somehow they didn't rename the constructor method of its contract:
+Câu chuyện của Rubixi là một trường hợp rất nổi tiếng trong hệ sinh thái Ethereum. Công ty đã đổi tên từ 'Dynamic Pyramid' thành 'Rubixi' nhưng bằng cách nào đó họ không đổi tên phương thức constructor của hợp đồng:
 
 ```
 contract Rubixi {
@@ -12,4 +12,4 @@ contract Rubixi {
   ...
 ```
 
-This allowed the attacker to call the old constructor and claim ownership of the contract, and steal some funds. Yep. Big mistakes can be made in smartcontractland.
+Điều này cho phép kẻ tấn công gọi constructor cũ và chiếm quyền sở hữu hợp đồng, và đánh cắp một số tiền. Vâng. Những sai lầm lớn có thể được thực hiện trong smartcontractland.

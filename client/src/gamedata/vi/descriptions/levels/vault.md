@@ -1,1 +1,1 @@
-Unlock the vault to pass the level!
+Mở khóa kho bạc để vượt qua cấp độ!

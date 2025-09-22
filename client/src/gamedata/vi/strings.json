@@ -1,9 +1,9 @@
 {
   "ethernaut": "Ethernaut",
-  "title": "The Ethernaut",
+  "title": "Ethernaut",
   "hiring": "Chung tôi đang cần tuyển dụng!",
-  "ctfRegister": "Register now!",
-  "ctfInfo": "<strong>We are hosting Ethernaut CTF:</strong> A 48-hour capture the flag event with prizes and blockchain challenges, starting 16/03.",
+  "ctfRegister": "Đăng ký ngay!",
+  "ctfInfo": "<strong>Chúng tôi đang tổ chức Ethernaut CTF:</strong> Sự kiện bắt cờ 48 giờ với giải thưởng và thử thách blockchain, bắt đầu từ 16/03.",
   "info": "<h2>Ethernaut là một trò chơi lập trình sử dụng Web3/Solidity lấy cảm hứng từ <a href='https://overthewire.org' target='_blank' rel='noopener noreferrer'>overthewire.org</a>, được chơi trong Máy ảo Ethereum. Mỗi cấp độ là một hợp đồng thông minh cần được “hack”. 100% trò chơi là mã nguồn mở và tất cả các cấp độ đều được đóng góp bởi những người chơi khác. Bạn có ý tưởng muốn đóng góp? Mọi PR đều được <a href='https://github.com/OpenZeppelin/ethernaut'><button>Hoan Nghênh</button></a></h2>",
   "home": "Trang chủ",
   "help": "Trợ giúp",

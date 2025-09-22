@@ -1,9 +1,9 @@
-As we've repeatedly seen, interaction between contracts can be a source of unexpected behavior.
+Như chúng ta đã thấy nhiều lần, tương tác giữa các hợp đồng có thể là nguồn gốc của hành vi không mong đợi.
 
-Just because a contract claims to implement the [ERC20 spec](https://eips.ethereum.org/EIPS/eip-20) does not mean it's trust worthy.
+Chỉ vì một hợp đồng tuyên bố triển khai [đặc tả ERC20](https://eips.ethereum.org/EIPS/eip-20) không có nghĩa là nó đáng tin cậy.
 
-Some tokens deviate from the ERC20 spec by not returning a boolean value from their `transfer` methods. See [Missing return value bug - At least 130 tokens affected](https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca).
+Một số token lệch khỏi đặc tả ERC20 bằng cách không trả về giá trị boolean từ các phương thức `transfer` của chúng. Xem [Lỗi thiếu giá trị trả về - Ít nhất 130 token bị ảnh hưởng](https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca).
 
-Other ERC20 tokens, especially those designed by adversaries could behave more maliciously.
+Các token ERC20 khác, đặc biệt là những token được thiết kế bởi kẻ thù có thể hành xử độc hại hơn.
 
-If you design a DEX where anyone could list their own tokens without the permission of a central authority, then the correctness of the DEX could depend on the interaction of the DEX contract and the token contracts being traded.
+Nếu bạn thiết kế một DEX nơi bất kỳ ai cũng có thể liệt kê token của riêng họ mà không cần sự cho phép của cơ quan trung ương, thì tính đúng đắn của DEX có thể phụ thuộc vào tương tác của hợp đồng DEX và các hợp đồng token được giao dịch.

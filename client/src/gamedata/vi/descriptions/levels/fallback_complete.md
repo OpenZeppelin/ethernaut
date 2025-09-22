@@ -1,5 +1,5 @@
-You know the basics of how ether goes in and out of contracts, including the usage of the fallback method.
+Bạn biết những điều cơ bản về cách ether vào và ra khỏi hợp đồng, bao gồm việc sử dụng phương thức fallback.
 
-You've also learnt about OpenZeppelin's Ownable contract, and how it can be used to restrict the usage of some methods to a privileged address.
+Bạn cũng đã học về hợp đồng Ownable của OpenZeppelin, và cách nó có thể được sử dụng để hạn chế việc sử dụng một số phương thức cho một địa chỉ đặc quyền.
 
-Move on to the next level when you're ready!
+Chuyển sang cấp độ tiếp theo khi bạn sẵn sàng!

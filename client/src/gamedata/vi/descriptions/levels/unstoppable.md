@@ -1,5 +1,5 @@
-There's a lending pool with a million tokens in balance, offering flash loans for free.
+Có một pool cho vay với một triệu token trong số dư, cung cấp flash loan miễn phí.
 
-If only there was a way to attack and stop the pool from offering flash loans ...
+Nếu chỉ có cách để tấn công và ngăn pool cung cấp flash loan...
 
-You start with 100 tokens in balance.
+Bạn bắt đầu với 100 token trong số dư.

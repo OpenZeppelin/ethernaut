@@ -1,8 +1,8 @@
-While this example may be simple, confusing `tx.origin` with `msg.sender` can lead to phishing-style attacks, such as [this](https://blog.ethereum.org/2016/06/24/security-alert-smart-contract-wallets-created-in-frontier-are-vulnerable-to-phishing-attacks/). 
+Mặc dù ví dụ này có thể đơn giản, việc nhầm lẫn `tx.origin` với `msg.sender` có thể dẫn đến các cuộc tấn công kiểu phishing, chẳng hạn như [này](https://blog.ethereum.org/2016/06/24/security-alert-smart-contract-wallets-created-in-frontier-are-vulnerable-to-phishing-attacks/).
 
-An example of a possible attack is outlined below.
+Một ví dụ về cuộc tấn công có thể được mô tả dưới đây.
 
-1) Use `tx.origin` to determine whose tokens to transfer, e.g.
+1) Sử dụng `tx.origin` để xác định token của ai để chuyển, ví dụ:
 
 ```
 function transfer(address _to, uint _value) {
@@ -10,7 +10,7 @@ function transfer(address _to, uint _value) {
   tokens[_to] += _value;
 }
 ```
-2) Attacker gets victim to send funds to a malicious contract that calls the transfer function of the token contract, e.g. 
+2) Kẻ tấn công khiến nạn nhân gửi tiền đến một hợp đồng độc hại gọi hàm transfer của hợp đồng token, ví dụ:
 
 ```
 function () payable {
@@ -18,4 +18,4 @@ function () payable {
 }
 ```
 
-3) In this scenario, `tx.origin` will be the victim's address (while `msg.sender` will be the malicious contract's address), resulting in the funds being transferred from the victim to the attacker.
+3) Trong trường hợp này, `tx.origin` sẽ là địa chỉ của nạn nhân (trong khi `msg.sender` sẽ là địa chỉ của hợp đồng độc hại), dẫn đến việc chuyển tiền từ nạn nhân sang kẻ tấn công.

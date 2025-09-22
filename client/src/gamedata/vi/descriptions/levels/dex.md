@@ -1,18 +1,18 @@
-The goal of this level is for you to hack the basic [DEX](https://en.wikipedia.org/wiki/Decentralized_exchange) contract below and steal the funds by price manipulation.
+Mục tiêu của cấp độ này là bạn phải hack hợp đồng [DEX](https://en.wikipedia.org/wiki/Decentralized_exchange) cơ bản bên dưới và đánh cắp tiền bằng cách thao túng giá.
 
-You will start with 10 tokens of `token1` and 10 of `token2`. The DEX contract starts with 100 of each token. 
+Bạn sẽ bắt đầu với 10 token của `token1` và 10 của `token2`. Hợp đồng DEX bắt đầu với 100 của mỗi token.
 
-You will be successful in this level if you manage to drain all of at least 1 of the 2 tokens from the contract, and allow the contract to report a "bad" price of the assets. 
-
-&nbsp;
-### Quick note
-Normally, when you make a swap with an ERC20 token, you have to `approve` the contract to spend your tokens for you. To keep with the syntax of the game, we've just added the `approve` method to the contract itself. So feel free to use `contract.approve(contract.address, <uint amount>)` instead of calling the tokens directly, and it will automatically approve spending the two tokens by the desired amount. Feel free to ignore the `SwappableToken` contract otherwise. 
+Bạn sẽ thành công trong cấp độ này nếu bạn quản lý để rút hết ít nhất 1 trong 2 token từ hợp đồng, và cho phép hợp đồng báo cáo giá "xấu" của tài sản.
 
 &nbsp;
-Things that might help:
-* How is the price of the token calculated?
-* How does the `swap` method work?
-* How do you `approve` a transaction of an ERC20? 
-* Theres more than one way to interact with a contract!
-* Remix might help
-* What does "At Address" do?
+### Lưu ý nhanh
+Thông thường, khi bạn thực hiện swap với token ERC20, bạn phải `approve` hợp đồng để chi tiêu token của bạn. Để phù hợp với cú pháp của trò chơi, chúng tôi đã thêm phương thức `approve` vào chính hợp đồng. Vì vậy hãy thoải mái sử dụng `contract.approve(contract.address, <uint amount>)` thay vì gọi token trực tiếp, và nó sẽ tự động phê duyệt chi tiêu hai token với số lượng mong muốn. Hãy thoải mái bỏ qua hợp đồng `SwappableToken` nếu không.
+
+&nbsp;
+Những điều có thể hữu ích:
+* Giá của token được tính như thế nào?
+* Phương thức `swap` hoạt động như thế nào?
+* Làm thế nào để `approve` một giao dịch của ERC20?
+* Có nhiều hơn một cách để tương tác với hợp đồng!
+* Remix có thể hữu ích
+* "At Address" làm gì?

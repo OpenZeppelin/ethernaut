@@ -1,5 +1,5 @@
-Usage of `delegatecall` is particularly risky and has been used as an attack vector on multiple historic hacks. With it, your contract is practically saying "here, -other contract- or -other library-, do whatever you want with my state". Delegates have complete access to your contract's state. The `delegatecall` function is a powerful feature, but a dangerous one, and must be used with extreme care.
+Việc sử dụng `delegatecall` đặc biệt rủi ro và đã được sử dụng làm vector tấn công trong nhiều vụ hack lịch sử. Với nó, hợp đồng của bạn thực tế đang nói "đây, -hợp đồng khác- hoặc -thư viện khác-, làm bất cứ điều gì bạn muốn với trạng thái của tôi". Các delegate có quyền truy cập hoàn toàn vào trạng thái hợp đồng của bạn. Hàm `delegatecall` là một tính năng mạnh mẽ, nhưng nguy hiểm, và phải được sử dụng với sự cẩn thận tối đa.
 
 
-Please refer to the [The Parity Wallet Hack Explained](https://blog.openzeppelin.com/on-the-parity-wallet-multisig-hack-405a8c12e8f7) article for an accurate explanation of how this idea was used to steal 30M USD.
+Vui lòng tham khảo bài viết [The Parity Wallet Hack Explained](https://blog.openzeppelin.com/on-the-parity-wallet-multisig-hack-405a8c12e8f7) để có giải thích chính xác về cách ý tưởng này được sử dụng để đánh cắp 30M USD.
 

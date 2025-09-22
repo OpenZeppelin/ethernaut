@@ -1,12 +1,12 @@
-Look carefully at the contract's code below.
+Hãy xem kỹ mã hợp đồng bên dưới.
 
-You will beat this level if
-1) you claim ownership of the contract
-2) you reduce its balance to 0
+Bạn sẽ thắng cấp độ này nếu
+1) bạn chiếm quyền sở hữu của hợp đồng
+2) bạn giảm số dư của nó xuống 0
 
 &nbsp;
-Things that might help
-* How to send ether when interacting with an ABI
-* How to send ether outside of the ABI
-* Converting to and from wei/ether units (see `help()` command)
-* Fallback methods
+Những điều có thể hữu ích
+* Cách gửi ether khi tương tác với ABI
+* Cách gửi ether bên ngoài ABI
+* Chuyển đổi từ và sang đơn vị wei/ether (xem lệnh `help()`)
+* Phương thức fallback

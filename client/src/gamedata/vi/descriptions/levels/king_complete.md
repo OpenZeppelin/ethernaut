@@ -1,3 +1,3 @@
-Most of Ethernaut's levels try to expose (in an oversimplified form of course) something that actually happened — a real hack or a real bug.
+Hầu hết các cấp độ của Ethernaut cố gắng phơi bày (dưới dạng đơn giản hóa quá mức tất nhiên) một cái gì đó thực sự đã xảy ra — một vụ hack thực sự hoặc một lỗi thực sự.
 
-In this case, see: [King of the Ether](https://www.kingoftheether.com/thrones/kingoftheether/index.html) and [King of the Ether Postmortem](http://www.kingoftheether.com/postmortem.html).
+Trong trường hợp này, xem: [King of the Ether](https://www.kingoftheether.com/thrones/kingoftheether/index.html) và [King of the Ether Postmortem](http://www.kingoftheether.com/postmortem.html).

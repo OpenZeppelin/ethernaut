@@ -1,6 +1,6 @@
-Cope with gates and become an entrant.
+Đối phó với các cánh cổng và trở thành người tham gia.
 
-##### Things that might help:
-* Recall return values of low-level functions.
-* Be attentive with semantic.
-* Refresh how storage works in Ethereum.
+##### Những điều có thể hữu ích:
+* Nhớ lại giá trị trả về của các hàm cấp thấp.
+* Chú ý đến ngữ nghĩa.
+* Làm mới cách lưu trữ hoạt động trong Ethereum.

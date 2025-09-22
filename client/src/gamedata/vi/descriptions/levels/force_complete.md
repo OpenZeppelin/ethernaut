@@ -1,3 +1,3 @@
-In solidity, for a contract to be able to receive ether, the fallback function must be marked `payable`.
+Trong solidity, để một hợp đồng có thể nhận ether, hàm fallback phải được đánh dấu `payable`.
 
-However, there is no way to stop an attacker from sending ether to a contract by self destroying. Hence, it is important not to count on the invariant `address(this).balance == 0` for any contract logic.
+Tuy nhiên, không có cách nào để ngăn kẻ tấn công gửi ether đến hợp đồng bằng cách tự hủy. Do đó, điều quan trọng là không dựa vào bất biến `address(this).balance == 0` cho bất kỳ logic hợp đồng nào.

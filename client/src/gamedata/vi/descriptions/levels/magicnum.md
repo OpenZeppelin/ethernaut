@@ -1,11 +1,11 @@
-To solve this level, you only need to provide the Ethernaut with a `Solver`, a contract that responds to `whatIsTheMeaningOfLife()` with the right number.
+Để giải cấp độ này, bạn chỉ cần cung cấp cho Ethernaut một `Solver`, một hợp đồng phản hồi `whatIsTheMeaningOfLife()` với số đúng.
 
-Easy right?
-Well... there's a catch.
+Dễ phải không?
+Chà... có một cái bẫy.
 
-The solver's code needs to be really tiny. Really reaaaaaallly tiny. Like freakin' really really itty-bitty tiny: 10 opcodes at most.
+Mã của solver cần phải thực sự nhỏ. Thực sự rất nhỏ. Như thực sự thực sự rất nhỏ: tối đa 10 opcode.
 
-Hint: Perhaps its time to leave the comfort of the Solidity compiler momentarily, and build this one by hand O_o. 
-That's right: Raw EVM bytecode.
+Gợi ý: Có lẽ đã đến lúc rời khỏi sự thoải mái của trình biên dịch Solidity trong chốc lát, và xây dựng cái này bằng tay O_o.
+Đúng vậy: Raw EVM bytecode.
 
-Good luck!
+Chúc may mắn!

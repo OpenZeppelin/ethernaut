@@ -1,10 +1,10 @@
 
-Contract addresses are deterministic and are calculated by `keccak256(address, nonce)` where the `address` is the address of the contract (or ethereum address that created the transaction) and `nonce` is the number of contracts the spawning contract has created (or the transaction nonce, for regular transactions).  
+Địa chỉ hợp đồng là xác định và được tính bằng `keccak256(address, nonce)` trong đó `address` là địa chỉ của hợp đồng (hoặc địa chỉ ethereum đã tạo giao dịch) và `nonce` là số lượng hợp đồng mà hợp đồng tạo ra đã tạo (hoặc nonce giao dịch, cho các giao dịch thông thường).
 
-Because of this, one can send ether to a pre-determined address (which has no private key) and later create a contract at that address which recovers the ether. This is a non-intuitive and somewhat secretive way to (dangerously) store ether without holding a private key. 
+Vì điều này, người ta có thể gửi ether đến một địa chỉ được xác định trước (không có khóa riêng) và sau đó tạo hợp đồng tại địa chỉ đó để khôi phục ether. Đây là một cách không trực quan và phần nào bí mật để (nguy hiểm) lưu trữ ether mà không cần giữ khóa riêng.
 
-An interesting [blog post](https://swende.se/blog/Ethereum_quirks_and_vulns.html) by Martin Swende details potential use cases of this. 
+Một [bài đăng blog](https://swende.se/blog/Ethereum_quirks_and_vulns.html) thú vị của Martin Swende mô tả chi tiết các trường hợp sử dụng tiềm năng của điều này.
 
-If you're going to implement this technique, make sure you don't miss the nonce, or your funds will be lost forever. 
+Nếu bạn sẽ triển khai kỹ thuật này, hãy đảm bảo bạn không bỏ lỡ nonce, hoặc tiền của bạn sẽ bị mất mãi mãi. 
 
 

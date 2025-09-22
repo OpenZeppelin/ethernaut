@@ -1,5 +1,5 @@
-This is a simple wallet that drips funds over time. You can withdraw the funds
-slowly by becoming a withdrawing partner.
+Đây là một ví đơn giản nhỏ giọt tiền theo thời gian. Bạn có thể rút tiền
+từ từ bằng cách trở thành đối tác rút tiền.
 
-If you can deny the owner from withdrawing funds when they call `withdraw()`
-(whilst the contract still has funds, and the transaction is of 1M gas or less) you will win this level.
+Nếu bạn có thể ngăn chủ sở hữu rút tiền khi họ gọi `withdraw()`
+(trong khi hợp đồng vẫn còn tiền, và giao dịch có gas 1M hoặc ít hơn) bạn sẽ thắng cấp độ này.

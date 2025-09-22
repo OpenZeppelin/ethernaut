@@ -1,10 +1,10 @@
-This level features a `CryptoVault` with special functionality, the `sweepToken` function. This is a common function used to retrieve tokens stuck in a contract. The `CryptoVault` operates with an `underlying` token that can't be swept, as it is an important core logic component of the `CryptoVault`. Any other tokens can be swept.
+Cấp độ này có một `CryptoVault` với chức năng đặc biệt, hàm `sweepToken`. Đây là một hàm phổ biến được sử dụng để lấy lại token bị kẹt trong hợp đồng. `CryptoVault` hoạt động với một token `underlying` không thể bị quét, vì nó là thành phần logic cốt lõi quan trọng của `CryptoVault`. Bất kỳ token nào khác đều có thể bị quét.
 
-The underlying token is an instance of the DET token implemented in the `DoubleEntryPoint` contract definition and the `CryptoVault` holds 100 units of it. Additionally the `CryptoVault` also holds 100 of `LegacyToken LGT`.
+Token underlying là một phiên bản của token DET được triển khai trong định nghĩa hợp đồng `DoubleEntryPoint` và `CryptoVault` nắm giữ 100 đơn vị của nó. Ngoài ra `CryptoVault` cũng nắm giữ 100 `LegacyToken LGT`.
 
-In this level you should figure out where the bug is in `CryptoVault` and protect it from being drained out of tokens.
+Trong cấp độ này bạn nên tìm ra lỗi ở đâu trong `CryptoVault` và bảo vệ nó khỏi bị rút hết token.
 
-The contract features a `Forta` contract where any user can register its own `detection bot` contract. Forta is a decentralized, community-based monitoring network to detect threats and anomalies on DeFi, NFT, governance, bridges and other Web3 systems as quickly as possible. Your job is to implement a `detection bot` and register it in the `Forta` contract. The bot's implementation will need to raise correct alerts to prevent potential attacks or bug exploits.
+Hợp đồng có một hợp đồng `Forta` nơi bất kỳ người dùng nào cũng có thể đăng ký hợp đồng `detection bot` của riêng mình. Forta là một mạng giám sát phi tập trung, dựa trên cộng đồng để phát hiện các mối đe dọa và bất thường trên DeFi, NFT, quản trị, cầu nối và các hệ thống Web3 khác một cách nhanh chóng nhất có thể. Nhiệm vụ của bạn là triển khai một `detection bot` và đăng ký nó trong hợp đồng `Forta`. Việc triển khai bot sẽ cần đưa ra cảnh báo chính xác để ngăn chặn các cuộc tấn công tiềm ẩn hoặc khai thác lỗi.
 
-Things that might help:
-- How does a double entry point work for a token contract?
+Những điều có thể hữu ích:
+- Double entry point hoạt động như thế nào cho hợp đồng token?
