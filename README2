@@ -1,0 +1,7 @@
+# Changelog
+
+## [1.0.0] - 2025-08-15
+### Added
+- FixedContract.sol: 添加了 noReentrant 修饰器
+- 使用 Checks-Effects-Interactions 模式
+- 添加单元测试验证修复有效性
