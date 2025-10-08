@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.12;
+pragma solidity ^0.8.0;
 
-import "openzeppelin-contracts-06/math/SafeMath.sol";
 
 contract Reentrance {
     using SafeMath for uint256;
@@ -9,7 +8,7 @@ contract Reentrance {
     mapping(address => uint256) public balances;
 
     function donate(address _to) public payable {
-        balances[_to] = balances[_to].add(msg.value);
+        balances[_to] = balances[_to] + (msg.value);
     }
 
     function balanceOf(address _who) public view returns (uint256 balance) {
