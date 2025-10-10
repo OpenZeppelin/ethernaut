@@ -197,7 +197,7 @@ async function printLevelInfo(level) {
 }
 
 async function deployAndUpgradeStatisticsToStatisticsSuperseder() {
-  console.log(colors.bold.yellow("\nDeploing and Ugrading statistics contract to statisticsSuperseder..."));
+  console.log(colors.bold.yellow("\nDeploing and Upgrading statistics contract to statisticsSuperseder..."));
 
   const props = {
     gasPrice: parseInt(await web3.eth.getGasPrice() * 1.10),

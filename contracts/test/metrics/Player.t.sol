@@ -123,7 +123,7 @@ contract TestPlayer is Test {
         uint256 totalLevelsFailed = stats.getTotalNoOfFailedSubmissionsByPlayer(user);
         assertEq(totalLevelsFailed, 2);
 
-        // should return percentange of levels completed
+        // should return percentage of levels completed
         uint256 percentage = stats.getPercentageOfLevelsCompleted(user);
         assertEq(percentage, 0.5 ether);
 
