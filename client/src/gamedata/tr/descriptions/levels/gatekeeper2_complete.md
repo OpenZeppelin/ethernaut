@@ -1,0 +1,2 @@
+Harika gidiyorsun! Artık bekçiyi geçebildiğine göre, Ethereum mainnet üzerindeki [theCyber](https://etherscan.io/address/thecyber.eth#code), adlı merkeziyetsiz kulübe katılacak yeteneğe sahipsin. Bir şifre (passphrase) almak için kulüp başkanıyla [reddit](https://www.reddit.com/user/0age) veya [email](mailto:0age@protonmail.com) üzerinden iletişime geç. Ardından şifreyi kullanarak sözleşmeye [gatekeepertwo.thecyber.eth](https://etherscan.io/address/gatekeepertwo.thecyber.eth#code) üzerinden kaydol. (Sözleşme yalnızca ilk 128 katılımcıyı kabul ediyor).
+

@@ -1,0 +1,2 @@
+Önceki seviye olan `delegate`’ta belirtildiği gibi, kütüphaneleri çağırmak için `delegatecall` kullanmak riskli olabilir. Bu durum özellikle kendi durum (state) değişkenlerine sahip olan kontrat kütüphaneleri için geçerlidir. Bu örnek, kütüphaneler oluştururken neden `library` anahtar kelimesinin kullanılması gerektiğini gösterir, çünkü bu anahtar kelime kütüphanelerin durum değişkenlerini saklamasını ve bunlara erişmesini engeller.
+
