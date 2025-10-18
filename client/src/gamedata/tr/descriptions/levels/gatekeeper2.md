@@ -1,0 +1,6 @@
+Bu bekçi seni biraz daha zorlayacak yeni engellerle tanıştırıyor. Bu seviyeyi geçmek için katılımcı olarak kaydolman gerekiyor.
+
+##### Yardımcı olabilecek noktalar:
+* İlk bekçiden geçerken öğrendiklerini hatırla — çünkü ilk kapı tamamen aynı.
+* İkinci kapıdaki `assembly` anahtar kelimesi, Solidity’nin kendi sözdiziminin ötesinde düşük seviyeli (low-level) fonksiyonlara erişmeni sağlar. Daha fazla bilgi için [Solidity Assembly](http://solidity.readthedocs.io/en/v0.4.23/assembly.html) sayfasına göz at. Bu kapıda kullanılan `extcodesize` komutu, belirli bir adresteki sözleşme kodunun boyutunu döndürür - bu değerin ne zaman ve nasıl ayarlandığını anlamak için [yellow paper](https://ethereum.github.io/yellowpaper/paper.pdf)'ın 7. bölümüne bakabilirsin.
+* Üçüncü kapıda kullanılan `^` karakteri bir bit düzeyinde XOR (özel veya) işlemidir ve burada bir başka yaygın bit düzeyi işlemini uygulamak için kullanılmıştır. ([Solidity cheatsheet](http://solidity.readthedocs.io/en/v0.4.23/miscellaneous.html#cheatsheet)'e göz at). Ayrıca Coin Flip seviyesi de bu meydan okumaya hazırlanmak için iyi bir başlangıç noktasıdır.
