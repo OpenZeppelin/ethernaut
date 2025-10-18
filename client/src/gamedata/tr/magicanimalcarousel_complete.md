@@ -1,1 +1,0 @@
-Tebrikler, atlıkarıncanın sihirli kuralını bozdun! Düşük seviyeli veri manipülasyonu dünyasında, özellikle verileri depolama yuvalarında sıkıştırırken detayları hatırlamak hayati önem taşır.

@@ -1,3 +1,0 @@
-Ethereum blok zincirinde hiçbir şey özel değildir. private anahtar kelimesi, yalnızca Solidity dilinin sunduğu yapay bir kavramdır. Web3'ün `getStorageAt(...)` fonksiyonu, depolamadaki herhangi bir veriyi okumak için kullanılabilir. Yine de istediğin bilgiyi doğru şekilde okumak bazen zor olabilir çünkü derleyici, depolama alanını mümkün olduğunca sıkıştırmak (optimize etmek) için çeşitli kurallar ve teknikler uygular.
-
-Bu seviyede gördüklerinden daha karmaşık örneklerle pek karşılaşmazsın. Daha fazlasını öğrenmek istersen, “Darius” tarafından yazılan şu harika makaleye göz atabilirsin: [How to read Ethereum contract storage](https://medium.com/aigang-network/how-to-read-ethereum-contract-storage-44252c8af925) 

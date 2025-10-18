@@ -1,3 +1,0 @@
-Tebrikler!
-
-Solidity’deki custom errors, tıpkı fonksiyon çağrılarında olduğu gibi 4 baytlık ‘selector’ ile tanımlanır. Bu hatalar, çağrı zinciri boyunca yukarı doğru iletilir (bubbled up) ve GoodSamaritan’ın `requestDonation()` fonksiyonunda görüldüğü gibi bir try-catch bloğundaki catch tarafından yakalanana kadar ilerler. Bu yüzden hatanın doğrudan çağrı yaptığın hedef kontrat (bu durumda Wallet) tarafından atıldığını varsaymak güvenli değildir. Çağrı zincirinin daha derinlerindeki herhangi bir diğer kontrat, aynı hatayı tanımlayıp beklenmedik bir yerde fırlatabilir; mesela saldırgan kontratındaki `notify(uint256 amount)` fonksiyonunda olduğu gibi.
