@@ -1,6 +1,6 @@
 This is the Forger, the token printer your mom warned you about.
 
-This ERC20 hands out mint passes signed by the owner... or so they say.
+This ERC-20 hands out mint passes signed by the owner... or so they say.
 
 One golden signature already exists, good for 100 shiny tokens.
 
