@@ -616,6 +616,21 @@
       "deployId": "39",
       "instanceGas": 750000,
       "author": "Draiakoo"
+    },
+    {
+      "name": "NotOptimisticPortal",
+      "created": "2025-11-19",
+      "difficulty": "8",
+      "description": "not_optimistic_portal.md",
+      "completedDescription": "not_optimistic_portal_complete.md",
+      "levelContract": "NotOptimisticPortalFactory.sol",
+      "instanceContract": "NotOptimisticPortal.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "40",
+      "instanceGas": 12000000,
+      "author": "Draiakoo"
     }
   ]
 }
