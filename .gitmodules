@@ -13,3 +13,6 @@
 [submodule "contracts/lib/openzeppelin-contracts-v5.4.0"]
 	path = contracts/lib/openzeppelin-contracts-v5.4.0
 	url = https://github.com/openzeppelin/openzeppelin-contracts
+[submodule "contracts/lib/openzeppelin-contracts-v4.6.0"]
+	path = contracts/lib/openzeppelin-contracts-v4.6.0
+	url = https://github.com/openzeppelin/openzeppelin-contracts
