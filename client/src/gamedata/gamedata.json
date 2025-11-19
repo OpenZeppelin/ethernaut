@@ -629,7 +629,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "40",
-      "instanceGas": 12000000,
+      "instanceGas": 2000000,
       "author": "Draiakoo"
     }
   ]
