@@ -586,6 +586,36 @@
       "deployId": "37",
       "instanceGas": 2000000,
       "author": "jack"
+    },
+    {
+      "name": "UniqueNFT",
+      "created": "2025-10-06",
+      "difficulty": "5",
+      "description": "uniquenft.md",
+      "completedDescription": "uniquenft_complete.md",
+      "levelContract": "UniqueNFTFactory.sol",
+      "instanceContract": "UniqueNFT.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "38",
+      "instanceGas": 1500000,
+      "author": "Draiakoo"
+    },
+    {
+      "name": "Forger",
+      "created": "2025-10-07",
+      "difficulty": "5",
+      "description": "forger.md",
+      "completedDescription": "forger_complete.md",
+      "levelContract": "ForgerFactory.sol",
+      "instanceContract": "Forger.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "39",
+      "instanceGas": 750000,
+      "author": "Draiakoo"
     }
   ]
 }

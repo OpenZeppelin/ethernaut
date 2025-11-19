@@ -234,7 +234,17 @@
       "emails": [
         "jacquotvincent96@gmail.com"
       ]
-    }
+    },
+    "Draiakoo":{
+      "name": [
+        "Draiakoo"
+      ],
+      "websites":
+        [
+          "https://github.com/Draiakoo/"
+        ],
+      "emails": ["polureher@gmail.com"]
+      }
 
   }
 }
