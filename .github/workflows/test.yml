@@ -13,7 +13,7 @@ jobs:
         working-directory: ./contracts
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
         with:
           submodules: true
 
