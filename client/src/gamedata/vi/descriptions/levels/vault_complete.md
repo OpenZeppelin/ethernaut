@@ -1,0 +1,3 @@
+Điều quan trọng cần nhớ là việc đánh dấu một biến là private chỉ ngăn các hợp đồng khác truy cập nó. Các biến trạng thái được đánh dấu là private và các biến cục bộ vẫn có thể truy cập công khai.
+
+Để đảm bảo rằng dữ liệu là riêng tư, nó cần được mã hóa trước khi được đưa lên blockchain. Trong trường hợp này, khóa giải mã không bao giờ nên được gửi on-chain, vì nó sẽ có thể nhìn thấy bởi bất kỳ ai tìm kiếm nó. [zk-SNARKs](https://blog.ethereum.org/2016/12/05/zksnarks-in-a-nutshell/) cung cấp một cách để xác định xem ai đó có sở hữu một tham số bí mật hay không, mà không bao giờ phải tiết lộ tham số đó.

@@ -1,0 +1,3 @@
+Chúc mừng!
+
+Custom errors trong Solidity được xác định bởi 'selector' 4-byte của chúng, giống như lệnh gọi hàm. Chúng được nổi bọt lên qua chuỗi lệnh gọi cho đến khi được bắt bởi câu lệnh catch trong khối try-catch, như được thấy trong hàm `requestDonation()` của GoodSamaritan. Vì những lý do này, không an toàn khi giả định rằng lỗi được ném bởi mục tiêu trực tiếp của lệnh gọi hợp đồng (tức là Wallet trong trường hợp này). Bất kỳ hợp đồng nào khác xa hơn trong chuỗi lệnh gọi có thể khai báo cùng một lỗi và ném nó ở một vị trí không mong đợi, chẳng hạn như trong hàm `notify(uint256 amount)` trong hợp đồng tấn công của bạn.

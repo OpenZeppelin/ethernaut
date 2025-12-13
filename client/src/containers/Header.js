@@ -242,6 +242,7 @@ class Header extends React.Component {
       tr: strings.turkish,
       uk: strings.ukrainian,
       ko: strings.korean,
+      vi: strings.vietnamese,
     };
 
     const ddOpen = Boolean(this.state.multiDDOpen);

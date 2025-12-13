@@ -1,0 +1,6 @@
+Người gác cổng này giới thiệu một vài thử thách mới. Đăng ký như một người tham gia để vượt qua cấp độ này.
+
+##### Những điều có thể hữu ích:
+* Hãy nhớ những gì bạn đã học từ việc vượt qua người gác cổng đầu tiên - cánh cổng đầu tiên là giống nhau.
+* Từ khóa `assembly` trong cánh cổng thứ hai cho phép hợp đồng truy cập chức năng không có sẵn trong vanilla Solidity. Xem [đây](http://solidity.readthedocs.io/en/v0.4.23/assembly.html) để biết thêm thông tin. Lệnh gọi `extcodesize` trong cánh cổng này sẽ lấy kích thước mã của hợp đồng tại một địa chỉ nhất định - bạn có thể tìm hiểu thêm về cách và khi nào điều này được thiết lập trong phần 7 của [yellow paper](https://ethereum.github.io/yellowpaper/paper.pdf).
+* Ký tự `^` trong cánh cổng thứ ba là một phép toán bitwise (XOR), và được sử dụng ở đây để áp dụng một phép toán bitwise phổ biến khác (xem [đây](http://solidity.readthedocs.io/en/v0.4.23/miscellaneous.html#cheatsheet)). Cấp độ Coin Flip cũng là một nơi tốt để bắt đầu khi tiếp cận thử thách này.
