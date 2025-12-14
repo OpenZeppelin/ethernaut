@@ -1,9 +1,23 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity 0.8.28;
 
 import "openzeppelin-upgradeable/proxy/utils/Initializable.sol";
 
 contract Statistics is Initializable {
+
+    //errors
+    error Level_dont_exist();
+    error Player_doesnt_exist();
+    error Level_already_exists();
+    error Player_already_exists();
+    error Only_Ethernaut_can_call_this_function();
+    error Only_owner_can_call_this_function();
+    error Instance_not_created();
+    error Submitted_instance_not_created();
+    error Level_already_completed();
+    error Level_not_completed();
+    error Index_outbounded();
+    
     address public ethernaut;
     address[] public players;
     address[] public levels;
@@ -42,29 +56,28 @@ contract Statistics is Initializable {
     );
 
     modifier levelExistsCheck(address level) {
-        require(doesLevelExist(level), "Level doesn't exist");
+        if (!doesLevelExist(level)) revert Level_dont_exist();
         _;
     }
 
     modifier levelDoesntExistCheck(address level) {
-        require(!doesLevelExist(level), "Level already exists");
+        if (doesLevelExist(level)) revert Level_already_exists();
         _;
     }
 
     modifier playerExistsCheck(address player) {
-        require(doesPlayerExist(player), "Player doesn't exist");
+        if (!doesPlayerExist(player)) revert Player_doesnt_exist();
         _;
     }
 
     modifier onlyEthernaut() {
-        require(msg.sender == ethernaut, "Only Ethernaut can call this function");
+        if (msg.sender != ethernaut) revert Only_Ethernaut_can_call_this_function();
         _;
     }
 
     function initialize(address _ethernautAddress) public initializer {
         ethernaut = _ethernautAddress;
     }
-    // Protected functions
 
     function createNewInstance(address instance, address level, address player)
         external
@@ -75,7 +88,6 @@ contract Statistics is Initializable {
             players.push(player);
             playerExists[player] = true;
         }
-        // If it is the first instance of the level
         if (playerStats[player][level].instance == address(0)) {
             levelFirstInstanceCreationTime[player][level] = block.timestamp;
         }
@@ -99,10 +111,10 @@ contract Statistics is Initializable {
         levelExistsCheck(level)
         playerExistsCheck(player)
     {
-        require(playerStats[player][level].instance != address(0), "Instance for the level is not created");
-        require(playerStats[player][level].instance == instance, "Submitted instance is not the created one");
-        require(playerStats[player][level].isCompleted == false, "Level already completed");
-        // If it is the first submission in the level
+        if (playerStats[player][level].instance == address(0)) revert Instance_not_created();
+        if (playerStats[player][level].instance != instance) revert Submitted_instance_not_created();
+        if (playerStats[player][level].isCompleted) revert Level_already_completed();
+        
         if (levelFirstCompletionTime[player][level] == 0) {
             globalNoOfLevelsCompletedByPlayer[player]++;
             levelFirstCompletionTime[player][level] = block.timestamp;
@@ -125,9 +137,9 @@ contract Statistics is Initializable {
         levelExistsCheck(level)
         playerExistsCheck(player)
     {
-        require(playerStats[player][level].instance != address(0), "Instance for the level is not created");
-        require(playerStats[player][level].instance == instance, "Submitted instance is not the created one");
-        require(playerStats[player][level].isCompleted == false, "Level already completed");
+        if (playerStats[player][level].instance == address(0)) revert Instance_not_created();
+        if (playerStats[player][level].instance != instance) revert Submitted_instance_not_created();
+        if (playerStats[player][level].isCompleted) revert Level_already_completed();
         playerStats[player][level].timeSubmitted.push(block.timestamp);
         levelStats[level].noOfSubmissions_Failed++;
         globalNoOfFailedSubmissions++;
@@ -138,8 +150,6 @@ contract Statistics is Initializable {
         levelExists[level] = true;
         levels.push(level);
     }
-    // Player specific metrics
-    // number of levels created by player
 
     function getTotalNoOfLevelInstancesCreatedByPlayer(address player)
         public
@@ -149,7 +159,6 @@ contract Statistics is Initializable {
     {
         return globalNoOfInstancesCreatedByPlayer[player];
     }
-    // number of levels completed by player
 
     function getTotalNoOfLevelInstancesCompletedByPlayer(address player)
         public
@@ -159,7 +168,6 @@ contract Statistics is Initializable {
     {
         return globalNoOfInstancesCompletedByPlayer[player];
     }
-    // number of levels failed by player
 
     function getTotalNoOfFailedSubmissionsByPlayer(address player)
         public
@@ -178,7 +186,6 @@ contract Statistics is Initializable {
     {
         return globalNoOfLevelsCompletedByPlayer[player];
     }
-    // number of failed submissions of a specific level by player (0 if player didn't play the level)
 
     function getTotalNoOfFailuresForLevelAndPlayer(address level, address player)
         public
@@ -189,7 +196,6 @@ contract Statistics is Initializable {
     {
         return playerStats[player][level].instance != address(0) ? playerStats[player][level].timeSubmitted.length : 0;
     }
-    // Is a specific level completed by a specific player ?
 
     function isLevelCompleted(address player, address level)
         public
@@ -200,7 +206,6 @@ contract Statistics is Initializable {
     {
         return playerStats[player][level].isCompleted;
     }
-    // How much time a player took to complete a level (in seconds)
 
     function getTimeElapsedForCompletionOfLevel(address player, address level)
         public
@@ -209,11 +214,9 @@ contract Statistics is Initializable {
         levelExistsCheck(level)
         returns (uint256)
     {
-        require(levelFirstCompletionTime[player][level] != 0, "Level not completed");
+        if (levelFirstCompletionTime[player][level] == 0) revert Level_not_completed();
         return levelFirstCompletionTime[player][level] - levelFirstInstanceCreationTime[player][level];
     }
-    // Get a specific submission time per level and player
-    // Useful to measure differences between submissions time
 
     function getSubmissionsForLevelByPlayer(address player, address level, uint256 index)
         public
@@ -222,16 +225,13 @@ contract Statistics is Initializable {
         levelExistsCheck(level)
         returns (uint256)
     {
-        require(playerStats[player][level].timeSubmitted.length >= index, "Index outbounded");
+        if (playerStats[player][level].timeSubmitted.length <= index) revert Index_outbounded();
         return playerStats[player][level].timeSubmitted[index];
     }
-    // Percentage of total levels completed by player (1e18 = 100%)
 
     function getPercentageOfLevelsCompleted(address player) public view playerExistsCheck(player) returns (uint256) {
-        // Changed from 100 to 1e18 otherwise when levels.length > 100 this will round to 0 always
         return (getTotalNoOfLevelsCompletedByPlayer(player) * 1e18) / levels.length;
     }
-    // Function to update the average time elapsed for all player's completed levels on first successful submission
 
     function updateAverageTimeTakenToCompleteLevelsByPlayer(
         address player,
@@ -243,7 +243,6 @@ contract Statistics is Initializable {
         uint256 timeTakenForThisSuccessfulSubmission;
         timeTakenForThisSuccessfulSubmission =
             levelFirstCompletionTime[player][level] - levelFirstInstanceCreationTime[player][level];
-        //now, set the average time value in the mapping via evaluating its current value;
         if (averageTimeTakenToCompleteLevels[player] == 0) {
             averageTimeTakenToCompleteLevels[player] = timeTakenForThisSuccessfulSubmission;
         } else {
@@ -254,7 +253,6 @@ contract Statistics is Initializable {
         }
         return newAverageTimeTakenToCompleteLevels;
     }
-    // Game specific metrics
 
     function getTotalNoOfLevelInstancesCreated() public view returns (uint256) {
         return globalNoOfInstancesCreated;
@@ -283,7 +281,6 @@ contract Statistics is Initializable {
     function getNoOfCompletedSubmissionsForLevel(address level) public view levelExistsCheck(level) returns (uint256) {
         return levelStats[level].noOfInstancesSubmitted_Success;
     }
-    // Internal functions
 
     function doesLevelExist(address level) public view returns (bool) {
         return levelExists[level];
@@ -301,10 +298,5 @@ contract Statistics is Initializable {
         return averageTimeTakenToCompleteLevels[player];
     }
 
-    /**
-     * @dev This empty reserved space is put in place to allow future versions to add new
-     * variables without shifting down storage in the inheritance chain.
-     * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
-     */
     uint256[44] private __gap;
 }
