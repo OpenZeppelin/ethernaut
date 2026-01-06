@@ -28,7 +28,7 @@ class Markdown extends React.Component {
 
   async loadContents(target) {
     if(!this._isMounted) return
-    let targetText = typeof target == 'string' ? target : target.default;
+    let targetText = typeof target == "string" ? target : target.default;
     if(this.state.target === targetText) return
     try {
       const text = /md?$/.test(targetText) ?  await loadText(targetText) : targetText;

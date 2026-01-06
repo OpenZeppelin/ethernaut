@@ -95,13 +95,13 @@ class HubspotForm extends React.Component{
     const element = document.createElement('div')
     element.innerHTML = "Thanks for submitting the form."
     element.style.color = textColor
-    element.style.position = 'relative'
-    element.style.fontSize = '17px'
-    outerElement.insertAdjacentElement('afterbegin', element)
+    element.style.position = "relative"
+    element.style.fontSize = "17px"
+    outerElement.insertAdjacentElement("afterbegin", element)
 
     // change the height of modal
-    const modal = document.querySelector('.leaderboard-modal-body')
-    modal.style.height = '150px'
+    const modal = document.querySelector(".leaderboard-modal-body")
+    modal.style.height = "150px"
   }
 
   render() {
