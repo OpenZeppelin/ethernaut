@@ -1,0 +1,3 @@
+Fontos emlékezni, hogy egy változó privátként való megjelölése csak megakadályozza más szerződéseket abban, hogy hozzáférjenek. A privátként megjelölt állapotváltozók és a lokális változók még mindig nyilvánosan hozzáférhetők. 
+
+Annak biztosításához, hogy az adatok privátak legyenek, titkosítani kell őket, mielőtt a blokkláncra kerülnének. Ebben a forgatókönyvben a visszafejtési kulcsot soha nem szabad on-chain küldeni, mivel akkor látható lesz mindenkinek, aki keresi. A [zk-SNARKs](https://blog.ethereum.org/2016/12/05/zksnarks-in-a-nutshell/) lehetőséget biztosít annak meghatározására, hogy valaki rendelkezik-e egy titkos paraméterrel, anélkül hogy valaha is fel kellene fednie a paramétert.
