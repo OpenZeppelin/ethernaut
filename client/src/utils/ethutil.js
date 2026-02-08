@@ -171,18 +171,43 @@ export const verifySignature = (json) => {
 
 export const signMessageWithMetamask = (addr, message, callback) => {
   const msg = ethjs.bufferToHex(new Buffer(message, 'utf8'));
-  web3.currentProvider.sendAsync({
-    method: 'personal_sign',
-    params: [msg, addr],
-    addr
-  }, function (err, res) {
-    callback({
-      address: addr,
-      msg: message,
-      sig: res.result,
-      version: '2'
+  
+  // Use modern ethereum.request() method instead of deprecated sendAsync
+  if (window.ethereum && window.ethereum.request) {
+    window.ethereum.request({
+      method: 'personal_sign',
+      params: [msg, addr]
+    }).then(res => {
+      callback({
+        address: addr,
+        msg: message,
+        sig: res,
+        version: '2'
+      });
+    }).catch(err => {
+      console.error('MetaMask signing error:', err);
+      callback(null);
     });
-  });
+  } else {
+    // Fallback to sendAsync for older providers
+    web3.currentProvider.sendAsync({
+      method: 'personal_sign',
+      params: [msg, addr],
+      addr
+    }, function (err, res) {
+      if (err) {
+        console.error('Fallback signing error:', err);
+        callback(null);
+      } else {
+        callback({
+          address: addr,
+          msg: message,
+          sig: res.result,
+          version: '2'
+        });
+      }
+    });
+  }
 }
 
 export const logger = (req, res, next, end) => {
