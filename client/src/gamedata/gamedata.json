@@ -459,7 +459,7 @@
       "deployParams": [],
       "deployFunds": 0,
       "deployId": "29",
-      "instanceGas": 250000,
+      "instanceGas": 1000000,
       "author": "AgeManning"
     },
     {
