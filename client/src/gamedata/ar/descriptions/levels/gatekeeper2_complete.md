@@ -1,0 +1,2 @@
+
+أحسنت! الآن وبعد أن أصبحت قادراً على تخطي الحارس، لديك ما يلزم للانضمام إلى [theCyber](https://etherscan.io/address/thecyber.eth#code)، وهو نادٍ لا مركزي على شبكة إيثيريوم الرئيسية. احصل على كلمة المرور عبر التواصل مع المنشئ على [reddit](https://www.reddit.com/user/0age) أو عبر [البريد الإلكتروني](mailto:0age@protonmail.com)، واستخدمها للتسجيل في العقد على العنوان [gatekeepertwo.thecyber.eth](https://etherscan.io/address/gatekeepertwo.thecyber.eth#code) (علماً بأن العقد سيقبل أول 128 مشتركاً فقط).
