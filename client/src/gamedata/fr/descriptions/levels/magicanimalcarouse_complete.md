@@ -1,0 +1,1 @@
+Félicitations, tu as brisé la règle magique du carrousel ! Dans le royaume de la manipulation de données bas niveau, il est crucial de ne pas oublier les détails, surtout lorsqu'on travaille avec la compaction de données dans les emplacements de stockage (storage slots).
