@@ -1,3 +1,6 @@
+# macOS system files
+.DS_Store
+
 # Dependencies
 node_modules/
 
