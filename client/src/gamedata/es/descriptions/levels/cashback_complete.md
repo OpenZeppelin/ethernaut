@@ -1,0 +1,1 @@
+Las suposiciones sobre la identidad, el contexto de ejecución de la cuenta y la localidad del almacenamiento son tan explotables como los bugs aritméticos cuando se trata de sistemas complejos basados en el EIP-7702. Encontraste los límites y sacaste provecho. ¡Buen trabajo!
