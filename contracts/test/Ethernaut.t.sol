@@ -36,7 +36,7 @@ contract TestEthernaut is Test {
         vm.label(user, "User 1");
 
         user2 = users[1];
-        vm.label(user, "User 2");
+        vm.label(user2, "User 2");
 
         owner = users[2];
         vm.label(owner, "Owner");
