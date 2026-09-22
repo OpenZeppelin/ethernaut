@@ -1,0 +1,5 @@
+¡Felicitaciones! ¡Has descubierto con éxito los secretos de las firmas de curva elíptica!
+
+Como se describe en la [EIP-2](https://eips.ethereum.org/EIPS/eip-2), permitir valores de `0 < s < secp256k1n` en nuestra lógica de verificación, como ocurre actualmente, abre una vulnerabilidad de maleabilidad de firmas. Alguien puede tomar cualquier firma, invertir el valor de `s` de `s` a `secp256k1n - s`, cambiar el valor de `v` (27 -> 28, 28 -> 27), y la firma resultante seguiría recuperando al mismo firmante.
+
+Es importante usar implementaciones seguras a menos que sepas exactamente lo que estás haciendo. Revisa la [implementación de OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/448efeea6640bbbc09373f03fbc9c88e280147ba/contracts/utils/cryptography/ECDSA.sol#L128-L154) para aprender cómo usar ecrecover de manera segura.
