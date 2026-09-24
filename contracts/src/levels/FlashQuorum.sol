@@ -3,11 +3,7 @@ pragma solidity 0.8.30;
 
 import {FlashQuorumToken} from "./FlashQuorumToken.sol";
 
-/// @notice A tiny DAO treasury. "Voting power" is just a live balanceOf()
-/// read at the moment executeProposal() is called, with no snapshot. A real
-/// governance system checkpoints voting power (e.g. at proposal creation)
-/// specifically so a balance that only exists for one transaction can never
-/// count as a real vote.
+/// @notice A tiny DAO treasury.
 contract FlashQuorum {
     FlashQuorumToken public immutable govToken;
     uint256 public immutable quorum;

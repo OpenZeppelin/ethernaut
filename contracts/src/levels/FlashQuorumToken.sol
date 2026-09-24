@@ -7,13 +7,7 @@ interface IFlashLoanReceiver {
     function onFlashLoan(uint256 amount) external;
 }
 
-/// @notice A governance token with a flash mint, charging the same 0.3% fee
-/// Uniswap V2 charges on a flash swap. There's no cooldown and no
-/// restriction on who can call it: any contract can hold `amount` tokens for
-/// exactly as long as this call is on the stack, then has to give them back
-/// plus the fee. The principal is minted and burned from nothing, but the
-/// fee has to come from the caller's own pre-existing balance: the loan
-/// itself is free of collateral, the fee is not.
+/// @notice A governance token with a flash mint.
 contract FlashQuorumToken is ERC20 {
     address public immutable dao;
     uint256 public constant FLASH_FEE_BPS = 30; // 0.3%, same as Uniswap V2
