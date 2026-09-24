@@ -631,6 +631,21 @@
       "deployId": "40",
       "instanceGas": 2000000,
       "author": "Draiakoo"
+    },
+    {
+      "name": "GhostVault",
+      "created": "2026-09-22",
+      "difficulty": "6",
+      "description": "ghost_vault.md",
+      "completedDescription": "ghost_vault_complete.md",
+      "levelContract": "GhostVaultFactory.sol",
+      "instanceContract": "GhostVault.sol",
+      "revealCode": true,
+      "deployParams": [],
+      "deployFunds": 0,
+      "deployId": "41",
+      "instanceGas": 1500000,
+      "author": "mivgubel"
     }
   ]
 }
