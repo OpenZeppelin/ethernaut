@@ -8,10 +8,7 @@ interface IGhostVaultFactory {
     function fundBobDeposit(address instance) external;
 }
 
-/// @notice A minimal, hand-rolled ERC4626-style vault. It reinvents share
-/// accounting instead of inheriting OpenZeppelin's ERC4626, which is exactly
-/// how this bug keeps showing up in the wild: teams roll their own vault
-/// math and skip the virtual-shares protection OZ's ERC4626 ships with.
+/// @notice A minimal, hand-rolled ERC4626-style vault.
 contract GhostVault is ERC20 {
     IERC20 public immutable asset;
     IGhostVaultFactory public immutable factory;
@@ -39,9 +36,6 @@ contract GhostVault is ERC20 {
         return convertToShares(assets);
     }
 
-    /// @dev No minimum-shares check and no virtual offset: a deposit that
-    /// rounds down to 0 shares still pulls the caller's assets into the
-    /// vault and mints nothing. That silent zero is the whole bug.
     function deposit(uint256 assets, address receiver) external returns (uint256 shares) {
         shares = convertToShares(assets);
         asset.transferFrom(msg.sender, address(this), assets);

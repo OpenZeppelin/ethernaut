@@ -33,18 +33,12 @@ contract GhostVaultFactory is Level, IGhostVaultFactory {
         return address(instance);
     }
 
-    /// @notice Simulates Bob, the vault's next "real" depositor, arriving
-    /// after the player. Only the instance itself can call this, in
-    /// response to the player calling GhostVault.triggerBobDeposit() from
-    /// the console, mirroring the moment a real user's deposit transaction
-    /// lands on top of an attacker's setup.
-    ///
-    /// This lives behind an explicit trigger instead of running as a side
-    /// effect of validateInstance: bundling it into validateInstance would
-    /// mean a routine "check my progress" call (submitLevelInstance can be
-    /// called at any time, including by tests that assert the level isn't
-    /// solved yet) silently burns Bob's deposit against an unexploited
-    /// vault and permanently soft-locks that instance.
+    /// @notice Simulates Bob's deposit landing. Only the instance itself can
+    /// call this, in response to the player calling
+    /// GhostVault.triggerBobDeposit() from the console. Kept behind an
+    /// explicit trigger rather than a side effect of validateInstance, since
+    /// validateInstance can be called at any time (including by routine
+    /// progress checks) and this only makes sense to run once.
     function fundBobDeposit(address instance) external override {
         require(msg.sender == instance, "Only the instance can request its own funding");
         require(!bobHasDeposited[instance], "Bob already deposited");
