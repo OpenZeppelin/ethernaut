@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 134.9 134.9" style="enable-background:new 0 0 134.9 134.9;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#1D1D1B;}
+	.st1{fill:#EDDFD6;}
+	.st2{font-family:'NotoSans-Bold', Arial, sans-serif;font-weight:bold;}
+	.st3{font-size:19px;}
+</style>
+<g id="_x34_1">
+	<rect x="0" y="0" class="st0" width="134.9" height="134.9"/>
+	<g id="ghost">
+		<path class="st1" d="M35,102 C35,64 47,38 67.5,38 C88,38 100,64 100,102 L91,94 L82,102 L73,94 L64,102 L55,94 L46,102 L35,94 Z"/>
+		<ellipse class="st0" cx="55.5" cy="66" rx="5.5" ry="7.5"/>
+		<ellipse class="st0" cx="79.5" cy="66" rx="5.5" ry="7.5"/>
+	</g>
+	<g>
+		<path class="st1" d="M-0.1-0.1h28.5v20.2c0,3.8-3.1,6.8-6.8,6.8H-0.1V-0.1z"/>
+		<text transform="matrix(1 0 0 1 2.5 15.5)" class="st0 st2 st3">41</text>
+	</g>
+</g>
+</svg>
