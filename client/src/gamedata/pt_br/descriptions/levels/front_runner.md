@@ -6,4 +6,3 @@ Complete este nível terminando com mais tokens ALT do que os 10 que Alice está
 Coisas que podem ser úteis
 * O modelo de allowance `approve`/`transferFrom` do [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md)
 * O que `approve()` realmente faz com o valor de allowance armazenado: soma, subtrai, ou apenas sobrescreve?
-* Nada impede que um spender chame `transferFrom` mais de uma vez
