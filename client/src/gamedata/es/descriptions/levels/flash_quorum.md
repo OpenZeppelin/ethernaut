@@ -6,4 +6,3 @@ Completa este nivel drenando el tesoro.
 Cosas que pueden ayudar
 * Revisa qué más puede hacer el token de gobernanza además de `transfer` y `approve`
 * La comisión no es gratis: averigua de dónde tiene que salir antes de pedir prestado
-* Vas a necesitar un contrato para este nivel: quien presta el flash loan llama de vuelta a `msg.sender`, lo cual solo tiene sentido si ahí hay código para ejecutar

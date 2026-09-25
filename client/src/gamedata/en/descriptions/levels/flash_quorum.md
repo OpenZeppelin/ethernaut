@@ -6,4 +6,3 @@ Complete this level by draining the treasury.
 Things that might help
 * Read what else the governance token can do besides `transfer` and `approve`
 * The fee isn't free: figure out where it has to come from before you borrow
-* You'll need a contract for this one: a flash loan lender calls back into `msg.sender`, which only makes sense if there's code there to call
