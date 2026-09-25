@@ -1,0 +1,5 @@
+`approve(spender, amount)` no ajusta un allowance en relación a lo que ya había, simplemente lo sobrescribe. Alice pasó de 100 a 10 pensando que estaba limitando su exposición a 10, pero `approve` no tiene memoria de los 100 anteriores. Nada en el estándar ERC20 impide que el spender drene el allowance viejo justo antes de que llegue el nuevo, y luego drene el nuevo también, quedándose con ambos.
+
+Por esto exactamente se agregaron `increaseAllowance`/`decreaseAllowance` a implementaciones más antiguas de ERC20, y por esto el consejo estándar durante años ha sido resetear un allowance a 0 antes de fijar un valor nuevo, forzando a que el drenaje obsoleto del spender falle on-chain en vez de tener éxito en silencio. Las integraciones modernas cada vez más evitan todo el problema con `permit` (EIP-2612), que firma una cantidad exacta para un uso exacto en vez de dejar un allowance permanente contra el cual competir.
+
+Si integras con un token que no controlas, nunca asumas que reducir un allowance hace desaparecer la exposición del spender al monto anterior. No desaparece, hasta que efectivamente se gasta o se pone en cero explícitamente primero.
