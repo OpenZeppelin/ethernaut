@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 134.9 134.9" style="enable-background:new 0 0 134.9 134.9;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#1D1D1B;}
+	.st1{fill:#EDDFD6;}
+	.st2{font-family:'NotoSans-Bold', Arial, sans-serif;font-weight:bold;}
+	.st3{font-size:19px;}
+</style>
+<g id="_x34_3">
+	<rect x="0" y="0" class="st0" width="134.9" height="134.9"/>
+	<g id="bolt">
+		<path class="st1" d="M78,28 L48,76 L64,76 L52,108 L92,60 L74,60 Z"/>
+	</g>
+	<g>
+		<path class="st1" d="M-0.1-0.1h28.5v20.2c0,3.8-3.1,6.8-6.8,6.8H-0.1V-0.1z"/>
+		<text transform="matrix(1 0 0 1 2.5 15.5)" class="st0 st2 st3">43</text>
+	</g>
+</g>
+</svg>
