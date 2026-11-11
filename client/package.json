@@ -9,7 +9,7 @@
     "@sentry/tracing": "^7.108.0",
     "@truffle/contract": "4.6.6",
     "@truffle/hdwallet-provider": "^2.1.15",
-    "alchemy-sdk": "^2.2.3",
+    "alchemy-sdk": "^3.0.0",
     "axios": "^1.2.4",
     "bad-words": "^3.0.4",
     "bootstrap": "^5.0.0",
