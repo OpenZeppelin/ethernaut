@@ -62,7 +62,7 @@ export const NETWORKS_INGAME = {
     id: "11155111",
     currencyName: "Sepolia-ETH",
     currencySymbol: "SEP",
-    rpcUrl: `https://rpc.sepolia.org`,
+    rpcUrl: `https://ethereum-sepolia-rpc.publicnode.com`,
     blockExplorer: "https://sepolia.etherscan.io",
     explorer: {
       apiKey: `${process.env.REACT_APP_SEPOLIA_EXPLORER_API_KEY}`,

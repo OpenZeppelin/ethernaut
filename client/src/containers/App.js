@@ -116,18 +116,21 @@ class App extends React.Component {
       } catch (switchError) {
         // This error code indicates that the chain has not been added to MetaMask.
         if (switchError.code === 4902) {
+          const sepolia = constants.NETWORKS_INGAME.SEPOLIA;
           try {
             await window.ethereum.request({
               method: "wallet_addEthereumChain",
               params: [
                 {
-                  chainId: [
-                    {
-                      chainId: `0x${Number(
-                        constants.NETWORKS.SEPOLIA.id
-                      ).toString(16)}`,
-                    },
-                  ],
+                  chainId: `0x${Number(sepolia.id).toString(16)}`,
+                  chainName: sepolia.name,
+                  rpcUrls: [sepolia.rpcUrl],
+                  nativeCurrency: {
+                    name: sepolia.currencyName,
+                    symbol: sepolia.currencySymbol,
+                    decimals: 18,
+                  },
+                  blockExplorerUrls: [sepolia.blockExplorer],
                 },
               ],
             });
